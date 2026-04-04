@@ -1,0 +1,77 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment / secrets
+.env
+.env.*
+.envrc
+.direnv/
+!.env.example
+!**/.env.example
+!.env.sample
+!**/.env.sample
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.py,cover
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.eggs/
+*.egg-info/
+pip-wheel-metadata/
+.venv/
+venv/
+ENV/
+dist/
+build/
+site/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.npm/
+.pnpm-store/
+.yarn/
+.parcel-cache/
+.turbo/
+.vercel/
+.eslintcache
+
+# Test tooling
+playwright-report/
+test-results/
+
+# Local agent / generated artifacts
+.claude/
+digest.txt
+
+# Local databases / temp files
+*.sqlite
+*.sqlite3
+*.db
