@@ -8,6 +8,8 @@ from app.interfaces.api.mappers.pipeline import to_evidence_ref_response
 from app.interfaces.api.schemas.extraction import (
     ExtractionExecutionAuditResponse,
     ExtractionExecutionResponse,
+    FailedExtractionCallResponse,
+    SchemaProposalResponse,
     SuggestedNodeResponse,
     SuggestedRelationResponse,
 )
@@ -33,6 +35,29 @@ def to_extraction_execution_response(
         ],
         created_candidate_node_ids=report.created_candidate_node_ids,
         created_candidate_relation_ids=report.created_candidate_relation_ids,
+        call_count=report.call_count,
+        failed_calls=[
+            FailedExtractionCallResponse(
+                segment_ids=item.segment_ids,
+                error_message=item.error_message,
+            )
+            for item in report.failed_calls
+        ],
+        dropped_node_count=report.dropped_node_count,
+        dropped_relation_count=report.dropped_relation_count,
+        schema_proposals=[
+            SchemaProposalResponse(
+                reason_code=item.reason_code,
+                kind=item.kind,
+                type_name=item.type_name,
+                property_name=item.property_name,
+                count=item.count,
+                sample_quote=item.sample_quote,
+                sample_value=item.sample_value,
+                dropped_relation_count=item.dropped_relation_count,
+            )
+            for item in report.schema_proposals
+        ],
         started_at=report.started_at,
         completed_at=report.completed_at,
     )

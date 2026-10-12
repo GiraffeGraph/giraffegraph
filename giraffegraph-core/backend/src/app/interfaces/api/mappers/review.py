@@ -1,6 +1,9 @@
 from app.domain.review.entities import (
+    AcceptanceRecord,
     ProjectReviewQueue,
+    ReviewDecision,
     ReviewEvidenceSnippet,
+    ReviewItem,
     ReviewQueueItem,
     ReviewQueueRunEntry,
 )
@@ -14,11 +17,52 @@ from app.interfaces.api.mappers.pipeline import (
     to_review_item_response,
 )
 from app.interfaces.api.schemas.review import (
+    AcceptanceRecordResponse,
     ProjectReviewQueueResponse,
+    ReviewDecisionResponse,
     ReviewEvidenceSnippetResponse,
+    ReviewItemWithDecisionsResponse,
     ReviewQueueItemResponse,
     ReviewQueueRunEntryResponse,
 )
+
+
+def to_review_decision_response(decision: ReviewDecision) -> ReviewDecisionResponse:
+    return ReviewDecisionResponse(
+        decision_id=decision.decision_id,
+        review_item_id=decision.review_item_id,
+        run_id=decision.run_id,
+        item_type=decision.item_type,
+        item_ref=decision.item_ref,
+        action=decision.action,
+        reviewer_id=decision.reviewer_id,
+        reviewer_note=decision.reviewer_note,
+        duration_ms=decision.duration_ms,
+        before_json=decision.before_json,
+        after_json=decision.after_json,
+        decided_at=decision.decided_at,
+    )
+
+
+def to_review_item_with_decisions_response(item: ReviewItem) -> ReviewItemWithDecisionsResponse:
+    return ReviewItemWithDecisionsResponse(
+        **to_review_item_response(item).model_dump(),
+        decisions=[to_review_decision_response(decision) for decision in item.decisions],
+    )
+
+
+def to_acceptance_record_response(record: AcceptanceRecord) -> AcceptanceRecordResponse:
+    return AcceptanceRecordResponse(
+        candidate_type=record.candidate_type,
+        candidate_ref=record.candidate_ref,
+        policy=record.policy,
+        rule_code=record.rule_code,
+        decision=(
+            to_review_decision_response(record.decision)
+            if record.decision is not None
+            else None
+        ),
+    )
 
 
 def to_project_review_queue_response(
@@ -52,7 +96,7 @@ def to_review_queue_run_entry_response(
 
 def to_review_queue_item_response(item: ReviewQueueItem) -> ReviewQueueItemResponse:
     return ReviewQueueItemResponse(
-        review_item=to_review_item_response(item.review_item),
+        review_item=to_review_item_with_decisions_response(item.review_item),
         candidate_node=(
             to_candidate_node_response(item.candidate_node)
             if item.candidate_node is not None

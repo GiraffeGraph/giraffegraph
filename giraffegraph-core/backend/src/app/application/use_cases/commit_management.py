@@ -9,9 +9,11 @@ from app.application.ports.repositories import (
     GraphDeltaRepository,
     ProcessingRunRepository,
     ReviewItemRepository,
+    SchemaRepository,
     SegmentRepository,
     SourceUnitRepository,
 )
+from app.domain.extraction.entities import CandidateNode, CandidateRelation
 from app.domain.graph_commit.entities import CanonicalCommitBundle, GraphDelta
 from app.domain.ingestion.lifecycle import (
     mark_run_completed,
@@ -20,6 +22,12 @@ from app.domain.ingestion.lifecycle import (
     reserve_source_for_run,
 )
 from app.domain.shared.enums import CandidateStatus, ReviewStatus
+from app.domain.shared.resolution import (
+    build_candidate_relation_resolution_key,
+    build_relation_identity_key,
+    candidate_node_identity_key,
+    missing_relation_merge_keys,
+)
 
 
 @dataclass(slots=True)
@@ -27,6 +35,7 @@ class CommitManagementService:
     processing_run_repository: ProcessingRunRepository
     source_unit_repository: SourceUnitRepository
     segment_repository: SegmentRepository
+    schema_repository: SchemaRepository
     candidate_node_repository: CandidateNodeRepository
     candidate_relation_repository: CandidateRelationRepository
     review_item_repository: ReviewItemRepository
@@ -82,6 +91,11 @@ class CommitManagementService:
                 + ", ".join(sorted(invalid_relation_dependencies))
                 + ". Re-run validation or resolve dependent review items first."
             )
+        relation_identity_keys = self._build_relation_identity_keys(
+            schema_version_id=run.schema_version_id,
+            candidate_nodes=validated_nodes,
+            candidate_relations=validated_relations,
+        )
         rejected_count = sum(
             candidate.status == CandidateStatus.REJECTED for candidate in candidate_nodes
         ) + sum(
@@ -118,7 +132,8 @@ class CommitManagementService:
                     ),
                     candidate_nodes=validated_nodes,
                     candidate_relations=validated_relations,
-                )
+                ),
+                relation_identity_keys=relation_identity_keys,
             )
         except Exception:
             mark_run_failed(run, source_unit)
@@ -132,6 +147,62 @@ class CommitManagementService:
         self.source_unit_repository.save(source_unit)
 
         return committed_delta
+
+    def _build_relation_identity_keys(
+        self,
+        *,
+        schema_version_id: str,
+        candidate_nodes: list[CandidateNode],
+        candidate_relations: list[CandidateRelation],
+    ) -> dict[str, str]:
+        merge_keys_by_relation_type = {
+            relation_type.name.casefold(): relation_type.merge_keys
+            for relation_type in self.schema_repository.list_relation_types(schema_version_id)
+        }
+        node_resolution_keys = {
+            candidate.candidate_node_id: candidate_node_identity_key(candidate)
+            for candidate in candidate_nodes
+        }
+        relation_identity_keys: dict[str, str] = {}
+        relations_by_resolution_key: dict[str, CandidateRelation] = {}
+        for candidate in candidate_relations:
+            merge_keys = merge_keys_by_relation_type[candidate.relation_type.casefold()]
+            missing_merge_keys = missing_relation_merge_keys(
+                merge_keys=merge_keys,
+                properties=candidate.properties,
+            )
+            if missing_merge_keys:
+                raise RuleViolationError(
+                    f"Validated relation '{candidate.candidate_relation_id}' is missing "
+                    "merge key values: "
+                    + ", ".join(missing_merge_keys)
+                    + ". Re-run validation and supply them in review before committing."
+                )
+
+            committed = relations_by_resolution_key.setdefault(
+                build_candidate_relation_resolution_key(
+                    candidate,
+                    node_resolution_keys_by_candidate_id=node_resolution_keys,
+                    merge_keys=merge_keys,
+                ),
+                candidate,
+            )
+            if committed.properties != candidate.properties:
+                raise RuleViolationError(
+                    f"Validated relations '{committed.candidate_relation_id}' and "
+                    f"'{candidate.candidate_relation_id}' resolve to the same canonical "
+                    "relation with different properties; committing both would overwrite "
+                    "one of them. Reject one, or declare merge keys on relation type "
+                    f"'{candidate.relation_type}'."
+                )
+
+            relation_identity_keys[candidate.candidate_relation_id] = (
+                build_relation_identity_key(
+                    merge_keys=merge_keys,
+                    properties=candidate.properties,
+                )
+            )
+        return relation_identity_keys
 
     def get_graph_delta(self, run_id: str) -> GraphDelta:
         delta = self.graph_delta_repository.get_by_run(run_id)

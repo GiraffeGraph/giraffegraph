@@ -5,6 +5,8 @@ from sqlalchemy import (
     DateTime,
     Float,
     ForeignKey,
+    Index,
+    Integer,
     String,
     Text,
     UniqueConstraint,
@@ -157,6 +159,7 @@ class RelationTypeModel(Base):
     aliases: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
     extraction_hints: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
     required_properties: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
+    merge_keys: Mapped[list[str]] = mapped_column(JSONB, nullable=False, default=list)
     confidence_threshold: Mapped[float] = mapped_column(Float, nullable=False, default=0.7)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
 
@@ -304,6 +307,10 @@ class ProcessingRunModel(Base):
         back_populates="processing_run",
         cascade="all, delete-orphan",
     )
+    review_decisions: Mapped[list["ReviewDecisionModel"]] = relationship(
+        back_populates="processing_run",
+        cascade="all, delete-orphan",
+    )
     graph_delta: Mapped["GraphDeltaModel | None"] = relationship(
         back_populates="processing_run",
         cascade="all, delete-orphan",
@@ -315,6 +322,7 @@ class PipelineDefinitionModel(Base):
     __tablename__ = "pipeline_definitions"
     __table_args__ = (
         UniqueConstraint("schema_version_id", "version", name="uq_pipeline_definition_version"),
+        Index("ix_pipeline_definitions_schema_created_at", "schema_version_id", "created_at"),
     )
 
     pipeline_definition_id: Mapped[str] = mapped_column(String(36), primary_key=True)
@@ -401,6 +409,10 @@ class ExtractionExecutionModel(Base):
 
 class ProcessingJobModel(Base):
     __tablename__ = "processing_jobs"
+    __table_args__ = (
+        Index("ix_processing_jobs_run_created_at", "run_id", "created_at"),
+        Index("ix_processing_jobs_status_created_at", "status", "created_at"),
+    )
 
     job_id: Mapped[str] = mapped_column(String(36), primary_key=True)
     project_id: Mapped[str] = mapped_column(ForeignKey("projects.project_id"), nullable=False)
@@ -521,6 +533,39 @@ class ReviewItemModel(Base):
     )
 
     processing_run: Mapped[ProcessingRunModel] = relationship(back_populates="review_items")
+
+
+class ReviewDecisionModel(Base):
+    __tablename__ = "review_decisions"
+    __table_args__ = (
+        Index("ix_review_decisions_run_decided_at", "run_id", "decided_at"),
+        Index("ix_review_decisions_review_item_decided_at", "review_item_id", "decided_at"),
+    )
+
+    decision_id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    review_item_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    run_id: Mapped[str] = mapped_column(ForeignKey("processing_runs.run_id"), nullable=False)
+    item_type: Mapped[str] = mapped_column(String(50), nullable=False)
+    item_ref: Mapped[str] = mapped_column(String(36), nullable=False)
+    action: Mapped[str] = mapped_column(String(20), nullable=False)
+    reviewer_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    reviewer_note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    duration_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    before_json: Mapped[dict[str, object] | None] = mapped_column(
+        JSONB(none_as_null=True),
+        nullable=True,
+    )
+    after_json: Mapped[dict[str, object] | None] = mapped_column(
+        JSONB(none_as_null=True),
+        nullable=True,
+    )
+    decided_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=lambda: datetime.now(UTC),
+    )
+
+    processing_run: Mapped[ProcessingRunModel] = relationship(back_populates="review_decisions")
 
 
 class GraphDeltaModel(Base):

@@ -45,6 +45,7 @@ class RelationTypeDefinition:
     aliases: list[str] = field(default_factory=list)
     extraction_hints: list[str] = field(default_factory=list)
     required_properties: list[str] = field(default_factory=list)
+    merge_keys: list[str] = field(default_factory=list)
     properties: list[PropertyDefinition] = field(default_factory=list)
     confidence_threshold: float = 0.7
     is_active: bool = True

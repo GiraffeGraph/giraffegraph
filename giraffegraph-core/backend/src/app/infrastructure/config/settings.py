@@ -1,6 +1,9 @@
 from functools import lru_cache
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+from app.infrastructure.llm.anthropic_provider import AnthropicEffort
 
 
 class Settings(BaseSettings):
@@ -23,9 +26,13 @@ class Settings(BaseSettings):
     openai_api_key: str | None = None
     openai_base_url: str = "https://api.openai.com/v1"
     openai_timeout_seconds: float = 30.0
+    anthropic_api_key: str | None = None
+    anthropic_timeout_seconds: float = 120.0
+    anthropic_effort: AnthropicEffort = "low"
     default_llm_provider: str = "noop"
     default_llm_model: str | None = None
-    default_extraction_prompt_version: str = "candidate_graph_extraction_v1"
+    default_extraction_prompt_version: str = "candidate_graph_extraction_v2"
+    extraction_max_segments_per_call: int | None = Field(default=None, ge=1)
     processing_job_poll_interval_seconds: float = 2.0
 
     @property

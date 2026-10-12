@@ -1,5 +1,10 @@
-from pydantic import BaseModel, ConfigDict, Field
+from dataclasses import dataclass
+from typing import Annotated
 
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+
+from app.domain.orchestration.pipeline_definitions import DEFAULT_PIPELINE_VERSION
+from app.domain.schema.identifiers import IDENTIFIER_PATTERN
 from app.domain.shared.enums import ProcessingJobType
 
 
@@ -9,6 +14,7 @@ class ProjectCreateInput(BaseModel):
     name: str = Field(min_length=1, max_length=120)
     description: str | None = Field(default=None, max_length=1000)
     template_id: str | None = None
+    apply_template_schema: bool = False
 
 
 class SchemaVersionCreateInput(BaseModel):
@@ -22,7 +28,7 @@ class SchemaVersionCreateInput(BaseModel):
 class PropertyDefinitionInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    name: str = Field(min_length=1, max_length=120)
+    name: str = Field(min_length=1, max_length=120, pattern=IDENTIFIER_PATTERN.pattern)
     data_type: str = Field(min_length=1, max_length=50)
     required: bool = False
     description: str | None = Field(default=None, max_length=500)
@@ -33,7 +39,7 @@ class PropertyDefinitionInput(BaseModel):
 class NodeTypeDefinitionInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    name: str = Field(min_length=1, max_length=80)
+    name: str = Field(min_length=1, max_length=80, pattern=IDENTIFIER_PATTERN.pattern)
     display_name: str = Field(min_length=1, max_length=120)
     description: str = Field(min_length=1, max_length=500)
     is_core: bool = False
@@ -47,7 +53,7 @@ class NodeTypeDefinitionInput(BaseModel):
 class RelationTypeDefinitionInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    name: str = Field(min_length=1, max_length=80)
+    name: str = Field(min_length=1, max_length=80, pattern=IDENTIFIER_PATTERN.pattern)
     from_type: str = Field(min_length=1, max_length=80)
     to_type: str = Field(min_length=1, max_length=80)
     description: str = Field(min_length=1, max_length=500)
@@ -55,8 +61,16 @@ class RelationTypeDefinitionInput(BaseModel):
     aliases: list[str] = Field(default_factory=list)
     extraction_hints: list[str] = Field(default_factory=list)
     required_properties: list[str] = Field(default_factory=list)
+    merge_keys: list[str] = Field(default_factory=list)
     confidence_threshold: float = Field(default=0.7, ge=0.0, le=1.0)
     properties: list[PropertyDefinitionInput] = Field(default_factory=list)
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class TemplateSchema:
+    node_types: tuple[NodeTypeDefinitionInput, ...]
+    relation_types: tuple[RelationTypeDefinitionInput, ...]
+    segmentation_strategy: str
 
 
 class SourceUnitCreateInput(BaseModel):
@@ -70,6 +84,38 @@ class SourceUnitCreateInput(BaseModel):
     sequence_no: int | None = Field(default=None, ge=1)
     external_ref: str | None = Field(default=None, max_length=200)
     metadata_json: dict[str, str] = Field(default_factory=dict)
+
+
+class SourceUnitBulkItemInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    external_ref: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1, max_length=200),
+    ]
+    title: str | None = Field(default=None, max_length=200)
+    raw_content: str = Field(min_length=1)
+
+
+class SourceUnitBulkCreateInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    project_id: str
+    schema_version_id: str | None = None
+    source_type: str = Field(default="document", min_length=1, max_length=80)
+    items: list[SourceUnitBulkItemInput] = Field(min_length=1, max_length=1000)
+
+
+class SourceUnitProcessInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    project_id: str
+    source_unit_ids: list[str] = Field(min_length=1, max_length=200)
+    llm_provider: str | None = Field(default=None, max_length=80)
+    llm_model: str | None = Field(default=None, max_length=120)
+    segmentation_strategy: str | None = Field(default=None, max_length=50)
+    pipeline_version: str = Field(default=DEFAULT_PIPELINE_VERSION, min_length=1, max_length=50)
+    commit: bool = False
 
 
 class ProcessingRunStartInput(BaseModel):

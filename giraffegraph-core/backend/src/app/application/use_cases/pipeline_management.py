@@ -1,6 +1,5 @@
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from re import split
 from uuid import uuid4
 
 from app.application.dto.contracts import (
@@ -14,6 +13,7 @@ from app.application.ports.repositories import (
     CandidateNodeRepository,
     CandidateRelationRepository,
     CanonicalGraphRepository,
+    ExtractionExecutionRepository,
     ProcessingRunRepository,
     ReviewItemRepository,
     SchemaRepository,
@@ -21,21 +21,40 @@ from app.application.ports.repositories import (
     SourceUnitRepository,
     ValidationResultRepository,
 )
-from app.domain.extraction.entities import CandidateNode, CandidateRelation, EvidenceRef
+from app.domain.extraction.entities import (
+    SCHEMA_PROPOSAL_ITEM_TYPE,
+    CandidateNode,
+    CandidateRelation,
+    EvidenceRef,
+)
+from app.domain.extraction.segmentation import SegmentationStrategy
+from app.domain.hadith.grounding import (
+    quote_in_segment,
+    value_equals_reference,
+    value_in_quote,
+)
 from app.domain.ingestion.entities import ProcessingRun, Segment, SourceUnit
 from app.domain.ingestion.lifecycle import mark_run_started, reserve_source_for_run
-from app.domain.review.entities import ReviewItem
-from app.domain.schema.entities import NodeTypeDefinition, RelationTypeDefinition
-from app.domain.shared.enums import CandidateStatus, RunStatus
+from app.domain.review.entities import ReviewDecision, ReviewItem
+from app.domain.schema.entities import (
+    NodeTypeDefinition,
+    PropertyDefinition,
+    RelationTypeDefinition,
+)
+from app.domain.shared.enums import CandidateStatus, ExtractionExecutionStatus, RunStatus
 from app.domain.shared.resolution import (
     build_candidate_node_resolution_key,
     build_candidate_relation_resolution_key,
     build_canonical_merge_key,
+    build_relation_identity_key,
     candidate_node_identity_key,
     derive_merge_key_payload,
     is_missing_value,
+    missing_relation_merge_keys,
 )
 from app.domain.validation.entities import ValidationResult
+
+HUMAN_DECISION_RULE_CODE = "human_review_decision"
 
 
 @dataclass(slots=True)
@@ -57,23 +76,28 @@ class PipelineManagementService:
     validation_result_repository: ValidationResultRepository
     review_item_repository: ReviewItemRepository
     canonical_graph_repository: CanonicalGraphRepository
+    extraction_execution_repository: ExtractionExecutionRepository
+    segmentation_strategies: Mapping[str, SegmentationStrategy]
 
     def generate_segments(self, payload: SegmentGenerationInput) -> list[Segment]:
         source_unit = self._require_source_unit(payload.source_unit_id)
-        strategy = payload.strategy.strip().casefold()
-        if strategy != "paragraphs":
-            raise RuleViolationError("Only the 'paragraphs' segmentation strategy is supported.")
+        strategy = self.segmentation_strategies.get(payload.strategy.strip().casefold())
+        if strategy is None:
+            raise RuleViolationError(
+                "Segmentation strategy must be one of: "
+                + ", ".join(sorted(self.segmentation_strategies))
+                + "."
+            )
 
-        segment_texts = self._split_into_segments(source_unit.raw_content)
         segments = [
             Segment(
                 segment_id=str(uuid4()),
                 source_unit_id=source_unit.source_unit_id,
                 segment_order=index,
-                text=text,
-                metadata_json={"strategy": strategy},
+                text=draft.text,
+                metadata_json={"strategy": strategy.name, **draft.metadata},
             )
-            for index, text in enumerate(segment_texts, start=1)
+            for index, draft in enumerate(strategy.split(source_unit.raw_content), start=1)
         ]
         self.segment_repository.replace_for_source_unit(source_unit.source_unit_id, segments)
         return self.segment_repository.list_by_source_unit(source_unit.source_unit_id)
@@ -164,23 +188,56 @@ class PipelineManagementService:
             candidate_node.candidate_node_id: candidate_node
             for candidate_node in candidate_nodes
         }
+        grounding_segments = self._grounding_segments(run)
+        source_external_ref = self._require_source_unit(run.source_unit_id).external_ref
+        # A reviewer's decision outranks the gates: the latest one fixes the candidate status.
+        human_decisions = {
+            decision.item_ref: decision
+            for decision in self.review_item_repository.list_decisions_by_run(run_id)
+            if decision.item_type != SCHEMA_PROPOSAL_ITEM_TYPE
+        }
 
         validation_results: list[ValidationResult] = []
         for candidate_node in candidate_nodes:
-            validation_results.extend(
-                self._validate_candidate_node(
-                    candidate_node=candidate_node,
-                    node_type_map=node_type_map,
+            node_decision = human_decisions.get(candidate_node.candidate_node_id)
+            if node_decision is not None:
+                candidate_node.status = self._decided_status(node_decision)
+                validation_results.append(
+                    self._build_human_decision_result(
+                        run_id=run_id,
+                        candidate_ref=candidate_node.candidate_node_id,
+                        decision=node_decision,
+                    )
                 )
-            )
+            else:
+                validation_results.extend(
+                    self._validate_candidate_node(
+                        candidate_node=candidate_node,
+                        node_type_map=node_type_map,
+                        grounding_segments=grounding_segments,
+                        source_external_ref=source_external_ref,
+                    )
+                )
             self.candidate_node_repository.save(candidate_node)
 
         for candidate_relation in candidate_relations:
+            relation_decision = human_decisions.get(candidate_relation.candidate_relation_id)
+            if relation_decision is not None:
+                candidate_relation.status = self._decided_status(relation_decision)
+                validation_results.append(
+                    self._build_human_decision_result(
+                        run_id=run_id,
+                        candidate_ref=candidate_relation.candidate_relation_id,
+                        decision=relation_decision,
+                    )
+                )
+                continue
             validation_results.extend(
                 self._validate_candidate_relation(
                     candidate_relation=candidate_relation,
                     relation_type_map=relation_type_map,
                     candidate_node_map=candidate_node_map,
+                    grounding_segments=grounding_segments,
                 )
             )
         validation_results.extend(
@@ -188,6 +245,8 @@ class PipelineManagementService:
                 candidate_nodes=candidate_nodes,
                 candidate_relations=candidate_relations,
                 candidate_node_map=candidate_node_map,
+                relation_type_map=relation_type_map,
+                human_decided_refs=set(human_decisions),
             )
         )
         validation_results.extend(
@@ -196,6 +255,7 @@ class PipelineManagementService:
                 candidate_nodes=candidate_nodes,
                 candidate_relations=candidate_relations,
                 candidate_node_map=candidate_node_map,
+                relation_type_map=relation_type_map,
             )
         )
 
@@ -207,11 +267,19 @@ class PipelineManagementService:
         self.validation_result_repository.replace_for_run(run_id, validation_results)
         self.review_item_repository.replace_for_run(
             run_id,
-            self._build_review_items(
-                candidate_nodes=candidate_nodes,
-                candidate_relations=candidate_relations,
-                validation_results=validation_results,
-            ),
+            [
+                *(
+                    item
+                    for item in self.review_item_repository.list_by_run(run_id)
+                    if item.item_type == SCHEMA_PROPOSAL_ITEM_TYPE
+                    or item.item_ref in human_decisions
+                ),
+                *self._build_review_items(
+                    candidate_nodes=candidate_nodes,
+                    candidate_relations=candidate_relations,
+                    validation_results=validation_results,
+                ),
+            ],
         )
         return RunValidationReport(
             run=run,
@@ -236,6 +304,8 @@ class PipelineManagementService:
         *,
         candidate_node: CandidateNode,
         node_type_map: dict[str, NodeTypeDefinition],
+        grounding_segments: dict[str, Segment] | None,
+        source_external_ref: str | None,
     ) -> list[ValidationResult]:
         results: list[ValidationResult] = []
         node_type = node_type_map.get(candidate_node.node_type.casefold())
@@ -299,22 +369,31 @@ class PipelineManagementService:
             candidate_node.status = CandidateStatus.REJECTED
             return results
 
+        review_findings = [
+            *self._evidence_findings(candidate_node.evidence_refs, grounding_segments),
+            *self._merge_key_grounding_findings(
+                candidate_node,
+                node_type,
+                grounding_segments,
+                source_external_ref,
+            ),
+            *self._enum_findings(candidate_node.properties, node_type.properties),
+        ]
         if candidate_node.confidence < node_type.confidence_threshold:
-            candidate_node.status = CandidateStatus.REVIEW
-            results.append(
-                self._build_validation_result(
-                    run_id=candidate_node.run_id,
-                    candidate_ref=candidate_node.candidate_node_id,
-                    rule_code="node_confidence_threshold",
-                    severity="warning",
-                    result="review",
-                    message=(
-                        "Candidate node confidence is below the baseline review threshold "
-                        f"({node_type.confidence_threshold:.2f})."
-                    ),
+            review_findings.append(
+                (
+                    "node_confidence_threshold",
+                    "Candidate node confidence is below the baseline review threshold "
+                    f"({node_type.confidence_threshold:.2f}).",
                 )
             )
-            return results
+        if review_findings:
+            candidate_node.status = CandidateStatus.REVIEW
+            return self._build_review_results(
+                run_id=candidate_node.run_id,
+                candidate_ref=candidate_node.candidate_node_id,
+                findings=review_findings,
+            )
 
         candidate_node.status = CandidateStatus.VALIDATED
         results.append(
@@ -335,6 +414,7 @@ class PipelineManagementService:
         candidate_relation: CandidateRelation,
         relation_type_map: dict[str, RelationTypeDefinition],
         candidate_node_map: dict[str, CandidateNode],
+        grounding_segments: dict[str, Segment] | None,
     ) -> list[ValidationResult]:
         results: list[ValidationResult] = []
         relation_type = relation_type_map.get(candidate_relation.relation_type.casefold())
@@ -444,12 +524,40 @@ class PipelineManagementService:
             )
             return results
 
+        missing_merge_keys = missing_relation_merge_keys(
+            merge_keys=relation_type.merge_keys,
+            properties=candidate_relation.properties,
+        )
+        review_findings = [
+            *self._evidence_findings(candidate_relation.evidence_refs, grounding_segments),
+            *self._enum_findings(candidate_relation.properties, relation_type.properties),
+        ]
         if (
-            from_candidate.status == CandidateStatus.REVIEW
+            review_findings
+            or missing_merge_keys
+            or from_candidate.status == CandidateStatus.REVIEW
             or to_candidate.status == CandidateStatus.REVIEW
             or candidate_relation.confidence < relation_type.confidence_threshold
         ):
             candidate_relation.status = CandidateStatus.REVIEW
+            results.extend(
+                self._build_review_results(
+                    run_id=candidate_relation.run_id,
+                    candidate_ref=candidate_relation.candidate_relation_id,
+                    findings=review_findings,
+                )
+            )
+            for merge_key in missing_merge_keys:
+                results.append(
+                    self._build_validation_result(
+                        run_id=candidate_relation.run_id,
+                        candidate_ref=candidate_relation.candidate_relation_id,
+                        rule_code="missing_relation_merge_key",
+                        severity="warning",
+                        result="review",
+                        message=f"Missing merge key '{merge_key}' for candidate relation.",
+                    )
+                )
             if (
                 from_candidate.status == CandidateStatus.REVIEW
                 or to_candidate.status == CandidateStatus.REVIEW
@@ -562,21 +670,29 @@ class PipelineManagementService:
         candidate_nodes: list[CandidateNode],
         candidate_relations: list[CandidateRelation],
         candidate_node_map: dict[str, CandidateNode],
+        relation_type_map: dict[str, RelationTypeDefinition],
+        human_decided_refs: set[str],
     ) -> list[ValidationResult]:
         results: list[ValidationResult] = []
-        results.extend(self._flag_duplicate_candidate_nodes(candidate_nodes))
+        results.extend(self._flag_duplicate_candidate_nodes(candidate_nodes, human_decided_refs))
         node_resolution_keys = {
             candidate_node.candidate_node_id: candidate_node_identity_key(candidate_node)
             for candidate_node in candidate_nodes
             if candidate_node.status != CandidateStatus.REJECTED
         }
         results.extend(
-            self._refresh_relation_dependency_statuses(candidate_relations, candidate_node_map)
+            self._refresh_relation_dependency_statuses(
+                candidate_relations,
+                candidate_node_map,
+                human_decided_refs,
+            )
         )
         results.extend(
             self._flag_duplicate_candidate_relations(
                 candidate_relations,
                 node_resolution_keys=node_resolution_keys,
+                relation_type_map=relation_type_map,
+                human_decided_refs=human_decided_refs,
             )
         )
         return results
@@ -584,6 +700,7 @@ class PipelineManagementService:
     def _flag_duplicate_candidate_nodes(
         self,
         candidate_nodes: list[CandidateNode],
+        human_decided_refs: set[str],
     ) -> list[ValidationResult]:
         groups: dict[str, list[CandidateNode]] = {}
         for candidate_node in candidate_nodes:
@@ -602,10 +719,16 @@ class PipelineManagementService:
                 continue
             sorted_group = sorted(
                 group,
-                key=lambda item: (-item.confidence, item.candidate_node_id),
+                key=lambda item: (
+                    item.candidate_node_id not in human_decided_refs,
+                    -item.confidence,
+                    item.candidate_node_id,
+                ),
             )
             primary = sorted_group[0]
             for duplicate in sorted_group[1:]:
+                if duplicate.candidate_node_id in human_decided_refs:
+                    continue
                 duplicate.status = CandidateStatus.REVIEW
                 results.append(
                     self._build_validation_result(
@@ -626,10 +749,14 @@ class PipelineManagementService:
         self,
         candidate_relations: list[CandidateRelation],
         candidate_node_map: dict[str, CandidateNode],
+        human_decided_refs: set[str],
     ) -> list[ValidationResult]:
         results: list[ValidationResult] = []
         for candidate_relation in candidate_relations:
-            if candidate_relation.status == CandidateStatus.REJECTED:
+            if (
+                candidate_relation.status == CandidateStatus.REJECTED
+                or candidate_relation.candidate_relation_id in human_decided_refs
+            ):
                 continue
             from_candidate = candidate_node_map.get(candidate_relation.from_candidate_ref)
             to_candidate = candidate_node_map.get(candidate_relation.to_candidate_ref)
@@ -673,15 +800,24 @@ class PipelineManagementService:
         candidate_relations: list[CandidateRelation],
         *,
         node_resolution_keys: dict[str, str],
+        relation_type_map: dict[str, RelationTypeDefinition],
+        human_decided_refs: set[str],
     ) -> list[ValidationResult]:
         groups: dict[str, list[CandidateRelation]] = {}
         for candidate_relation in candidate_relations:
             if candidate_relation.status == CandidateStatus.REJECTED:
                 continue
+            merge_keys = relation_type_map[candidate_relation.relation_type.casefold()].merge_keys
+            if missing_relation_merge_keys(
+                merge_keys=merge_keys,
+                properties=candidate_relation.properties,
+            ):
+                continue
             groups.setdefault(
                 build_candidate_relation_resolution_key(
                     candidate_relation,
                     node_resolution_keys_by_candidate_id=node_resolution_keys,
+                    merge_keys=merge_keys,
                 ),
                 [],
             ).append(candidate_relation)
@@ -692,10 +828,16 @@ class PipelineManagementService:
                 continue
             sorted_group = sorted(
                 group,
-                key=lambda item: (-item.confidence, item.candidate_relation_id),
+                key=lambda item: (
+                    item.candidate_relation_id not in human_decided_refs,
+                    -item.confidence,
+                    item.candidate_relation_id,
+                ),
             )
             primary = sorted_group[0]
             for duplicate in sorted_group[1:]:
+                if duplicate.candidate_relation_id in human_decided_refs:
+                    continue
                 duplicate.status = CandidateStatus.REVIEW
                 results.append(
                     self._build_validation_result(
@@ -785,6 +927,7 @@ class PipelineManagementService:
         candidate_nodes: list[CandidateNode],
         candidate_relations: list[CandidateRelation],
         candidate_node_map: dict[str, CandidateNode],
+        relation_type_map: dict[str, RelationTypeDefinition],
     ) -> list[ValidationResult]:
         results: list[ValidationResult] = []
         canonical_merge_keys_by_candidate_id: dict[str, str] = {}
@@ -841,6 +984,13 @@ class PipelineManagementService:
             if from_merge_key is None or to_merge_key is None:
                 continue
 
+            merge_keys = relation_type_map[candidate_relation.relation_type.casefold()].merge_keys
+            if missing_relation_merge_keys(
+                merge_keys=merge_keys,
+                properties=candidate_relation.properties,
+            ):
+                continue
+
             if (
                 self.canonical_graph_repository.get_relation_detail(
                     project_id,
@@ -849,6 +999,10 @@ class PipelineManagementService:
                     from_merge_key=from_merge_key,
                     to_node_type=to_candidate.node_type,
                     to_merge_key=to_merge_key,
+                    relation_identity_key=build_relation_identity_key(
+                        merge_keys=merge_keys,
+                        properties=candidate_relation.properties,
+                    ),
                 )
                 is None
             ):
@@ -867,17 +1021,152 @@ class PipelineManagementService:
 
         return results
 
-    def _split_into_segments(self, raw_content: str) -> list[str]:
-        paragraph_chunks = [
-            item.strip() for item in split(r"\n\s*\n", raw_content) if item.strip()
-        ]
-        if len(paragraph_chunks) > 1:
-            return paragraph_chunks
+    def _grounding_segments(self, run: ProcessingRun) -> dict[str, Segment] | None:
+        # Candidates entered through the candidate API are operator-authored; only runs
+        # whose candidates came from an extraction execution are checked against the text.
+        if not any(
+            execution.status == ExtractionExecutionStatus.SUCCEEDED and not execution.dry_run
+            for execution in self.extraction_execution_repository.list_by_run(run.run_id)
+        ):
+            return None
+        return {
+            segment.segment_id: segment
+            for segment in self.segment_repository.list_by_source_unit(run.source_unit_id)
+        }
 
-        line_chunks = [line.strip() for line in raw_content.splitlines() if line.strip()]
-        if line_chunks:
-            return line_chunks
-        return [raw_content.strip()]
+    def _evidence_findings(
+        self,
+        evidence_refs: list[EvidenceRef],
+        grounding_segments: dict[str, Segment] | None,
+    ) -> list[tuple[str, str]]:
+        if grounding_segments is None:
+            return []
+        if not evidence_refs:
+            return [("missing_evidence", "Candidate has no evidence reference.")]
+
+        findings: list[tuple[str, str]] = []
+        for evidence_ref in evidence_refs:
+            segment = grounding_segments.get(evidence_ref.segment_id)
+            if segment is None or not quote_in_segment(evidence_ref.quote or "", segment.text):
+                findings.append(
+                    (
+                        "quote_not_in_segment",
+                        f"Evidence quote '{evidence_ref.quote or ''}' was not found in segment "
+                        f"'{evidence_ref.segment_id}'.",
+                    )
+                )
+        return findings
+
+    def _merge_key_grounding_findings(
+        self,
+        candidate_node: CandidateNode,
+        node_type: NodeTypeDefinition,
+        grounding_segments: dict[str, Segment] | None,
+        source_external_ref: str | None,
+    ) -> list[tuple[str, str]]:
+        if grounding_segments is None or not candidate_node.evidence_refs:
+            return []
+
+        quotes = [
+            evidence_ref.quote
+            for evidence_ref in candidate_node.evidence_refs
+            if evidence_ref.quote is not None
+        ]
+        # A key that restates the reference of the cited source unit needs no quote.
+        cited_source_ref = (
+            source_external_ref
+            if any(
+                evidence_ref.segment_id in grounding_segments
+                for evidence_ref in candidate_node.evidence_refs
+            )
+            else None
+        )
+        findings: list[tuple[str, str]] = []
+        for merge_key in node_type.merge_keys:
+            value = candidate_node.merge_key_payload.get(merge_key)
+            if (
+                not isinstance(value, str)
+                or any(value_in_quote(value, quote) for quote in quotes)
+                or (
+                    cited_source_ref is not None
+                    and value_equals_reference(value, cited_source_ref)
+                )
+            ):
+                continue
+            findings.append(
+                (
+                    "value_not_in_quote",
+                    f"Merge key '{merge_key}' value '{value}' does not occur in any "
+                    "evidence quote.",
+                )
+            )
+        return findings
+
+    def _enum_findings(
+        self,
+        properties: dict[str, object],
+        property_definitions: list[PropertyDefinition],
+    ) -> list[tuple[str, str]]:
+        findings: list[tuple[str, str]] = []
+        for property_definition in property_definitions:
+            value = properties.get(property_definition.name)
+            if (
+                property_definition.enum_values
+                and isinstance(value, str)
+                and value not in property_definition.enum_values
+            ):
+                findings.append(
+                    (
+                        "property_value_not_allowed",
+                        f"Property '{property_definition.name}' value '{value}' is not one of: "
+                        + ", ".join(property_definition.enum_values)
+                        + ".",
+                    )
+                )
+        return findings
+
+    def _decided_status(self, decision: ReviewDecision) -> CandidateStatus:
+        if decision.action == "reject":
+            return CandidateStatus.REJECTED
+        return CandidateStatus.VALIDATED
+
+    def _build_human_decision_result(
+        self,
+        *,
+        run_id: str,
+        candidate_ref: str,
+        decision: ReviewDecision,
+    ) -> ValidationResult:
+        return self._build_validation_result(
+            run_id=run_id,
+            candidate_ref=candidate_ref,
+            rule_code=HUMAN_DECISION_RULE_CODE,
+            severity="info",
+            result="failed" if decision.action == "reject" else "passed",
+            message=(
+                f"Status is set by the review decision '{decision.action}' of reviewer "
+                f"'{decision.reviewer_id}'."
+            ),
+        )
+
+    def _build_review_results(
+        self,
+        *,
+        run_id: str,
+        candidate_ref: str,
+        findings: list[tuple[str, str]],
+    ) -> list[ValidationResult]:
+        return [
+            self._build_validation_result(
+                run_id=run_id,
+                candidate_ref=candidate_ref,
+                rule_code=rule_code,
+                severity="warning",
+                result="review",
+                message=message,
+            )
+            for rule_code, message in findings
+        ]
 
     def _build_validation_result(
         self,

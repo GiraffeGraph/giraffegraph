@@ -13,21 +13,31 @@ from app.application.ports.repositories import (
 )
 from app.domain.extraction.entities import CandidateNode, CandidateRelation
 from app.domain.ingestion.entities import ProcessingRun
-from app.domain.review.entities import ReviewItem
+from app.domain.review.entities import AcceptanceRecord, ReviewDecision, ReviewItem
 from app.domain.schema.entities import NodeTypeDefinition, RelationTypeDefinition
-from app.domain.shared.enums import CandidateStatus, ReviewStatus
+from app.domain.shared.enums import CandidateStatus, ReviewStatus, RunStatus
 from app.domain.shared.resolution import (
     build_candidate_node_resolution_key,
     build_candidate_relation_resolution_key,
     candidate_node_identity_key,
     derive_merge_key_payload,
     is_missing_value,
+    missing_relation_merge_keys,
 )
+from app.domain.validation.entities import ValidationResult
+
+ACCEPTING_ACTIONS = frozenset({"accept", "edit"})
+AUTO_VALIDATED_POLICY = "auto_validated"
+PASSED_VALIDATION_RULE_CODES = frozenset({"candidate_node_valid", "candidate_relation_valid"})
+DEPENDENCY_REVIEW_REASON = "relation_dependency_review"
+DEPENDENCY_REJECTED_REASON = "relation_dependency_rejected"
+DEPENDENCY_REASON_CODES = frozenset({DEPENDENCY_REVIEW_REASON, DEPENDENCY_REJECTED_REASON})
+AUTO_RESOLVED_NOTE = "Auto-resolved after dependent review decision."
+AUTO_CLOSED_NOTE = "Auto-closed after dependent review decision."
 
 
 @dataclass(slots=True)
-class RelationEvaluation:
-    status: CandidateStatus
+class PendingRelationReview:
     reason_code: str
     messages: list[str]
 
@@ -46,34 +56,78 @@ class ReviewManagementService:
             raise NotFoundError(f"Review item '{review_item_id}' was not found.")
         return review_item
 
-    def decide_review_item(self, review_item_id: str, payload: ReviewDecisionInput) -> ReviewItem:
+    def decide_review_item(
+        self,
+        review_item_id: str,
+        payload: ReviewDecisionInput,
+        *,
+        reviewer_id: str,
+        duration_ms: int | None = None,
+    ) -> ReviewItem:
         review_item = self.get_review_item(review_item_id)
-        if review_item.status != ReviewStatus.OPEN:
-            raise ConflictError(f"Review item '{review_item_id}' is already closed.")
+        run = self._require_run(review_item.run_id)
+        if run.status == RunStatus.COMPLETED:
+            raise ConflictError(
+                f"Processing run '{run.run_id}' is already completed; review item "
+                f"'{review_item_id}' can no longer be decided."
+            )
 
         action = payload.action.strip().casefold()
         if action not in {"accept", "reject", "edit"}:
             raise RuleViolationError("Review action must be one of: accept, reject, edit.")
+        normalized_reviewer_id = reviewer_id.strip()
+        if normalized_reviewer_id == "":
+            raise RuleViolationError("Review decision requires a reviewer_id.")
+        if duration_ms is not None and duration_ms < 0:
+            raise RuleViolationError("Review decision duration_ms must not be negative.")
 
-        affected_run_id = review_item.run_id
+        before_json: dict[str, object] | None = None
+        after_json: dict[str, object] | None = None
         if review_item.item_type == "candidate_node":
-            node_candidate = deepcopy(self._require_candidate_node(review_item.item_ref))
+            stored_node = self._require_candidate_node(review_item.item_ref)
+            before_json = self._node_snapshot(stored_node)
+            node_candidate = deepcopy(stored_node)
             self._apply_node_decision(node_candidate, payload)
             if node_candidate.status != CandidateStatus.REJECTED:
                 self._validate_candidate_node_state(node_candidate)
                 self._ensure_node_relations_remain_compatible(node_candidate)
                 self._ensure_candidate_node_unique_within_run(node_candidate)
             self.candidate_node_repository.save(node_candidate)
+            after_json = self._node_snapshot(node_candidate)
         elif review_item.item_type == "candidate_relation":
-            relation_candidate = deepcopy(self._require_candidate_relation(review_item.item_ref))
+            stored_relation = self._require_candidate_relation(review_item.item_ref)
+            before_json = self._relation_snapshot(stored_relation)
+            relation_candidate = deepcopy(stored_relation)
             self._apply_relation_decision(relation_candidate, payload)
             if relation_candidate.status != CandidateStatus.REJECTED:
-                self._validate_candidate_relation_state(relation_candidate)
-                self._ensure_candidate_relation_unique_within_run(relation_candidate)
+                relation_type = self._validate_candidate_relation_state(relation_candidate)
+                self._ensure_candidate_relation_unique_within_run(
+                    relation_candidate,
+                    merge_keys=relation_type.merge_keys,
+                )
             self.candidate_relation_repository.save(relation_candidate)
+            after_json = self._relation_snapshot(relation_candidate)
+        elif review_item.item_type == "schema_proposal":
+            if action == "edit":
+                raise RuleViolationError("Schema proposals can only be accepted or rejected.")
         else:
             raise RuleViolationError(f"Unsupported review item type '{review_item.item_type}'.")
 
+        self.review_item_repository.add_decision(
+            ReviewDecision(
+                decision_id=str(uuid4()),
+                review_item_id=review_item.review_item_id,
+                run_id=review_item.run_id,
+                item_type=review_item.item_type,
+                item_ref=review_item.item_ref,
+                action=action,
+                reviewer_id=normalized_reviewer_id,
+                reviewer_note=payload.reviewer_note,
+                duration_ms=duration_ms,
+                before_json=before_json if action == "edit" else None,
+                after_json=after_json if action == "edit" else None,
+            )
+        )
         if action == "accept":
             review_item.status = ReviewStatus.ACCEPTED
         elif action == "reject":
@@ -82,8 +136,81 @@ class ReviewManagementService:
             review_item.status = ReviewStatus.EDITED
         review_item.reviewer_note = payload.reviewer_note
         self.review_item_repository.save(review_item)
-        self._refresh_relation_reviews_for_run(affected_run_id)
-        return review_item
+        self._refresh_relation_reviews_for_run(run.run_id)
+        return self.get_review_item(review_item_id)
+
+    def list_acceptance_records(
+        self,
+        run_id: str,
+        *,
+        validation_results: list[ValidationResult],
+    ) -> list[AcceptanceRecord]:
+        self._require_run(run_id)
+        latest_decision_by_ref = {
+            decision.item_ref: decision
+            for decision in self.review_item_repository.list_decisions_by_run(run_id)
+        }
+        passed_rule_by_ref = {
+            result.candidate_ref: result.rule_code
+            for result in validation_results
+            if result.rule_code in PASSED_VALIDATION_RULE_CODES and result.result == "passed"
+        }
+        auto_resolved_reason_by_ref = {
+            item.item_ref: item.reason_code
+            for item in self.review_item_repository.list_by_run(run_id)
+            if item.status == ReviewStatus.ACCEPTED and not item.decisions
+        }
+        validated_candidates = [
+            ("candidate_node", node.candidate_node_id)
+            for node in self.candidate_node_repository.list_by_run(run_id)
+            if node.status == CandidateStatus.VALIDATED
+        ] + [
+            ("candidate_relation", relation.candidate_relation_id)
+            for relation in self.candidate_relation_repository.list_by_run(run_id)
+            if relation.status == CandidateStatus.VALIDATED
+        ]
+
+        records: list[AcceptanceRecord] = []
+        for candidate_type, candidate_ref in validated_candidates:
+            decision = latest_decision_by_ref.get(candidate_ref)
+            if decision is not None and decision.action in ACCEPTING_ACTIONS:
+                records.append(
+                    AcceptanceRecord(
+                        candidate_type=candidate_type,
+                        candidate_ref=candidate_ref,
+                        decision=decision,
+                    )
+                )
+                continue
+            records.append(
+                AcceptanceRecord(
+                    candidate_type=candidate_type,
+                    candidate_ref=candidate_ref,
+                    policy=AUTO_VALIDATED_POLICY,
+                    rule_code=passed_rule_by_ref.get(
+                        candidate_ref,
+                        auto_resolved_reason_by_ref.get(candidate_ref),
+                    ),
+                )
+            )
+        return records
+
+    def _node_snapshot(self, candidate: CandidateNode) -> dict[str, object]:
+        return {
+            "node_type": candidate.node_type,
+            "properties": deepcopy(candidate.properties),
+            "merge_key_payload": deepcopy(candidate.merge_key_payload),
+            "confidence": candidate.confidence,
+        }
+
+    def _relation_snapshot(self, candidate: CandidateRelation) -> dict[str, object]:
+        return {
+            "relation_type": candidate.relation_type,
+            "from_candidate_ref": candidate.from_candidate_ref,
+            "to_candidate_ref": candidate.to_candidate_ref,
+            "properties": deepcopy(candidate.properties),
+            "confidence": candidate.confidence,
+        }
 
     def _apply_node_decision(self, candidate: CandidateNode, payload: ReviewDecisionInput) -> None:
         action = payload.action.strip().casefold()
@@ -206,7 +333,10 @@ class ReviewManagementService:
                     f"no longer matches to_type '{relation_type.to_type}'."
                 )
 
-    def _validate_candidate_relation_state(self, candidate: CandidateRelation) -> None:
+    def _validate_candidate_relation_state(
+        self,
+        candidate: CandidateRelation,
+    ) -> RelationTypeDefinition:
         run = self._require_run(candidate.run_id)
         relation_type_map = self._relation_type_map(run.schema_version_id)
         relation_type = relation_type_map.get(candidate.relation_type.casefold())
@@ -260,7 +390,19 @@ class ReviewManagementService:
                 + "."
             )
 
+        missing_merge_keys = missing_relation_merge_keys(
+            merge_keys=relation_type.merge_keys,
+            properties=candidate.properties,
+        )
+        if missing_merge_keys:
+            raise RuleViolationError(
+                "Candidate relation is missing merge keys: "
+                + ", ".join(sorted(missing_merge_keys))
+                + "."
+            )
+
         candidate.relation_type = relation_type.name
+        return relation_type
 
     def _ensure_candidate_node_unique_within_run(self, candidate: CandidateNode) -> None:
         duplicate = next(
@@ -283,6 +425,8 @@ class ReviewManagementService:
     def _ensure_candidate_relation_unique_within_run(
         self,
         candidate: CandidateRelation,
+        *,
+        merge_keys: list[str],
     ) -> None:
         node_resolution_keys = {
             candidate_node.candidate_node_id: candidate_node_identity_key(candidate_node)
@@ -292,6 +436,7 @@ class ReviewManagementService:
         candidate_relation_key = build_candidate_relation_resolution_key(
             candidate,
             node_resolution_keys_by_candidate_id=node_resolution_keys,
+            merge_keys=merge_keys,
         )
         duplicate = next(
             (
@@ -302,6 +447,7 @@ class ReviewManagementService:
                 and build_candidate_relation_resolution_key(
                     other,
                     node_resolution_keys_by_candidate_id=node_resolution_keys,
+                    merge_keys=merge_keys,
                 )
                 == candidate_relation_key
             ),
@@ -316,111 +462,181 @@ class ReviewManagementService:
     def _refresh_relation_reviews_for_run(self, run_id: str) -> None:
         run = self._require_run(run_id)
         relation_type_map = self._relation_type_map(run.schema_version_id)
-        review_items = self.review_item_repository.list_by_run(run_id)
+        candidate_nodes = self.candidate_node_repository.list_by_run(run_id)
+        candidate_node_map = {
+            candidate_node.candidate_node_id: candidate_node for candidate_node in candidate_nodes
+        }
+        node_resolution_keys = {
+            candidate_node.candidate_node_id: candidate_node_identity_key(candidate_node)
+            for candidate_node in candidate_nodes
+            if candidate_node.status != CandidateStatus.REJECTED
+        }
+        relations = self.candidate_relation_repository.list_by_run(run_id)
         review_items_by_ref: dict[str, list[ReviewItem]] = {}
-        for item in review_items:
+        for item in self.review_item_repository.list_by_run(run_id):
             review_items_by_ref.setdefault(item.item_ref, []).append(item)
+        human_decided_refs = {
+            decision.item_ref
+            for decision in self.review_item_repository.list_decisions_by_run(run_id)
+        }
 
-        for relation in self.candidate_relation_repository.list_by_run(run_id):
-            evaluation = self._evaluate_relation_candidate_state(
-                relation=relation,
-                relation_type_map=relation_type_map,
+        for relation in relations:
+            if relation.candidate_relation_id in human_decided_refs:
+                continue
+            relation_type = relation_type_map.get(relation.relation_type.casefold())
+            from_candidate = candidate_node_map.get(relation.from_candidate_ref)
+            to_candidate = candidate_node_map.get(relation.to_candidate_ref)
+            if relation_type is None or from_candidate is None or to_candidate is None:
+                continue
+
+            relation_items = review_items_by_ref.get(relation.candidate_relation_id, [])
+            dependency_item = next(
+                (
+                    item
+                    for item in reversed(relation_items)
+                    if item.reason_code in DEPENDENCY_REASON_CODES
+                ),
+                None,
             )
-            relation.status = evaluation.status
-            self.candidate_relation_repository.save(relation)
-            self._sync_relation_review_items(
+            endpoint_statuses = {from_candidate.status, to_candidate.status}
+
+            if CandidateStatus.REJECTED in endpoint_statuses:
+                if relation.status != CandidateStatus.REJECTED:
+                    self._reject_relation_for_dependency(relation, dependency_item)
+                continue
+
+            if dependency_item is None:
+                continue
+            awaits_dependency = (
+                relation.status == CandidateStatus.REVIEW
+                and dependency_item.status == ReviewStatus.OPEN
+            )
+            rejected_for_dependency = (
+                relation.status == CandidateStatus.REJECTED
+                and dependency_item.status == ReviewStatus.REJECTED
+                and dependency_item.reason_code == DEPENDENCY_REJECTED_REASON
+            )
+            if not awaits_dependency and not rejected_for_dependency:
+                continue
+
+            if endpoint_statuses != {CandidateStatus.VALIDATED}:
+                if rejected_for_dependency:
+                    self._save_relation_review_state(
+                        relation,
+                        dependency_item,
+                        candidate_status=CandidateStatus.REVIEW,
+                        review_status=ReviewStatus.OPEN,
+                        reason_code=DEPENDENCY_REVIEW_REASON,
+                        reviewer_note=None,
+                        messages=["Relation depends on candidate nodes that require review."],
+                    )
+                continue
+
+            pending_review = self._pending_relation_review(
                 relation=relation,
-                evaluation=evaluation,
-                review_items=review_items_by_ref.get(relation.candidate_relation_id, []),
+                relation_type=relation_type,
+                relations=relations,
+                node_resolution_keys=node_resolution_keys,
+            )
+            if pending_review is not None:
+                self._save_relation_review_state(
+                    relation,
+                    dependency_item,
+                    candidate_status=CandidateStatus.REVIEW,
+                    review_status=ReviewStatus.OPEN,
+                    reason_code=pending_review.reason_code,
+                    reviewer_note=None,
+                    messages=pending_review.messages,
+                )
+                continue
+
+            has_other_open_item = any(
+                item.status == ReviewStatus.OPEN and item is not dependency_item
+                for item in relation_items
+            )
+            self._save_relation_review_state(
+                relation,
+                dependency_item,
+                candidate_status=(
+                    CandidateStatus.REVIEW if has_other_open_item else CandidateStatus.VALIDATED
+                ),
+                review_status=ReviewStatus.ACCEPTED,
+                reason_code=DEPENDENCY_REVIEW_REASON,
+                reviewer_note=AUTO_RESOLVED_NOTE,
+                messages=["Relation dependencies are validated."],
             )
 
-    def _evaluate_relation_candidate_state(
+    def _reject_relation_for_dependency(
+        self,
+        relation: CandidateRelation,
+        dependency_item: ReviewItem | None,
+    ) -> None:
+        if dependency_item is None:
+            dependency_item = ReviewItem(
+                review_item_id=str(uuid4()),
+                run_id=relation.run_id,
+                item_type="candidate_relation",
+                item_ref=relation.candidate_relation_id,
+                reason_code=DEPENDENCY_REJECTED_REASON,
+                payload_json={},
+            )
+        self._save_relation_review_state(
+            relation,
+            dependency_item,
+            candidate_status=CandidateStatus.REJECTED,
+            review_status=ReviewStatus.REJECTED,
+            reason_code=DEPENDENCY_REJECTED_REASON,
+            reviewer_note=AUTO_CLOSED_NOTE,
+            messages=["Relation depends on candidate nodes that were rejected."],
+        )
+
+    def _save_relation_review_state(
+        self,
+        relation: CandidateRelation,
+        dependency_item: ReviewItem,
+        *,
+        candidate_status: CandidateStatus,
+        review_status: ReviewStatus,
+        reason_code: str,
+        reviewer_note: str | None,
+        messages: list[str],
+    ) -> None:
+        relation.status = candidate_status
+        self.candidate_relation_repository.save(relation)
+        dependency_item.status = review_status
+        dependency_item.reason_code = reason_code
+        dependency_item.reviewer_note = reviewer_note
+        dependency_item.payload_json = {
+            **dependency_item.payload_json,
+            "relation_type": relation.relation_type,
+            "confidence": relation.confidence,
+            "messages": messages,
+        }
+        self.review_item_repository.save(dependency_item)
+
+    def _pending_relation_review(
         self,
         *,
         relation: CandidateRelation,
-        relation_type_map: dict[str, RelationTypeDefinition],
-    ) -> "RelationEvaluation":
-        relation_type = relation_type_map.get(relation.relation_type.casefold())
-        if relation_type is None:
-            return RelationEvaluation(
-                status=CandidateStatus.REJECTED,
-                reason_code="relation_type_exists",
+        relation_type: RelationTypeDefinition,
+        relations: list[CandidateRelation],
+        node_resolution_keys: dict[str, str],
+    ) -> PendingRelationReview | None:
+        missing_merge_keys = missing_relation_merge_keys(
+            merge_keys=relation_type.merge_keys,
+            properties=relation.properties,
+        )
+        if missing_merge_keys:
+            return PendingRelationReview(
+                reason_code="missing_relation_merge_key",
                 messages=[
-                    f"Relation type '{relation.relation_type}' is not defined in schema."
-                ],
-            )
-
-        from_candidate = self._require_candidate_node(relation.from_candidate_ref)
-        to_candidate = self._require_candidate_node(relation.to_candidate_ref)
-        if from_candidate.run_id != relation.run_id or to_candidate.run_id != relation.run_id:
-            return RelationEvaluation(
-                status=CandidateStatus.REJECTED,
-                reason_code="relation_candidate_refs",
-                messages=[
-                    "Relation references candidate nodes that do not exist in the run."
-                ],
-            )
-        if (
-            from_candidate.node_type.casefold() != relation_type.from_type.casefold()
-            or to_candidate.node_type.casefold() != relation_type.to_type.casefold()
-        ):
-            return RelationEvaluation(
-                status=CandidateStatus.REJECTED,
-                reason_code="relation_type_mismatch",
-                messages=[
-                    "Relation references candidate nodes with incompatible node types."
-                ],
-            )
-        if (
-            from_candidate.status == CandidateStatus.REJECTED
-            or to_candidate.status == CandidateStatus.REJECTED
-        ):
-            return RelationEvaluation(
-                status=CandidateStatus.REJECTED,
-                reason_code="relation_dependency_rejected",
-                messages=[
-                    "Relation depends on candidate nodes that failed validation."
-                ],
-            )
-        if (
-            from_candidate.status != CandidateStatus.VALIDATED
-            or to_candidate.status != CandidateStatus.VALIDATED
-        ):
-            return RelationEvaluation(
-                status=CandidateStatus.REVIEW,
-                reason_code="relation_dependency_review",
-                messages=[
-                    "Relation depends on candidate nodes that require review."
-                ],
-            )
-
-        required_properties = {
-            *relation_type.required_properties,
-            *[
-                property_definition.name
-                for property_definition in relation_type.properties
-                if property_definition.required
-            ],
-        }
-        missing_required = [
-            property_name
-            for property_name in sorted(required_properties)
-            if is_missing_value(relation.properties.get(property_name))
-        ]
-        if missing_required:
-            return RelationEvaluation(
-                status=CandidateStatus.REJECTED,
-                reason_code="required_relation_property",
-                messages=[
-                    "Relation is missing required properties: "
-                    + ", ".join(missing_required)
-                    + "."
+                    f"Missing merge key '{merge_key}' for candidate relation."
+                    for merge_key in missing_merge_keys
                 ],
             )
 
         if relation.confidence < relation_type.confidence_threshold:
-            return RelationEvaluation(
-                status=CandidateStatus.REVIEW,
+            return PendingRelationReview(
                 reason_code="relation_confidence_threshold",
                 messages=[
                     "Relation confidence is below the schema threshold "
@@ -428,64 +644,35 @@ class ReviewManagementService:
                 ],
             )
 
-        relation.relation_type = relation_type.name
-        return RelationEvaluation(
-            status=CandidateStatus.VALIDATED,
-            reason_code="candidate_relation_valid",
-            messages=["Candidate relation passed validation."],
+        resolution_key = build_candidate_relation_resolution_key(
+            relation,
+            node_resolution_keys_by_candidate_id=node_resolution_keys,
+            merge_keys=relation_type.merge_keys,
         )
-
-    def _sync_relation_review_items(
-        self,
-        *,
-        relation: CandidateRelation,
-        evaluation: "RelationEvaluation",
-        review_items: list[ReviewItem],
-    ) -> None:
-        open_items = [
-            item
-            for item in review_items
-            if item.status == ReviewStatus.OPEN
-        ]
-        messages = list(evaluation.messages)
-        payload_json = {
-            "relation_type": relation.relation_type,
-            "confidence": relation.confidence,
-            "messages": messages,
-        }
-
-        if relation.status == CandidateStatus.REVIEW:
-            if open_items:
-                for item in open_items:
-                    item.reason_code = evaluation.reason_code
-                    item.payload_json = payload_json
-                    self.review_item_repository.save(item)
-                return
-
-            self.review_item_repository.save(
-                ReviewItem(
-                    review_item_id=str(uuid4()),
-                    run_id=relation.run_id,
-                    item_type="candidate_relation",
-                    item_ref=relation.candidate_relation_id,
-                    reason_code=evaluation.reason_code,
-                    payload_json=payload_json,
+        relation_rank = (-relation.confidence, relation.candidate_relation_id)
+        for other in relations:
+            if (
+                other.candidate_relation_id == relation.candidate_relation_id
+                or other.status == CandidateStatus.REJECTED
+                or build_candidate_relation_resolution_key(
+                    other,
+                    node_resolution_keys_by_candidate_id=node_resolution_keys,
+                    merge_keys=relation_type.merge_keys,
                 )
-            )
-            return
-
-        if relation.status == CandidateStatus.VALIDATED:
-            auto_status = ReviewStatus.ACCEPTED
-            note = "Auto-resolved after dependent review decision."
-        else:
-            auto_status = ReviewStatus.REJECTED
-            note = "Auto-closed after dependent review decision."
-
-        for item in open_items:
-            item.status = auto_status
-            item.reviewer_note = note
-            item.payload_json = payload_json
-            self.review_item_repository.save(item)
+                != resolution_key
+            ):
+                continue
+            if (
+                other.status == CandidateStatus.VALIDATED
+                or (-other.confidence, other.candidate_relation_id) < relation_rank
+            ):
+                return PendingRelationReview(
+                    reason_code="potential_duplicate_relation",
+                    messages=[
+                        f"Candidate relation may duplicate '{other.candidate_relation_id}'."
+                    ],
+                )
+        return None
 
     def _require_run(self, run_id: str) -> ProcessingRun:
         run = self.processing_run_repository.get(run_id)

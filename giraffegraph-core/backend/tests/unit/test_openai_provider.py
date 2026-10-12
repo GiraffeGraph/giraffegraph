@@ -96,6 +96,28 @@ def test_openai_provider_rejects_non_json_content() -> None:
         )
 
 
+def test_openai_provider_rejects_output_truncated_at_token_limit() -> None:
+    provider = OpenAILLMProvider(
+        api_key="test-key",
+        transport=lambda **_: {
+            "choices": [
+                {
+                    "finish_reason": "length",
+                    "message": {"content": '{"nodes": [], "relations": []}'},
+                }
+            ]
+        },
+    )
+
+    with pytest.raises(ExternalServiceError, match="truncated at the token limit"):
+        provider.generate_structured(
+            prompt="extract prompt",
+            schema_name="candidate_graph_extraction_v1",
+            payload={"segments": []},
+            model="gpt-4o-mini",
+        )
+
+
 def test_container_registers_openai_provider_when_key_exists(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

@@ -3,16 +3,25 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Query
 
 from app.application.dto.contracts import ReviewDecisionInput
+from app.application.use_cases.pipeline_management import PipelineManagementService
 from app.application.use_cases.review_management import ReviewManagementService
 from app.application.use_cases.review_queue_management import ReviewQueueService
 from app.interfaces.api.dependencies import (
+    get_pipeline_management_service,
     get_review_management_service,
     get_review_queue_service,
 )
-from app.interfaces.api.mappers.pipeline import to_review_item_response
-from app.interfaces.api.mappers.review import to_project_review_queue_response
-from app.interfaces.api.schemas.pipeline import ReviewDecisionRequest, ReviewItemResponse
-from app.interfaces.api.schemas.review import ProjectReviewQueueResponse
+from app.interfaces.api.mappers.review import (
+    to_acceptance_record_response,
+    to_project_review_queue_response,
+    to_review_item_with_decisions_response,
+)
+from app.interfaces.api.schemas.review import (
+    AcceptanceRecordResponse,
+    ProjectReviewQueueResponse,
+    ReviewerDecisionRequest,
+    ReviewItemWithDecisionsResponse,
+)
 
 router = APIRouter(tags=["review"])
 ReviewManagementServiceDep = Annotated[
@@ -20,6 +29,10 @@ ReviewManagementServiceDep = Annotated[
     Depends(get_review_management_service),
 ]
 ReviewQueueServiceDep = Annotated[ReviewQueueService, Depends(get_review_queue_service)]
+PipelineManagementServiceDep = Annotated[
+    PipelineManagementService,
+    Depends(get_pipeline_management_service),
+]
 
 
 @router.get(
@@ -41,20 +54,26 @@ def get_project_review_queue(
     )
 
 
-@router.get("/api/review-items/{review_item_id}", response_model=ReviewItemResponse)
+@router.get(
+    "/api/review-items/{review_item_id}",
+    response_model=ReviewItemWithDecisionsResponse,
+)
 def get_review_item(
     review_item_id: str,
     service: ReviewManagementServiceDep,
-) -> ReviewItemResponse:
-    return to_review_item_response(service.get_review_item(review_item_id))
+) -> ReviewItemWithDecisionsResponse:
+    return to_review_item_with_decisions_response(service.get_review_item(review_item_id))
 
 
-@router.post("/api/review-items/{review_item_id}/decision", response_model=ReviewItemResponse)
+@router.post(
+    "/api/review-items/{review_item_id}/decision",
+    response_model=ReviewItemWithDecisionsResponse,
+)
 def decide_review_item(
     review_item_id: str,
-    request: ReviewDecisionRequest,
+    request: ReviewerDecisionRequest,
     service: ReviewManagementServiceDep,
-) -> ReviewItemResponse:
+) -> ReviewItemWithDecisionsResponse:
     review_item = service.decide_review_item(
         review_item_id=review_item_id,
         payload=ReviewDecisionInput(
@@ -68,5 +87,25 @@ def decide_review_item(
             merge_key_payload=request.merge_key_payload,
             confidence=request.confidence,
         ),
+        reviewer_id=request.reviewer_id,
+        duration_ms=request.duration_ms,
     )
-    return to_review_item_response(review_item)
+    return to_review_item_with_decisions_response(review_item)
+
+
+@router.get(
+    "/api/runs/{run_id}/acceptance-records",
+    response_model=list[AcceptanceRecordResponse],
+)
+def list_acceptance_records(
+    run_id: str,
+    service: ReviewManagementServiceDep,
+    pipeline_service: PipelineManagementServiceDep,
+) -> list[AcceptanceRecordResponse]:
+    return [
+        to_acceptance_record_response(record)
+        for record in service.list_acceptance_records(
+            run_id,
+            validation_results=pipeline_service.list_validation_results(run_id),
+        )
+    ]

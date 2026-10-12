@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from collections.abc import Mapping
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any, TypeVar
 from uuid import uuid4
@@ -6,7 +7,13 @@ from uuid import uuid4
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from app.application.dto.contracts import ExtractionExecutionInput
-from app.application.errors import ConflictError, NotFoundError, RuleViolationError
+from app.application.errors import (
+    ApplicationError,
+    ConflictError,
+    ExternalServiceError,
+    NotFoundError,
+    RuleViolationError,
+)
 from app.application.ports.llm_provider import LLMProvider, LLMProviderRegistry
 from app.application.ports.prompt_catalog import (
     StructuredPromptCatalog,
@@ -17,30 +24,44 @@ from app.application.ports.repositories import (
     CandidateRelationRepository,
     ExtractionExecutionRepository,
     ProcessingRunRepository,
+    ReviewItemRepository,
     SchemaRepository,
     SegmentRepository,
     SourceUnitRepository,
 )
 from app.domain.extraction.entities import (
+    SCHEMA_PROPERTY_PROPOSAL,
+    SCHEMA_PROPOSAL_ITEM_TYPE,
+    SCHEMA_TYPE_PROPOSAL,
     CandidateNode,
     CandidateRelation,
     EvidenceRef,
     ExtractionExecution,
     ExtractionExecutionReport,
+    FailedExtractionCall,
+    SchemaProposal,
     SuggestedNode,
     SuggestedRelation,
 )
+from app.domain.extraction.segmentation import SegmentationStrategy
 from app.domain.ingestion.entities import ProcessingRun, Segment, SourceUnit
 from app.domain.ingestion.lifecycle import (
     mark_run_failed,
     mark_run_started,
     reserve_source_for_run,
 )
+from app.domain.review.entities import ReviewItem
 from app.domain.schema.entities import NodeTypeDefinition, RelationTypeDefinition
-from app.domain.shared.enums import ExtractionExecutionStatus, RunStatus
-from app.domain.shared.resolution import derive_merge_key_payload
+from app.domain.shared.enums import ExtractionExecutionStatus, ReviewStatus, RunStatus
+from app.domain.shared.resolution import (
+    derive_merge_key_payload,
+    is_missing_value,
+    normalize_text,
+    normalized_payload_key,
+)
 
 EXTRACTION_PROMPT_KEY = "candidate_graph_extraction"
+ProposalKey = tuple[str, str, str, str]
 SchemaTypeDefinition = TypeVar(
     "SchemaTypeDefinition",
     NodeTypeDefinition,
@@ -87,6 +108,16 @@ class StructuredExtractionContract(BaseModel):
 
 
 @dataclass(slots=True)
+class ExtractionDraft:
+    nodes: list[SuggestedNode] = field(default_factory=list)
+    relations: list[SuggestedRelation] = field(default_factory=list)
+    node_identities: dict[str, str] = field(default_factory=dict)
+    proposals: dict[ProposalKey, SchemaProposal] = field(default_factory=dict)
+    dropped_node_count: int = 0
+    dropped_relation_count: int = 0
+
+
+@dataclass(slots=True)
 class ExtractionManagementService:
     processing_run_repository: ProcessingRunRepository
     source_unit_repository: SourceUnitRepository
@@ -95,11 +126,14 @@ class ExtractionManagementService:
     candidate_node_repository: CandidateNodeRepository
     candidate_relation_repository: CandidateRelationRepository
     extraction_execution_repository: ExtractionExecutionRepository
+    review_item_repository: ReviewItemRepository
     provider_registry: LLMProviderRegistry
     prompt_catalog: StructuredPromptCatalog
     default_llm_provider: str
     default_llm_model: str | None = None
-    default_extraction_prompt_version: str = "candidate_graph_extraction_v1"
+    default_extraction_prompt_version: str = "candidate_graph_extraction_v2"
+    segmentation_strategies: Mapping[str, SegmentationStrategy] = field(default_factory=dict)
+    max_segments_per_call: int | None = None
 
     def extract_candidates(
         self,
@@ -146,25 +180,50 @@ class ExtractionManagementService:
             execution.schema_name = prompt_definition.schema_name
             node_type_registry = self._build_node_type_registry(node_types)
             relation_type_registry = self._build_relation_type_registry(relation_types)
-            prompt_payload = self._build_prompt_payload(
-                run=run,
-                source_unit=source_unit,
-                segments=segments,
-                node_types=node_types,
-                relation_types=relation_types,
-            )
-            raw_output = llm_provider.generate_structured(
-                prompt=prompt_definition.prompt_text,
-                schema_name=prompt_definition.schema_name,
-                payload=prompt_payload,
-                model=resolved_llm_model,
-            )
-            suggested_nodes, suggested_relations = self._normalize_output(
-                raw_output,
-                source_unit_id=source_unit.source_unit_id,
-                node_type_registry=node_type_registry,
-                relation_type_registry=relation_type_registry,
-            )
+            calls = self._plan_calls(segments)
+            draft = ExtractionDraft()
+            failed_calls: list[FailedExtractionCall] = []
+            call_errors: list[ApplicationError] = []
+            for call_no, call_segments in enumerate(calls, start=1):
+                try:
+                    raw_output = llm_provider.generate_structured(
+                        prompt=prompt_definition.prompt_text,
+                        schema_name=prompt_definition.schema_name,
+                        payload=self._build_prompt_payload(
+                            run=run,
+                            source_unit=source_unit,
+                            segments=call_segments,
+                            node_types=node_types,
+                            relation_types=relation_types,
+                        ),
+                        model=resolved_llm_model,
+                    )
+                    call_draft = self._normalize_output(
+                        raw_output,
+                        segments=call_segments,
+                        node_type_registry=node_type_registry,
+                        relation_type_registry=relation_type_registry,
+                    )
+                except (RuleViolationError, ExternalServiceError) as exc:
+                    call_errors.append(exc)
+                    failed_calls.append(
+                        FailedExtractionCall(
+                            segment_ids=[segment.segment_id for segment in call_segments],
+                            error_message=str(exc),
+                        )
+                    )
+                    continue
+                self._absorb_call(
+                    draft,
+                    call_draft,
+                    ref_prefix=f"{call_no}:" if len(calls) > 1 else "",
+                )
+            if len(call_errors) == len(calls):
+                raise call_errors[0]
+
+            suggested_nodes = draft.nodes
+            suggested_relations = draft.relations
+            schema_proposals = list(draft.proposals.values())
             execution.suggested_node_count = len(suggested_nodes)
             execution.suggested_relation_count = len(suggested_relations)
 
@@ -202,8 +261,19 @@ class ExtractionManagementService:
                         candidate_relation.candidate_relation_id
                     )
 
+                self._record_proposal_review_items(
+                    schema_proposals,
+                    run_id=run.run_id,
+                    execution_id=execution.execution_id,
+                )
+
             execution.created_candidate_node_count = len(created_candidate_node_ids)
             execution.created_candidate_relation_count = len(created_candidate_relation_ids)
+            if failed_calls:
+                execution.error_message = self._describe_failed_calls(
+                    failed_calls,
+                    call_count=len(calls),
+                )
             self._mark_execution_succeeded(execution)
 
             return ExtractionExecutionReport(
@@ -221,6 +291,11 @@ class ExtractionManagementService:
                 suggested_relations=suggested_relations,
                 created_candidate_node_ids=created_candidate_node_ids,
                 created_candidate_relation_ids=created_candidate_relation_ids,
+                call_count=len(calls),
+                failed_calls=failed_calls,
+                dropped_node_count=draft.dropped_node_count,
+                dropped_relation_count=draft.dropped_relation_count,
+                schema_proposals=schema_proposals,
                 started_at=execution.started_at,
                 completed_at=execution.completed_at or execution.started_at,
             )
@@ -254,6 +329,7 @@ class ExtractionManagementService:
                 "source_type": source_unit.source_type,
                 "title": source_unit.title,
                 "sequence_no": source_unit.sequence_no,
+                "external_ref": source_unit.external_ref,
             },
             "schema": {
                 "node_types": [
@@ -287,6 +363,7 @@ class ExtractionManagementService:
                         "aliases": relation_type.aliases,
                         "extraction_hints": relation_type.extraction_hints,
                         "required_properties": relation_type.required_properties,
+                        "merge_keys": relation_type.merge_keys,
                         "confidence_threshold": relation_type.confidence_threshold,
                         "properties": [
                             {
@@ -313,14 +390,24 @@ class ExtractionManagementService:
             ],
         }
 
+    def _plan_calls(self, segments: list[Segment]) -> list[list[Segment]]:
+        strategy = self.segmentation_strategies.get(segments[0].metadata_json.get("strategy", ""))
+        if strategy is not None and strategy.one_call_per_segment:
+            call_size = 1
+        else:
+            call_size = self.max_segments_per_call or len(segments)
+        return [
+            segments[index : index + call_size] for index in range(0, len(segments), call_size)
+        ]
+
     def _normalize_output(
         self,
         raw_output: dict[str, Any],
         *,
-        source_unit_id: str,
+        segments: list[Segment],
         node_type_registry: dict[str, NodeTypeDefinition],
         relation_type_registry: dict[str, RelationTypeDefinition],
-    ) -> tuple[list[SuggestedNode], list[SuggestedRelation]]:
+    ) -> ExtractionDraft:
         try:
             parsed = StructuredExtractionContract.model_validate(raw_output)
         except ValidationError as exc:
@@ -329,93 +416,344 @@ class ExtractionManagementService:
                 "extraction prompt schema."
             ) from exc
 
-        evidence_segment_ids = {
-            segment.segment_id
-            for segment in self.segment_repository.list_by_source_unit(source_unit_id)
-        }
-        node_ref_set: set[str] = set()
+        draft = ExtractionDraft()
+        evidence_segment_ids = {segment.segment_id for segment in segments}
         node_types_by_ref: dict[str, NodeTypeDefinition] = {}
-        suggested_nodes: list[SuggestedNode] = []
+        dropped_node_proposals: dict[str, SchemaProposal] = {}
         for node_contract in parsed.nodes:
-            if node_contract.ref in node_ref_set:
+            if (
+                node_contract.ref in node_types_by_ref
+                or node_contract.ref in dropped_node_proposals
+            ):
                 raise RuleViolationError(
                     f"Structured extraction returned duplicate node ref '{node_contract.ref}'."
                 )
-            resolved_node_type = self._resolve_node_type(
-                node_contract.node_type,
-                node_type_registry=node_type_registry,
-            )
-            node_ref_set.add(node_contract.ref)
-            node_types_by_ref[node_contract.ref] = resolved_node_type
-            evidence_refs = [
-                self._build_evidence_ref(
-                    evidence_ref,
-                    valid_segment_ids=evidence_segment_ids,
+            sample_quote = self._sample_quote(node_contract.evidence_refs)
+            node_type = node_type_registry.get(node_contract.node_type.strip().casefold())
+            if node_type is None:
+                dropped_node_proposals[node_contract.ref] = self._record_proposal(
+                    draft,
+                    reason_code=SCHEMA_TYPE_PROPOSAL,
+                    kind="node",
+                    type_name=node_contract.node_type.strip(),
+                    sample_quote=sample_quote,
                 )
-                for evidence_ref in node_contract.evidence_refs
-            ]
-            suggested_nodes.append(
+                draft.dropped_node_count += 1
+                continue
+
+            node_types_by_ref[node_contract.ref] = node_type
+            properties = self._keep_declared_properties(
+                draft,
+                node_contract.properties,
+                declared={
+                    *(property_definition.name for property_definition in node_type.properties),
+                    *node_type.merge_keys,
+                },
+                kind="node",
+                type_name=node_type.name,
+                sample_quote=sample_quote,
+            )
+            merge_key_payload = derive_merge_key_payload(
+                node_type=node_type,
+                properties=properties,
+                provided_merge_key_payload=node_contract.merge_key_payload,
+            )
+            if not any(
+                is_missing_value(merge_key_payload.get(merge_key))
+                for merge_key in node_type.merge_keys
+            ):
+                draft.node_identities[node_contract.ref] = (
+                    f"{normalize_text(node_type.name)}::{normalized_payload_key(merge_key_payload)}"
+                )
+            draft.nodes.append(
                 SuggestedNode(
                     ref=node_contract.ref,
-                    node_type=resolved_node_type.name,
-                    properties=node_contract.properties,
-                    merge_key_payload=derive_merge_key_payload(
-                        node_type=resolved_node_type,
-                        properties=node_contract.properties,
-                        provided_merge_key_payload=node_contract.merge_key_payload,
-                    ),
+                    node_type=node_type.name,
+                    properties=properties,
+                    merge_key_payload=merge_key_payload,
                     confidence=node_contract.confidence,
-                    evidence_refs=evidence_refs,
+                    evidence_refs=[
+                        self._build_evidence_ref(
+                            evidence_ref,
+                            valid_segment_ids=evidence_segment_ids,
+                        )
+                        for evidence_ref in node_contract.evidence_refs
+                    ],
                 )
             )
 
-        suggested_relations: list[SuggestedRelation] = []
         for relation_contract in parsed.relations:
-            if (
-                relation_contract.from_ref not in node_ref_set
-                or relation_contract.to_ref not in node_ref_set
+            endpoint_refs = (relation_contract.from_ref, relation_contract.to_ref)
+            if any(
+                ref not in node_types_by_ref and ref not in dropped_node_proposals
+                for ref in endpoint_refs
             ):
                 raise RuleViolationError(
                     "Structured extraction returned a relation that references "
                     "unknown node refs."
                 )
-            resolved_relation_type = self._resolve_relation_type(
-                relation_contract.relation_type,
-                relation_type_registry=relation_type_registry,
+            sample_quote = self._sample_quote(relation_contract.evidence_refs)
+            relation_type = relation_type_registry.get(
+                relation_contract.relation_type.strip().casefold()
             )
+            if relation_type is None:
+                self._record_proposal(
+                    draft,
+                    reason_code=SCHEMA_TYPE_PROPOSAL,
+                    kind="relation",
+                    type_name=relation_contract.relation_type.strip(),
+                    sample_quote=sample_quote,
+                )
+                draft.dropped_relation_count += 1
+                continue
+
+            dropped_endpoint_proposals = {
+                id(proposal): proposal
+                for ref in endpoint_refs
+                if (proposal := dropped_node_proposals.get(ref)) is not None
+            }
+            if dropped_endpoint_proposals:
+                for proposal in dropped_endpoint_proposals.values():
+                    proposal.dropped_relation_count += 1
+                draft.dropped_relation_count += 1
+                continue
+
             from_node_type = node_types_by_ref[relation_contract.from_ref]
             to_node_type = node_types_by_ref[relation_contract.to_ref]
-            if from_node_type.name.casefold() != resolved_relation_type.from_type.casefold():
+            if from_node_type.name.casefold() != relation_type.from_type.casefold():
                 raise RuleViolationError(
                     "Structured extraction returned a relation whose from_ref does not match "
-                    f"relation type '{resolved_relation_type.name}' from_type "
-                    f"'{resolved_relation_type.from_type}'."
+                    f"relation type '{relation_type.name}' from_type "
+                    f"'{relation_type.from_type}'."
                 )
-            if to_node_type.name.casefold() != resolved_relation_type.to_type.casefold():
+            if to_node_type.name.casefold() != relation_type.to_type.casefold():
                 raise RuleViolationError(
                     "Structured extraction returned a relation whose to_ref does not match "
-                    f"relation type '{resolved_relation_type.name}' to_type "
-                    f"'{resolved_relation_type.to_type}'."
+                    f"relation type '{relation_type.name}' to_type "
+                    f"'{relation_type.to_type}'."
                 )
-            evidence_refs = [
-                self._build_evidence_ref(
-                    evidence_ref,
-                    valid_segment_ids=evidence_segment_ids,
-                )
-                for evidence_ref in relation_contract.evidence_refs
-            ]
-            suggested_relations.append(
+            draft.relations.append(
                 SuggestedRelation(
-                    relation_type=resolved_relation_type.name,
+                    relation_type=relation_type.name,
                     from_ref=relation_contract.from_ref,
                     to_ref=relation_contract.to_ref,
-                    properties=relation_contract.properties,
+                    properties=self._keep_declared_properties(
+                        draft,
+                        relation_contract.properties,
+                        declared={
+                            *(
+                                property_definition.name
+                                for property_definition in relation_type.properties
+                            ),
+                            *relation_type.required_properties,
+                            *relation_type.merge_keys,
+                        },
+                        kind="relation",
+                        type_name=relation_type.name,
+                        sample_quote=sample_quote,
+                    ),
                     confidence=relation_contract.confidence,
-                    evidence_refs=evidence_refs,
+                    evidence_refs=[
+                        self._build_evidence_ref(
+                            evidence_ref,
+                            valid_segment_ids=evidence_segment_ids,
+                        )
+                        for evidence_ref in relation_contract.evidence_refs
+                    ],
                 )
             )
 
-        return suggested_nodes, suggested_relations
+        return draft
+
+    def _absorb_call(
+        self,
+        draft: ExtractionDraft,
+        call_draft: ExtractionDraft,
+        *,
+        ref_prefix: str,
+    ) -> None:
+        nodes_by_ref = {node.ref: node for node in draft.nodes}
+        refs_by_identity = {identity: ref for ref, identity in draft.node_identities.items()}
+        ref_map: dict[str, str] = {}
+        for node in call_draft.nodes:
+            identity = call_draft.node_identities.get(node.ref)
+            shared_ref = None if identity is None else refs_by_identity.get(identity)
+            if shared_ref is not None:
+                # A node already proposed by another call of this run is the same candidate.
+                shared_node = nodes_by_ref[shared_ref]
+                shared_node.evidence_refs.extend(node.evidence_refs)
+                shared_node.confidence = max(shared_node.confidence, node.confidence)
+                ref_map[node.ref] = shared_ref
+                continue
+
+            qualified_ref = f"{ref_prefix}{node.ref}"
+            ref_map[node.ref] = qualified_ref
+            node.ref = qualified_ref
+            draft.nodes.append(node)
+            if identity is not None:
+                draft.node_identities[qualified_ref] = identity
+
+        for relation in call_draft.relations:
+            relation.from_ref = ref_map[relation.from_ref]
+            relation.to_ref = ref_map[relation.to_ref]
+            draft.relations.append(relation)
+
+        for key, proposal in call_draft.proposals.items():
+            recorded = draft.proposals.setdefault(key, proposal)
+            if recorded is not proposal:
+                recorded.count += proposal.count
+                recorded.dropped_relation_count += proposal.dropped_relation_count
+        draft.dropped_node_count += call_draft.dropped_node_count
+        draft.dropped_relation_count += call_draft.dropped_relation_count
+
+    def _keep_declared_properties(
+        self,
+        draft: ExtractionDraft,
+        properties: dict[str, object],
+        *,
+        declared: set[str],
+        kind: str,
+        type_name: str,
+        sample_quote: str | None,
+    ) -> dict[str, object]:
+        kept: dict[str, object] = {}
+        for property_name, value in properties.items():
+            if property_name in declared:
+                kept[property_name] = value
+                continue
+            self._record_proposal(
+                draft,
+                reason_code=SCHEMA_PROPERTY_PROPOSAL,
+                kind=kind,
+                type_name=type_name,
+                property_name=property_name,
+                sample_quote=sample_quote,
+                sample_value=value,
+            )
+        return kept
+
+    def _record_proposal(
+        self,
+        draft: ExtractionDraft,
+        *,
+        reason_code: str,
+        kind: str,
+        type_name: str,
+        sample_quote: str | None,
+        property_name: str | None = None,
+        sample_value: object | None = None,
+    ) -> SchemaProposal:
+        proposal = draft.proposals.setdefault(
+            (reason_code, kind, type_name.casefold(), property_name or ""),
+            SchemaProposal(
+                reason_code=reason_code,
+                kind=kind,
+                type_name=type_name,
+                property_name=property_name,
+                sample_quote=sample_quote,
+                sample_value=sample_value,
+            ),
+        )
+        proposal.count += 1
+        if proposal.sample_quote is None:
+            proposal.sample_quote = sample_quote
+        return proposal
+
+    def _sample_quote(self, evidence_refs: list[ExtractionEvidenceContract]) -> str | None:
+        return next(
+            (
+                evidence_ref.quote
+                for evidence_ref in evidence_refs
+                if not is_missing_value(evidence_ref.quote)
+            ),
+            None,
+        )
+
+    def _record_proposal_review_items(
+        self,
+        proposals: list[SchemaProposal],
+        *,
+        run_id: str,
+        execution_id: str,
+    ) -> None:
+        recorded_items = {
+            self._proposal_item_key(item): item
+            for item in self.review_item_repository.list_by_run(run_id)
+            if item.item_type == SCHEMA_PROPOSAL_ITEM_TYPE
+        }
+        for proposal in proposals:
+            item = self._build_proposal_review_item(
+                proposal,
+                run_id=run_id,
+                execution_id=execution_id,
+            )
+            recorded = recorded_items.get(self._proposal_item_key(item))
+            if recorded is not None:
+                # A proposal a reviewer already closed is not asked again.
+                if recorded.status != ReviewStatus.OPEN:
+                    continue
+                item.review_item_id = recorded.review_item_id
+                item.created_at = recorded.created_at
+            self.review_item_repository.save(item)
+
+    def _proposal_item_key(self, item: ReviewItem) -> ProposalKey:
+        return (
+            item.reason_code,
+            str(item.payload_json.get("kind", "")),
+            str(item.payload_json.get("type_name", "")).casefold(),
+            str(item.payload_json.get("property_name", "")),
+        )
+
+    def _build_proposal_review_item(
+        self,
+        proposal: SchemaProposal,
+        *,
+        run_id: str,
+        execution_id: str,
+    ) -> ReviewItem:
+        payload_json: dict[str, object] = {
+            "kind": proposal.kind,
+            "type_name": proposal.type_name,
+            "count": proposal.count,
+            "sample_quote": proposal.sample_quote,
+        }
+        if proposal.property_name is not None:
+            payload_json["property_name"] = proposal.property_name
+            payload_json["sample_value"] = proposal.sample_value
+            message = (
+                f"Extraction proposed property '{proposal.property_name}' on {proposal.kind} "
+                f"type '{proposal.type_name}' {proposal.count} time(s). It is not declared on "
+                "the type, so the values were removed."
+            )
+        else:
+            if proposal.kind == "node":
+                payload_json["dropped_relation_count"] = proposal.dropped_relation_count
+            message = (
+                f"Extraction proposed {proposal.kind} type '{proposal.type_name}' "
+                f"{proposal.count} time(s). It is not defined in the schema, so those "
+                "candidates were dropped."
+            )
+        payload_json["messages"] = [message]
+        return ReviewItem(
+            review_item_id=str(uuid4()),
+            run_id=run_id,
+            item_type=SCHEMA_PROPOSAL_ITEM_TYPE,
+            item_ref=execution_id,
+            reason_code=proposal.reason_code,
+            payload_json=payload_json,
+        )
+
+    def _describe_failed_calls(
+        self,
+        failed_calls: list[FailedExtractionCall],
+        *,
+        call_count: int,
+    ) -> str:
+        details = "; ".join(
+            f"segments {', '.join(failed_call.segment_ids)}: {failed_call.error_message}"
+            for failed_call in failed_calls
+        )
+        return f"{len(failed_calls)} of {call_count} extraction calls failed ({details})"
 
     def _build_evidence_ref(
         self,
@@ -538,35 +876,6 @@ class ExtractionManagementService:
                 f"Schema contains ambiguous {kind} lookup '{lookup_value.strip()}'."
             )
         registry[normalized_lookup] = definition
-
-    def _resolve_node_type(
-        self,
-        requested_type: str,
-        *,
-        node_type_registry: dict[str, NodeTypeDefinition],
-    ) -> NodeTypeDefinition:
-        normalized_requested_type = requested_type.strip().casefold()
-        node_type = node_type_registry.get(normalized_requested_type)
-        if node_type is None:
-            raise RuleViolationError(
-                f"Structured extraction returned undefined node type '{requested_type.strip()}'."
-            )
-        return node_type
-
-    def _resolve_relation_type(
-        self,
-        requested_type: str,
-        *,
-        relation_type_registry: dict[str, RelationTypeDefinition],
-    ) -> RelationTypeDefinition:
-        normalized_requested_type = requested_type.strip().casefold()
-        relation_type = relation_type_registry.get(normalized_requested_type)
-        if relation_type is None:
-            raise RuleViolationError(
-                "Structured extraction returned undefined relation type "
-                f"'{requested_type.strip()}'."
-            )
-        return relation_type
 
     def _normalize_optional(self, value: str | None) -> str | None:
         if value is None:

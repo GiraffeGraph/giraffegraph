@@ -527,6 +527,7 @@ def test_review_decision_and_duplicate_resolution_flow() -> None:
         f"/api/review-items/{duplicate_review_item['review_item_id']}/decision",
         json={
             "action": "edit",
+            "reviewer_id": "ayse",
             "reviewer_note": "Second character is actually Mehmet.",
             "properties": {"name": "Mehmet"},
             "merge_key_payload": {"name": "Mehmet"},
@@ -540,6 +541,7 @@ def test_review_decision_and_duplicate_resolution_flow() -> None:
         f"/api/review-items/{event_review_item['review_item_id']}/decision",
         json={
             "action": "reject",
+            "reviewer_id": "ayse",
             "reviewer_note": "Noise candidate.",
         },
     )
@@ -654,6 +656,7 @@ def test_review_edit_revalidates_against_schema() -> None:
         f"/api/review-items/{review_item['review_item_id']}/decision",
         json={
             "action": "edit",
+            "reviewer_id": "ayse",
             "reviewer_note": "Trying an undefined type.",
             "node_type": "Ghost",
             "confidence": 0.99,
@@ -753,6 +756,7 @@ def test_review_edit_rejects_whitespace_normalized_duplicate_merge_key() -> None
         f"/api/review-items/{review_item['review_item_id']}/decision",
         json={
             "action": "edit",
+            "reviewer_id": "ayse",
             "reviewer_note": "Trying to normalize into an existing merge key.",
             "properties": {"name": " ali veli "},
             "confidence": 0.99,
@@ -901,6 +905,7 @@ def test_node_review_decision_refreshes_dependent_relation_reviews() -> None:
         f"/api/review-items/{duplicate_review_item['review_item_id']}/decision",
         json={
             "action": "edit",
+            "reviewer_id": "ayse",
             "reviewer_note": "Second character is Mehmet.",
             "properties": {"name": "Mehmet"},
             "merge_key_payload": {"name": "Mehmet"},

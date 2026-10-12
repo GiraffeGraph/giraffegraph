@@ -19,7 +19,7 @@ from app.domain.orchestration.entities import ProcessingJob
 from app.domain.orchestration.pipeline_definitions import PipelineDefinition
 from app.domain.orchestration.queue_views import ProjectProcessingJobQueue
 from app.domain.project.entities import Project
-from app.domain.review.entities import ProjectReviewQueue, ReviewItem
+from app.domain.review.entities import ProjectReviewQueue, ReviewDecision, ReviewItem
 from app.domain.schema.entities import (
     NodeTypeDefinition,
     RelationTypeDefinition,
@@ -183,6 +183,10 @@ class ReviewItemRepository(Protocol):
 
     def list_by_run(self, run_id: str) -> list[ReviewItem]: ...
 
+    def add_decision(self, decision: ReviewDecision) -> None: ...
+
+    def list_decisions_by_run(self, run_id: str) -> list[ReviewDecision]: ...
+
 
 class ReviewQueueRepository(Protocol):
     def get_project_review_queue(
@@ -201,7 +205,12 @@ class GraphDeltaRepository(Protocol):
 
 
 class CanonicalGraphRepository(Protocol):
-    def commit_bundle(self, bundle: CanonicalCommitBundle) -> GraphDelta: ...
+    def commit_bundle(
+        self,
+        bundle: CanonicalCommitBundle,
+        *,
+        relation_identity_keys: dict[str, str],
+    ) -> GraphDelta: ...
 
     def get_project_overview(self, project_id: str) -> GraphOverview: ...
 
@@ -238,4 +247,5 @@ class CanonicalGraphRepository(Protocol):
         from_merge_key: str,
         to_node_type: str,
         to_merge_key: str,
+        relation_identity_key: str | None = None,
     ) -> CanonicalRelationDetail | None: ...

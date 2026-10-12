@@ -685,3 +685,168 @@ def test_validation_uses_node_type_confidence_threshold_from_schema() -> None:
         and result["rule_code"] == "node_confidence_threshold"
     )
     assert "(0.70)" in threshold_result["message"]
+
+
+def _start_run_with_related_pair(
+    client: TestClient,
+    *,
+    relation_merge_keys: list[str],
+    relation_properties: list[dict[str, object]],
+) -> tuple[str, list[str]]:
+    project_id = client.post(
+        "/api/projects",
+        json={"name": "Relation Identity Lab", "template_id": "blank"},
+    ).json()["project_id"]
+    schema_id = client.post(
+        f"/api/projects/{project_id}/schema-versions",
+        json={"version_no": 1},
+    ).json()["schema_version_id"]
+    client.post(
+        f"/api/schema-versions/{schema_id}/node-types",
+        json={
+            "name": "Person",
+            "display_name": "Person",
+            "description": "A person",
+            "merge_keys": ["name"],
+            "properties": [{"name": "name", "data_type": "string", "required": True}],
+        },
+    )
+    relation_type_response = client.post(
+        f"/api/schema-versions/{schema_id}/relation-types",
+        json={
+            "name": "TOLD",
+            "from_type": "Person",
+            "to_type": "Person",
+            "description": "One person told another",
+            "merge_keys": relation_merge_keys,
+            "properties": [
+                {"name": "report_id", "data_type": "string"},
+                {"name": "wording", "data_type": "string"},
+            ],
+        },
+    )
+    assert relation_type_response.status_code == 201
+    create_pipeline_definition(client, schema_id=schema_id)
+    client.post(f"/api/projects/{project_id}/schema-versions/{schema_id}/activate")
+    source_id = client.post(
+        f"/api/projects/{project_id}/source-units",
+        json={
+            "schema_version_id": schema_id,
+            "source_type": "report",
+            "title": "Reports",
+            "raw_content": "Ali told Veli.",
+        },
+    ).json()["source_unit_id"]
+    run_id = client.post(
+        f"/api/source-units/{source_id}/runs",
+        json={"schema_version_id": schema_id, "pipeline_version": "v1"},
+    ).json()["run_id"]
+    from_id, to_id = (
+        client.post(
+            f"/api/runs/{run_id}/candidate-nodes",
+            json={"node_type": "Person", "properties": {"name": name}, "confidence": 0.95},
+        ).json()["candidate_node_id"]
+        for name in ("Ali", "Veli")
+    )
+    relation_ids = [
+        client.post(
+            f"/api/runs/{run_id}/candidate-relations",
+            json={
+                "relation_type": "TOLD",
+                "from_candidate_ref": from_id,
+                "to_candidate_ref": to_id,
+                "properties": properties,
+                "confidence": 0.95 - index * 0.05,
+            },
+        ).json()["candidate_relation_id"]
+        for index, properties in enumerate(relation_properties)
+    ]
+    return run_id, relation_ids
+
+
+def test_validation_sends_same_pair_relations_to_review_when_type_has_no_merge_keys() -> None:
+    get_container.cache_clear()
+    client = TestClient(create_app())
+    run_id, (primary_id, duplicate_id) = _start_run_with_related_pair(
+        client,
+        relation_merge_keys=[],
+        relation_properties=[
+            {"report_id": "r-1", "wording": "told us"},
+            {"report_id": "r-2", "wording": "informed us"},
+        ],
+    )
+
+    assert client.post(f"/api/runs/{run_id}/validate").status_code == 200
+
+    statuses = {
+        item["candidate_relation_id"]: item["status"]
+        for item in client.get(f"/api/runs/{run_id}/candidate-relations").json()
+    }
+    assert statuses == {primary_id: "validated", duplicate_id: "review"}
+    review_items = client.get(f"/api/runs/{run_id}/review-items").json()
+    assert [(item["item_ref"], item["reason_code"]) for item in review_items] == [
+        (duplicate_id, "potential_duplicate_relation")
+    ]
+    assert client.post(f"/api/runs/{run_id}/commit").status_code == 422
+
+
+def test_validation_keeps_same_pair_relations_with_different_merge_key_values() -> None:
+    get_container.cache_clear()
+    client = TestClient(create_app())
+    run_id, relation_ids = _start_run_with_related_pair(
+        client,
+        relation_merge_keys=["report_id"],
+        relation_properties=[
+            {"report_id": "r-1", "wording": "told us"},
+            {"report_id": "r-2", "wording": "told us"},
+            {"report_id": " R-1 ", "wording": "informed us"},
+        ],
+    )
+
+    assert client.post(f"/api/runs/{run_id}/validate").status_code == 200
+
+    statuses = {
+        item["candidate_relation_id"]: item["status"]
+        for item in client.get(f"/api/runs/{run_id}/candidate-relations").json()
+    }
+    assert statuses == {
+        relation_ids[0]: "validated",
+        relation_ids[1]: "validated",
+        relation_ids[2]: "review",
+    }
+    review_items = client.get(f"/api/runs/{run_id}/review-items").json()
+    assert [(item["item_ref"], item["reason_code"]) for item in review_items] == [
+        (relation_ids[2], "potential_duplicate_relation")
+    ]
+
+
+def test_validation_sends_relation_without_merge_key_value_to_review() -> None:
+    get_container.cache_clear()
+    client = TestClient(create_app())
+    run_id, (complete_id, incomplete_id, blank_id) = _start_run_with_related_pair(
+        client,
+        relation_merge_keys=["report_id"],
+        relation_properties=[
+            {"report_id": "r-1", "wording": "told us"},
+            {"wording": "informed us"},
+            {"report_id": " ", "wording": "related to us"},
+        ],
+    )
+
+    assert client.post(f"/api/runs/{run_id}/validate").status_code == 200
+
+    statuses = {
+        item["candidate_relation_id"]: item["status"]
+        for item in client.get(f"/api/runs/{run_id}/candidate-relations").json()
+    }
+    assert statuses == {complete_id: "validated", incomplete_id: "review", blank_id: "review"}
+    review_items = client.get(f"/api/runs/{run_id}/review-items").json()
+    assert sorted((item["item_ref"], item["reason_code"]) for item in review_items) == sorted(
+        [
+            (incomplete_id, "missing_relation_merge_key"),
+            (blank_id, "missing_relation_merge_key"),
+        ]
+    )
+    assert all(
+        "report_id" in " ".join(item["payload_json"]["messages"]) for item in review_items
+    )

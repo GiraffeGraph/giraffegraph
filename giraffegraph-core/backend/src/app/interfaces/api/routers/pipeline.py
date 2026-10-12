@@ -13,22 +13,22 @@ from app.interfaces.api.dependencies import get_pipeline_management_service
 from app.interfaces.api.mappers.pipeline import (
     to_candidate_node_response,
     to_candidate_relation_response,
-    to_review_item_response,
     to_run_validation_response,
     to_segment_response,
     to_validation_result_response,
 )
+from app.interfaces.api.mappers.review import to_review_item_with_decisions_response
 from app.interfaces.api.schemas.pipeline import (
     CandidateNodeCreateRequest,
     CandidateNodeResponse,
     CandidateRelationCreateRequest,
     CandidateRelationResponse,
-    ReviewItemResponse,
     RunValidationResponse,
     SegmentGenerationRequest,
     SegmentResponse,
     ValidationResultResponse,
 )
+from app.interfaces.api.schemas.review import ReviewItemWithDecisionsResponse
 
 router = APIRouter(tags=["pipeline"])
 PipelineManagementServiceDep = Annotated[
@@ -182,9 +182,15 @@ def list_validation_results(
     ]
 
 
-@router.get("/api/runs/{run_id}/review-items", response_model=list[ReviewItemResponse])
+@router.get(
+    "/api/runs/{run_id}/review-items",
+    response_model=list[ReviewItemWithDecisionsResponse],
+)
 def list_review_items(
     run_id: str,
     service: PipelineManagementServiceDep,
-) -> list[ReviewItemResponse]:
-    return [to_review_item_response(item) for item in service.list_review_items(run_id)]
+) -> list[ReviewItemWithDecisionsResponse]:
+    return [
+        to_review_item_with_decisions_response(item)
+        for item in service.list_review_items(run_id)
+    ]

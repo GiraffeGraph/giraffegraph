@@ -1,5 +1,6 @@
 import hashlib
 import json
+from collections.abc import Sequence
 from re import sub
 from unicodedata import normalize
 
@@ -33,10 +34,35 @@ def build_candidate_node_resolution_key(candidate_node: CandidateNode) -> str:
     )
 
 
+def missing_relation_merge_keys(
+    *,
+    merge_keys: Sequence[str],
+    properties: dict[str, object],
+) -> list[str]:
+    return [
+        merge_key for merge_key in merge_keys if is_missing_value(properties.get(merge_key))
+    ]
+
+
+def build_relation_identity_key(
+    *,
+    merge_keys: Sequence[str],
+    properties: dict[str, object],
+) -> str:
+    merge_key_payload = {
+        merge_key: properties[merge_key]
+        for merge_key in merge_keys
+        if not is_missing_value(properties.get(merge_key))
+    }
+    encoded = normalized_payload_key(merge_key_payload)
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
 def build_candidate_relation_resolution_key(
     candidate_relation: CandidateRelation,
     *,
     node_resolution_keys_by_candidate_id: dict[str, str],
+    merge_keys: Sequence[str] = (),
 ) -> str:
     from_key = node_resolution_keys_by_candidate_id.get(
         candidate_relation.from_candidate_ref,
@@ -51,7 +77,10 @@ def build_candidate_relation_resolution_key(
             normalize_text(candidate_relation.relation_type),
             from_key,
             to_key,
-            normalized_payload_key(candidate_relation.properties),
+            build_relation_identity_key(
+                merge_keys=merge_keys,
+                properties=candidate_relation.properties,
+            ),
         ]
     )
 

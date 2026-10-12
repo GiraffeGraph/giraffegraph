@@ -1,6 +1,5 @@
 import json
-import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from neo4j import Driver, ManagedTransaction
@@ -21,95 +20,124 @@ from app.domain.exploration.entities import (
 from app.domain.extraction.entities import CandidateNode, CandidateRelation
 from app.domain.graph_commit.entities import CanonicalCommitBundle, GraphDelta
 from app.domain.ingestion.entities import Segment, SourceUnit
+from app.domain.schema.identifiers import IDENTIFIER_PATTERN
 from app.domain.shared.resolution import build_canonical_merge_key
 
-IDENTIFIER_PATTERN = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+# Every commit looks these keys up many times; without an index each lookup scans the label.
+LOOKUP_INDEX_STATEMENTS = (
+    "CREATE INDEX canonical_node_identity IF NOT EXISTS "
+    "FOR (n:CanonicalNode) ON (n.project_id, n.node_type, n.merge_key)",
+    "CREATE INDEX source_unit_id IF NOT EXISTS FOR (n:SourceUnit) ON (n.source_unit_id)",
+    "CREATE INDEX segment_id IF NOT EXISTS FOR (n:Segment) ON (n.segment_id)",
+    "CREATE INDEX relation_evidence_candidate_relation_id IF NOT EXISTS "
+    "FOR (n:RelationEvidence) ON (n.candidate_relation_id)",
+    "CREATE INDEX graph_delta_id IF NOT EXISTS FOR (n:GraphDelta) ON (n.delta_id)",
+)
 
 
 @dataclass(slots=True)
 class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
     driver: Driver
+    _lookup_indexes_ensured: bool = field(default=False, init=False, repr=False)
 
-    def commit_bundle(self, bundle: CanonicalCommitBundle) -> GraphDelta:
+    def commit_bundle(
+        self,
+        bundle: CanonicalCommitBundle,
+        *,
+        relation_identity_keys: dict[str, str],
+    ) -> GraphDelta:
+        with self.driver.session() as session:
+            if not self._lookup_indexes_ensured:
+                for statement in LOOKUP_INDEX_STATEMENTS:
+                    session.run(statement).consume()
+                self._lookup_indexes_ensured = True
+            # One transaction per run: a failed write leaves no part of the run in the graph.
+            return session.execute_write(self._write_bundle, bundle, relation_identity_keys)
+
+    def _write_bundle(
+        self,
+        tx: ManagedTransaction,
+        bundle: CanonicalCommitBundle,
+        relation_identity_keys: dict[str, str],
+    ) -> GraphDelta:
         delta = bundle.delta
         segment_map = {segment.segment_id: segment for segment in bundle.segments}
         node_refs_by_candidate: dict[str, tuple[str, str]] = {}
 
-        with self.driver.session() as session:
-            session.execute_write(
-                self._upsert_source_context,
+        self._upsert_source_context(tx, bundle.source_unit, bundle.segments)
+
+        nodes_created = 0
+        nodes_merged = 0
+        for candidate_node in bundle.candidate_nodes:
+            merge_key = self._build_merge_key(candidate_node)
+            created = self._merge_candidate_node(
+                tx,
+                delta,
                 bundle.source_unit,
-                bundle.segments,
+                candidate_node,
+                merge_key,
+            )
+            node_refs_by_candidate[candidate_node.candidate_node_id] = (
+                candidate_node.node_type,
+                merge_key,
+            )
+            if created:
+                nodes_created += 1
+            else:
+                nodes_merged += 1
+
+            self._link_node_provenance(
+                tx,
+                delta,
+                bundle.source_unit,
+                candidate_node,
+                merge_key,
+                segment_map,
             )
 
-            nodes_created = 0
-            nodes_merged = 0
-            for candidate_node in bundle.candidate_nodes:
-                merge_key = self._build_merge_key(candidate_node)
-                created = session.execute_write(
-                    self._merge_candidate_node,
-                    delta,
-                    bundle.source_unit,
-                    candidate_node,
-                    merge_key,
-                )
-                node_refs_by_candidate[candidate_node.candidate_node_id] = (
-                    candidate_node.node_type,
-                    merge_key,
-                )
-                if created:
-                    nodes_created += 1
-                else:
-                    nodes_merged += 1
-
-                session.execute_write(
-                    self._link_node_provenance,
-                    delta,
-                    bundle.source_unit,
-                    candidate_node,
-                    merge_key,
-                    segment_map,
+        relations_created = 0
+        relations_merged = 0
+        for candidate_relation in bundle.candidate_relations:
+            from_ref = node_refs_by_candidate.get(candidate_relation.from_candidate_ref)
+            to_ref = node_refs_by_candidate.get(candidate_relation.to_candidate_ref)
+            if from_ref is None or to_ref is None:
+                raise ValueError(
+                    "Canonical commit received relation candidates without canonical node refs."
                 )
 
-            relations_created = 0
-            relations_merged = 0
-            for candidate_relation in bundle.candidate_relations:
-                from_ref = node_refs_by_candidate.get(candidate_relation.from_candidate_ref)
-                to_ref = node_refs_by_candidate.get(candidate_relation.to_candidate_ref)
-                if from_ref is None or to_ref is None:
-                    raise ValueError(
-                        "Canonical commit received relation candidates without canonical node refs."
-                    )
+            relation_identity_key = relation_identity_keys[
+                candidate_relation.candidate_relation_id
+            ]
+            created = self._merge_candidate_relation(
+                tx,
+                delta,
+                bundle.source_unit,
+                candidate_relation,
+                from_ref,
+                to_ref,
+                relation_identity_key,
+            )
+            if created:
+                relations_created += 1
+            else:
+                relations_merged += 1
 
-                created = session.execute_write(
-                    self._merge_candidate_relation,
-                    delta,
-                    bundle.source_unit,
-                    candidate_relation,
-                    from_ref,
-                    to_ref,
-                )
-                if created:
-                    relations_created += 1
-                else:
-                    relations_merged += 1
+            self._link_relation_provenance(
+                tx,
+                delta,
+                bundle.source_unit,
+                candidate_relation,
+                from_ref,
+                to_ref,
+                relation_identity_key,
+                segment_map,
+            )
 
-                session.execute_write(
-                    self._link_relation_provenance,
-                    delta,
-                    bundle.source_unit,
-                    candidate_relation,
-                    from_ref,
-                    to_ref,
-                    segment_map,
-                )
-
-            delta.nodes_created = nodes_created
-            delta.nodes_merged = nodes_merged
-            delta.relations_created = relations_created
-            delta.relations_merged = relations_merged
-            session.execute_write(self._upsert_graph_delta, delta)
-
+        delta.nodes_created = nodes_created
+        delta.nodes_merged = nodes_merged
+        delta.relations_created = relations_created
+        delta.relations_merged = relations_merged
+        self._upsert_graph_delta(tx, delta)
         return delta
 
     def get_project_overview(self, project_id: str) -> GraphOverview:
@@ -204,6 +232,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         from_merge_key: str,
         to_node_type: str,
         to_merge_key: str,
+        relation_identity_key: str | None = None,
     ) -> CanonicalRelationDetail | None:
         with self.driver.session() as session:
             relation_payload = session.execute_read(
@@ -214,11 +243,12 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                 from_merge_key,
                 to_node_type,
                 to_merge_key,
+                relation_identity_key,
             )
             if relation_payload is None:
                 return None
 
-            relation, from_node, to_node = relation_payload
+            relation, from_node, to_node, resolved_identity_key = relation_payload
             return CanonicalRelationDetail(
                 relation=relation,
                 from_node=from_node,
@@ -231,6 +261,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                     from_merge_key,
                     to_node_type,
                     to_merge_key,
+                    resolved_identity_key,
                 ),
                 supporting_segments=session.execute_read(
                     self._fetch_relation_supporting_segments,
@@ -240,6 +271,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                     from_merge_key,
                     to_node_type,
                     to_merge_key,
+                    resolved_identity_key,
                 ),
             )
 
@@ -419,6 +451,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         candidate_relation: CandidateRelation,
         from_ref: tuple[str, str],
         to_ref: tuple[str, str],
+        relation_identity_key: str,
     ) -> bool:
         relation_type = self._quoted_identifier(candidate_relation.relation_type)
         query = f"""
@@ -434,7 +467,8 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         }})
         MERGE (from_node)-[r:{relation_type} {{
             project_id: $project_id,
-            relation_type: $relation_type
+            relation_type: $relation_type,
+            relation_identity_key: $relation_identity_key
         }}]->(to_node)
         ON CREATE SET r.created_at = datetime($created_at)
         SET r += $properties,
@@ -450,6 +484,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             to_type=to_ref[0],
             to_merge_key=to_ref[1],
             relation_type=candidate_relation.relation_type,
+            relation_identity_key=relation_identity_key,
             properties=self._sanitize_property_map(candidate_relation.properties),
             source_unit_id=source_unit.source_unit_id,
             run_id=delta.run_id,
@@ -466,6 +501,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         candidate_relation: CandidateRelation,
         from_ref: tuple[str, str],
         to_ref: tuple[str, str],
+        relation_identity_key: str,
         segment_map: dict[str, Segment],
     ) -> None:
         base_query = """
@@ -473,6 +509,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         SET e.run_id = $run_id,
             e.project_id = $project_id,
             e.relation_type = $relation_type,
+            e.relation_identity_key = $relation_identity_key,
             e.created_at = datetime($created_at)
         WITH e
         MATCH (from_node:CanonicalNode {
@@ -496,6 +533,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             run_id=delta.run_id,
             project_id=delta.project_id,
             relation_type=candidate_relation.relation_type,
+            relation_identity_key=relation_identity_key,
             created_at=delta.created_at.isoformat(),
             from_type=from_ref[0],
             from_merge_key=from_ref[1],
@@ -837,6 +875,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                     {
                         "project_id",
                         "relation_type",
+                        "relation_identity_key",
                         "source_unit_id",
                         "last_run_id",
                         "updated_at",
@@ -891,6 +930,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                     {
                         "project_id",
                         "relation_type",
+                        "relation_identity_key",
                         "source_unit_id",
                         "last_run_id",
                         "updated_at",
@@ -913,10 +953,12 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         from_merge_key: str,
         to_node_type: str,
         to_merge_key: str,
+        relation_identity_key: str | None,
     ) -> tuple[
         CanonicalRelationView,
         CanonicalRelationEndpointView,
         CanonicalRelationEndpointView,
+        str,
     ] | None:
         record = tx.run(
             """
@@ -931,7 +973,12 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             })
             WHERE r.project_id = $project_id
               AND r.relation_type = $relation_type
+              AND (
+                $relation_identity_key IS NULL
+                OR r.relation_identity_key = $relation_identity_key
+              )
             RETURN r.relation_type AS relation_type,
+                   r.relation_identity_key AS relation_identity_key,
                    from_node.node_type AS from_node_type,
                    from_node.merge_key AS from_merge_key,
                    to_node.node_type AS to_node_type,
@@ -942,6 +989,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                    toString(r.updated_at) AS updated_at,
                    properties(from_node) AS from_node_properties,
                    properties(to_node) AS to_node_properties
+            ORDER BY relation_identity_key ASC
             LIMIT 1
             """,
             project_id=project_id,
@@ -950,6 +998,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             from_merge_key=from_merge_key,
             to_node_type=to_node_type,
             to_merge_key=to_merge_key,
+            relation_identity_key=relation_identity_key,
         ).single()
         if record is None:
             return None
@@ -987,7 +1036,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                 },
             ),
         )
-        return relation, from_node, to_node
+        return relation, from_node, to_node, str(record["relation_identity_key"])
 
     def _fetch_relation_source_units(
         self,
@@ -998,6 +1047,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         from_merge_key: str,
         to_node_type: str,
         to_merge_key: str,
+        relation_identity_key: str,
     ) -> list[CanonicalSourceUnitRef]:
         records = tx.run(
             """
@@ -1013,7 +1063,8 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             })
             MATCH (e:RelationEvidence {
                 project_id: $project_id,
-                relation_type: $relation_type
+                relation_type: $relation_type,
+                relation_identity_key: $relation_identity_key
             })-[:FROM_NODE]->(from_node)
             MATCH (e)-[:TO_NODE]->(to_node)
             MATCH (e)-[:DERIVED_FROM]->(su:SourceUnit)
@@ -1029,6 +1080,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             from_merge_key=from_merge_key,
             to_node_type=to_node_type,
             to_merge_key=to_merge_key,
+            relation_identity_key=relation_identity_key,
         )
         return [
             CanonicalSourceUnitRef(
@@ -1053,6 +1105,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
         from_merge_key: str,
         to_node_type: str,
         to_merge_key: str,
+        relation_identity_key: str,
     ) -> list[CanonicalSegmentSupport]:
         records = tx.run(
             """
@@ -1068,7 +1121,8 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             })
             MATCH (e:RelationEvidence {
                 project_id: $project_id,
-                relation_type: $relation_type
+                relation_type: $relation_type,
+                relation_identity_key: $relation_identity_key
             })-[:FROM_NODE]->(from_node)
             MATCH (e)-[:TO_NODE]->(to_node)
             MATCH (e)-[:SUPPORTED_BY]->(sg:Segment)
@@ -1084,6 +1138,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
             from_merge_key=from_merge_key,
             to_node_type=to_node_type,
             to_merge_key=to_merge_key,
+            relation_identity_key=relation_identity_key,
         )
         return [
             CanonicalSegmentSupport(
@@ -1188,6 +1243,7 @@ class Neo4jCanonicalGraphRepository(CanonicalGraphRepository):
                 {
                     "project_id",
                     "relation_type",
+                    "relation_identity_key",
                     "source_unit_id",
                     "last_run_id",
                     "updated_at",

@@ -40,7 +40,10 @@ from app.application.use_cases.review_management import ReviewManagementService
 from app.application.use_cases.review_queue_management import ReviewQueueService
 from app.application.use_cases.schema_management import SchemaManagementService
 from app.application.use_cases.template_management import TemplateManagementService
+from app.domain.extraction.segmentation import ParagraphSegmentation, SegmentationStrategy
+from app.domain.hadith.segmentation import IsnadSegmentation
 from app.infrastructure.config.settings import get_settings
+from app.infrastructure.llm.anthropic_provider import AnthropicLLMProvider
 from app.infrastructure.llm.noop_provider import NoOpLLMProvider
 from app.infrastructure.llm.openai_provider import OpenAILLMProvider
 from app.infrastructure.llm.prompt_catalog import (
@@ -48,6 +51,7 @@ from app.infrastructure.llm.prompt_catalog import (
     seed_default_structured_prompts,
 )
 from app.infrastructure.llm.provider_registry import StaticLLMProviderRegistry
+from app.infrastructure.llm.rule_based_isnad_provider import RuleBasedIsnadProvider
 from app.infrastructure.persistence.memory.repositories import (
     InMemoryCandidateNodeRepository,
     InMemoryCandidateRelationRepository,
@@ -134,7 +138,7 @@ def get_container() -> ApplicationContainer:
     graph_delta_repository: GraphDeltaRepository
     canonical_graph_repository: CanonicalGraphRepository
 
-    llm_providers: list[LLMProvider] = [NoOpLLMProvider()]
+    llm_providers: list[LLMProvider] = [NoOpLLMProvider(), RuleBasedIsnadProvider()]
     if settings.openai_api_key is not None and settings.openai_api_key.strip() != "":
         llm_providers.append(
             OpenAILLMProvider(
@@ -143,7 +147,18 @@ def get_container() -> ApplicationContainer:
                 timeout_seconds=settings.openai_timeout_seconds,
             )
         )
+    if settings.anthropic_api_key is not None and settings.anthropic_api_key.strip() != "":
+        llm_providers.append(
+            AnthropicLLMProvider.from_api_key(
+                settings.anthropic_api_key,
+                timeout_seconds=settings.anthropic_timeout_seconds,
+                effort=settings.anthropic_effort,
+            )
+        )
     llm_provider_registry = StaticLLMProviderRegistry(providers=llm_providers)
+    segmentation_strategies: dict[str, SegmentationStrategy] = {
+        strategy.name: strategy for strategy in (ParagraphSegmentation(), IsnadSegmentation())
+    }
     prompt_catalog: RepositoryStructuredPromptCatalog
 
     if settings.repository_backend == "postgres":
@@ -217,11 +232,14 @@ def get_container() -> ApplicationContainer:
         candidate_node_repository=candidate_node_repository,
         candidate_relation_repository=candidate_relation_repository,
         extraction_execution_repository=extraction_execution_repository,
+        review_item_repository=review_item_repository,
         provider_registry=llm_provider_registry,
         prompt_catalog=prompt_catalog,
         default_llm_provider=settings.default_llm_provider,
         default_llm_model=settings.default_llm_model,
         default_extraction_prompt_version=settings.default_extraction_prompt_version,
+        segmentation_strategies=segmentation_strategies,
+        max_segments_per_call=settings.extraction_max_segments_per_call,
     )
     pipeline_management_service = PipelineManagementService(
         source_unit_repository=source_unit_repository,
@@ -233,11 +251,14 @@ def get_container() -> ApplicationContainer:
         validation_result_repository=validation_result_repository,
         review_item_repository=review_item_repository,
         canonical_graph_repository=canonical_graph_repository,
+        extraction_execution_repository=extraction_execution_repository,
+        segmentation_strategies=segmentation_strategies,
     )
     commit_management_service = CommitManagementService(
         processing_run_repository=processing_run_repository,
         source_unit_repository=source_unit_repository,
         segment_repository=segment_repository,
+        schema_repository=schema_repository,
         candidate_node_repository=candidate_node_repository,
         candidate_relation_repository=candidate_relation_repository,
         review_item_repository=review_item_repository,

@@ -7,7 +7,7 @@ from app.domain.ingestion.entities import ProcessingRun, Segment, SourceUnit
 from app.domain.orchestration.entities import ProcessingJob
 from app.domain.orchestration.pipeline_definitions import PipelineDefinition
 from app.domain.project.entities import Project
-from app.domain.review.entities import ReviewItem
+from app.domain.review.entities import ReviewDecision, ReviewItem
 from app.domain.schema.entities import NodeTypeDefinition, RelationTypeDefinition, SchemaVersion
 from app.domain.validation.entities import ValidationResult
 
@@ -32,6 +32,7 @@ class InMemoryCanonicalRelationRecord:
     from_merge_key: str
     to_node_type: str
     to_merge_key: str
+    relation_identity_key: str
     properties: dict[str, object] = field(default_factory=dict)
     source_unit_ids: set[str] = field(default_factory=set)
     segment_ids: set[str] = field(default_factory=set)
@@ -58,11 +59,12 @@ class InMemoryStore:
     extraction_executions: dict[str, ExtractionExecution] = field(default_factory=dict)
     validation_results_by_run: dict[str, list[ValidationResult]] = field(default_factory=dict)
     review_items_by_run: dict[str, list[ReviewItem]] = field(default_factory=dict)
+    review_decisions_by_run: dict[str, list[ReviewDecision]] = field(default_factory=dict)
     graph_deltas_by_run: dict[str, GraphDelta] = field(default_factory=dict)
     canonical_nodes: dict[tuple[str, str, str], InMemoryCanonicalNodeRecord] = field(
         default_factory=dict
     )
     canonical_relations: dict[
-        tuple[str, str, str, str, str, str],
+        tuple[str, str, str, str, str, str, str],
         InMemoryCanonicalRelationRecord,
     ] = field(default_factory=dict)

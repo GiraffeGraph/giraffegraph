@@ -29,6 +29,22 @@ class SuggestedRelationResponse(BaseModel):
     evidence_refs: list[EvidenceRefResponse]
 
 
+class FailedExtractionCallResponse(BaseModel):
+    segment_ids: list[str]
+    error_message: str
+
+
+class SchemaProposalResponse(BaseModel):
+    reason_code: str
+    kind: str
+    type_name: str
+    property_name: str | None
+    count: int
+    sample_quote: str | None
+    sample_value: object | None
+    dropped_relation_count: int
+
+
 class ExtractionExecutionResponse(BaseModel):
     execution_id: str
     run_id: str
@@ -44,6 +60,11 @@ class ExtractionExecutionResponse(BaseModel):
     suggested_relations: list[SuggestedRelationResponse]
     created_candidate_node_ids: list[str]
     created_candidate_relation_ids: list[str]
+    call_count: int
+    failed_calls: list[FailedExtractionCallResponse]
+    dropped_node_count: int
+    dropped_relation_count: int
+    schema_proposals: list[SchemaProposalResponse]
     started_at: datetime
     completed_at: datetime
 

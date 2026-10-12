@@ -245,7 +245,7 @@ def test_extraction_skeleton_supports_dry_run_and_persists_candidates() -> None:
         }
     ]
     assert provider.last_payload["schema"]["relation_types"][0]["confidence_threshold"] == 0.7
-    assert provider.last_schema_name == "candidate_graph_extraction_v1"
+    assert provider.last_schema_name == "candidate_graph_extraction_v2"
     assert provider.last_model == "gpt-test"
 
     extract_response = client.post(f"/api/runs/{run['run_id']}/extract-candidates", json={})
@@ -282,7 +282,7 @@ def test_extraction_skeleton_supports_dry_run_and_persists_candidates() -> None:
     assert latest_execution["dry_run"] is False
     assert latest_execution["status"] == "succeeded"
     assert latest_execution["prompt_key"] == "candidate_graph_extraction"
-    assert latest_execution["prompt_version"] == "candidate_graph_extraction_v1"
+    assert latest_execution["prompt_version"] == "candidate_graph_extraction_v2"
     assert latest_execution["provider_name"] == "static-test"
     assert latest_execution["requested_llm_provider"] == "static-test"
     assert latest_execution["requested_llm_model"] == "gpt-test"
@@ -411,7 +411,7 @@ def test_extraction_rejects_unknown_relation_refs_from_provider() -> None:
     assert failed_execution["status"] == "failed"
     assert failed_execution["provider_name"] == "static-test"
     assert failed_execution["requested_llm_provider"] == "static-test"
-    assert failed_execution["prompt_version"] == "candidate_graph_extraction_v1"
+    assert failed_execution["prompt_version"] == "candidate_graph_extraction_v2"
     assert failed_execution["segment_count"] == 1
     assert failed_execution["suggested_node_count"] == 0
     assert failed_execution["suggested_relation_count"] == 0
@@ -822,5 +822,5 @@ def test_extraction_supports_openai_provider_adapter() -> None:
     assert isinstance(messages, list)
     assert messages[0]["role"] == "system"
     user_payload = json.loads(messages[1]["content"])
-    assert user_payload["schema_name"] == "candidate_graph_extraction_v1"
+    assert user_payload["schema_name"] == "candidate_graph_extraction_v2"
     assert user_payload["payload"]["segments"][0]["segment_id"] == segment_id

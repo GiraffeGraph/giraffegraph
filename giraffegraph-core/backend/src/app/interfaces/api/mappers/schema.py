@@ -60,6 +60,7 @@ def to_relation_type_response(
         aliases=relation_type.aliases,
         extraction_hints=relation_type.extraction_hints,
         required_properties=relation_type.required_properties,
+        merge_keys=relation_type.merge_keys,
         properties=[to_property_response(item) for item in relation_type.properties],
         confidence_threshold=relation_type.confidence_threshold,
         is_active=relation_type.is_active,

@@ -7,6 +7,7 @@ from app.application.dto.contracts import (
     PropertyDefinitionInput,
     RelationTypeDefinitionInput,
     SchemaVersionCreateInput,
+    TemplateSchema,
 )
 from app.application.errors import ConflictError, NotFoundError, RuleViolationError
 from app.application.ports.repositories import (
@@ -37,12 +38,24 @@ class SchemaVersionDetail:
 
 
 @dataclass(slots=True)
+class AppliedTemplateSchema:
+    schema_version: SchemaVersion
+    pipeline_version: str
+    segmentation_strategy: str
+
+
+@dataclass(slots=True)
 class SchemaManagementService:
     project_repository: ProjectRepository
     schema_repository: SchemaRepository
     pipeline_definition_repository: PipelineDefinitionRepository
 
-    def create_schema_version(self, payload: SchemaVersionCreateInput) -> SchemaVersionDetail:
+    def create_schema_version(
+        self,
+        payload: SchemaVersionCreateInput,
+        *,
+        pipeline_description: str = DEFAULT_PIPELINE_DESCRIPTION,
+    ) -> SchemaVersionDetail:
         self._require_project(payload.project_id)
 
         version_numbers = {
@@ -67,11 +80,44 @@ class SchemaManagementService:
                 pipeline_definition_id=str(uuid4()),
                 schema_version_id=schema_version.schema_version_id,
                 version=DEFAULT_PIPELINE_VERSION,
-                description=DEFAULT_PIPELINE_DESCRIPTION,
+                description=pipeline_description,
                 steps=build_default_pipeline_steps(),
             )
         )
         return self.get_schema_version(schema_version.schema_version_id)
+
+    def apply_template_schema(
+        self,
+        project_id: str,
+        template_schema: TemplateSchema,
+    ) -> AppliedTemplateSchema:
+        strategy = template_schema.segmentation_strategy
+        version_numbers = [
+            schema_version.version_no
+            for schema_version in self.schema_repository.list_schema_versions(project_id)
+        ]
+        schema_version_id = self.create_schema_version(
+            SchemaVersionCreateInput(
+                project_id=project_id,
+                version_no=max(version_numbers, default=0) + 1,
+                notes="Applied from the project template.",
+            ),
+            pipeline_description=(
+                f"Template pipeline: '{strategy}' segmentation, extraction, validation and commit."
+            ),
+        ).schema_version.schema_version_id
+        for node_type in template_schema.node_types:
+            self.add_node_type(schema_version_id, node_type)
+        for relation_type in template_schema.relation_types:
+            self.add_relation_type(schema_version_id, relation_type)
+        return AppliedTemplateSchema(
+            schema_version=self.activate_schema_version(
+                project_id,
+                schema_version_id,
+            ).schema_version,
+            pipeline_version=DEFAULT_PIPELINE_VERSION,
+            segmentation_strategy=strategy,
+        )
 
     def list_schema_versions(self, project_id: str) -> list[SchemaVersionDetail]:
         self._require_project(project_id)
@@ -182,6 +228,16 @@ class SchemaManagementService:
                 "that already exist in the same schema version."
             )
 
+        property_names = {property_input.name.strip() for property_input in payload.properties}
+        undeclared_merge_keys = [
+            merge_key for merge_key in payload.merge_keys if merge_key not in property_names
+        ]
+        if undeclared_merge_keys:
+            raise RuleViolationError(
+                f"Relation type '{payload.name}' merge keys must name properties declared "
+                "on the relation type; undeclared: " + ", ".join(undeclared_merge_keys) + "."
+            )
+
         relation_type = RelationTypeDefinition(
             relation_type_id=str(uuid4()),
             schema_version_id=schema_version.schema_version_id,
@@ -193,6 +249,7 @@ class SchemaManagementService:
             aliases=payload.aliases,
             extraction_hints=payload.extraction_hints,
             required_properties=payload.required_properties,
+            merge_keys=payload.merge_keys,
             confidence_threshold=payload.confidence_threshold,
             properties=[
                 self._build_property_definition(

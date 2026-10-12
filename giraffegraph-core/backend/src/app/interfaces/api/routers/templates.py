@@ -18,4 +18,10 @@ TemplateManagementServiceDep = Annotated[
 def list_templates(
     service: TemplateManagementServiceDep,
 ) -> list[DomainTemplateResponse]:
-    return [to_domain_template_response(template) for template in service.list_templates()]
+    return [
+        to_domain_template_response(
+            template,
+            service.template_catalog.get_schema(template.template_id),
+        )
+        for template in service.list_templates()
+    ]

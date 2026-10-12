@@ -7,6 +7,22 @@ from app.domain.shared.enums import ReviewStatus
 
 
 @dataclass(slots=True, kw_only=True)
+class ReviewDecision:
+    decision_id: str
+    review_item_id: str
+    run_id: str
+    item_type: str
+    item_ref: str
+    action: str
+    reviewer_id: str
+    reviewer_note: str | None = None
+    duration_ms: int | None = None
+    before_json: dict[str, object] | None = None
+    after_json: dict[str, object] | None = None
+    decided_at: datetime = field(default_factory=lambda: datetime.now(UTC))
+
+
+@dataclass(slots=True, kw_only=True)
 class ReviewItem:
     review_item_id: str
     run_id: str
@@ -17,6 +33,16 @@ class ReviewItem:
     status: ReviewStatus = ReviewStatus.OPEN
     reviewer_note: str | None = None
     created_at: datetime = field(default_factory=lambda: datetime.now(UTC))
+    decisions: list[ReviewDecision] = field(default_factory=list)
+
+
+@dataclass(slots=True, kw_only=True)
+class AcceptanceRecord:
+    candidate_type: str
+    candidate_ref: str
+    policy: str | None = None
+    rule_code: str | None = None
+    decision: ReviewDecision | None = None
 
 
 @dataclass(slots=True, kw_only=True)

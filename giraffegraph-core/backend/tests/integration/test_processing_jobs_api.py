@@ -345,7 +345,7 @@ def test_processing_job_queue_chains_follow_up_jobs_after_extraction() -> None:
                     "node_type": "Character",
                     "properties": {"name": "Ali"},
                     "confidence": 0.91,
-                    "evidence_refs": [{"segment_id": segment_id}],
+                    "evidence_refs": [{"segment_id": segment_id, "quote": "Ali appears"}],
                 }
             ],
             "relations": [],

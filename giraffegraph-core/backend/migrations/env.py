@@ -16,7 +16,8 @@ from app.infrastructure.persistence.postgres.models import Base
 
 config = context.config
 if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
+    # The application runs migrations in-process at startup; its loggers must stay enabled.
+    fileConfig(config.config_file_name, disable_existing_loggers=False)
 
 config.set_main_option("sqlalchemy.url", get_settings().normalized_postgres_dsn)
 target_metadata = Base.metadata

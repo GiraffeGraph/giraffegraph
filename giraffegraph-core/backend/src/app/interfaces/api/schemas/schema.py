@@ -2,13 +2,14 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.domain.schema.identifiers import IDENTIFIER_PATTERN
 from app.domain.shared.enums import SchemaStatus
 
 
 class PropertyDefinitionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    name: str = Field(min_length=1, max_length=120)
+    name: str = Field(min_length=1, max_length=120, pattern=IDENTIFIER_PATTERN.pattern)
     data_type: str = Field(min_length=1, max_length=50)
     required: bool = False
     description: str | None = Field(default=None, max_length=500)
@@ -26,7 +27,7 @@ class SchemaVersionCreateRequest(BaseModel):
 class NodeTypeDefinitionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    name: str = Field(min_length=1, max_length=80)
+    name: str = Field(min_length=1, max_length=80, pattern=IDENTIFIER_PATTERN.pattern)
     display_name: str = Field(min_length=1, max_length=120)
     description: str = Field(min_length=1, max_length=500)
     is_core: bool = False
@@ -40,7 +41,7 @@ class NodeTypeDefinitionRequest(BaseModel):
 class RelationTypeDefinitionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    name: str = Field(min_length=1, max_length=80)
+    name: str = Field(min_length=1, max_length=80, pattern=IDENTIFIER_PATTERN.pattern)
     from_type: str = Field(min_length=1, max_length=80)
     to_type: str = Field(min_length=1, max_length=80)
     description: str = Field(min_length=1, max_length=500)
@@ -48,6 +49,7 @@ class RelationTypeDefinitionRequest(BaseModel):
     aliases: list[str] = Field(default_factory=list)
     extraction_hints: list[str] = Field(default_factory=list)
     required_properties: list[str] = Field(default_factory=list)
+    merge_keys: list[str] = Field(default_factory=list)
     confidence_threshold: float = Field(default=0.7, ge=0.0, le=1.0)
     properties: list[PropertyDefinitionRequest] = Field(default_factory=list)
 
@@ -90,6 +92,7 @@ class RelationTypeDefinitionResponse(BaseModel):
     aliases: list[str]
     extraction_hints: list[str]
     required_properties: list[str]
+    merge_keys: list[str]
     properties: list[PropertyDefinitionResponse]
     confidence_threshold: float
     is_active: bool

@@ -1,4 +1,7 @@
-from pydantic import BaseModel
+from datetime import datetime
+from typing import Annotated
+
+from pydantic import BaseModel, Field, StringConstraints
 
 from app.interfaces.api.schemas.ingestion import (
     ProcessingRunResponse,
@@ -7,8 +10,44 @@ from app.interfaces.api.schemas.ingestion import (
 from app.interfaces.api.schemas.pipeline import (
     CandidateNodeResponse,
     CandidateRelationResponse,
+    ReviewDecisionRequest,
     ReviewItemResponse,
 )
+
+
+class ReviewerDecisionRequest(ReviewDecisionRequest):
+    reviewer_id: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1, max_length=120),
+    ]
+    duration_ms: int | None = Field(default=None, ge=0, le=2_147_483_647)
+
+
+class ReviewDecisionResponse(BaseModel):
+    decision_id: str
+    review_item_id: str
+    run_id: str
+    item_type: str
+    item_ref: str
+    action: str
+    reviewer_id: str
+    reviewer_note: str | None
+    duration_ms: int | None
+    before_json: dict[str, object] | None
+    after_json: dict[str, object] | None
+    decided_at: datetime
+
+
+class ReviewItemWithDecisionsResponse(ReviewItemResponse):
+    decisions: list[ReviewDecisionResponse]
+
+
+class AcceptanceRecordResponse(BaseModel):
+    candidate_type: str
+    candidate_ref: str
+    policy: str | None
+    rule_code: str | None
+    decision: ReviewDecisionResponse | None
 
 
 class ReviewEvidenceSnippetResponse(BaseModel):
@@ -19,7 +58,7 @@ class ReviewEvidenceSnippetResponse(BaseModel):
 
 
 class ReviewQueueItemResponse(BaseModel):
-    review_item: ReviewItemResponse
+    review_item: ReviewItemWithDecisionsResponse
     candidate_node: CandidateNodeResponse | None
     candidate_relation: CandidateRelationResponse | None
     headline: str

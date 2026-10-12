@@ -4,46 +4,63 @@ from app.application.ports.prompt_catalog import StructuredPromptDefinition
 from app.application.ports.repositories import StructuredPromptRepository
 
 CANDIDATE_GRAPH_EXTRACTION_PROMPT_KEY = "candidate_graph_extraction"
+CANDIDATE_GRAPH_EXTRACTION_PROMPT_TEMPLATE = (
+    "You are extracting candidate graph suggestions from segmented source material.\n"
+    "Use only the provided schema node and relation types, including aliases.\n\n"
+    "Return a JSON object with exactly this structure:\n"
+    "{\n"
+    '  "nodes": [\n'
+    "    {\n"
+    '      "ref": "<stable unique string id for this node, e.g. node-1>",\n'
+    '      "node_type": "<must match a name from schema.node_types>",\n'
+    '      "properties": {"<merge_key_field>": "<value>", ...},\n'
+    '      "merge_key_payload": {},\n'
+    '      "confidence": 0.9,\n'
+    '      "evidence_refs": [{"segment_id": "<id from segments list>", '
+    '"quote": "<exact quote>"}]\n'
+    "    }\n"
+    "  ],\n"
+    '  "relations": [\n'
+    "    {\n"
+    '      "relation_type": "<must match a name from schema.relation_types>",\n'
+    '      "from_ref": "<ref of the source node>",\n'
+    '      "to_ref": "<ref of the target node>",\n'
+    '      "properties": {},\n'
+    '      "confidence": 0.85,\n'
+    '      "evidence_refs": [{"segment_id": "<id from segments list>", '
+    '"quote": "<exact quote>"}]\n'
+    "    }\n"
+    "  ]\n"
+    "}\n\n"
+    "Rules:\n"
+    "- 'ref' must be a unique string (e.g. node-1, node-2); "
+    "never use 'id' or 'type' as field names.\n"
+    "{type_matching_rule}"
+    "- 'from_ref' and 'to_ref' must match a 'ref' defined in the nodes list.\n"
+    "- Put the merge key value inside 'properties' (e.g. {\"name\": \"Alice\"}).\n"
+    "- Only reference segment_ids that appear in the input payload.\n"
+    "- Do not add any fields outside this schema."
+)
 CANDIDATE_GRAPH_EXTRACTION_V1 = StructuredPromptDefinition(
     prompt_key=CANDIDATE_GRAPH_EXTRACTION_PROMPT_KEY,
     version="candidate_graph_extraction_v1",
     schema_name="candidate_graph_extraction_v1",
-    prompt_text=(
-        "You are extracting candidate graph suggestions from segmented source material.\n"
-        "Use only the provided schema node and relation types, including aliases.\n\n"
-        "Return a JSON object with exactly this structure:\n"
-        "{\n"
-        '  "nodes": [\n'
-        "    {\n"
-        '      "ref": "<stable unique string id for this node, e.g. node-1>",\n'
-        '      "node_type": "<must match a name from schema.node_types>",\n'
-        '      "properties": {"<merge_key_field>": "<value>", ...},\n'
-        '      "merge_key_payload": {},\n'
-        '      "confidence": 0.9,\n'
-        '      "evidence_refs": [{"segment_id": "<id from segments list>", "quote": "<exact quote>"}]\n'
-        "    }\n"
-        "  ],\n"
-        '  "relations": [\n'
-        "    {\n"
-        '      "relation_type": "<must match a name from schema.relation_types>",\n'
-        '      "from_ref": "<ref of the source node>",\n'
-        '      "to_ref": "<ref of the target node>",\n'
-        '      "properties": {},\n'
-        '      "confidence": 0.85,\n'
-        '      "evidence_refs": [{"segment_id": "<id from segments list>", "quote": "<exact quote>"}]\n'
-        "    }\n"
-        "  ]\n"
-        "}\n\n"
-        "Rules:\n"
-        "- 'ref' must be a unique string (e.g. node-1, node-2); never use 'id' or 'type' as field names.\n"
-        "- 'node_type' and 'relation_type' must exactly match schema names (case-sensitive).\n"
-        "- 'from_ref' and 'to_ref' must match a 'ref' defined in the nodes list.\n"
-        "- Put the merge key value inside 'properties' (e.g. {\"name\": \"Alice\"}).\n"
-        "- Only reference segment_ids that appear in the input payload.\n"
-        "- Do not add any fields outside this schema."
+    prompt_text=CANDIDATE_GRAPH_EXTRACTION_PROMPT_TEMPLATE.replace(
+        "{type_matching_rule}",
+        "- 'node_type' and 'relation_type' must exactly match schema names (case-sensitive).\n",
     ),
 )
-DEFAULT_STRUCTURED_PROMPTS = [CANDIDATE_GRAPH_EXTRACTION_V1]
+CANDIDATE_GRAPH_EXTRACTION_V2 = StructuredPromptDefinition(
+    prompt_key=CANDIDATE_GRAPH_EXTRACTION_PROMPT_KEY,
+    version="candidate_graph_extraction_v2",
+    schema_name="candidate_graph_extraction_v2",
+    prompt_text=CANDIDATE_GRAPH_EXTRACTION_PROMPT_TEMPLATE.replace(
+        "{type_matching_rule}",
+        "- 'node_type' and 'relation_type' must match a schema name or alias "
+        "(case-insensitive).\n",
+    ),
+)
+DEFAULT_STRUCTURED_PROMPTS = [CANDIDATE_GRAPH_EXTRACTION_V1, CANDIDATE_GRAPH_EXTRACTION_V2]
 
 
 @dataclass(slots=True)

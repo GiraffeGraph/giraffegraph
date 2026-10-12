@@ -44,7 +44,12 @@ from app.domain.orchestration.queue_views import (
     sort_processing_jobs,
 )
 from app.domain.project.entities import Project
-from app.domain.review.entities import ProjectReviewQueue, ReviewItem, ReviewQueueRunEntry
+from app.domain.review.entities import (
+    ProjectReviewQueue,
+    ReviewDecision,
+    ReviewItem,
+    ReviewQueueRunEntry,
+)
 from app.domain.schema.entities import (
     NodeTypeDefinition,
     PropertyDefinition,
@@ -65,6 +70,7 @@ from app.infrastructure.persistence.postgres.models import (
     ProjectModel,
     PropertyDefinitionModel,
     RelationTypeModel,
+    ReviewDecisionModel,
     ReviewItemModel,
     SchemaVersionModel,
     SegmentModel,
@@ -95,6 +101,41 @@ def to_processing_job_domain(model: ProcessingJobModel) -> ProcessingJob:
         started_at=model.started_at,
         completed_at=model.completed_at,
     )
+
+
+def to_review_decision_domain(model: ReviewDecisionModel) -> ReviewDecision:
+    return ReviewDecision(
+        decision_id=model.decision_id,
+        review_item_id=model.review_item_id,
+        run_id=model.run_id,
+        item_type=model.item_type,
+        item_ref=model.item_ref,
+        action=model.action,
+        reviewer_id=model.reviewer_id,
+        reviewer_note=model.reviewer_note,
+        duration_ms=model.duration_ms,
+        before_json=model.before_json,
+        after_json=model.after_json,
+        decided_at=model.decided_at,
+    )
+
+
+def load_review_decisions(session: Session, run_ids: list[str]) -> list[ReviewDecision]:
+    models = session.scalars(
+        select(ReviewDecisionModel)
+        .where(ReviewDecisionModel.run_id.in_(run_ids))
+        .order_by(ReviewDecisionModel.decided_at.asc(), ReviewDecisionModel.decision_id.asc())
+    ).all()
+    return [to_review_decision_domain(model) for model in models]
+
+
+def group_review_decisions_by_item(
+    decisions: list[ReviewDecision],
+) -> dict[str, list[ReviewDecision]]:
+    decisions_by_item: dict[str, list[ReviewDecision]] = {}
+    for decision in decisions:
+        decisions_by_item.setdefault(decision.review_item_id, []).append(decision)
+    return decisions_by_item
 
 
 @dataclass(slots=True)
@@ -268,6 +309,7 @@ class PostgresSchemaRepository(SchemaRepository):
             aliases=relation_type.aliases,
             extraction_hints=relation_type.extraction_hints,
             required_properties=relation_type.required_properties,
+            merge_keys=relation_type.merge_keys,
             confidence_threshold=relation_type.confidence_threshold,
             is_active=relation_type.is_active,
             properties=[
@@ -343,6 +385,7 @@ class PostgresSchemaRepository(SchemaRepository):
             aliases=model.aliases,
             extraction_hints=model.extraction_hints,
             required_properties=model.required_properties,
+            merge_keys=model.merge_keys,
             properties=[self._to_property_domain(item) for item in model.properties],
             confidence_threshold=model.confidence_threshold,
             is_active=model.is_active,
@@ -1314,7 +1357,12 @@ class PostgresReviewItemRepository(ReviewItemRepository):
     def get(self, review_item_id: str) -> ReviewItem | None:
         with self.session_factory() as session:
             model = session.get(ReviewItemModel, review_item_id)
-            return None if model is None else self._to_domain(model)
+            if model is None:
+                return None
+            decisions_by_item = group_review_decisions_by_item(
+                load_review_decisions(session, [model.run_id])
+            )
+            return self._to_domain(model, decisions_by_item.get(model.review_item_id, []))
 
     def save(self, item: ReviewItem) -> None:
         with self.session_factory() as session:
@@ -1346,7 +1394,37 @@ class PostgresReviewItemRepository(ReviewItemRepository):
                 .order_by(ReviewItemModel.created_at.asc())
             )
             models = session.scalars(statement).all()
-            return [self._to_domain(model) for model in models]
+            decisions_by_item = group_review_decisions_by_item(
+                load_review_decisions(session, [run_id])
+            )
+            return [
+                self._to_domain(model, decisions_by_item.get(model.review_item_id, []))
+                for model in models
+            ]
+
+    def add_decision(self, decision: ReviewDecision) -> None:
+        with self.session_factory() as session:
+            session.add(
+                ReviewDecisionModel(
+                    decision_id=decision.decision_id,
+                    review_item_id=decision.review_item_id,
+                    run_id=decision.run_id,
+                    item_type=decision.item_type,
+                    item_ref=decision.item_ref,
+                    action=decision.action,
+                    reviewer_id=decision.reviewer_id,
+                    reviewer_note=decision.reviewer_note,
+                    duration_ms=decision.duration_ms,
+                    before_json=decision.before_json,
+                    after_json=decision.after_json,
+                    decided_at=decision.decided_at,
+                )
+            )
+            session.commit()
+
+    def list_decisions_by_run(self, run_id: str) -> list[ReviewDecision]:
+        with self.session_factory() as session:
+            return load_review_decisions(session, [run_id])
 
     def _to_model(self, item: ReviewItem) -> ReviewItemModel:
         return ReviewItemModel(
@@ -1361,7 +1439,7 @@ class PostgresReviewItemRepository(ReviewItemRepository):
             created_at=item.created_at,
         )
 
-    def _to_domain(self, model: ReviewItemModel) -> ReviewItem:
+    def _to_domain(self, model: ReviewItemModel, decisions: list[ReviewDecision]) -> ReviewItem:
         return ReviewItem(
             review_item_id=model.review_item_id,
             run_id=model.run_id,
@@ -1372,6 +1450,7 @@ class PostgresReviewItemRepository(ReviewItemRepository):
             status=model.status,
             reviewer_note=model.reviewer_note,
             created_at=model.created_at,
+            decisions=decisions,
         )
 
 
@@ -1411,10 +1490,16 @@ class PostgresReviewQueueRepository(ReviewQueueRepository):
                 .order_by(ReviewItemModel.created_at.desc())
             ).all()
 
+            decisions_by_item = group_review_decisions_by_item(
+                load_review_decisions(session, run_ids)
+            )
             review_items_by_run: dict[str, list[ReviewItem]] = {}
             for model in review_item_models:
                 review_items_by_run.setdefault(model.run_id, []).append(
-                    self._to_review_item_domain(model)
+                    self._to_review_item_domain(
+                        model,
+                        decisions_by_item.get(model.review_item_id, []),
+                    )
                 )
 
             open_review_count = 0
@@ -1620,7 +1705,11 @@ class PostgresReviewQueueRepository(ReviewQueueRepository):
             metadata_json=model.metadata_json,
         )
 
-    def _to_review_item_domain(self, model: ReviewItemModel) -> ReviewItem:
+    def _to_review_item_domain(
+        self,
+        model: ReviewItemModel,
+        decisions: list[ReviewDecision],
+    ) -> ReviewItem:
         return ReviewItem(
             review_item_id=model.review_item_id,
             run_id=model.run_id,
@@ -1631,6 +1720,7 @@ class PostgresReviewQueueRepository(ReviewQueueRepository):
             status=model.status,
             reviewer_note=model.reviewer_note,
             created_at=model.created_at,
+            decisions=decisions,
         )
 
     def _to_candidate_node_domain(self, model: CandidateNodeModel) -> CandidateNode:

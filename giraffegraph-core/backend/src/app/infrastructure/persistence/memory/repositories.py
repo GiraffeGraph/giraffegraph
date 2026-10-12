@@ -49,7 +49,12 @@ from app.domain.orchestration.queue_views import (
     sort_processing_jobs,
 )
 from app.domain.project.entities import Project
-from app.domain.review.entities import ProjectReviewQueue, ReviewItem, ReviewQueueRunEntry
+from app.domain.review.entities import (
+    ProjectReviewQueue,
+    ReviewDecision,
+    ReviewItem,
+    ReviewQueueRunEntry,
+)
 from app.domain.schema.entities import NodeTypeDefinition, RelationTypeDefinition, SchemaVersion
 from app.domain.shared.enums import ProcessingJobType
 from app.domain.shared.resolution import build_canonical_merge_key
@@ -64,6 +69,15 @@ from app.infrastructure.persistence.review_queue_builders import (
     filter_review_items,
     sort_review_items,
 )
+
+
+def attach_review_decisions(store: InMemoryStore, item: ReviewItem) -> ReviewItem:
+    item.decisions = [
+        decision
+        for decision in store.review_decisions_by_run.get(item.run_id, [])
+        if decision.review_item_id == item.review_item_id
+    ]
+    return item
 
 
 @dataclass(slots=True)
@@ -493,7 +507,7 @@ class InMemoryReviewItemRepository(ReviewItemRepository):
         for items in self.store.review_items_by_run.values():
             for item in items:
                 if item.review_item_id == review_item_id:
-                    return item
+                    return attach_review_decisions(self.store, item)
         return None
 
     def save(self, item: ReviewItem) -> None:
@@ -508,7 +522,16 @@ class InMemoryReviewItemRepository(ReviewItemRepository):
         self.store.review_items_by_run[run_id] = items
 
     def list_by_run(self, run_id: str) -> list[ReviewItem]:
-        return list(self.store.review_items_by_run.get(run_id, []))
+        return [
+            attach_review_decisions(self.store, item)
+            for item in self.store.review_items_by_run.get(run_id, [])
+        ]
+
+    def add_decision(self, decision: ReviewDecision) -> None:
+        self.store.review_decisions_by_run.setdefault(decision.run_id, []).append(decision)
+
+    def list_decisions_by_run(self, run_id: str) -> list[ReviewDecision]:
+        return list(self.store.review_decisions_by_run.get(run_id, []))
 
 
 @dataclass(slots=True)
@@ -554,7 +577,10 @@ class InMemoryReviewQueueRepository(ReviewQueueRepository):
                 )
             }
 
-            all_review_items = list(self.store.review_items_by_run.get(run.run_id, []))
+            all_review_items = [
+                attach_review_decisions(self.store, item)
+                for item in self.store.review_items_by_run.get(run.run_id, [])
+            ]
             run_open_review_count = sum(
                 1 for review_item in all_review_items if review_item.status.value == "open"
             )
@@ -633,7 +659,12 @@ class InMemoryGraphDeltaRepository(GraphDeltaRepository):
 class InMemoryCanonicalGraphRepository(CanonicalGraphRepository):
     store: InMemoryStore
 
-    def commit_bundle(self, bundle: CanonicalCommitBundle) -> GraphDelta:
+    def commit_bundle(
+        self,
+        bundle: CanonicalCommitBundle,
+        *,
+        relation_identity_keys: dict[str, str],
+    ) -> GraphDelta:
         delta = bundle.delta
         node_refs_by_candidate: dict[str, tuple[str, str]] = {}
 
@@ -681,6 +712,9 @@ class InMemoryCanonicalGraphRepository(CanonicalGraphRepository):
                     "Canonical commit received relation candidates without canonical node refs."
                 )
 
+            relation_identity_key = relation_identity_keys[
+                candidate_relation.candidate_relation_id
+            ]
             relation_record_key = (
                 delta.project_id,
                 candidate_relation.relation_type,
@@ -688,6 +722,7 @@ class InMemoryCanonicalGraphRepository(CanonicalGraphRepository):
                 from_ref[1],
                 to_ref[0],
                 to_ref[1],
+                relation_identity_key,
             )
             relation_record = self.store.canonical_relations.get(relation_record_key)
             created = relation_record is None
@@ -699,6 +734,7 @@ class InMemoryCanonicalGraphRepository(CanonicalGraphRepository):
                     from_merge_key=from_ref[1],
                     to_node_type=to_ref[0],
                     to_merge_key=to_ref[1],
+                    relation_identity_key=relation_identity_key,
                 )
                 self.store.canonical_relations[relation_record_key] = relation_record
 
@@ -822,16 +858,25 @@ class InMemoryCanonicalGraphRepository(CanonicalGraphRepository):
         from_merge_key: str,
         to_node_type: str,
         to_merge_key: str,
+        relation_identity_key: str | None = None,
     ) -> CanonicalRelationDetail | None:
-        record = self.store.canonical_relations.get(
+        edge_key = (
+            project_id,
+            relation_type,
+            from_node_type,
+            from_merge_key,
+            to_node_type,
+            to_merge_key,
+        )
+        record = min(
             (
-                project_id,
-                relation_type,
-                from_node_type,
-                from_merge_key,
-                to_node_type,
-                to_merge_key,
-            )
+                item
+                for record_key, item in self.store.canonical_relations.items()
+                if record_key[:6] == edge_key
+                and relation_identity_key in (None, item.relation_identity_key)
+            ),
+            key=lambda item: item.relation_identity_key,
+            default=None,
         )
         if record is None:
             return None

@@ -144,6 +144,7 @@ def add_relation_type(
             aliases=request.aliases,
             extraction_hints=request.extraction_hints,
             required_properties=request.required_properties,
+            merge_keys=request.merge_keys,
             confidence_threshold=request.confidence_threshold,
             properties=[
                 PropertyDefinitionInput(

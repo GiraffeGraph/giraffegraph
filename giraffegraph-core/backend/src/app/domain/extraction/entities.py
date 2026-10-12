@@ -3,6 +3,10 @@ from datetime import UTC, datetime
 
 from app.domain.shared.enums import CandidateStatus, ExtractionExecutionStatus
 
+SCHEMA_PROPOSAL_ITEM_TYPE = "schema_proposal"
+SCHEMA_TYPE_PROPOSAL = "schema_type_proposal"
+SCHEMA_PROPERTY_PROPOSAL = "schema_property_proposal"
+
 
 @dataclass(slots=True, kw_only=True)
 class EvidenceRef:
@@ -58,6 +62,24 @@ class SuggestedRelation:
 
 
 @dataclass(slots=True, kw_only=True)
+class SchemaProposal:
+    reason_code: str
+    kind: str
+    type_name: str
+    property_name: str | None = None
+    count: int = 0
+    sample_quote: str | None = None
+    sample_value: object | None = None
+    dropped_relation_count: int = 0
+
+
+@dataclass(slots=True, kw_only=True)
+class FailedExtractionCall:
+    segment_ids: list[str]
+    error_message: str
+
+
+@dataclass(slots=True, kw_only=True)
 class ExtractionExecutionReport:
     execution_id: str
     run_id: str
@@ -73,6 +95,11 @@ class ExtractionExecutionReport:
     suggested_relations: list[SuggestedRelation] = field(default_factory=list)
     created_candidate_node_ids: list[str] = field(default_factory=list)
     created_candidate_relation_ids: list[str] = field(default_factory=list)
+    call_count: int = 0
+    failed_calls: list[FailedExtractionCall] = field(default_factory=list)
+    dropped_node_count: int = 0
+    dropped_relation_count: int = 0
+    schema_proposals: list[SchemaProposal] = field(default_factory=list)
     started_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     completed_at: datetime = field(default_factory=lambda: datetime.now(UTC))
 

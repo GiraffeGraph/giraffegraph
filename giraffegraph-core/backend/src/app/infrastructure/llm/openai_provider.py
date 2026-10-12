@@ -5,6 +5,7 @@ from typing import Any, Protocol
 from urllib import error, request
 
 from app.application.errors import ExternalServiceError, RuleViolationError
+from app.application.ports.llm_provider import LLMUsage, StructuredGeneration
 
 
 class OpenAITransport(Protocol):
@@ -120,6 +121,24 @@ class OpenAILLMProvider:
             )
         return parsed_output
 
+    def generate_structured_with_usage(
+        self,
+        *,
+        prompt: str,
+        schema_name: str,
+        payload: dict[str, Any],
+        model: str | None = None,
+    ) -> StructuredGeneration:
+        return StructuredGeneration(
+            output=self.generate_structured(
+                prompt=prompt,
+                schema_name=schema_name,
+                payload=payload,
+                model=model,
+            ),
+            usage=LLMUsage(model=model),
+        )
+
     def _extract_content(self, response: dict[str, Any]) -> str:
         choices = response.get("choices")
         if not isinstance(choices, list) or len(choices) == 0:
@@ -128,6 +147,8 @@ class OpenAILLMProvider:
         first_choice = choices[0]
         if not isinstance(first_choice, dict):
             raise ExternalServiceError("OpenAI provider returned an invalid choice payload.")
+        if first_choice.get("finish_reason") == "length":
+            raise ExternalServiceError("OpenAI provider output was truncated at the token limit.")
 
         message = first_choice.get("message")
         if not isinstance(message, dict):
