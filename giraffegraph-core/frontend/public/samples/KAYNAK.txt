@@ -1,0 +1,1 @@
+ornek-hadisler.json: Sanadset 650K derleminden alınmış 10 hadis (altı kitap; proje içindeki data/eval/pilot50/hadiths.json dosyasından seçildi).

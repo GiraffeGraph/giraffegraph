@@ -1,46 +1,46 @@
 import { apiBaseUrl } from "@/shared/api/config";
+import { ApiError, isProviderNotConfigured } from "@/shared/api/errors";
 
 import type {
+  BulkSourceUnitItem,
+  BulkSourceUnitResultRecord,
   CandidateNodeRecord,
   CandidateRelationRecord,
   CanonicalNodeDetailRecord,
   CanonicalNodeRecord,
   CanonicalRelationDetailRecord,
   CanonicalRelationRecord,
+  CommittedHadithListRecord,
   ExtractionResultRecord,
   GraphDeltaRecord,
   GraphOverviewRecord,
   GraphSnapshot,
+  HadithChainViewRecord,
+  NarratorViewRecord,
   ProcessingJobQueueStatusFilter,
   ProcessingJobRecord,
   ProcessingRunRecord,
+  ProjectCreateRecord,
   ProjectProcessingJobQueueRecord,
   ProjectReviewQueueRecord,
   ProjectRecord,
   ReviewDecisionRequest,
   ReviewItemRecord,
+  ReviewItemWithDecisionsRecord,
   ReviewQueueStatusFilter,
   RunValidationRecord,
   SchemaVersionRecord,
   SegmentRecord,
+  SourceUnitProcessRecord,
   SourceUnitRecord,
   SourceUnitSummaryRecord,
+  TemplateRecord,
 } from "@/modules/projects/types";
 
 type QueryValue = string | number | null | undefined;
 
 interface RequestOptions extends RequestInit {
   query?: Record<string, QueryValue>;
-}
-
-export class ApiError extends Error {
-  status: number;
-
-  constructor(message: string, status: number) {
-    super(message);
-    this.name = "ApiError";
-    this.status = status;
-  }
 }
 
 function buildUrl(path: string, query?: Record<string, QueryValue>): string {
@@ -73,12 +73,16 @@ async function requestJson<T>(path: string, options: RequestOptions = {}): Promi
   if (!response.ok) {
     let detail = response.statusText;
     try {
-      const payload = (await response.json()) as { detail?: string };
-      detail = payload.detail ?? detail;
+      const payload = (await response.json()) as { detail?: unknown };
+      if (typeof payload.detail === "string") {
+        detail = payload.detail;
+      } else if (payload.detail !== undefined) {
+        detail = JSON.stringify(payload.detail);
+      }
     } catch {
       // Keep the default status text if the backend body is not JSON.
     }
-    throw new ApiError(detail || "API isteği başarısız oldu.", response.status);
+    throw new ApiError(detail || "İstek başarısız oldu.", response.status);
   }
 
   return (await response.json()) as T;
@@ -159,8 +163,8 @@ export async function listRunReviewItems(runId: string): Promise<ReviewItemRecor
 export async function decideReviewItem(
   reviewItemId: string,
   request: ReviewDecisionRequest,
-): Promise<ReviewItemRecord> {
-  return requestJson<ReviewItemRecord>(`/api/review-items/${reviewItemId}/decision`, {
+): Promise<ReviewItemWithDecisionsRecord> {
+  return requestJson<ReviewItemWithDecisionsRecord>(`/api/review-items/${reviewItemId}/decision`, {
     method: "POST",
     body: JSON.stringify(request),
   });
@@ -259,12 +263,17 @@ export async function loadGraphSnapshot(
 
 // ── Projects ──────────────────────────────────────────────────────────────────
 
+export async function listTemplates(): Promise<TemplateRecord[]> {
+  return requestJson<TemplateRecord[]>("/api/templates");
+}
+
 export async function createProject(body: {
   name: string;
   description?: string | null;
   template_id?: string | null;
-}): Promise<ProjectRecord> {
-  return requestJson<ProjectRecord>("/api/projects", {
+  apply_template_schema?: boolean;
+}): Promise<ProjectCreateRecord> {
+  return requestJson<ProjectCreateRecord>("/api/projects", {
     method: "POST",
     body: JSON.stringify(body),
   });
@@ -354,6 +363,55 @@ export async function createSourceUnit(
   });
 }
 
+export async function bulkCreateSourceUnits(
+  projectId: string,
+  body: { source_type: string; items: BulkSourceUnitItem[] },
+): Promise<BulkSourceUnitResultRecord> {
+  return requestJson<BulkSourceUnitResultRecord>(
+    `/api/projects/${projectId}/source-units/bulk`,
+    { method: "POST", body: JSON.stringify(body) },
+  );
+}
+
+export async function processSourceUnits(
+  projectId: string,
+  body: {
+    source_unit_ids: string[];
+    llm_provider?: string | null;
+    llm_model?: string | null;
+    commit?: boolean;
+  },
+): Promise<SourceUnitProcessRecord> {
+  return requestJson<SourceUnitProcessRecord>(
+    `/api/projects/${projectId}/source-units/process`,
+    { method: "POST", body: JSON.stringify(body) },
+  );
+}
+
+/**
+ * Tells whether the server can extract with the given provider. The API has no endpoint
+ * that lists providers, so this sends a process request for a hadith id that cannot exist:
+ * the server checks the provider first and answers 422 when it is not configured; otherwise
+ * it reports the unknown id as failed without starting anything.
+ */
+export async function isExtractionProviderConfigured(
+  projectId: string,
+  provider: string,
+): Promise<boolean> {
+  try {
+    await processSourceUnits(projectId, {
+      source_unit_ids: ["00000000-0000-0000-0000-000000000000"],
+      llm_provider: provider,
+    });
+    return true;
+  } catch (error: unknown) {
+    if (isProviderNotConfigured(error)) {
+      return false;
+    }
+    throw error;
+  }
+}
+
 export async function generateSegments(
   sourceUnitId: string,
   strategy = "paragraphs",
@@ -401,4 +459,30 @@ export async function resolveDuplicates(runId: string): Promise<RunValidationRec
 
 export async function commitRun(runId: string): Promise<GraphDeltaRecord> {
   return requestJson<GraphDeltaRecord>(`/api/runs/${runId}/commit`, { method: "POST" });
+}
+
+// ── Chains ────────────────────────────────────────────────────────────────────
+
+export async function listCommittedHadiths(
+  projectId: string,
+): Promise<CommittedHadithListRecord> {
+  return requestJson<CommittedHadithListRecord>(`/api/projects/${projectId}/chains`);
+}
+
+export async function getHadithChains(
+  projectId: string,
+  hadithRef: string,
+): Promise<HadithChainViewRecord> {
+  return requestJson<HadithChainViewRecord>(`/api/projects/${projectId}/chains/hadith`, {
+    query: { hadith_ref: hadithRef },
+  });
+}
+
+export async function getNarrator(
+  projectId: string,
+  name: string,
+): Promise<NarratorViewRecord> {
+  return requestJson<NarratorViewRecord>(`/api/projects/${projectId}/chains/narrator`, {
+    query: { name },
+  });
 }

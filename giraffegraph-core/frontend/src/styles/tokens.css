@@ -1,0 +1,100 @@
+/*
+ * Design tokens. Every colour, size and distance in the dashboard comes from here.
+ * Palette and type follow the public site (giraffegraph.com): deep space-blue surfaces,
+ * honey-bronze as the single accent, pale slate for secondary text.
+ */
+:root {
+  /* Surfaces */
+  --bg-base: #0b1624;
+  --bg-sunken: #0f1d2f;
+  --bg-surface: #1d2e47;
+  --bg-elevated: #243650;
+  --bg-hover: #324155;
+
+  /* Lines */
+  --border-subtle: #1a2f44;
+  --border-default: #253d5a;
+  --border-strong: #3a5375;
+
+  /* Text */
+  --text-primary: #f4f6f8;
+  --text-secondary: #a7adb3;
+  --text-subtle: #8593a4;
+  --text-muted: #5a6a7e;
+  --text-inverse: #0b1624;
+
+  /* Accent: honey bronze, primary actions only */
+  --primary: #e9ae3f;
+  --primary-bright: #f0c468;
+  --primary-dark: #c4893a;
+  --primary-soft: rgba(233, 174, 63, 0.14);
+  --primary-line: rgba(233, 174, 63, 0.45);
+
+  /* Meaning. Always paired with a word or an icon, never colour alone. */
+  --done: #52c4a4;
+  --done-soft: rgba(82, 196, 164, 0.12);
+  --done-line: rgba(82, 196, 164, 0.4);
+  --attention: #d4785a;
+  --attention-soft: rgba(212, 120, 90, 0.13);
+  --attention-line: rgba(212, 120, 90, 0.45);
+  --neutral: #a7adb3;
+  --neutral-soft: rgba(167, 173, 179, 0.1);
+  --neutral-line: rgba(167, 173, 179, 0.28);
+
+  /* Spacing: 4 / 8 px scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius: tighter inside, softer on containers */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Type families */
+  --font-ui: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-arabic: var(--font-naskh), "Noto Naskh Arabic", "Amiri", "Scheherazade New",
+    "Traditional Arabic", "Geeza Pro", "Segoe UI", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Type scale: interface */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --leading-ui: 1.55;
+  --leading-tight: 1.2;
+
+  /* Type scale: Arabic reading text */
+  --arabic-sm: 1.125rem;
+  --arabic-md: 1.375rem;
+  --arabic-lg: 1.625rem;
+  --arabic-leading: 2.15;
+  --arabic-leading-tight: 1.7;
+
+  /* Layout */
+  --page-width: 1160px;
+  --measure: 62ch;
+  --control-height: 44px;
+  --control-height-sm: 36px;
+
+  /* Layers */
+  --layer-header: 10;
+  --layer-dialog: 30;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration: 160ms;
+
+  --shadow-raised: 0 12px 32px rgba(4, 10, 20, 0.45);
+}

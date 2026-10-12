@@ -1,0 +1,171 @@
+/* ── App frame ─────────────────────────────────────────────────────────── */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--layer-header);
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(11, 22, 36, 0.94);
+}
+
+.app-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  max-width: var(--page-width);
+  min-height: 56px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.page {
+  display: grid;
+  gap: var(--space-6);
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5) var(--space-8);
+}
+
+/* ── Home ──────────────────────────────────────────────────────────────── */
+
+.home {
+  gap: var(--space-7);
+}
+
+.home-intro {
+  max-width: 44rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-4);
+}
+
+.project-card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  height: 100%;
+  min-height: 132px;
+  padding: var(--space-5);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition:
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+a.project-card:hover {
+  border-color: var(--primary-line);
+  background: var(--bg-elevated);
+}
+
+.project-card h3 {
+  font-size: var(--text-lg);
+  overflow-wrap: anywhere;
+}
+
+.project-card-status {
+  min-height: 1.55em;
+}
+
+.project-card .status {
+  align-self: end;
+  margin-top: var(--space-3);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.project-card.is-placeholder {
+  gap: var(--space-3);
+}
+
+.create-form {
+  max-width: 34rem;
+}
+
+/* ── Project frame ─────────────────────────────────────────────────────── */
+
+.project-page {
+  gap: var(--space-5);
+  padding-top: var(--space-5);
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.project-header h1 {
+  overflow-wrap: anywhere;
+}
+
+.project-status-line {
+  min-height: 1.55em;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.project-main {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+  padding-top: var(--space-2);
+}
+
+.step-screen {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.step-intro {
+  display: grid;
+  gap: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: var(--space-5) var(--space-4) var(--space-7);
+  }
+
+  .app-header-inner {
+    padding: 0 var(--space-4);
+  }
+
+  .project-header {
+    flex-direction: column;
+  }
+
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

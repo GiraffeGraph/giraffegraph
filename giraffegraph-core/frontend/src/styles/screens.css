@@ -1,0 +1,495 @@
+/* ── Step 1: load text ─────────────────────────────────────────────────── */
+
+.load-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  align-items: start;
+  gap: var(--space-5);
+}
+
+.arabic-input {
+  font-family: var(--font-arabic), var(--font-ui);
+  font-size: var(--arabic-sm);
+  line-height: var(--arabic-leading-tight);
+}
+
+.load-label-field {
+  max-width: 22rem;
+}
+
+.load-preview {
+  min-height: 1.55em;
+}
+
+.hadith-ref-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-1) var(--space-5);
+  max-height: 16rem;
+  overflow: auto;
+}
+
+.hadith-ref-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--text-primary);
+}
+
+/* ── Step 2: extract chains ────────────────────────────────────────────── */
+
+.method-list {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 44rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.method-list legend {
+  margin-bottom: var(--space-3);
+  padding: 0;
+  font-weight: 600;
+}
+
+.method-option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  min-height: 72px;
+  padding: var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: border-color var(--duration) var(--ease);
+}
+
+.method-option:hover {
+  border-color: var(--border-strong);
+}
+
+.method-option.is-selected {
+  border-color: var(--primary-line);
+}
+
+.method-option input {
+  width: 1.1em;
+  height: 1.1em;
+  margin: 3px 0 0;
+  accent-color: var(--primary);
+}
+
+.method-option strong,
+.method-option .small {
+  display: block;
+}
+
+.method-list:disabled .method-option {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ── Step 3: review ────────────────────────────────────────────────────── */
+
+.reviewer-form {
+  max-width: 36rem;
+}
+
+.reviewer-line {
+  min-height: 1.55em;
+}
+
+.review-placeholder {
+  min-height: 320px;
+}
+
+.review-item {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.review-item h3 {
+  font-size: var(--text-lg);
+}
+
+.review-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 1fr);
+  align-items: start;
+  gap: var(--space-5);
+}
+
+.review-text {
+  min-height: 220px;
+  max-height: min(62vh, 560px);
+  overflow: auto;
+}
+
+.suggestion-name {
+  color: var(--text-primary);
+}
+
+.quote {
+  display: block;
+  padding-right: var(--space-3);
+  border-right: 2px solid var(--primary-line);
+  color: var(--text-secondary);
+  quotes: none;
+}
+
+.link-figure {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg-sunken);
+}
+
+.link-figure-arrow {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.field-list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.field-list > div {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+.field-list dt {
+  color: var(--text-secondary);
+}
+
+.decision-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.decision-actions .button-primary {
+  grid-column: 1 / -1;
+}
+
+.review-note {
+  width: min(26rem, 80vw);
+  margin-top: var(--space-2);
+}
+
+.edit-form {
+  padding: var(--space-5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+}
+
+.write-card {
+  max-width: 44rem;
+}
+
+.history-list {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.history-list li {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-sunken);
+}
+
+.history-note {
+  grid-column: 2 / -1;
+}
+
+/* ── Step 4: read chains ───────────────────────────────────────────────── */
+
+.chains-layout {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-5);
+}
+
+.hadith-nav {
+  position: sticky;
+  top: 72px;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.hadith-list {
+  display: grid;
+  gap: var(--space-1);
+  max-height: calc(100dvh - 260px);
+  min-height: 120px;
+  padding-right: var(--space-1);
+  overflow: auto;
+}
+
+.hadith-row {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  text-align: left;
+  transition: background-color var(--duration) var(--ease);
+}
+
+.hadith-row:hover {
+  background: var(--bg-surface);
+}
+
+.hadith-row.is-selected {
+  border-color: var(--primary-line);
+  background: var(--bg-surface);
+}
+
+.chains-detail {
+  display: grid;
+  align-items: start;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.chains-main {
+  min-width: 0;
+  min-height: 420px;
+}
+
+.is-stale {
+  opacity: 0.55;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.hadith-title {
+  font-size: var(--text-lg);
+}
+
+.chain-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.chain-column {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 480px;
+  padding: var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-sunken);
+}
+
+.chain-column > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.chain-list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.chain-narrator {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.narrator-button {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  text-align: right;
+  transition:
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+.narrator-button:hover {
+  border-color: var(--primary-line);
+  background: var(--bg-elevated);
+}
+
+.narrator-button.is-selected {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.chain-link {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+}
+
+.chain-link-arrow {
+  display: grid;
+  justify-items: center;
+  padding-top: 4px;
+  color: var(--text-subtle);
+}
+
+.chain-link-body {
+  display: grid;
+  gap: var(--space-1);
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--border-default);
+}
+
+.chain-link-quote .quote {
+  display: inline;
+  padding: 0;
+  border: 0;
+}
+
+.chain-gap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px dashed var(--attention-line);
+  border-radius: var(--radius-md);
+  color: var(--attention);
+  font-size: var(--text-sm);
+}
+
+.narrator-panel {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.narrator-title {
+  margin: 0;
+  font-family: var(--font-arabic);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.neighbour-list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.neighbour {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-sunken);
+  text-align: right;
+  transition: border-color var(--duration) var(--ease);
+}
+
+.neighbour:hover {
+  border-color: var(--primary-line);
+}
+
+.neighbour .small {
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.chip {
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-size: var(--text-sm);
+  transition: border-color var(--duration) var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--primary-line);
+}
+
+.chip.is-selected {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+@media (min-width: 1200px) {
+  .chains-detail.has-narrator {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+
+  .chains-detail.has-narrator .narrator-panel {
+    position: sticky;
+    top: 72px;
+    max-height: calc(100dvh - 96px);
+    overflow: auto;
+  }
+}
+
+@media (max-width: 940px) {
+  .load-layout,
+  .review-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-text {
+    max-height: 46vh;
+  }
+
+  .history-list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .history-note {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .chains-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hadith-nav {
+    position: static;
+  }
+
+  .hadith-list {
+    max-height: 220px;
+  }
+
+  .arabic-reading {
+    font-size: var(--arabic-md);
+  }
+
+  .arabic-block {
+    padding: var(--space-4);
+  }
+}

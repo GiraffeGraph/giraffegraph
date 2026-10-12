@@ -121,6 +121,25 @@ export interface ReviewItemRecord {
   created_at: string;
 }
 
+export interface ReviewDecisionRecord {
+  decision_id: string;
+  review_item_id: string;
+  run_id: string;
+  item_type: string;
+  item_ref: string;
+  action: "accept" | "reject" | "edit";
+  reviewer_id: string;
+  reviewer_note: string | null;
+  duration_ms: number | null;
+  before_json: Record<string, unknown> | null;
+  after_json: Record<string, unknown> | null;
+  decided_at: string;
+}
+
+export interface ReviewItemWithDecisionsRecord extends ReviewItemRecord {
+  decisions: ReviewDecisionRecord[];
+}
+
 export interface ProcessingJobRecord {
   job_id: string;
   project_id: string;
@@ -225,7 +244,7 @@ export interface ReviewEvidenceSnippetRecord {
 }
 
 export interface ReviewQueueItemRecord {
-  review_item: ReviewItemRecord;
+  review_item: ReviewItemWithDecisionsRecord;
   candidate_node: CandidateNodeRecord | null;
   candidate_relation: CandidateRelationRecord | null;
   headline: string;
@@ -362,6 +381,8 @@ export interface GraphDeltaRecord {
 
 export interface ReviewDecisionRequest {
   action: "accept" | "reject" | "edit";
+  reviewer_id: string;
+  duration_ms?: number | null;
   reviewer_note?: string | null;
   node_type?: string | null;
   relation_type?: string | null;
@@ -370,4 +391,175 @@ export interface ReviewDecisionRequest {
   properties?: Record<string, unknown>;
   merge_key_payload?: Record<string, unknown>;
   confidence?: number | null;
+}
+
+// ── Template project creation ────────────────────────────────────────────────
+
+export interface TemplateSchemaBlueprintRecord {
+  node_types: string[];
+  relation_types: string[];
+  segmentation_strategy: string;
+}
+
+export interface TemplateRecord {
+  template_id: string;
+  name: string;
+  slug: string;
+  description: string;
+  is_system: boolean;
+  created_at: string;
+  schema_blueprint: TemplateSchemaBlueprintRecord | null;
+}
+
+export interface AppliedTemplateSchemaRecord {
+  schema_version_id: string;
+  version_no: number;
+  status: string;
+  pipeline_version: string;
+  segmentation_strategy: string;
+}
+
+export interface ProjectCreateRecord extends ProjectRecord {
+  template_schema: AppliedTemplateSchemaRecord | null;
+}
+
+// ── Bulk ingest & processing ─────────────────────────────────────────────────
+
+export interface BulkSourceUnitItem {
+  external_ref: string;
+  title?: string | null;
+  raw_content: string;
+}
+
+export interface BulkSourceUnitItemResultRecord {
+  index: number;
+  external_ref: string;
+  status: "created" | "duplicate";
+  source_unit_id: string | null;
+  detail: string | null;
+}
+
+export interface BulkSourceUnitResultRecord {
+  project_id: string;
+  schema_version_id: string;
+  created_count: number;
+  duplicate_count: number;
+  results: BulkSourceUnitItemResultRecord[];
+}
+
+export type SourceUnitProcessStatus = "committed" | "validated" | "needs_review" | "failed";
+
+export interface SourceUnitProcessResultRecord {
+  source_unit_id: string;
+  external_ref: string | null;
+  status: SourceUnitProcessStatus;
+  run_id: string | null;
+  segment_count: number;
+  candidate_node_count: number;
+  candidate_relation_count: number;
+  validated_node_count: number;
+  validated_relation_count: number;
+  open_review_count: number;
+  failed_call_count: number;
+  detail: string | null;
+}
+
+export interface SourceUnitProcessRecord {
+  project_id: string;
+  segmentation_strategy: string;
+  llm_provider: string;
+  llm_model: string | null;
+  processed_count: number;
+  failed_count: number;
+  committed_count: number;
+  results: SourceUnitProcessResultRecord[];
+}
+
+// ── Chains ───────────────────────────────────────────────────────────────────
+
+export interface FactEvidenceRecord {
+  segment_id: string;
+  segment_order: number | null;
+  segment_text: string | null;
+  quote: string | null;
+  start_offset: number | null;
+  end_offset: number | null;
+  source_start_offset: number | null;
+  source_end_offset: number | null;
+}
+
+export interface FactAcceptanceRecord {
+  kind: "human" | "policy";
+  policy: string | null;
+  rule_code: string | null;
+  action: string | null;
+  reviewer_id: string | null;
+  decided_at: string | null;
+}
+
+export interface ChainNarratorRecord {
+  name: string;
+  evidence: FactEvidenceRecord[];
+  acceptance: FactAcceptanceRecord | null;
+}
+
+export interface ChainLinkRecord {
+  position: number;
+  from_narrator: string;
+  to_narrator: string;
+  sigha: string | null;
+  evidence: FactEvidenceRecord[];
+  acceptance: FactAcceptanceRecord | null;
+}
+
+export interface NarratorChainRecord {
+  chain_no: number;
+  narrators: string[];
+  links: ChainLinkRecord[];
+}
+
+export interface HadithChainViewRecord {
+  project_id: string;
+  hadith_ref: string;
+  committed: boolean;
+  source_unit: { source_unit_id: string; title: string; raw_content: string } | null;
+  runs: {
+    run_id: string;
+    committed_at: string | null;
+    llm_provider: string | null;
+    llm_model: string | null;
+  }[];
+  chains: NarratorChainRecord[];
+  narrators: ChainNarratorRecord[];
+}
+
+export interface CommittedHadithRecord {
+  hadith_ref: string;
+  source_unit_id: string;
+  title: string;
+  run_id: string;
+  committed_at: string | null;
+}
+
+export interface CommittedHadithListRecord {
+  project_id: string;
+  total_count: number;
+  hadiths: CommittedHadithRecord[];
+}
+
+export interface NarratorNeighbourRecord {
+  name: string;
+  link_count: number;
+  hadith_refs: string[];
+}
+
+export interface NarratorViewRecord {
+  project_id: string;
+  name: string;
+  hadith_count: number;
+  hadiths: { hadith_ref: string; source_unit_id: string; title: string }[];
+  narrated_from_count: number;
+  narrated_from: NarratorNeighbourRecord[];
+  narrated_to_count: number;
+  narrated_to: NarratorNeighbourRecord[];
 }
