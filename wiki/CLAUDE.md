@@ -1,0 +1,82 @@
+# Ajan kuralları (wiki kanonik)
+
+## Purpose
+
+GiraffeGraph bitirme çalışma alanı için oturum kuralları. Her oturum başında okunur.
+
+## İlk okuma sırası
+
+1. `wiki/README.md` — indeks ve projenin tek paragraflık özeti
+2. `wiki/architecture/workspace-map.md` — hangi klasör ne, hangisi kapsam dışı
+3. `wiki/project/roadmap.md` — bugün elde olan ve sıradaki işler
+4. `wiki/evaluation/correctness-measurement.md` — projenin açık ana sorusu
+5. Göreve göre ilgili sayfa
+
+## Kapsam
+
+| Kapsam içi | Kapsam dışı |
+|---|---|
+| `giraffegraph-core/`, `data/`, `web/`, `cache-and-ledger/`, `wiki/` (`wiki/literature/` ve `wiki/sources/` dahil) | `giraffle/`, `giraffe-code/` |
+
+`giraffle/` (not/planlama uygulaması) ve `giraffe-code/` (çok-ajanlı kodlama aracı) aynı GitHub
+organizasyonunda durur ama bitirme projesinin parçası değildir. Proje görevlerinde bu iki klasör
+okunmaz, aranmaz, değiştirilmez. Gerekçe ve ayrıntı: `architecture/workspace-map.md`.
+
+## Değişmezler
+
+- **Kaynak paketleri düzenlenmez.** `wiki/sources/claude-science-context/` ve
+  `wiki/sources/claude-science-results/` 2026-09-30 tarihli donmuş paketlerdir; bütünlükleri
+  `wiki/sources/MANIFEST.sha256` ile sınanır. Yeni bulgu wiki sayfasına ya da yeni bir sonuç klasörüne
+  yazılır. Paketteki bir bulgunun güncel karşılığı: `wiki/sources/README.md`.
+- **Sayı = ölçüm.** Bir script ya da birincil kaynakla üretilmemiş sayı `[UNVERIFIED]` etiketi taşır.
+  Her sayı neyin, kaç veri üzerinde, hangi referansa karşı ölçüldüğünü söyler.
+- **Kaynakça bellekten yazılmaz.** Künye Crossref / arXiv / ACL Anthology'den çekilir. TÜBİTAK
+  formunda üç uydurma referans tespit edildi (`wiki/sources/claude-science-results/04a_kaynak_dogrulama_tablosu.md`).
+- **Sanadset `<NAR>` etiketleri gümüş standarttır.** Onlara karşı ölçülen değer sistemler arası
+  karşılaştırmada kullanılır; "gerçek doğruluk" diye sunulmaz.
+- **TÜBİTAK 2209-A formu bağlayıcıdır.** K-1…K-5 ve H1…H4 ile çelişen bir plan önerilmez; öneri
+  taahhüdü kapsar ya da genişletir (`wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md`).
+- **Öneri ile karar ayrıdır.** `wiki/sources/claude-science-results/` içindeki protokol ve mimari Claude Science
+  önerisidir. Ekip ve danışman onayladığında `wiki/decisions/` altına ADR olarak yazılır. Karar bekleyen
+  sorular ve kodun fiilen varsaydığı yanıtlar: `wiki/project/open-decisions.md`.
+
+## Wiki disiplini
+
+Davranış, ölçüm, plan ya da karar değiştiğinde wiki aynı görevde güncellenir. Wiki kendi git reposudur
+(`GiraffeGraph/giraffegraph-wiki`, özel); değişiklik o repoda commit edilir.
+Yönlendirme kuralları: `WIKI-CREATOR.md`. Kalite çıtası: `architecture/context-quality.md`.
+
+Wiki yapısı değişirken dokunma sırası:
+
+1. `wiki/README.md`
+2. `wiki/CLAUDE.md`
+3. `wiki/architecture/context-quality.md`
+4. `wiki/architecture/file-structure.md`
+5. `wiki/WIKI-CREATOR.md`
+6. `wiki/_templates/*`
+
+## Dil
+
+Wiki Türkçedir; kaynak belgeler (`wiki/sources/`, `wiki/literature/`) Türkçe olduğu
+için tek söz dağarcığı korunur. Teknik terimler ve kod kimlikleri özgün hâliyle yazılır. Dosya adları
+İngilizce `kebab-case`.
+
+## Verification checklist
+
+- [ ] Sayfa doğru klasörde
+- [ ] Her iddia bir kaynak çapasına bağlı (çalışma alanı köküne göre yol)
+- [ ] Her sayı yöntemiyle birlikte
+- [ ] `Last updated` tarihi var
+- [ ] Yeni sayfa `wiki/README.md` indeksine eklendi
+- [ ] `wiki/sources/` altındaki paket dosyalarına dokunulmadı
+
+## Related docs
+
+- `wiki/README.md`
+- `wiki/WIKI-CREATOR.md`
+- `wiki/architecture/workspace-map.md`
+- `wiki/sources/README.md`
+
+## Last updated
+
+2026-10-13
