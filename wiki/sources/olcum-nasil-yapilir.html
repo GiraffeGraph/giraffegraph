@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doğruluğu nasıl ölçeceğiz?</title>
+</head>
+<body>
+
+<h1>Hadisleri işlediğimizde doğru mu yanlış mı, nasıl ölçeceğiz?</h1>
+
+<p>Okuma süresi yaklaşık 10 dakika. Ayrıntılı ve kaynaklı hâli:
+<code>wiki/evaluation/correctness-measurement.md</code>. Tarih: 8 Ekim 2026.</p>
+
+<p><a href="#toplanti">Toplantıda açık duracak kısa sıra listesi (17. bölüm)</a></p>
+
+<hr>
+
+<h2>1. Kısa cevap</h2>
+
+<p><b>Sınav kâğıdı okur gibi ölçeceğiz.</b> Sistemin bir hadisten çıkardığı ravi listesini, bir insanın
+aynı hadis için hazırladığı cevap anahtarıyla karşılaştıracağız. Üç şey sayacağız: doğru bulduğu,
+fazladan uydurduğu ya da yanlış aldığı, kaçırdığı. Doğruluk dediğimiz şey bu üç sayıdan çıkar.</p>
+
+<p>"Çıkan kelime metinde geçiyor mu?" kontrolünü de yapacağız, ama o sadece bir ön elemedir. Tek başına
+doğruluğu göstermez. Nedenini 3. bölümde gerçek bir hadisle göreceksin.</p>
+
+<hr>
+
+<h2>2. Önce: sistem tam olarak ne üretiyor?</h2>
+
+<p>Bir hadisin iki parçası vardır: <b>isnad</b> (hadisi kimin kimden aktardığını söyleyen isim zinciri)
+ve <b>matn</b> (hadisin asıl sözü). Sistem isnad kısmını okur ve şunu çıkarır:</p>
+
+<ol>
+  <li>Zincirdeki <b>raviler</b> (isimler)</li>
+  <li>Ravilerin <b>sırası</b> (kim kimden aldı)</li>
+  <li>Her ismin <b>hangi gerçek kişi</b> olduğu</li>
+</ol>
+
+<p>Örnek, Nesâî 693. Zincirde beş kişi var:</p>
+
+<p>Muhammed b. Mansûr → Süfyân → ez-Zührî → Saîd → Ebû Hüreyre</p>
+
+<p>Ölçmek istediğimiz şey: sistem bu beş ismi, bu sırayla ve doğru kişilere bağlayarak çıkarabildi mi?</p>
+
+<hr>
+
+<h2>3. "İçinde kelime geçiyor mu?" neden yetmez</h2>
+
+<p>İlk akla gelen kontrol şu: sistemin çıkardığı her isim hadis metninde harfi harfine geçiyor mu?
+Geçmiyorsa sistem uydurmuştur. Bu kontrol işe yarar, bedavadır, verinin tamamında çalışır.
+Ama bak ne oluyor.</p>
+
+<h3>Gerçek örnek: Tirmizî 3144</h3>
+
+<ul>
+  <li>Cevap anahtarında <b>4 ravi</b> var.</li>
+  <li>Sistem <b>9 parça</b> çıkardı.</li>
+  <li>Bunların 4'ü gerçekten ravi.</li>
+  <li>Kalan 5'i hadisin sözünden (matn) kopmuş parçalar. Örnek:
+      <span dir="rtl" lang="ar">قتال بدر فقال غبت</span>
+      (yaklaşık: "Bedir savaşı… dedi ki: yoktum"). Bu bir kişi adı değil, cümle parçası.</li>
+</ul>
+
+<p>Şimdi "kelime metinde geçiyor mu" kontrolünü uygula: <b>dokuzunun dokuzu da metinde geçiyor.</b>
+Kontrol hepsine "geçer" dedi. Oysa dokuz cevabın beşi yanlış.</p>
+
+<p><b>Çıkarım:</b> bu kontrol sadece <i>uydurmayı</i> yakalar. Metinde gerçekten bulunan ama ravi olmayan
+bir parçayı ravi diye almayı yakalayamaz. Yani gerekli ama yetersiz.</p>
+
+<p>Pilot çalışmada da aynısını gördük: 605 adayın 605'inin alıntısı kaynak metinde birebir bulundu.
+Kontrol tek bir hata bile yakalamadı.</p>
+
+<hr>
+
+<h2>4. Asıl ölçüm: cevap anahtarıyla karşılaştırma</h2>
+
+<p>Her hadis için bir insan "bu hadisin ravileri şunlardır, sırası şudur" diye yazar. Buna
+<b>cevap anahtarı</b> diyelim (literatürdeki adı: altın standart, gold standard). Sonra sistemin çıktısını
+yanına koyup üç şey sayarız:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Ne sayıyoruz</th><th>Anlamı</th><th>Literatürdeki adı</th></tr>
+  <tr><td><b>Doğru</b></td><td>Sistem buldu, cevap anahtarında da var</td><td>True positive (TP)</td></tr>
+  <tr><td><b>Fazla</b></td><td>Sistem buldu ama cevap anahtarında yok</td><td>False positive (FP)</td></tr>
+  <tr><td><b>Kaçan</b></td><td>Cevap anahtarında var ama sistem bulamadı</td><td>False negative (FN)</td></tr>
+</table>
+
+<p>Bu üç sayıdan iki oran çıkar:</p>
+
+<ul>
+  <li><b>İsabet (precision)</b> = Doğru ÷ (Doğru + Fazla).
+      Soru: "Sistemin söylediklerinin ne kadarı doğru?"</li>
+  <li><b>Kapsama (recall)</b> = Doğru ÷ (Doğru + Kaçan).
+      Soru: "Olması gerekenlerin ne kadarını bulabildi?"</li>
+</ul>
+
+<p>İkisi birlikte verilir, çünkü biri tek başına aldatır. Tirmizî 3144'e dön:</p>
+
+<ul>
+  <li>Doğru = 4, Fazla = 5, Kaçan = 0</li>
+  <li>Kapsama = 4 ÷ 4 = <b>1,00</b> (dört ravinin dördünü de buldu, kusursuz görünüyor)</li>
+  <li>İsabet = 4 ÷ 9 = <b>0,44</b> (ama söylediklerinin yarısından fazlası yanlış)</li>
+</ul>
+
+<p>Sadece kapsamayı söylesek "mükemmel" derdik. Sadece isabeti söylesek, hiçbir şey çıkarmayan ürkek bir
+sistemi ödüllendirirdik. Tek sayı istenirse ikisinin dengeli ortalaması olan <b>F1</b> verilir
+(burada 0,62).</p>
+
+<hr>
+
+<h2>5. İnce nokta: "aynı" derken neyi kastediyoruz?</h2>
+
+<p>Nesâî 693'te sistem beş ravinin beşini de buldu. Dördü cevap anahtarıyla harfi harfine aynı.
+Birincisinde küçük bir fark var:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th></th><th>Metin</th></tr>
+  <tr><td>Cevap anahtarı</td><td><span dir="rtl" lang="ar">محمد بن منصور</span> (Muhammed b. Mansûr)</td></tr>
+  <tr><td>Sistemin çıktısı</td><td><span dir="rtl" lang="ar">محمد بن منصور قال</span> (Muhammed b. Mansûr <i>dedi</i>)</td></tr>
+</table>
+
+<p>İsmin sonuna "dedi" fiili yapışmış. Bu doğru mu sayılır, yanlış mı? Kurala bağlı:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Eşleşme kuralı</th><th>Doğru</th><th>Fazla</th><th>Kaçan</th><th>İsabet</th><th>Kapsama</th></tr>
+  <tr><td><b>Katı:</b> harfi harfine aynı olmalı</td><td>4</td><td>1</td><td>1</td><td>0,80</td><td>0,80</td></tr>
+  <tr><td><b>Gevşek:</b> biri diğerini içeriyorsa kabul</td><td>5</td><td>0</td><td>0</td><td>1,00</td><td>1,00</td></tr>
+</table>
+
+<p><b>Aynı çıktı, iki farklı not.</b> Bu yüzden kuralı ölçümden bağımsız olarak yazılı hâle getiriyoruz ve
+iki sonucu da raporluyoruz. Kuralı sonuca bakıp seçersek sayıyı istediğimiz yere çekmiş oluruz.</p>
+
+<p>Fark küçük değil. Pilotta kural tabanlı ayrıştırıcının F1'i katı kuralda 0,628, gevşek kuralda
+0,879 çıktı (50 hadis, 327 ravi, Sanadset etiketlerine karşı).</p>
+
+<hr>
+
+<h2>6. İsimler doğru, peki sıra doğru mu?</h2>
+
+<p>Beş ismi bulmak yetmez. Hadis ilminde asıl bilgi <i>kimin kimden aldığıdır</i>. Beş ravili bir zincirde
+dört bağlantı vardır:</p>
+
+<p>Muhammed b. Mansûr → Süfyân, Süfyân → ez-Zührî, ez-Zührî → Saîd, Saîd → Ebû Hüreyre</p>
+
+<p>Bir bağlantı (A → B) şu durumda doğru sayılır: A doğru, B doğru ve ikisi zincirde yan yana.
+Bağlantılar için de aynı üç sayıyı (doğru, fazla, kaçan) sayarız. Ayrıca "zincirin tamamı hatasız çıkan
+hadis oranı"na bakarız; tek bir ravi kaçsa zincir kopar.</p>
+
+<hr>
+
+<h2>7. Metnin söyleyemediği: doğru kişi mi?</h2>
+
+<p>Buraya kadar olan her şey <i>yazıyı</i> ölçtü. Ama aynı hadiste iki sorun daha var:</p>
+
+<ul>
+  <li><b>Tek isimler.</b> Zincirde sadece "Süfyân" ve "Saîd" yazıyor. Hangi Süfyân? Hadis tarihinde aynı
+      adı taşıyan birden fazla ünlü ravi var. Metin bunu söylemiyor.</li>
+  <li><b>İsimsiz raviler.</b> Tirmizî 3087'nin zinciri
+      <span dir="rtl" lang="ar">عن أبيه عن جده</span> ("babasından, o da dedesinden") diye bitiyor.
+      İsim yok.</li>
+</ul>
+
+<p>Sistem bu ifadeleri metinden doğru çıkarırsa 4. bölümdeki ölçümden <b>tam puan alır</b>. Ama grafa iki
+farklı Süfyân'ı tek kişi olarak yazarsa graf yanlış olur ve hiçbir yazı karşılaştırması bunu göremez.</p>
+
+<p>Bunun için ayrı bir cevap anahtarı gerekir: her isim için "bu kişi ravi listesindeki şu numaralı
+kişidir" diyen bir <b>uzman kararı</b>. Burada en tehlikeli hata, iki farklı kişiyi tek kişide
+birleştirmektir (over-merge), çünkü zincirin güvenilirlik hükmünü değiştirir.</p>
+
+<hr>
+
+<h2>8. Cevap anahtarı gerektirmeyen kontroller</h2>
+
+<p>Bazı hatalar için kimseye sormaya gerek yoktur, kural yeter:</p>
+
+<ul>
+  <li>Çıkan isim metinde geçiyor mu? (3. bölümdeki ön eleme)</li>
+  <li>Çıkan isim, sistemin kendi gösterdiği alıntının içinde geçiyor mu? Pilotta 318 adayın 32'sinde
+      (%10,1) geçmiyordu; yani bu kontrol gerçekten hata yakalıyor.</li>
+  <li>Şemada tanımlı olmayan bir düğüm ya da ilişki türü üretilmiş mi? Pilotta 100 çağrıda 0.</li>
+  <li>Tarihler tutarlı mı? A, B'den hadis aldıysa ikisinin aynı dönemde yaşamış olması gerekir.
+      (Henüz ölçülmedi.)</li>
+</ul>
+
+<p>Bu kontroller "kesin yanlış"ı yakalar, "doğru"yu kanıtlamaz. Avantajı: verinin tamamında, sıfır
+maliyetle çalışır.</p>
+
+<hr>
+
+<h2>9. Cevap anahtarı nereden gelecek?</h2>
+
+<p>Bütün ölçüm cevap anahtarının kalitesine dayanır. İki seçenek var:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th></th><th>Hazır etiketler (gümüş)</th><th>İnsan etiketi (altın)</th></tr>
+  <tr><td>Ne</td><td>Sanadset veri setinin içindeki hazır ravi etiketleri</td><td>Bizim iki kişiye bağımsız etiketlettiğimiz hadisler</td></tr>
+  <tr><td>Maliyet</td><td>Bedava, 650 bin hadis</td><td>Emek ister, yüzlerce hadis</td></tr>
+  <tr><td>Ne söyletir</td><td>"A sistemi B'den iyi"</td><td>"Sistem şu oranda doğru"</td></tr>
+  <tr><td>Zayıf yanı</td><td>Bu etiketlerin kendi doğruluğunu biz ölçmedik</td><td>Yavaş ve az</td></tr>
+</table>
+
+<p><b>Pilotta yalnız gümüşü kullandık.</b> O yüzden bugün "alan bilgisi verilmiş prompt, düz prompttan
+iyi" diyebiliyoruz ama "sistemimiz %93 doğru" diyemiyoruz. İkisinin arasında üçüncü bir seçenek de var:
+bir kurumun uzmanlarının raviyi tanımladığı hazır veri (15. bölüm).</p>
+
+<h3>İnsan etiketini güvenilir kılan üç kural</h3>
+
+<ol>
+  <li><b>İki kişi, birbirinden bağımsız.</b> Aynı hadisi iki kişi ayrı ayrı etiketler.</li>
+  <li><b>Kör.</b> Etiketleyen kişi sistemin çıktısını görmez. Görürse sistemin cevabına kayar ve
+      ölçüm sistemi kendisiyle karşılaştırmış olur.</li>
+  <li><b>Uyum ölçülür.</b> İki insanın etiketleri birbirine ne kadar benziyor? İki insan bile
+      anlaşamıyorsa görev belirsiz tanımlanmıştır; sistemi o cevap anahtarıyla puanlamak anlamsızdır.
+      Bu sayı (literatürde inter-annotator agreement, Cohen's kappa) sonuçla birlikte raporlanır.</li>
+</ol>
+
+<hr>
+
+<h2>10. Bütün resim: beş soru</h2>
+
+<p>"Doğru mu?" aslında beş ayrı sorudur. Her biri farklı bir şeyle karşılaştırılır:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>#</th><th>Soru</th><th>Neyle karşılaştırılır</th><th>Durum</th></tr>
+  <tr><td>0</td><td>Elimizdeki ham metin doğru metin mi?</td><td>Güvenilir basım</td><td>Ölçülmedi</td></tr>
+  <tr><td>1</td><td>Metinden çıkan isimler ve sıra doğru mu?</td><td>İnsan cevap anahtarı</td><td>Yalnız gümüşe karşı ölçüldü</td></tr>
+  <tr><td>2</td><td>İsim doğru kişiye bağlandı mı?</td><td>Uzman kararı + ravi listesi</td><td>Ölçülmedi</td></tr>
+  <tr><td>3</td><td>Graf kendi kurallarıyla çelişiyor mu?</td><td>Şema ve tarih kuralları</td><td>Kısmen ölçüldü</td></tr>
+  <tr><td>4</td><td>Graf üzerinden verilen cevap doğru mu?</td><td>Cevabı bilinen soru listesi</td><td>Ölçülmedi</td></tr>
+</table>
+
+<p>Sıra önemli: 0 yanlışsa üstündeki her sayı yanlış metni ölçer. Kur'an uygulamasında tam bu yaşandı;
+meal yanlış mütercime atfedilmiş ve karakterleri bozulmuştu, üstüne kurulan her şey bozuk metinden
+üretilmişti. Kur'an'da metin sabit olduğu için ağırlık 0 numaralı sorudadır; hadiste ağırlık 1 ve 2'dedir.</p>
+
+<p><b>Not:</b> taradığım 38 makalenin neredeyse tamamı 4 numaralı soruyla ilgili (üretilen cevabın kalitesi).
+Bizim asıl sorumuz 1 ve 2. Bu ikisi için kaynaklar Zotero'da <code>KG-Hadith-Design</code> koleksiyonunda.</p>
+
+<hr>
+
+<h2>11. Bugüne kadar ne ölçtük?</h2>
+
+<p>Pilot: 50 hadis, 327 ravi, Kütüb-i Sitte'den 5 koleksiyon, tek model, Sanadset etiketlerine (gümüş)
+karşı, gevşek eşleşme kuralıyla.</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Yöntem</th><th>F1</th></tr>
+  <tr><td>Kural tabanlı ayrıştırıcı (LLM yok)</td><td>0,879</td></tr>
+  <tr><td>LLM, yalnız şema verilmiş prompt</td><td>0,865</td></tr>
+  <tr><td>LLM, isnad bilgisi verilmiş prompt</td><td>0,935 (isabet 1,000)</td></tr>
+</table>
+
+<p>Buradan üç şey öğrendik:</p>
+
+<ol>
+  <li>Düz LLM, basit bir kural tabanlı ayrıştırıcıyı geçemiyor. Alan bilgisi verilince geçiyor.</li>
+  <li>Uzun zincirlerde (8–14 ravi) LLM ravi kaçırıyor: kapsama 0,654, ayrıştırıcıda 0,776.</li>
+  <li>LLM'in kendi verdiği "eminim" puanı doğruyu yanlıştan zayıf ayırıyor (AUC 0,626; yazı tura 0,5,
+      kusursuz 1,0). Yani "LLM emin değilse insana gönder" yaklaşımı tek başına güvenilir değil.</li>
+</ol>
+
+<hr>
+
+<h2>12. Öneri: bu hafta atılabilecek ilk adım</h2>
+
+<p>Bu bir öneridir, ekip ve danışman kararı değildir.</p>
+
+<ol>
+  <li>İfta ve AR-Sanad verilerinin lisansını teyit et; uygunsa pilotun 50 hadisini bu hazır etiketlere
+      karşı yeniden puanla (15. bölüm). Bu adım etiketleme gerektirmez.</li>
+  <li>Pilotun 50 hadisini al.</li>
+  <li>Kısa bir etiketleme kılavuzu yaz: ravi nerede başlar, nerede biter, "dedi" gibi fiiller dahil mi,
+      "babasından" gibi isimsiz ifadeler nasıl yazılır.</li>
+  <li>Ekipten iki kişi, sistem çıktısını görmeden, bağımsız etiketlesin.</li>
+  <li>İki etiketin uyumunu ölç.</li>
+  <li>Üç yöntemi bu cevap anahtarına karşı yeniden puanla.</li>
+</ol>
+
+<p>Sonuç: projenin ilk gerçek doğruluk sayısı ve "Sanadset etiketleri ne kadar güvenilir" sorusunun cevabı.
+Sonraki hedef protokol önerisindeki 350–500 hadis.</p>
+
+<hr>
+
+<h2>13. Hocaya bir dakikada anlatım</h2>
+
+<blockquote>
+<p>"Doğruluğu sınav kâğıdı okur gibi ölçüyoruz. Her hadis için bir insan ravi listesini ve sırasını
+yazıyor; sistemin çıktısını bununla karşılaştırıp doğru bulduğunu, fazladan ürettiğini ve kaçırdığını
+sayıyoruz. Bunlardan isabet ve kapsama oranları çıkıyor.</p>
+
+<p>Çıkan kelimenin metinde geçip geçmediğine de bakıyoruz ama bu yalnız uydurmayı yakalıyor. Elimizdeki
+bir örnekte sistem dokuz parça çıkardı, dokuzu da metinde geçiyordu, ama yalnız dördü raviydi.</p>
+
+<p>İki şey daha var. Birincisi, ismin doğru kişiye bağlanması; metinde yalnız 'Süfyân' yazıyorsa hangi
+Süfyân olduğuna uzman karar veriyor. İkincisi, cevap anahtarının kendisi; iki kişi birbirini ve sistemi
+görmeden etiketliyor ve aralarındaki uyumu da raporluyoruz.</p>
+
+<p>Şu an elimizde yalnız hazır etiketlere karşı bir pilot var; o da yöntemleri birbiriyle karşılaştırmaya
+yetiyor, mutlak doğruluk vermiyor. İlk adım olarak 50 hadislik insan etiketli bir set öneriyoruz."</p>
+</blockquote>
+
+<hr>
+
+<h2>14. Sorulabilecek sorular</h2>
+
+<p><b>Neden BLEU, ROUGE gibi bilinen metrikler değil?</b><br>
+Onlar iki serbest metnin birbirine ne kadar benzediğini ölçer. Bizim çıktımız metin değil, bir liste ve
+sıra. "Beş raviden kaçı doğru" sorusunun karşılığı isabet ve kapsamadır.</p>
+
+<p><b>Başka bir LLM'e "bu doğru mu" diye sorsak?</b><br>
+Yardımcı olarak kullanılabilir, ama o LLM'in kararı da insan etiketiyle doğrulanmadıkça ana ölçü olamaz.
+Pilotta LLM'in kendi güven puanı zayıf çıktı (AUC 0,626).</p>
+
+<p><b>Sanadset'te etiket zaten var, neden insan etiketi?</b><br>
+O etiketlerin doğruluğunu biz ölçmedik. Onlara karşı yüksek puan almak, onlarla aynı hatayı yapmak da
+olabilir.</p>
+
+<p><b>50 hadis az değil mi?</b><br>
+Az. Başlangıç için yeterli, çünkü amacı yöntemi ve kılavuzu denemek. Sonuçlar güven aralığıyla verilir;
+aralık geniş çıkar ve bunu açıkça yazarız.</p>
+
+<p><b>İki etiketleyen anlaşamazsa?</b><br>
+Uyum sayısı düşük çıkar ve bu bir bulgudur: kılavuz belirsizdir. Kılavuz netleştirilir, anlaşılamayan
+örnekler uzmana gider (öneri).</p>
+
+<p><b>Kur'an verisi için de aynısı mı?</b><br>
+Kur'an metni sabit ve bölümleri belli olduğu için çıkarım hatası riski düşük. Orada asıl kontrol kaynağın
+kendisidir: hangi basım, hangi mütercim, karakterler bozulmuş mu.</p>
+
+<hr>
+
+<h2>15. Başkaları nasıl ölçmüş?</h2>
+
+<p>Aynı işi yapan 12 çalışmayı okudum (8 Ekim 2026). Ayrıntı, sayıların yeri ve kaynaklar:
+<code>wiki/evaluation/related-work.md</code>. Sistematik bir tarama değil; "bulamadım" demek "yok" demek
+değildir.</p>
+
+<h3>En önemli iki bulgu</h3>
+
+<p><b>1. Hazır bir cevap anahtarı var.</b> Suudi Arabistan'daki İfta Sünnet platformu hadislerdeki ravileri
+tek tek tanımlamış ve her raviye bir kimlik numarası vermiş. Bir yüksek lisans tezi (Oumer, 2025) bu
+platformdan 276 bin hadislik bir veri seti çıkarmış: her hadiste ravi adlarının yeri, kimin kimden aldığı
+ve ravinin kimlik numarası işaretli. Ayrı bir çalışma (AR-Sanad, 2022) altı kitaptan 27 bin isnadı ravi
+kimlikleriyle yayımlamış. Yani 9. bölümde "elimizde yalnız gümüş var" demiştim; aslında gümüşle altın
+arasında, bizim hiç etiketleme yapmadan kullanabileceğimiz bir basamak var.</p>
+
+<p><b>2. Bu veride ölçülmüş bir rakip var.</b> Aynı tez, küçük Arapça dil modellerini bu veriyle eğitip
+33 bin hadislik bir sınav setinde ölçmüş:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Ne ölçülmüş</th><th>En iyi sonuç (F1)</th></tr>
+  <tr><td>Ravi adlarını bulma</td><td>0,98</td></tr>
+  <tr><td>Kim kimden aldı (bağlantılar)</td><td>0,95</td></tr>
+  <tr><td>Bağlantılar + hangi zincire ait olduğu</td><td>0,93</td></tr>
+</table>
+
+<p>Bunun anlamı: "LLM ile ravileri doğru çıkarıyoruz" demek tek başına yeni bir şey değil; bu iş zaten
+iyi yapılabiliyor. Bizim farkımız başka yerde olmalı: insan onayı, her bilginin kaynağına izinin
+sürülebilmesi, şemanın bozulmaması, eğitim verisi gerektirmemesi. Hocayla konuşulması gereken nokta bu.</p>
+
+<p><b>İki uyarı:</b> bu verilerin lisansı net değil (biri CC BY-SA, biri ticari olmayan kullanım, biri
+"bilinmiyor"; kod depolarında lisans dosyası yok). Kullanmadan teyit etmek gerekir. Ayrıca tezin tam metni
+kapalı; sayıları yazarın açık kod deposundan okudum.</p>
+
+<h3>Diğer çalışmalar ve bize söyledikleri</h3>
+
+<table border="1" cellpadding="6">
+  <tr><th>Çalışma</th><th>Nasıl ölçmüş</th><th>Bize söylediği</th></tr>
+  <tr>
+    <td>Muther ve Smith, 2020<br>(isnad bulma, klasik Arapça)</td>
+    <td>Uzmanlar 3.071 isnadı etiketlemiş. Beş uzman aynı metni ayrı ayrı etiketleyip uyuma bakmış.
+        Sistem hem katı hem gevşek kuralla puanlanmış.</td>
+    <td>Aynı sistem katı kuralda F1 <b>0,254</b>, gevşek kuralda <b>0,835</b>. Uzmanlar isnadın nerede
+        bittiği konusunda yalnız <b>%53</b> tam anlaşmış. 5. bölümdeki sorun bilinen bir sorun; insanlar
+        bile sınırda ayrışıyor.</td>
+  </tr>
+  <tr>
+    <td>AR-Sanad 280K, 2022<br>(isim hangi kişi?)</td>
+    <td>Model yapay zincirlerle eğitilmiş, 27 bin gerçek zincirde sınanmış. Hem isim bazında hem zincir
+        bazında ölçülmüş.</td>
+    <td>İsim bazında puan 83,5 ama zincirlerin <b>%60,6</b>'sında en az bir kişi yanlış. "Muhammed",
+        "Abdullah" gibi yaygın adlarda doğruluk <b>%26</b>. Doğru kişi ilk üç tahminin içinde
+        <b>%95</b>: uzmana tek cevap değil, üç aday göstermek mantıklı.</td>
+  </tr>
+  <tr>
+    <td>Text2KGBench, 2023<br>(metinden bilgi grafı sınavı)</td>
+    <td>Üç ayrı ölçü: cevap anahtarına karşı isabet ve kapsama, şemaya uyum, çıkan kelime cümlede
+        geçiyor mu.</td>
+    <td>Çıkan bilgilerin %83'ünde özne metinde geçiyor, ama bilgilerin yalnız <b>%38</b>'i
+        doğru. 3. bölümdeki iddianın büyük ölçekli kanıtı.</td>
+  </tr>
+  <tr>
+    <td>Sanadset 650K, 2022<br>(pilotta kullandığımız veri)</td>
+    <td>Ravi etiketleri kurallarla (düzenli ifade) otomatik üretilmiş. Doğruluk ölçümü yok.</td>
+    <td>"Gümüş" dememizin gerekçesi. İfta verisiyle karşılaştırıp bu etiketlerin ne kadar doğru olduğunu
+        da ölçebiliriz.</td>
+  </tr>
+  <tr>
+    <td>Wirahman, 2026<br>(ravi adını biyografi kaydına bağlama)</td>
+    <td>Ölçmemiş; eşikleri gözle seçmiş.</td>
+    <td>Grafında en çok bağlantısı olan düğüm bir kişi değil, "babası" ifadesi. Tirmizî 3087
+        örneğimizdeki tuzağın gerçek hayattaki hâli.</td>
+  </tr>
+  <tr>
+    <td>Rezwan, 2025<br>(LLM ile 1,2 milyon rivayet)</td>
+    <td>Altı uzman 1.213 rivayete 0–10 arası puan vermiş.</td>
+    <td>Sened-metin ayırma 9,3 / 10. Ama en kötü %5,85'lik kısım ortalamadan çıkarılmış ve uzmanların
+        birbiriyle uyumu ölçülmemiş. Böyle puan başka çalışmayla karşılaştırılamıyor.</td>
+  </tr>
+  <tr>
+    <td>GTAF, 2025<br>(LLM ile ravi zinciri, blog)</td>
+    <td>20 rivayet, elle kontrol.</td>
+    <td>%95. Örnek çok küçük, puanlama kuralı yazılmamış.</td>
+  </tr>
+  <tr>
+    <td>Altammami vd., 2019<br>(sened-metin ayırma)</td>
+    <td>Altı kitaptan 240 hadis; ayrım noktası doğru mu, evet / hayır.</td>
+    <td>%92,5. Hataların kaynağı: aynı hadiste iki paralel zincir olması ve hadis metninin içinde kişi
+        adı geçmesi.</td>
+  </tr>
+  <tr>
+    <td>Gao vd., 2019<br>(büyük bir grafın doğruluğunu örnekle tahmin)</td>
+    <td>Rastgele tek tek bilgi seçmek yerine aynı konuya ait bilgileri birlikte denetletmiş.</td>
+    <td>Aynı güvenilirlikte sonuç için 3,5 saat yerine 1,4 saat. Bizde karşılığı: rastgele bağlantı
+        değil, rastgele <i>hadis</i> seçip içindeki her şeyi denetlemek.</td>
+  </tr>
+  <tr>
+    <td>Haque ve Islam, 2026; Mhamedi vd., 2026<br>(iki derleme)</td>
+    <td>Alandaki çalışmaları topluca değerlendiriyor.</td>
+    <td>Raporlanan başarılar %33 ile %99 arasında, test setleri 100–200 hadis, herkes farklı ölçü
+        kullanıyor. Çalışmalar birbiriyle karşılaştırılamıyor; uzman doğrulaması seyrek.</td>
+  </tr>
+</table>
+
+<h3>Hocaya söylenecek sonuç</h3>
+
+<ol>
+  <li>Önerdiğimiz yöntem (cevap anahtarı, sayım, iki eşleşme kuralı, uyum ölçümü, zincir düzeyi)
+      literatürdeki en sağlam örneklerle aynı çizgide.</li>
+  <li>Ravisi tanımlanmış hazır veri var. Önce onu kullanıp pilotu yeniden puanlamak, sıfırdan
+      etiketlemekten çok daha hızlı. Lisans teyidi şart.</li>
+  <li>Sırf çıkarım doğruluğunda eğitilmiş küçük modeller zaten 0,95 veriyor. Projenin katkısını
+      "daha doğru çıkarım" diye değil, "insan onaylı, kaynağı izlenebilir, şeması bozulmayan graf"
+      diye tanımlamak gerekiyor; bunu ölçecek metrikler de ona göre seçilmeli.</li>
+  <li>LLM ile bu işi yapıp düzgün ölçen (sayımla, uyumla, zincir düzeyinde) bir çalışma bulamadım.
+      Boşluk burada.</li>
+</ol>
+
+<p><b>Okuma notu:</b> 12 çalışmanın 10'unu baştan sona okudum. Oumer tezinin tam metni erişime kapalı;
+sonuçlarını yazarın açık deposundan aldım. Gao makalesinin yöntem bölümlerini okudum, deney bölümünün
+ikinci yarısını okumadım.</p>
+
+<hr>
+
+<h2>16. Mini sözlük</h2>
+
+<table border="1" cellpadding="6">
+  <tr><th>Terim</th><th>Sade anlamı</th></tr>
+  <tr><td>İsnad</td><td>Hadisi aktaranların isim zinciri</td></tr>
+  <tr><td>Matn</td><td>Hadisin asıl sözü</td></tr>
+  <tr><td>Ravi</td><td>Zincirdeki aktarıcı kişi</td></tr>
+  <tr><td>Precision (isabet)</td><td>Sistemin söylediklerinin ne kadarı doğru</td></tr>
+  <tr><td>Recall (kapsama)</td><td>Olması gerekenlerin ne kadarını buldu</td></tr>
+  <tr><td>F1</td><td>İkisinin dengeli ortalaması, tek sayı</td></tr>
+  <tr><td>Altın standart</td><td>İnsanların hazırladığı cevap anahtarı</td></tr>
+  <tr><td>Gümüş standart</td><td>Hazır gelen, doğruluğu bizce ölçülmemiş cevap anahtarı</td></tr>
+  <tr><td>Kodlayıcılar arası uyum</td><td>İki insanın etiketlerinin birbirine benzerliği</td></tr>
+  <tr><td>Grounding</td><td>Çıktının kaynak metinde bulunması</td></tr>
+  <tr><td>Entity resolution</td><td>Bir ismin hangi gerçek kişi olduğunu belirleme</td></tr>
+  <tr><td>Over-merge</td><td>İki farklı kişiyi tek kişi sanıp birleştirme</td></tr>
+</table>
+
+<hr>
+
+<h2 id="toplanti">17. Toplantıda açık duracak kısım: sırayla ne yapacağız</h2>
+
+<p><b>Soru:</b> Hadisi işledik. Doğru mu yanlış mı, nasıl anlayacağız?</p>
+
+<p><b>Cevap:</b> Sistemin çıktısını bir cevap anahtarıyla karşılaştırıp sayacağız. "Kelime metinde
+geçiyor mu" kontrolünü de yapacağız ama o tek başına yetmiyor.</p>
+
+<h3>1. Önce hazır cevap anahtarına bakacağız</h3>
+
+<p>Ravileri uzmanlarca tanımlanmış açık veri var. Lisansı uygunsa pilotun 50 hadisini ona karşı
+puanlayacağız. Etiketleme gerektirmez.</p>
+
+<p>İki ayrı veri var. İkisi de açık, ikisinin de lisansı teyit bekliyor.</p>
+
+<h4>A. İfta Sünnet verisi</h4>
+
+<p>Suudi Arabistan'daki resmî İfta Sünnet platformundan (<a href="https://sunna.alifta.gov.sa/">sunna.alifta.gov.sa</a>)
+bir yüksek lisans tezi için derlenmiş. 33 kitap, 276.347 hadis, 20.957 ravi profili. Her hadiste üç şey
+işaretli: metinde geçen ravi adı, o adın hangi kişi olduğu (numara), kimin kimden aldığı.</p>
+
+<ul>
+  <li>Ana sayfa: <a href="https://github.com/JehadOumer/Ifta-Sunnah-Hadith-and-Narrators-Dataset">github.com/JehadOumer/Ifta-Sunnah-Hadith-and-Narrators-Dataset</a></li>
+  <li>Hadisler ve ravi profilleri: <a href="https://www.kaggle.com/datasets/jehadoumer/ifta-hadith-corpus-original">kaggle.com/datasets/jehadoumer/ifta-hadith-corpus-original</a></li>
+  <li>Ravi adları ve "kim kimden aldı" etiketleri: <a href="https://www.kaggle.com/datasets/jehadoumer/ifta-hadith-with-narrators-entities-and-relations">kaggle.com/datasets/jehadoumer/ifta-hadith-with-narrators-entities-and-relations</a></li>
+  <li>Kişi numarasına bağlı zincirler: <a href="https://www.kaggle.com/datasets/jehadoumer/ifta-hadith-isnad-linked-graph-data">kaggle.com/datasets/jehadoumer/ifta-hadith-isnad-linked-graph-data</a></li>
+</ul>
+
+<p><b>Örnek 1, bir hadis kaydı.</b> Musannef İbn Ebî Şeybe, 1 numaralı hadis (verideki kimliği 237072).
+Metnin isnad kısmı:</p>
+
+<p><span dir="rtl" lang="ar">حَدَّثَنَا هُشَيْمُ بْنُ بَشِيرٍ ، عَنْ عَبْدِ الْعَزِيزِ بْنِ صُهَيْبٍ ، عَنْ أَنَسِ بْنِ مَالِكٍ</span></p>
+
+<p>Veride bu hadisin yanında şu etiketler duruyor:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Sıra</th><th>Metinde geçen ad</th><th>Okunuşu</th><th>Ravi numarası</th></tr>
+  <tr><td>1</td><td><span dir="rtl" lang="ar">أنس بن مالك</span></td><td>Enes b. Mâlik</td><td>822</td></tr>
+  <tr><td>2</td><td><span dir="rtl" lang="ar">عبد العزيز بن صهيب</span></td><td>Abdülazîz b. Suheyb</td><td>3479</td></tr>
+  <tr><td>3</td><td><span dir="rtl" lang="ar">هشيم بن بشير</span></td><td>Hüşeym b. Beşîr</td><td>6709</td></tr>
+  <tr><td>4</td><td><span dir="rtl" lang="ar">أبو بكر عبد الله بن محمد بن أبي شيبة</span></td><td>Ebû Bekir İbn Ebî Şeybe</td><td>3889</td></tr>
+</table>
+
+<p>Zincir de numaralarla yazılı: 822 → 3479 → 6709 → 3889. Yani bizim sistemin üretmesi gereken şeyin
+aynısı: isimler, sıra ve kişi.</p>
+
+<p><b>Örnek 2, bir ravi profili.</b> 3 numaralı ravi: Âdem b. Ebî İyâs. Künyesi Ebü'l-Hasen, vefatı hicrî
+220 ya da 221, yaşadığı yer Askalân ve Bağdat, İbn Hacer'in hükmü
+<span dir="rtl" lang="ar">ثقة عابد</span> (güvenilir, ibadet ehli).</p>
+
+<p><b>Örnek 3, "kim kimden aldı" etiketi.</b> Aynı hadis iki koldan geliyorsa her bağlantının yanında
+kol numarası var. Yazarın verdiği örnekten dört satır:</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Alan</th><th>Aktaran</th><th>Kol</th></tr>
+  <tr><td><span dir="rtl" lang="ar">حماد بن سلمة</span> (Hammâd b. Seleme)</td><td><span dir="rtl" lang="ar">عبيد الله بن عمر</span> (Ubeydullah b. Ömer)</td><td>1</td></tr>
+  <tr><td><span dir="rtl" lang="ar">عبيد الله بن عمر</span></td><td><span dir="rtl" lang="ar">نافع</span> (Nâfi')</td><td>1</td></tr>
+  <tr><td><span dir="rtl" lang="ar">حماد بن سلمة</span></td><td><span dir="rtl" lang="ar">أيوب</span> (Eyyûb)</td><td>2</td></tr>
+  <tr><td><span dir="rtl" lang="ar">أيوب</span></td><td><span dir="rtl" lang="ar">نافع</span></td><td>2</td></tr>
+</table>
+
+<h4>B. AR-Sanad 280K</h4>
+
+<p>Altı meşhur hadis kitabından 27.056 gerçek zincir ve 18.298 ravilik bir tablo. Burada ham hadis metni
+yok; isimler ayrılmış olarak geliyor ve her ismin karşısında kişi numarası var. Yani bu veri yalnız
+"bu isim hangi kişi" sorusunu sınar, "metinden ismi bulma" sorusunu sınamaz.</p>
+
+<ul>
+  <li>Veri: <a href="https://github.com/somaia02/Narrator-Disambiguation">github.com/somaia02/Narrator-Disambiguation</a></li>
+  <li>Makale: <a href="https://doi.org/10.3390/info13020055">doi.org/10.3390/info13020055</a></li>
+</ul>
+
+<p><b>Örnek.</b> Test dosyasının ilk zinciri ve karşısındaki numaralar (82, 192, 199, 399, 18, 165):</p>
+
+<table border="1" cellpadding="6">
+  <tr><th>Zincirde yazan</th><th>Numara</th><th>Ravi tablosundaki kişi</th></tr>
+  <tr><td><span dir="rtl" lang="ar">الحميدي عبد الله بن الزبير</span></td><td>82</td><td>Abdullah b. ez-Zübeyr (Humeydî), vefatı h. 219 ya da 220</td></tr>
+  <tr><td><span dir="rtl" lang="ar">سفيان</span></td><td>192</td><td>Süfyân b. Uyeyne, vefatı h. 197 ya da 198</td></tr>
+  <tr><td><span dir="rtl" lang="ar">يحيى بن سعيد الأنصاري</span></td><td>199</td><td>Yahyâ b. Saîd b. Kays</td></tr>
+  <tr><td><span dir="rtl" lang="ar">محمد بن إبراهيم التيمي</span></td><td>399</td><td>Muhammed b. İbrâhim b. Hâris</td></tr>
+  <tr><td><span dir="rtl" lang="ar">علقمة بن وقاص الليثي</span></td><td>18</td><td>Alkame b. Vakkâs</td></tr>
+  <tr><td><span dir="rtl" lang="ar">عمر بن الخطاب</span></td><td>165</td><td>Ömer b. Hattâb, vefatı h. 23 ya da 24</td></tr>
+</table>
+
+<p>İkinci satıra dikkat: zincirde yalnız "Süfyân" yazıyor, veri onu Süfyân b. Uyeyne olarak işaretlemiş.
+"Hangi Süfyân?" sorusunun cevap anahtarı tam olarak bu.</p>
+
+<p><b>Lisans:</b> İfta'nın üç sürümünde Kaggle beyanı farklı (CC BY-SA 4.0, ticari olmayan kullanım,
+"bilinmiyor"). AR-Sanad deposunda lisans dosyası yok. Kullanmadan teyit gerekir.</p>
+
+<h3>2. Sonra kısa bir etiketleme kılavuzu yazacağız</h3>
+
+<p>Ravi adı nerede başlar, nerede biter, "babasından" gibi isimsiz ifadeler nasıl yazılır.</p>
+
+<h3>3. Sonra 50 hadisi iki kişi etiketleyecek</h3>
+
+<p>Ayrı ayrı ve sistemin çıktısını görmeden.</p>
+
+<h3>4. Sonra iki kişinin ne kadar anlaştığını ölçeceğiz</h3>
+
+<p>Hedef 0,75 ve üstü (TÜBİTAK formundaki taahhüt). Düşük çıkarsa kılavuzu düzeltip tekrar edeceğiz.</p>
+
+<h3>5. Sonra sistemi bu cevap anahtarına karşı puanlayacağız</h3>
+
+<p>Doğru bulduğu, fazladan ürettiği, kaçırdığı. Hem katı hem gevşek kuralla. Ayrıca "zincirin tamamı
+doğru mu" diye.</p>
+
+<h3>6. Sonra kişi eşleştirmeye geçeceğiz</h3>
+
+<p>Metindeki "Süfyân" hangi Süfyân? Uzman karar verecek; sistem tek cevap değil birkaç aday gösterecek.</p>
+
+<h3>7. En son büyüteceğiz</h3>
+
+<p>50 hadisten 350–500 hadise.</p>
+
+<h3>Bugün elimizde olan</h3>
+
+<p>50 hadislik pilot. Otomatik üretilmiş hazır etiketlere karşı F1 0,935. Bu sayı yöntemleri birbiriyle
+karşılaştırmaya yetiyor; "sistem şu kadar doğru" demeye yetmiyor.</p>
+
+<h3>Hocaya soracağım üç şey</h3>
+
+<ol>
+  <li>Başkasının hazırladığı ravi verisini (İfta) cevap anahtarı olarak kullanmamız uygun mu?</li>
+  <li>Eğitilmiş küçük modeller ravi çıkarımında 0,95 veriyor. Katkımızı "daha doğru çıkarım" diye değil,
+      "insan onaylı ve kaynağı izlenebilir graf" diye tanımlamak doğru mu?</li>
+  <li>Bu dönem yalnız çıkarımı ve kişi eşleştirmeyi mi ölçelim, graf üzerinden soru-cevabı da mı?</li>
+</ol>
+
+</body>
+</html>

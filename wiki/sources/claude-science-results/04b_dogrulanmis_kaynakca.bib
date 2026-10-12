@@ -1,0 +1,606 @@
+% =====================================================================
+% 04b_dogrulanmis_kaynakca.bib
+% GiraffeGraph / TÜBİTAK 2209-A — DOĞRULANMIŞ KAYNAKÇA
+%
+% Girdi kaynakları (hepsi programatik çekim, elle künye YOK):
+%   - DOI'li girdiler: api.crossref.org/works/<doi>/transform/application/x-bibtex
+%   - arXiv girdileri: export.arxiv.org/api/query (Atom); çekilen ham kayıtlar
+%     arxiv_records.json dosyasında (başlık, yazar listesi, tarih, özet) saklıdır.
+%
+% "Other" bölümündeki 5 girdi İSTİSNADIR: DOI'si veya arXiv kimliği olmayan
+% kaynaklar (LREC 1998 workshop bildirisi, iki resmî Türkçe doküman, bir
+% DergiPark makalesi, bir HF dataset kartı). Bunlar elle yazıldı; künye web
+% aramasıyla teyit edildi ve teyit edilemeyen alanlar [UNVERIFIED] işaretli.
+%
+% AŞAĞIDAKİLER KASITLI OLARAK YOKTUR (bkz. 04a):
+%   - Al-Khatib & Stein (2024), "Schema-Guided IE with LLMs", LREC-COLING:
+%     ACL Anthology'de iki yazarın da böyle bir yayını YOK. UYDURMA.
+%   - Bulut, H. (2017), İslam Araştırmaları Dergisi 38: böyle bir makale YOK.
+%   - Düzenli, Y. (2019), MÜİFD 56: doğrulanamadı.
+% =====================================================================
+
+
+% ---------- Crossref-verified (DOI content negotiation) ----------
+
+@article{pan2024unifying,
+  title={Unifying Large Language Models and Knowledge Graphs: A Roadmap},
+  volume={36},
+  ISSN={2326-3865},
+  url={http://dx.doi.org/10.1109/TKDE.2024.3352100},
+  DOI={10.1109/tkde.2024.3352100},
+  number={7},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+  author={Pan, Shirui and Luo, Linhao and Wang, Yufei and Chen, Chen and Wang, Jiapu and Wu, Xindong},
+  year={2024}, month=July,
+  pages={3580–3599} }
+
+@article{ji2023survey,
+  title={Survey of Hallucination in Natural Language Generation},
+  volume={55},
+  ISSN={1557-7341},
+  url={http://dx.doi.org/10.1145/3571730},
+  DOI={10.1145/3571730},
+  number={12},
+  journal={ACM Computing Surveys},
+  publisher={Association for Computing Machinery (ACM)},
+  author={Ji, Ziwei and Lee, Nayeon and Frieske, Rita and Yu, Tiezheng and Su, Dan and Xu, Yan and Ishii, Etsuko and Bang, Ye Jin and Madotto, Andrea and Fung, Pascale},
+  year={2023}, month=Mar,
+  pages={1–38} }
+
+@inproceedings{ye2022generative,
+  title={Generative Knowledge Graph Construction: A Review},
+  url={http://dx.doi.org/10.18653/v1/2022.emnlp-main.1},
+  DOI={10.18653/v1/2022.emnlp-main.1},
+  booktitle={Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing},
+  publisher={Association for Computational Linguistics},
+  author={Ye, Hongbin and Zhang, Ningyu and Chen, Hui and Chen, Huajun},
+  year={2022},
+  pages={1–17} }
+
+@article{hevner2004design,
+  title={Design Science in Information Systems Research1},
+  volume={28},
+  ISSN={2162-9730},
+  url={http://dx.doi.org/10.2307/25148625},
+  DOI={10.2307/25148625},
+  number={1},
+  journal={MIS Quarterly},
+  publisher={MIS Quarterly},
+  author={Hevner, Alan R. and March, Salvatore T. and Park, Jinsoo and Ram, Sudha},
+  year={2004}, month=Mar,
+  pages={75–106} }
+
+@book{wieringa2014design,
+  title={Design Science Methodology for Information Systems and Software Engineering},
+  ISBN={9783662438398},
+  url={http://dx.doi.org/10.1007/978-3-662-43839-8},
+  DOI={10.1007/978-3-662-43839-8},
+  publisher={Springer Berlin Heidelberg},
+  author={Wieringa, Roel J.},
+  year={2014} }
+
+@book{kejriwal2019domain,
+  title={Domain-Specific Knowledge Graph Construction},
+  ISBN={9783030123758},
+  ISSN={2191-5776},
+  url={http://dx.doi.org/10.1007/978-3-030-12375-8},
+  DOI={10.1007/978-3-030-12375-8},
+  journal={SpringerBriefs in Computer Science},
+  publisher={Springer International Publishing},
+  author={Kejriwal, Mayank},
+  year={2019} }
+
+@article{hogan2021knowledge,
+  title={Knowledge Graphs},
+  volume={54},
+  ISSN={1557-7341},
+  url={http://dx.doi.org/10.1145/3447772},
+  DOI={10.1145/3447772},
+  number={4},
+  journal={ACM Computing Surveys},
+  publisher={Association for Computing Machinery (ACM)},
+  author={Hogan, Aidan and Blomqvist, Eva and Cochez, Michael and D’amato, Claudia and Melo, Gerard De and Gutierrez, Claudio and Kirrane, Sabrina and Gayo, José Emilio Labra and Navigli, Roberto and Neumaier, Sebastian and Ngomo, Axel-Cyrille Ngonga and Polleres, Axel and Rashid, Sabbir M. and Rula, Anisa and Schmelzeisen, Lukas and Sequeda, Juan and Staab, Steffen and Zimmermann, Antoine},
+  year={2021}, month=July,
+  pages={1–37} }
+
+@inproceedings{zhang2024edc,
+  title={Extract, Define, Canonicalize: An LLM-based Framework for Knowledge Graph Construction},
+  url={http://dx.doi.org/10.18653/v1/2024.emnlp-main.548},
+  DOI={10.18653/v1/2024.emnlp-main.548},
+  booktitle={Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing},
+  publisher={Association for Computational Linguistics},
+  author={Zhang, Bowen and Soh, Harold},
+  year={2024},
+  pages={9820–9836} }
+
+@inproceedings{bai2024schemadriven,
+  title={Schema-Driven Information Extraction from Heterogeneous Tables},
+  url={http://dx.doi.org/10.18653/v1/2024.findings-emnlp.600},
+  DOI={10.18653/v1/2024.findings-emnlp.600},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2024},
+  publisher={Association for Computational Linguistics},
+  author={Bai, Fan and Kang, Junmo and Stanovsky, Gabriel and Freitag, Dayne and Dredze, Mark and Ritter, Alan},
+  year={2024},
+  pages={10252–10273} }
+
+@article{mghari2022sanadset,
+  title={Sanadset 650K: Data on Hadith narrators},
+  volume={44},
+  ISSN={2352-3409},
+  url={http://dx.doi.org/10.1016/j.dib.2022.108540},
+  DOI={10.1016/j.dib.2022.108540},
+  journal={Data in Brief},
+  publisher={Elsevier BV},
+  author={Mghari, Mohammed and Bouras, Omar and El Hibaoui, Abdelaaziz},
+  year={2022}, month=Oct,
+  pages={108540} }
+
+@article{kamran2023semantichadith,
+  title={SemanticHadith: An ontology-driven knowledge graph for the hadith corpus},
+  volume={78},
+  ISSN={1570-8268},
+  url={http://dx.doi.org/10.1016/j.websem.2023.100797},
+  DOI={10.1016/j.websem.2023.100797},
+  journal={Journal of Web Semantics},
+  publisher={Elsevier BV},
+  author={Kamran, Amna Binte and Abro, Bushra and Basharat, Amna},
+  year={2023}, month=Oct,
+  pages={100797} }
+
+@inproceedings{min2023factscore,
+  title={FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation},
+  url={http://dx.doi.org/10.18653/v1/2023.emnlp-main.741},
+  DOI={10.18653/v1/2023.emnlp-main.741},
+  booktitle={Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing},
+  publisher={Association for Computational Linguistics},
+  author={Min, Sewon and Krishna, Kalpesh and Lyu, Xinxi and Lewis, Mike and Yih, Wen-tau and Koh, Pang and Iyyer, Mohit and Zettlemoyer, Luke and Hajishirzi, Hannaneh},
+  year={2023},
+  pages={12076–12100} }
+
+@inproceedings{zha2023alignscore,
+  title={AlignScore: Evaluating Factual Consistency with A Unified Alignment Function},
+  url={http://dx.doi.org/10.18653/v1/2023.acl-long.634},
+  DOI={10.18653/v1/2023.acl-long.634},
+  booktitle={Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  publisher={Association for Computational Linguistics},
+  author={Zha, Yuheng and Yang, Yichi and Li, Ruichen and Hu, Zhiting},
+  year={2023},
+  pages={11328–11348} }
+
+@article{laban2022summac,
+  title={<scp>SummaC</scp>: Re-Visiting NLI-based Models for Inconsistency Detection in Summarization},
+  volume={10},
+  ISSN={2307-387X},
+  url={http://dx.doi.org/10.1162/tacl_a_00453},
+  DOI={10.1162/tacl_a_00453},
+  journal={Transactions of the Association for Computational Linguistics},
+  publisher={MIT Press - Journals},
+  author={Laban, Philippe and Schnabel, Tobias and Bennett, Paul N. and Hearst, Marti A.},
+  year={2022},
+  pages={163–177} }
+
+@article{rashkin2023measuring,
+  title={Measuring Attribution in Natural Language Generation Models},
+  ISSN={1530-9312},
+  url={http://dx.doi.org/10.1162/coli_a_00490},
+  DOI={10.1162/coli_a_00490},
+  journal={Computational Linguistics},
+  publisher={MIT Press},
+  author={Rashkin, Hannah and Nikolaev, Vitaly and Lamm, Matthew and Aroyo, Lora and Collins, Michael and Das, Dipanjan and Petrov, Slav and Singh Tomar, Gaurav and Turc, Iulia and Reitter, David},
+  year={2023}, month=July,
+  pages={1–66} }
+
+@inproceedings{gao2023rarr,
+  title={RARR: Researching and Revising What Language Models Say, Using Language Models},
+  url={http://dx.doi.org/10.18653/v1/2023.acl-long.910},
+  DOI={10.18653/v1/2023.acl-long.910},
+  booktitle={Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  publisher={Association for Computational Linguistics},
+  author={Gao, Luyu and Dai, Zhuyun and Pasupat, Panupong and Chen, Anthony and Chaganty, Arun Tejasvi and Fan, Yicheng and Zhao, Vincent and Lao, Ni and Lee, Hongrae and Juan, Da-Cheng and Guu, Kelvin},
+  year={2023},
+  pages={16477–16508} }
+
+@inproceedings{dhuliawala2024chainofverification,
+  title={Chain-of-Verification Reduces Hallucination in Large Language Models},
+  url={http://dx.doi.org/10.18653/v1/2024.findings-acl.212},
+  DOI={10.18653/v1/2024.findings-acl.212},
+  booktitle={Findings of the Association for Computational Linguistics ACL 2024},
+  publisher={Association for Computational Linguistics},
+  author={Dhuliawala, Shehzaad and Komeili, Mojtaba and Xu, Jing and Raileanu, Roberta and Li, Xian and Celikyilmaz, Asli and Weston, Jason},
+  year={2024},
+  pages={3563–3578} }
+
+@article{ratner2017snorkel,
+  title={Snorkel: rapid training data creation with weak supervision},
+  volume={11},
+  ISSN={2150-8097},
+  url={http://dx.doi.org/10.14778/3157794.3157797},
+  DOI={10.14778/3157794.3157797},
+  number={3},
+  journal={Proceedings of the VLDB Endowment},
+  publisher={Association for Computing Machinery (ACM)},
+  author={Ratner, Alexander and Bach, Stephen H. and Ehrenberg, Henry and Fries, Jason and Wu, Sen and Ré, Christopher},
+  year={2017}, month=Nov,
+  pages={269–282} }
+
+@article{li2020ditto,
+  title={Deep entity matching with pre-trained language models},
+  volume={14},
+  ISSN={2150-8097},
+  url={http://dx.doi.org/10.14778/3421424.3421431},
+  DOI={10.14778/3421424.3421431},
+  number={1},
+  journal={Proceedings of the VLDB Endowment},
+  publisher={Association for Computing Machinery (ACM)},
+  author={Li, Yuliang and Li, Jinfeng and Suhara, Yoshihiko and Doan, AnHai and Tan, Wang-Chiew},
+  year={2020}, month=Sept,
+  pages={50–60} }
+
+@article{fellegi1969theory,
+  title={A Theory for Record Linkage},
+  volume={64},
+  ISSN={1537-274X},
+  url={http://dx.doi.org/10.1080/01621459.1969.10501049},
+  DOI={10.1080/01621459.1969.10501049},
+  number={328},
+  journal={Journal of the American Statistical Association},
+  publisher={Informa UK Limited},
+  author={Fellegi, Ivan P. and Sunter, Alan B.},
+  year={1969}, month=Dec,
+  pages={1183–1210} }
+
+@inproceedings{luo2005coreference,
+  series={HLT ’05},
+  title={On coreference resolution performance metrics},
+  url={http://dx.doi.org/10.3115/1220575.1220579},
+  DOI={10.3115/1220575.1220579},
+  booktitle={Proceedings of the conference on Human Language Technology and Empirical Methods in Natural Language Processing  - HLT ’05},
+  publisher={Association for Computational Linguistics},
+  author={Luo, Xiaoqiang},
+  year={2005},
+  pages={25–32},
+  collection={HLT ’05} }
+
+@article{groth2010anatomy,
+  title={The anatomy of a nanopublication},
+  volume={30},
+  ISSN={1875-8789},
+  url={http://dx.doi.org/10.3233/ISU-2010-0613},
+  DOI={10.3233/isu-2010-0613},
+  number={1-2},
+  journal={Information Services and Use},
+  publisher={SAGE Publications},
+  author={Groth, Paul and Gibson, Andrew and Velterop, Jan},
+  year={2010}, month=Feb,
+  pages={51–56} }
+
+@article{liu2024lost,
+  title={Lost in the Middle: How Language Models Use Long Contexts},
+  volume={12},
+  ISSN={2307-387X},
+  url={http://dx.doi.org/10.1162/tacl_a_00638},
+  DOI={10.1162/tacl_a_00638},
+  journal={Transactions of the Association for Computational Linguistics},
+  publisher={MIT Press},
+  author={Liu, Nelson F. and Lin, Kevin and Hewitt, John and Paranjape, Ashwin and Bevilacqua, Michele and Petroni, Fabio and Liang, Percy},
+  year={2024},
+  pages={157–173} }
+
+@inproceedings{guo2025lightrag,
+  title={LightRAG: Simple and Fast Retrieval-Augmented Generation},
+  url={http://dx.doi.org/10.18653/v1/2025.findings-emnlp.568},
+  DOI={10.18653/v1/2025.findings-emnlp.568},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2025},
+  publisher={Association for Computational Linguistics},
+  author={Guo, Zirui and Xia, Lianghao and Yu, Yanhua and Ao, Tu and Huang, Chao},
+  year={2025},
+  pages={10746–10761} }
+
+@inbook{lavie2024itext2kg,
+  title={iText2KG: Incremental Knowledge Graphs Construction Using Large Language Models},
+  ISBN={9789819605736},
+  ISSN={1611-3349},
+  url={http://dx.doi.org/10.1007/978-981-96-0573-6_16},
+  DOI={10.1007/978-981-96-0573-6_16},
+  booktitle={Web Information Systems Engineering – WISE 2024},
+  publisher={Springer Nature Singapore},
+  author={Lairgi, Yassir and Moncla, Ludovic and Cazabet, Rémy and Benabdeslem, Khalid and Cléau, Pierre},
+  year={2024}, month=Nov,
+  pages={214–229} }
+
+@inproceedings{wen2019large,
+  title={A Large-Scale Empirical Study on Code-Comment Inconsistencies},
+  url={http://dx.doi.org/10.1109/icpc.2019.00019},
+  DOI={10.1109/icpc.2019.00019},
+  booktitle={2019 IEEE/ACM 27th International Conference on Program Comprehension (ICPC)},
+  publisher={IEEE},
+  author={Wen, Fengcai and Nagy, Csaba and Bavota, Gabriele and Lanza, Michele},
+  year={2019}, month=May,
+  pages={53–64} }
+
+@article{foster2007combinators,
+  title={Combinators for bidirectional tree transformations: A linguistic approach to the view-update problem},
+  volume={29},
+  ISSN={1558-4593},
+  url={http://dx.doi.org/10.1145/1232420.1232424},
+  DOI={10.1145/1232420.1232424},
+  number={3},
+  journal={ACM Transactions on Programming Languages and Systems},
+  publisher={Association for Computing Machinery (ACM)},
+  author={Foster, J. Nathan and Greenwald, Michael B. and Moore, Jonathan T. and Pierce, Benjamin C. and Schmitt, Alan},
+  year={2007}, month=May,
+  pages={17} }
+
+@article{bancilhon1981update,
+  title={Update semantics of relational views},
+  volume={6},
+  ISSN={1557-4644},
+  url={http://dx.doi.org/10.1145/319628.319634},
+  DOI={10.1145/319628.319634},
+  number={4},
+  journal={ACM Transactions on Database Systems},
+  publisher={Association for Computing Machinery (ACM)},
+  author={Bancilhon, F. and Spyratos, N.},
+  year={1981}, month=Dec,
+  pages={557–575} }
+
+@article{dawid1979maximum,
+  title={Maximum Likelihood Estimation of Observer Error-Rates Using the EM Algorithm},
+  volume={28},
+  ISSN={0035-9254},
+  url={http://dx.doi.org/10.2307/2346806},
+  DOI={10.2307/2346806},
+  number={1},
+  journal={Applied Statistics},
+  publisher={JSTOR},
+  author={Dawid, A. P. and Skene, A. M.},
+  year={1979},
+  pages={20} }
+
+@article{linacre2022splink,
+  title={Splink: Free software for probabilistic record linkage at scale.},
+  volume={7},
+  ISSN={2399-4908},
+  url={http://dx.doi.org/10.23889/ijpds.v7i3.1794},
+  DOI={10.23889/ijpds.v7i3.1794},
+  number={3},
+  journal={International Journal of Population Data Science},
+  publisher={Swansea University},
+  author={Linacre, Robin and Lindsay, Sam and Manassis, Theodore and Slade, Zoe and Hepworth, Tom},
+  year={2022}, month=Aug }
+
+@inbook{chhikara2025mem0,
+  title={Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory},
+  ISBN={9781643686318},
+  ISSN={1879-8314},
+  url={http://dx.doi.org/10.3233/faia251160},
+  DOI={10.3233/faia251160},
+  booktitle={ECAI 2025},
+  publisher={IOS Press},
+  author={Chhikara, Prateek and Khant, Dev and Aryan, Saket and Singh, Taranjeet and Yadav, Deshraj},
+  year={2025}, month=Oct }
+
+@inproceedings{wei2024longform,
+  series={NeurIPS 2024},
+  title={Long-form factuality in large language models},
+  url={http://dx.doi.org/10.52202/079017-2567},
+  DOI={10.52202/079017-2567},
+  booktitle={Advances in Neural Information Processing Systems 37},
+  publisher={Neural Information Processing Systems Foundation, Inc. (NeurIPS)},
+  author={Wei, Jerry and Yang, Chengrun and Song, Xinying and Lu, Yifeng and Hu, Nathan and Huang, Jie and Tran, Dustin and Peng, Daiyi and Liu, Ruibo and Huang, Da and Du, Cosmo and Le, Quoc},
+  year={2024},
+  pages={80756–80827},
+  collection={NeurIPS 2024} }
+
+@inproceedings{gutierrez2024hipporag,
+  series={NeurIPS 2024},
+  title={HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models},
+  url={http://dx.doi.org/10.52202/079017-1902},
+  DOI={10.52202/079017-1902},
+  booktitle={Advances in Neural Information Processing Systems 37},
+  publisher={Neural Information Processing Systems Foundation, Inc. (NeurIPS)},
+  author={Gutiérrez, Bernal and Shu, Yiheng and Gu, Yu and Yasunaga, Michihiro and Su, Yu},
+  year={2024},
+  pages={59532–59569},
+  collection={NeurIPS 2024} }
+
+@inproceedings{mo2025kggen,
+  series={NeurIPS 2025},
+  title={KGGen: Extracting Knowledge Graphs from Plain Text with Language Models},
+  url={http://dx.doi.org/10.52202/085713-1010},
+  DOI={10.52202/085713-1010},
+  booktitle={Advances in Neural Information Processing Systems 38},
+  publisher={Neural Information Processing Systems Foundation, Inc. (NeurIPS)},
+  author={Mo, Belinda and Yu, Kyssen and Kazdan, Joshua and Mpala, Proud and Yu, Lisa and Kanatsoulis, Charilaos and Koyejo, Sanmi},
+  year={2025},
+  pages={33962–33985},
+  collection={NeurIPS 2025} }
+
+
+% ---------- arXiv Atom API (see arxiv_records.json) ----------
+
+@misc{edge2024local,
+  author        = {Darren Edge and Ha Trinh and Newman Cheng and Joshua Bradley and Alex Chao and Apurva Mody and Steven Truitt and Dasha Metropolitansky and Robert Osazuwa Ness and Jonathan Larson},
+  title         = {From Local to Global: A Graph RAG Approach to Query-Focused Summarization},
+  year          = {2024},
+  eprint        = {2404.16130},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2404.16130},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2024-04-24, son sürüm 2404.16130v2 (2025-02-19)}
+}
+
+@misc{lewis2020retrieval,
+  author        = {Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Küttler and Mike Lewis and Wen-tau Yih and Tim Rocktäschel and Sebastian Riedel and Douwe Kiela},
+  title         = {Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks},
+  year          = {2020},
+  eprint        = {2005.11401},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2005.11401},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2020-05-22, son sürüm 2005.11401v4 (2021-04-12)}
+}
+
+@misc{kadavath2022language,
+  author        = {Saurav Kadavath and Tom Conerly and Amanda Askell and Tom Henighan and Dawn Drain and Ethan Perez and Nicholas Schiefer and Zac Hatfield-Dodds and Nova DasSarma and Eli Tran-Johnson and Scott Johnston and Sheer El-Showk and Andy Jones and Nelson Elhage and Tristan Hume and Anna Chen and Yuntao Bai and Sam Bowman and Stanislav Fort and Deep Ganguli and Danny Hernandez and Josh Jacobson and Jackson Kernion and Shauna Kravec and Liane Lovitt and Kamal Ndousse and Catherine Olsson and Sam Ringer and Dario Amodei and Tom Brown and Jack Clark and Nicholas Joseph and Ben Mann and Sam McCandlish and Chris Olah and Jared Kaplan},
+  title         = {Language Models (Mostly) Know What They Know},
+  year          = {2022},
+  eprint        = {2207.05221},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2207.05221},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2022-07-11, son sürüm 2207.05221v4 (2022-11-21)}
+}
+
+@misc{xiong2024can,
+  author        = {Miao Xiong and Zhiyuan Hu and Xinyang Lu and Yifei Li and Jie Fu and Junxian He and Bryan Hooi},
+  title         = {Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs},
+  year          = {2023},
+  eprint        = {2306.13063},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2306.13063},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2023-06-22, son sürüm 2306.13063v2 (2024-03-17)}
+}
+
+@misc{angelopoulos2021gentle,
+  author        = {Anastasios N. Angelopoulos and Stephen Bates},
+  title         = {A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification},
+  year          = {2021},
+  eprint        = {2107.07511},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2107.07511},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2021-07-15, son sürüm 2107.07511v6 (2022-12-07)}
+}
+
+@misc{packer2024memgpt,
+  author        = {Charles Packer and Sarah Wooders and Kevin Lin and Vivian Fang and Shishir G. Patil and Ion Stoica and Joseph E. Gonzalez},
+  title         = {MemGPT: Towards LLMs as Operating Systems},
+  year          = {2023},
+  eprint        = {2310.08560},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2310.08560},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2023-10-12, son sürüm 2310.08560v2 (2024-02-12)}
+}
+
+@misc{rasmussen2025zep,
+  author        = {Preston Rasmussen and Pavlo Paliychuk and Travis Beauvais and Jack Ryan and Daniel Chalef},
+  title         = {Zep: A Temporal Knowledge Graph Architecture for Agent Memory},
+  year          = {2025},
+  eprint        = {2501.13956},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2501.13956},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2025-01-20, son sürüm 2501.13956v1 (2025-01-20)}
+}
+
+@misc{gutierrez2025rag,
+  author        = {Bernal Jiménez Gutiérrez and Yiheng Shu and Weijian Qi and Sizhe Zhou and Yu Su},
+  title         = {From RAG to Memory: Non-Parametric Continual Learning for Large Language Models},
+  year          = {2025},
+  eprint        = {2502.14802},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2502.14802},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2025-02-20, son sürüm 2502.14802v2 (2025-06-19)}
+}
+
+@misc{alam2021social,
+  author        = {Tanvir Alam and Jens Schneider},
+  title         = {Social Network Analysis of Hadith Narrators from Sahih Bukhari},
+  year          = {2021},
+  eprint        = {2102.02009},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2102.02009},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2021-02-03, son sürüm 2102.02009v1 (2021-02-03)}
+}
+
+@misc{wirahman2026linking,
+  author        = {Taufiq Wirahman},
+  title         = {Linking Hadith Narrator Identities Across Heterogeneous Arabic Biographical Databases: A Multi-Signal Entity Resolution Pipeline},
+  year          = {2026},
+  eprint        = {2607.05424},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2607.05424},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2026-06-30, son sürüm 2607.05424v1 (2026-06-30)}
+}
+
+@misc{raja2026grading,
+  author        = {Ali Zahid Raja},
+  title         = {Grading the Narrators: An Isnad-Rijal Framework for Claim-Level Provenance in Multi-Agent Knowledge Systems},
+  year          = {2026},
+  eprint        = {2607.24117},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2607.24117},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2026-07-27, son sürüm 2607.24117v1 (2026-07-27)}
+}
+
+@misc{haque2026hadith,
+  author        = {Md. Ashraful Haque and Riasat Islam},
+  title         = {Hadith computational science in the age of large language models: a critical narrative review},
+  year          = {2026},
+  eprint        = {2608.20364},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2608.20364},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2026-06-18, son sürüm 2608.20364v1 (2026-06-18)}
+}
+
+@misc{asgari2025rezwan,
+  author        = {Majid Asgari-Bidhendi and Muhammad Amin Ghaseminia and Alireza Shahbazi and Sayyed Ali Hossayni and Najmeh Torabian and Behrouz Minaei-Bidgoli},
+  title         = {Rezwan: Leveraging Large Language Models for Comprehensive Hadith Text Processing: A 1.2M Corpus Development},
+  year          = {2025},
+  eprint        = {2510.03781},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2510.03781},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2025-10-04, son sürüm 2510.03781v1 (2025-10-04)}
+}
+
+@misc{autokg2023,
+  author        = {Bohan Chen and Andrea L. Bertozzi},
+  title         = {AutoKG: Efficient Automated Knowledge Graph Generation for Language Models},
+  year          = {2023},
+  eprint        = {2311.14740},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2311.14740},
+  note          = {arXiv Atom API'sinden alındı; ilk sunum 2023-11-22, son sürüm 2311.14740v1 (2023-11-22)}
+}
+
+
+% ---------- Other: no DOI / not indexed (hand-written, web-verified) ----------
+
+@article{bagga1998algorithms,
+  author    = {Bagga, Amit and Baldwin, Breck},
+  title     = {Algorithms for Scoring Coreference Chains},
+  booktitle = {Proceedings of the LREC Workshop on Linguistic Coreference},
+  year      = {1998},
+  pages     = {563--566},
+  note      = {B-cubed metric. No DOI; venue verified from the LREC 1998 workshop record. [UNVERIFIED: sayfa aralığı]}
+}
+
+@misc{tubitak2024uyz,
+  author       = {{TÜBİTAK}},
+  title        = {TÜBİTAK Destek Süreçlerinde Üretken Yapay Zekânın (ÜYZ) Sorumlu ve Güvenilir Kullanımı Rehberi},
+  year         = {2024},
+  howpublished = {\url{https://tubitak.gov.tr}},
+  note         = {Doküman gerçek; sürüm numarası ve yayım tarihi PDF kapağından teyit edilmeli. [UNVERIFIED: sürüm/tarih]}
+}
+
+@misc{sbb2023kalkinma,
+  author       = {{T.C. Cumhurbaşkanlığı Strateji ve Bütçe Başkanlığı}},
+  title        = {On İkinci Kalkınma Planı (2024--2028)},
+  year         = {2023},
+  note         = {TBMM Kararı No. 1518, 1 Kasım 2023; Resmî Gazete 1/11/2023, sayı 32357 (2. Mükerrer)}
+}
+
+@article{aslan2017tabakat,
+  author  = {Aslan, Muhammed},
+  title   = {Tabakat Kitapları ve Hadis İlmine Sağladıkları Faydalar},
+  journal = {Bingöl Üniversitesi İlahiyat Fakültesi Dergisi},
+  volume  = {5},
+  number  = {10},
+  year    = {2017},
+  pages   = {269--290},
+  note    = {Formdaki uydurma ``Bulut (2017)'' referansının yerine önerilen gerçek çalışma.}
+}
+
+@misc{sanadset_hf,
+  title        = {Sanadset 650K (Hugging Face mirror, CC0-1.0)},
+  howpublished = {\url{https://huggingface.co/datasets/freococo/650k_sanadset}},
+  year         = {2022},
+  note         = {Lisans CC0-1.0 olarak dataset kartından teyit edildi. Özgün kayıt: Mendeley Data 5xth87zwb5.}
+}
