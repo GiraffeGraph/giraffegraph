@@ -71,7 +71,17 @@ test-results/
 .claude/
 digest.txt
 
+# Local LLM response cache
+backend/var/
+
 # Local databases / temp files
 *.sqlite
 *.sqlite3
 *.db
+
+# Evaluation outputs hold third-party hadith text and quotations; only aggregate tables are tracked.
+evaluation/results/**
+!evaluation/results/**/
+!evaluation/results/**/compare-*.md
+!evaluation/results/**/extra-tables-*.json
+!evaluation/results/2026-10-12-identity-baseline/*.json
