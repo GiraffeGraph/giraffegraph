@@ -1,0 +1,82 @@
+{
+ "runs": {
+  "rule": 1613,
+  "haiku-llm_schema_whole": 1688,
+  "haiku-llm_isnad_whole": 1639,
+  "haiku-llm_isnad_chain": 1605
+ },
+ "decided_on -> re_extracted_with": {
+  "rule -> haiku-llm_schema_whole": {
+   "candidates": 1688,
+   "name": 0.561,
+   "quote": 0.0693,
+   "either": 0.5717
+  },
+  "rule -> haiku-llm_isnad_whole": {
+   "candidates": 1639,
+   "name": 0.6174,
+   "quote": 0.144,
+   "either": 0.6193
+  },
+  "rule -> haiku-llm_isnad_chain": {
+   "candidates": 1605,
+   "name": 0.6336,
+   "quote": 0.2717,
+   "either": 0.6355
+  },
+  "haiku-llm_schema_whole -> rule": {
+   "candidates": 1613,
+   "name": 0.5877,
+   "quote": 0.0725,
+   "either": 0.5989
+  },
+  "haiku-llm_schema_whole -> haiku-llm_isnad_whole": {
+   "candidates": 1639,
+   "name": 0.8975,
+   "quote": 0.6742,
+   "either": 0.9487
+  },
+  "haiku-llm_schema_whole -> haiku-llm_isnad_chain": {
+   "candidates": 1605,
+   "name": 0.9016,
+   "quote": 0.5259,
+   "either": 0.9458
+  },
+  "haiku-llm_isnad_whole -> rule": {
+   "candidates": 1613,
+   "name": 0.628,
+   "quote": 0.1463,
+   "either": 0.6299
+  },
+  "haiku-llm_isnad_whole -> haiku-llm_schema_whole": {
+   "candidates": 1688,
+   "name": 0.8714,
+   "quote": 0.6546,
+   "either": 0.9212
+  },
+  "haiku-llm_isnad_whole -> haiku-llm_isnad_chain": {
+   "candidates": 1605,
+   "name": 0.9769,
+   "quote": 0.5464,
+   "either": 0.9776
+  },
+  "haiku-llm_isnad_chain -> rule": {
+   "candidates": 1613,
+   "name": 0.6305,
+   "quote": 0.2709,
+   "either": 0.6324
+  },
+  "haiku-llm_isnad_chain -> haiku-llm_schema_whole": {
+   "candidates": 1688,
+   "name": 0.8566,
+   "quote": 0.5,
+   "either": 0.8987
+  },
+  "haiku-llm_isnad_chain -> haiku-llm_isnad_whole": {
+   "candidates": 1639,
+   "name": 0.9561,
+   "quote": 0.5351,
+   "either": 0.9567
+  }
+ }
+}
