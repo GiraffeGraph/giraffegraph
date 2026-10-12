@@ -1,0 +1,223 @@
+{
+  "key": "6e9c458892aa8570a0cb1fbb105450de13a6e705074a02066c98a1e1d5594388",
+  "created_at": "2026-10-12T20:20:19.184672+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18350"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "لَا يُقِيمَنَّ أَحَدُكُمْ أَخَاهُ يَوْمَ الْجُمُعَةِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Salama ibn Shabib"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَلَمَةُ بْنُ شَبِيبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Al-Hasan ibn A'yan"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "الْحَسَنُ بْنُ أَعْيَنَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Ma'qil ibn Ubayd Allah"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مَعْقِلٌ ( وَهُوَ ابْنُ عُبَيْدِ اللهِ )"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Abu al-Zubayr"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِي الزُّبَيْرِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Jabir"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَابِرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Prophet Muhammad"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَلَمَةُ بْنُ شَبِيبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18350",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْحَسَنُ بْنُ أَعْيَنَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18350",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَعْقِلٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18350",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي الزُّبَيْرِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18350",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ جَابِرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18350",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2995,
+    "output_tokens": 3202,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

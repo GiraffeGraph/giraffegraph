@@ -1,0 +1,378 @@
+{
+  "key": "3a5a5da998ed6073fa46fb005777b97923104ad0ba4ffc469392f0fdc4651407",
+  "created_at": "2026-10-12T20:37:35.189198+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ مَنْصُورٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَعْقُوبُ بْنُ إِبْرَاهِيمَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَعْقُوبُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِي"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنِ إِسْحَاقَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ إِسْحَاقَ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ اللهِ بْنُ أَبِي بَكْرٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَبْدُ اللهِ بْنُ أَبِي بَكْرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَحْيَى بْنِ عَبْدِ اللهِ بْنِ عَبْدِ الرَّحْمَنِ بْنِ سَعْدِ بْنِ زُرَارَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَحْيَى بْنِ عَبْدِ اللهِ بْنِ عَبْدِ الرَّحْمَنِ بْنِ سَعْدِ بْنِ زُرَارَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُمَارَةَ بْنِ عَمْرِو بْنِ حَزْمٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عُمَارَةَ بْنِ عَمْرِو بْنِ حَزْمٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أُبَيِّ بْنِ كَعْبٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أُبَيِّ بْنِ كَعْبٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-1",
+        "to_ref": "narrator-2",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "نا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نا يَعْقُوبُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-2",
+        "to_ref": "narrator-3",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "نا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نا أَبِي"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-3",
+        "to_ref": "narrator-4",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عن"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ إِسْحَاقَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-4",
+        "to_ref": "narrator-5",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "حَدَّثَنِي"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي عَبْدُ اللهِ بْنُ أَبِي بَكْرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-5",
+        "to_ref": "narrator-6",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "عن"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَحْيَى بْنِ عَبْدِ اللهِ بْنِ عَبْدِ الرَّحْمَنِ بْنِ سَعْدِ بْنِ زُرَارَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-6",
+        "to_ref": "narrator-7",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 6,
+          "sigha": "عن"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُمَارَةَ بْنِ عَمْرِو بْنِ حَزْمٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-7",
+        "to_ref": "narrator-8",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-91143",
+          "chain_no": 1,
+          "position": 7,
+          "sigha": "عن"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أُبَيِّ بْنِ كَعْبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَعْقُوبُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِي"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ إِسْحَاقَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَبْدُ اللهِ بْنُ أَبِي بَكْرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-6",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَحْيَى بْنِ عَبْدِ اللهِ بْنِ عَبْدِ الرَّحْمَنِ بْنِ سَعْدِ بْنِ زُرَارَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-7",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عُمَارَةَ بْنِ عَمْرِو بْنِ حَزْمٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-8",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أُبَيِّ بْنِ كَعْبٍ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3275,
+    "output_tokens": 5216,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

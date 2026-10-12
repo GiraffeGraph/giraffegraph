@@ -1,0 +1,256 @@
+{
+  "run": {
+    "condition": "llm_isnad_chain",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "provider": "anthropic",
+    "segmentation_strategy": "isnad",
+    "budget_stopped": false,
+    "stop_reason": null
+  },
+  "evaluated_hadiths": {
+    "reference": 300,
+    "evaluated": 300,
+    "processed_by_run": 300,
+    "not_processed_by_run": []
+  },
+  "scores": {
+    "proposed": {
+      "n_hadiths": 300,
+      "n_missing_from_system": 0,
+      "bootstrap": {
+        "resamples": 2000,
+        "seed": 0,
+        "unit": "hadith"
+      },
+      "M1": {
+        "tp": 1518,
+        "fp": 90,
+        "fn": 260,
+        "precision": 0.9440298507462687,
+        "recall": 0.8537682789651294,
+        "f1": 0.8966331955109273,
+        "f0.5": 0.9244823386114496,
+        "exact_chain_rate": 0.48,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.9316078813335541,
+            0.9567468036618337
+          ],
+          "recall": [
+            0.831387969839529,
+            0.8751406233119164
+          ],
+          "f1": [
+            0.8806696741712182,
+            0.9119300043192609
+          ]
+        }
+      },
+      "M2": {
+        "tp": 1605,
+        "fp": 3,
+        "fn": 173,
+        "precision": 0.9981343283582089,
+        "recall": 0.9026996625421823,
+        "f1": 0.9480212640283521,
+        "f0.5": 0.9774665042630938,
+        "exact_chain_rate": 0.65,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.9957291031116534,
+            1.0
+          ],
+          "recall": [
+            0.8816789076648414,
+            0.9218060998441753
+          ],
+          "f1": [
+            0.9360931759991094,
+            0.95881161481848
+          ]
+        }
+      }
+    },
+    "validated": {
+      "n_hadiths": 300,
+      "n_missing_from_system": 0,
+      "bootstrap": {
+        "resamples": 2000,
+        "seed": 0,
+        "unit": "hadith"
+      },
+      "M1": {
+        "tp": 1518,
+        "fp": 90,
+        "fn": 260,
+        "precision": 0.9440298507462687,
+        "recall": 0.8537682789651294,
+        "f1": 0.8966331955109273,
+        "f0.5": 0.9244823386114496,
+        "exact_chain_rate": 0.48,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.9316078813335541,
+            0.9567468036618337
+          ],
+          "recall": [
+            0.831387969839529,
+            0.8751406233119164
+          ],
+          "f1": [
+            0.8806696741712182,
+            0.9119300043192609
+          ]
+        }
+      },
+      "M2": {
+        "tp": 1605,
+        "fp": 3,
+        "fn": 173,
+        "precision": 0.9981343283582089,
+        "recall": 0.9026996625421823,
+        "f1": 0.9480212640283521,
+        "f0.5": 0.9774665042630938,
+        "exact_chain_rate": 0.65,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.9957291031116534,
+            1.0
+          ],
+          "recall": [
+            0.8816789076648414,
+            0.9218060998441753
+          ],
+          "f1": [
+            0.9360931759991094,
+            0.95881161481848
+          ]
+        }
+      }
+    }
+  },
+  "gate_table": {
+    "criterion": "M2",
+    "mentions": 1608,
+    "correct": 1605,
+    "wrong": 3,
+    "rows": [
+      {
+        "gate": "any gate",
+        "errors_caught": 0,
+        "false_alarms": 0,
+        "errors_missed": 3,
+        "precision": null,
+        "recall": 0.0
+      }
+    ]
+  },
+  "confidence": {
+    "auc_correct_vs_wrong": 0.753582554517134,
+    "histogram": [
+      {
+        "from": 0.0,
+        "to": 0.1,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.2,
+        "to": 0.3,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.3,
+        "to": 0.4,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.4,
+        "to": 0.5,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.5,
+        "to": 0.6,
+        "correct": 1,
+        "wrong": 0
+      },
+      {
+        "from": 0.6,
+        "to": 0.7,
+        "correct": 2,
+        "wrong": 0
+      },
+      {
+        "from": 0.7,
+        "to": 0.8,
+        "correct": 11,
+        "wrong": 0
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "correct": 216,
+        "wrong": 2
+      },
+      {
+        "from": 0.9,
+        "to": 1.0,
+        "correct": 1375,
+        "wrong": 1
+      }
+    ]
+  },
+  "review_workload": {
+    "hadiths": 300,
+    "candidates_in_review": 6,
+    "candidates_in_review_per_hadith": {
+      "mean": 0.02,
+      "median": 0.0,
+      "max": 3
+    },
+    "open_review_items": 6,
+    "share_hadiths_without_review_items": 0.9866666666666667
+  },
+  "cost": {
+    "hadiths": 300,
+    "calls": 310,
+    "cached_calls": 202,
+    "failed_calls": 1,
+    "refused_calls": 0,
+    "truncated_calls": 0,
+    "cost_usd": 0.6641733,
+    "cost_usd_per_hadith": 0.002213911,
+    "cost_usd_per_1000_hadiths": 2.213911,
+    "cost_usd_spent_by_this_run": 0.24036,
+    "input_tokens_per_hadith": 3266.576666666667,
+    "output_tokens_per_hadith": 3774.5066666666667,
+    "calls_per_hadith": 1.0333333333333334
+  },
+  "schema_proposals": [],
+  "candidates_by_reason_code": {
+    "node": {},
+    "relation": {
+      "potential_duplicate_relation": 3,
+      "relation_confidence_threshold": 3
+    }
+  },
+  "committed_fact_invariants": {
+    "exact_quote": false,
+    "quote_with_grounding_normalisation": true
+  }
+}

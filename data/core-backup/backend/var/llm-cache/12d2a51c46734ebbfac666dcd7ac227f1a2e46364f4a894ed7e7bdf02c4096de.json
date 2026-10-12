@@ -1,0 +1,243 @@
+{
+  "key": "12d2a51c46734ebbfac666dcd7ac227f1a2e46364f4a894ed7e7bdf02c4096de",
+  "created_at": "2026-10-12T20:34:12.207417+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3977"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدٌ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدٌ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ اللهِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا عَبْدُ اللهِ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "هِشَامُ بْنُ عُرْوَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا هِشَامُ بْنُ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِيهِ"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِيهِ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-1",
+        "to_ref": "narr-2",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3977",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "أَخْبَرَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا عَبْدُ اللهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-2",
+        "to_ref": "narr-3",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3977",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "أَخْبَرَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا هِشَامُ بْنُ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-3",
+        "to_ref": "narr-4",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3977",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِيهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-4",
+        "to_ref": "narr-5",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3977",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا عَبْدُ اللهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا هِشَامُ بْنُ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِيهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3327,
+    "output_tokens": 3162,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

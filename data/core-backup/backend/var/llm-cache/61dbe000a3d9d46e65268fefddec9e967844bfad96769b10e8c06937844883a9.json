@@ -1,0 +1,288 @@
+{
+  "key": "61dbe000a3d9d46e65268fefddec9e967844bfad96769b10e8c06937844883a9",
+  "created_at": "2026-10-12T20:31:53.658322+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-68740"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ائْذَنِي لَهُ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "إِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي إِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ الرَّزَّاقِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا عَبْدُ الرَّزَّاقِ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ جُرَيْجٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا ابْنُ جُرَيْجٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَطَاءٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي عَطَاءٌ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُرْوَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ عَائِشَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-1",
+        "to_ref": "narr-2",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-68740",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "أَنْبَأَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا عَبْدُ الرَّزَّاقِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-2",
+        "to_ref": "narr-3",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-68740",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "أَنْبَأَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا ابْنُ جُرَيْجٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-3",
+        "to_ref": "narr-4",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-68740",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "أَخْبَرَنِي"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي عَطَاءٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-4",
+        "to_ref": "narr-5",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-68740",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-5",
+        "to_ref": "narr-6",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-68740",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "أَنَّ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ عَائِشَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي إِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا عَبْدُ الرَّزَّاقِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا ابْنُ جُرَيْجٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي عَطَاءٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-6",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ عَائِشَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3381,
+    "output_tokens": 4404,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

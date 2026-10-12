@@ -1,0 +1,243 @@
+{
+  "key": "9450f901a0d65127ac1cc034aeaa3e311082294296b9ed5dc3d8631256d52c96",
+  "created_at": "2026-10-12T20:13:27.403626+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:693"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "لَا تُشَدُّ الرِّحَالُ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ مَنْصُورٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا مُحَمَّدُ بْنُ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سُفْيَانُ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الزُّهْرِيِّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَعِيدٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي هُرَيْرَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-1",
+        "to_ref": "narrator-2",
+        "properties": {
+          "hadith_ref": "Nasai:693",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-2",
+        "to_ref": "narrator-3",
+        "properties": {
+          "hadith_ref": "Nasai:693",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-3",
+        "to_ref": "narrator-4",
+        "properties": {
+          "hadith_ref": "Nasai:693",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-4",
+        "to_ref": "narrator-5",
+        "properties": {
+          "hadith_ref": "Nasai:693",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا مُحَمَّدُ بْنُ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3258,
+    "output_tokens": 3096,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

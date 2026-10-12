@@ -1,0 +1,270 @@
+{
+  "key": "e29d0c9e8f45bdb00308c4c5d3135bcd56764dc197df365f0f44ea7f12438b1e",
+  "created_at": "2026-10-12T20:36:25.876882+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-19607"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَنَسُ بْنُ مَالِكٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-uthman",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُثْمَانُ بْنُ أَبِي شَيْبَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُثْمَانُ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-ishaq",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "إِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَإِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-jarir",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "جَرِيرٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا جَرِيرٌ"
+          }
+        ]
+      },
+      {
+        "ref": "n-mansur",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَنْصُورٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-salim",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَالِمِ بْنِ أَبِي الْجَعْدِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَالِمِ بْنِ أَبِي الْجَعْدِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-anas",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَنَسُ بْنُ مَالِكٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَنَسُ بْنُ مَالِكٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-uthman",
+        "to_ref": "n-jarir",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-19607",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا جَرِيرٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-jarir",
+        "to_ref": "n-mansur",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-19607",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-mansur",
+        "to_ref": "n-salim",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-19607",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَالِمِ بْنِ أَبِي الْجَعْدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-salim",
+        "to_ref": "n-anas",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-19607",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَنَسُ بْنُ مَالِكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-uthman",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُثْمَانُ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-ishaq",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَإِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-jarir",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا جَرِيرٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-mansur",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-salim",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَالِمِ بْنِ أَبِي الْجَعْدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-anas",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَنَسُ بْنُ مَالِكٍ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3200,
+    "output_tokens": 4042,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

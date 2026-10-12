@@ -1,0 +1,241 @@
+{
+  "key": "d5524975f6090073082570310d666cb57fc677fdb0ff1ae442624cc4cbffe3e2",
+  "created_at": "2026-10-12T20:24:08.768728+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ أَبَاهُ نَحَلَهُ غُلَامًا"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "هِشَامُ بْنُ عَمَّارٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا هِشَامُ بْنُ عَمَّارٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سُفْيَانُ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الزُّهْرِيِّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "حُمَيْدِ بْنِ عَبْدِ الرَّحْمَنِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حُمَيْدِ بْنِ عَبْدِ الرَّحْمَنِ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدِ بْنِ النُّعْمَانِ بْنِ بَشِيرٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَمُحَمَّدِ بْنِ النُّعْمَانِ بْنِ بَشِيرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "النُّعْمَانِ بْنِ بَشِيرٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ النُّعْمَانِ بْنِ بَشِيرٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-1",
+        "to_ref": "narrator-2",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-2",
+        "to_ref": "narrator-3",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-3",
+        "to_ref": "narrator-4",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حُمَيْدِ بْنِ عَبْدِ الرَّحْمَنِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-3",
+        "to_ref": "narrator-5",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228",
+          "chain_no": 2,
+          "position": 3,
+          "sigha": "أَخْبَرَاهُ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَمُحَمَّدِ بْنِ النُّعْمَانِ بْنِ بَشِيرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-4",
+        "to_ref": "narrator-6",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "أَخْبَرَاهُ عَنِ"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَاهُ عَنِ النُّعْمَانِ بْنِ بَشِيرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-5",
+        "to_ref": "narrator-6",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111228",
+          "chain_no": 2,
+          "position": 4,
+          "sigha": "أَخْبَرَاهُ عَنِ"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَاهُ عَنِ النُّعْمَانِ بْنِ بَشِيرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ أَبَاهُ نَحَلَهُ غُلَامًا"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3026,
+    "output_tokens": 3296,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

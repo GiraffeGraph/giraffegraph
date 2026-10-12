@@ -1,0 +1,275 @@
+{
+  "key": "0aa0552e640adbda7b2efc1935a44ed170007eb287bae2c1a32afbeb1360bea3",
+  "created_at": "2026-10-12T20:35:21.656979+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18231"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عَمْرٌو النَّاقِدُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَمْرٌو النَّاقِدُ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَمْرٌو النَّاقِدُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ عَبْدِ اللهِ بْنِ نُمَيْرٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ عَبْدِ اللهِ بْنِ نُمَيْرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سُفْيَانَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سُفْيَانَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سُفْيَانُ بْنُ عُيَيْنَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ الْمُنْكَدِرِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ الْمُنْكَدِرِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "جَابِرَ بْنَ عَبْدِ اللهِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّهُ سَمِعَ جَابِرَ بْنَ عَبْدِ اللهِ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عَمْرٌو النَّاقِدُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-3",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ عَبْدِ اللهِ بْنِ نُمَيْرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-5",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-6",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ الْمُنْكَدِرِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-7",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّهُ سَمِعَ جَابِرَ بْنَ عَبْدِ اللهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18231",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "جَمِيعًا عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَمِيعًا عَنْ سُفْيَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18231",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَمِيعًا عَنْ سُفْيَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18231",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ عَمْرٌو : حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18231",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ الْمُنْكَدِرِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-18231",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "أَنَّهُ سَمِعَ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّهُ سَمِعَ جَابِرَ بْنَ عَبْدِ اللهِ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3197,
+    "output_tokens": 4087,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "key": "29486661491c91beb0b52342c934c97047a1a9a2c52ae7574840337432524d22",
+  "created_at": "2026-10-12T20:30:52.150488+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70022"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا إِسْمَاعِيلُ بْنُ مَسْعُودٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "إِسْمَاعِيلُ بْنُ مَسْعُودٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا إِسْمَاعِيلُ بْنُ مَسْعُودٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو عَبْدِ الصَّمَدِ عَبْدُ الْعَزِيزِ بْنُ عَبْدِ الصَّمَدِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو عَبْدِ الصَّمَدِ عَبْدُ الْعَزِيزِ بْنُ عَبْدِ الصَّمَدِ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَنْصُورٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَنْصُورٌ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "إِبْرَاهِيمَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "هَمَّامِ بْنِ الْحَارِثِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ هَمَّامِ بْنِ الْحَارِثِ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَدِيِّ بْنِ حَاتِمٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَدِيِّ بْنِ حَاتِمٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-1",
+        "to_ref": "narrator-2",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70022",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو عَبْدِ الصَّمَدِ عَبْدُ الْعَزِيزِ بْنُ عَبْدِ الصَّمَدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-2",
+        "to_ref": "narrator-3",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70022",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَنْصُورٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-3",
+        "to_ref": "narrator-4",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70022",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-4",
+        "to_ref": "narrator-5",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70022",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ هَمَّامِ بْنِ الْحَارِثِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-5",
+        "to_ref": "narrator-6",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70022",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَدِيِّ بْنِ حَاتِمٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا إِسْمَاعِيلُ بْنُ مَسْعُودٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو عَبْدِ الصَّمَدِ عَبْدُ الْعَزِيزِ بْنُ عَبْدِ الصَّمَدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَنْصُورٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ هَمَّامِ بْنِ الْحَارِثِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-6",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَدِيِّ بْنِ حَاتِمٍ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3552,
+    "output_tokens": 4696,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

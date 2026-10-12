@@ -1,0 +1,243 @@
+{
+  "key": "f2770a9323edb15d64c58421e8ae3a8584a7d1176b662a5fdc09df29c959f6c4",
+  "created_at": "2026-10-12T20:34:25.388275+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-7405"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو النُّعْمَانِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو النُّعْمَانِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو النُّعْمَانِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ الْوَاحِدِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عَبْدُ الْوَاحِدِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الشَّيْبَانِيُّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الشَّيْبَانِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "زِرًّا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَمِعْتُ زِرًّا"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدِ اللهِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَبْدِ اللهِ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-7405",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عَبْدُ الْوَاحِدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-7405",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الشَّيْبَانِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-7405",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "سَمِعْتُ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَمِعْتُ زِرًّا"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-7405",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَبْدِ اللهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو النُّعْمَانِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-3",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عَبْدُ الْوَاحِدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-4",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الشَّيْبَانِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-5",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَمِعْتُ زِرًّا"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-6",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَبْدِ اللهِ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3247,
+    "output_tokens": 3296,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

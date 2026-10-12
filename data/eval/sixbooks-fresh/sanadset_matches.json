@@ -1,0 +1,2436 @@
+{
+  "rule": "best Sanadset record of the same collection; kept when ratio >= 0.9",
+  "hadiths": 300,
+  "matched": 253,
+  "match_rate": 0.8433,
+  "matched_with_equal_normalised_text": 118,
+  "matched_with_zero_sanadset_mentions": 0,
+  "per_collection": {
+    "AbuDawud": {
+      "total": 50,
+      "matched": 43
+    },
+    "Bukhari": {
+      "total": 50,
+      "matched": 50
+    },
+    "IbnMajah": {
+      "total": 50,
+      "matched": 45
+    },
+    "Muslim": {
+      "total": 50,
+      "matched": 28
+    },
+    "Nasai": {
+      "total": 50,
+      "matched": 45
+    },
+    "Tirmidhi": {
+      "total": 50,
+      "matched": 42
+    }
+  },
+  "links": [
+    {
+      "hadith_id": "Bukhari:ifta-10925",
+      "sanadset_id": "Bukhari:6586",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11245",
+      "sanadset_id": "Bukhari:6802",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2517",
+      "sanadset_id": "Bukhari:1442",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5608",
+      "sanadset_id": "Bukhari:3306",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3486",
+      "sanadset_id": "Bukhari:2015",
+      "ratio": 0.9809,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1267",
+      "sanadset_id": "Bukhari:725",
+      "ratio": 0.9973,
+      "containment": 0.9505,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2079",
+      "sanadset_id": "Bukhari:1194",
+      "ratio": 0.9964,
+      "containment": 0.9927,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-9931",
+      "sanadset_id": "Bukhari:5950",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2048",
+      "sanadset_id": "Bukhari:1179",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3803",
+      "sanadset_id": "Bukhari:2190",
+      "ratio": 0.9888,
+      "containment": 0.9987,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3317",
+      "sanadset_id": "Bukhari:1914",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6800",
+      "sanadset_id": "Bukhari:4212",
+      "ratio": 0.9766,
+      "containment": 0.9976,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3977",
+      "sanadset_id": "Bukhari:4260",
+      "ratio": 0.9361,
+      "containment": 0.9559,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "Bukhari:ifta-848",
+      "sanadset_id": "Bukhari:470",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5837",
+      "sanadset_id": "Bukhari:3495",
+      "ratio": 0.9804,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11465",
+      "sanadset_id": "Bukhari:6964",
+      "ratio": 0.986,
+      "containment": 0.996,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5033",
+      "sanadset_id": "Bukhari:2892",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-206",
+      "sanadset_id": "Bukhari:110",
+      "ratio": 0.9601,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-9071",
+      "sanadset_id": "Bukhari:5427",
+      "ratio": 0.9801,
+      "containment": 0.9505,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1037",
+      "sanadset_id": "Bukhari:584",
+      "ratio": 0.988,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-8650",
+      "sanadset_id": "Bukhari:5170",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1472",
+      "sanadset_id": "Bukhari:848",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7405",
+      "sanadset_id": "Bukhari:4503",
+      "ratio": 0.9389,
+      "containment": 0.9467,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7083",
+      "sanadset_id": "Bukhari:4355",
+      "ratio": 0.9695,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3480",
+      "sanadset_id": "Bukhari:2011",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6377",
+      "sanadset_id": "Bukhari:3914",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7003",
+      "sanadset_id": "Bukhari:4316",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3992",
+      "sanadset_id": "Bukhari:2291",
+      "ratio": 0.986,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1256",
+      "sanadset_id": "Bukhari:716",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3145",
+      "sanadset_id": "Bukhari:1808",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3138",
+      "sanadset_id": "Bukhari:1804",
+      "ratio": 0.973,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6006",
+      "sanadset_id": "Bukhari:3614",
+      "ratio": 0.9861,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1660",
+      "sanadset_id": "Bukhari:957",
+      "ratio": 0.9798,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11419",
+      "sanadset_id": "Bukhari:6925",
+      "ratio": 0.9618,
+      "containment": 0.911,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10600",
+      "sanadset_id": "Bukhari:6398",
+      "ratio": 0.996,
+      "containment": 0.9719,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5774",
+      "sanadset_id": "Bukhari:3451",
+      "ratio": 0.9908,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10277",
+      "sanadset_id": "Bukhari:6199",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2086",
+      "sanadset_id": "Bukhari:1199",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-4350",
+      "sanadset_id": "Bukhari:2504",
+      "ratio": 0.9986,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10064",
+      "sanadset_id": "Bukhari:6040",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3850",
+      "sanadset_id": "Bukhari:2218",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10819",
+      "sanadset_id": "Bukhari:6524",
+      "ratio": 0.9988,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2498",
+      "sanadset_id": "Bukhari:1433",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 3
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10470",
+      "sanadset_id": "Bukhari:6316",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-9679",
+      "sanadset_id": "Bukhari:5807",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7309",
+      "sanadset_id": "Bukhari:4460",
+      "ratio": 0.9619,
+      "containment": 0.987,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2455",
+      "sanadset_id": "Bukhari:1410",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6094",
+      "sanadset_id": "Bukhari:3681",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-8805",
+      "sanadset_id": "Bukhari:5269",
+      "ratio": 0.9829,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2403",
+      "sanadset_id": "Bukhari:1379",
+      "ratio": 0.9836,
+      "containment": 0.9974,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-12287",
+      "sanadset_id": "Muslim:407",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-14418",
+      "sanadset_id": "Muslim:725",
+      "ratio": 0.663,
+      "containment": 0.3831,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-14115",
+      "sanadset_id": "Muslim:1567",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-15317",
+      "sanadset_id": "Muslim:2943",
+      "ratio": 0.6185,
+      "containment": 0.7527,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-18231",
+      "sanadset_id": "Muslim:3987",
+      "ratio": 0.7373,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-12300",
+      "sanadset_id": "Muslim:417",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-17650",
+      "sanadset_id": "Muslim:4050",
+      "ratio": 0.8232,
+      "containment": 0.7,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-20554",
+      "sanadset_id": "Muslim:5329",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-13280",
+      "sanadset_id": "Muslim:1034",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-13265",
+      "sanadset_id": "Muslim:1022",
+      "ratio": 0.9863,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-19438",
+      "sanadset_id": "Muslim:4689",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-17674",
+      "sanadset_id": "Muslim:3661",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-16088",
+      "sanadset_id": "Muslim:2808",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-15555",
+      "sanadset_id": "Muslim:2479",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-12104",
+      "sanadset_id": "Muslim:5224",
+      "ratio": 0.5828,
+      "containment": 0.382,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-17660",
+      "sanadset_id": "Muslim:3654",
+      "ratio": 0.8862,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-14301",
+      "sanadset_id": "Muslim:4758",
+      "ratio": 0.5386,
+      "containment": 0.4043,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-17777",
+      "sanadset_id": "Muslim:3733",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-13563",
+      "sanadset_id": "Muslim:1220",
+      "ratio": 0.7765,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-15932",
+      "sanadset_id": "Muslim:2583",
+      "ratio": 0.4401,
+      "containment": 0.1573,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-19291",
+      "sanadset_id": "Muslim:4601",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-16605",
+      "sanadset_id": "Muslim:3114",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-13058",
+      "sanadset_id": "Muslim:624",
+      "ratio": 0.6032,
+      "containment": 0.4593,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-13196",
+      "sanadset_id": "Muslim:976",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-20226",
+      "sanadset_id": "Muslim:4259",
+      "ratio": 0.5568,
+      "containment": 0.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-14834",
+      "sanadset_id": "Muslim:1992",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-20591",
+      "sanadset_id": "Muslim:5357",
+      "ratio": 0.9577,
+      "containment": 0.9478,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-12254",
+      "sanadset_id": "Muslim:382",
+      "ratio": 0.948,
+      "containment": 0.88,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-19289",
+      "sanadset_id": "Muslim:4599",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-16559",
+      "sanadset_id": "Muslim:3093",
+      "ratio": 0.6768,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-13723",
+      "sanadset_id": "Muslim:1330",
+      "ratio": 0.7694,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-18974",
+      "sanadset_id": "Muslim:4416",
+      "ratio": 0.8597,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-16687",
+      "sanadset_id": "Muslim:3155",
+      "ratio": 0.6712,
+      "containment": 0.4429,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-18140",
+      "sanadset_id": "Muslim:2241",
+      "ratio": 0.7736,
+      "containment": 0.7056,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-14261",
+      "sanadset_id": "Muslim:1651",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-19600",
+      "sanadset_id": "Muslim:4780",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-19001",
+      "sanadset_id": "Muslim:4432",
+      "ratio": 0.709,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-17709",
+      "sanadset_id": "Muslim:3681",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-19099",
+      "sanadset_id": "Muslim:1639",
+      "ratio": 0.472,
+      "containment": 0.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-13824",
+      "sanadset_id": "Muslim:1385",
+      "ratio": 0.9969,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-12983",
+      "sanadset_id": "Muslim:845",
+      "ratio": 0.9989,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-17665",
+      "sanadset_id": "Muslim:3657",
+      "ratio": 0.4637,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-17175",
+      "sanadset_id": "Muslim:3401",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-19607",
+      "sanadset_id": "Muslim:4784",
+      "ratio": 0.6572,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-16867",
+      "sanadset_id": "Muslim:1562",
+      "ratio": 0.6014,
+      "containment": 0.2596,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-19512",
+      "sanadset_id": "Muslim:4729",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-18350",
+      "sanadset_id": "Muslim:4053",
+      "ratio": 0.9501,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-14626",
+      "sanadset_id": "Muslim:1617",
+      "ratio": 0.5319,
+      "containment": 0.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Muslim:ifta-12421",
+      "sanadset_id": "Muslim:489",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Muslim:ifta-18428",
+      "sanadset_id": "Muslim:4100",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92099",
+      "sanadset_id": "AbuDawud:1956",
+      "ratio": 0.9604,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89095",
+      "sanadset_id": "AbuDawud:26",
+      "ratio": 0.9955,
+      "containment": 0.914,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-96119",
+      "sanadset_id": "AbuDawud:4533",
+      "ratio": 0.9536,
+      "containment": 0.9869,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95782",
+      "sanadset_id": "AbuDawud:4304",
+      "ratio": 0.992,
+      "containment": 0.9968,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90497",
+      "sanadset_id": "AbuDawud:918",
+      "ratio": 0.9913,
+      "containment": 0.8889,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91274",
+      "sanadset_id": "AbuDawud:1430",
+      "ratio": 0.9913,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92192",
+      "sanadset_id": "AbuDawud:2015",
+      "ratio": 0.9885,
+      "containment": 0.9494,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95273",
+      "sanadset_id": "AbuDawud:3950",
+      "ratio": 0.995,
+      "containment": 0.9435,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92267",
+      "sanadset_id": "AbuDawud:2062",
+      "ratio": 0.9649,
+      "containment": 0.8719,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90009",
+      "sanadset_id": "AbuDawud:606",
+      "ratio": 0.9928,
+      "containment": 0.8989,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94313",
+      "sanadset_id": "AbuDawud:3323",
+      "ratio": 0.9764,
+      "containment": 0.922,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90817",
+      "sanadset_id": "AbuDawud:1121",
+      "ratio": 0.9664,
+      "containment": 0.9771,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90183",
+      "sanadset_id": "AbuDawud:724",
+      "ratio": 0.9623,
+      "containment": 0.8435,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90243",
+      "sanadset_id": "AbuDawud:762",
+      "ratio": 0.991,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89235",
+      "sanadset_id": "AbuDawud:114",
+      "ratio": 0.9829,
+      "containment": 0.9804,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90531",
+      "sanadset_id": "AbuDawud:937",
+      "ratio": 0.9436,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91526",
+      "sanadset_id": "AbuDawud:1599",
+      "ratio": 0.9604,
+      "containment": 0.9848,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90767",
+      "sanadset_id": "AbuDawud:1087",
+      "ratio": 0.989,
+      "containment": 0.9703,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92801",
+      "sanadset_id": "AbuDawud:2375",
+      "ratio": 0.9847,
+      "containment": 0.9779,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94344",
+      "sanadset_id": "AbuDawud:3344",
+      "ratio": 0.9857,
+      "containment": 0.8883,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91867",
+      "sanadset_id": "AbuDawud:1818",
+      "ratio": 0.984,
+      "containment": 0.9565,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92510",
+      "sanadset_id": "AbuDawud:2203",
+      "ratio": 0.9639,
+      "containment": 0.8844,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90034",
+      "sanadset_id": "AbuDawud:624",
+      "ratio": 0.9934,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-93422",
+      "sanadset_id": "AbuDawud:2775",
+      "ratio": 0.6586,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89744",
+      "sanadset_id": "AbuDawud:435",
+      "ratio": 0.9934,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94462",
+      "sanadset_id": "AbuDawud:2811",
+      "ratio": 0.6801,
+      "containment": 0.4028,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89276",
+      "sanadset_id": "AbuDawud:2202",
+      "ratio": 0.5379,
+      "containment": 0.2849,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90893",
+      "sanadset_id": "AbuDawud:1176",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95867",
+      "sanadset_id": "AbuDawud:4363",
+      "ratio": 0.9728,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90137",
+      "sanadset_id": "AbuDawud:692",
+      "ratio": 0.9846,
+      "containment": 0.933,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92101",
+      "sanadset_id": "AbuDawud:1957",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92839",
+      "sanadset_id": "AbuDawud:2397",
+      "ratio": 0.9069,
+      "containment": 0.9484,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92836",
+      "sanadset_id": "AbuDawud:2395",
+      "ratio": 0.9978,
+      "containment": 0.9747,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91809",
+      "sanadset_id": "AbuDawud:1787",
+      "ratio": 0.7471,
+      "containment": 0.9533,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89614",
+      "sanadset_id": "AbuDawud:353",
+      "ratio": 0.9655,
+      "containment": 0.9222,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89619",
+      "sanadset_id": "AbuDawud:357",
+      "ratio": 0.9882,
+      "containment": 0.9139,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91143",
+      "sanadset_id": "AbuDawud:1353",
+      "ratio": 0.9771,
+      "containment": 0.9645,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91360",
+      "sanadset_id": "AbuDawud:1484",
+      "ratio": 0.996,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89578",
+      "sanadset_id": "AbuDawud:3467",
+      "ratio": 0.5828,
+      "containment": 0.1493,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94601",
+      "sanadset_id": "AbuDawud:3518",
+      "ratio": 0.9913,
+      "containment": 0.8882,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-93574",
+      "sanadset_id": "AbuDawud:2872",
+      "ratio": 0.9449,
+      "containment": 0.7849,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89292",
+      "sanadset_id": "AbuDawud:149",
+      "ratio": 0.9808,
+      "containment": 0.8498,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90413",
+      "sanadset_id": "AbuDawud:868",
+      "ratio": 0.7385,
+      "containment": 0.969,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91723",
+      "sanadset_id": "AbuDawud:2694",
+      "ratio": 0.5286,
+      "containment": 0.1825,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92010",
+      "sanadset_id": "AbuDawud:1909",
+      "ratio": 0.9614,
+      "containment": 0.9697,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89372",
+      "sanadset_id": "AbuDawud:199",
+      "ratio": 0.9606,
+      "containment": 0.8623,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-93617",
+      "sanadset_id": "AbuDawud:2850",
+      "ratio": 0.9784,
+      "containment": 0.9353,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90138",
+      "sanadset_id": "AbuDawud:693",
+      "ratio": 0.9466,
+      "containment": 0.8175,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95390",
+      "sanadset_id": "AbuDawud:4038",
+      "ratio": 0.9988,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94327",
+      "sanadset_id": "AbuDawud:3333",
+      "ratio": 0.9506,
+      "containment": 0.9538,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96607",
+      "sanadset_id": "Tirmidhi:204",
+      "ratio": 0.9099,
+      "containment": 0.9728,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100388",
+      "sanadset_id": "Tirmidhi:2283",
+      "ratio": 0.9639,
+      "containment": 0.7234,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97178",
+      "sanadset_id": "Tirmidhi:507",
+      "ratio": 0.9642,
+      "containment": 0.9464,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99118",
+      "sanadset_id": "Tirmidhi:1563",
+      "ratio": 0.9579,
+      "containment": 0.8143,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102870",
+      "sanadset_id": "Tirmidhi:3883",
+      "ratio": 0.9573,
+      "containment": 0.9902,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101371",
+      "sanadset_id": "Tirmidhi:3067",
+      "ratio": 0.6633,
+      "containment": 0.411,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99168",
+      "sanadset_id": "Tirmidhi:1594",
+      "ratio": 0.9841,
+      "containment": 0.9893,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97805",
+      "sanadset_id": "Tirmidhi:843",
+      "ratio": 0.9198,
+      "containment": 0.7841,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100974",
+      "sanadset_id": "Tirmidhi:2648",
+      "ratio": 0.94,
+      "containment": 0.7828,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101128",
+      "sanadset_id": "Tirmidhi:2734",
+      "ratio": 0.9908,
+      "containment": 0.9736,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100780",
+      "sanadset_id": "Tirmidhi:2529",
+      "ratio": 0.9437,
+      "containment": 0.9233,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101091",
+      "sanadset_id": "Tirmidhi:2713",
+      "ratio": 0.9589,
+      "containment": 0.9752,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96920",
+      "sanadset_id": "Tirmidhi:367",
+      "ratio": 0.9692,
+      "containment": 0.9981,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100534",
+      "sanadset_id": "Tirmidhi:2375",
+      "ratio": 0.9698,
+      "containment": 0.9365,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101349",
+      "sanadset_id": "Tirmidhi:2866",
+      "ratio": 0.9821,
+      "containment": 0.9545,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99036",
+      "sanadset_id": "Tirmidhi:1516",
+      "ratio": 0.9854,
+      "containment": 0.8294,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96694",
+      "sanadset_id": "Tirmidhi:250",
+      "ratio": 0.9637,
+      "containment": 0.9418,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101405",
+      "sanadset_id": "Tirmidhi:1732",
+      "ratio": 0.5186,
+      "containment": 0.1421,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101522",
+      "sanadset_id": "Tirmidhi:184",
+      "ratio": 0.5608,
+      "containment": 0.2222,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-98921",
+      "sanadset_id": "Tirmidhi:1452",
+      "ratio": 0.9655,
+      "containment": 0.8719,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97632",
+      "sanadset_id": "Tirmidhi:1391",
+      "ratio": 0.5962,
+      "containment": 0.1786,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102280",
+      "sanadset_id": "Tirmidhi:2384",
+      "ratio": 0.4791,
+      "containment": 0.0847,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99236",
+      "sanadset_id": "Tirmidhi:1630",
+      "ratio": 0.7508,
+      "containment": 0.9717,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99527",
+      "sanadset_id": "Tirmidhi:1792",
+      "ratio": 0.9665,
+      "containment": 0.8615,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99628",
+      "sanadset_id": "Tirmidhi:1853",
+      "ratio": 0.9659,
+      "containment": 0.8937,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97199",
+      "sanadset_id": "Tirmidhi:1952",
+      "ratio": 0.5626,
+      "containment": 0.3663,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96379",
+      "sanadset_id": "Tirmidhi:83",
+      "ratio": 0.9273,
+      "containment": 0.9779,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101816",
+      "sanadset_id": "Tirmidhi:3209",
+      "ratio": 0.9361,
+      "containment": 0.8662,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99286",
+      "sanadset_id": "Tirmidhi:1657",
+      "ratio": 0.9577,
+      "containment": 0.9725,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99535",
+      "sanadset_id": "Tirmidhi:1798",
+      "ratio": 0.968,
+      "containment": 0.9627,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99837",
+      "sanadset_id": "Tirmidhi:3461",
+      "ratio": 0.5652,
+      "containment": 0.1003,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96357",
+      "sanadset_id": "Tirmidhi:73",
+      "ratio": 0.9674,
+      "containment": 0.9397,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97292",
+      "sanadset_id": "Tirmidhi:564",
+      "ratio": 0.9899,
+      "containment": 0.9849,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102603",
+      "sanadset_id": "Tirmidhi:3690",
+      "ratio": 0.9628,
+      "containment": 0.8914,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97439",
+      "sanadset_id": "Tirmidhi:645",
+      "ratio": 0.9206,
+      "containment": 0.9807,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99650",
+      "sanadset_id": "Tirmidhi:1867",
+      "ratio": 0.967,
+      "containment": 0.9449,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102019",
+      "sanadset_id": "Tirmidhi:3343",
+      "ratio": 0.9283,
+      "containment": 0.8843,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102736",
+      "sanadset_id": "Tirmidhi:3783",
+      "ratio": 0.9308,
+      "containment": 0.9103,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99210",
+      "sanadset_id": "Tirmidhi:1618",
+      "ratio": 0.9758,
+      "containment": 0.9052,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102478",
+      "sanadset_id": "Tirmidhi:3615",
+      "ratio": 0.949,
+      "containment": 0.7569,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100929",
+      "sanadset_id": "Tirmidhi:2622",
+      "ratio": 0.9621,
+      "containment": 0.8591,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96449",
+      "sanadset_id": "Tirmidhi:120",
+      "ratio": 0.9571,
+      "containment": 0.9283,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100792",
+      "sanadset_id": "Tirmidhi:2536",
+      "ratio": 0.9655,
+      "containment": 0.805,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102228",
+      "sanadset_id": "Tirmidhi:3463",
+      "ratio": 0.9633,
+      "containment": 0.8968,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96937",
+      "sanadset_id": "Tirmidhi:375",
+      "ratio": 0.9505,
+      "containment": 0.9792,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-98913",
+      "sanadset_id": "Tirmidhi:1447",
+      "ratio": 0.9649,
+      "containment": 0.9805,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99684",
+      "sanadset_id": "Tirmidhi:1887",
+      "ratio": 0.9803,
+      "containment": 0.9563,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96927",
+      "sanadset_id": "Tirmidhi:370",
+      "ratio": 0.9514,
+      "containment": 0.9244,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100192",
+      "sanadset_id": "Tirmidhi:2166",
+      "ratio": 0.9744,
+      "containment": 0.8964,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97469",
+      "sanadset_id": "Tirmidhi:660",
+      "ratio": 0.9625,
+      "containment": 0.9369,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-68105",
+      "sanadset_id": "Nasai:2859",
+      "ratio": 0.9988,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-68634",
+      "sanadset_id": "Nasai:3206",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-70022",
+      "sanadset_id": "Nasai:4216",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-67493",
+      "sanadset_id": "Nasai:2446",
+      "ratio": 0.9756,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-72056",
+      "sanadset_id": "Nasai:5653",
+      "ratio": 0.9751,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-68830",
+      "sanadset_id": "Nasai:3343",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-71530",
+      "sanadset_id": "Nasai:5296",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-71095",
+      "sanadset_id": "Nasai:4980",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-71402",
+      "sanadset_id": "Nasai:5202",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "Nasai:ifta-70806",
+      "sanadset_id": "Nasai:4761",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-64208",
+      "sanadset_id": "Nasai:287",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "Nasai:ifta-64223",
+      "sanadset_id": "Nasai:296",
+      "ratio": 0.7284,
+      "containment": 0.944,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Nasai:ifta-67587",
+      "sanadset_id": "Nasai:2503",
+      "ratio": 0.9983,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-70534",
+      "sanadset_id": "Nasai:4571",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-67634",
+      "sanadset_id": "Nasai:2535",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-70959",
+      "sanadset_id": "Nasai:4890",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-69042",
+      "sanadset_id": "Nasai:3485",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-64860",
+      "sanadset_id": "Nasai:699",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-64856",
+      "sanadset_id": "Nasai:697",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-66304",
+      "sanadset_id": "Nasai:1581",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-65629",
+      "sanadset_id": "Nasai:1149",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-66555",
+      "sanadset_id": "Nasai:1769",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-68587",
+      "sanadset_id": "Nasai:3004",
+      "ratio": 0.7213,
+      "containment": 0.6736,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Nasai:ifta-67606",
+      "sanadset_id": "Nasai:2516",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-66157",
+      "sanadset_id": "Nasai:1491",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-66262",
+      "sanadset_id": "Nasai:1558",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-67600",
+      "sanadset_id": "Nasai:2512",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-69226",
+      "sanadset_id": "Nasai:3616",
+      "ratio": 0.9681,
+      "containment": 0.9382,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-69789",
+      "sanadset_id": "Nasai:5691",
+      "ratio": 0.6065,
+      "containment": 0.4795,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Nasai:ifta-69016",
+      "sanadset_id": "Nasai:3463",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-66352",
+      "sanadset_id": "Nasai:1615",
+      "ratio": 0.9522,
+      "containment": 0.9905,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-65685",
+      "sanadset_id": "Nasai:1185",
+      "ratio": 0.61,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Nasai:ifta-64409",
+      "sanadset_id": "Nasai:412",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-69308",
+      "sanadset_id": "Nasai:3682",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 2
+    },
+    {
+      "hadith_id": "Nasai:ifta-69344",
+      "sanadset_id": "Nasai:3715",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-67887",
+      "sanadset_id": "Nasai:2706",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-67622",
+      "sanadset_id": "Nasai:2528",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-65719",
+      "sanadset_id": "Nasai:1210",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-68740",
+      "sanadset_id": "Nasai:3280",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-69627",
+      "sanadset_id": "Nasai:3927",
+      "ratio": 0.9527,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-70941",
+      "sanadset_id": "Nasai:4872",
+      "ratio": 0.8333,
+      "containment": 1.0,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "Nasai:ifta-65478",
+      "sanadset_id": "Nasai:1068",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-64491",
+      "sanadset_id": "Nasai:463",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-68230",
+      "sanadset_id": "Nasai:2936",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-71230",
+      "sanadset_id": "Nasai:5073",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-64497",
+      "sanadset_id": "Nasai:466",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-69843",
+      "sanadset_id": "Nasai:4102",
+      "ratio": 0.9871,
+      "containment": 0.9904,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-71911",
+      "sanadset_id": "Nasai:5538",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-66589",
+      "sanadset_id": "Nasai:1794",
+      "ratio": 0.9897,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "Nasai:ifta-70734",
+      "sanadset_id": "Nasai:4709",
+      "ratio": 0.9941,
+      "containment": 0.9763,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109538",
+      "sanadset_id": "IbnMajah:1181",
+      "ratio": 0.8971,
+      "containment": 0.9714,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112457",
+      "sanadset_id": "IbnMajah:3210",
+      "ratio": 0.995,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110861",
+      "sanadset_id": "IbnMajah:2118",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113975",
+      "sanadset_id": "IbnMajah:4336",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109232",
+      "sanadset_id": "IbnMajah:959",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111495",
+      "sanadset_id": "IbnMajah:2546",
+      "ratio": 0.8926,
+      "containment": 0.8287,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113733",
+      "sanadset_id": "IbnMajah:4129",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108945",
+      "sanadset_id": "IbnMajah:736",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108404",
+      "sanadset_id": "IbnMajah:352",
+      "ratio": 0.452,
+      "containment": 0.9875,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108224",
+      "sanadset_id": "IbnMajah:233",
+      "ratio": 0.9936,
+      "containment": 0.9904,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112801",
+      "sanadset_id": "IbnMajah:3441",
+      "ratio": 0.9965,
+      "containment": 0.9983,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-107947",
+      "sanadset_id": "IbnMajah:9",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111283",
+      "sanadset_id": "IbnMajah:2404",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110999",
+      "sanadset_id": "IbnMajah:2212",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111228",
+      "sanadset_id": "IbnMajah:2369",
+      "ratio": 0.9977,
+      "containment": 0.9155,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108811",
+      "sanadset_id": "IbnMajah:643",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111378",
+      "sanadset_id": "IbnMajah:2470",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109679",
+      "sanadset_id": "IbnMajah:1282",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111966",
+      "sanadset_id": "IbnMajah:2874",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109944",
+      "sanadset_id": "IbnMajah:1476",
+      "ratio": 0.9897,
+      "containment": 0.9876,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113971",
+      "sanadset_id": "IbnMajah:1015",
+      "ratio": 0.7311,
+      "containment": 0.75,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111276",
+      "sanadset_id": "IbnMajah:2400",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112537",
+      "sanadset_id": "IbnMajah:3264",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112384",
+      "sanadset_id": "IbnMajah:3160",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111093",
+      "sanadset_id": "IbnMajah:2277",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110604",
+      "sanadset_id": "IbnMajah:1942",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113290",
+      "sanadset_id": "IbnMajah:3780",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110182",
+      "sanadset_id": "IbnMajah:1654",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110569",
+      "sanadset_id": "IbnMajah:1918",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112843",
+      "sanadset_id": "IbnMajah:3466",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108304",
+      "sanadset_id": "IbnMajah:289",
+      "ratio": 0.9971,
+      "containment": 0.9971,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112339",
+      "sanadset_id": "IbnMajah:3128",
+      "ratio": 0.9904,
+      "containment": 0.9935,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113197",
+      "sanadset_id": "IbnMajah:2949",
+      "ratio": 0.6495,
+      "containment": 0.3712,
+      "matched": false,
+      "candidates_at_or_above_threshold": 0
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112763",
+      "sanadset_id": "IbnMajah:3416",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110893",
+      "sanadset_id": "IbnMajah:2139",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108140",
+      "sanadset_id": "IbnMajah:159",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-107953",
+      "sanadset_id": "IbnMajah:14",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112470",
+      "sanadset_id": "IbnMajah:3219",
+      "ratio": 0.9658,
+      "containment": 0.9097,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112942",
+      "sanadset_id": "IbnMajah:3539",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113677",
+      "sanadset_id": "IbnMajah:4085",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110162",
+      "sanadset_id": "IbnMajah:1640",
+      "ratio": 0.9977,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111499",
+      "sanadset_id": "IbnMajah:2549",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113064",
+      "sanadset_id": "IbnMajah:3623",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111314",
+      "sanadset_id": "IbnMajah:2426",
+      "ratio": 0.9985,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110537",
+      "sanadset_id": "IbnMajah:1894",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108570",
+      "sanadset_id": "IbnMajah:475",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113637",
+      "sanadset_id": "IbnMajah:4054",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108360",
+      "sanadset_id": "IbnMajah:323",
+      "ratio": 0.9954,
+      "containment": 0.9981,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110694",
+      "sanadset_id": "IbnMajah:2006",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109822",
+      "sanadset_id": "IbnMajah:1387",
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true,
+      "candidates_at_or_above_threshold": 1
+    }
+  ]
+}

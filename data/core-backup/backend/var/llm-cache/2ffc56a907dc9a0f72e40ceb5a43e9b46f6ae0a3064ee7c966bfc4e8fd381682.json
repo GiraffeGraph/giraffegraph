@@ -1,0 +1,319 @@
+{
+  "key": "2ffc56a907dc9a0f72e40ceb5a43e9b46f6ae0a3064ee7c966bfc4e8fd381682",
+  "created_at": "2026-10-12T20:16:16.970564+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:3758"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "إِنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ أُتِيَ لَيْلَةَ أُسْرِيَ بِهِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو هُرَيْرَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ أَبُو هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَعِيدُ بْنُ الْمُسَيِّبِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَعِيدِ بْنِ الْمُسَيِّبِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الزُّهْرِيُّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ الْمُسَيَّبِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ ابْنُ الْمُسَيَّبِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يُونُسُ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا يُونُسُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو صَفْوَانَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو صَفْوَانَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَلَمَةُ بْنُ شَبِيبٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وحَدَّثَنِي سَلَمَةُ بْنُ شَبِيبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-9",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْحَسَنُ بْنُ أَعْيَنَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْحَسَنُ بْنُ أَعْيَنَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-10",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَعْقِلٌ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَعْقِلٌ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ أَبُو هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-7",
+        "to_ref": "node-6",
+        "properties": {
+          "chain_no": 1,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو صَفْوَانَ ، أَخْبَرَنَا يُونُسُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-4",
+        "properties": {
+          "chain_no": 1,
+          "position": 2
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "chain_no": 1,
+          "position": 3
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ ابْنُ الْمُسَيَّبِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-2",
+        "properties": {
+          "chain_no": 1,
+          "position": 4
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ أَبُو هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-8",
+        "to_ref": "node-9",
+        "properties": {
+          "chain_no": 2,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وحَدَّثَنِي سَلَمَةُ بْنُ شَبِيبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-9",
+        "to_ref": "node-10",
+        "properties": {
+          "chain_no": 2,
+          "position": 2
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَعْقِلٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-10",
+        "to_ref": "node-4",
+        "properties": {
+          "chain_no": 2,
+          "position": 3
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الزُّهْرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-3",
+        "properties": {
+          "chain_no": 2,
+          "position": 4
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سَعِيدِ بْنِ الْمُسَيِّبِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-2",
+        "properties": {
+          "chain_no": 2,
+          "position": 5
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّهُ سَمِعَ أَبَا هُرَيْرَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3424,
+    "output_tokens": 5122,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

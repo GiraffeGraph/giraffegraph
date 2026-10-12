@@ -1,0 +1,333 @@
+{
+  "key": "22f483bfcaf98fdf3204b3ca65cca39ae0c123e0c6a5f2c368b6a35a689e21e1",
+  "created_at": "2026-10-12T20:34:42.320535+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَحْمَدُ بْنُ صَالِحٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-ahmad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَحْمَدُ بْنُ صَالِحٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَحْمَدُ بْنُ صَالِحٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-wahb",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ وَهْبٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ وَهْبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-yunus",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يُونُسُ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يُونُسُ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-shihab",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنِ شِهَابٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ شِهَابٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-urwa",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُرْوَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-abubakr",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي بَكْرٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبِي بَكْرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narrator-aisha",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةُ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَتْ عَائِشَةُ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-ahmad",
+        "to_ref": "narrator-wahb",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ وَهْبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-wahb",
+        "to_ref": "narrator-yunus",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يُونُسُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-yunus",
+        "to_ref": "narrator-shihab",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ شِهَابٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-shihab",
+        "to_ref": "narrator-urwa",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-shihab",
+        "to_ref": "narrator-abubakr",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "وَ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبِي بَكْرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narrator-urwa",
+        "to_ref": "narrator-aisha",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-3138",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "قَالَتْ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَتْ عَائِشَةُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-ahmad",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَحْمَدُ بْنُ صَالِحٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-wahb",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ وَهْبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-yunus",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يُونُسُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-shihab",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ شِهَابٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-urwa",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-abubakr",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبِي بَكْرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narrator-aisha",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَتْ عَائِشَةُ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3129,
+    "output_tokens": 4564,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

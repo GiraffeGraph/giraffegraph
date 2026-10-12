@@ -1,0 +1,291 @@
+{
+  "key": "ca0d596a0f607df3db5787c356abab4bb141f88d246fefb1d5074226c052a624",
+  "created_at": "2026-10-12T20:20:38.664088+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُبَيْدُ اللهِ بْنُ عُمَرَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُبَيْدُ اللهِ بْنُ عُمَرَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُبَيْدُ اللهِ بْنُ عُمَرَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ اللهِ بْنُ يَزِيدَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي عَبْدُ اللهِ بْنُ يَزِيدَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "جَعْفَرُ بْنُ مُسَافِرٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَنَا جَعْفَرُ بْنُ مُسَافِرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ اللهِ بْنُ يَحْيَى"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا عَبْدُ اللهِ بْنُ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَعِيدُ ابْنُ أَبِي أَيُّوبَ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي سَعِيدُ يَعْنِي ابْنَ أَبِي أَيُّوبَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَزِيدُ بْنُ أَبِي حَبِيبٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي يَزِيدُ بْنُ أَبِي حَبِيبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "كُلَيْبُ بْنُ ذُهْلٍ الْحَضْرَمِيُّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ كُلَيْبَ بْنَ ذُهْلٍ الْحَضْرَمِيَّ أَخْبَرَهُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-9",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُبَيْدٌ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُبَيْدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-10",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ جَبْرٍ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنُ جَبْرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-11",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو بَصْرَةَ الْغِفَارِيُّ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "كُنْتُ مَعَ أَبِي بَصْرَةَ الْغِفَارِيِّ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.6,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُبَيْدُ اللهِ بْنُ عُمَرَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267",
+          "chain_no": 1,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي عَبْدُ اللهِ بْنُ يَزِيدَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267",
+          "chain_no": 2,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا عَبْدُ اللهِ بْنُ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267",
+          "chain_no": 2,
+          "position": 2
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي سَعِيدُ يَعْنِي ابْنَ أَبِي أَيُّوبَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-7",
+        "to_ref": "node-8",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267",
+          "chain_no": 3,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ كُلَيْبَ بْنَ ذُهْلٍ الْحَضْرَمِيَّ أَخْبَرَهُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-8",
+        "to_ref": "node-9",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267",
+          "chain_no": 3,
+          "position": 2
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُبَيْدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-10",
+        "to_ref": "node-11",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-92267",
+          "chain_no": 4,
+          "position": 1
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "كُنْتُ مَعَ أَبِي بَصْرَةَ الْغِفَارِيِّ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3449,
+    "output_tokens": 4560,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

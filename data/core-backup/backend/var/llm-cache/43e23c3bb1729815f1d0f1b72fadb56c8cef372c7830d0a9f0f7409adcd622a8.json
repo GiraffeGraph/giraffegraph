@@ -1,0 +1,191 @@
+{
+  "key": "43e23c3bb1729815f1d0f1b72fadb56c8cef372c7830d0a9f0f7409adcd622a8",
+  "created_at": "2026-10-12T20:18:58.517770+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-2086"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "كُفِّنَ فِي ثَلَاثَةِ أَثْوَابٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-musaddad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُسَدَّدٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُسَدَّدٌ"
+          }
+        ]
+      },
+      {
+        "ref": "node-yahya",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَحْيَى"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يَحْيَى"
+          }
+        ]
+      },
+      {
+        "ref": "node-hisham",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "هِشَامٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ هِشَامٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-father",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي أَبِي"
+          }
+        ]
+      },
+      {
+        "ref": "node-aisha",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-musaddad",
+        "to_ref": "node-yahya",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-2086",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حدثنا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُسَدَّدٌ: حَدَّثَنَا يَحْيَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-yahya",
+        "to_ref": "node-hisham",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-2086",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عن"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ هِشَامٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-hisham",
+        "to_ref": "node-father",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-2086",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "حدثني"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي أَبِي"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-father",
+        "to_ref": "node-aisha",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-2086",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عن"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-aisha",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "كُفِّنَ فِي ثَلَاثَةِ أَثْوَابٍ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2867,
+    "output_tokens": 3052,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

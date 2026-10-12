@@ -1,0 +1,44 @@
+{
+  "key": "631db87f9cf1e172efb064be0e0411116bd295a36c132946ff48bbb55e296c88",
+  "created_at": "2026-10-12T20:40:52.034971+00:00",
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112457"
+        },
+        "confidence": 0.99,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو عُمَيْرٍ عِيسَى بْنُ مُحَمَّدٍ النَّحَّاسُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "أَبُو عُمَيْرٍ عِيسَى بْنُ مُحَمَّدٍ النَّحَّاسُ": "x"
+        },
+        "confidence": 0.9,
+        "evidence_refs": []
+      }
+    ],
+    "relations": []
+  },
+  "usage": {
+    "input_tokens": 3317,
+    "output_tokens": 299,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-sonnet-5-5"
+  }
+}

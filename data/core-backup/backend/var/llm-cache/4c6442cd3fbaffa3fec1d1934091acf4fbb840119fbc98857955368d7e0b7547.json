@@ -1,0 +1,243 @@
+{
+  "key": "4c6442cd3fbaffa3fec1d1934091acf4fbb840119fbc98857955368d7e0b7547",
+  "created_at": "2026-10-12T20:14:44.792793+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "IbnMajah:1242"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْحَسَنُ بْنُ دَاوُدَ الْمُنْكَدِرِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْحَسَنُ بْنُ دَاوُدَ الْمُنْكَدِرِيُّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْحَسَنُ بْنُ دَاوُدَ الْمُنْكَدِرِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ أَبِي فُدَيْكٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ أَبِي فُدَيْكٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الضَّحَّاكِ بْنِ عُثْمَانَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الضَّحَّاكِ بْنِ عُثْمَانَ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْمَقْبُرِيِّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الْمَقْبُرِيِّ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي هُرَيْرَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-1",
+        "to_ref": "narr-2",
+        "properties": {
+          "hadith_ref": "IbnMajah:1242",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ أَبِي فُدَيْكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-2",
+        "to_ref": "narr-3",
+        "properties": {
+          "hadith_ref": "IbnMajah:1242",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الضَّحَّاكِ بْنِ عُثْمَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-3",
+        "to_ref": "narr-4",
+        "properties": {
+          "hadith_ref": "IbnMajah:1242",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الْمَقْبُرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-4",
+        "to_ref": "narr-5",
+        "properties": {
+          "hadith_ref": "IbnMajah:1242",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْحَسَنُ بْنُ دَاوُدَ الْمُنْكَدِرِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ أَبِي فُدَيْكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الضَّحَّاكِ بْنِ عُثْمَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ الْمَقْبُرِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3968,
+    "output_tokens": 3408,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "key": "597785922c41bf00f2405bbb1bf4713931c12c3ca5c258f0fab05a05255702c8",
+  "created_at": "2026-10-12T20:20:49.022817+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "لَا تُصَلُّوا بَعْدَ الْفَجْرِ إِلَّا سَجْدَتَيْنِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-muslim",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُسْلِمُ بْنُ إِبْرَاهِيمَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُسْلِمُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-wuhayb",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "وُهَيْبٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا وُهَيْبٌ"
+          }
+        ]
+      },
+      {
+        "ref": "n-qudama",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "قُدَامَةُ بْنُ مُوسَى"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا قُدَامَةُ بْنُ مُوسَى"
+          }
+        ]
+      },
+      {
+        "ref": "n-ayyub",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَيُّوبَ بْنِ حَصِينٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَيُّوبَ بْنِ حَصِينٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-abu-alqama",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي عَلْقَمَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي عَلْقَمَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-yasar",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَسَارٍ مَوْلَى ابْنِ عُمَرَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَسَارٍ مَوْلَى ابْنِ عُمَرَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-ibn-umar",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ عُمَرَ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "رَآنِي ابْنُ عُمَرَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-muslim",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُسْلِمُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-muslim",
+        "to_ref": "n-wuhayb",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "نا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا وُهَيْبٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-wuhayb",
+        "to_ref": "n-qudama",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "نا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا قُدَامَةُ بْنُ مُوسَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-qudama",
+        "to_ref": "n-ayyub",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عن"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَيُّوبَ بْنِ حَصِينٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-ayyub",
+        "to_ref": "n-abu-alqama",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عن"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي عَلْقَمَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-abu-alqama",
+        "to_ref": "n-yasar",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "عن"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَسَارٍ مَوْلَى ابْنِ عُمَرَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-yasar",
+        "to_ref": "n-ibn-umar",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90767",
+          "chain_no": 1,
+          "position": 6,
+          "sigha": "قال"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ : رَآنِي ابْنُ عُمَرَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3100,
+    "output_tokens": 4120,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

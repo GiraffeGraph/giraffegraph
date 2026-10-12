@@ -1,0 +1,223 @@
+{
+  "key": "2196124373ea15441f8e084ed92382d0c6048aa863b4d95d72e6335295743fcb",
+  "created_at": "2026-10-12T20:23:37.840458+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "n-ishaq",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Ishaq ibn Ibrahim"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا إِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-nadr",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Al-Nadr ibn Shumayl"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا النَّضْرُ بْنُ شُمَيْلٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-hammad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Hammad ibn Salama"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا حَمَّادُ بْنُ سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-azraq",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Al-Azraq ibn Qays"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْأَزْرَقِ بْنِ قَيْسٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-yahya",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Yahya ibn Ya'mar"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَحْيَى بْنِ يَعْمَرَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-abuhurayra",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Abu Hurayra"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "h-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-64491"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَوَّلُ مَا يُحَاسَبُ بِهِ الْعَبْدُ صَلَاتُهُ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-ishaq",
+        "to_ref": "n-nadr",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-64491",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "أَخْبَرَنَا"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا إِسْحَاقُ بْنُ إِبْرَاهِيمَ ، قَالَ: حَدَّثَنَا النَّضْرُ بْنُ شُمَيْلٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-nadr",
+        "to_ref": "n-hammad",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-64491",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا النَّضْرُ بْنُ شُمَيْلٍ ، قَالَ: أَنْبَأَنَا حَمَّادُ بْنُ سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-hammad",
+        "to_ref": "n-azraq",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-64491",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "أَنْبَأَنَا"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنْبَأَنَا حَمَّادُ بْنُ سَلَمَةَ ، عَنِ الْأَزْرَقِ بْنِ قَيْسٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-azraq",
+        "to_ref": "n-yahya",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-64491",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْأَزْرَقِ بْنِ قَيْسٍ ، عَنْ يَحْيَى بْنِ يَعْمَرَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-yahya",
+        "to_ref": "n-abuhurayra",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-64491",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَحْيَى بْنِ يَعْمَرَ ، عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-ishaq",
+        "to_ref": "h-1",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا إِسْحَاقُ بْنُ إِبْرَاهِيمَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3111,
+    "output_tokens": 3810,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

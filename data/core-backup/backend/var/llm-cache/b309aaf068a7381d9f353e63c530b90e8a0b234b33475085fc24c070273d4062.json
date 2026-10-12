@@ -1,0 +1,49 @@
+{
+  "key": "b309aaf068a7381d9f353e63c530b90e8a0b234b33475085fc24c070273d4062",
+  "created_at": "2026-10-12T20:40:21.515919+00:00",
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-10925"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ كَثِيرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "مُحَمَّدُ بْنُ كَثِيرٍ": "مُحَمَّدُ بْنُ كَثِيرٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ كَثِيرٍ"
+          }
+        ]
+      }
+    ],
+    "relations": []
+  },
+  "usage": {
+    "input_tokens": 4147,
+    "output_tokens": 352,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-sonnet-5-5"
+  }
+}

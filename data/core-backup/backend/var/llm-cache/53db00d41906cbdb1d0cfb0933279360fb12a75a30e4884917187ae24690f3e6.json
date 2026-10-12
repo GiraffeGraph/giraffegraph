@@ -1,0 +1,378 @@
+{
+  "key": "53db00d41906cbdb1d0cfb0933279360fb12a75a30e4884917187ae24690f3e6",
+  "created_at": "2026-10-12T20:29:06.321794+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ بِمَعْنَاهُ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَحْمُودُ بْنُ خَالِدٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَحْمُودُ بْنُ خَالِدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدٌ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا مُحَمَّدٌ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَحْيَى"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي يَحْيَى"
+          }
+        ]
+      },
+      {
+        "ref": "nar-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْأَوْزَاعِيِّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْأَوْزَاعِيِّ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدِ بْنِ الْوَلِيدِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ مُحَمَّدِ بْنِ الْوَلِيدِ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَعِيدُ بْنُ أَبِي سَعِيدٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي أَيْضًا سَعِيدُ بْنُ أَبِي سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْقَعْقَاعِ بْنِ حَكِيمٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْقَعْقَاعِ بْنِ حَكِيمٍ"
+          }
+        ]
+      },
+      {
+        "ref": "nar-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-1",
+        "to_ref": "nar-2",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "نَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَحْمُودُ بْنُ خَالِدٍ ، نَا مُحَمَّدٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-2",
+        "to_ref": "nar-3",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنِي"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا مُحَمَّدٌ ، يَعْنِي ابْنَ عَائِذٍ ، حَدَّثَنِي يَحْيَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-3",
+        "to_ref": "nar-4",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي يَحْيَى ، يَعْنِي ابْنَ حَمْزَةَ ، عَنِ الْأَوْزَاعِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-4",
+        "to_ref": "nar-5",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْأَوْزَاعِيِّ ، عَنْ مُحَمَّدِ بْنِ الْوَلِيدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-5",
+        "to_ref": "nar-6",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "أَخْبَرَنِي أَيْضًا"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدِ بْنِ الْوَلِيدِ ، أَخْبَرَنِي أَيْضًا سَعِيدُ بْنُ أَبِي سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-6",
+        "to_ref": "nar-7",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 6,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَعِيدُ بْنُ أَبِي سَعِيدٍ ، عَنِ الْقَعْقَاعِ بْنِ حَكِيمٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "nar-7",
+        "to_ref": "nar-8",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-89578",
+          "chain_no": 1,
+          "position": 7,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "الْقَعْقَاعِ بْنِ حَكِيمٍ ، عَنْ عَائِشَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَحْمُودُ بْنُ خَالِدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا مُحَمَّدٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي يَحْيَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْأَوْزَاعِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ مُحَمَّدِ بْنِ الْوَلِيدِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-6",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي أَيْضًا سَعِيدُ بْنُ أَبِي سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-7",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الْقَعْقَاعِ بْنِ حَكِيمٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "nar-8",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3310,
+    "output_tokens": 5766,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

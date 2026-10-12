@@ -1,0 +1,247 @@
+{
+  "key": "f7b94b01f4ab15a37e18520bbaf1a159499b69d95558187180bf66572bd5db66",
+  "created_at": "2026-10-12T20:21:24.733338+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90413"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "إِذَا شَكَّ أَحَدُكُمْ فِي صَلَاتِهِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "قُتَيْبَةُ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا قُتَيْبَةُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَعْقُوبُ بْنُ عَبْدِ الرَّحْمَنِ الْقَارِيُّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَعْقُوبُ بْنُ عَبْدِ الرَّحْمَنِ الْقَارِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "زَيْدِ بْنِ أَسْلَمَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "زَيْدِ بْنِ أَسْلَمَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَالِكٍ"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "بِإِسْنَادِ مَالِكٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ وَهْبٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "رَوَاهُ ابْنُ وَهْبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "حَفْصِ بْنِ مَيْسَرَةَ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَفْصِ بْنِ مَيْسَرَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "دَاوُدَ بْنِ قَيْسٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "دَاوُدَ بْنِ قَيْسٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-9",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "هِشَامِ بْنِ سَعْدٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "هِشَامِ بْنِ سَعْدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-10",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبَا سَعِيدٍ الْخُدْرِيَّ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبَا سَعِيدٍ الْخُدْرِيَّ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا قُتَيْبَةُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90413",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا قُتَيْبَةُ ، نَا يَعْقُوبُ بْنُ عَبْدِ الرَّحْمَنِ الْقَارِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90413",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ زَيْدِ بْنِ أَسْلَمَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90413",
+          "chain_no": 2,
+          "position": 1,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "رَوَاهُ ابْنُ وَهْبٍ ، عَنْ مَالِكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-9",
+        "to_ref": "node-10",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-90413",
+          "chain_no": 3,
+          "position": 1,
+          "sigha": "بَلَغَ"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "إِلَّا أَنَّ هِشَامًا بَلَغَ بِهِ أَبَا سَعِيدٍ الْخُدْرِيَّ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3316,
+    "output_tokens": 4453,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

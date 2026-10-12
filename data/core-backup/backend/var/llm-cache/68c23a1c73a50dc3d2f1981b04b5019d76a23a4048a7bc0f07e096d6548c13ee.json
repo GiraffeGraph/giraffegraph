@@ -1,0 +1,49 @@
+{
+  "key": "68c23a1c73a50dc3d2f1981b04b5019d76a23a4048a7bc0f07e096d6548c13ee",
+  "created_at": "2026-10-12T20:40:20.980269+00:00",
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-11245"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ": "مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ"
+          }
+        ]
+      }
+    ],
+    "relations": []
+  },
+  "usage": {
+    "input_tokens": 3392,
+    "output_tokens": 380,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-sonnet-5-5"
+  }
+}

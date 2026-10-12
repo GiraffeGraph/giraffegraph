@@ -1,0 +1,2409 @@
+{
+  "input": "/Users/efe/projects/GiraffeGraph/claude-science-results/pilot_sample.json",
+  "condition": "llm_isnad_chain",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "schema_hints": true,
+  "provider": "anthropic",
+  "segmentation_strategy": "isnad",
+  "hadiths": 50,
+  "segments": 55,
+  "fallback_to_whole_text_units": 0,
+  "llm_equivalent_calls": 55,
+  "failed_calls": 0,
+  "candidates_proposed": {
+    "nodes": 327,
+    "relations": 480
+  },
+  "candidates_validated": {
+    "nodes": 327,
+    "relations": 479
+  },
+  "candidates_in_review": {
+    "nodes": 0,
+    "relations": 1,
+    "open_review_items_by_reason_code": {
+      "potential_duplicate_relation": 1
+    }
+  },
+  "candidates_rejected": {
+    "nodes": 0,
+    "relations": 0
+  },
+  "narrator_mentions": {
+    "proposed": 278,
+    "validated": 278,
+    "committed": 269
+  },
+  "runs": {
+    "committed": 49,
+    "committed_without_any_fact": 0,
+    "blocked": 1,
+    "blocked_by_reason": {
+      "Run has open review items and cannot be committed.": 1
+    },
+    "blocked_hadith_ids": [
+      "AbuDawud:3122"
+    ]
+  },
+  "canonical_graph": {
+    "nodes": 254,
+    "edges": 464,
+    "nodes_by_type": {
+      "Hadith": 49,
+      "Narrator": 205
+    },
+    "node_writes": {
+      "created": 254,
+      "merged": 64
+    },
+    "edge_writes": {
+      "created": 464,
+      "merged": 0
+    }
+  },
+  "narrator_identity": {
+    "committed_mentions": 269,
+    "canonical_narrator_nodes": 205,
+    "distinct_committed_mentions_ignoring_diacritics": 197
+  },
+  "committed_fact_invariants": {
+    "facts_checked": {
+      "nodes": 318,
+      "relations": 464
+    },
+    "acceptance_records": {
+      "auto_validated": 782
+    },
+    "without_quote_in_source_segment": [
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "213de804-54e4-4499-82b4-ef63b0022ae2"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "38134e53-6b97-4e78-9b8e-d472b9c3a560"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "3d60f335-fd43-4145-ae94-513870e6adbb"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "4151e7ab-b0b7-488a-8658-5e621f7ef76d"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "78af33e7-2e4f-4722-8236-36d31e5472b1"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "ee469b45-d30d-44c9-b442-1106d1f8b5ce"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "111e0091-88d9-4e59-bfed-3b541b36e555"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "119e3cbf-7536-41b1-b353-c0011170f9c7"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "15116b23-7d60-4ac3-ac11-28e69b9a294d"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "33af43b7-f0ab-4864-9309-e56042ee6450"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "35166ac3-cd22-43c9-a4c1-b34a9fe334db"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "492835a1-1ac9-4053-b8aa-29991e5aab8c"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "6866a2ac-d123-4264-ae29-3b570e4a42b6"
+      },
+      {
+        "hadith_id": "Muslim:978",
+        "candidate_ref": "edcaf6e7-eb19-43b8-a53b-ed9dd37f3ee3"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "2a8febc8-f448-4335-aade-46076cb46e11"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "9bc40d39-499e-4ea0-8fdc-e4b3fed98b5a"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "a4cd34ef-890e-4b4e-925d-6db6cd703872"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "b646f428-7e2d-4d6e-acd8-6055ace728fe"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "e614d21d-7e66-46e8-a8d2-ffd1a04b7f32"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "0da00590-07ff-4615-b16e-3a0d737824cd"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "67bcb78f-8dec-40e5-9660-122c447abd06"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "959f2315-ed62-4ddd-ac49-ec3b64ef6947"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "b2673d0f-1374-4ce3-8d24-f4e0468a226d"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "d299f329-6dab-4f33-8417-1844eab765ef"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "d4591398-eff6-44cb-8e3b-6a29ca559cf0"
+      },
+      {
+        "hadith_id": "Muslim:1050",
+        "candidate_ref": "d46575b2-8749-452e-9cec-19dececedafa"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "0f6b1e4d-9571-49ea-a17f-e5fa13563f2b"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "96cbada3-1235-4f82-97fc-827ecd2acb03"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "bbf8cb8e-7624-4475-a9b7-dfa716788209"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "e75f03b1-755f-46e0-be8f-e28c361f812f"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "042ac18f-7831-4ecd-b91f-50651ed7e34a"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "6d9fc108-ca08-46c0-9b4a-2ec0775245cf"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "81d6cffe-8d65-4e05-bc93-6c959edff2a8"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "bd125cea-fc28-4474-a678-eebd8639b609"
+      },
+      {
+        "hadith_id": "Tirmidhi:3204",
+        "candidate_ref": "c6da8f97-aadc-479b-a005-5531861e76d0"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "2a0a5a96-027a-4d9e-a695-b40c3d36cb18"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "56e9b9ad-75e5-4a0a-9a86-a7e464cf4d52"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "a0b56c96-befa-4d99-950c-1a7cace9e566"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "e331f9ab-c1e5-424a-b351-60562bc44ccf"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "f0390d7b-568d-475d-a702-81dad410c962"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "1b0b1eef-c158-43a9-a5fc-9206085c0077"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "429706d5-3d7d-4a7c-9c19-36912f217cd7"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "7576fdee-d2c0-48fb-a4fe-d3997c26606e"
+      },
+      {
+        "hadith_id": "AbuDawud:3030",
+        "candidate_ref": "c09064a3-9b8f-4c36-85a1-fafd62cb1a53"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "6ad87e1c-1cba-4f99-b059-06e80e05bcb6"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "7c0e4998-912a-4b8c-960a-7aa5e0981180"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "c4b792e3-e97e-4a90-806f-3112799c1220"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "fb0592f3-d15e-4439-9908-77505e6de3c7"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "278de5f2-b167-41f8-987a-b50d0a5adc83"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "79923b50-8452-46fa-821e-8ca30712d271"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "7e6ea440-f88a-483c-b4f9-f94acd5cd0a6"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "c81ed27e-843f-469e-ba56-432465037754"
+      },
+      {
+        "hadith_id": "Nasai:693",
+        "candidate_ref": "d2391e69-7d36-4b67-957a-8ed533e79e80"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "2cb348a0-3dfe-45d0-b188-c930074820d4"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "beb1ede1-97bf-4142-8d6c-23c66bcff4f6"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "e571f41a-afb2-413c-8bee-8558cd627d51"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "049fb888-6776-4191-b63b-18f4b1d6f3c6"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "8176a85d-1d2d-413e-9c37-78b841539ac3"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "e6a09b73-119e-4659-9f4f-ce759f793479"
+      },
+      {
+        "hadith_id": "AbuDawud:3307",
+        "candidate_ref": "ffb17f2f-7068-44c6-b5d3-a3398b9b7b0d"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "0b97d254-b81b-49bf-9174-f05b76e7be92"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "2174013c-4363-42de-8cf5-95c78b70c96d"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "2a14e592-c2ba-488d-a2d7-c3edcd7474bd"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "79def632-e2ed-43ec-92f7-c973b9372180"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "7b855c2d-8a4e-4b7c-8c33-05691b3cd45a"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "0ad90a68-6f7a-4b2b-b4d2-a9159fb14b37"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "5298aa61-dfdb-4e24-88f8-c73a98c89a1d"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "655ac373-64fe-4fb9-9fe3-d2157b735062"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "7a177340-1805-40a1-9ce0-115a875fc5f0"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "c11f21d6-916a-4cfb-b30b-615cd470d351"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "c77d5eb8-6fdc-469f-b018-51fb5121cd72"
+      },
+      {
+        "hadith_id": "Muslim:1003",
+        "candidate_ref": "f6cc39f2-c77f-4d9f-b818-0d16a65ea9bc"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "51831ded-c8e1-430f-a73d-72e7ae0aa9d8"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "5cb0e84e-56c1-4ef4-a87c-fcd02b14b6d2"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "745684f3-d50f-4550-b069-5cc8eba942a8"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "74e97c99-7aea-474c-8a66-3a52c41eee7c"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "17d07676-662e-457d-888a-e81722a3231d"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "7f2ff839-7c49-4fc9-8cee-24714916c69b"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "9699024c-82af-4cef-8a7c-f3add62b795d"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "a7c1a3b6-00ab-46c7-87eb-401bb62e63c8"
+      },
+      {
+        "hadith_id": "Tirmidhi:3144",
+        "candidate_ref": "c7d3c39b-dec4-4730-87e1-7aa9b309511a"
+      },
+      {
+        "hadith_id": "Nasai:595",
+        "candidate_ref": "3a95115f-db91-4fe8-87aa-6f62f705467b"
+      },
+      {
+        "hadith_id": "Nasai:595",
+        "candidate_ref": "06e0c634-ae7c-4bc4-9b04-21ecf034523a"
+      },
+      {
+        "hadith_id": "Nasai:595",
+        "candidate_ref": "7b13b2b8-3157-4a50-a906-70289ff7e14d"
+      },
+      {
+        "hadith_id": "Nasai:595",
+        "candidate_ref": "8f7ad938-5e1b-4216-8836-dded2648bf55"
+      },
+      {
+        "hadith_id": "Nasai:595",
+        "candidate_ref": "f25aafb1-5fb3-42ec-bfd7-8e8aadb67ceb"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "2b6b99d7-a467-4c46-9529-2a1b16e30009"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "3bd83f2a-b17c-4a1a-8f26-4e2ecf643975"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "6a6c057e-bf48-4760-8e65-03eb8bc78952"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "83ff8777-9434-4136-a874-2077714b242b"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "986b181a-13b6-455a-8342-27afd5456d6c"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "0fedbf36-7246-4770-b087-864fe226f4a9"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "18fcc76a-9892-479e-8ca7-ad8de9d87a83"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "4057e533-c0c5-4510-be1d-eff7df649c3b"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "45ebf5ea-58c2-4747-b490-db93265f7df8"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "61ec6b3f-0fc8-48b8-bfce-81a3aa484fec"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "6e23d746-3d7e-4f99-82ee-505b31e5e158"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "abf6cda4-d347-4a97-a4f2-74efc79fb201"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "bf364e9b-c31d-459c-b2ea-f0b7aa980919"
+      },
+      {
+        "hadith_id": "AbuDawud:3052",
+        "candidate_ref": "c9d72ac4-72ba-4f4c-94bc-b1bdf3fa80b3"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "50903214-d0ff-4236-8b8c-cbc64dffa79a"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "5a8da002-2da8-4b3a-8e34-05d1b337ecf3"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "60e54886-7d65-45ff-8162-9afc2a367936"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "cc807a1e-751e-4ecd-9e26-5a7e37a6355e"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "57b9f8b1-3d54-4331-97ac-9c7f9b583a63"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "61269434-37a7-4b20-9210-eae7bb7759ad"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "92e0ce5d-2037-45c3-b504-21728b1f273b"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "aff6cddd-e0f8-4397-979d-2e6dcf885634"
+      },
+      {
+        "hadith_id": "AbuDawud:3499",
+        "candidate_ref": "f89331b8-bea0-4499-95c4-c8f6d63b99d2"
+      },
+      {
+        "hadith_id": "Tirmidhi:3087",
+        "candidate_ref": "6de5c917-a73d-4744-8da0-9fc20d351b64"
+      },
+      {
+        "hadith_id": "Tirmidhi:3087",
+        "candidate_ref": "d514bfa7-0254-4eda-982c-2870867e62ec"
+      },
+      {
+        "hadith_id": "Tirmidhi:3087",
+        "candidate_ref": "0655cb8b-709d-455c-890e-057ee1eb3ae4"
+      },
+      {
+        "hadith_id": "Tirmidhi:3087",
+        "candidate_ref": "3e10e0b3-e4da-4d1b-9a9c-67915bf92040"
+      },
+      {
+        "hadith_id": "Tirmidhi:3087",
+        "candidate_ref": "b928aa02-d20b-4b1c-b1cd-d90e5a32f0c4"
+      },
+      {
+        "hadith_id": "Nasai:678",
+        "candidate_ref": "e14dbcf0-8ab3-4ca9-b745-4881a245245f"
+      },
+      {
+        "hadith_id": "Nasai:678",
+        "candidate_ref": "7fa70086-320c-4680-8d23-5cf6769b052a"
+      },
+      {
+        "hadith_id": "Nasai:678",
+        "candidate_ref": "cd2707a6-b2c2-435e-bfae-01d741c86d2f"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "7d254dad-3961-4ed7-99d0-7dc822d07d98"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "8430922b-9b6b-4450-a504-4b2281dd7981"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "bcd865b0-2a70-4846-b78d-1f5d2ca13775"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "d7b28021-8f98-4135-8c48-57a37cdbf390"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "35538cf0-c96e-46af-b233-b03b5e76edc8"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "5865f258-e34f-48d9-8b22-a75aab5ce1e7"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "6630f345-48eb-4d52-a1e3-937a4de5e7d7"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "8743ce61-ca4a-4b0d-b7e8-b317b9071049"
+      },
+      {
+        "hadith_id": "IbnMajah:1593",
+        "candidate_ref": "cadd51f7-34b3-4616-a065-550bca702c17"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "19441543-7129-450c-a9a7-30dc910c617b"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "67409cc0-3ca3-4bbe-bf77-b0d4dadbc77f"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "76aa6a58-42d9-4f85-a572-37a1ac522a57"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "bcb77480-727e-44ca-9913-9090f777a698"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "ceb9afb4-1a34-4219-9fb2-395df7c07cf5"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "2738e8f7-a95e-441e-8e0c-851ca85983a1"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "38b448b6-58bd-466e-8576-dc2cc394a317"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "402aba60-5661-46a1-84f0-4c840ca63442"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "5a9181aa-d89d-4da0-9468-eac2c41f9bd3"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "86d8f7d8-e309-4745-828c-349c3d79aa37"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "a829ebaa-c339-442d-9740-70e0e171b485"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "b669ba3f-0ec8-416c-a9ec-00fc4960492e"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "b83fb081-bfbd-4500-9ea1-db792c954c10"
+      },
+      {
+        "hadith_id": "Muslim:1047",
+        "candidate_ref": "f36252c8-c8e4-47ec-9b3d-04b1e9d65aed"
+      },
+      {
+        "hadith_id": "Nasai:3378",
+        "candidate_ref": "01d43748-6300-4877-a68d-c7537e5e1986"
+      },
+      {
+        "hadith_id": "Nasai:3378",
+        "candidate_ref": "5951cd63-3c69-4637-be4e-657388162652"
+      },
+      {
+        "hadith_id": "Nasai:3378",
+        "candidate_ref": "cb138b33-bedf-4715-a3a3-8c1308bb6451"
+      },
+      {
+        "hadith_id": "Nasai:3378",
+        "candidate_ref": "365de4c5-a8ab-46af-9d40-08799daac40e"
+      },
+      {
+        "hadith_id": "Nasai:3378",
+        "candidate_ref": "41ae09a3-7c3e-4a0a-a234-9ec5e00d10c3"
+      },
+      {
+        "hadith_id": "Nasai:3378",
+        "candidate_ref": "8a7b1217-8957-41bb-a259-f08998246c09"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "3624e271-f1cd-4425-936a-b276e48744a8"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "464a95df-14f1-4bb8-b090-94f15b5b53c9"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "bba8bacd-9b16-492d-b918-8a10acd14a33"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "406ff51b-8314-4809-af62-25bbe0e63170"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "50bf45c8-792a-4e86-9bbf-d6b08959215b"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "9fc45cf7-08b8-4889-96f5-d5ec9944dfbe"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "bf583b71-55d0-4fa5-b5ca-e55c990b01a1"
+      },
+      {
+        "hadith_id": "Nasai:3459",
+        "candidate_ref": "d2d64b89-969e-408e-8ad4-4f2b88554d05"
+      },
+      {
+        "hadith_id": "IbnMajah:1042",
+        "candidate_ref": "3eda72f4-fbdc-4b8a-b449-f3e5247ca67e"
+      },
+      {
+        "hadith_id": "IbnMajah:1042",
+        "candidate_ref": "77c1c666-6508-4584-8d40-34e3788a13f1"
+      },
+      {
+        "hadith_id": "IbnMajah:1042",
+        "candidate_ref": "c3dc4713-e051-4651-8d7a-b74e3585b4ea"
+      },
+      {
+        "hadith_id": "IbnMajah:1123",
+        "candidate_ref": "9abf590b-47fb-4d43-a86e-5162492814fc"
+      },
+      {
+        "hadith_id": "IbnMajah:1123",
+        "candidate_ref": "b58a8af4-8c22-48a1-9437-2fd49edc0471"
+      },
+      {
+        "hadith_id": "IbnMajah:1123",
+        "candidate_ref": "33bd8c9d-8471-4a0e-b74b-ef40dbdca787"
+      },
+      {
+        "hadith_id": "IbnMajah:1123",
+        "candidate_ref": "89563d96-6863-4045-9852-9af9ec814cf4"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "1053340f-08b5-4bc5-a3c3-342363b58159"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "54cb4c71-9651-484c-851a-4e2969145e3e"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "84fe077f-0bbc-4b37-84df-e2eb890cab74"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "d824d7ec-3857-4c56-b34b-ae252918a393"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "ef0c47c2-3967-472e-a89b-40af4c05b2ad"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "07c16fd3-bb94-4e28-839d-4db1c3d13957"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "5a7b8b18-4a2b-4065-9a4e-696dde6e35e7"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "91218042-4725-414c-b965-a5a2733328ab"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "945317b7-408d-43f5-9d3f-d9982a5c7db2"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "996b1e15-f9b5-4680-bbd3-f61d5bbb90fe"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "bf0d93ce-6d01-474d-8594-2e6f4b10d23f"
+      },
+      {
+        "hadith_id": "AbuDawud:2984",
+        "candidate_ref": "fe1c8934-0a42-45e2-afa0-bf693c7f1a15"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "a25a86a3-3802-48aa-89c2-c34cebf1ea02"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "bd4ed139-58cb-4c30-a736-2470bec82393"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "ce57777b-d057-4463-84ee-f74e0c516f74"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "d5c457f9-4b3e-480c-a5c7-54409a90da08"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "dc484dcc-92d7-4093-b1ec-13f7d0aa5d5c"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "34f5476f-ca91-4a73-9311-16dfa0b78707"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "3d9aa7ae-22bc-4689-baca-b4b2c8a01a1e"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "51f97b84-6bab-4c36-80b7-1e9b51da15a4"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "581e7cb6-0df5-4849-801c-d6b3724270e8"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "7274c357-0750-4800-aded-9725a70c51fa"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "b14189a0-f5f1-4fc5-b8da-d537af86f5ec"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "c4c812b2-3da8-438a-b3f7-4ed5ef0cbcbb"
+      },
+      {
+        "hadith_id": "Muslim:3758",
+        "candidate_ref": "df4399fc-e05a-4b52-b379-2b2b0909ddef"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "09cfbfa4-faac-49e8-9f1f-eeef95f811e8"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "661aff9d-b38c-4fec-85d7-ee2219b62ccc"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "930eaad3-43d2-4359-b4e4-bc0091c387ad"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "a7e78236-cdd5-44f4-80dd-5cd7ed807253"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "d5b545fb-82a8-4d50-bde9-e7b98ab960a4"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "fb1c7604-9928-4ac9-bfc1-91c130e8db73"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "006a39ee-fbf5-42e2-a4c0-690b8ef1bffd"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "0c9d1bc1-215b-407d-b787-302180e25007"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "107e8040-5dbc-4cc8-927d-a5dbb21975cf"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "23772842-a38d-460d-9ca9-e2afd8e37058"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "2b27ae6b-df0f-4705-9ce2-40e915c305fd"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "64eecce0-d50a-4827-adaa-3f3f9b84d0bd"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "822126f5-44fa-4da9-8a11-108d3e7a8e4d"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "9ad53bbf-f866-418d-9062-44f50f1594ee"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "a5780c60-d05c-4c96-a175-65f7af421ccf"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "cb8233da-c49c-46e1-a602-f57e10ba9f99"
+      },
+      {
+        "hadith_id": "AbuDawud:3355",
+        "candidate_ref": "d13df314-2f17-408b-b7b2-cd2ed915fe8c"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "107377b6-8d23-4827-aee4-a0e5c0589a9e"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "215088db-d264-4622-bad7-8735016c5429"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "4928ddfb-9964-4ba3-b7d9-8543ac6b9a82"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "4e228dc6-a937-40e9-a454-a9051f178cd9"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "63c0d626-8257-48b6-af23-0e7684f9cadd"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "b5852d5a-f89c-40c0-a30f-72a952ce5203"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "21656168-f5a1-4255-bfa0-eb27fb55489e"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "3a38e3a3-787f-4f6c-ab09-08c08d5bec33"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "7c719888-9a6b-48b7-8c83-d46da83e5814"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "93f34495-4fa8-4c70-8286-174944233033"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "9982c207-a7ca-49db-86ee-d6f763091021"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "c90a0cfa-e556-4bf0-af57-25f2472cfdbd"
+      },
+      {
+        "hadith_id": "Muslim:3745",
+        "candidate_ref": "dd6e6590-04fd-48cc-baa6-4911e97a1c8e"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "1a7f81cc-71d5-47ad-ba0b-57ed5c1e209d"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "1d44b732-6a4a-487f-9953-c32f14db5f22"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "24b566b9-50a8-4098-b130-952574b84d1c"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "4bb4f0e3-2c04-4ce2-8894-6718693fd144"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "6a2ee7be-9f17-437e-87dc-7e85563ca2ae"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "9c2215c7-4a22-40cb-aba0-69577d4162c3"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "0f2f0bf6-3b02-4e3d-8082-d054feee3db6"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "32052ca3-da76-4603-b83a-e42e126951db"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "3ad0186b-aa9e-40cc-93ac-41da4f1ee112"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "3d23964b-486e-42b6-bcbc-c1f79092104d"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "792f97d7-aab1-46b4-b1f5-7a471f7affb7"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "83cf16da-5221-47a4-b6e7-322998a2cdda"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "9013b588-0114-4e36-b9f9-faf007b1c6a0"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "d59a1931-493c-40bc-a67e-4db204ba9a17"
+      },
+      {
+        "hadith_id": "IbnMajah:1158",
+        "candidate_ref": "d856cc81-8326-4ecd-b30d-48410b4b65ed"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "2b2ad289-5d59-437e-902b-86c4c26a799e"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "64fbe246-ec5b-4946-802c-d3ef5a69f347"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "99edd2ec-4fe5-49c1-a815-3da66c3abc93"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "b014cc9a-471e-44db-b153-a160b227fd7e"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "eeed76ef-2ff3-45ae-8c3c-5fdc56dc048a"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "0477819b-923c-42d7-b695-bf6d41a51c6b"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "66bac737-b42b-4d4e-aa74-c12e29978ac0"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "80e53382-42c3-4092-8110-223767dd761c"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "817d4476-abac-45de-b1c8-32439d41f81f"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "c03fd39e-5431-40b1-9cdc-447bf2a3f30b"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "c9e22e46-9916-469f-9cc5-bd3218b74bec"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "e2d04b2c-ff77-45ca-b3f5-3ef48c33164e"
+      },
+      {
+        "hadith_id": "Tirmidhi:3308",
+        "candidate_ref": "f22da445-f519-40a8-b833-806a8a7db8ce"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "2ffd1cc8-7683-47e5-b332-bcceae59b20a"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "5762be97-f9d7-4e9d-8268-4b2f84e8893b"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "9243e4b7-807b-443f-8dff-b98f5dbc0b4f"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "d298def8-2d26-4f99-b26c-e5520e86554c"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "0df1d6b6-6f97-4156-bd98-efa4524a2e74"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "20bfa42e-b0f5-464f-b5a8-63d3f36d55d8"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "2bfe3455-b7ec-4bdf-8cdc-72b9c58b8475"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "73734e9e-1e8f-4510-9e1c-a4a07a9e2226"
+      },
+      {
+        "hadith_id": "IbnMajah:1235",
+        "candidate_ref": "edd1b0c8-27bc-48ed-ae90-b174e5bd4479"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "0334c039-0f53-4c9d-b9f0-01d52acfe477"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "1525d89d-4805-4692-9d7d-88eda99593c3"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "80c276fd-316d-4143-aea9-bf7e15e32894"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "a79edf6d-f776-4476-926d-8d040abbec43"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "de106ebb-3974-445b-b62e-a630415ed2f7"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "0b290174-e099-4c5c-b32e-add792395c8a"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "1ef78d6c-8928-4cfb-8d87-ccfda5ab4482"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "36033692-32d5-46c6-bea5-cc3efdb2a33d"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "57040293-52d2-45a5-a831-a0d76a16a91d"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "66ab2239-b129-4679-824e-74f25465f045"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "783a8592-119b-4fdc-ae8f-e5386ed81643"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "8d5c8125-0975-4756-aed7-308ca14300fd"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "8f9b3325-79e1-47ec-93d2-2e1f4c2e6f2d"
+      },
+      {
+        "hadith_id": "IbnMajah:1472",
+        "candidate_ref": "97ba1618-a144-4e3f-9176-f14c013bbbb8"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "31e4412c-3c90-4563-8b51-04666b3e4073"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "82dd8daa-5ae1-438c-bb97-0b8e074a2f12"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "af28379a-5d14-48ed-9ce1-42f9e9334a78"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "00599ed4-1619-4717-a0b4-fd0652239f00"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "01cb6a1d-7c65-4c11-9717-6f58dbebac36"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "58686cc1-5395-48e9-b951-8be1fb6ec0fd"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "7dbb2248-50a1-4823-a792-8a651ffd10ce"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "a4265fa9-12a3-4164-ab89-59d4747ea29e"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "eab7cf00-888d-4637-b3d0-ae2763124038"
+      },
+      {
+        "hadith_id": "IbnMajah:1074",
+        "candidate_ref": "eafd9351-3031-4072-9711-fe7feb3d1381"
+      },
+      {
+        "hadith_id": "Muslim:3827",
+        "candidate_ref": "11f37c48-d04d-402c-92e9-f48e8fd2fe6b"
+      },
+      {
+        "hadith_id": "Muslim:3827",
+        "candidate_ref": "b4144c61-b992-4b54-8aa0-49d061a82ad9"
+      },
+      {
+        "hadith_id": "Muslim:3827",
+        "candidate_ref": "fe60c96a-5754-4774-9d6f-d5177c62b9d3"
+      },
+      {
+        "hadith_id": "Muslim:3827",
+        "candidate_ref": "7d5aa6c9-f7d3-4702-8ebc-d2c6d4e17f25"
+      },
+      {
+        "hadith_id": "Muslim:3827",
+        "candidate_ref": "912a3a4a-2e13-4823-9e9b-bf6b9f3f93a0"
+      },
+      {
+        "hadith_id": "Muslim:3827",
+        "candidate_ref": "9bf40bb1-e14c-4c65-8bfb-b1b9bceaf22b"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "12dc8677-5291-49d0-97f8-fcd1075cae30"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "1f63fede-5566-4c42-becd-7c0584e3b58f"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "32406cc0-1072-4adf-8364-1428bf96df50"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "529dac76-6e80-40ec-ad3e-dbef065f7d14"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "6a8145e3-27e0-4d78-8740-c156a3ab1588"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "820a6c3c-dd86-4c52-adb1-3d02a20d5dee"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "31413da8-a43c-43f3-8e38-314f8b714034"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "3603a5a6-cccb-41c6-b634-8c28dfd231c3"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "8d27ce53-13c7-4a29-a133-0efbcc531330"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "97656e70-93f5-437c-ad26-5040e9608cfc"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "9e12da26-1d3b-4228-a567-67fd1d958758"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "b2d509fe-a648-4858-b314-056ec8efabfd"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "d605b757-81d9-46bc-8e53-a0c1fad1caf8"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "e2736d42-96b2-4215-bc95-361bc741bf98"
+      },
+      {
+        "hadith_id": "Tirmidhi:3258",
+        "candidate_ref": "e9240062-f100-42a4-b4a1-16def860d813"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "42a26454-17f5-4847-9553-4388360d85a0"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "4e9234f2-9aee-40a7-a758-5f436363961e"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "a495659e-bc78-426c-8ea8-8407f8085345"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "e89db49e-e43f-4232-9e1d-66b782cfe647"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "f7a178b6-73ce-4678-9b19-b6e4c66101cc"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "0f0d2794-c06c-45c2-8f0a-1339e2623921"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "3373d3eb-c7db-4c60-b7c2-5fbd08d82ad0"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "40f70735-dc4e-447f-a31f-6e9bb1eb362f"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "4fe09ffa-fc9c-416a-bd96-78b3bb2db729"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "66464a6a-fcc9-4547-a099-1f811c477894"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "a07cca8b-e311-4fe5-832a-a13de1e9a111"
+      },
+      {
+        "hadith_id": "IbnMajah:1242",
+        "candidate_ref": "cc7d79b1-ca6a-48de-8c13-dc93ee5e3913"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "39a3db84-805b-405c-9120-279d2050a694"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "4b88371a-49e5-4bd3-bc06-85904a512471"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "7c0667fe-3aa5-4db9-8615-e1b04093788e"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "af628982-5239-4bdf-b72f-d288126394ea"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "2b1f686f-2fee-4518-8a5e-d18a9aa0678e"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "693791c3-14ca-4b73-acee-0e77939c026a"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "72059359-59b2-4438-b5b3-5fb85c268895"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "bd9879ae-90d0-4b52-915e-5336dcb2c1c0"
+      },
+      {
+        "hadith_id": "Nasai:882",
+        "candidate_ref": "e984344d-7884-41c7-a0b7-68dcdbfc8dc5"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "2ffa37c1-54a5-419a-a437-df90d78c9a5b"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "9abf3a65-59c1-46c0-85b2-e7b23d418d3a"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "a6216a65-e888-418f-a7d4-93db675510f3"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "42320d2a-5713-4b9d-ab0f-f27a72334a1a"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "46240d9c-518e-4a4d-a324-36dbbabec511"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "4d8fd07d-8ade-4d20-b97a-4364994c0686"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "df0d71c4-8d66-4b4a-a440-b585592eb27f"
+      },
+      {
+        "hadith_id": "Nasai:906",
+        "candidate_ref": "e441bfbb-8960-4340-b061-095ae0fc03e2"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "2808de21-6b0e-4eda-be06-aade95ee8832"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "49598bf3-dc36-44cb-94a8-53711a04a120"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "517a7275-b803-4971-8d92-38f1f2b58699"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "ee2267ab-5693-4e04-bb50-dcb51bdb6e79"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "1ad19345-c4f3-451b-a1fc-07845973ce60"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "4feb9238-371f-4cdc-95e0-d9aee86206d5"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "8d9392db-0039-4772-80f3-b017ffdd5b09"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "99dc1b8a-a195-493a-bd51-833832b6b1e1"
+      },
+      {
+        "hadith_id": "Tirmidhi:3065",
+        "candidate_ref": "f7d51914-4db5-4621-9fb3-5814b5710ab3"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "0551fde2-b2b5-4555-90ba-a11243083e66"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "66b72d21-9bc5-4bd1-a28b-ac696a66f77a"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "69a3bdbe-5de4-47e4-ac70-621a90c0b75a"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "766816d4-65b8-422a-afd0-217726eff2ef"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "e36a8cc8-092e-48bc-8659-e8fe2db8c995"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "13150cd8-1f61-43e3-89fd-cea7dc24d378"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "702338c4-d7f7-424e-8cf7-c9fc1cc21b01"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "82c0a7d7-7bd2-4b6b-8bec-a416640c3311"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "98329de8-359e-4f47-b3e6-b104203f216c"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "a4db2160-8900-45cc-a28a-a469ec897f8d"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "d068c9f2-379b-4a78-abcd-9b956b40d214"
+      },
+      {
+        "hadith_id": "IbnMajah:1399",
+        "candidate_ref": "d2e8ea60-f9f0-491a-9ef8-4176cf709164"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "053ca754-8169-403d-86b7-e1f36fc4adf1"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "29dfc385-9993-4410-9bbc-535d2644fae2"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "a0e5ac87-6b4d-46a1-adf6-1a38391dabb4"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "dad0d1bf-d8f4-4576-81be-bee859eebdb5"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "e7c78da8-8cd6-4ff8-bbdf-9847e59e0863"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "102631ea-5d9e-4543-b638-c71a50f7ca2a"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "44e34a53-f2b1-4c4e-91d4-9f56c73ce2d7"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "47bed40b-9891-435f-9fd4-b1d0459288c7"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "85be01b6-677d-496a-bac2-bcf61cfdc2ab"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "a0b71acc-375d-4090-95df-7236cf9ab0b0"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "d432e954-514f-4211-9162-7e6414cf75f1"
+      },
+      {
+        "hadith_id": "AbuDawud:3466",
+        "candidate_ref": "dcb90e37-6aec-45fd-8982-7909e13fd2fa"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "694e5aa5-2b29-4a7f-9919-a314b9b090f2"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "6ef82efd-54e7-49cb-9dd6-796c75ae9f04"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "a752e872-6b0b-4e1f-9346-bee264d44bff"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "e7dcd99f-be91-486a-a9c3-67e83b9a2299"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "3437e566-9722-4123-af33-b84d1e3d20e4"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "ca4db919-cb90-44f7-a8ed-11ede1fae34d"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "cda23542-e357-45a0-ace2-6380c9ed9ac2"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "d401413e-4a37-4c7d-8723-0f19c813c3c9"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "d7212e29-5bf7-4542-aff6-5f904fbd0960"
+      },
+      {
+        "hadith_id": "AbuDawud:3327",
+        "candidate_ref": "ed89c11a-e30a-4a58-a153-5ba88d59edb9"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "045e50f0-772c-46e1-8b23-9d703c2ceba2"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "0e1a05d4-cbff-44d7-a50a-83fd7be84546"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "d3fdc5ac-7876-48cc-a76f-f3fcec097204"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "3f0064a7-acb1-4ad4-a21f-654261c0fd05"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "4e4b6789-778f-4275-ae1a-d3ba9f2f1b1d"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "b1bbc9b0-5656-4f5d-9215-009a05671703"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "cf43af08-d690-486a-9d47-bdf8a3d479d7"
+      },
+      {
+        "hadith_id": "Tirmidhi:3200",
+        "candidate_ref": "e1631d22-68ed-417b-a9c6-be4b8de8bc3e"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "7f812ca8-efa0-4342-b49b-d4a431218ce6"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "955264d6-3c82-4cd2-8b09-fdbe98ac8f21"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "a0af07d9-fc3c-4be6-86b9-8be72f2d0f18"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "b1ac320d-3fcb-4a35-870c-746bd58fc9be"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "f2284b3b-4623-4a44-a70d-b2dedebfa4e7"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "31d3a994-3d0a-44cd-98d2-b84f37646c16"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "57805537-2da9-496c-a604-fff0bc0f6b39"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "8386f048-c5d5-4221-990d-0e456ff42027"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "881c7519-0a86-4019-9a53-6700606c664a"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "8f362b5e-52b5-4080-94d9-e03abf532741"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "cd38b246-31ad-478c-8a59-1b75cb7250d1"
+      },
+      {
+        "hadith_id": "AbuDawud:3007",
+        "candidate_ref": "d000dd05-5538-42a7-ab27-f7fe5c025053"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "398aea7d-9a6e-4612-9582-64490d07b048"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "8fec8f6b-b2de-4e90-9d5a-aca470b56a5f"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "da50c430-4f5b-4dec-a37c-110142c0b2d3"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "e5c08355-c64d-42b7-b36a-764294866f5a"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "12bc7aab-974a-405d-af98-cc9f194725dc"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "1e739924-6e74-424c-8069-d9ef9d206df7"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "62c3a16b-20e3-41c3-8492-9479ffdb322e"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "7cd7f04a-cbf0-4324-b603-f86c22cf9795"
+      },
+      {
+        "hadith_id": "Tirmidhi:3279",
+        "candidate_ref": "87e3d18c-a75e-4f63-97ce-dcc859bd00ae"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "48958969-4b41-4a41-8d9a-30a424f0b71c"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "4c63a220-25f4-4a77-9eed-0f524e587958"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "5fe79700-6c7f-46e6-b2a6-279a91b6ffb9"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "888354e7-c458-493f-b0c0-1603369ff8f4"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "898a32d0-5374-4206-9a21-a6212ab2815e"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "b059fba2-ff63-48ff-a145-aae5bf92d194"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "4bb364e9-7361-4ec1-8bd4-0f5449654510"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "76fc30ad-1c51-44d3-930e-02cfa400e50a"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "887038da-b17e-42d2-a503-1a4aa1ec3094"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "bdf18127-4859-4960-a24f-56358697553c"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "c4b82409-8bd3-4548-b620-cfba654f3fbb"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "cbb55c37-0a5d-4f8e-ba81-a80f0ac394e0"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "ee13c9f8-9e80-433c-a958-086e9d4644d7"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "f93391b0-2a24-4cd3-a6da-826463c420dc"
+      },
+      {
+        "hadith_id": "Tirmidhi:3290",
+        "candidate_ref": "ff01085b-5016-48da-88d7-e67e72c0abe8"
+      },
+      {
+        "hadith_id": "Nasai:563",
+        "candidate_ref": "9c4a3196-f200-4230-9495-162b6cb9c7d9"
+      },
+      {
+        "hadith_id": "Nasai:563",
+        "candidate_ref": "7e1c51d7-418e-4f38-ab4a-47c61cb4b4e5"
+      },
+      {
+        "hadith_id": "Nasai:563",
+        "candidate_ref": "c7dc9a43-7419-4836-92d1-b5332e13245c"
+      },
+      {
+        "hadith_id": "Nasai:563",
+        "candidate_ref": "ef588119-7509-429a-bc0f-a771ca111784"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "47bb4d9d-faf4-44d2-9066-a9a67be26986"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "7db1fcfa-c6dd-4711-b8a8-02f380aebde5"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "96fffe37-53cf-4441-8e9a-06b772ba5dfe"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "cc946bf8-3138-4578-9020-0d12efb98ec7"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "f079152d-b0df-44bb-8a3b-410e41ee6d1b"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "1673df79-f613-49bf-946a-c1779afd7134"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "4b842be0-47a1-4a7d-8a95-e5c681cc225d"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "57349e97-c466-4b1c-b0eb-425ba2b2c033"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "a3b6c8c8-745a-4c45-adb3-131f50731293"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "e197dc27-a717-47b2-a043-7e2729c909da"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "e3317023-946a-411e-8477-bfe8228dcd4a"
+      },
+      {
+        "hadith_id": "IbnMajah:1375",
+        "candidate_ref": "f5742507-8c72-4488-a08d-4e338f0b3287"
+      },
+      {
+        "hadith_id": "Muslim:1338",
+        "candidate_ref": "1203a953-e808-416c-bfec-62e831688214"
+      },
+      {
+        "hadith_id": "Muslim:1338",
+        "candidate_ref": "454a91b6-4b71-4e85-a79e-102a341f5b01"
+      },
+      {
+        "hadith_id": "Muslim:1338",
+        "candidate_ref": "fd1f1639-be38-48c7-ada9-b09f89b0c484"
+      },
+      {
+        "hadith_id": "Muslim:1338",
+        "candidate_ref": "943daa70-a016-46cf-9adc-2f4fe6f057cb"
+      },
+      {
+        "hadith_id": "Muslim:1338",
+        "candidate_ref": "c7a9b41e-c8a9-469e-95b8-3c9b9ec75250"
+      },
+      {
+        "hadith_id": "Muslim:1338",
+        "candidate_ref": "d6cc229b-e763-49cf-b8c9-153823ec85f7"
+      },
+      {
+        "hadith_id": "Muslim:974",
+        "candidate_ref": "74ff913c-4b30-47fd-8e5d-a64b6ac42e86"
+      },
+      {
+        "hadith_id": "Muslim:974",
+        "candidate_ref": "9671b076-5d40-4783-8197-0b9df2aa5f4e"
+      },
+      {
+        "hadith_id": "Muslim:974",
+        "candidate_ref": "1abd105b-619c-4ee3-8f53-c2a48541522c"
+      },
+      {
+        "hadith_id": "Muslim:974",
+        "candidate_ref": "542793f6-1bfa-423c-a7b7-eeb9b28a9b95"
+      },
+      {
+        "hadith_id": "Muslim:974",
+        "candidate_ref": "edc73897-16f4-4a54-8da0-2351d1221557"
+      },
+      {
+        "hadith_id": "Tirmidhi:3184",
+        "candidate_ref": "6a54e933-2450-447c-ada8-e911aec7b9ad"
+      },
+      {
+        "hadith_id": "Tirmidhi:3184",
+        "candidate_ref": "2d3207ce-cf01-426a-8be0-2bcef987e465"
+      },
+      {
+        "hadith_id": "Tirmidhi:3184",
+        "candidate_ref": "a10adb4d-d26f-41a4-a447-a7db3994cd3e"
+      },
+      {
+        "hadith_id": "Tirmidhi:3184",
+        "candidate_ref": "aa008f7a-53fa-497d-8ea3-5d5b06638072"
+      },
+      {
+        "hadith_id": "Tirmidhi:3184",
+        "candidate_ref": "cf42c849-7ebd-4203-b09d-6d381c990d98"
+      },
+      {
+        "hadith_id": "Tirmidhi:3184",
+        "candidate_ref": "f00cca88-3c8d-46c8-a3f4-9e35069f43cf"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "4e56450e-e510-438c-92fa-c86bc43e7929"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "636c05e9-c653-43f2-a81a-536662971e64"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "9699eab2-4161-4df8-81a0-85c04dcc4955"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "8cc78281-967b-4239-99b2-59602cf2b9ee"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "a06bed67-8726-4a32-a49b-833a3228638a"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "ac43730a-7820-422b-82f8-614c663ed420"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "be8a9bcd-c266-48d5-82f6-3a5ace5d5870"
+      },
+      {
+        "hadith_id": "Muslim:967",
+        "candidate_ref": "c17ca44c-ed49-49d8-9c39-c2230c9abdec"
+      }
+    ],
+    "without_acceptance_record": [],
+    "holds": false
+  },
+  "committed_fact_invariants_with_grounding_normalisation": {
+    "facts_checked": {
+      "nodes": 318,
+      "relations": 464
+    },
+    "acceptance_records": {
+      "auto_validated": 782
+    },
+    "without_quote_in_source_segment": [],
+    "without_acceptance_record": [],
+    "holds": true
+  },
+  "hadiths_requested": 50,
+  "hadith_ids_not_processed": [],
+  "calls": {
+    "total": 55,
+    "uncached": 51,
+    "cached": 4,
+    "failed": 0,
+    "refused": 0,
+    "truncated": 0,
+    "failed_by_kind": {}
+  },
+  "tokens": {
+    "input": 173964,
+    "output": 191008,
+    "cache_read_input": 0,
+    "cache_creation_input": 0
+  },
+  "cost_usd": 0.105566,
+  "cost_usd_without_response_cache": 0.1129,
+  "max_cost_usd": 0.4,
+  "budget_stopped": false,
+  "stop_reason": null,
+  "prices_usd_per_mtok": {
+    "as_of": "2026-10-06",
+    "claude-haiku-5-5": {
+      "input": 0.1,
+      "output": 0.5
+    },
+    "claude-sonnet-5-5": {
+      "input": 2.0,
+      "output": 10.0
+    }
+  },
+  "schema_proposals": [],
+  "candidates_by_reason_code": {
+    "node": {},
+    "relation": {
+      "potential_duplicate_relation": 1
+    }
+  },
+  "per_hadith": [
+    {
+      "hadith_id": "Muslim:978",
+      "segments": 2,
+      "calls": 2,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:1050",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3204",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3030",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:693",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3307",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:1003",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3144",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:595",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3052",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3499",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3087",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:678",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3122",
+      "segments": 2,
+      "calls": 2,
+      "candidates_in_review": 1,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "IbnMajah:1593",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:1047",
+      "segments": 2,
+      "calls": 2,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:3378",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:3459",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1042",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1123",
+      "segments": 2,
+      "calls": 2,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:2984",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:3758",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3355",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:3745",
+      "segments": 2,
+      "calls": 2,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1158",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3308",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1235",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1472",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1074",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:3827",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:881",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3258",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1242",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:882",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:906",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3065",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1399",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3466",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3327",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3200",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:3007",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3279",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3290",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:563",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:1375",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Nasai:374",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:1338",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:974",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:3184",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Muslim:967",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    }
+  ],
+  "wall_time_seconds": 108.586
+}

@@ -1,0 +1,180 @@
+{
+  "key": "5d2dad93a67e790e3b8766835b046afb83a9892cf26a4961f72beec173d54818",
+  "created_at": "2026-10-12T20:26:57.794694+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "n-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-12104"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَجْمَعُ اللهُ الْمُؤْمِنِينَ يَوْمَ الْقِيَامَةِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-muhammad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ الْمُثَنَّى"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى"
+          }
+        ]
+      },
+      {
+        "ref": "n-muadh",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُعَاذُ بْنُ هِشَامٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُعَاذُ بْنُ هِشَامٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-qatada",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "قَتَادَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ قَتَادَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-anas",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَنَسِ بْنِ مَالِكٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَنَسِ بْنِ مَالِكٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-muhammad",
+        "to_ref": "n-muadh",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-12104",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُعَاذُ بْنُ هِشَامٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-qatada",
+        "to_ref": "n-anas",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-12104",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَنَسِ بْنِ مَالِكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-muhammad",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-muadh",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُعَاذُ بْنُ هِشَامٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-qatada",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ قَتَادَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-anas",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَنَسِ بْنِ مَالِكٍ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3377,
+    "output_tokens": 3215,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

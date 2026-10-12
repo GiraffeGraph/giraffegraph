@@ -1,0 +1,288 @@
+{
+  "key": "a7c714f76be1a53edebe3b5c227f43e8956c46f9542835742bb40cb9c04bbc84",
+  "created_at": "2026-10-12T20:26:56.530874+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-13265"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "كَانَ رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ يُؤَخِّرُ صَلَاةَ الْعِشَاءِ الْآخِرَةِ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَحْيَى بْنُ يَحْيَى"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يَحْيَى بْنُ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "ref": "narr-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "قُتَيْبَةُ بْنُ سَعِيدٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قُتَيْبَةُ بْنُ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو الْأَحْوَصِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبُو الْأَحْوَصِ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سِمَاكٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سِمَاكٍ"
+          }
+        ]
+      },
+      {
+        "ref": "narr-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "جَابِرِ بْنِ سَمُرَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَابِرِ بْنِ سَمُرَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-1",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يَحْيَى بْنُ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-2",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قُتَيْبَةُ بْنُ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-3",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-4",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبُو الْأَحْوَصِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-5",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سِمَاكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "narr-6",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَابِرِ بْنِ سَمُرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-1",
+        "to_ref": "narr-4",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-13265",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "أَخْبَرَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَقَالَ الْآخَرَانِ : حَدَّثَنَا أَبُو الْأَحْوَصِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-2",
+        "to_ref": "narr-4",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-13265",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَقَالَ الْآخَرَانِ : حَدَّثَنَا أَبُو الْأَحْوَصِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-3",
+        "to_ref": "narr-4",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-13265",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَقَالَ الْآخَرَانِ : حَدَّثَنَا أَبُو الْأَحْوَصِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-4",
+        "to_ref": "narr-5",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-13265",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سِمَاكٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "narr-5",
+        "to_ref": "narr-6",
+        "properties": {
+          "hadith_ref": "Muslim:ifta-13265",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ جَابِرِ بْنِ سَمُرَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3273,
+    "output_tokens": 4846,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

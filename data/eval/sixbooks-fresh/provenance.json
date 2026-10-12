@@ -1,0 +1,4872 @@
+{
+  "set": "sixbooks-fresh",
+  "source": "Ifta Sunnah Hadith & Narrators data family (Kaggle, jehadoumer), six canonical books",
+  "source_files": {
+    "corpus-original/sahih-al-bukhari.json": {
+      "release": "original",
+      "bytes": 337272566,
+      "sha256": "ad5762d230ed0976aadcf91dd6f1bf572f33333c17e04941d3e39a49175f74c6"
+    },
+    "corpus-original/sahih-muslim.json": {
+      "release": "original",
+      "bytes": 355797622,
+      "sha256": "1da79a52c902fcd15ff3a49fa95303e08bfb10075e00119a717feb60b8b3bcc8"
+    },
+    "corpus-original/sunan-abi-dawud.json": {
+      "release": "original",
+      "bytes": 207179200,
+      "sha256": "406f44bbb117d89cbe876686bd7db1c9e96943de1637aebb8ca7c93c86dfe3ec"
+    },
+    "corpus-original/jami-al-tirmidhi.json": {
+      "release": "original",
+      "bytes": 156817105,
+      "sha256": "b8b90a01ce4023ff8661768f9125d9f767b700c989e3ef703c296c85309f7297"
+    },
+    "corpus-original/sunan-al-nasai.json": {
+      "release": "original",
+      "bytes": 318872908,
+      "sha256": "d6aa1d5cc014aaca9072dbe8785ecf59e180ca578d9165bc9769caa98b9cca2d"
+    },
+    "corpus-original/sunan-ibn-majah.json": {
+      "release": "original",
+      "bytes": 166916962,
+      "sha256": "5a91ada15738dbf0bd2be00919df340d58ce9573e111a84f767faa627514370e"
+    },
+    "ifta-hadith-isnad-linked-graph-data/sahih-al-bukhari.json": {
+      "release": "graph",
+      "bytes": 187406718,
+      "sha256": "521599724d2b092db84add51c795d7f515cfadeabf016f675289abbffa71655f"
+    },
+    "ifta-hadith-isnad-linked-graph-data/sahih-muslim.json": {
+      "release": "graph",
+      "bytes": 228065558,
+      "sha256": "95861fdcf53be954b9c3697c201347ee61c20509fe9606cdd6e2d51f2a2cb450"
+    },
+    "ifta-hadith-isnad-linked-graph-data/sunan-abi-dawud.json": {
+      "release": "graph",
+      "bytes": 121883311,
+      "sha256": "e5352501c1e432dbfb2587049348c8ce6c28b57df43304123288038d5c3e1351"
+    },
+    "ifta-hadith-isnad-linked-graph-data/jami-al-tirmidhi.json": {
+      "release": "graph",
+      "bytes": 85781757,
+      "sha256": "9d623880c94c7499e34b786e884909bc07fc8af9f3a6f60b41b0fff14afc5cc7"
+    },
+    "ifta-hadith-isnad-linked-graph-data/sunan-al-nasai.json": {
+      "release": "graph",
+      "bytes": 191426257,
+      "sha256": "9351d36e71e198b1b01ce4e7bd4186773894c7f9b2d8b650c6bc86e1d33a2570"
+    },
+    "ifta-hadith-isnad-linked-graph-data/sunan-ibn-majah.json": {
+      "release": "graph",
+      "bytes": 99919359,
+      "sha256": "db040a55712c43b4429eaf81a7cc19a7573a8e2cd99f6eb9121ed676511baebc"
+    },
+    "ifta-hadith-with-narrators-entities-and-relations/sahih-al-bukhari.json": {
+      "release": "nlp",
+      "bytes": 58773655,
+      "sha256": "80ea33d0c75d71b1ebc09e40fbd0795f57a70c2d66cb8e2b07ffd1d3fc2e2362"
+    },
+    "ifta-hadith-with-narrators-entities-and-relations/sahih-muslim.json": {
+      "release": "nlp",
+      "bytes": 76229857,
+      "sha256": "3aa60c9ae16246f00835a0e066231f248d80f3dde5977a2df5acc098bd4b8495"
+    },
+    "ifta-hadith-with-narrators-entities-and-relations/sunan-abi-dawud.json": {
+      "release": "nlp",
+      "bytes": 59512343,
+      "sha256": "f16bcf0ce017a0a9ebdf4c621f8fdbaf04266b8521f8578a3e04547f353d5059"
+    },
+    "ifta-hadith-with-narrators-entities-and-relations/jami-al-tirmidhi.json": {
+      "release": "nlp",
+      "bytes": 63752793,
+      "sha256": "9d090720aab444e474ed25d3dc165e092ee2c89680a69eed7b58df3852f0e978"
+    },
+    "ifta-hadith-with-narrators-entities-and-relations/sunan-al-nasai.json": {
+      "release": "nlp",
+      "bytes": 66494220,
+      "sha256": "51d7b9173f2615f74adcccc1ee1bb6b9a4822383086c21c960a6c0e0074e4469"
+    },
+    "ifta-hadith-with-narrators-entities-and-relations/sunan-ibn-majah.json": {
+      "release": "nlp",
+      "bytes": 53764974,
+      "sha256": "2c38fb09bce46edfe1f9a159cf49006dbbd987c33e6cde5ecb4e24d5313a89d6"
+    }
+  },
+  "fields_used": {
+    "raw": "original corpus `hadith_text_diac`, cleaned (see cleaning)",
+    "mentions": "original corpus `names[*][1]` (diacritised surface form), cleaned, in list order",
+    "narrator ids": "original corpus `names[*][2]`",
+    "chains": "graph release `chain_of_narrators` ([narrator_id, display string] per step)"
+  },
+  "cleaning": {
+    "page_marker": "removed, e.g. [1/220]",
+    "line_break": "line breaks and whitespace runs collapsed to one space",
+    "print_number": "edition numbering removed, e.g. '15 - ', '99 (م) - ', '6 / 1 - ', '( 48 )'",
+    "chapter_heading": "chapter title before the hadith's print number cut off; kept per record below",
+    "leading_dash": "dash left at the start of an unnumbered record removed",
+    "mention": "same rules, plus punctuation stripped from both ends",
+    "sampled_hadiths_changed_by_rule": {
+      "print_number": 296,
+      "chapter_heading": 111,
+      "page_marker": 105,
+      "line_break": 122,
+      "leading_dash": 3
+    }
+  },
+  "id_scheme": "hadith_id = <coll>:ifta-<mainId>; mainId is the platform record id, not the print number",
+  "seed": 20261012,
+  "sampling": "random.Random(f'{seed}:{coll}').sample(eligible sorted by mainId, 50)",
+  "eligibility": {
+    "min_mentions": 2,
+    "text_chars": [
+      100,
+      3000
+    ],
+    "text_measured_on": "cleaned diacritised text as written to hadiths.json",
+    "graph_release_with_chain": true,
+    "pilot_exclusion": "ratio >= 0.8 or containment >= 0.8 against any pilot hadith of the same collection"
+  },
+  "counts_per_collection": {
+    "Bukhari": {
+      "records": 7410,
+      "with_at_least_2_mentions": 7199,
+      "with_text_length_in_range": 7324,
+      "in_graph_release_with_chain": 7195,
+      "mentions_and_length": 7131,
+      "eligible_before_pilot_exclusion": 7093,
+      "pilot_hadiths_in_collection": 0,
+      "records_matching_a_pilot_hadith": 0,
+      "eligible": 7093,
+      "drawn": 50,
+      "eligible_in_nlp_benchmark_split": 4283
+    },
+    "Muslim": {
+      "records": 7666,
+      "with_at_least_2_mentions": 7640,
+      "with_text_length_in_range": 7615,
+      "in_graph_release_with_chain": 7599,
+      "mentions_and_length": 7594,
+      "eligible_before_pilot_exclusion": 7551,
+      "pilot_hadiths_in_collection": 10,
+      "records_matching_a_pilot_hadith": 20,
+      "eligible": 7531,
+      "drawn": 50,
+      "eligible_in_nlp_benchmark_split": 5383
+    },
+    "AbuDawud": {
+      "records": 5260,
+      "with_at_least_2_mentions": 5252,
+      "with_text_length_in_range": 5245,
+      "in_graph_release_with_chain": 5082,
+      "mentions_and_length": 5237,
+      "eligible_before_pilot_exclusion": 5067,
+      "pilot_hadiths_in_collection": 10,
+      "records_matching_a_pilot_hadith": 13,
+      "eligible": 5055,
+      "drawn": 50,
+      "eligible_in_nlp_benchmark_split": 4511
+    },
+    "Tirmidhi": {
+      "records": 4412,
+      "with_at_least_2_mentions": 4313,
+      "with_text_length_in_range": 4389,
+      "in_graph_release_with_chain": 4231,
+      "mentions_and_length": 4292,
+      "eligible_before_pilot_exclusion": 4188,
+      "pilot_hadiths_in_collection": 10,
+      "records_matching_a_pilot_hadith": 12,
+      "eligible": 4176,
+      "drawn": 50,
+      "eligible_in_nlp_benchmark_split": 3827
+    },
+    "Nasai": {
+      "records": 5780,
+      "with_at_least_2_mentions": 5773,
+      "with_text_length_in_range": 5770,
+      "in_graph_release_with_chain": 5696,
+      "mentions_and_length": 5763,
+      "eligible_before_pilot_exclusion": 5686,
+      "pilot_hadiths_in_collection": 10,
+      "records_matching_a_pilot_hadith": 11,
+      "eligible": 5675,
+      "drawn": 50,
+      "eligible_in_nlp_benchmark_split": 5149
+    },
+    "IbnMajah": {
+      "records": 4467,
+      "with_at_least_2_mentions": 4466,
+      "with_text_length_in_range": 4463,
+      "in_graph_release_with_chain": 4438,
+      "mentions_and_length": 4462,
+      "eligible_before_pilot_exclusion": 4433,
+      "pilot_hadiths_in_collection": 10,
+      "records_matching_a_pilot_hadith": 12,
+      "eligible": 4421,
+      "drawn": 50,
+      "eligible_in_nlp_benchmark_split": 4277
+    }
+  },
+  "pilot_exclusions": [
+    {
+      "pilot_hadith_id": "Muslim:978",
+      "ifta_main_id": 13200,
+      "ratio": 0.6722,
+      "containment": 0.8933
+    },
+    {
+      "pilot_hadith_id": "Muslim:978",
+      "ifta_main_id": 13201,
+      "ratio": 0.6287,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:1050",
+      "ifta_main_id": 13302,
+      "ratio": 0.9987,
+      "containment": 0.9592
+    },
+    {
+      "pilot_hadith_id": "Muslim:1003",
+      "ifta_main_id": 13236,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:1047",
+      "ifta_main_id": 13297,
+      "ratio": 0.9988,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:1047",
+      "ifta_main_id": 18685,
+      "ratio": 0.5009,
+      "containment": 0.8013
+    },
+    {
+      "pilot_hadith_id": "Muslim:1047",
+      "ifta_main_id": 20099,
+      "ratio": 0.4618,
+      "containment": 0.8129
+    },
+    {
+      "pilot_hadith_id": "Muslim:3758",
+      "ifta_main_id": 17811,
+      "ratio": 0.7888,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:3758",
+      "ifta_main_id": 17812,
+      "ratio": 0.5148,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:3745",
+      "ifta_main_id": 17793,
+      "ratio": 0.725,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:3745",
+      "ifta_main_id": 17794,
+      "ratio": 0.6,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:3745",
+      "ifta_main_id": 16133,
+      "ratio": 0.4133,
+      "containment": 0.9892
+    },
+    {
+      "pilot_hadith_id": "Muslim:3745",
+      "ifta_main_id": 15438,
+      "ratio": 0.3356,
+      "containment": 0.8718
+    },
+    {
+      "pilot_hadith_id": "Muslim:3827",
+      "ifta_main_id": 17939,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:1338",
+      "ifta_main_id": 13741,
+      "ratio": 0.8091,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:1338",
+      "ifta_main_id": 13742,
+      "ratio": 0.451,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:1338",
+      "ifta_main_id": 11673,
+      "ratio": 0.2117,
+      "containment": 0.8
+    },
+    {
+      "pilot_hadith_id": "Muslim:1338",
+      "ifta_main_id": 19517,
+      "ratio": 0.2081,
+      "containment": 0.8209
+    },
+    {
+      "pilot_hadith_id": "Muslim:974",
+      "ifta_main_id": 13194,
+      "ratio": 0.9739,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Muslim:967",
+      "ifta_main_id": 13186,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3030",
+      "ifta_main_id": 93855,
+      "ratio": 0.9854,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3307",
+      "ifta_main_id": 94289,
+      "ratio": 0.9425,
+      "containment": 0.8726
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3052",
+      "ifta_main_id": 93889,
+      "ratio": 0.9828,
+      "containment": 0.8308
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3499",
+      "ifta_main_id": 94572,
+      "ratio": 0.6922,
+      "containment": 0.9723
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3499",
+      "ifta_main_id": 94573,
+      "ratio": 0.5667,
+      "containment": 0.9048
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3122",
+      "ifta_main_id": 93999,
+      "ratio": 0.9504,
+      "containment": 0.9406
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:2984",
+      "ifta_main_id": 93784,
+      "ratio": 0.9478,
+      "containment": 0.9355
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:2984",
+      "ifta_main_id": 91804,
+      "ratio": 0.8571,
+      "containment": 0.879
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:2984",
+      "ifta_main_id": 89568,
+      "ratio": 0.4117,
+      "containment": 0.871
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3355",
+      "ifta_main_id": 94363,
+      "ratio": 0.9823,
+      "containment": 0.8559
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3466",
+      "ifta_main_id": 94536,
+      "ratio": 0.9412,
+      "containment": 0.8812
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3327",
+      "ifta_main_id": 94320,
+      "ratio": 0.99,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "AbuDawud:3007",
+      "ifta_main_id": 93820,
+      "ratio": 0.9805,
+      "containment": 0.9893
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3204",
+      "ifta_main_id": 101810,
+      "ratio": 0.8798,
+      "containment": 0.8524
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3144",
+      "ifta_main_id": 101731,
+      "ratio": 0.9648,
+      "containment": 0.9517
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3087",
+      "ifta_main_id": 101646,
+      "ratio": 0.9296,
+      "containment": 0.6857
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3087",
+      "ifta_main_id": 100511,
+      "ratio": 0.8773,
+      "containment": 0.4944
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3308",
+      "ifta_main_id": 101959,
+      "ratio": 0.9844,
+      "containment": 0.8789
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3258",
+      "ifta_main_id": 101885,
+      "ratio": 0.9411,
+      "containment": 0.8671
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3065",
+      "ifta_main_id": 101619,
+      "ratio": 0.9386,
+      "containment": 0.8165
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3200",
+      "ifta_main_id": 101804,
+      "ratio": 0.9723,
+      "containment": 0.9259
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3279",
+      "ifta_main_id": 101915,
+      "ratio": 0.929,
+      "containment": 0.8221
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3279",
+      "ifta_main_id": 100506,
+      "ratio": 0.8556,
+      "containment": 0.7657
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3290",
+      "ifta_main_id": 101933,
+      "ratio": 0.9589,
+      "containment": 0.9292
+    },
+    {
+      "pilot_hadith_id": "Tirmidhi:3184",
+      "ifta_main_id": 101781,
+      "ratio": 0.9556,
+      "containment": 0.8273
+    },
+    {
+      "pilot_hadith_id": "Nasai:693",
+      "ifta_main_id": 64849,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Nasai:595",
+      "ifta_main_id": 64685,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Nasai:678",
+      "ifta_main_id": 64822,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Nasai:3378",
+      "ifta_main_id": 68884,
+      "ratio": 0.8681,
+      "containment": 0.9941
+    },
+    {
+      "pilot_hadith_id": "Nasai:3459",
+      "ifta_main_id": 69010,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Nasai:881",
+      "ifta_main_id": 65181,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Nasai:882",
+      "ifta_main_id": 65183,
+      "ratio": 0.9781,
+      "containment": 0.9834
+    },
+    {
+      "pilot_hadith_id": "Nasai:906",
+      "ifta_main_id": 65220,
+      "ratio": 0.916,
+      "containment": 0.875
+    },
+    {
+      "pilot_hadith_id": "Nasai:563",
+      "ifta_main_id": 64641,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "Nasai:374",
+      "ifta_main_id": 64347,
+      "ratio": 0.9895,
+      "containment": 0.9976
+    },
+    {
+      "pilot_hadith_id": "Nasai:374",
+      "ifta_main_id": 64193,
+      "ratio": 0.9171,
+      "containment": 0.8357
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1593",
+      "ifta_main_id": 110101,
+      "ratio": 0.9925,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1042",
+      "ifta_main_id": 109343,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1042",
+      "ifta_main_id": 109308,
+      "ratio": 0.6612,
+      "containment": 0.8538
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1123",
+      "ifta_main_id": 109451,
+      "ratio": 0.94,
+      "containment": 0.83
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1158",
+      "ifta_main_id": 109505,
+      "ratio": 0.9933,
+      "containment": 0.9899
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1235",
+      "ifta_main_id": 109617,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1472",
+      "ifta_main_id": 109938,
+      "ratio": 0.9905,
+      "containment": 0.9858
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1074",
+      "ifta_main_id": 109384,
+      "ratio": 0.9981,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1242",
+      "ifta_main_id": 109626,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1399",
+      "ifta_main_id": 109838,
+      "ratio": 1.0,
+      "containment": 1.0
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1399",
+      "ifta_main_id": 110933,
+      "ratio": 0.7235,
+      "containment": 0.8014
+    },
+    {
+      "pilot_hadith_id": "IbnMajah:1375",
+      "ifta_main_id": 109805,
+      "ratio": 0.9673,
+      "containment": 1.0
+    }
+  ],
+  "chain_mapping": {
+    "chains": 394,
+    "chain_steps": 2568,
+    "compiler_steps_without_mention": 385,
+    "other_steps_without_mention": 33,
+    "mentions": 1778,
+    "mentions_outside_chains": 15,
+    "mentions_of_the_compiler": 10,
+    "hadiths_with_a_mention_of_the_compiler": 9,
+    "mentions_with_placeholder_id": 1,
+    "steps_out_of_text_order": 8,
+    "sampled_hadiths_also_in_entities_release": 254,
+    "of_those_chains_equal_to_its_chain_of_names": 246
+  },
+  "records": [
+    {
+      "hadith_id": "Bukhari:ifta-10925",
+      "ifta_main_id": 10925,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "7086",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : إِذَا بَقِيَ فِي حُثَالَةٍ مِنَ النَّاسِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11245",
+      "ifta_main_id": 11245,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "7320",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2517",
+      "ifta_main_id": 2517,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1534",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ قَوْلِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ الْعَقِيقُ وَادٍ مُبَارَكٌ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5608",
+      "ifta_main_id": 5608,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "3548",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3486",
+      "ifta_main_id": 3486,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2149",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1267",
+      "ifta_main_id": 1267,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "764",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2079",
+      "ifta_main_id": 2079,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1267",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : كَيْفَ يُكَفَّنُ الْمُحْرِمُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-9931",
+      "ifta_main_id": 9931,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "6402",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ التَّأْمِينِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2048",
+      "ifta_main_id": 2048,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1251",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3803",
+      "ifta_main_id": 3803,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2350",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3317",
+      "ifta_main_id": 3317,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2045",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَنْ أَرَادَ أَنْ يَعْتَكِفَ ثُمَّ بَدَا لَهُ أَنْ يَخْرُجَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6800",
+      "ifta_main_id": 6800,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "4552",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3977",
+      "ifta_main_id": 3977,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2450",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : إِذَا حَلَّلَهُ مِنْ ظُلْمِهِ فَلَا رُجُوعَ فِيهِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-848",
+      "ifta_main_id": 848,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "498",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الصَّلَاةِ إِلَى الْحَرْبَةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5837",
+      "ifta_main_id": 5837,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "3755",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11465",
+      "ifta_main_id": 11465,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "7494",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5033",
+      "ifta_main_id": 5033,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "3107",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-206",
+      "ifta_main_id": 206,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "112",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-9071",
+      "ifta_main_id": 9071,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "5849",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْمِيثَرَةِ الْحَمْرَاءِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1037",
+      "ifta_main_id": 1037,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "616",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْكَلَامِ فِي الْأَذَانِ وَتَكَلَّمَ سُلَيْمَانُ بْنُ صُرَدٍ فِي أَذَانِهِ وَقَالَ الْحَسَنُ لَا بَأْسَ أَنْ يَضْحَكَ وَهُوَ يُؤَذِّنُ أَوْ يُقِيمُ",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-8650",
+      "ifta_main_id": 8650,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "5570",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1472",
+      "ifta_main_id": 1472,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "892",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْجُمُعَةِ فِي الْقُرَى وَالْمُدُنِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7405",
+      "ifta_main_id": 7405,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "4856",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7083",
+      "ifta_main_id": 7083,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "4699",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "{ يُثَبِّتُ اللهُ الَّذِينَ آمَنُوا بِالْقَوْلِ الثَّابِتِ }",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3480",
+      "ifta_main_id": 3480,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2145",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6377",
+      "ifta_main_id": 6377,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "4211",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7003",
+      "ifta_main_id": 7003,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "4658",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "{ فَقَاتِلُوا أَئِمَّةَ الْكُفْرِ إِنَّهُمْ لا أَيْمَانَ لَهُمْ }",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3992",
+      "ifta_main_id": 3992,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2459",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : إِذَا خَاصَمَ فَجَرَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1256",
+      "ifta_main_id": 1256,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "755",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ وُجُوبِ الْقِرَاءَةِ لِلْإِمَامِ وَالْمَأْمُومِ فِي الصَّلَوَاتِ كُلِّهَا فِي الْحَضَرِ وَالسَّفَرِ وَمَا يُجْهَرُ فِيهَا وَمَا يُخَافَتُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3145",
+      "ifta_main_id": 3145,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1935",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ قَوْلِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ إِذَا تَوَضَّأَ فَلْيَسْتَنْشِقْ بِمَنْخِرِهِ الْمَاءَ وَلَمْ يُمَيِّزْ بَيْنَ الصَّائِمِ وَغَيْرِهِ وَقَالَ الْحَسَنُ لَا بَأْسَ بِالسَّعُوطِ لِلصَّائِمِ إِنْ لَمْ يَصِلْ إِلَى حَلْقِهِ وَيَكْتَحِلُ وَقَالَ عَطَاءٌ إِنْ تَمَضْمَضَ ثُمَّ أَفْرَغَ مَا فِي فِيهِ مِنَ الْمَاءِ لَا يَضِيرُهُ إِنْ لَمْ يَزْدَرِدْ رِيقَهُ وَمَاذَا بَقِيَ فِي فِيهِ وَلَا يَمْضَغُ الْعِلْكَ فَإِنِ ازْدَرَدَ رِيقَ الْعِلْكِ لَا أَقُولُ إِنَّهُ يُفْطِرُ وَلَكِنْ يُنْهَى عَنْهُ فَإِنِ اسْتَنْثَرَ فَدَخَلَ الْمَاءُ حَلْقَهُ لَا بَأْسَ لَمْ يَمْلِكْ بَابٌ : إِذَا جَامَعَ فِي رَمَضَانَ وَيُذْكَرُ عَنْ أَبِي هُرَيْرَةَ رَفَعَهُ مَنْ أَفْطَرَ يَوْمًا مِنْ رَمَضَانَ مِنْ غَيْرِ عُذْرٍ وَلَا مَرَضٍ لَمْ يَقْضِهِ صِيَامُ الدَّهْرِ وَإِنْ صَامَهُ وَبِهِ قَالَ ابْنُ مَسْعُودٍ وَقَالَ سَعِيدُ بْنُ الْمُسَيِّبِ وَالشَّعْبِيُّ وَابْنُ جُبَيْرٍ وَإِبْرَاهِيمُ وَقَتَادَةُ وَحَمَّادٌ يَقْضِي يَوْمًا مَكَانَهُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3138",
+      "ifta_main_id": 3138,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1930",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ اغْتِسَالِ الصَّائِمِ وَبَلَّ ابْنُ عُمَرَ رَضِيَ اللهُ عَنْهُمَا ثَوْبًا فَأَلْقَاهُ عَلَيْهِ وَهُوَ صَائِمٌ وَدَخَلَ الشَّعْبِيُّ الْحَمَّامَ وَهُوَ صَائِمٌ وَقَالَ ابْنُ عَبَّاسٍ لَا بَأْسَ أَنْ يَتَطَعَّمَ الْقِدْرَ أَوِ الشَّيْءَ وَقَالَ الْحَسَنُ لَا بَأْسَ بِالْمَضْمَضَةِ وَالتَّبَرُّدِ لِلصَّائِمِ وَقَالَ ابْنُ مَسْعُودٍ إِذَا كَانَ صَوْمُ أَحَدِكُمْ فَلْيُصْبِحْ دَهِينًا مُتَرَجِّلًا وَقَالَ أَنَسٌ إِنَّ لِي أَبْزَنَ أَتَقَحَّمُ فِيهِ وَأَنَا صَائِمٌ وَيُذْكَرُ عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ أَنَّهُ اسْتَاكَ وَهُوَ صَائِمٌ وَقَالَ ابْنُ عُمَرَ يَسْتَاكُ أَوَّلَ النَّهَارِ وَآخِرَهُ وَلَا يَبْلَعُ رِيقَهُ وَقَالَ عَطَاءٌ إِنِ ازْدَرَدَ رِيقَهُ لَا أَقُولُ يُفْطِرُ وَقَالَ ابْنُ سِيرِينَ لَا بَأْسَ بِالسِّوَاكِ الرَّطْبِ قِيلَ لَهُ طَعْمٌ قَالَ وَالْمَاءُ لَهُ طَعْمٌ وَأَنْتَ تُمَضْمِضُ بِهِ وَلَمْ يَرَ أَنَسٌ وَالْحَسَنُ وَإِبْرَاهِيمُ بِالْكُحْلِ لِلصَّائِمِ بَأْسًا",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6006",
+      "ifta_main_id": 6006,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "3878",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1660",
+      "ifta_main_id": 1660,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1007",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11419",
+      "ifta_main_id": 11419,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "7455",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10600",
+      "ifta_main_id": 10600,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "6878",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ قَوْلِ اللهِ تَعَالَى { أَنَّ النَّفْسَ بِالنَّفْسِ وَالْعَيْنَ بِالْعَيْنِ وَالأَنْفَ بِالأَنْفِ وَالأُذُنَ بِالأُذُنِ وَالسِّنَّ بِالسِّنِّ وَالْجُرُوحَ قِصَاصٌ فَمَنْ تَصَدَّقَ بِهِ فَهُوَ كَفَّارَةٌ لَهُ وَمَنْ لَمْ يَحْكُمْ بِمَا أَنْـزَلَ اللهُ فَأُولَئِكَ هُمُ الظَّالِمُونَ }",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5774",
+      "ifta_main_id": 5774,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "3704",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10277",
+      "ifta_main_id": 10277,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "6664",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : إِذَا حَنِثَ نَاسِيًا فِي الْأَيْمَانِ وَقَوْلِ اللهِ تَعَالَى { وَلَيْسَ عَلَيْكُمْ جُنَاحٌ فِيمَا أَخْطَأْتُمْ بِهِ } وَقَالَ { لا تُؤَاخِذْنِي بِمَا نَسِيتُ }",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2086",
+      "ifta_main_id": 2086,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1272",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-4350",
+      "ifta_main_id": 4350,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2688",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10064",
+      "ifta_main_id": 10064,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "6494",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : الْعُزْلَةُ رَاحَةٌ مِنْ خُلَّاطِ السُّوءِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3850",
+      "ifta_main_id": 3850,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "2381",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10819",
+      "ifta_main_id": 10819,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "7014",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ التَّعْلِيقِ بِالْعُرْوَةِ وَالْحَلْقَةِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2498",
+      "ifta_main_id": 2498,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1524",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مُهَلِّ أَهْلِ مَكَّةَ لِلْحَجِّ وَالْعُمْرَةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-10470",
+      "ifta_main_id": 10470,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "6786",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ إِقَامَةِ الْحُدُودِ وَالِانْتِقَامِ لِحُرُمَاتِ اللهِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-9679",
+      "ifta_main_id": 9679,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "6249",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-7309",
+      "ifta_main_id": 7309,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "4809",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "{ وَمَا أَنَا مِنَ الْمُتَكَلِّفِينَ }",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2455",
+      "ifta_main_id": 2455,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1500",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ قَوْلِ اللهِ تَعَالَى { وَالْعَامِلِينَ عَلَيْهَا } وَمُحَاسَبَةِ الْمُصَدِّقِينَ مَعَ الْإِمَامِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-6094",
+      "ifta_main_id": 6094,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "3950",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ ذِكْرِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ مَنْ يُقْتَلُ بِبَدْرٍ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-8805",
+      "ifta_main_id": 8805,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "5674",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2403",
+      "ifta_main_id": 2403,
+      "book": "صحيح البخاري",
+      "hadith_num_in_source": "1466",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الزَّكَاةِ عَلَى الزَّوْجِ وَالْأَيْتَامِ فِي الْحَجْرِ قَالَهُ أَبُو سَعِيدٍ عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-12287",
+      "ifta_main_id": 12287,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "273",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-14418",
+      "ifta_main_id": 14418,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1047",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-14115",
+      "ifta_main_id": 14115,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "939",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-15317",
+      "ifta_main_id": 15317,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1315",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ وُجُوبِ الْمَبِيتِ بِمِنًى لَيَالِي أَيَّامِ التَّشْرِيقِ ، وَالتَّرْخِيصِ فِي تَرْكِهِ لِأَهْلِ السِّقَايَةِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-18231",
+      "ifta_main_id": 18231,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2133",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-12300",
+      "ifta_main_id": 12300,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "274",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Muslim:ifta-17650",
+      "ifta_main_id": 17650,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1970",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-20554",
+      "ifta_main_id": 20554,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2493",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ التَّثَبُّتِ فِي الْحَدِيثِ وَحُكْمِ كِتَابَةِ الْعِلْمِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-13280",
+      "ifta_main_id": 13280,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "648",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-13265",
+      "ifta_main_id": 13265,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "643",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19438",
+      "ifta_main_id": 19438,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2584",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-17674",
+      "ifta_main_id": 17674,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1977",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-16088",
+      "ifta_main_id": 16088,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1523",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Muslim:ifta-15555",
+      "ifta_main_id": 15555,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1394",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Muslim:ifta-12104",
+      "ifta_main_id": 12104,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "193",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-17660",
+      "ifta_main_id": 17660,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1973",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-14301",
+      "ifta_main_id": 14301,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1000",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-17777",
+      "ifta_main_id": 17777,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2000",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Muslim:ifta-13563",
+      "ifta_main_id": 13563,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "735",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-15932",
+      "ifta_main_id": 15932,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1479",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19291",
+      "ifta_main_id": 19291,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2530",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-16605",
+      "ifta_main_id": 16605,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1646",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 4,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-13058",
+      "ifta_main_id": 13058,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "389",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-13196",
+      "ifta_main_id": 13196,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "613",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-20226",
+      "ifta_main_id": 20226,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2876",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-14834",
+      "ifta_main_id": 14834,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1165",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ فَضْلِ لَيْلَةِ الْقَدْرِ وَالْحَثِّ عَلَى طَلَبِهَا ، وَبَيَانِ مَحَلِّهَا وَأَرْجَى أَوْقَاتِ طَلَبِهَا",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-20591",
+      "ifta_main_id": 20591,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "3027",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِي قَوْلِهِ تَعَالَى : { أَلَمْ يَأْنِ لِلَّذِينَ آمَنُوا أَنْ تَخْشَعَ قُلُوبُهُمْ لِذِكْرِ اللهِ }",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-12254",
+      "ifta_main_id": 12254,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "257",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ خِصَالِ الْفِطْرَةِ",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19289",
+      "ifta_main_id": 19289,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2529",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-16559",
+      "ifta_main_id": 16559,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1633",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْوَقْفِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-13723",
+      "ifta_main_id": 13723,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "794",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-18974",
+      "ifta_main_id": 18974,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2395",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Muslim:ifta-16687",
+      "ifta_main_id": 16687,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1501",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Muslim:ifta-18140",
+      "ifta_main_id": 18140,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2106",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-14261",
+      "ifta_main_id": 14261,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "986",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْأَمْرِ بِإِخْرَاجِ زَكَاةِ الْفِطْرِ قَبْلَ الصَّلَاةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19600",
+      "ifta_main_id": 19600,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2638",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19001",
+      "ifta_main_id": 19001,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2408",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-17709",
+      "ifta_main_id": 17709,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1986",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ كَرَاهَةِ انْتِبَاذِ التَّمْرِ وَالزَّبِيبِ مَخْلُوطَيْنِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19099",
+      "ifta_main_id": 19099,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2449",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-13824",
+      "ifta_main_id": 13824,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "835",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-12983",
+      "ifta_main_id": 12983,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "540",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-17665",
+      "ifta_main_id": 17665,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1975",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-17175",
+      "ifta_main_id": 17175,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1821",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-19607",
+      "ifta_main_id": 19607,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2639",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Muslim:ifta-16867",
+      "ifta_main_id": 16867,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1713",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-19512",
+      "ifta_main_id": 19512,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2609",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-18350",
+      "ifta_main_id": 18350,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2178",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-14626",
+      "ifta_main_id": 14626,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "1106",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Muslim:ifta-12421",
+      "ifta_main_id": 12421,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "321",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Muslim:ifta-18428",
+      "ifta_main_id": 18428,
+      "book": "صحيح مسلم",
+      "hadith_num_in_source": "2209",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92099",
+      "ifta_main_id": 92099,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2298",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ نَسْخِ مَتَاعِ الْمُتَوَفَّى عَنْهَا زَوْجُهَا بِمَا فُرِضَ لَهَا مِنَ الْمِيرَاثِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89095",
+      "ifta_main_id": 89095,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "28",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-96119",
+      "ifta_main_id": 96119,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "5207",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95782",
+      "ifta_main_id": 95782,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "4953",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90497",
+      "ifta_main_id": 90497,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1084",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ وَقْتِ الْجُمُعَةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91274",
+      "ifta_main_id": 91274,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1677",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الرُّخْصَةِ فِي ذَلِكَ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92192",
+      "ifta_main_id": 92192,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2359",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْفِطْرِ قَبْلَ غُرُوبِ الشَّمْسِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95273",
+      "ifta_main_id": 95273,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "4557",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92267",
+      "ifta_main_id": 92267,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2412",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَتَى يُفْطِرُ الْمُسَافِرُ إِذَا خَرَجَ",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90009",
+      "ifta_main_id": 90009,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "708",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : سُتْرَةُ الْإِمَامِ سُتْرَةُ مَنْ خَلْفَهُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94313",
+      "ifta_main_id": 94313,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3817",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90817",
+      "ifta_main_id": 90817,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1315",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ أَيِّ اللَّيْلِ أَفْضَلُ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90183",
+      "ifta_main_id": 90183,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "849",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90243",
+      "ifta_main_id": 90243,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "896",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ صِفَةِ السُّجُودِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89235",
+      "ifta_main_id": 89235,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "133",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90531",
+      "ifta_main_id": 90531,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1109",
+      "cleaning_applied": [
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْإِمَامِ يَقْطَعُ الْخُطْبَةَ لِلْأَمْرِ يَحْدُثُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91526",
+      "ifta_main_id": 91526,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1873",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِي تَقْبِيلِ الْحَجَرِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90767",
+      "ifta_main_id": 90767,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1278",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92801",
+      "ifta_main_id": 92801,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2752",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94344",
+      "ifta_main_id": 94344,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3839",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91867",
+      "ifta_main_id": 91867,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2125",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : فِي الرَّجُلِ يَدْخُلُ بِامْرَأَتِهِ قَبْلَ أَنْ يَنْقُدَهَا شَيْئًا",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92510",
+      "ifta_main_id": 92510,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2563",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : فِي وَسْمِ الدَّوَابِّ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90034",
+      "ifta_main_id": 90034,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "728",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-93422",
+      "ifta_main_id": 93422,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3188",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89744",
+      "ifta_main_id": 89744,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "520",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْمُؤَذِّنِ يَسْتَدِيرُ فِي أَذَانِهِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94462",
+      "ifta_main_id": 94462,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3922",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89276",
+      "ifta_main_id": 89276,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "162",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90893",
+      "ifta_main_id": 90893,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1382",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِيمَنْ قَالَ : لَيْلَةَ إِحْدَى وَعِشْرِينَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95867",
+      "ifta_main_id": 95867,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "5015",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90137",
+      "ifta_main_id": 90137,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "814",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92101",
+      "ifta_main_id": 92101,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2299",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ إِحْدَادِ الْمُتَوَفَّى عَنْهَا زَوْجُهَا",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92839",
+      "ifta_main_id": 92839,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2775",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 2,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92836",
+      "ifta_main_id": 92836,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2773",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِي إِعْطَاءِ الْبَشِيرِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91809",
+      "ifta_main_id": 91809,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2083",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : فِي الْوَلِيِّ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89614",
+      "ifta_main_id": 89614,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "418",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89619",
+      "ifta_main_id": 89619,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "422",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91143",
+      "ifta_main_id": 91143,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1583",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91360",
+      "ifta_main_id": 91360,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "1744",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 6,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89578",
+      "ifta_main_id": 89578,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "leading_dash"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94601",
+      "ifta_main_id": 94601,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "4034",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-93574",
+      "ifta_main_id": 93574,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3299",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89292",
+      "ifta_main_id": 89292,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "175",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90413",
+      "ifta_main_id": 90413,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "leading_dash"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91723",
+      "ifta_main_id": 91723,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "",
+      "cleaning_applied": [
+        "leading_dash"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92010",
+      "ifta_main_id": 92010,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "2233",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89372",
+      "ifta_main_id": 89372,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "230",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِي الْجُنُبِ يُصَافِحُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-93617",
+      "ifta_main_id": 93617,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3272",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْيَمِينِ فِي قَطِيعَةِ الرَّحِمِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90138",
+      "ifta_main_id": 90138,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "815",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95390",
+      "ifta_main_id": 95390,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "4655",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-94327",
+      "ifta_main_id": 94327,
+      "book": "سنن أبي داود",
+      "hadith_num_in_source": "3827",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96607",
+      "ifta_main_id": 96607,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "220",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي الْجَمَاعَةِ فِي مَسْجِدٍ قَدْ صُلِّيَ فِيهِ مَرَّةً",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100388",
+      "ifta_main_id": 100388,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2348",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97178",
+      "ifta_main_id": 97178,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "552",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99118",
+      "ifta_main_id": 99118,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1641",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102870",
+      "ifta_main_id": 102870,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3918",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101371",
+      "ifta_main_id": 101371,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2936",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99168",
+      "ifta_main_id": 99168,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1673",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي كَرَاهِيَةِ أَنْ يُسَافِرَ الرَّجُلُ وَحْدَهُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97805",
+      "ifta_main_id": 97805,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "922",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100974",
+      "ifta_main_id": 100974,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2705",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101128",
+      "ifta_main_id": 101128,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2791",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100780",
+      "ifta_main_id": 100780,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2587",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101091",
+      "ifta_main_id": 101091,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2770",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي الِاتِّكَاءِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96920",
+      "ifta_main_id": 96920,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "401",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي الْقُنُوتِ فِي صَلَاةِ الْفَجْرِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100534",
+      "ifta_main_id": 100534,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2438",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101349",
+      "ifta_main_id": 101349,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2923",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ كَيْفَ كَانَتْ قِرَاءَةُ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99036",
+      "ifta_main_id": 99036,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1592",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96694",
+      "ifta_main_id": 96694,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "270",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي السُّجُودِ عَلَى الْجَبْهَةِ وَالْأَنْفِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101405",
+      "ifta_main_id": 101405,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2953",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 4,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101522",
+      "ifta_main_id": 101522,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3048",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-98921",
+      "ifta_main_id": 98921,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1534",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97632",
+      "ifta_main_id": 97632,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "822",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي التَّمَتُّعِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102280",
+      "ifta_main_id": 102280,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3544",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99236",
+      "ifta_main_id": 99236,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1711",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي حَدِّ بُلُوغِ الرَّجُلِ وَمَتَى يُفْرَضُ لَهُ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99527",
+      "ifta_main_id": 99527,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1875",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99628",
+      "ifta_main_id": 99628,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1934",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي الْغِيبَةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97199",
+      "ifta_main_id": 97199,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "568",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي سُجُودِ الْقُرْآنِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96379",
+      "ifta_main_id": 96379,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "90",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِي كَرَاهِيَةِ رَدِّ السَّلَامِ غَيْرَ مُتَوَضِّئٍ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101816",
+      "ifta_main_id": 101816,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3267",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99286",
+      "ifta_main_id": 99286,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1738",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99535",
+      "ifta_main_id": 99535,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1880",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99837",
+      "ifta_main_id": 99837,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2052",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96357",
+      "ifta_main_id": 96357,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "78",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97292",
+      "ifta_main_id": 97292,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "621",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي زَكَاةِ الْإِبِلِ وَالْغَنَمِ",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102603",
+      "ifta_main_id": 102603,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3727",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97439",
+      "ifta_main_id": 97439,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "712",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99650",
+      "ifta_main_id": 99650,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1948",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102019",
+      "ifta_main_id": 102019,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3396",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102736",
+      "ifta_main_id": 102736,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3818",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99210",
+      "ifta_main_id": 99210,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1698",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ مَا يُكْرَهُ مِنَ الْخَيْلِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102478",
+      "ifta_main_id": 102478,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3653",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100929",
+      "ifta_main_id": 100929,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2679",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ فِي الِانْتِهَاءِ عَمَّا نَهَى عَنْهُ رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96449",
+      "ifta_main_id": 96449,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "130",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي الْحَائِضِ أَنَّهَا لَا تَقْضِي الصَّلَاةَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100792",
+      "ifta_main_id": 100792,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2594",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102228",
+      "ifta_main_id": 102228,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "3517",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96937",
+      "ifta_main_id": 96937,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "410",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي التَّسْبِيحِ فِي أَدْبَارِ الصَّلَاةِ",
+      "chains": 4,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-98913",
+      "ifta_main_id": 98913,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1529",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِيمَنْ حَلَفَ عَلَى يَمِينٍ فَرَأَى غَيْرَهَا خَيْرًا مِنْهَا",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99684",
+      "ifta_main_id": 99684,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "1968",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96927",
+      "ifta_main_id": 96927,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "405",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي نَسْخِ الْكَلَامِ فِي الصَّلَاةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100192",
+      "ifta_main_id": 100192,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "2235",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي عَلَامَةِ الدَّجَّالِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97469",
+      "ifta_main_id": 97469,
+      "book": "جامع الترمذي",
+      "hadith_num_in_source": "729",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-68105",
+      "ifta_main_id": 68105,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2892",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ النَّهْيِ أَنْ يُنَفَّرَ صَيْدُ الْحَرَمِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-68634",
+      "ifta_main_id": 68634,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3240",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-70022",
+      "ifta_main_id": 70022,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4276",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : صَيْدُ الْكَلْبِ الْمُعَلَّمِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67493",
+      "ifta_main_id": 67493,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2481",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-72056",
+      "ifta_main_id": 72056,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "5736",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-68830",
+      "ifta_main_id": 68830,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3378",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : الْبِنَاءِ بِابْنَةِ تِسْعٍ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-71530",
+      "ifta_main_id": 71530,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "5378",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-71095",
+      "ifta_main_id": 71095,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "5055",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ كِتَابُ : الزِّينَةِ . بَابٌ : مِنَ السُّنَنِ الْفِطْرَةُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-71402",
+      "ifta_main_id": 71402,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "5285",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-70806",
+      "ifta_main_id": 70806,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4830",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64208",
+      "ifta_main_id": 64208,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "288",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : مَا يَجِبُ عَلَى مَنْ أَتَى حَلِيلَتَهُ ، فِي حَالِ حَيْضَتِهَا ، بَعْدَ عِلْمِهِ بِنَهْيِ اللهِ عَزَّ وَجَلَّ عَنْ وَطْئِهَا",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64223",
+      "ifta_main_id": 64223,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "297",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67587",
+      "ifta_main_id": 67587,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2538",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : صَدَقَةُ الْمَرْأَةِ مِنْ بَيْتِ زَوْجِهَا",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Nasai:ifta-70534",
+      "ifta_main_id": 70534,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4639",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : تَفْسِيرُ ذَلِكَ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67634",
+      "ifta_main_id": 67634,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2568",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَنْ يُسْأَلُ بِاللهِ عَزَّ وَجَلَّ وَلَا يُعْطَى بِهِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-70959",
+      "ifta_main_id": 70959,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4963",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-69042",
+      "ifta_main_id": 69042,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3525",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : الْإِحْدَادِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64860",
+      "ifta_main_id": 64860,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "705",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : النَّهْيِ عَنْ مَنْعِ النِّسَاءِ مِنْ إِتْيَانِهِنَّ الْمَسَاجِدَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64856",
+      "ifta_main_id": 64856,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "703",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-66304",
+      "ifta_main_id": 66304,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1592",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : ضَرْبِ الدُّفِّ يَوْمَ الْعِيدِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-65629",
+      "ifta_main_id": 65629,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1161",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : كَيْفَ التَّشَهُّدُ الْأَوَّلُ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-66555",
+      "ifta_main_id": 66555,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1779",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Nasai:ifta-68587",
+      "ifta_main_id": 68587,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3210",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67606",
+      "ifta_main_id": 67606,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2551",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : الْقَلِيلُ فِي الصَّدَقَةِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-66157",
+      "ifta_main_id": 66157,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1501",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْأَمْرِ بِالدُّعَاءِ فِي الْكُسُوفِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-66262",
+      "ifta_main_id": 66262,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1569",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67600",
+      "ifta_main_id": 67600,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2547",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-69226",
+      "ifta_main_id": 69226,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3659",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Nasai:ifta-69789",
+      "ifta_main_id": 69789,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4109",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Nasai:ifta-69016",
+      "ifta_main_id": 69016,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3502",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-66352",
+      "ifta_main_id": 66352,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1624",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ بِأَيِّ شَيْءٍ تُسْتَفْتَحُ صَلَاةُ اللَّيْلِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-65685",
+      "ifta_main_id": 65685,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1200",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64409",
+      "ifta_main_id": 64409,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "413",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : الِاغْتِسَالِ فِي قَصْعَةٍ فِيهَا أَثَرُ الْعَجِينِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-69308",
+      "ifta_main_id": 69308,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3725",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-69344",
+      "ifta_main_id": 69344,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3758",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67887",
+      "ifta_main_id": 67887,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2742",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-67622",
+      "ifta_main_id": 67622,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2561",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْمَنَّانِ بِمَا أَعْطَى",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-65719",
+      "ifta_main_id": 65719,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1223",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا يَفْعَلُ مَنْ سَلَّمَ مِنْ رَكْعَتَيْنِ نَاسِيًا وَتَكَلَّمَ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "Nasai:ifta-68740",
+      "ifta_main_id": 68740,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3314",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-69627",
+      "ifta_main_id": 69627,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "3974",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-70941",
+      "ifta_main_id": 70941,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4945",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-65478",
+      "ifta_main_id": 65478,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1078",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ تَرْكِ الْقُنُوتِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64491",
+      "ifta_main_id": 64491,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "466",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-68230",
+      "ifta_main_id": 68230,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "2969",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "Nasai:ifta-71230",
+      "ifta_main_id": 71230,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "5152",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Nasai:ifta-64497",
+      "ifta_main_id": 64497,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "469",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ : صَلَاةِ الظُّهْرِ فِي السَّفَرِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "Nasai:ifta-69843",
+      "ifta_main_id": 69843,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4158",
+      "cleaning_applied": [
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-71911",
+      "ifta_main_id": 71911,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "5620",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-66589",
+      "ifta_main_id": 66589,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "1806",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "Nasai:ifta-70734",
+      "ifta_main_id": 70734,
+      "book": "سنن النسائي",
+      "hadith_num_in_source": "4778",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109538",
+      "ifta_main_id": 109538,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1191",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112457",
+      "ifta_main_id": 112457,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3211",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ صَيْدِ الْقَوْسِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110861",
+      "ifta_main_id": 110861,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2127",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَنْ نَذَرَ نَذْرًا وَلَمْ يُسَمِّهِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113975",
+      "ifta_main_id": 113975,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "4337",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109232",
+      "ifta_main_id": 109232,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "969",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111495",
+      "ifta_main_id": 111495,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2554",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113733",
+      "ifta_main_id": 113733,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "4131",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108945",
+      "ifta_main_id": 108945,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "744",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108404",
+      "ifta_main_id": 108404,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "",
+      "cleaning_applied": [],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 1,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108224",
+      "ifta_main_id": 108224,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "237",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَنْ كَانَ مِفْتَاحًا لِلْخَيْرِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112801",
+      "ifta_main_id": 112801,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3442",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الْحِمْيَةِ",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-107947",
+      "ifta_main_id": 107947,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "9",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111283",
+      "ifta_main_id": 111283,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2411",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110999",
+      "ifta_main_id": 110999,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2221",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111228",
+      "ifta_main_id": 111228,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2376",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108811",
+      "ifta_main_id": 108811,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "651",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابٌ : فِي مُؤَاكَلَةِ الْحَائِضِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111378",
+      "ifta_main_id": 111378,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2477",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109679",
+      "ifta_main_id": 109679,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1292",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111966",
+      "ifta_main_id": 111966,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2879",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ النَّهْيِ أَنْ يُسَافَرَ بِالْقُرْآنِ إِلَى أَرْضِ الْعَدُوِّ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109944",
+      "ifta_main_id": 109944,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1487",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113971",
+      "ifta_main_id": 113971,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "4333",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111276",
+      "ifta_main_id": 111276,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2407",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112537",
+      "ifta_main_id": 112537,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3265",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112384",
+      "ifta_main_id": 112384,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3161",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الذَّبْحِ بِالْمُصَلَّى",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111093",
+      "ifta_main_id": 111093,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2285",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ السَّلَمِ فِي الْحَيَوَانِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110604",
+      "ifta_main_id": 110604,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1952",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ الرَّجُلِ يُسْلِمُ وَعِنْدَهُ أَكْثَرُ مِنْ أَرْبَعِ نِسْوَةٍ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113290",
+      "ifta_main_id": 113290,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3782",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110182",
+      "ifta_main_id": 110182,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1664",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي الْإِفْطَارِ فِي السَّفَرِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110569",
+      "ifta_main_id": 110569,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1928",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112843",
+      "ifta_main_id": 112843,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3467",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ دَوَاءِ ذَاتِ الْجَنْبِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108304",
+      "ifta_main_id": 108304,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "293",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112339",
+      "ifta_main_id": 112339,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3129",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113197",
+      "ifta_main_id": 113197,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3718",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112763",
+      "ifta_main_id": 112763,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3417",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110893",
+      "ifta_main_id": 110893,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2148",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108140",
+      "ifta_main_id": 108140,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "163",
+      "cleaning_applied": [
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "( فَضْلُ الْأَنْصَارِ )",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "val"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-107953",
+      "ifta_main_id": 107953,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "14",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112470",
+      "ifta_main_id": 112470,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3220",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112942",
+      "ifta_main_id": 112942,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3541",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113677",
+      "ifta_main_id": 113677,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "4087",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110162",
+      "ifta_main_id": 110162,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1650",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ مَا جَاءَ فِي النَّهْيِ أَنْ يُتَقَدَّمَ رَمَضَانُ بِصَوْمٍ إِلَّا مَنْ صَامَ صَوْمًا فَوَافَقَهُ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111499",
+      "ifta_main_id": 111499,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2557",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113064",
+      "ifta_main_id": 113064,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "3625",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111314",
+      "ifta_main_id": 111314,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2433",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ أَدَاءِ الدَّيْنِ عَنِ الْمَيِّتِ",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110537",
+      "ifta_main_id": 110537,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1904",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108570",
+      "ifta_main_id": 108570,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "482",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113637",
+      "ifta_main_id": 113637,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "4056",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "test"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-108360",
+      "ifta_main_id": 108360,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "328",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "بَابُ النَّهْيِ عَنِ الْخَلَاءِ عَلَى قَارِعَةِ الطَّرِيقِ",
+      "chains": 2,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110694",
+      "ifta_main_id": 110694,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "2016",
+      "cleaning_applied": [
+        "page_marker",
+        "line_break",
+        "print_number",
+        "chapter_heading"
+      ],
+      "removed_chapter_heading": "أَبْوَابُ الطَّلَاقِ [ بَابٌ ]",
+      "chains": 3,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109822",
+      "ifta_main_id": 109822,
+      "book": "سنن ابن ماجه",
+      "hadith_num_in_source": "1397",
+      "cleaning_applied": [
+        "print_number"
+      ],
+      "removed_chapter_heading": "",
+      "chains": 1,
+      "mentions_of_the_compiler": 0,
+      "nlp_benchmark_split": "train"
+    }
+  ]
+}

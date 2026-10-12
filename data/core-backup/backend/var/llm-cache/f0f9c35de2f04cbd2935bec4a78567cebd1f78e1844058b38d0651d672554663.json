@@ -1,0 +1,403 @@
+{
+  "key": "f0f9c35de2f04cbd2935bec4a78567cebd1f78e1844058b38d0651d672554663",
+  "created_at": "2026-10-12T20:15:44.716385+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:978"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Qutayba ibn Sa'id"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قُتَيْبَةُ بْنُ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Layth"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "لَيْثٌ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Muhammad ibn Rumh"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ رُمْحٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Ibn Shihab"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ شِهَابٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Ibn al-Musayyib"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ الْمُسَيَّبِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Abu Hurayra"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Harmala ibn Yahya"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَرْمَلَةُ بْنُ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "ref": "node-9",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Ibn Wahb"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنُ وَهْبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-10",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Yunus"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "يُونُسُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-11",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Abu Salama"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبُو سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-12",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "Sa'id ibn al-Musayyib"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَعِيدُ بْنُ الْمُسَيِّبِ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 1,
+          "position": 1
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا لَيْثٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 2,
+          "position": 1
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا اللَّيْثُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 2,
+          "position": 2
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ شِهَابٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 2,
+          "position": 3
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ الْمُسَيَّبِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 2,
+          "position": 4
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-8",
+        "to_ref": "node-9",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 3,
+          "position": 1
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا ابْنُ وَهْبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-9",
+        "to_ref": "node-10",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 3,
+          "position": 2
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي يُونُسُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-10",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 3,
+          "position": 3
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ ابْنَ شِهَابٍ أَخْبَرَهُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-11",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 3,
+          "position": 4
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي أَبُو سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-11",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 3,
+          "position": 5
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَمِعَا أَبَا هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-12",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "Muslim:978",
+          "chain_no": 3,
+          "position": 5
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سَمِعَا أَبَا هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-2",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-8",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَحَدَّثَنِي حَرْمَلَةُ بْنُ يَحْيَى"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3287,
+    "output_tokens": 6533,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

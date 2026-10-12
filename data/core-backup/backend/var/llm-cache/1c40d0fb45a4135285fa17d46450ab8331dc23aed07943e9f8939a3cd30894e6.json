@@ -1,0 +1,415 @@
+{
+  "key": "1c40d0fb45a4135285fa17d46450ab8331dc23aed07943e9f8939a3cd30894e6",
+  "created_at": "2026-10-12T20:32:10.078971+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "خَطَبَنَا رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-ali",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَلِيُّ بْنُ حُجْرٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَلِيُّ بْنُ حُجْرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-jarir",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "جَرِيرٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَرِيرٌ"
+          }
+        ]
+      },
+      {
+        "ref": "n-mansur",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَنْصُورٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-muhammad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ بَشَّارٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ بَشَّارٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-abd",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ الرَّحْمَنِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَبْدُ الرَّحْمَنِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-sufyan",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سُفْيَانُ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "ref": "n-rib",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "رِبْعِيٍّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "رِبْعِيٍّ"
+          }
+        ]
+      },
+      {
+        "ref": "n-imra",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "امْرَأَتِهِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "امْرَأَتِهِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-ukht",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أُخْتِ حُذَيْفَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أُخْتِ حُذَيْفَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-ali",
+        "to_ref": "n-jarir",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 1
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَلِيُّ بْنُ حُجْرٍ قَالَ : حَدَّثَنَا جَرِيرٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-jarir",
+        "to_ref": "n-mansur",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 2
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَرِيرٌ ، عَنْ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-muhammad",
+        "to_ref": "n-abd",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 1
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ بَشَّارٍ قَالَ : حَدَّثَنَا عَبْدُ الرَّحْمَنِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-abd",
+        "to_ref": "n-sufyan",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 2
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَبْدُ الرَّحْمَنِ قَالَ : حَدَّثَنَا سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-sufyan",
+        "to_ref": "n-mansur",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 3
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سُفْيَانُ ، عَنْ مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-mansur",
+        "to_ref": "n-rib",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 4
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مَنْصُورٍ ، عَنْ رِبْعِيٍّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-rib",
+        "to_ref": "n-imra",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 5
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "رِبْعِيٍّ ، عَنِ امْرَأَتِهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-imra",
+        "to_ref": "n-ukht",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-71230",
+          "chain_no": 1,
+          "position": 6
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "امْرَأَتِهِ عَنْ أُخْتِ حُذَيْفَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-ali",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَلِيُّ بْنُ حُجْرٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-jarir",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "جَرِيرٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-mansur",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مَنْصُورٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-muhammad",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ بَشَّارٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-abd",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَبْدُ الرَّحْمَنِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-sufyan",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "سُفْيَانُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-rib",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "رِبْعِيٍّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-imra",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "امْرَأَتِهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-ukht",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أُخْتِ حُذَيْفَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3450,
+    "output_tokens": 6374,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

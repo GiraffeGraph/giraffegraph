@@ -1,0 +1,288 @@
+{
+  "key": "bfc3445128551c8d4da096e01f0a3701cb2a06381d3792c9829708e8d27a611b",
+  "created_at": "2026-10-12T20:38:09.517992+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "n-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Tirmidhi:ifta-101128"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ خَلِيفَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-muhammad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ خَلِيفَةَ أَبُو عُبَيْدِ اللهِ الْبَصْرِيُّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ خَلِيفَةَ أَبُو عُبَيْدِ اللهِ الْبَصْرِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "n-amr",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَمْرُو بْنُ عَلِيٍّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَعَمْرُو بْنُ عَلِيٍّ"
+          }
+        ]
+      },
+      {
+        "ref": "n-yazid",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَزِيدُ بْنُ زُرَيْعٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يَزِيدُ بْنُ زُرَيْعٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-hajjaj",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "حَجَّاجٍ الصَّوَّافِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حَجَّاجٍ الصَّوَّافِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-hanan",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "حَنَانٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حَنَانٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-abu-uthman",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي عُثْمَانَ النَّهْدِيِّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِي عُثْمَانَ النَّهْدِيِّ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-muhammad",
+        "to_ref": "n-yazid",
+        "properties": {
+          "hadith_ref": "Tirmidhi:ifta-101128",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يَزِيدُ بْنُ زُرَيْعٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-amr",
+        "to_ref": "n-yazid",
+        "properties": {
+          "hadith_ref": "Tirmidhi:ifta-101128",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَعَمْرُو بْنُ عَلِيٍّ ، قَالَا : حَدَّثَنَا يَزِيدُ بْنُ زُرَيْعٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-yazid",
+        "to_ref": "n-hajjaj",
+        "properties": {
+          "hadith_ref": "Tirmidhi:ifta-101128",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حَجَّاجٍ الصَّوَّافِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-hajjaj",
+        "to_ref": "n-hanan",
+        "properties": {
+          "hadith_ref": "Tirmidhi:ifta-101128",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حَنَانٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-hanan",
+        "to_ref": "n-abu-uthman",
+        "properties": {
+          "hadith_ref": "Tirmidhi:ifta-101128",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي عُثْمَانَ النَّهْدِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-muhammad",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مُحَمَّدُ بْنُ خَلِيفَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-amr",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَعَمْرُو بْنُ عَلِيٍّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-yazid",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يَزِيدُ بْنُ زُرَيْعٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-hajjaj",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حَجَّاجٍ الصَّوَّافِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-hanan",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ حَنَانٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-abu-uthman",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِي عُثْمَانَ النَّهْدِيِّ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3192,
+    "output_tokens": 4225,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

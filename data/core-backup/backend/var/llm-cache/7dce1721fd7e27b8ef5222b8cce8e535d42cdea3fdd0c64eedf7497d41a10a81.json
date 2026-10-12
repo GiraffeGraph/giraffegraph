@@ -1,0 +1,288 @@
+{
+  "key": "7dce1721fd7e27b8ef5222b8cce8e535d42cdea3fdd0c64eedf7497d41a10a81",
+  "created_at": "2026-10-12T20:39:45.198973+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70534"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا مُحَمَّدُ بْنُ سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-muhammad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ سَلَمَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-harith",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْحَارِثُ بْنُ مِسْكِينٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "الْحَارِثُ بْنُ مِسْكِينٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-qasim",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنِ الْقَاسِمِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ الْقَاسِمِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-malik",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَالِكٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مَالِكٌ"
+          }
+        ]
+      },
+      {
+        "ref": "node-nafi",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "نَافِعٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَافِعٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-ibn-umar",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنِ عُمَرَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ عُمَرَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-muhammad",
+        "to_ref": "node-qasim",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70534",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ الْقَاسِمِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-harith",
+        "to_ref": "node-qasim",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70534",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ الْقَاسِمِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-qasim",
+        "to_ref": "node-malik",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70534",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنِي"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي مَالِكٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-malik",
+        "to_ref": "node-nafi",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70534",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ نَافِعٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-nafi",
+        "to_ref": "node-ibn-umar",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-70534",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ ابْنِ عُمَرَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-muhammad",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-harith",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "الْحَارِثُ بْنُ مِسْكِينٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-qasim",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ الْقَاسِمِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-malik",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مَالِكٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-nafi",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَافِعٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-ibn-umar",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنِ عُمَرَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3168,
+    "output_tokens": 4225,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

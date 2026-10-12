@@ -1,0 +1,297 @@
+{
+  "key": "9e32a020d8a5b27abdf69dc44f1fda8e2d79fbaee2a35c48827ba7617d855430",
+  "created_at": "2026-10-12T20:24:15.555905+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "دَخَلَ عَلَيْنَا رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يُونُسُ بْنُ مُحَمَّدٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يُونُسُ بْنُ مُحَمَّدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "فُلَيْحُ بْنُ سُلَيْمَانَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَيُّوبَ بْنِ عَبْدِ الرَّحْمَنِ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَيُّوبَ بْنِ عَبْدِ الرَّحْمَنِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَعْقُوبَ بْنِ أَبِي يَعْقُوبَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَعْقُوبَ بْنِ أَبِي يَعْقُوبَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أُمِّ الْمُنْذِرِ بِنْتِ قَيْسٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أُمِّ الْمُنْذِرِ بِنْتِ قَيْسٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-8",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو عَامِرٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو عَامِرٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-9",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو دَاوُدَ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبُو دَاوُدَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 1,
+          "position": 1
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ ، حَدَّثَنَا يُونُسُ بْنُ مُحَمَّدٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 1,
+          "position": 2
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا يُونُسُ بْنُ مُحَمَّدٍ ، حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 1,
+          "position": 3
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ ، عَنْ أَيُّوبَ بْنِ عَبْدِ الرَّحْمَنِ بْنِ عَبْدِ اللهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-8",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 2,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو عَامِرٍ ، وَأَبُو دَاوُدَ ، قَالَا: حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-9",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 2,
+          "position": 1
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبُو دَاوُدَ ، قَالَا: حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 2,
+          "position": 2
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ ، عَنْ أَيُّوبَ بْنِ عَبْدِ الرَّحْمَنِ ، عَنْ يَعْقُوبَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 2,
+          "position": 3
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَيُّوبَ بْنِ عَبْدِ الرَّحْمَنِ ، عَنْ يَعْقُوبَ بْنِ أَبِي يَعْقُوبَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-112801",
+          "chain_no": 2,
+          "position": 4
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَعْقُوبَ بْنِ أَبِي يَعْقُوبَ ، عَنْ أُمِّ الْمُنْذِرِ بِنْتِ قَيْسٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-7",
+        "to_ref": "node-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أُمِّ الْمُنْذِرِ بِنْتِ قَيْسٍ الْأَنْصَارِيَّةِ قَالَتْ: دَخَلَ عَلَيْنَا رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3627,
+    "output_tokens": 6949,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}
