@@ -260,7 +260,7 @@ Full list with every extracted file: `raw_manifest.json`.
 
 ## Evaluation sets
 
-Build order (from the workspace root; `<pilot>` is `claude-science-results/pilot_sample.json`,
+Build order (from the workspace root; `<pilot>` is `wiki/sources/claude-science-results/pilot_sample.json`,
 read only):
 
 ```
