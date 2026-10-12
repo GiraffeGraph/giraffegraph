@@ -14,7 +14,7 @@ against either measures agreement with those labels.
 | Path | Content |
 |---|---|
 | `raw/<source>/` | Files exactly as downloaded. `extracted/` subfolders hold the unpacked GitHub archives. Files starting with `_` are saved API responses. |
-| `raw_manifest.json` | Size and sha256 of every file under `raw/` (82 files, 4,480,738,580 bytes). |
+| `raw_manifest.json` | Size and sha256 of every file under `raw/` (99 files, 4,541,997,359 bytes). |
 | `scripts/` | Every script used. Standard library only. |
 | `work/` | Intermediate six-book extracts that the builders read (`ifta_sixbooks.jsonl`, `sanadset_sixbooks.jsonl`, and their counts). |
 | `eval/<set>/` | The evaluation sets. |
@@ -257,6 +257,37 @@ Full list with every extracted file: `raw_manifest.json`.
 | `sanadset-paper/PMC9440281_fulltext.xml` | 24898 | `9ecff8270d67b6f35602b60894278e86f8fc99a76a6c4ce490666a8219bcbed5` |
 | `sanadset-paper/europepmc_search.json` | 5129 | `fe1b9688ba812b533791a9ece2b231cc388a883dfea5cff4eea024d675c46734` |
 | `sanadset-paper/mendeley_api.json` | 3419 | `ad16afb7da52e8844467168b9fd9a8b4ad5b999ca48236428fb655ee3562f6d8` |
+
+### 4. Two biomedical corpora used outside the hadith domain (downloaded 2026-10-13)
+
+Used only to repeat two measurements on text that has human annotations and is not hadith: the
+decision-ledger replay and the copy check (`cache-and-ledger/data/explore-ledger-domains.py`,
+`explore-copy-check-bc5cdr.py`; results in `wiki/evaluation/decision-ledger-experiments.md`). No
+evaluation set under `eval/` is built from them.
+
+```
+curl -sL -o raw/medmentions/corpus_pubtator.txt.gz \
+  https://github.com/chanzuckerberg/MedMentions/raw/master/full/data/corpus_pubtator.txt.gz
+curl -sL -o raw/medmentions/README.md \
+  https://raw.githubusercontent.com/chanzuckerberg/MedMentions/master/README.md
+curl -sL -o raw/bc5cdr/CDR_Data.zip \
+  https://github.com/JHnlp/BioCreative-V-CDR-Corpus/raw/master/CDR_Data.zip
+```
+
+| File (under `raw/`) | Bytes | sha256 |
+|---|---:|---|
+| `medmentions/corpus_pubtator.txt.gz` | 6928546 | `95bebda2776e4cd8f59456af3d977eb7c640fa7997db64c112a18fb09158b1ce` |
+| `bc5cdr/CDR_Data.zip` | 20403150 | `0a359a7f038d283a7b05b084fa73de014e7410e1f5d7034bf3fd01f016fc2444` |
+
+**MedMentions** (`chanzuckerberg/MedMentions`, full corpus): 4,392 PubMed abstracts with mention
+spans linked to UMLS concepts. Licence as stated in the repository README: "This data is being
+released under the CC0 license".
+
+**BC5CDR** (BioCreative V Chemical Disease Relation corpus, mirror `JHnlp/BioCreative-V-CDR-Corpus`):
+1,500 PubMed abstracts with chemical and disease mentions linked to MeSH ids. Terms as stated in
+`CDR_Data/README.txt`: a "PUBLIC DOMAIN NOTICE" of the National Center for Biotechnology Information
+("freely available to the public for use"), with a request to cite the task overview and corpus
+papers. The mirror is a third-party GitHub repository, not the BioCreative distribution site.
 
 ## Evaluation sets
 

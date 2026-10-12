@@ -101,6 +101,81 @@
       "sha256": "fdd47607cf2c2ca5fa213dc6995b470b910981e412c48d3e14607d1e597f5a0b"
     },
     {
+      "path": "bc5cdr/CDR_Data.zip",
+      "bytes": 20403150,
+      "sha256": "0a359a7f038d283a7b05b084fa73de014e7410e1f5d7034bf3fd01f016fc2444"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/BC5CDR.corpus.pdf",
+      "bytes": 769565,
+      "sha256": "07a3cde6fa35499daa7c2e11bd1ff440981527e01ea6ba981671982d2a1572ea"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/BC5CDR.overview.pdf",
+      "bytes": 250806,
+      "sha256": "93fea8ce19cdbc506167c36a837e06e24b31e8b01fa58a212448237a881ffcde"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/BC5CDR.presentation.pdf",
+      "bytes": 16672687,
+      "sha256": "9fda3b08c98a89d1ad75581acbd7dcf5f876ff490ee312fd2d1c91c8792bca95"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/README.txt",
+      "bytes": 2841,
+      "sha256": "926992c39d681becfdf9ba907de8d9e5096d1b44eabc014d22ba8f8d387a491f"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.BioC.xml",
+      "bytes": 2538784,
+      "sha256": "6ec138899a4b6448b40adf4e159a06184f68f8a5a7e13575903c5e127d734d88"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.PubTator.txt",
+      "bytes": 1127990,
+      "sha256": "9e18d8e700168887a7919e62f67ac2ce2357e3f409a48ee992906abdd80fe3e5"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TestSet.BioC.xml",
+      "bytes": 2666867,
+      "sha256": "32d94f03c52e028931513ab52719b5bc7bb8e4fc0e3d99bba37e2b7442e3da35"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TestSet.PubTator.txt",
+      "bytes": 1168687,
+      "sha256": "a3c48d5f35bdfce20c2371778abedc9fd24d1da092207072e5181ad53c8d0e2f"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TrainingSet.BioC.xml",
+      "bytes": 2519542,
+      "sha256": "37d03c8ebb22369fbf8f2099e4bc6570accba8473e9129dddd6278e7e01e1adc"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TrainingSet.PubTator.txt",
+      "bytes": 1129998,
+      "sha256": "7afcec134e3d4871e74b0398d92850d3c9ac94c0bdc780003f2d60184c012bd8"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/DNorm.TestSet/TestSet.DNorm.BioC.xml",
+      "bytes": 1557365,
+      "sha256": "2a171f45ad5f68724f27ca1ace70ec2bde71f3570a3d13738aa3efefd4f19bc2"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/DNorm.TestSet/TestSet.DNorm.PubTator.txt",
+      "bytes": 913288,
+      "sha256": "6f9564880e3d6f0353157f626046bb37f8e414e0f749085e06dac3b44cfe102b"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/tmChem.TestSet/TestSet.tmChem.BioC.xml",
+      "bytes": 1669151,
+      "sha256": "daeabbd1f3c648145095c3b724d6efe455f59b85ba14ca738bb7a88593a54058"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/tmChem.TestSet/TestSet.tmChem.PubTator.txt",
+      "bytes": 932385,
+      "sha256": "dee85c0aac68f88a7f8c061afe9c2ca6c6539c674e1341c3a160dfb2a35d6bdd"
+    },
+    {
       "path": "ifta-github/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main.zip",
       "bytes": 1147028,
       "sha256": "78f1950c40ac8acfba6bd5778caba70e7aef5484cff762cacf2431d8053c020f"
@@ -366,6 +441,16 @@
       "sha256": "8bb86bd458c8246858554dc03d8990993502881d1e1f25747936ae0f5d745424"
     },
     {
+      "path": "medmentions/README.md",
+      "bytes": 7127,
+      "sha256": "42abe3166482c7ab6946e657d900e6a4e7df30ae4048394256b322a79ffed700"
+    },
+    {
+      "path": "medmentions/corpus_pubtator.txt.gz",
+      "bytes": 6928546,
+      "sha256": "95bebda2776e4cd8f59456af3d977eb7c640fa7997db64c112a18fb09158b1ce"
+    },
+    {
       "path": "sanadset-hf/README.md",
       "bytes": 90053,
       "sha256": "d164749644946f6848b5f181e5466c62c9711f717c3928407475aeb974f686d7"
@@ -411,5 +496,5 @@
       "sha256": "ad16afb7da52e8844467168b9fd9a8b4ad5b999ca48236428fb655ee3562f6d8"
     }
   ],
-  "total_bytes": 4480738580
+  "total_bytes": 4541997359
 }
