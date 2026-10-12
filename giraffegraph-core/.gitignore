@@ -85,3 +85,4 @@ evaluation/results/**
 !evaluation/results/**/compare-*.md
 !evaluation/results/**/extra-tables-*.json
 !evaluation/results/2026-10-12-identity-baseline/*.json
+!evaluation/results/2026-10-13-identity-ledger/*.json

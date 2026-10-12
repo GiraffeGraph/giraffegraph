@@ -1,0 +1,1168 @@
+{
+ "seeds": 5,
+ "generation_gap_allowed": [
+  -1,
+  5
+ ],
+ "death_gap_allowed": [
+  -20,
+  85
+ ],
+ "guard_bounds_chosen_on": "AR-Sanad test chains",
+ "ar_sanad": {
+  "corpus": {
+   "documents": 27056,
+   "mentions": 150904,
+   "people": 6378,
+   "names": 15301,
+   "names_with_more_than_one_person": 815,
+   "share_of_mentions_under_such_names": 0.3585,
+   "share_of_mentions_with_generation_or_death_year": 0.9979,
+   "guard_false_alarm_rate_on_labelled_adjacent_pairs": 0.0081
+  },
+  "policies": {
+   "name": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1014,
+    "silent_wrong_per_mention": 0.0998,
+    "silent_wrong_per_reuse": 0.111,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "student+name": {
+    "mentions": 150904,
+    "questions_per_mention": 0.3396,
+    "silent_wrong_per_mention": 0.0061,
+    "silent_wrong_per_reuse": 0.0092,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "name, guard asks about the flagged fact only": {
+    "mentions": 150904,
+    "questions_per_mention": 0.2038,
+    "silent_wrong_per_mention": 0.0535,
+    "silent_wrong_per_reuse": 0.0671,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 6975.2,
+    "guard_questions_on_correct": 8471
+   },
+   "scope narrows on guard": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1779,
+    "silent_wrong_per_mention": 0.0139,
+    "silent_wrong_per_reuse": 0.0169,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 514,
+    "guard_questions_on_correct": 1672.4
+   },
+   "scope narrows on guard, kinship terms start in context": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1781,
+    "silent_wrong_per_mention": 0.0133,
+    "silent_wrong_per_reuse": 0.0162,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 509.6,
+    "guard_questions_on_correct": 1670.6
+   },
+   "scope narrows on guard and 5% audit": {
+    "mentions": 150904,
+    "questions_per_mention": 0.2246,
+    "silent_wrong_per_mention": 0.0101,
+    "silent_wrong_per_reuse": 0.013,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 467.4,
+    "guard_questions_on_correct": 1553.8
+   },
+   "scope narrows on 5% audit": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1849,
+    "silent_wrong_per_mention": 0.0245,
+    "silent_wrong_per_reuse": 0.03,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "hindsight: names known to be ambiguous start in context": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1865,
+    "silent_wrong_per_mention": 0.0061,
+    "silent_wrong_per_reuse": 0.0075,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   }
+  },
+  "policies_when_the_reviewer_errs_5pct_on_ambiguous_names": {
+   "name": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1014,
+    "silent_wrong_per_mention": 0.1156,
+    "silent_wrong_per_reuse": 0.1287,
+    "reviewer_wrong_per_mention": 0.0003,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "student+name": {
+    "mentions": 150904,
+    "questions_per_mention": 0.3396,
+    "silent_wrong_per_mention": 0.0185,
+    "silent_wrong_per_reuse": 0.0281,
+    "reviewer_wrong_per_mention": 0.0045,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "name, guard asks about the flagged fact only": {
+    "mentions": 150904,
+    "questions_per_mention": 0.2107,
+    "silent_wrong_per_mention": 0.0644,
+    "silent_wrong_per_reuse": 0.0815,
+    "reviewer_wrong_per_mention": 0.0037,
+    "guard_questions_on_errors": 7610.4,
+    "guard_questions_on_correct": 8881.2
+   },
+   "scope narrows on guard": {
+    "mentions": 150904,
+    "questions_per_mention": 0.2188,
+    "silent_wrong_per_mention": 0.0175,
+    "silent_wrong_per_reuse": 0.0224,
+    "reviewer_wrong_per_mention": 0.0056,
+    "guard_questions_on_errors": 1048.4,
+    "guard_questions_on_correct": 2525.8
+   },
+   "scope narrows on guard, kinship terms start in context": {
+    "mentions": 150904,
+    "questions_per_mention": 0.2216,
+    "silent_wrong_per_mention": 0.0161,
+    "silent_wrong_per_reuse": 0.0207,
+    "reviewer_wrong_per_mention": 0.0058,
+    "guard_questions_on_errors": 1010.2,
+    "guard_questions_on_correct": 2552.6
+   },
+   "scope narrows on guard and 5% audit": {
+    "mentions": 150904,
+    "questions_per_mention": 0.273,
+    "silent_wrong_per_mention": 0.0135,
+    "silent_wrong_per_reuse": 0.0185,
+    "reviewer_wrong_per_mention": 0.007,
+    "guard_questions_on_errors": 938.6,
+    "guard_questions_on_correct": 2442.6
+   },
+   "scope narrows on 5% audit": {
+    "mentions": 150904,
+    "questions_per_mention": 0.2209,
+    "silent_wrong_per_mention": 0.031,
+    "silent_wrong_per_reuse": 0.0398,
+    "reviewer_wrong_per_mention": 0.0049,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "hindsight: names known to be ambiguous start in context": {
+    "mentions": 150904,
+    "questions_per_mention": 0.1865,
+    "silent_wrong_per_mention": 0.0182,
+    "silent_wrong_per_reuse": 0.0224,
+    "reviewer_wrong_per_mention": 0.0046,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   }
+  }
+ },
+ "ifta": {
+  "corpus": {
+   "documents": 34681,
+   "mentions": 205514,
+   "people": 6891,
+   "names": 15777,
+   "names_with_more_than_one_person": 904,
+   "share_of_mentions_under_such_names": 0.3991,
+   "share_of_mentions_with_generation_or_death_year": 0.9969,
+   "guard_false_alarm_rate_on_labelled_adjacent_pairs": 0.034
+  },
+  "mentions_per_collection": {
+   "Bukhari": 39820,
+   "Muslim": 48232,
+   "AbuDawud": 31438,
+   "Tirmidhi": 24445,
+   "Nasai": 35031,
+   "IbnMajah": 26548
+  },
+  "policies": {
+   "name": {
+    "mentions": 205514,
+    "questions_per_mention": 0.0768,
+    "silent_wrong_per_mention": 0.1021,
+    "silent_wrong_per_reuse": 0.1105,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "student+name": {
+    "mentions": 205514,
+    "questions_per_mention": 0.2915,
+    "silent_wrong_per_mention": 0.0069,
+    "silent_wrong_per_reuse": 0.0097,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "name, guard asks about the flagged fact only": {
+    "mentions": 205514,
+    "questions_per_mention": 0.2293,
+    "silent_wrong_per_mention": 0.049,
+    "silent_wrong_per_reuse": 0.0635,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 10900.6,
+    "guard_questions_on_correct": 20456.6
+   },
+   "scope narrows on guard": {
+    "mentions": 205514,
+    "questions_per_mention": 0.1985,
+    "silent_wrong_per_mention": 0.0099,
+    "silent_wrong_per_reuse": 0.0124,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 640.4,
+    "guard_questions_on_correct": 9017.6
+   },
+   "scope narrows on guard, kinship terms start in context": {
+    "mentions": 205514,
+    "questions_per_mention": 0.1979,
+    "silent_wrong_per_mention": 0.0097,
+    "silent_wrong_per_reuse": 0.0121,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 635,
+    "guard_questions_on_correct": 9038
+   },
+   "scope narrows on guard and 5% audit": {
+    "mentions": 205514,
+    "questions_per_mention": 0.2408,
+    "silent_wrong_per_mention": 0.0079,
+    "silent_wrong_per_reuse": 0.0104,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 587.8,
+    "guard_questions_on_correct": 8458
+   },
+   "scope narrows on 5% audit": {
+    "mentions": 205514,
+    "questions_per_mention": 0.1635,
+    "silent_wrong_per_mention": 0.022,
+    "silent_wrong_per_reuse": 0.0263,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   },
+   "hindsight: names known to be ambiguous start in context": {
+    "mentions": 205514,
+    "questions_per_mention": 0.1571,
+    "silent_wrong_per_mention": 0.0069,
+    "silent_wrong_per_reuse": 0.0081,
+    "reviewer_wrong_per_mention": 0.0,
+    "guard_questions_on_errors": 0,
+    "guard_questions_on_correct": 0
+   }
+  },
+  "held_out_collection": {
+   "AbuDawud": {
+    "cold": {
+     "name": {
+      "mentions": 31438,
+      "questions_per_mention": 0.1944,
+      "silent_wrong_per_mention": 0.0828,
+      "silent_wrong_per_reuse": 0.1027,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 31438,
+      "questions_per_mention": 0.4969,
+      "silent_wrong_per_mention": 0.0031,
+      "silent_wrong_per_reuse": 0.0061,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 31438,
+      "questions_per_mention": 0.3293,
+      "silent_wrong_per_mention": 0.0491,
+      "silent_wrong_per_reuse": 0.0733,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 1057.2,
+      "guard_questions_on_correct": 3184
+     },
+     "scope narrows on guard": {
+      "mentions": 31438,
+      "questions_per_mention": 0.3357,
+      "silent_wrong_per_mention": 0.0112,
+      "silent_wrong_per_reuse": 0.0169,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 205.4,
+      "guard_questions_on_correct": 2105.2
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 31438,
+      "questions_per_mention": 0.3355,
+      "silent_wrong_per_mention": 0.0103,
+      "silent_wrong_per_reuse": 0.0156,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 201.8,
+      "guard_questions_on_correct": 2111
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 31438,
+      "questions_per_mention": 0.3695,
+      "silent_wrong_per_mention": 0.0098,
+      "silent_wrong_per_reuse": 0.0156,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 188.8,
+      "guard_questions_on_correct": 1993.8
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 31438,
+      "questions_per_mention": 0.264,
+      "silent_wrong_per_mention": 0.0304,
+      "silent_wrong_per_reuse": 0.0413,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 31438,
+      "questions_per_mention": 0.3164,
+      "silent_wrong_per_mention": 0.0067,
+      "silent_wrong_per_reuse": 0.0098,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    },
+    "after_the_other_collections": {
+     "name": {
+      "mentions": 31438,
+      "questions_per_mention": 0.0807,
+      "silent_wrong_per_mention": 0.1394,
+      "silent_wrong_per_reuse": 0.1516,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 31438,
+      "questions_per_mention": 0.3069,
+      "silent_wrong_per_mention": 0.009,
+      "silent_wrong_per_reuse": 0.0131,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 31438,
+      "questions_per_mention": 0.2427,
+      "silent_wrong_per_mention": 0.0668,
+      "silent_wrong_per_reuse": 0.0882,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 2281.6,
+      "guard_questions_on_correct": 2810.6
+     },
+     "scope narrows on guard": {
+      "mentions": 31438,
+      "questions_per_mention": 0.2486,
+      "silent_wrong_per_mention": 0.0102,
+      "silent_wrong_per_reuse": 0.0136,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 120.8,
+      "guard_questions_on_correct": 2067.4
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 31438,
+      "questions_per_mention": 0.2484,
+      "silent_wrong_per_mention": 0.0101,
+      "silent_wrong_per_reuse": 0.0134,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 120.8,
+      "guard_questions_on_correct": 2068.4
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 31438,
+      "questions_per_mention": 0.2877,
+      "silent_wrong_per_mention": 0.0084,
+      "silent_wrong_per_reuse": 0.0117,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 107,
+      "guard_questions_on_correct": 1940.4
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 31438,
+      "questions_per_mention": 0.1896,
+      "silent_wrong_per_mention": 0.0216,
+      "silent_wrong_per_reuse": 0.0266,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 31438,
+      "questions_per_mention": 0.1561,
+      "silent_wrong_per_mention": 0.016,
+      "silent_wrong_per_reuse": 0.019,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    }
+   },
+   "Bukhari": {
+    "cold": {
+     "name": {
+      "mentions": 39820,
+      "questions_per_mention": 0.0809,
+      "silent_wrong_per_mention": 0.105,
+      "silent_wrong_per_reuse": 0.1142,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 39820,
+      "questions_per_mention": 0.2707,
+      "silent_wrong_per_mention": 0.0078,
+      "silent_wrong_per_reuse": 0.0107,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 39820,
+      "questions_per_mention": 0.2261,
+      "silent_wrong_per_mention": 0.0487,
+      "silent_wrong_per_reuse": 0.0628,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 2241.4,
+      "guard_questions_on_correct": 3539.2
+     },
+     "scope narrows on guard": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1755,
+      "silent_wrong_per_mention": 0.0114,
+      "silent_wrong_per_reuse": 0.0138,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 145.6,
+      "guard_questions_on_correct": 1346.6
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1743,
+      "silent_wrong_per_mention": 0.0113,
+      "silent_wrong_per_reuse": 0.0137,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 141.2,
+      "guard_questions_on_correct": 1347.8
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 39820,
+      "questions_per_mention": 0.2202,
+      "silent_wrong_per_mention": 0.0084,
+      "silent_wrong_per_reuse": 0.0107,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 132.8,
+      "guard_questions_on_correct": 1260.8
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 39820,
+      "questions_per_mention": 0.156,
+      "silent_wrong_per_mention": 0.0263,
+      "silent_wrong_per_reuse": 0.0312,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1666,
+      "silent_wrong_per_mention": 0.0089,
+      "silent_wrong_per_reuse": 0.0106,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    },
+    "after_the_other_collections": {
+     "name": {
+      "mentions": 39820,
+      "questions_per_mention": 0.0233,
+      "silent_wrong_per_mention": 0.1434,
+      "silent_wrong_per_reuse": 0.1468,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1515,
+      "silent_wrong_per_mention": 0.0226,
+      "silent_wrong_per_reuse": 0.0267,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 39820,
+      "questions_per_mention": 0.2056,
+      "silent_wrong_per_mention": 0.0646,
+      "silent_wrong_per_reuse": 0.0814,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 3138.6,
+      "guard_questions_on_correct": 4123.2
+     },
+     "scope narrows on guard": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1375,
+      "silent_wrong_per_mention": 0.0141,
+      "silent_wrong_per_reuse": 0.0164,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 69.6,
+      "guard_questions_on_correct": 1189.2
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1377,
+      "silent_wrong_per_mention": 0.0138,
+      "silent_wrong_per_reuse": 0.0161,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 69.4,
+      "guard_questions_on_correct": 1191.4
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1822,
+      "silent_wrong_per_mention": 0.0085,
+      "silent_wrong_per_reuse": 0.0104,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 60,
+      "guard_questions_on_correct": 1122.8
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 39820,
+      "questions_per_mention": 0.1207,
+      "silent_wrong_per_mention": 0.0244,
+      "silent_wrong_per_reuse": 0.0277,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 39820,
+      "questions_per_mention": 0.0745,
+      "silent_wrong_per_mention": 0.0268,
+      "silent_wrong_per_reuse": 0.029,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    }
+   },
+   "IbnMajah": {
+    "cold": {
+     "name": {
+      "mentions": 26548,
+      "questions_per_mention": 0.1892,
+      "silent_wrong_per_mention": 0.0646,
+      "silent_wrong_per_reuse": 0.0797,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 26548,
+      "questions_per_mention": 0.4774,
+      "silent_wrong_per_mention": 0.0036,
+      "silent_wrong_per_reuse": 0.0068,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2588,
+      "silent_wrong_per_mention": 0.0416,
+      "silent_wrong_per_reuse": 0.0561,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 610.2,
+      "guard_questions_on_correct": 1237.6
+     },
+     "scope narrows on guard": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2604,
+      "silent_wrong_per_mention": 0.0118,
+      "silent_wrong_per_reuse": 0.0159,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 129.4,
+      "guard_questions_on_correct": 788
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2598,
+      "silent_wrong_per_mention": 0.0112,
+      "silent_wrong_per_reuse": 0.0151,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 110,
+      "guard_questions_on_correct": 773.8
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2969,
+      "silent_wrong_per_mention": 0.0098,
+      "silent_wrong_per_reuse": 0.014,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 116.6,
+      "guard_questions_on_correct": 738.4
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2509,
+      "silent_wrong_per_mention": 0.0226,
+      "silent_wrong_per_reuse": 0.0302,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2915,
+      "silent_wrong_per_mention": 0.006,
+      "silent_wrong_per_reuse": 0.0085,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    },
+    "after_the_other_collections": {
+     "name": {
+      "mentions": 26548,
+      "questions_per_mention": 0.0718,
+      "silent_wrong_per_mention": 0.0957,
+      "silent_wrong_per_reuse": 0.1031,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 26548,
+      "questions_per_mention": 0.285,
+      "silent_wrong_per_mention": 0.0099,
+      "silent_wrong_per_reuse": 0.0139,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 26548,
+      "questions_per_mention": 0.1892,
+      "silent_wrong_per_mention": 0.0515,
+      "silent_wrong_per_reuse": 0.0633,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 1173.6,
+      "guard_questions_on_correct": 1944.4
+     },
+     "scope narrows on guard": {
+      "mentions": 26548,
+      "questions_per_mention": 0.173,
+      "silent_wrong_per_mention": 0.0137,
+      "silent_wrong_per_reuse": 0.0166,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 84.2,
+      "guard_questions_on_correct": 804.8
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 26548,
+      "questions_per_mention": 0.1743,
+      "silent_wrong_per_mention": 0.013,
+      "silent_wrong_per_reuse": 0.0157,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 97.4,
+      "guard_questions_on_correct": 816.6
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 26548,
+      "questions_per_mention": 0.2185,
+      "silent_wrong_per_mention": 0.0087,
+      "silent_wrong_per_reuse": 0.0111,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 92,
+      "guard_questions_on_correct": 767.6
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 26548,
+      "questions_per_mention": 0.1599,
+      "silent_wrong_per_mention": 0.021,
+      "silent_wrong_per_reuse": 0.025,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 26548,
+      "questions_per_mention": 0.1278,
+      "silent_wrong_per_mention": 0.0167,
+      "silent_wrong_per_reuse": 0.0191,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    }
+   },
+   "Muslim": {
+    "cold": {
+     "name": {
+      "mentions": 48232,
+      "questions_per_mention": 0.0991,
+      "silent_wrong_per_mention": 0.0647,
+      "silent_wrong_per_reuse": 0.0719,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 48232,
+      "questions_per_mention": 0.3414,
+      "silent_wrong_per_mention": 0.002,
+      "silent_wrong_per_reuse": 0.003,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 48232,
+      "questions_per_mention": 0.2218,
+      "silent_wrong_per_mention": 0.0385,
+      "silent_wrong_per_reuse": 0.0494,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 1265.6,
+      "guard_questions_on_correct": 4651.4
+     },
+     "scope narrows on guard": {
+      "mentions": 48232,
+      "questions_per_mention": 0.2202,
+      "silent_wrong_per_mention": 0.006,
+      "silent_wrong_per_reuse": 0.0077,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 152.4,
+      "guard_questions_on_correct": 3601.8
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 48232,
+      "questions_per_mention": 0.2181,
+      "silent_wrong_per_mention": 0.0055,
+      "silent_wrong_per_reuse": 0.0071,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 149,
+      "guard_questions_on_correct": 3613.4
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 48232,
+      "questions_per_mention": 0.26,
+      "silent_wrong_per_mention": 0.005,
+      "silent_wrong_per_reuse": 0.0067,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 141.8,
+      "guard_questions_on_correct": 3393.8
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 48232,
+      "questions_per_mention": 0.1659,
+      "silent_wrong_per_mention": 0.0169,
+      "silent_wrong_per_reuse": 0.0202,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 48232,
+      "questions_per_mention": 0.1837,
+      "silent_wrong_per_mention": 0.0035,
+      "silent_wrong_per_reuse": 0.0043,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    },
+    "after_the_other_collections": {
+     "name": {
+      "mentions": 48232,
+      "questions_per_mention": 0.0366,
+      "silent_wrong_per_mention": 0.0983,
+      "silent_wrong_per_reuse": 0.102,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 48232,
+      "questions_per_mention": 0.2111,
+      "silent_wrong_per_mention": 0.0068,
+      "silent_wrong_per_reuse": 0.0087,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 48232,
+      "questions_per_mention": 0.2064,
+      "silent_wrong_per_mention": 0.0484,
+      "silent_wrong_per_reuse": 0.061,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 2405.8,
+      "guard_questions_on_correct": 5782.6
+     },
+     "scope narrows on guard": {
+      "mentions": 48232,
+      "questions_per_mention": 0.1797,
+      "silent_wrong_per_mention": 0.0041,
+      "silent_wrong_per_reuse": 0.005,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 69.8,
+      "guard_questions_on_correct": 3433.6
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 48232,
+      "questions_per_mention": 0.1799,
+      "silent_wrong_per_mention": 0.004,
+      "silent_wrong_per_reuse": 0.0049,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 69.8,
+      "guard_questions_on_correct": 3434
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 48232,
+      "questions_per_mention": 0.2221,
+      "silent_wrong_per_mention": 0.003,
+      "silent_wrong_per_reuse": 0.0039,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 63.4,
+      "guard_questions_on_correct": 3238.2
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 48232,
+      "questions_per_mention": 0.1232,
+      "silent_wrong_per_mention": 0.0119,
+      "silent_wrong_per_reuse": 0.0135,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 48232,
+      "questions_per_mention": 0.0851,
+      "silent_wrong_per_mention": 0.011,
+      "silent_wrong_per_reuse": 0.012,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    }
+   },
+   "Nasai": {
+    "cold": {
+     "name": {
+      "mentions": 35031,
+      "questions_per_mention": 0.1423,
+      "silent_wrong_per_mention": 0.1085,
+      "silent_wrong_per_reuse": 0.1265,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 35031,
+      "questions_per_mention": 0.4101,
+      "silent_wrong_per_mention": 0.0058,
+      "silent_wrong_per_reuse": 0.0099,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2776,
+      "silent_wrong_per_mention": 0.0528,
+      "silent_wrong_per_reuse": 0.0729,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 1949.6,
+      "guard_questions_on_correct": 2788.8
+     },
+     "scope narrows on guard": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2317,
+      "silent_wrong_per_mention": 0.0144,
+      "silent_wrong_per_reuse": 0.0187,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 202.2,
+      "guard_questions_on_correct": 1029.2
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2322,
+      "silent_wrong_per_mention": 0.0135,
+      "silent_wrong_per_reuse": 0.0176,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 197,
+      "guard_questions_on_correct": 1028.6
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2755,
+      "silent_wrong_per_mention": 0.0118,
+      "silent_wrong_per_reuse": 0.0163,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 186,
+      "guard_questions_on_correct": 963.2
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2186,
+      "silent_wrong_per_mention": 0.0372,
+      "silent_wrong_per_reuse": 0.0476,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2563,
+      "silent_wrong_per_mention": 0.0091,
+      "silent_wrong_per_reuse": 0.0123,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    },
+    "after_the_other_collections": {
+     "name": {
+      "mentions": 35031,
+      "questions_per_mention": 0.0511,
+      "silent_wrong_per_mention": 0.1509,
+      "silent_wrong_per_reuse": 0.1591,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2379,
+      "silent_wrong_per_mention": 0.0144,
+      "silent_wrong_per_reuse": 0.0189,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2287,
+      "silent_wrong_per_mention": 0.0711,
+      "silent_wrong_per_reuse": 0.0922,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 2795.4,
+      "guard_questions_on_correct": 3427
+     },
+     "scope narrows on guard": {
+      "mentions": 35031,
+      "questions_per_mention": 0.1788,
+      "silent_wrong_per_mention": 0.0161,
+      "silent_wrong_per_reuse": 0.0195,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 94.4,
+      "guard_questions_on_correct": 903.8
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 35031,
+      "questions_per_mention": 0.179,
+      "silent_wrong_per_mention": 0.016,
+      "silent_wrong_per_reuse": 0.0195,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 94.4,
+      "guard_questions_on_correct": 904
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 35031,
+      "questions_per_mention": 0.2222,
+      "silent_wrong_per_mention": 0.0104,
+      "silent_wrong_per_reuse": 0.0133,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 85,
+      "guard_questions_on_correct": 846
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 35031,
+      "questions_per_mention": 0.1625,
+      "silent_wrong_per_mention": 0.0265,
+      "silent_wrong_per_reuse": 0.0316,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 35031,
+      "questions_per_mention": 0.1174,
+      "silent_wrong_per_mention": 0.0222,
+      "silent_wrong_per_reuse": 0.0252,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    }
+   },
+   "Tirmidhi": {
+    "cold": {
+     "name": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1752,
+      "silent_wrong_per_mention": 0.0588,
+      "silent_wrong_per_reuse": 0.0713,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 24445,
+      "questions_per_mention": 0.4538,
+      "silent_wrong_per_mention": 0.0029,
+      "silent_wrong_per_reuse": 0.0054,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2216,
+      "silent_wrong_per_mention": 0.0426,
+      "silent_wrong_per_reuse": 0.0547,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 396.4,
+      "guard_questions_on_correct": 737.2
+     },
+     "scope narrows on guard": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2292,
+      "silent_wrong_per_mention": 0.0087,
+      "silent_wrong_per_reuse": 0.0113,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 77.8,
+      "guard_questions_on_correct": 433.6
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2281,
+      "silent_wrong_per_mention": 0.0082,
+      "silent_wrong_per_reuse": 0.0106,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 73.6,
+      "guard_questions_on_correct": 433
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2688,
+      "silent_wrong_per_mention": 0.0075,
+      "silent_wrong_per_reuse": 0.0103,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 72.2,
+      "guard_questions_on_correct": 411.4
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2346,
+      "silent_wrong_per_mention": 0.0181,
+      "silent_wrong_per_reuse": 0.0237,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2698,
+      "silent_wrong_per_mention": 0.0041,
+      "silent_wrong_per_reuse": 0.0057,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    },
+    "after_the_other_collections": {
+     "name": {
+      "mentions": 24445,
+      "questions_per_mention": 0.0568,
+      "silent_wrong_per_mention": 0.0909,
+      "silent_wrong_per_reuse": 0.0964,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "student+name": {
+      "mentions": 24445,
+      "questions_per_mention": 0.2546,
+      "silent_wrong_per_mention": 0.0087,
+      "silent_wrong_per_reuse": 0.0117,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "name, guard asks about the flagged fact only": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1534,
+      "silent_wrong_per_mention": 0.0525,
+      "silent_wrong_per_reuse": 0.062,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 938,
+      "guard_questions_on_correct": 1424
+     },
+     "scope narrows on guard": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1421,
+      "silent_wrong_per_mention": 0.0121,
+      "silent_wrong_per_reuse": 0.0141,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 55.6,
+      "guard_questions_on_correct": 474
+     },
+     "scope narrows on guard, kinship terms start in context": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1431,
+      "silent_wrong_per_mention": 0.0115,
+      "silent_wrong_per_reuse": 0.0134,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 62.8,
+      "guard_questions_on_correct": 484
+     },
+     "scope narrows on guard and 5% audit": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1869,
+      "silent_wrong_per_mention": 0.0085,
+      "silent_wrong_per_reuse": 0.0105,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 51.2,
+      "guard_questions_on_correct": 444.4
+     },
+     "scope narrows on 5% audit": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1397,
+      "silent_wrong_per_mention": 0.0182,
+      "silent_wrong_per_reuse": 0.0212,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     },
+     "hindsight: names known to be ambiguous start in context": {
+      "mentions": 24445,
+      "questions_per_mention": 0.1065,
+      "silent_wrong_per_mention": 0.0129,
+      "silent_wrong_per_reuse": 0.0144,
+      "reviewer_wrong_per_mention": 0.0,
+      "guard_questions_on_errors": 0,
+      "guard_questions_on_correct": 0
+     }
+    }
+   }
+  }
+ }
+}
