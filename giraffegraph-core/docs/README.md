@@ -14,6 +14,11 @@ Bu klasör, GiraffeGraph Core'un ürün, mimari ve geliştirme kararlarını top
 8. [`roadmap/initial-roadmap.md`](roadmap/initial-roadmap.md)
 9. [`adr/`](adr)
 
+## Kılavuzlar
+
+- [`guides/isnad-demo.md`](guides/isnad-demo.md): boş bir backend'den "Zincirler" sekmesinde isnad
+  zincirleri okunabilen bir projeye götüren API çağrı sırası (İngilizce).
+
 ## Neden Bu Sırayla?
 
 Önce ürünün ne olduğu, sonra sistemin sınırları, ardından alan dili ve kararlar okunur. Kod iskeleti bu belgelerin üzerine kurulur.
