@@ -269,6 +269,7 @@ aynı yöntemle uygulanır.
 ## Related docs
 
 - `wiki/evaluation/engine-experiments.md`
+- `wiki/evaluation/decision-ledger-experiments.md`
 - `wiki/evaluation/literature-map.md`
 - `wiki/evaluation/related-work.md`
 - `wiki/domains/hadith/isnad-pipeline.md`

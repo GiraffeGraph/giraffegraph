@@ -19,12 +19,12 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
 | Klasör | Ne | Proje ilgisi | Git |
 |---|---|---|---|
 | `giraffegraph-core/` | KG üretim motoru: FastAPI backend, Postgres + Neo4j, Next.js iç panel. Aday → doğrulama → canonical graf hattı | **Çekirdek.** Deney bu kodun üzerinde koşar | `github.com/GiraffeGraph/giraffegraph-core` (herkese açık), `main`; LICENSE dosyası yok |
-| `data/` | 2026-10-12'de indirilen dış etiketli hadis verisi (`raw/`: İfta ailesinin altı kitabı ve ravi kataloğu, AR-Sanad, Sanadset; 82 dosya), kurulum betikleri (`scripts/`) ve bunlardan kurulan değerlendirme kümeleri (`eval/`: `sixbooks-fresh`, `pilot50`, `ar-sanad-identity`). `core-backup/`, Core'un izlemediği iki klasörün kopyasıdır: deney koşularının tam çıktısı ve model yanıt önbelleği. Manifest: `data/README.md` | **Aktif, yalnız değerlendirme.** Motor deneylerinin girdisi ve referansı. Veri yeniden dağıtılmaz; `raw/` altındaki dosyalar güvenilmeyen indirmedir, çalıştırılmaz | `github.com/GiraffeGraph/giraffegraph-eval-data` (özel), ilk commit 2026-10-13. `raw/` ve `work/` izlenmez; diskte 4,5 GB, repoda yaklaşık 35 MB |
+| `data/` | 2026-10-12'de indirilen dış etiketli hadis verisi (`raw/`: İfta ailesinin altı kitabı ve ravi kataloğu, AR-Sanad, Sanadset; hadis dışı iki biyomedikal derlem, MedMentions ve BC5CDR, 2026-10-13'te eklendi; 99 dosya), kurulum betikleri (`scripts/`) ve bunlardan kurulan değerlendirme kümeleri (`eval/`: `sixbooks-fresh`, `pilot50`, `ar-sanad-identity`). `core-backup/`, Core'un izlemediği iki klasörün kopyasıdır: deney koşularının tam çıktısı ve model yanıt önbelleği. Manifest: `data/README.md` | **Aktif, yalnız değerlendirme.** Motor deneylerinin girdisi ve referansı. Veri yeniden dağıtılmaz; `raw/` altındaki dosyalar güvenilmeyen indirmedir, çalıştırılmaz | `github.com/GiraffeGraph/giraffegraph-eval-data` (özel), ilk commit 2026-10-13. `raw/` ve `work/` izlenmez; diskte 4,5 GB, repoda yaklaşık 35 MB |
 | `wiki/` | Projenin kod dışındaki bütün bağlamı: yaşayan sayfalar, literatür taraması, tarihli kaynak paketleri, tez ve makale taslakları (`wiki/thesis/`) | **Aktif.** Her oturumun ilk okuduğu yer | `github.com/GiraffeGraph/giraffegraph-wiki` (özel), ilk commit 2026-10-13 |
 | `wiki/literature/` | Efe'nin literatür taraması: 38 makale, LLM başarı ölçüm metrikleri | **Aktif.** Danışman toplantısı aksiyonu | wiki reposunun parçası |
 | `wiki/sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı: mimari analizi, revize deney protokolü, pilot kodu ve sayıları, iş planı, yayın planı | **Referans (donmuş).** Ölçüm ve protokol önerilerinin kaynağı | wiki reposunun parçası |
 | `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | wiki reposunun parçası |
-| `cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`) | **Kuramsal temel.** "Türetilebilen saklanmaz, karar saklanır" tezi | git yok |
+| `cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Kuramsal temel ve keşif.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride sınanması `wiki/evaluation/decision-ledger-experiments.md` | git yok; yalnız bu bilgisayarda |
 | `web/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/web`, son commit 2026-09-18 |
 | `giraffle/` | Çevrimdışı-öncelikli, uçtan uca şifreli not ve planlama uygulaması (Expo, React, SQLite) | **İlgisiz** | `github.com/GiraffeGraph/giraffle`, 3,0 GB |
 | `giraffe-code/` | AI kodlama araçları için hiyerarşik çok-ajanlı orkestrasyon (TypeScript TUI + SwiftUI uygulaması) | **İlgisiz** | `github.com/GiraffeGraph/giraffe-code`, 371 MB |
@@ -124,6 +124,7 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 - `wiki/project/overview.md`
 - `wiki/project/roadmap.md`
 - `wiki/evaluation/engine-experiments.md`
+- `wiki/evaluation/decision-ledger-experiments.md`
 - `wiki/sources/README.md`
 - `data/README.md`
 - `wiki/sources/claude-science-context/00_README_START_HERE.md`
