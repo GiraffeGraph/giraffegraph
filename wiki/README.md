@@ -4,8 +4,8 @@ Bitirme projesinin yaşayan bilgi katmanı: ne yapıyoruz, neden, ne ölçüldü
 Kod ve ölçüm dosyaları nihai otoritedir; wiki *neden* ve *nasıl ilerlenir* sorularını taşır.
 
 Bu klasör kendi git reposudur (`GiraffeGraph/giraffegraph-wiki`, özel) ve çalışma alanında `wiki/`
-adıyla durur. Projenin kod dışındaki bütün bağlamı buradadır: yaşayan sayfalar, literatür taraması ve
-tarihli kaynak paketleri.
+adıyla durur. Projenin kod dışındaki bütün bağlamı buradadır: yaşayan sayfalar, literatür taraması,
+tarihli kaynak paketleri, tez ve makale taslakları.
 
 **Proje:** *A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and
 Schema Drift in LLMs: An Application on Hadith Isnad Chains.* LLM destekli, insan onaylı bir bilgi
@@ -59,6 +59,7 @@ Yaşayan sayfalar bunları tekrar etmez; bağlar.
 | `sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı (donmuş): protokol, pilot, kaynakça, iş planı |
 | `sources/olcum-nasil-yapilir.html` | Doğruluk ölçümünün teknik terimsiz, on dakikalık anlatımı |
 | `literature/` | Literatür taraması (yaşayan): 38 makalenin review'ları ve iki `.bib` dosyası; haritası `evaluation/literature-map.md` |
+| `thesis/` | Tez ve makale taslakları (İngilizce): bölümler, derleme betikleri, PDF çıktıları; statü ve derleme `thesis/README.md` |
 
 Paketlerde en sık açılan belgeler:
 

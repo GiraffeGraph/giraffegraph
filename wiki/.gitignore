@@ -1,2 +1,9 @@
 .DS_Store
 __pycache__/
+
+# Tez ve makale: yalnız PDF ve LaTeX çıktısı izlenir; diğer biçimler derlemeyle üretilir.
+thesis/build/*
+!thesis/build/thesis.pdf
+thesis/paper/build/*
+!thesis/paper/build/paper.pdf
+!thesis/paper/build/paper.tex

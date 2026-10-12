@@ -16,7 +16,7 @@ GiraffeGraph bitirme çalışma alanı için oturum kuralları. Her oturum baş�
 
 | Kapsam içi | Kapsam dışı |
 |---|---|
-| `giraffegraph-core/`, `data/`, `web/`, `cache-and-ledger/`, `wiki/` (`wiki/literature/` ve `wiki/sources/` dahil) | `giraffle/`, `giraffe-code/` |
+| `giraffegraph-core/`, `data/`, `web/`, `cache-and-ledger/`, `wiki/` (`wiki/literature/`, `wiki/sources/`, `wiki/thesis/` dahil) | `giraffle/`, `giraffe-code/` |
 
 `giraffle/` (not/planlama uygulaması) ve `giraffe-code/` (çok-ajanlı kodlama aracı) aynı GitHub
 organizasyonunda durur ama bitirme projesinin parçası değildir. Proje görevlerinde bu iki klasör
@@ -58,7 +58,7 @@ Wiki yapısı değişirken dokunma sırası:
 ## Dil
 
 Wiki Türkçedir; kaynak belgeler (`wiki/sources/`, `wiki/literature/`) Türkçe olduğu
-için tek söz dağarcığı korunur. Teknik terimler ve kod kimlikleri özgün hâliyle yazılır. Dosya adları
+için tek söz dağarcığı korunur. Tez ve makale metni (`wiki/thesis/`) İngilizcedir. Teknik terimler ve kod kimlikleri özgün hâliyle yazılır. Dosya adları
 İngilizce `kebab-case`.
 
 ## Verification checklist

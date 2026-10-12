@@ -29,7 +29,7 @@ değildir ve hiçbir koşuda inceleme kararı verilmedi.
 | K-4 | 5 BDM × 2 koşul × 3 tekrar × 500 hadis | 1 model (Claude Haiku 5.5, effort `low`) × 3 LLM koşulu ve 1 kural tabanlı koşul × 1 koşu × 300 hadis. `openai` uyumlu ve `anthropic` sağlayıcıları var | 4 model (açık modeller hiç koşulmadı), tekrarlar, 200 hadis. Claude Sonnet 5.5 denemesi yapılandırma hatasıyla sonuçlandı, model karşılaştırması sayılmaz |
 | K-5 | 500 hadislik Türkçe altın standart, en az 5.000 üçlü, Cohen's κ ≥ 0,75, açık yayın | Yok. Etiketleme kiti hazır: kılavuz, etiketlenecek hadis tablosu, tabloyu referansa çeviren betik. Kodlayıcılara gönderilmedi | Altın standardın tamamı. Türkçe metinle hiçbir ölçüm yapılmadı; telifsiz Türkçe tam isnad kaynağının varlığı doğrulanmadı |
 | H-2 | Dakikada en az 100 üçlü; sıfır şema dışı yazım | İsnad-farkındalıklı koşulda 300 hadis 516 saniyede işlendi ve grafa 2.886 kenar yazıldı (bellek içi depo, insan onayı yok; süreyi model sağlayıcısının gecikmesi belirler). Tanımsız tip adayı reddedilir, tanımsız özellik inceleme önerisi olur | Gerçek veritabanıyla ve insan onayıyla süre ölçümü |
-| H-5 | En az 1 bildiri ya da hakemli yayın, arXiv ön baskı, açık kod ve veri, bölüm semineri | Kod GitHub'da açık (`GiraffeGraph/giraffegraph-core`); LICENSE dosyası yok. Makale biçimli taslak ders reposunda, gönderilmedi | Lisans, veri yayını, gönderim, seminer |
+| H-5 | En az 1 bildiri ya da hakemli yayın, arXiv ön baskı, açık kod ve veri, bölüm semineri | Kod GitHub'da açık (`GiraffeGraph/giraffegraph-core`); LICENSE dosyası yok. Makale biçimli taslak `wiki/thesis/paper/` altında, gönderilmedi | Lisans, veri yayını, gönderim, seminer |
 
 ## Hipotezler
 

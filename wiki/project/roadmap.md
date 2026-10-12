@@ -23,7 +23,7 @@ Yeni bir oturumun ya da ekibe yeni katılan birinin "şimdi ne yapılır" sorusu
 | Ölçüm | 300 hadiste dört koşul, İfta platform etiketine karşı; değer-alıntı kapısının yakalama gücü; güven skorunun ayırma gücü; ad yazımıyla kimliğin taban çizgisi | `wiki/evaluation/engine-experiments.md` |
 | Veri | Üç dış etiketli veri ailesi indirildi, üç değerlendirme kümesi kuruldu | `data/README.md` |
 | Emsal taraması | Emsal çalışmaların ölçüm yöntemi birincil kaynaktan okundu; 38 makalelik metrik taraması | `wiki/evaluation/related-work.md`, `wiki/evaluation/literature-map.md` |
-| Yazı | Tez taslağı ve makale biçimli taslak; gönderilmedi | ders reposu, yol `wiki/architecture/workspace-map.md` içinde |
+| Yazı | Tez taslağı (48 sayfa) ve makale biçimli taslak (9 sayfa); ekip ve danışman okumadı, gönderilmedi | `wiki/thesis/README.md` |
 
 Ölçümlerin ortak sınırı: referans insan altın standardı değildir ve hiçbir koşuda bir insan inceleme
 kararı vermedi. Projenin adındaki "insan döngüsü" kodda vardır, ölçümde yoktur.

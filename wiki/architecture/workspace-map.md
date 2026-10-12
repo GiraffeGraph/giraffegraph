@@ -20,7 +20,7 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
 |---|---|---|---|
 | `giraffegraph-core/` | KG üretim motoru: FastAPI backend, Postgres + Neo4j, Next.js iç panel. Aday → doğrulama → canonical graf hattı | **Çekirdek.** Deney bu kodun üzerinde koşar | `github.com/GiraffeGraph/giraffegraph-core` (herkese açık), `main`; LICENSE dosyası yok |
 | `data/` | 2026-10-12'de indirilen dış etiketli hadis verisi (`raw/`: İfta ailesinin altı kitabı ve ravi kataloğu, AR-Sanad, Sanadset; 82 dosya), kurulum betikleri (`scripts/`) ve bunlardan kurulan değerlendirme kümeleri (`eval/`: `sixbooks-fresh`, `pilot50`, `ar-sanad-identity`). `core-backup/`, Core'un izlemediği iki klasörün kopyasıdır: deney koşularının tam çıktısı ve model yanıt önbelleği. Manifest: `data/README.md` | **Aktif, yalnız değerlendirme.** Motor deneylerinin girdisi ve referansı. Veri yeniden dağıtılmaz; `raw/` altındaki dosyalar güvenilmeyen indirmedir, çalıştırılmaz | `github.com/GiraffeGraph/giraffegraph-eval-data` (özel), ilk commit 2026-10-13. `raw/` ve `work/` izlenmez; diskte 4,5 GB, repoda yaklaşık 35 MB |
-| `wiki/` | Projenin kod dışındaki bütün bağlamı: yaşayan sayfalar, literatür taraması, tarihli kaynak paketleri | **Aktif.** Her oturumun ilk okuduğu yer | `github.com/GiraffeGraph/giraffegraph-wiki` (özel), ilk commit 2026-10-13 |
+| `wiki/` | Projenin kod dışındaki bütün bağlamı: yaşayan sayfalar, literatür taraması, tarihli kaynak paketleri, tez ve makale taslakları (`wiki/thesis/`) | **Aktif.** Her oturumun ilk okuduğu yer | `github.com/GiraffeGraph/giraffegraph-wiki` (özel), ilk commit 2026-10-13 |
 | `wiki/literature/` | Efe'nin literatür taraması: 38 makale, LLM başarı ölçüm metrikleri | **Aktif.** Danışman toplantısı aksiyonu | wiki reposunun parçası |
 | `wiki/sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı: mimari analizi, revize deney protokolü, pilot kodu ve sayıları, iş planı, yayın planı | **Referans (donmuş).** Ölçüm ve protokol önerilerinin kaynağı | wiki reposunun parçası |
 | `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | wiki reposunun parçası |
@@ -40,10 +40,10 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
   `wiki/sources/claude-science-context/09_literature/` aynı dosyaların 2026-09-30 kopyasıdır (2026-10-08'de `cmp`
   ile bayt düzeyinde eşit).
 - MUST: `wiki/sources/` ya da `wiki/literature/` altındaki bir dosyanın yolu değişirse ona dayanan
-  wiki dışı üç yer aynı görevde güncellenir: Core testleri
+  üç yer aynı görevde güncellenir: Core testleri
   (`giraffegraph-core/evaluation/tests/conftest.py`, `backend/tests/unit/test_hadith_segmenter.py`,
-  `backend/tests/unit/test_hadith_normalization.py`), `data/README.md` ve tez derleme betiği (ders
-  reposunda `thesis/build.py`, `BIB_FILES`). Gerekçe: pilot regresyon testleri dosyayı bulamazsa
+  `backend/tests/unit/test_hadith_normalization.py`), `data/README.md` ve tez derleme betiği
+  (`wiki/thesis/build.py`, `BIB_FILES`). Gerekçe: pilot regresyon testleri dosyayı bulamazsa
   hata vermez, atlanır; kırılma fark edilmez.
 - SHOULD: Core'da kod değişikliği `giraffegraph-core/` reposunun kendi commit'leriyle yapılır; wiki
   değişikliği `wiki/` reposunda commit edilir.
@@ -70,7 +70,7 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 
 | Varlık | Yer | İlgi |
 |---|---|---|
-| CSE 491 ders reposu | `/Users/efe/cse/CSE-491-Senior-Design-Project-I` | İzlence, haftalık plan, imzalı toplantı formları. Proje klasörü `assignments/2026-2027-fall-efe-kurucay/giraffegraph/`: proje önerisi taslağı `proposal.md`; tez taslağı `thesis/` (bölümler `chapters/00-front.md` … `10-appendix.md`, derleme betiği `build.py`, çıktılar `build/thesis.md`, `.docx`, `.html`, `.pdf`). Wiki bunları kopyalamaz, bağlar; makale biçimli kısa sürüm `.../giraffegraph/thesis/paper/build/paper.pdf` (taslak, gönderilmedi) |
+| CSE 491 ders reposu | `/Users/efe/cse/CSE-491-Senior-Design-Project-I` | İzlence, haftalık plan, imzalı toplantı formları. Ders reposunun kendi klonudur; proje klasörü o repoda izlenmez. Proje klasörü `assignments/2026-2027-fall-efe-kurucay/giraffegraph/`: proje önerisi taslağı `proposal.md`, imzalı toplantı formu, TÜBİTAK formunun kopyası. Aynı klasördeki `thesis`, `wiki/thesis/` klasörüne sembolik bağdır; tezin ve makalenin tek kopyası wiki reposundadır |
 | Kur'an uygulaması | `/Users/efe/projects/rtndigital/QuranApp` | Genelleme vakası C: provenance ve bayat embedding olayı (`wiki/sources/claude-science-context/07_case_codebase_wiki_and_quran.md`) |
 | Makale kütüphanesi | Zotero: kişisel "My Library" ve "giraffegraph" grup kütüphanesi (groupID 6601142) | `LLM-Eval-Metrics` koleksiyonu iki kütüphanede de var: 38 makalenin künyesi, PDF'i ve NotebookLM review notu. `KG-Hadith-Design` koleksiyonu yalnız kişisel kütüphanede: `wiki/sources/claude-science-results/04b_dogrulanmis_kaynakca.bib` içinden 49 kayıt (tema etiketli) ve `wiki/literature/extraction_eval_precedents.bib` içinden 6 kayıt (`eval-precedent` etiketli; Oumer 2025 tezi Zotero'da yok). Zotero API anahtarının grup kütüphanesine yazma izni yoktur (2026-10-08: 403) |
 | Sanadset 650K | Hugging Face `freococo/650k_sanadset`; yerel kopya `data/raw/sanadset-hf/` | Arapça tam isnad korpusu; pilotun veri kaynağı. Lisans beyanları çelişiyor: Hugging Face kartı `cc0-1.0`, özgün Mendeley Data kaydı "CC BY 4.0" (`data/README.md`) |
@@ -103,7 +103,8 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
   `giraffegraph-core/backend/var/llm-cache/` altındadır ve depoda yok sayılır.
 - İndirilen her dosyanın boyutu ve sha256 değeri `data/raw_manifest.json` içindedir; `data/eval/`
   altındaki kümeler `data/README.md` içindeki kurulum zinciriyle bayt düzeyinde yeniden üretilir.
-- Tez ve makale taslakları ders reposunun çalışma ağacındadır ve hiçbir uzak repoya gönderilmedi.
+- Tez ve makale taslakları `wiki/thesis/` altındadır (özel wiki reposu). Proje önerisi taslağı
+  (`proposal.md`) ders reposunun çalışma ağacındadır ve hiçbir uzak repoda durmaz.
 - `web` reposunun `fix/landing-claims` dalının çalışma ağacında, kodda karşılığı olmayan site
   cümlelerini düzelten commit edilmemiş metin değişiklikleri durur (2026-10-12, 6 dosya).
 - Core için lisans seçilmemiştir; LICENSE dosyası yoktur.

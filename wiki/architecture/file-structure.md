@@ -25,8 +25,8 @@ Wiki sayfalarının nereye konacağını, bağlam kalitesini bozmadan tanımlama
 
 Her dosya adıyla listelenir; küme küçüktür ve eksiksiz tutulur.
 
-Yaşayan sayfalar adıyla listelenir. `sources/` ve `literature/` altındaki dosyalar tek tek
-listelenmez; `sources/` için tam liste `sources/MANIFEST.sha256` dosyasıdır.
+Yaşayan sayfalar adıyla listelenir. `sources/` altındaki paket dosyaları ile `thesis/` altındaki
+bölümler tek tek listelenmez; `sources/` için tam liste `sources/MANIFEST.sha256` dosyasıdır.
 
 ```txt
 CLAUDE.md                     # çalışma alanı kökü (repo dışı): wiki/CLAUDE.md dosyasını içe aktarır
@@ -68,6 +68,15 @@ wiki/                         # repo: GiraffeGraph/giraffegraph-wiki
     llm_eval_metrics.bib                            # taramanın künyeleri
     extraction_eval_precedents.bib                  # emsal çalışmaların künyeleri
 
+  thesis/                     # tez ve makale taslakları (İngilizce)
+    README.md                 # statü, derleme komutu, derlemenin dayandığı dosyalar
+    build.py  build_paper.py  # derleme betikleri
+    chapters/                 # 00-front.md … 10-appendix.md
+    figures/                  # build.py'nin ölçüm dosyalarından çizdiği şekiller
+    build/thesis.pdf          # tezin okunacak çıktısı
+    paper/paper.md            # makale metni
+    paper/build/              # paper.pdf, paper.tex
+
   sources/                    # tarihli kaynak paketleri (donmuş)
     README.md                 # paket rehberi; paketteki bulgu ↔ güncel karşılığı
     MANIFEST.sha256           # paket dosyalarının sha256 değerleri
@@ -86,6 +95,7 @@ wiki/                         # repo: GiraffeGraph/giraffegraph-wiki
 | Yeni bir açık soru çıktı ya da bir soru karara bağlandı | `project/open-decisions.md`; karar `decisions/` |
 | Bir iş bitti ya da sıra değişti | `project/roadmap.md` |
 | Yeni makale review'u ya da künye | `literature/`; katmana eşlemesi `evaluation/literature-map.md` |
+| Tez ya da makale metni | `thesis/chapters/`, `thesis/paper/paper.md`; ardından yeniden derleme |
 | Dışarıdan gelen tarihli paket (analiz çıktısı, bağlam dökümü) | `sources/<paket-adı>/`; `sources/README.md` tablosuna satır |
 | Hadis şeması, ER, isnad kuralları gibi alan davranışı | `domains/hadith/` |
 | Core'un mimarisi | `giraffegraph-core/docs/` (wiki yalnız bağlar) |
@@ -94,7 +104,7 @@ wiki/                         # repo: GiraffeGraph/giraffegraph-wiki
 
 ## Verification checklist
 
-- [ ] `find wiki -type f -not -path 'wiki/sources/*' -not -path 'wiki/.git/*'` çıktısı ağaçla eşleşiyor
+- [ ] `git -C wiki ls-files | grep -v '^sources/claude-science\|^thesis/chapters/'` çıktısı ağaçla eşleşiyor
 - [ ] `cd wiki/sources && shasum -a 256 -c MANIFEST.sha256` her satırda `OK`
 - [ ] Yeni sayfa ağaca ve `wiki/README.md` indeksine eklendi
 - [ ] Boş klasör yok
