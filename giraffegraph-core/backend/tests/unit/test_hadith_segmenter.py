@@ -9,7 +9,7 @@ from app.domain.hadith.normalization import normalize_arabic
 from app.domain.hadith.segmenter import SegmentedHadith, segment_isnad
 
 PILOT_SAMPLE_PATH = Path(
-    "/Users/efe/projects/GiraffeGraph/claude-science-results/pilot_sample.json"
+    "/Users/efe/projects/GiraffeGraph/wiki/sources/claude-science-results/pilot_sample.json"
 )
 
 

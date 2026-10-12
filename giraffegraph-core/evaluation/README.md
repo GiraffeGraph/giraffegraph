@@ -71,7 +71,7 @@ uv run --no-project --python 3.12 --with pytest python -m pytest -q evaluation/t
 ```
 
 The pilot regression tests read `pilot_isnad.py` and `pilot_sample.json` from
-`../../claude-science-results` (override with `GIRAFFEGRAPH_PILOT_DIR`) and are skipped when the
+`../../wiki/sources/claude-science-results` (override with `GIRAFFEGRAPH_PILOT_DIR`) and are skipped when the
 files are absent. Add `--with numpy --with scipy` to also run the per-hadith comparison against the
 pilot's own scorer. With the pilot files present and without numpy and scipy the result is 69 passed
 and 1 skipped.

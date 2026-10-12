@@ -5,7 +5,7 @@ protocol and are frozen here, independent of any system under test. Standard
 library only; nothing is imported from the application code.
 
 Protocol (same normalisation, weights and threshold as the pilot,
-claude-science-results/pilot_isnad.py):
+wiki/sources/claude-science-results/pilot_isnad.py):
   M1 strict  normalised mention strings are equal.
   M2 loose   equal, or one contains the other, or content-token F1 >= 0.60.
   Alignment  maximum-weight bipartite matching per hadith (equal = 1,

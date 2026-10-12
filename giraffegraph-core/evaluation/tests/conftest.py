@@ -12,7 +12,10 @@ for p in (EVAL_DIR, EVAL_DIR / "annotation"):
 
 # The pilot lives outside this repo, in the workspace that contains it.
 PILOT_DIR = Path(
-    os.environ.get("GIRAFFEGRAPH_PILOT_DIR", EVAL_DIR.parents[1] / "claude-science-results")
+    os.environ.get(
+        "GIRAFFEGRAPH_PILOT_DIR",
+        EVAL_DIR.parents[1] / "wiki" / "sources" / "claude-science-results",
+    )
 )
 
 
