@@ -15,7 +15,8 @@ buradan okunur.
 
 ## Durum, bir bakışta
 
-Başvurunun sonucu (kabul, ret, değerlendirmede) bu çalışma alanında kayıtlı değildir. Aşağıdaki tablo
+Başvuru gönderilmedi (proje sahibinin beyanı, 2026-10-13); form taslaktır ve aşağıdaki hedefler
+gönderilmeden önce değiştirilebilir. Aşağıdaki tablo
 taahhüdü form metniyle, kanıtı 2026-10-13 itibarıyla kod ve ölçüm dosyalarıyla verir. Ölçümlerin
 hepsinde referans İfta platform etiketi ya da Sanadset kural etiketidir; hiçbiri insan altın standardı
 değildir ve hiçbir koşuda inceleme kararı verilmedi.
@@ -87,7 +88,7 @@ danışmana ya da TÜBİTAK'a bildirildiğine dair kayıt yok. Bunlar revizyon d
 
 ## Source anchors
 
-- `wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf` — bağlayıcı metin
+- `wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf` — form metni (gönderilmemiş taslak)
 - `wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md` — taahhüt tablosu, hipotezler, takvim, eleştiri
 - `wiki/sources/claude-science-results/03_revize_deney_protokolu.md` §4.1, §6, §8 — H1 tavanı, H4 protokolü, R-a…R-d
 - `wiki/sources/claude-science-results/04a_kaynak_dogrulama_tablosu.md` — kaynakça doğrulaması

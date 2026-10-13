@@ -27,7 +27,7 @@ Projenin kim tarafından, hangi çerçevede, hangi taahhütlerle yürütüldüğ
 |---|---|---|
 | Ekip | Yahya Efe Kuruçay, Deniz Büyükşahin, Alperen Ulukaya | Deniz Büyükşahin, Yahya Efe Kuruçay, İbrahim Çakır |
 | Kapsam ifadesi | Dini soru ve bilgilerin formal şeması → Knowledge Graph → RAG tabanlı soru-cevap; hadis isnad zinciri graf vakası | Şema doğrulama + HITL içeren KG üretim mimarisinin doğrudan LLM üretimine karşı halüsinasyon ve şema sapmasını ne kadar düşürdüğü |
-| Bağlayıcılık | Proje önerisi (vize ve final buna göre değerlendirilir) ve danışman toplantı formları (5 toplantı) | Form taahhütleri K-1…K-5, H1…H4; taahhüt başına eldeki kanıt: `wiki/project/tubitak-commitments.md` |
+| Bağlayıcılık | Proje önerisi (vize ve final buna göre değerlendirilir) ve danışman toplantı formları (5 toplantı) | Form gönderilmedi, taslaktır; gönderildiğinde K-1…K-5 ve H1…H4 bağlar. Taahhüt başına eldeki kanıt: `wiki/project/tubitak-commitments.md` |
 | Dönem çıktısı | Proje I çalışan bir ön prototiple biter; Proje II tamamlar | 6 ay, 4 iş paketi |
 | Notlandırma / takvim | Öneri %20 (son gün 2026-10-18); 5 imzalı toplantı formu %20; vize raporu ve sunumu %20 (8. hafta); final raporu, sunum ve prototip demosu %40 (15. hafta / final dönemi). 9. haftadan itibaren tek grup reposu; commit geçmişi bireysel katkının kanıtıdır. Yapay zekâ kullanımı raporda beyan edilir | Form takvimi: `wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md` |
 | Kaynak | İzlence: `/Users/efe/cse/CSE-491-Senior-Design-Project-I/resources/2026-2027-fall/CSE491_Senior_Design_Project_I_Syllabus_Fall_2026-2027.pdf` (§3–§6); toplantılar: `wiki/project/supervisor-meetings.md` | `wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf`, özet: `wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md` |
@@ -36,7 +36,7 @@ Projenin kim tarafından, hangi çerçevede, hangi taahhütlerle yürütüldüğ
 TÜBİTAK metni KG çıkarımına odaklanır. Değerlendirme bu yüzden iki ucu da kapsar
 (`evaluation/correctness-measurement.md`, katman L1–L4).
 
-TÜBİTAK başvurusunun sonucu (kabul / ret / değerlendirmede) bu çalışma alanında kayıtlı değildir.
+TÜBİTAK başvurusu gönderilmedi (proje sahibinin beyanı, 2026-10-13); form taslaktır.
 
 ## Araştırma sorusu
 
