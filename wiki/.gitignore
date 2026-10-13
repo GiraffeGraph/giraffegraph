@@ -7,3 +7,5 @@ thesis/build/*
 thesis/paper/build/*
 !thesis/paper/build/paper.pdf
 !thesis/paper/build/paper.tex
+thesis/tubitak/build/*
+!thesis/tubitak/build/form.pdf

@@ -7,11 +7,11 @@ betiklerini ve okunacak çıktılarını tutmak. Metinler İngilizcedir; wiki sa
 
 ## Scope
 
-- In: tez bölümleri, makale metni, CSE 491 proje önerisi taslağı, derleme betikleri, şekiller, PDF
-  çıktıları
+- In: tez bölümleri, makale metni, CSE 491 proje önerisi taslağı, TÜBİTAK 2209-A formu taslağı,
+  derleme betikleri, şekiller, PDF çıktıları
 - Out: imzalı toplantı formları (ders klasörü, yol `wiki/architecture/workspace-map.md` içinde),
-  TÜBİTAK 2209-A formu (`wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf`;
-  tek proje çerçevesine göre yeniden yazılmadı), ölçümlerin kendisi (`wiki/evaluation/`)
+  ölçümlerin kendisi (`wiki/evaluation/`), formdaki taahhütlerin eldeki kanıtı
+  (`wiki/project/tubitak-commitments.md`)
 
 ## Statü
 
@@ -27,6 +27,7 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 |---|---|---|
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (53 sayfa, 40 kaynak) |
 | CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | Yok; teslimden önce PDF ya da DOCX'e çevrilir. Sonundaki "Open points" teslimden önce kapatılır |
+| TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (9 sayfa, 15 kaynak); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
 | Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 18 kaynak), `paper.tex` |
 
 ## Bölüm başına dayanak
@@ -59,6 +60,7 @@ metin okunmamıştır ve tez bunu söyler.
 cd wiki/thesis
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build.py
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_paper.py
+uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py
 ```
 
 `build.py` bölümleri birleştirir, `[@anahtar]` atıflarını kaynakça dosyalarından numaralar, 7. bölümün
@@ -92,6 +94,7 @@ derlemeyle yeniden üretilir.
 
 - `wiki/thesis/build.py` — `BIB_FILES`, `RESULTS`, `figures`, `export`
 - `wiki/thesis/build_paper.py` — makale derlemesi
+- `wiki/thesis/build_form.py` — TÜBİTAK formu derlemesi (`assemble`)
 - `wiki/evaluation/engine-experiments.md` — 7. bölümdeki sayıların wiki karşılığı
 
 ## Verification checklist

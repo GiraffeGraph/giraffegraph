@@ -46,7 +46,7 @@ wiki/                         # GiraffeGraph/giraffegraph reposunun klasörü
   project/
     overview.md               # kimlik, ekip, iki çerçeve, araştırma sorusu
     roadmap.md                # bugün elde olan, sıradaki işler ve bağımlılıkları (öneri)
-    tubitak-commitments.md    # taahhüt ve hipotez başına eldeki kanıt, eksik, önerilen revizyon
+    tubitak-commitments.md    # TÜBİTAK formundaki taahhüt ve hipotez başına eldeki kanıt, eksik, eşiğin dayanağı
     open-decisions.md         # karar bekleyen sorular: öneri, fiilî durum, sahip
     supervisor-meetings.md    # CSE 491 danışman toplantıları ve aksiyonlar
 
