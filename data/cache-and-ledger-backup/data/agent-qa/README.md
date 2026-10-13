@@ -4,7 +4,7 @@ Run on 2026-10-13. A Claude Haiku 5.5 agent (effort `low`) answers 36 questions 
 `giraffegraph-core` (141 Python files, 16,923 lines at commit `bfb0f9c`) with three read-only tools
 (`list_dir`, `read_file`, `grep`). Conditions differ only in the files placed in the sandbox's `docs/`
 folder. 2,880 runs, 2 repetitions per cell, judged by the same model against a written key, blind to
-the condition.
+the condition. The frame and note arms described further down bring the total to 5,520 runs.
 
 ## Questions (`questions.json`)
 
@@ -80,8 +80,8 @@ outdated behaviour as fact, 21 to 33% report it and say it could not be verified
 
 ## Late-bound frames and a list of added symbols
 
-A second round on the same day tests whether a description written at the earlier commit can be
-refreshed by a script, without a model reading the current code.
+Can a description written at the earlier commit be refreshed by a script, without a model reading
+the current code?
 
 - Frames (`cloze.py`, `inputs/frames-earlier-commit.json`): 58 sentences with 95 blanks, written by
   an agent that saw only the tree at `4279c98` and the ten section headings, not the questions. A
@@ -117,14 +117,15 @@ about checks and branches that were added after the frames were written; no blan
 Naming the added symbols did not close the gap at 2 calls either. Prompt tokens per question at 2
 calls: 43,491 for live frames, 34,420 for the fresh page.
 
-Cost of this round: about USD 0.75 (agent runs 0.68).
+Cost: about USD 0.75 (agent runs 0.68).
 
-## Notes inside the tree the agent searches
+## Notes: where they are placed and how the search orders them
 
-A third round tests where the stored statements are put. Both behaviour pages were rewritten by an
-agent that saw only the page into one-line notes of at most 130 characters, each with the symbols
-it is about (`inputs/notes-current-commit.json`, 234 notes; `inputs/notes-earlier-commit.json`, 214
-notes). `scholia.py` places them in a sandbox whose `docs/` says there is no documentation:
+Both behaviour pages were rewritten by an agent that saw only the page into one-line notes of at
+most 130 characters, each with the symbols it is about (`inputs/notes-current-commit.json`, 234
+notes; `inputs/notes-earlier-commit.json`, 214 notes). The decision ledger was rewritten the same
+way into 139 notes without symbols (`inputs/notes-decisions.json`). `scholia.py` places notes in a
+sandbox whose `docs/` says there is no documentation:
 
 - `file`: all notes as comment lines in `src/app/_scholia.py`, each ending with a rooted path and
   line; 142 of the 234 current notes resolve to a symbol.
@@ -132,7 +133,52 @@ notes). `scholia.py` places them in a sandbox whose `docs/` says there is no doc
 - `earlier`: the 214 notes written from the earlier page, as a file.
 - `earlier, valid only`: of those, the 69 whose symbols have the same source text at both commits.
 
-`pull` (nothing in the prompt), structural questions, 2 repetitions, 720 runs with the controls:
+The search tool has three orders (`--grep-order`): `sorted` walks the files in path order, which
+returns `_scholia.py` before the code; `shuffled` walks them in an order seeded by the call;
+`notes-first` walks them shuffled and puts up to 20 matching note lines from anywhere under `src/`
+before the code hits, whatever path was searched. `--model claude-sonnet-5-5` runs the agent on a
+second model; the judge stays the same. All arms are `pull` (nothing in the prompt) with 2
+repetitions.
+
+### What the comparisons show
+
+Structural questions (24) at 2 tool calls, share correct:
+
+| grep order | model | nothing | notes, file | notes, woven | file against nothing | woven against nothing | runs showing a note (file / woven, of 48) |
+|---|---|---|---|---|---|---|---|
+| path order | Haiku | 0.312 | 0.646 | 0.521 | +0.33 [0.15, 0.52] | +0.21 [0.06, 0.35] | 47 / 47 |
+| path order | Sonnet 5.5 | 0.521 | 0.771 | | +0.25 [0.08, 0.44] | | 47 |
+| shuffled | Haiku | 0.417 | 0.458 | 0.479 | +0.04 [-0.15, 0.23] | +0.06 [-0.10, 0.23] | 22 / 43 |
+| notes-first | Haiku | 0.396 | 0.542 | 0.625 | +0.15 [-0.02, 0.31] | +0.23 [0.04, 0.42] | 46 / 47 |
+| notes-first | Sonnet 5.5 | 0.417 | 0.729 | 0.688 | +0.31 [0.15, 0.48] | +0.27 [0.08, 0.46] | 47 / 45 |
+
+Decision questions (12) at 2 tool calls, share correct:
+
+| grep order | model | `decisions.md` in `docs/` | decision notes | notes against `docs/` |
+|---|---|---|---|---|
+| path order | Haiku | 0.333 | 0.667 | +0.33 [0.04, 0.62] |
+| shuffled | Haiku | 0.417 | 0.500 | +0.08 [-0.17, 0.33] |
+| notes-first | Haiku | 0.292 | 0.833 | +0.54 [0.29, 0.79] |
+| notes-first | Sonnet 5.5 | 0.625 | 0.875 | +0.25 [0.04, 0.50], unreliable: 4 of the 24 `docs/` answers are empty |
+
+- Placing notes in the searched tree does not deliver them. With a neutral file order the notes
+  file is cut off by the 40-hit limit in more than half the runs and the gain at 2 calls is gone;
+  the woven notes still appear in 43 of 48 runs and do not raise accuracy either.
+- What delivers them is the order of the search results. Path order did it by accident (the notes
+  file sorts first); a search built to return matching notes first does it on purpose, and the gain
+  holds on both models, for both forms on Sonnet 5.5 and for the woven form on Haiku.
+- The same statements in `docs/` are not opened for structural questions (0.333 against 0.312 with
+  nothing, path order). In the prompt they give more (0.875) for five times the prompt tokens.
+- Decision notes behind the notes-first search reach 0.83 to 0.88 at 2 calls on both models with
+  about 3,100 prompt tokens; the ledger in the prompt gives 1.000 with 14,922. How far the notes
+  are ahead of the ledger in `docs/` depends on the model: Haiku rarely reaches `docs/` in 2 calls
+  (0.292), Sonnet 5.5 does more often (0.625).
+- Notes do not stay fresh. Notes written at the earlier commit behave like the stale page, and
+  keeping only those whose code is unchanged leaves less than nothing (0.229).
+
+### Path order
+
+Structural questions, 720 runs with the controls:
 
 | the sandbox contains | 2 calls: all | stable | changed | 4 calls: all | 14 calls: all | prompt tokens at 2 / 14 calls |
 |---|---|---|---|---|---|---|
@@ -158,34 +204,20 @@ valid-only notes), and the notes file was read directly in 0 of them: the notes 
 the greps the agent runs anyway. With the earlier notes, 4% of the answers to changed questions
 assert the outdated behaviour and 25% relay it with a caveat; with the valid-only notes 0% and 4%.
 
-The four kill criteria were written before the runs: a gain over nothing below +0.28 or with an
-interval that includes 0; a note shown in fewer than half the runs; more than 4% outdated assertions
-with the valid-only notes; more than 1.2 times the prompt tokens of nothing at 14 calls. The file
-form passes all four. The woven form is below +0.28.
+Criteria written before the runs: a gain over nothing below +0.28 or with an interval that includes
+0; a note shown in fewer than half the runs; more than 4% outdated assertions with the valid-only
+notes; more than 1.2 times the prompt tokens of nothing at 14 calls. The file form passes all four.
+The woven form is below +0.28. The criteria did not cover the file order of the search tool, which
+the next comparison isolates.
 
-What this shows: the same statements are worth nothing in `docs/` when the agent has to open them,
-and +0.33 in the search path, for 8% more prompt tokens; putting the page in the prompt gives more
-(+0.56) for five times the tokens. Withholding the notes whose code changed removes the gain.
+Cost: about USD 0.8 (agent runs 0.68).
 
-What it does not show: the harness `grep` returns files in path order, so `_scholia.py` comes
-before the code and its hits are never cut off by the 40-line limit; a tool with another order may
-bury them. The woven form does not depend on that order for its 142 notes and gains less.
+### Shuffled order, a second model in path order, decisions
 
-Cost of this round: about USD 0.8 (agent runs 0.68).
-
-## Does the note result survive another file order, another model, and decisions?
-
-A fourth round. `--grep-order shuffled` makes `grep` walk the files in an order seeded by the call,
-so the notes file is not returned first. `--model claude-sonnet-5-5` runs the agent on a second
-model (the judge stays the same). The decision ledger was rewritten into 139 one-line notes
-(`inputs/notes-decisions.json`, no symbols, so all of them sit in `src/app/_scholia.py`). `pull`,
-2 repetitions, 720 runs.
-
-Structural questions (24), share correct:
+720 runs. Structural questions (24), share correct:
 
 | grep order, model | calls | nothing | notes, file | notes, woven | file against nothing | runs showing a note (file / woven) |
 |---|---|---|---|---|---|---|
-| path order, Haiku (from above) | 2 | 0.312 | 0.646 | 0.521 | +0.33 [0.15, 0.52] | 47 / 47 of 48 |
 | shuffled, Haiku | 2 | 0.417 [0.25, 0.60] | 0.458 [0.29, 0.62] | 0.479 [0.31, 0.65] | +0.04 [-0.15, 0.23] | 22 / 43 of 48 |
 | shuffled, Haiku | 4 | 0.604 [0.42, 0.79] | 0.771 [0.62, 0.90] | 0.708 [0.56, 0.85] | +0.17 [0.00, 0.35] | 28 / 44 of 48 |
 | path order, Sonnet 5.5 | 2 | 0.521 [0.33, 0.71] | 0.771 [0.60, 0.92] | | +0.25 [0.08, 0.44] | 47 of 48 |
@@ -203,33 +235,21 @@ Decision questions (12), share correct:
 `decisions.md` in the prompt (`push`) at 2 calls: 1.000, with 14,922 prompt tokens per question
 (2,674 to 3,056 in the `pull` arms).
 
-The criteria were written before the runs. Other file order: a gain below +0.10 or an interval
-that includes 0 means the first result came from the order; that happened (+0.04 [-0.15, 0.23]).
-Second model: the interval of the gain excludes 0; it does (+0.25 [0.08, 0.44]). Decisions: at
-least 0.50 at 2 calls and not more than 0.15 below `docs/`; met in path order, and at 2 calls in
-shuffled order, not at 4 calls in shuffled order.
-
-What this shows: the gain of the note round came from the notes file being the first thing the
-search returned, on two models. With a neutral order the notes are cut off by the 40-hit limit in
-more than half the runs, and the woven notes, which still appear in 43 of 48 runs, do not raise
-accuracy at 2 calls. Placing statements in the tree is not enough; what was measured is the effect
-of a search that returns the notes first. For decisions the plain way wins: the ledger in the
-prompt answers every "why" question at 2 calls.
+Criteria written before the runs. Other file order: a gain below +0.10 or an interval that includes
+0 means the path-order gain came from the order; that happened (+0.04 [-0.15, 0.23]). Second model:
+the interval of the gain excludes 0; it does (+0.25 [0.08, 0.44]). Decisions: at least 0.50 at 2
+calls and not more than 0.15 below `docs/`; met in path order, and at 2 calls in shuffled order,
+not at 4 calls in shuffled order.
 
 Sonnet 5.5 returned a final message without text in 15 requests after the tool budget was used
 up; the harness asks again up to twice (`empty_replies` in the run record), and 4 of the 96 answers
 stayed empty.
 
-Cost of this round: about USD 1.6 (agent runs 1.50, of which Sonnet 1.05).
+Cost: about USD 1.6 (agent runs 1.50, of which Sonnet 1.05).
 
-## A search that returns the notes first
+### Notes-first search, Haiku
 
-A fifth round builds the thing the fourth round pointed at. With `--grep-order notes-first`, `grep`
-walks the files in the shuffled order and puts up to 20 matching note lines from anywhere under
-`src/` before the code hits, whatever path was searched. Where the notes sit and how the files are
-ordered no longer matter. Haiku, `pull`, 2 repetitions, 624 runs.
-
-Structural questions (24), share correct:
+624 runs. Structural questions (24), share correct:
 
 | calls | nothing | notes, file | notes, woven | earlier notes, file | file against nothing | woven against nothing |
 |---|---|---|---|---|---|---|
@@ -249,30 +269,57 @@ Decision questions (12), share correct:
 | 2 | 0.000 | 0.292 [0.08, 0.50] | 0.833 [0.58, 1.00] | +0.54 [0.29, 0.79] | 3,105 |
 | 4 | 0.042 | 0.958 | 1.000 | +0.04 [0.00, 0.12] | 5,741 |
 
-For comparison, `decisions.md` in the prompt gives 1.000 at 2 calls with 14,922 prompt tokens.
-
-The criteria were written before the runs. At 2 calls a gain of at least +0.20 with an interval
-that excludes 0: the woven form meets it, the file form does not (+0.15, interval touching 0); the
-two forms do not differ from each other (-0.08 [-0.23, 0.06]). A note shown in at least 80% of the
+Criteria written before the runs. At 2 calls a gain of at least +0.20 with an interval that
+excludes 0: the woven form meets it, the file form does not (+0.15, interval touching 0); the two
+forms do not differ from each other (-0.08 [-0.23, 0.06]). A note shown in at least 80% of the
 runs: met. At 14 calls no more than 1.2 times the tokens of nothing and no loss of accuracy: met
 (0.72 times). Decision notes ahead of `docs/` with an interval that excludes 0: met at 2 calls.
 
-What this shows: ranking the notes first restores a gain that does not depend on file order or on
-where the notes are placed. For structural questions it is smaller at 2 calls than the +0.33 of the
-third round and clear at 4 calls; with a full budget it saves about a quarter of the prompt tokens
-at equal accuracy. For decisions it is large: 83% at 2 calls against 29% for the ledger in `docs/`,
-at a fifth of the tokens of putting the ledger in the prompt.
+Cost: about USD 0.65 (agent runs 0.53).
 
-Cost of this round: about USD 0.65 (agent runs 0.53).
+### Notes-first search, Sonnet 5.5
+
+The 2-call arms again with Sonnet 5.5 as the agent, 192 runs.
+
+| question class | nothing | `decisions.md` in `docs/` | notes, file | notes, woven | paired difference |
+|---|---|---|---|---|---|
+| structural (24) | 0.417 [0.25, 0.60] | | 0.729 [0.56, 0.88] | 0.688 [0.52, 0.83] | file against nothing +0.31 [0.15, 0.48]; woven +0.27 [0.08, 0.46]; file against woven +0.04 [-0.08, 0.19] |
+| decision (12) | | 0.625 [0.38, 0.88] | 0.875 [0.71, 1.00] | | notes against `docs/` +0.25 [0.04, 0.50] |
+
+A note was shown in 47 and 45 of 48 structural runs and in 24 of 24 decision runs. Prompt tokens
+per decision question: 3,035 with the notes, 4,403 with the ledger in `docs/`.
+
+Criteria written before the runs. Structural questions: the gain over nothing has an interval that
+excludes 0 for at least one of the two forms; both do. A note shown in at least 80% of the runs:
+met. Decisions: the notes ahead of `docs/` with an interval that excludes 0 and at least 0.70; the
+numbers meet it, but the next criterion marks the comparison as unreliable. If more than 10% of the
+answers of an arm stay empty, its comparison is reported as unreliable: after two repeated requests
+5 of the 48 answers with nothing (10.4%) and 4 of the 24 with the ledger in `docs/` (16.7%) are
+empty, against 0 of 96 with structural notes and 1 of 24 with decision notes. An empty answer is
+scored as wrong.
+
+Two readings of the empty answers, computed after the runs. Leaving them out: file against nothing
++0.28 [0.11, 0.48], woven +0.24 [0.04, 0.44], decision notes against `docs/` +0.15 [0.00, 0.40] on
+10 questions. Scoring them as correct, the least favourable case: file +0.21 [0.04, 0.40], woven
++0.17 [-0.04, 0.38], decision notes +0.13 [0.00, 0.33].
+
+The structural gain carries over to the second model; for the file form it holds under every
+reading. The level of the decision notes carries over (0.875). Their lead over the ledger in
+`docs/` is smaller than on Haiku and not established: Sonnet 5.5 reaches `docs/` more often in 2
+calls, and the interval touches 0 once the empty answers are set aside.
+
+Cost: about USD 2.05 (agent runs 2.01).
 
 ## Reading
 
 - Decisions are the only stored content with a large effect: 0 to 4% without them, 88 to 100% with.
 - A stored statement in `docs/` is not opened for structural questions. As a note in the searched
   tree it helps only when the search returns the notes first; with a neutral file order the gain at
-  2 calls is gone, and a search built to put matching notes first brings part of it back.
+  2 calls is gone, and a search built to put matching notes first gives +0.15 to +0.31 at 2 calls
+  on two models.
 - Decisions are few and short: in the prompt they answer every "why" question at 2 calls; as notes
-  behind a notes-first search they answer 83% at 2 calls and all at 4, for a fifth of the tokens.
+  behind a notes-first search they answer 83 to 88% at 2 calls on two models and all at 4 calls on
+  Haiku, for a fifth of the tokens.
 - No script-made refresh of an earlier description (witness notes, pointers, late-bound values, a
   list of what was added) came close to a page written again from the current code.
 - With enough tool calls the agent answers structural questions from the code; no kind of
@@ -284,7 +331,10 @@ Cost of this round: about USD 0.65 (agent runs 0.53).
 
 ## Limits
 
-One repository of 17 thousand lines, one model, 12 questions per class, 2 repetitions. The judge is
+One repository of 17 thousand lines, 12 questions per class, 2 repetitions. One agent model (Haiku
+5.5) except in the two Sonnet 5.5 comparisons of the notes section, which cover 2 tool calls only.
+The intervals come from one resampling sequence shared by all cells, so adding arms moves a bound by
+up to 0.02 between this file and `analysis.json`. The judge is
 the same model family; 26 of the 36 structural failures at full budget come from two questions whose
 keys ask for a detail (HTTP status, "review item") that otherwise correct answers omit. The rooted
 versus unrooted comparison was not planned: it comes from fixing the path form between two arms. The
@@ -320,6 +370,11 @@ then run with `--regime pull --conditions none,fresh,scholia_file,scholia_woven,
 `python3 -I scholia.py surfaced --work <dir> --arm pull+budget2+rooted --condition scholia_file`
 replays the stored tool calls and counts the runs in which a note was shown.
 
-`runs.tar.gz` holds every run, verdict and stance label (5,328 runs). API cost of the whole
-experiment: about USD 8.6 (first round 4.8, frame round 0.75, note round 0.8, robustness round 1.6,
-notes-first round 0.65).
+The search order and the agent model are options of `run`: `--grep-order shuffled|notes-first`,
+`--model claude-sonnet-5-5`; decision notes are built with `--lines inputs/notes-decisions.json
+--form file` into `<dir>/sandbox/scholia_decisions`.
+
+`runs.tar.gz` holds every run, verdict and stance label (5,520 runs). API cost of the whole
+experiment: about USD 10.7 (documentation variants 4.8, frames 0.75, notes in path order 0.8,
+shuffled order and second model 1.6, notes-first search 0.65, notes-first search on Sonnet 5.5
+2.05).

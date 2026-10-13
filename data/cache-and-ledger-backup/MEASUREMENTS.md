@@ -16,7 +16,7 @@ wiki pages named under each heading.
 | LLM output is not deterministic, so a derived cache cannot be kept valid | Overstated | Early cutoff needs equal outputs; validating a stored result against the hashes of its inputs does not (Build Systems à la Carte, §6.3). What breaks in practice is granularity: a file-level hash is invalid after one month for 46% of documented files |
 | A resolving anchor proves the file exists, not that the claim is true | Holds, measured twice | Verbatim copies account for 82% of the extractions that disagree with human labels on a biomedical corpus; a "the cited code changed" note on a stale section changes no outcome measurably |
 | Anchors must be repo-rooted | Holds, by accident | The same stale page gave 50% on changed facts when its code paths could be opened as written and 8% when they could not (no documentation: 29%). Unplanned comparison |
-| Documentation in a folder of its own reaches the agent | Fails for structure, holds for decisions | In 432 structural runs the agent opened `docs/` in none; for "why" questions it opens it (about one call per question). The same structural statements as comments in the searched tree raised accuracy from 31% to 65% at two tool calls only while the search returned the notes file first; with a shuffled file order 42% to 46% |
+| Documentation in a folder of its own reaches the agent | Fails for structure, holds for decisions | In 432 structural runs the agent opened `docs/` in none; for "why" questions it opens it (about one call per question). The same structural statements as one-line comments in the searched tree reach the agent only when the search returns notes before code: +0.15 to +0.31 at two tool calls on two models with such a search, +0.04 with a neutral file order |
 | Store a decision once, forever | Needs one more variable: scope | In 150,904 narrator mentions a decision keyed by name alone is reused wrongly 10% of the time; keyed by name and context, 0.6%, at three times the questions |
 
 ## Seven extensions that were tried
@@ -52,21 +52,25 @@ wiki pages named under each heading.
    zero).**
 7. **Put the statements where the agent searches.** The fresh page cut into 234 one-line notes and
    placed as comments inside the source tree, with nothing in the prompt and no documentation
-   folder. At two tool calls: 65% against 31% with nothing and 33% with the same page in `docs/`
-   (+0.33 [0.15, 0.52]), for 8% more prompt tokens; the page in the prompt gives 88% for five times
-   the tokens. A note showed up in a grep result in 47 of 48 runs and the notes file was opened in
-   none. Notes written at the earlier commit behave like the stale page (83% on stable facts, 42% on
-   changed ones), and keeping only those whose code is unchanged leaves 23%, below nothing. The
-   gain repeats on a second model (Sonnet 5.5: 77% against 52%, +0.25 [0.08, 0.44]) and disappears
-   when the search tool walks the files in a shuffled order (46% against 42%, +0.04 [-0.15, 0.23]):
-   it came from the notes file being returned first. The same holds for decisions as notes (67%
-   against 33% for `decisions.md` in `docs/` in path order; 50% against 42% shuffled). A search
-   tool built to put up to 20 matching notes before the code hits, in a shuffled file order, brings
-   part of it back: at two calls +0.15 [-0.02, 0.31] with the notes in one file and +0.23
-   [0.04, 0.42] woven above the symbols; at four calls +0.25 and +0.21, both clear; at fourteen the
-   same accuracy with 28% fewer prompt tokens. Decision notes behind that search: 83% at two calls
-   against 29% for the ledger in `docs/` (+0.54 [0.29, 0.79]) and 100% at four. **Kept as: a
-   search that ranks notes first delivers them, most clearly for decisions; putting them in the
+   folder; the decision ledger cut into 139 notes the same way. Whether a note reaches the agent
+   depends on the order of the search results, not on where the note sits. Structural questions at
+   two tool calls, gain over a tree without notes:
+
+   | search returns | Haiku 5.5 | Sonnet 5.5 |
+   |---|---|---|
+   | files in path order (the notes file sorts first) | +0.33 [0.15, 0.52] | +0.25 [0.08, 0.44] |
+   | files in a shuffled order | +0.04 [-0.15, 0.23] | not run |
+   | up to 20 matching notes first, then code | +0.15 [-0.02, 0.31] in one file, +0.23 [0.04, 0.42] above the symbols | +0.31 [0.15, 0.48], +0.27 [0.08, 0.46] |
+
+   With the notes-first search on Haiku the gain is +0.25 and +0.21 at four calls, and at fourteen
+   the accuracy is the same with 28% fewer prompt tokens. Decision notes behind that search answer
+   83% (Haiku) and 88% (Sonnet) of the "why" questions at two calls with about 3,100 prompt tokens;
+   the ledger in the prompt answers all of them with 14,922. Against the ledger in `docs/` the
+   notes lead by +0.54 [0.29, 0.79] on Haiku; on Sonnet, which reaches `docs/` more often, the
+   lead is +0.25 with an interval that touches 0 once its empty answers are set aside. Notes do not
+   stay fresh: written at the earlier commit they behave like the stale page (83% on stable facts,
+   42% on changed ones), and keeping only those whose code is unchanged leaves 23%, below nothing.
+   **Kept as: a search that ranks notes first delivers them, on two models; putting them in the
    tree does not.**
 
 ## What the essay becomes
@@ -83,7 +87,7 @@ axis, the price of derivation at the moment of use:
   Where it is put matters: in the prompt it costs five times the tokens, in a documentation folder
   it is not opened, and as one-line notes in the searched tree it arrives only if the search ranks
   the notes first. Decisions are small enough to go in the prompt (100% at two tool calls); as
-  notes behind a notes-first search they cost a fifth of those tokens for 83% at two calls.
+  notes behind a notes-first search they cost a fifth of those tokens for 83 to 88% at two calls.
 
 The second line is where the essay stood. The third is the regime of large code bases, of extraction
 that costs a model call and a human review, and of any reader that cannot afford to look.
@@ -100,8 +104,8 @@ that costs a model call and a human review, and of any reader that cannot afford
 
 ## Not yet tested
 
-A code base large enough that search is expensive for real; a second model; statement-level witnesses
-harvested from the agent's own tool calls; human-written documentation; a human reviewer in the
-ledger experiments; the notes-first search on a second model and a larger code base. From the
+A code base large enough that search is expensive for real; a second model outside the two-call
+note arms; a model from another family; statement-level witnesses harvested from the agent's own
+tool calls; human-written documentation; a human reviewer in the ledger experiments. From the
 idea sessions: standing queries for "only" and "never" claims that deliver the
 difference to their baseline; stored experiments that run the code.

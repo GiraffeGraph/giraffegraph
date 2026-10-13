@@ -7,6 +7,20 @@ back link (which forces an edit to an untouched document) does not — so you sh
 live public datasets, so the numbers in `../README.md` are reproducible, not taken
 on faith from a research pass. No dependencies beyond Python 3.
 
+## What is in this folder
+
+Every file here is a script, the output of one, or an input to one.
+
+| Files | What | Section below |
+|---|---|---|
+| `verify-pep-reciprocity.py`, `verify-kep-decay.py`, `verify-adr-writeonce.py`, `adr-sweep-results.md` | The essay's numbers on three public corpora | PEP, KEP, ADR |
+| `explore-decision-growth.py` → `decision-growth-ar-sanad.json`; `explore-scoped-ledger.py` → `scoped-ledger-ar-sanad.json`; `explore-ledger-domains.py` → `ledger-domains-ar-sanad.json`, `ledger-domains-bc5cdr.json`, `ledger-domains-medmentions.json` | Reuse and scope of a stored decision on labelled corpora | Exploratory replays |
+| `explore-copy-check-bc5cdr.py` → `copy-check-bc5cdr.json`; `.cache-bc5cdr/` | The copy check outside hadith; the folder caches the model responses and is left out of the backup copy (rebuilding it costs about USD 0.20) | Exploratory replays |
+| `explore-number-check.py` → `number-check-wiki.json` | Whether the numbers in a wiki page occur in the files it cites | Agent experiment |
+| `agent-qa/` | The question-answering experiment with a live agent; own README | Agent experiment |
+| `witness-survival/` | How long cited code stays unchanged in eight public repositories; own REPORT | Agent experiment |
+| `idea-sessions/` | Fifteen idea sessions with five agents; own README | Agent experiment |
+
 ## PEP reciprocity
 
 ```
@@ -87,7 +101,7 @@ reproducible. A number without a script here is a claim, not a fact.
 ## Agent experiment and witness survival (2026-10-13)
 
 `agent-qa/` holds the question-answering experiment (does stored documentation help, do nothing or
-mislead an agent; 5,328 runs, including the frames whose facts are filled in from the code at read
+mislead an agent; 5,520 runs, including the frames whose facts are filled in from the code at read
 time and the one-line notes placed inside the searched tree) and `witness-survival/` the measurement of how long the code that
 documentation cites stays unchanged in eight public repositories. Each has its own README or REPORT.
 `idea-sessions/` holds the brief given to five agents in three orderings and their fifteen answers.
