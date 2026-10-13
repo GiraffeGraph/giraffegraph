@@ -21,7 +21,7 @@ insan altın standardı yoktur ve hiçbir koşuyu insan incelemedi.
 
 | Öğe | Değer |
 |---|---|
-| Motor | `giraffegraph-core`, `feat/hadith-prototype` çalışma ağacı, bellek içi depo; koşucu `backend/scripts/run_isnad_experiment.py` |
+| Motor | `giraffegraph-core` çalışma ağacı (kod `main` dalındadır), bellek içi depo; koşucu `backend/scripts/run_isnad_experiment.py` |
 | Akış | bölütleme → çıkarım → doğrulama → açık inceleme öğesi olmayan koşunun commit'i. İnceleme kararı verilmez |
 | Model | Claude Haiku 5.5, effort `low`; prompt sürümü her koşunun `run_report.json:prompt_version` alanında |
 | Eşleşme | M1 katı ve M2 gevşek (`giraffegraph-core/evaluation/scorer.py`); başlık sayıları M2 |

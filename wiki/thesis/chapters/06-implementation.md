@@ -1,6 +1,6 @@
 # 6 Implementation
 
-This chapter describes the code on the `feat/hadith-prototype` branch of the `giraffegraph-core` repository. Most of the code on this branch was written with AI coding assistants under the authors' direction and is verified by the automated test suite described in Section 6.7.
+This chapter describes the code on the `main` branch of the `giraffegraph-core` repository. Most of the code on this branch was written with AI coding assistants under the authors' direction and is verified by the automated test suite described in Section 6.7.
 
 ## 6.1 Technology stack
 

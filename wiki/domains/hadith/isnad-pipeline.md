@@ -13,8 +13,7 @@ yapıyordu" sorusunun cevabı buradadır.
 - Out: metrik tanımları ve ölçüm sonuçları (`wiki/evaluation/correctness-measurement.md`), çalıştırma
   komutları (`giraffegraph-core/README.md`, `giraffegraph-core/evaluation/README.md`)
 
-Statü: bu davranış `giraffegraph-core` reposunun `feat/hadith-prototype` dalındadır ve
-`main` ile aynı commit'tedir (`origin`, 2026-10-13). Ekip ve danışman onayı yoktur, ADR yazılmamıştır. Tasarımın kaynağı
+Statü: bu davranış `giraffegraph-core` reposunun `main` dalındadır (`origin`, 2026-10-13). Ekip ve danışman onayı yoktur, ADR yazılmamıştır. Tasarımın kaynağı
 `wiki/sources/claude-science-results/05_kod_degisiklik_listesi.md` içindeki önerilerdir. Akış gerçek Postgres ve
 Neo4j'e karşı testle ve gerçek LLM çağrılarıyla koşulmuştur ("Doğrulama durumu").
 

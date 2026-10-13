@@ -23,7 +23,7 @@ BIB_FILES = [
 INTERNAL = {
     "internal-cache-ledger": (
         'Y. E. Kuruçay, "The Cache and the Ledger," project essay, GiraffeGraph workspace, '
-        "`cache-and-ledger/README.md`, 2026 (unpublished)."
+        "`data/cache-and-ledger/README.md`, 2026 (unpublished)."
     ),
     "internal-data-manifest": (
         "GiraffeGraph project, data manifest: sources, licence statements and construction of the "

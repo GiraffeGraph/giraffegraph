@@ -24,8 +24,8 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
 | `wiki/literature/` | Efe'nin literatür taraması: 38 makale, LLM başarı ölçüm metrikleri | **Aktif.** Danışman toplantısı aksiyonu | wiki reposunun parçası |
 | `wiki/sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı: mimari analizi, revize deney protokolü, pilot kodu ve sayıları, iş planı, yayın planı | **Referans (donmuş).** Ölçüm ve protokol önerilerinin kaynağı | wiki reposunun parçası |
 | `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | wiki reposunun parçası |
-| `cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Kuramsal temel ve keşif.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride ve canlı ajanla sınanması `wiki/evaluation/decision-ledger-experiments.md`, `wiki/evaluation/wiki-for-agents-experiments.md`; özet `cache-and-ledger/MEASUREMENTS.md` | git yok; kopyası özel veri reposunda `data/cache-and-ledger-backup/` altında (yenileme komutu `data/README.md`) |
-| `web/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/web`, son commit 2026-09-18 |
+| `data/cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Projenin iddiasının kaynağı ve destek deneyleri.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride ve canlı ajanla sınanması `wiki/evaluation/decision-ledger-experiments.md`, `wiki/evaluation/wiki-for-agents-experiments.md`; özet `data/cache-and-ledger/MEASUREMENTS.md` | özel veri reposunun parçası |
+| `web/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/web` (herkese açık), `main`; `main`e push siteyi yayınlar (`web/.github/workflows/deploy.yml`) |
 | `giraffle/` | Çevrimdışı-öncelikli, uçtan uca şifreli not ve planlama uygulaması (Expo, React, SQLite) | **İlgisiz** | `github.com/GiraffeGraph/giraffle`, 3,0 GB |
 | `giraffe-code/` | AI kodlama araçları için hiyerarşik çok-ajanlı orkestrasyon (TypeScript TUI + SwiftUI uygulaması) | **İlgisiz** | `github.com/GiraffeGraph/giraffe-code`, 371 MB |
 
@@ -62,8 +62,8 @@ git clone git@github.com:GiraffeGraph/web.git
 printf '@wiki/CLAUDE.md\n' > CLAUDE.md
 ```
 
-Hiçbir repoda durmayan üç şey: kökteki `CLAUDE.md` (tek işi `wiki/CLAUDE.md` dosyasını içe
-aktarmaktır), `cache-and-ledger/` klasörü ve `data/raw/` altındaki 4,5 GB indirilmiş veri (yeniden
+Hiçbir repoda durmayan iki şey: kökteki `CLAUDE.md` (tek işi `wiki/CLAUDE.md` dosyasını içe
+aktarmaktır) ve `data/raw/` altındaki 4,5 GB indirilmiş veri (yeniden
 indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
 
 ## Çalışma alanı dışındaki ilgili varlıklar
@@ -79,7 +79,8 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 
 ## Bilinen durum notları
 
-- Kök dizin git reposu değildir. `cache-and-ledger/` sürüm kontrolü altında değildir.
+- Kök dizin git reposu değildir. Dört reponun her birinde yalnız `main` dalı vardır; çalışma `main`
+  üzerinde yürür (proje sahibi kararı, 2026-10-13).
 - Core'un `main` dalı isnad prototipini taşır (2026-10-13); GitHub Actions'ta `backend` ve `frontend`
   işleri geçer. `evaluation/results/` altından yalnız özet tablolar izlenir; hadis metni ve alıntı
   içeren koşu dosyaları ile `backend/var/llm-cache/` Core'da izlenmez, kopyaları özel
@@ -105,12 +106,10 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
   altındaki kümeler `data/README.md` içindeki kurulum zinciriyle bayt düzeyinde yeniden üretilir.
 - Tez ve makale taslakları `wiki/thesis/` altındadır (özel wiki reposu). Proje önerisi taslağı
   (`proposal.md`) ders reposunun çalışma ağacındadır ve hiçbir uzak repoda durmaz.
-- `web` reposunun `fix/landing-claims` dalı `origin`'dedir ve `main`e alınmadı (2026-10-13, 6 dosya):
-  site cümlelerini Core `main`in yaptığına göre düzeltir. Site yalnız `main`e push ile yayınlanır
-  (`web/.github/workflows/deploy.yml`).
-- Core'un `feat/identity-ledger` dalı `origin`'dedir ve `main`e alınmadı (2026-10-13): kimlik karar
-  defteri benzetimi (`evaluation/identity_ledger.py`), yeniden uygulama ölçümü
-  (`evaluation/decision_reapplication.py`), testleri ve iki sonuç dosyası. Motor koduna dokunmaz.
+- Sitedeki cümleler Core `main`in yaptığına göre yazılıdır (`web` commit `b92fc4b`, 2026-10-13, 6 dosya).
+- Core `main`, kimlik karar defteri benzetimini (`evaluation/identity_ledger.py`), yeniden uygulama
+  ölçümünü (`evaluation/decision_reapplication.py`), testlerini ve iki sonuç dosyasını taşır
+  (2026-10-13). Bunlar ölçüm betikleridir; motor koduna dokunmaz.
 - Core için lisans seçilmemiştir; LICENSE dosyası yoktur.
 
 ## Verification checklist

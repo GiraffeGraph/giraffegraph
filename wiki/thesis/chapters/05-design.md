@@ -1,6 +1,6 @@
 # 5 System design
 
-This chapter describes the design as implemented on the `feat/hadith-prototype` branch. Paths are relative to `backend/src/app/`. Several decisions answer defects found in a review of the earlier code (design analysis, 30 September 2026); we name the defect where it explains the design.
+This chapter describes the design as implemented on the `main` branch. Paths are relative to `backend/src/app/`. Several decisions answer defects found in a review of the earlier code (design analysis, 30 September 2026); we name the defect where it explains the design.
 
 ## 5.1 Design principles
 

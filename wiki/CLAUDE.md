@@ -16,7 +16,7 @@ GiraffeGraph bitirme çalışma alanı için oturum kuralları. Her oturum baş�
 
 | Kapsam içi | Kapsam dışı |
 |---|---|
-| `giraffegraph-core/`, `data/`, `web/`, `cache-and-ledger/`, `wiki/` (`wiki/literature/`, `wiki/sources/`, `wiki/thesis/` dahil) | `giraffle/`, `giraffe-code/` |
+| `giraffegraph-core/`, `data/` (`data/cache-and-ledger/` dahil), `web/`, `wiki/` (`wiki/literature/`, `wiki/sources/`, `wiki/thesis/` dahil) | `giraffle/`, `giraffe-code/` |
 
 `giraffle/` (not/planlama uygulaması) ve `giraffe-code/` (çok-ajanlı kodlama aracı) aynı GitHub
 organizasyonunda durur ama bitirme projesinin parçası değildir. Proje görevlerinde bu iki klasör

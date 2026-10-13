@@ -32,7 +32,7 @@ kalanı arama sonucundan alınmış (`wiki/literature/efe_llm_eval_metrics_revie
 |---|---|---|---|
 | LLM değerlendirme metrikleri, 38 makale | `wiki/literature/`, Zotero `LLM-Eval-Metrics` | Üretilen cevabın kalitesi (L4). İslami bağlam 4 makale ([35]–[38]); Kur'an'a özgü makale yok | Evet |
 | Tasarım ve hadis literatürü, 53 kayıt | `wiki/sources/claude-science-results/04b_dogrulanmis_kaynakca.bib` | KG inşası, grounding, ER, provenance, dijital hadis (L1–L3) | 49'u kişisel kütüphanede `KG-Hadith-Design` koleksiyonunda; etiketler: `hadith`, `kg-construction`, `grounding-attribution`, `entity-resolution`, `confidence-hitl`, `provenance-memory`, `method` |
-| Bilgi katmanı tezi | `cache-and-ledger/README.md`, `PAPER.md` | Türetilebilen / karar ayrımı. Kaynakça listesi yoktur; kanıt kendi ölçümleridir (`cache-and-ledger/data/`) | Hayır |
+| Bilgi katmanı tezi | `data/cache-and-ledger/README.md`, `PAPER.md` | Türetilebilen / karar ayrımı. Kaynakça listesi yoktur; kanıt kendi ölçümleridir (`data/cache-and-ledger/data/`) | Hayır |
 
 ## Küme → katman eşlemesi
 

@@ -48,6 +48,28 @@ insan tarafından doğrulanabilir bir bilgi katmanı kurmanın ve güncel tutman
 Hadis ilk vaka; kod tabanı wiki'leri ve Kur'an verisi genelleme vakaları
 (`wiki/sources/claude-science-context/01_meta_research_question.md`).
 
+## Çerçeve
+
+Proje sahibinin kararı (2026-10-13): bitirme projesi tek projedir ve tek bir iddia etrafında yürür.
+Danışman onayı bekler. CSE 491 proje önerisi bu çerçeveyle yazılır (son gün 2026-10-18).
+
+**İddia:** LLM'in ürettiği bir bilgi katmanında saklanması gereken şey insan kararıdır; kaynaktan
+türetilebilen şey saklanmaz, türetilir.
+
+| Parça | İddiaya katkısı | Nerede |
+|---|---|---|
+| Hadis motoru (ana kanıt) | Makine önerir, kapılar kaynağa dayanmayanı ayırır, insan karar verir, karar kaydedilir | `giraffegraph-core/`, `wiki/domains/hadith/isnad-pipeline.md`, `wiki/evaluation/engine-experiments.md` |
+| Karar defteri (hadis verisinde benzetim) | Bir ravi kimliği kararı bir kez saklanır ve yeniden kullanılır; kararın kapsamı çelişkiden türetilir | `giraffegraph-core/evaluation/identity_ledger.py`, `wiki/evaluation/decision-ledger-experiments.md` |
+| Kod ajanı deneyi (ikinci alan) | Ajan kararı koddan çıkaramaz; kodu anlatan belge yalnız arama kıtken işe yarar | `data/cache-and-ledger/data/agent-qa/`, `wiki/evaluation/wiki-for-agents-experiments.md` |
+
+Sınırlar:
+
+- İddia bu cümle kadar yazılır; "her alan için genel mimari" diye genişletilmez. Hadis dışına taşınan
+  iki fikir ölçümde tutmadı (`wiki/evaluation/decision-ledger-experiments.md`, BLUF 3 ve 4).
+- Üç parçanın hiçbirinde gerçek insan kararı yoktur; ilk insan verisi etiketleme kitinden gelecektir
+  (`giraffegraph-core/evaluation/annotation/`).
+- Tez ve makale taslakları dar çerçeveyi (yalnız motor) taşır (`wiki/thesis/README.md`, "Statü").
+
 ## Sistem, bir paragrafta
 
 GiraffeGraph Core ham metni segmentlere böler, LLM'den şemaya uygun düğüm/ilişki adayları ister,

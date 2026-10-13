@@ -15,8 +15,9 @@ aktarılmasın diye vardır.
 
 ## Statü
 
-2026-10-13 itibarıyla aşağıdaki 25 sorunun hiçbiri için ekip ya da danışman kararı kayıtlı değildir;
-`wiki/decisions/` klasörü yoktur. "Fiilî durum" sütunu bir kararı değil, kodun ve ölçümlerin şu an
+2026-10-13 itibarıyla aşağıdaki 25 sorudan beşi (2, 14, 22, 23, 24) için proje sahibinin kararı
+kayıtlıdır; 2 ve 22 danışman onayı bekler. Diğerleri için karar kayıtlı değildir; `wiki/decisions/`
+klasörü yoktur. "Fiilî durum" sütunu bir kararı değil, kodun ve ölçümlerin şu an
 dayandığı varsayımı gösterir. Bu varsayımların çoğu tek kişinin çalışmasıyla oluştu ve ekipçe
 görüşülmedi. Proje sahibinin beyanına göre (Yahya Efe Kuruçay, 2026-10-13) ekip, çerçeve kararını ona
 bırakır; danışman onayı ayrıdır.
@@ -29,7 +30,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 | # | Soru | Öneri (Claude Science, 2026-09-30) | Fiilî durum | Sahip |
 |---|---|---|---|---|
 | 1 | TÜBİTAK başvurusunun durumu nedir? | Kabulse revizyonlar yazılı onaya sunulur; değerlendirmedeyse kaynakça hemen düzeltilir; retse kısıt kalkar | Gönderilmedi (proje sahibinin beyanı, 2026-10-13). Form taslaktır; hedefleri ve kaynakçası gönderilmeden önce değiştirilebilir | E |
-| 2 | Tezin ana iddiası dar mı (hadis için güvenilir KG motoru), geniş mi (bilgi katmanları için genel mimari, hadis kanıtıyla)? | Geniş iddia, hadiste derin kanıtla | Tez ve makale taslakları dar çerçevededir: motor, kapılar ve hadis ölçümü. Taslaklar `wiki/thesis/` altındadır, gönderilmedi | E, D |
+| 2 | Tezin ana iddiası dar mı (hadis için güvenilir KG motoru), geniş mi (bilgi katmanları için genel mimari, hadis kanıtıyla)? | Geniş iddia, hadiste derin kanıtla | **Karar (proje sahibi, 2026-10-13; danışman onayı bekler):** tek proje. İddia ve üç parçası `wiki/project/overview.md`, "Çerçeve" içindedir. Tez ve makale taslakları dar çerçevededir (motor, kapılar ve hadis ölçümü) ve bu çerçeveye çevrilecektir. Taslaklar `wiki/thesis/` altındadır, gönderilmedi | E, D |
 | 3 | Genelleme vakaları (kod tabanı, Kur'an) teze girer mi? | Kod vakası 20 soruluk kümeyle, Kur'an vakası anlatı olarak girer | İkisi için de ölçüm yok. Kur'an olayının kaydı: `wiki/sources/claude-science-context/07_case_codebase_wiki_and_quran.md` | E, D |
 
 ## Veri
@@ -63,7 +64,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 
 | # | Soru | Öneri | Fiilî durum | Sahip |
 |---|---|---|---|---|
-| 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | `web` reposunun `fix/landing-claims` dalında 6 dosyalık metin düzeltmesi commit edildi ve `origin`'e gönderildi; `main`e alınmadı, yayında değil. Katkıcı listesi kararı yok | E |
+| 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | **Karar (proje sahibi, 2026-10-13):** kodun gerçeğine doğru. 6 dosyalık metin düzeltmesi `web` `main`dedir ve yayındadır (commit `b92fc4b`). Katkıcı listesi kararı yok | E |
 | 15 | Formdaki doğrulanamayan referanslar nasıl ele alınır? | Üçü silinir ya da gerçek karşılığıyla değiştirilir; Ji vd.'ye atfedilen sayı kaldırılır | Doğrulanmış kaynakça hazır ve tez taslağı onu kullanır. Formun düzeltildiğine ya da danışmana bildirildiğine dair kayıt yok | E, D |
 | 16 | Yayın hedefi nedir? | UBMK ya da INISTA bildirisi, arXiv ön baskı, bir uluslararası atölye | Makale biçimli taslak var, gönderilmedi. Hedef seçilmedi | E, D |
 | 19 | Core hangi lisansla yayımlanır? | Öneri: lisans eklenir (form "açık kaynak" der) | Repo herkese açık, LICENSE dosyası yok | E |
@@ -74,9 +75,9 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 
 | # | Soru | Öneri | Fiilî durum | Sahip |
 |---|---|---|---|---|
-| 22 | "Ne saklanmalı" araştırması ayrı bir proje mi olur, hadis projesini mi destekler? | Öneri: hadis projesini destekler; genel sonuçlar tezin tartışma bölümüne girer. Gerekçe: hadis dışına taşınan iki fikir (kopya kontrolü, tanık notu) ölçümde tutmadı; tutan fikir (kararın kapsamı) isnadın tekrar eden yapısına yaslanır | Sonuçlar iki wiki sayfasında ve `cache-and-ledger/MEASUREMENTS.md` içindedir; ayrı repo ve ayrı plan yok | E, D |
-| 23 | Kapsamı çelişkiyle daralan kimlik defteri Core'a alınır mı? | Öneri: içerik adresli karar hedefiyle (C3) birlikte alınır; önce gerçek bir inceleyiciyle küçük bir deneme | Benzetim Core'un `feat/identity-ledger` dalındadır; motor kodu yoktur | E |
-| 24 | `cache-and-ledger/` kendi reposuna alınır mı? | Öneri yok | Klasör repo değildir; kopyası özel veri reposunda yedektir | E |
+| 22 | "Ne saklanmalı" araştırması ayrı bir proje mi olur, hadis projesini mi destekler? | Öneri: hadis projesini destekler; genel sonuçlar tezin tartışma bölümüne girer. Gerekçe: hadis dışına taşınan iki fikir (kopya kontrolü, tanık notu) ölçümde tutmadı; tutan fikir (kararın kapsamı) isnadın tekrar eden yapısına yaslanır | **Karar (proje sahibi, 2026-10-13; danışman onayı bekler):** ayrı proje değildir, bitirme projesinin parçasıdır. Sonuçlar iki wiki sayfasında ve `data/cache-and-ledger/MEASUREMENTS.md` içindedir | E, D |
+| 23 | Kapsamı çelişkiyle daralan kimlik defteri Core'a alınır mı? | Öneri: içerik adresli karar hedefiyle (C3) birlikte alınır; önce gerçek bir inceleyiciyle küçük bir deneme | **Karar (proje sahibi, 2026-10-13):** benzetim ve testleri Core `main`dedir. Motor kodu yoktur; gerçek inceleyiciyle deneme yapılmadı | E |
+| 24 | Cache and Ledger klasörü kendi reposuna alınır mı? | Öneri yok | **Karar (proje sahibi, 2026-10-13):** alınmaz. Klasör özel veri reposunun parçasıdır (`data/cache-and-ledger/`) | E |
 | 25 | Bu wiki ajan için nasıl yazılır: davranışı anlatan cümle mi, karar ve yol çapası mı? | Öneri: karar, gerekçe ve çapa; kodun ne yaptığını anlatan cümle yazılmaz (`wiki/evaluation/wiki-for-agents-experiments.md`, Rules) | Yaşayan sayfalar türetilebilir olgu da taşır (test sayıları üç sayfada tekrar eder); sayfalardaki 968 sayının 80'i atıf verilen dosyalarda bulunmaz | E |
 
 ## Rules

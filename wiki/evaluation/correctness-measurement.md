@@ -200,7 +200,7 @@ Pilot dosyası notu: `wiki/sources/claude-science-results/pilot_sample.json` iç
 - L2: sistemin ürettiği düğümlerin doğru kişiye bağlanması; ölçülen yalnız referans üzerindeki ad yazımı taban çizgisidir
 - `NARRATED_FROM` ilişki düzeyi P/R; pilot ve motor deneyleri yalnız mention düzeyini ve sıra uyumunu ölçtü
 - Property düzeyi şema sapması, muâsara / likâ / tabaka kural ihlalleri
-- HITL: red oranı, doğrulanmış üçlü başına uzman saniyesi (kayıt altyapısı Core dalında var: `review_decisions.duration_ms`; hiçbir koşuda inceleme kararı verilmedi, veri yok)
+- HITL: red oranı, doğrulanmış üçlü başına uzman saniyesi (kayıt altyapısı Core'da var: `review_decisions.duration_ms`; hiçbir koşuda inceleme kararı verilmedi, veri yok)
 - Model etkisi: 300 hadiste tek model ve tek effort düzeyi koşuldu (Claude Haiku 5.5, `low`); açık modeller koşulmadı
 - Aynı koşulun tekrarları arasındaki oynaklık (her koşul bir kez koşuldu)
 - Türkçe metin; telifsiz Türkçe tam isnad kaynağının varlığı

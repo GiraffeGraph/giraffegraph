@@ -13,13 +13,13 @@ saklama biçimini (boşluklu çerçeve, ağaç içi not) sınayan deneylerin son
   ömrü, wiki'nin kendi sayılarının izlenebilirliği, okuma anında doldurulan çerçeveler, beş ajanla
   yapılan fikir turu, aranan ağacın içine konan notlar ve arama sonucunun sırası, emsal taraması
 - Out: hadis çıkarımı ve kimlik deneyleri (`wiki/evaluation/engine-experiments.md`,
-  `wiki/evaluation/decision-ledger-experiments.md`), denemenin metni (`cache-and-ledger/README.md`)
+  `wiki/evaluation/decision-ledger-experiments.md`), denemenin metni (`data/cache-and-ledger/README.md`)
 
 ## Statü
 
 Keşif aşaması (2026-10-13). Ajanın kendi kararlarıyla yürüttüğü tek bir oturumda üretildi; ekip
-ve danışman görmedi. 5.520 ajan koşusu, yaklaşık 10,7 dolar API harcaması. Betikler ve çıktılar `cache-and-ledger/data/` altındadır; o klasörün bir kopyası
-`data/cache-and-ledger-backup/` altında özel veri reposundadır. Yorumlar öneridir.
+ve danışman görmedi. 5.520 ajan koşusu, yaklaşık 10,7 dolar API harcaması. Betikler ve çıktılar `data/cache-and-ledger/data/` altındadır (özel veri reposu). Bu sayfa projenin
+iddiasının ikinci alandaki destek kanıtıdır (`wiki/project/overview.md`, "Çerçeve"). Yorumlar öneridir.
 
 ## BLUF
 
@@ -54,7 +54,7 @@ ve danışman görmedi. 5.520 ajan koşusu, yaklaşık 10,7 dolar API harcaması
     karar notları 2 çağrıda Haiku'da 0,833, Sonnet 5.5'te 0,875 (yaklaşık 3.100 token). `docs/`
     içindeki defter 2 çağrıda Haiku'da 0,292–0,417, Sonnet 5.5'te 0,625.
 
-Deneme (`cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
+Deneme (`data/cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
 iki şey var. Bir sınır koşulu: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
 Bir de olumsuz sonuç: eski bir sayfayı betikle tazelemenin denenen dört yolu da (tanık notu, yalnız
 işaret, okuma anında doldurma, eklenenlerin listesi) güncel kodu okuyan bir ajanın baştan yazdığı
@@ -172,7 +172,7 @@ olabileceği için %91,7 üst sınırdır.
 
 Fikir: cümleyi sakla, içindeki olguyu saklama. Cümlede isim, sayı ya da değer bulunamaz; her olgu bir
 boşluktur ve boşluk `yol.py::Sınıf.metot` biçiminde bir seçici ile `ast` üzerinde çalışan bir
-indirgeyiciden oluşur (`cache-and-ledger/data/agent-qa/cloze.py`). Yalnız `4279c98` ağacını ve on
+indirgeyiciden oluşur (`data/cache-and-ledger/data/agent-qa/cloze.py`). Yalnız `4279c98` ağacını ve on
 bölüm başlığını gören, soruları görmeyen bir ajan 58 cümle ve 95 boşluk yazdı. `bfb0f9c` ağacında 95
 boşluğun 92'si çözüldü (biri başka dosyada bulundu), 3 cümle geri çekildi.
 
@@ -211,7 +211,7 @@ Pi `gpt-5.6-sol`, Antigravity `gemini-3.8-flash-high`; üç model ailesi) aynı 
 bilgi grafiği ve markdown wiki dışında bir saklama biçimi öner, on ölçülmüş olguya uy, yasak listeye
 girme. Sonra her ajana aynı metin, olguların ve yasak listenin sırası tohumlu karıştırmayla
 değiştirilerek iki ayrı oturumda daha verildi. On beş oturumun tablosu ve tam cevaplar:
-`cache-and-ledger/data/idea-sessions/README.md`.
+`data/cache-and-ledger/data/idea-sessions/README.md`.
 
 - "Çalıştırılabilir" ölçütü (ana fikir, okuma anında güncel kaynağa karşı çalışan bir program, sorgu
   ya da test saklar) karıştırılmış oturumlar okunmadan önce yazıldı. On karıştırılmış oturumun yedisi
@@ -229,7 +229,7 @@ değiştirilerek iki ayrı oturumda daha verildi. On beş oturumun tablosu ve ta
 Fikir turunda Opus'un önerisi (haşiye): bilgiyi belge olarak tutma, ajanın zaten grep attığı ağacın
 içine tek satırlık notlar olarak koy. İki davranış sayfası, yalnız sayfayı gören bir ajan tarafından en
 çok 130 karakterlik notlara çevrildi (taze sayfa 234 not, bayat sayfa 214 not); her not ilgili
-sembollerin adını taşır. Karar defteri aynı yolla 139 nota çevrildi. `cache-and-ledger/data/agent-qa/scholia.py`
+sembollerin adını taşır. Karar defteri aynı yolla 139 nota çevrildi. `data/cache-and-ledger/data/agent-qa/scholia.py`
 notları `docs/` klasöründe "belge yok" yazan bir sandbox'a yerleştirir: tek dosya (`src/app/_scholia.py`,
 her satırın sonunda kök yollu adres) ya da sembolün hemen üstünde yorum satırı (dokunmuş). Taze notların
 142'si bir sembole bağlanabildi.
@@ -432,23 +432,23 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 
 ## Source anchors
 
-- `cache-and-ledger/data/agent-qa/README.md` — deneyin İngilizce özeti ve yeniden üretim komutları
-- `cache-and-ledger/data/agent-qa/analysis.json` — hücre başına doğruluk, aralık, eşli fark, tutum payları
-- `cache-and-ledger/data/agent-qa/results.json`, `build.json`, `questions.json`, `decisions.md`, `inputs/`
-- `cache-and-ledger/data/agent-qa/run_agent_qa.py`, `analyse.py`; ham koşular `runs.tar.gz`
-- `cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
-- `cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
-- `cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json`, `inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 7
-- `cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
-- `cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
+- `data/cache-and-ledger/data/agent-qa/README.md` — deneyin İngilizce özeti ve yeniden üretim komutları
+- `data/cache-and-ledger/data/agent-qa/analysis.json` — hücre başına doğruluk, aralık, eşli fark, tutum payları
+- `data/cache-and-ledger/data/agent-qa/results.json`, `build.json`, `questions.json`, `decisions.md`, `inputs/`
+- `data/cache-and-ledger/data/agent-qa/run_agent_qa.py`, `analyse.py`; ham koşular `runs.tar.gz`
+- `data/cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
+- `data/cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
+- `data/cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json`, `inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 7
+- `data/cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
+- `data/cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
 - `wiki/sources/claude-science-context/12_synthesis_hypothesis_source_ledger_views.md` §5 (T4) ve
   `wiki/sources/claude-science-results/02_tasarim_uzayi_ve_optimum_mimari.md` §4 (Ç4) — sınanan öngörüler
 
 ## Verification checklist
 
-- [ ] `python3 -I cache-and-ledger/data/agent-qa/analyse.py <koşu klasörü> cache-and-ledger/data/agent-qa/questions.json out.json` çıktısı Sonuç 1 ve 2 tablolarıyla aynı (koşu klasörü `runs.tar.gz` açılarak kurulur)
-- [ ] Sonuç 3 tablosu `cache-and-ledger/data/witness-survival/results.json:pooled` ile aynı
-- [ ] `python3 -I cache-and-ledger/data/explore-number-check.py . wiki --skip wiki/sources/claude-science --skip wiki/literature --skip wiki/thesis --skip wiki/_templates` özet satırı Sonuç 4 ile aynı
+- [ ] `python3 -I data/cache-and-ledger/data/agent-qa/analyse.py <koşu klasörü> data/cache-and-ledger/data/agent-qa/questions.json out.json` çıktısı Sonuç 1 ve 2 tablolarıyla aynı (koşu klasörü `runs.tar.gz` açılarak kurulur)
+- [ ] Sonuç 3 tablosu `data/cache-and-ledger/data/witness-survival/results.json:pooled` ile aynı
+- [ ] `python3 -I data/cache-and-ledger/data/explore-number-check.py . wiki --skip wiki/sources/claude-science --skip wiki/literature --skip wiki/thesis --skip wiki/_templates` özet satırı Sonuç 4 ile aynı
 
 ## Related docs
 

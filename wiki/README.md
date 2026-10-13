@@ -10,7 +10,7 @@ tarihli kaynak paketleri, tez ve makale taslakları.
 **Proje:** *A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and
 Schema Drift in LLMs: An Application on Hadith Isnad Chains.* LLM destekli, insan onaylı bir bilgi
 grafı üretim motoru (GiraffeGraph Core); ilk vaka hadis isnad zincirleri, üzerine RAG tabanlı
-soru-cevap katmanı.
+soru-cevap katmanı. Projenin tek iddiası ve onu taşıyan üç parça: `project/overview.md`, "Çerçeve".
 
 **Açık ana soru:** işlediğimiz verinin ve ürettiğimiz çıktının doğru olduğunu nasıl ölçeriz?
 → `evaluation/correctness-measurement.md`

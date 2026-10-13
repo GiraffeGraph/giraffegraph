@@ -15,8 +15,9 @@ betiklerini ve okunacak çıktılarını tutmak. Metinler İngilizcedir; wiki sa
 
 İkisi de taslaktır (2026-10-13). Ekip üyeleri ve danışman okumadı; hiçbir yere gönderilmedi. Metin tek
 kişinin yönlendirmesiyle, yapay zekâ ile yazıldı; ders yapay zekâ kullanımının raporda beyan edilmesini ister
-(`wiki/project/overview.md`, "İki çerçeve"). Tezin ana iddiası karara bağlanmadı
-(`wiki/project/open-decisions.md`, soru 2); taslak dar çerçeveyi taşır.
+(`wiki/project/overview.md`, "İki çerçeve"). Proje sahibi tek proje çerçevesini seçti
+(`wiki/project/overview.md`, "Çerçeve"; danışman onayı bekler). Taslak dar çerçeveyi (yalnız motor)
+taşır; giriş, tartışma ve iki destek bölümü o çerçeveye göre yazılacaktır.
 
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
@@ -31,17 +32,18 @@ dayanağı değildir.
 | Bölüm | Dayandığı wiki sayfası | Kod, veri ya da ölçüm dosyası |
 |---|---|---|
 | 1 Introduction, 4 Requirements | `wiki/project/overview.md`, `wiki/project/tubitak-commitments.md` | `wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md` |
-| 2 Background, 3 Related work | `wiki/evaluation/related-work.md`, `wiki/evaluation/literature-map.md` | `wiki/literature/`, iki `.bib` dosyası; 2.6 için `cache-and-ledger/README.md` |
+| 2 Background, 3 Related work | `wiki/evaluation/related-work.md`, `wiki/evaluation/literature-map.md` | `wiki/literature/`, iki `.bib` dosyası; 2.6 için `data/cache-and-ledger/README.md` |
 | 5 Design, 6 Implementation | `wiki/domains/hadith/isnad-pipeline.md` | `giraffegraph-core/docs/`, `giraffegraph-core/backend/` |
 | 7 Evaluation | `wiki/evaluation/engine-experiments.md`, `wiki/evaluation/correctness-measurement.md` | `giraffegraph-core/evaluation/results/2026-10-12-*/`, `data/eval/`, `data/README.md` |
-| 8.5 "One domain" paragrafı | `wiki/evaluation/decision-ledger-experiments.md` | `cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` |
+| 8.5 "One domain" paragrafı | `wiki/evaluation/decision-ledger-experiments.md` | `data/cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` |
 | 9.1 Plan | `wiki/project/roadmap.md`, `wiki/project/open-decisions.md` | `giraffegraph-core/evaluation/annotation/` |
 | Appendix | Bu sayfa | `giraffegraph-core/README.md`, `data/README.md` |
 
-Tezde yer almayan keşif çalışması (2026-10-13): karar defterinin kapsamı ve yeniden kullanımı
-(`wiki/evaluation/decision-ledger-experiments.md`; kodu Core'un `feat/identity-ledger` dalında) ve
-ajan için neyin saklanacağı (`wiki/evaluation/wiki-for-agents-experiments.md`). Teze girip
-girmeyecekleri karara bağlanmadı; özetleri `cache-and-ledger/MEASUREMENTS.md` içindedir.
+Teze bölüm olarak girecek, taslakta yer almayan iki destek çalışması (2026-10-13): karar defterinin
+kapsamı ve yeniden kullanımı (`wiki/evaluation/decision-ledger-experiments.md`; kodu
+`giraffegraph-core/evaluation/identity_ledger.py`) ve ajan için neyin saklanacağı
+(`wiki/evaluation/wiki-for-agents-experiments.md`). Özetleri `data/cache-and-ledger/MEASUREMENTS.md`
+içindedir.
 
 ## Derleme
 

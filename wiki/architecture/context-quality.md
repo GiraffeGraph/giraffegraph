@@ -24,7 +24,7 @@ Bir sayfa, sonraki oturumda şu sorulara cevap verdiriyorsa değerlidir:
 ## Rules
 
 - MUST: türetilebilen bilgi wiki'ye kopyalanmaz, bağlanır. Wiki kararları, gerekçeleri, durumu ve
-  yönlendirmeyi taşır. Gerekçe: `cache-and-ledger/README.md`; kopyalanan olgu kaynağı değişince çürür.
+  yönlendirmeyi taşır. Gerekçe: `data/cache-and-ledger/README.md`; kopyalanan olgu kaynağı değişince çürür.
 - MUST: her iddia bir kaynak çapasıyla biter: çalışma alanı köküne göre dosya yolu, gerekiyorsa
   bölüm ya da sembol (`wiki/sources/claude-science-results/pilot_isnad.py:align`).
 - MUST: her sayı neyin, kaç veri üzerinde, hangi referansa karşı ve hangi tarihte ölçüldüğünü söyler.

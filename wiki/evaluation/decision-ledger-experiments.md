@@ -11,13 +11,13 @@ hangisi tutmadı, hangi koşulda.
 - In: ravi kimliği kararlarının yeniden kullanım benzetimi (AR-Sanad), aynı benzetimin hadis dışı iki
   derlemde tekrarı, kopya kontrolünün insan etiketli bir derlemde tekrarı, emsal taraması
 - Out: motorun 300 hadislik ölçümü (`wiki/evaluation/engine-experiments.md`), denemenin kendisi
-  (`cache-and-ledger/README.md`), motor koduna alınmış bir özellik (bu deneylerin hiçbiri Core'da değildir)
+  (`data/cache-and-ledger/README.md`), motor koduna alınmış bir özellik (bu deneylerin hiçbiri Core'da değildir)
 
 ## Statü
 
-Keşif aşaması (2026-10-13). İlk betikler `cache-and-ledger/data/` altındadır; o klasör hiçbir repoda
-izlenmez. Kimlik defteri benzetimi testleriyle birlikte Core'un `feat/identity-ledger` dalındadır
-(`main`e alınmadı). Sonuçlar tek kişinin tek oturumunda üretildi; ekip ve danışman görmedi. Sayfadaki yorumlar
+Keşif aşaması (2026-10-13). İlk betikler `data/cache-and-ledger/data/` altındadır (özel veri reposu).
+Kimlik defteri benzetimi testleriyle birlikte Core'un `main` dalındadır. Bu sayfa projenin iddiasının
+hadis verisindeki destek kanıtıdır (`wiki/project/overview.md`, "Çerçeve"). Sonuçlar tek kişinin tek oturumunda üretildi; ekip ve danışman görmedi. Sayfadaki yorumlar
 öneridir.
 
 ## BLUF
@@ -247,24 +247,24 @@ Bir alt ajan 2026-10-13'te birincil dizinlerden çekti; künyeler ayrıca doğru
 
 ## Source anchors
 
-- `cache-and-ledger/data/explore-decision-growth.py`, `decision-growth-ar-sanad.json` — Sonuç 1
-- `cache-and-ledger/data/explore-scoped-ledger.py`, `scoped-ledger-ar-sanad.json` — Sonuç 2, kural kalibrasyonu, bilgi ölçüleri
-- `cache-and-ledger/data/explore-ledger-domains.py`, `ledger-domains-ar-sanad.json`, `ledger-domains-medmentions.json`, `ledger-domains-bc5cdr.json` — Sonuç 3
-- `cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` — Sonuç 4
-- `giraffegraph-core/evaluation/identity_ledger.py`, `evaluation/results/2026-10-13-identity-ledger/identity-ledger.json` — iki veri kümesinde tekrar, görülmemiş kitap, yanılan inceleyici (Core'un `feat/identity-ledger` dalı)
+- `data/cache-and-ledger/data/explore-decision-growth.py`, `decision-growth-ar-sanad.json` — Sonuç 1
+- `data/cache-and-ledger/data/explore-scoped-ledger.py`, `scoped-ledger-ar-sanad.json` — Sonuç 2, kural kalibrasyonu, bilgi ölçüleri
+- `data/cache-and-ledger/data/explore-ledger-domains.py`, `ledger-domains-ar-sanad.json`, `ledger-domains-medmentions.json`, `ledger-domains-bc5cdr.json` — Sonuç 3
+- `data/cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` — Sonuç 4
+- `giraffegraph-core/evaluation/identity_ledger.py`, `evaluation/results/2026-10-13-identity-ledger/identity-ledger.json` — iki veri kümesinde tekrar, görülmemiş kitap, yanılan inceleyici
 - `giraffegraph-core/evaluation/decision_reapplication.py`, `evaluation/results/2026-10-13-identity-ledger/decision-reapplication.json` — Sonuç 2b
 - `data/eval/ar-sanad-identity/` — zincirler ve ravi tablosu
 - `data/work/ifta_sixbooks.jsonl`, `data/raw/ifta-kaggle/corpus-original/ifta_narrators.json` — İfta mention'ları ve ravi kataloğu
 - `data/README.md`, "4. Two biomedical corpora" — MedMentions ve BC5CDR kaynakları, lisans beyanları
-- `cache-and-ledger/README.md` — sınanan iddiaların kaynağı
+- `data/cache-and-ledger/README.md` — sınanan iddiaların kaynağı
 
 Sağlamlık kontrolleri (teke indirme, dosya sırası, akrabalık payı, ret defteri) ve yön farkının bağımsız
 kontrolü oturum içinde koşuldu; çıktıları dosya olarak kayıtlı değil.
 
 ## Verification checklist
 
-- [ ] `python3 -I cache-and-ledger/data/explore-scoped-ledger.py data/eval/ar-sanad-identity/chains.jsonl data/eval/ar-sanad-identity/narrators.csv` çıktısı Sonuç 2 tablosuyla aynı
-- [ ] `python3 -I cache-and-ledger/data/explore-ledger-domains.py chains data/eval/ar-sanad-identity/chains.jsonl` çıktısı Sonuç 3'ün ilk satırıyla aynı
+- [ ] `python3 -I data/cache-and-ledger/data/explore-scoped-ledger.py data/eval/ar-sanad-identity/chains.jsonl data/eval/ar-sanad-identity/narrators.csv` çıktısı Sonuç 2 tablosuyla aynı
+- [ ] `python3 -I data/cache-and-ledger/data/explore-ledger-domains.py chains data/eval/ar-sanad-identity/chains.jsonl` çıktısı Sonuç 3'ün ilk satırıyla aynı
 - [ ] `copy-check-bc5cdr.json` içindeki `parts` alanı Sonuç 4 tablosuyla aynı
 - [ ] Sayfada etikete karşı ölçülen hiçbir değer "doğruluk" diye anılmıyor
 
