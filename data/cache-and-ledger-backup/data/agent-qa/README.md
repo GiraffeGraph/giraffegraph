@@ -119,9 +119,65 @@ calls: 43,491 for live frames, 34,420 for the fresh page.
 
 Cost of this round: about USD 0.75 (agent runs 0.68).
 
+## Notes inside the tree the agent searches
+
+A third round tests where the stored statements are put. Both behaviour pages were rewritten by an
+agent that saw only the page into one-line notes of at most 130 characters, each with the symbols
+it is about (`inputs/notes-current-commit.json`, 234 notes; `inputs/notes-earlier-commit.json`, 214
+notes). `scholia.py` places them in a sandbox whose `docs/` says there is no documentation:
+
+- `file`: all notes as comment lines in `src/app/_scholia.py`, each ending with a rooted path and
+  line; 142 of the 234 current notes resolve to a symbol.
+- `woven`: the 142 resolved notes as comments directly above their symbol, the other 92 in the file.
+- `earlier`: the 214 notes written from the earlier page, as a file.
+- `earlier, valid only`: of those, the 69 whose symbols have the same source text at both commits.
+
+`pull` (nothing in the prompt), structural questions, 2 repetitions, 720 runs with the controls:
+
+| the sandbox contains | 2 calls: all | stable | changed | 4 calls: all | 14 calls: all | prompt tokens at 2 / 14 calls |
+|---|---|---|---|---|---|---|
+| nothing | 0.312 [0.17, 0.48] | 0.333 | 0.292 | 0.708 | 0.979 | 6,911 / 20,435 |
+| fresh page in `docs/` | 0.333 [0.17, 0.52] | 0.417 | 0.250 | 0.708 | 0.979 | 6,854 / 22,718 |
+| notes, file | 0.646 [0.46, 0.81] | 0.667 | 0.625 | 0.875 | 0.938 | 7,472 / 16,611 |
+| notes, woven | 0.521 [0.35, 0.69] | 0.500 | 0.542 | 0.812 | 0.958 | 7,154 / 17,938 |
+| earlier notes, file | 0.625 [0.46, 0.77] | 0.833 | 0.417 | 0.792 | | 7,595 |
+| earlier notes, valid only | 0.229 [0.08, 0.40] | 0.250 | 0.208 | 0.625 | | 6,767 |
+| fresh page in the prompt (`push`, from above) | 0.875 | 0.792 | 0.958 | 0.979 | | 34,420 |
+| the 234 notes in the prompt (`push`) | 0.792 [0.65, 0.92] | 0.708 | 0.875 | | | 45,482 |
+
+Paired differences at 2 calls, 24 questions: notes file against nothing +0.33 [0.15, 0.52]; against
+the same page in `docs/` +0.31 [0.13, 0.50]; woven against nothing +0.21 [0.06, 0.35]; file against
+woven +0.13 [-0.04, 0.29]; page in the prompt against notes file +0.23 [0.04, 0.42]; notes in the
+prompt against page in the prompt -0.08 [-0.17, 0.00]. Earlier notes against nothing: +0.50
+[0.21, 0.79] on stable questions, +0.13 [0.00, 0.25] on changed ones. Valid-only earlier notes
+against nothing -0.08 [-0.19, 0.00]. At 14 calls notes file against nothing -0.04 [-0.10, 0.00],
+with 4.1 tool calls per question against 5.0.
+
+A note appeared in a tool result in 47 of 48 runs at 2 calls (file and woven alike; 41 of 48 for the
+valid-only notes), and the notes file was read directly in 0 of them: the notes arrive as hits of
+the greps the agent runs anyway. With the earlier notes, 4% of the answers to changed questions
+assert the outdated behaviour and 25% relay it with a caveat; with the valid-only notes 0% and 4%.
+
+The four kill criteria were written before the runs: a gain over nothing below +0.28 or with an
+interval that includes 0; a note shown in fewer than half the runs; more than 4% outdated assertions
+with the valid-only notes; more than 1.2 times the prompt tokens of nothing at 14 calls. The file
+form passes all four. The woven form is below +0.28.
+
+What this shows: the same statements are worth nothing in `docs/` when the agent has to open them,
+and +0.33 in the search path, for 8% more prompt tokens; putting the page in the prompt gives more
+(+0.56) for five times the tokens. Withholding the notes whose code changed removes the gain.
+
+What it does not show: the harness `grep` returns files in path order, so `_scholia.py` comes
+before the code and its hits are never cut off by the 40-line limit; a tool with another order may
+bury them. The woven form does not depend on that order for its 142 notes and gains less.
+
+Cost of this round: about USD 0.8 (agent runs 0.68).
+
 ## Reading
 
 - Decisions are the only stored content with a large effect: 0 to 4% without them, 88 to 100% with.
+- Where a stored statement sits decides whether it is used: in `docs/` the agent does not open it,
+  in the tree it searches the statement arrives by itself.
 - No script-made refresh of an earlier description (witness notes, pointers, late-bound values, a
   list of what was added) came close to a page written again from the current code.
 - With enough tool calls the agent answers structural questions from the code; no kind of
@@ -162,5 +218,12 @@ python3 -I added_symbols.py <app at 4279c98> <app at bfb0f9c> >> behaviour.md   
 
 then run with `--conditions cloze_frozen,cloze_live,stale_added,cloze_live_added --max-tool-calls 2 --tag rooted`.
 
-`runs.tar.gz` holds every run, verdict and stance label (3,264 runs). API cost of the whole
-experiment: about USD 5.5 (first round 4.8, frame round 0.75).
+The note arms: `python3 -I scholia.py build --lines inputs/notes-current-commit.json --written-from
+<app at bfb0f9c> --current <app at bfb0f9c> --base <dir>/sandbox/none --out <dir>/sandbox/scholia_file
+--form file` (for the earlier notes `--written-from <app at 4279c98>`, optionally `--only-valid`),
+then run with `--regime pull --conditions none,fresh,scholia_file,scholia_woven,scholia_stale,scholia_stale_valid`.
+`python3 -I scholia.py surfaced --work <dir> --arm pull+budget2+rooted --condition scholia_file`
+replays the stored tool calls and counts the runs in which a note was shown.
+
+`runs.tar.gz` holds every run, verdict and stance label (3,984 runs). API cost of the whole
+experiment: about USD 6.3 (first round 4.8, frame round 0.75, note round 0.8).

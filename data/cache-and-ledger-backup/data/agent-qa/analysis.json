@@ -1020,6 +1020,284 @@
     ]
    }
   },
+  "scholia_file": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.9375,
+    "correct_ci": [
+     0.8333,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.08333,
+    "tool_calls_ci": [
+     3.5,
+     4.6667
+    ],
+    "prompt_tokens": 16611.35417,
+    "prompt_tokens_ci": [
+     13407.8958,
+     19823.4583
+    ],
+    "output_tokens": 743.97917,
+    "cost_usd": 0.00101,
+    "cost_usd_ci": [
+     0.0008,
+     0.0012
+    ],
+    "stance_share": {
+     "current": 1.0,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0
+    },
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.1042,
+     0.0
+    ],
+    "tool_calls_minus_none": -0.9375,
+    "tool_calls_minus_none_ci": [
+     -1.4375,
+     -0.4375
+    ],
+    "cost_usd_minus_none": -0.00023,
+    "cost_usd_minus_none_ci": [
+     -0.0004,
+     -0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.91667,
+    "correct_ci": [
+     0.75,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.04167,
+    "tool_calls_ci": [
+     3.25,
+     4.9167
+    ],
+    "prompt_tokens": 16827.95833,
+    "prompt_tokens_ci": [
+     11735.4167,
+     22141.7083
+    ],
+    "output_tokens": 703.25,
+    "cost_usd": 0.00097,
+    "cost_usd_ci": [
+     0.0007,
+     0.0012
+    ],
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.125,
+     0.0
+    ],
+    "tool_calls_minus_none": -1.125,
+    "tool_calls_minus_none_ci": [
+     -1.75,
+     -0.4583
+    ],
+    "cost_usd_minus_none": -0.0003,
+    "cost_usd_minus_none_ci": [
+     -0.0005,
+     -0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.95833,
+    "correct_ci": [
+     0.875,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.125,
+    "tool_calls_ci": [
+     3.4167,
+     4.9167
+    ],
+    "prompt_tokens": 16394.75,
+    "prompt_tokens_ci": [
+     13460.625,
+     20005.375
+    ],
+    "output_tokens": 784.70833,
+    "cost_usd": 0.00105,
+    "cost_usd_ci": [
+     0.0008,
+     0.0013
+    ],
+    "stance_share": {
+     "current": 1.0,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0
+    },
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.125,
+     0.0
+    ],
+    "tool_calls_minus_none": -0.75,
+    "tool_calls_minus_none_ci": [
+     -1.5417,
+     0.0833
+    ],
+    "cost_usd_minus_none": -0.00016,
+    "cost_usd_minus_none_ci": [
+     -0.0004,
+     0.0001
+    ]
+   }
+  },
+  "scholia_woven": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.95833,
+    "correct_ci": [
+     0.8958,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.64583,
+    "tool_calls_ci": [
+     4.0417,
+     5.3125
+    ],
+    "prompt_tokens": 17938.08333,
+    "prompt_tokens_ci": [
+     14604.5625,
+     22414.0833
+    ],
+    "output_tokens": 801.47917,
+    "cost_usd": 0.00111,
+    "cost_usd_ci": [
+     0.001,
+     0.0013
+    ],
+    "stance_share": {
+     "current": 1.0,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0
+    },
+    "correct_minus_none": -0.02083,
+    "correct_minus_none_ci": [
+     -0.0625,
+     0.0
+    ],
+    "tool_calls_minus_none": -0.375,
+    "tool_calls_minus_none_ci": [
+     -0.8958,
+     0.125
+    ],
+    "cost_usd_minus_none": -0.00013,
+    "cost_usd_minus_none_ci": [
+     -0.0003,
+     -0.0
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.91667,
+    "correct_ci": [
+     0.7917,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.45833,
+    "tool_calls_ci": [
+     3.5,
+     5.6667
+    ],
+    "prompt_tokens": 18005.16667,
+    "prompt_tokens_ci": [
+     11885.7917,
+     25755.375
+    ],
+    "output_tokens": 760.95833,
+    "cost_usd": 0.00109,
+    "cost_usd_ci": [
+     0.0008,
+     0.0014
+    ],
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.125,
+     0.0
+    ],
+    "tool_calls_minus_none": -0.70833,
+    "tool_calls_minus_none_ci": [
+     -1.375,
+     -0.0417
+    ],
+    "cost_usd_minus_none": -0.00018,
+    "cost_usd_minus_none_ci": [
+     -0.0004,
+     -0.0
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 1.0,
+    "correct_ci": [
+     1.0,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.83333,
+    "tool_calls_ci": [
+     4.2083,
+     5.4167
+    ],
+    "prompt_tokens": 17871.0,
+    "prompt_tokens_ci": [
+     14682.75,
+     21310.5417
+    ],
+    "output_tokens": 842.0,
+    "cost_usd": 0.00113,
+    "cost_usd_ci": [
+     0.0009,
+     0.0013
+    ],
+    "stance_share": {
+     "current": 1.0,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0
+    },
+    "correct_minus_none": 0.0,
+    "correct_minus_none_ci": [
+     0.0,
+     0.0
+    ],
+    "tool_calls_minus_none": -0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.75,
+     0.625
+    ],
+    "cost_usd_minus_none": -7e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0003,
+     0.0001
+    ]
+   }
+  },
   "stale": {
    "structural": {
     "questions": 24,
@@ -1032,13 +1310,13 @@
     "outdated": 0.0,
     "tool_calls": 5.125,
     "tool_calls_ci": [
-     4.3333,
-     5.9167
+     4.3542,
+     5.8958
     ],
     "prompt_tokens": 21654.20833,
     "prompt_tokens_ci": [
-     16804.2917,
-     27005.0417
+     16739.0833,
+     26791.125
     ],
     "output_tokens": 871.22917,
     "cost_usd": 0.00121,
@@ -1061,7 +1339,7 @@
     "tool_calls_minus_none": 0.10417,
     "tool_calls_minus_none_ci": [
      -0.4792,
-     0.7292
+     0.6875
     ],
     "cost_usd_minus_none": -3e-05,
     "cost_usd_minus_none_ci": [
@@ -1081,12 +1359,12 @@
     "tool_calls": 4.91667,
     "tool_calls_ci": [
      3.6667,
-     6.2083
+     6.1667
     ],
     "prompt_tokens": 23144.91667,
     "prompt_tokens_ci": [
-     14267.2917,
-     32758.0833
+     14349.7917,
+     32824.7083
     ],
     "output_tokens": 820.83333,
     "cost_usd": 0.0012,
@@ -1101,7 +1379,7 @@
     ],
     "tool_calls_minus_none": -0.25,
     "tool_calls_minus_none_ci": [
-     -1.125,
+     -1.1667,
      0.6667
     ],
     "cost_usd_minus_none": -7e-05,
@@ -1121,13 +1399,13 @@
     "outdated": 0.0,
     "tool_calls": 5.33333,
     "tool_calls_ci": [
-     4.5,
-     6.1667
+     4.5417,
+     6.2083
     ],
     "prompt_tokens": 20163.5,
     "prompt_tokens_ci": [
-     17056.4583,
-     23296.5
+     16999.7917,
+     23417.0
     ],
     "output_tokens": 921.625,
     "cost_usd": 0.00121,
@@ -1149,8 +1427,8 @@
     ],
     "tool_calls_minus_none": 0.45833,
     "tool_calls_minus_none_ci": [
-     -0.2083,
-     1.2083
+     -0.1667,
+     1.25
     ],
     "cost_usd_minus_none": 0.0,
     "cost_usd_minus_none_ci": [
@@ -1170,12 +1448,12 @@
     "tool_calls": 4.70833,
     "tool_calls_ci": [
      3.875,
-     5.7917
+     5.9167
     ],
     "prompt_tokens": 12901.20833,
     "prompt_tokens_ci": [
-     8132.2083,
-     20123.375
+     8116.875,
+     20139.4583
     ],
     "output_tokens": 804.95833,
     "cost_usd": 0.00106,
@@ -1185,13 +1463,13 @@
     ],
     "correct_minus_none": 0.83333,
     "correct_minus_none_ci": [
-     0.6667,
+     0.625,
      1.0
     ],
     "tool_calls_minus_none": -1.91667,
     "tool_calls_minus_none_ci": [
-     -3.0,
-     -0.7917
+     -2.9583,
+     -0.875
     ],
     "cost_usd_minus_none": -0.00013,
     "cost_usd_minus_none_ci": [
@@ -1212,13 +1490,13 @@
     "outdated": 0.0,
     "tool_calls": 5.25,
     "tool_calls_ci": [
-     4.4375,
-     5.9583
+     4.5417,
+     5.9792
     ],
     "prompt_tokens": 22573.60417,
     "prompt_tokens_ci": [
-     18109.625,
-     27655.4792
+     17963.2292,
+     27485.4375
     ],
     "output_tokens": 860.79167,
     "cost_usd": 0.0012,
@@ -1260,19 +1538,19 @@
     "outdated": 0.0,
     "tool_calls": 5.5,
     "tool_calls_ci": [
-     4.2917,
+     4.1667,
      6.7083
     ],
     "prompt_tokens": 25777.875,
     "prompt_tokens_ci": [
-     16948.1667,
-     34377.8333
+     17157.7917,
+     34144.875
     ],
     "output_tokens": 872.66667,
     "cost_usd": 0.00128,
     "cost_usd_ci": [
      0.0009,
-     0.0017
+     0.0016
     ],
     "correct_minus_none": 0.0,
     "correct_minus_none_ci": [
@@ -1301,13 +1579,13 @@
     "outdated": 0.0,
     "tool_calls": 5.0,
     "tool_calls_ci": [
-     4.25,
-     5.7917
+     4.2083,
+     5.75
     ],
     "prompt_tokens": 19369.33333,
     "prompt_tokens_ci": [
-     16697.7083,
-     22126.6667
+     16821.4167,
+     22149.4583
     ],
     "output_tokens": 848.91667,
     "cost_usd": 0.00111,
@@ -1330,12 +1608,12 @@
     "tool_calls_minus_none": 0.125,
     "tool_calls_minus_none_ci": [
      -0.2917,
-     0.7083
+     0.625
     ],
     "cost_usd_minus_none": -0.0001,
     "cost_usd_minus_none_ci": [
      -0.0002,
-     0.0001
+     0.0
     ]
    },
    "decision": {
@@ -1349,13 +1627,13 @@
     "outdated": 0.0,
     "tool_calls": 4.54167,
     "tool_calls_ci": [
-     3.9167,
+     3.9583,
      5.1667
     ],
     "prompt_tokens": 12876.58333,
     "prompt_tokens_ci": [
-     9027.7083,
-     17043.0417
+     9024.9583,
+     16906.7917
     ],
     "output_tokens": 750.625,
     "cost_usd": 0.00105,
@@ -1376,7 +1654,7 @@
     "cost_usd_minus_none": -0.00013,
     "cost_usd_minus_none_ci": [
      -0.0003,
-     0.0
+     -0.0
     ]
    }
   },
@@ -1392,19 +1670,19 @@
     "outdated": 0.0,
     "tool_calls": 5.10417,
     "tool_calls_ci": [
-     4.3125,
-     5.8542
+     4.3542,
+     5.9167
     ],
     "prompt_tokens": 21495.04167,
     "prompt_tokens_ci": [
-     16734.75,
-     26653.4375
+     16621.1875,
+     27334.8542
     ],
     "output_tokens": 857.3125,
     "cost_usd": 0.00115,
     "cost_usd_ci": [
-     0.001,
-     0.0013
+     0.0009,
+     0.0014
     ],
     "stance_share": {
      "current": 0.9167,
@@ -1420,7 +1698,7 @@
     ],
     "tool_calls_minus_none": 0.08333,
     "tool_calls_minus_none_ci": [
-     -0.25,
+     -0.2708,
      0.4375
     ],
     "cost_usd_minus_none": -9e-05,
@@ -1440,13 +1718,13 @@
     "outdated": 0.0,
     "tool_calls": 5.375,
     "tool_calls_ci": [
-     3.9583,
-     6.7083
+     4.0417,
+     6.75
     ],
     "prompt_tokens": 25646.5,
     "prompt_tokens_ci": [
-     16720.0,
-     34479.875
+     17091.5417,
+     34844.0417
     ],
     "output_tokens": 860.04167,
     "cost_usd": 0.00123,
@@ -1461,7 +1739,7 @@
     ],
     "tool_calls_minus_none": 0.20833,
     "tool_calls_minus_none_ci": [
-     -0.3333,
+     -0.2917,
      0.7917
     ],
     "cost_usd_minus_none": -4e-05,
@@ -1482,12 +1760,12 @@
     "tool_calls": 4.83333,
     "tool_calls_ci": [
      4.0833,
-     5.5833
+     5.5417
     ],
     "prompt_tokens": 17343.58333,
     "prompt_tokens_ci": [
-     13768.1667,
-     21154.9167
+     13858.625,
+     21174.7083
     ],
     "output_tokens": 854.58333,
     "cost_usd": 0.00106,
@@ -1529,13 +1807,13 @@
     "outdated": 0.0,
     "tool_calls": 4.875,
     "tool_calls_ci": [
-     4.125,
-     5.7083
+     4.1667,
+     5.6667
     ],
     "prompt_tokens": 13211.33333,
     "prompt_tokens_ci": [
-     9806.9583,
-     16448.375
+     9995.5833,
+     16641.9167
     ],
     "output_tokens": 798.25,
     "cost_usd": 0.00107,
@@ -1551,11 +1829,1593 @@
     "tool_calls_minus_none": -1.75,
     "tool_calls_minus_none_ci": [
      -2.4167,
-     -1.1667
+     -1.125
     ],
     "cost_usd_minus_none": -0.00011,
     "cost_usd_minus_none_ci": [
      -0.0003,
+     0.0001
+    ]
+   }
+  }
+ },
+ "pull+budget2+rooted": {
+  "fresh": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.33333,
+    "correct_ci": [
+     0.1667,
+     0.5208
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.27083,
+    "tool_calls_ci": [
+     2.125,
+     2.4375
+    ],
+    "prompt_tokens": 6853.70833,
+    "prompt_tokens_ci": [
+     6196.8333,
+     7439.875
+    ],
+    "output_tokens": 579.8125,
+    "cost_usd": 0.00072,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.4583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0833,
+     "abstained": 0.3333,
+     "other": 0.125
+    },
+    "correct_minus_none": 0.02083,
+    "correct_minus_none_ci": [
+     -0.0833,
+     0.125
+    ],
+    "tool_calls_minus_none": -0.02083,
+    "tool_calls_minus_none_ci": [
+     -0.2083,
+     0.1667
+    ],
+    "cost_usd_minus_none": 0.0,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.41667,
+    "correct_ci": [
+     0.1667,
+     0.6667
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.25,
+    "tool_calls_ci": [
+     2.0417,
+     2.5
+    ],
+    "prompt_tokens": 7028.29167,
+    "prompt_tokens_ci": [
+     6267.5417,
+     7776.2917
+    ],
+    "output_tokens": 574.08333,
+    "cost_usd": 0.00074,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "correct_minus_none": 0.08333,
+    "correct_minus_none_ci": [
+     0.0,
+     0.2083
+    ],
+    "tool_calls_minus_none": -0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.2917,
+     0.25
+    ],
+    "cost_usd_minus_none": 1e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.25,
+    "correct_ci": [
+     0.0417,
+     0.4583
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.29167,
+    "tool_calls_ci": [
+     2.0833,
+     2.5
+    ],
+    "prompt_tokens": 6679.125,
+    "prompt_tokens_ci": [
+     5641.75,
+     7507.0
+    ],
+    "output_tokens": 585.54167,
+    "cost_usd": 0.0007,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.4583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0833,
+     "abstained": 0.3333,
+     "other": 0.125
+    },
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.2083,
+     0.125
+    ],
+    "tool_calls_minus_none": 0.0,
+    "tool_calls_minus_none_ci": [
+     -0.25,
+     0.2917
+    ],
+    "cost_usd_minus_none": -1e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   }
+  },
+  "none": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.3125,
+    "correct_ci": [
+     0.1667,
+     0.4792
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.29167,
+    "tool_calls_ci": [
+     2.1458,
+     2.4583
+    ],
+    "prompt_tokens": 6910.52083,
+    "prompt_tokens_ci": [
+     6271.25,
+     7521.8333
+    ],
+    "output_tokens": 568.47917,
+    "cost_usd": 0.00072,
+    "cost_usd_ci": [
+     0.0007,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.4583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.375,
+     "other": 0.1667
+    }
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.33333,
+    "correct_ci": [
+     0.125,
+     0.5833
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.29167,
+    "tool_calls_ci": [
+     2.0833,
+     2.5
+    ],
+    "prompt_tokens": 6870.125,
+    "prompt_tokens_ci": [
+     5886.7083,
+     7829.5
+    ],
+    "output_tokens": 551.875,
+    "cost_usd": 0.00073,
+    "cost_usd_ci": [
+     0.0006,
+     0.0009
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.29167,
+    "correct_ci": [
+     0.0833,
+     0.5417
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.29167,
+    "tool_calls_ci": [
+     2.0833,
+     2.5417
+    ],
+    "prompt_tokens": 6950.91667,
+    "prompt_tokens_ci": [
+     6051.3333,
+     7715.0417
+    ],
+    "output_tokens": 585.08333,
+    "cost_usd": 0.0007,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.4583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.375,
+     "other": 0.1667
+    }
+   }
+  },
+  "scholia_file": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.64583,
+    "correct_ci": [
+     0.4583,
+     0.8125
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.25,
+    "tool_calls_ci": [
+     2.125,
+     2.3958
+    ],
+    "prompt_tokens": 7472.3125,
+    "prompt_tokens_ci": [
+     6873.9167,
+     8058.1042
+    ],
+    "output_tokens": 593.58333,
+    "cost_usd": 0.00073,
+    "cost_usd_ci": [
+     0.0007,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.75,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0833,
+     "other": 0.1667
+    },
+    "correct_minus_none": 0.33333,
+    "correct_minus_none_ci": [
+     0.1458,
+     0.5208
+    ],
+    "tool_calls_minus_none": -0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.2292,
+     0.1458
+    ],
+    "cost_usd_minus_none": 1e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.66667,
+    "correct_ci": [
+     0.4167,
+     0.9167
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.20833,
+    "tool_calls_ci": [
+     2.0417,
+     2.4167
+    ],
+    "prompt_tokens": 7656.41667,
+    "prompt_tokens_ci": [
+     6828.7083,
+     8484.6667
+    ],
+    "output_tokens": 565.875,
+    "cost_usd": 0.00073,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "correct_minus_none": 0.33333,
+    "correct_minus_none_ci": [
+     0.0833,
+     0.5833
+    ],
+    "tool_calls_minus_none": -0.08333,
+    "tool_calls_minus_none_ci": [
+     -0.2917,
+     0.1667
+    ],
+    "cost_usd_minus_none": -0.0,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.625,
+    "correct_ci": [
+     0.375,
+     0.875
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.29167,
+    "tool_calls_ci": [
+     2.0833,
+     2.5
+    ],
+    "prompt_tokens": 7288.20833,
+    "prompt_tokens_ci": [
+     6526.875,
+     8152.75
+    ],
+    "output_tokens": 621.29167,
+    "cost_usd": 0.00073,
+    "cost_usd_ci": [
+     0.0007,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.75,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0833,
+     "other": 0.1667
+    },
+    "correct_minus_none": 0.33333,
+    "correct_minus_none_ci": [
+     0.0417,
+     0.625
+    ],
+    "tool_calls_minus_none": 0.0,
+    "tool_calls_minus_none_ci": [
+     -0.2917,
+     0.2917
+    ],
+    "cost_usd_minus_none": 2e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   }
+  },
+  "scholia_stale": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.625,
+    "correct_ci": [
+     0.4583,
+     0.7708
+    ],
+    "outdated": 0.0625,
+    "tool_calls": 2.41667,
+    "tool_calls_ci": [
+     2.2292,
+     2.6042
+    ],
+    "prompt_tokens": 7595.08333,
+    "prompt_tokens_ci": [
+     6896.5208,
+     8213.8125
+    ],
+    "output_tokens": 633.70833,
+    "cost_usd": 0.00075,
+    "cost_usd_ci": [
+     0.0007,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.5417,
+     "outdated_asserted": 0.0417,
+     "outdated_with_doubt": 0.25,
+     "abstained": 0.125,
+     "other": 0.0417
+    },
+    "correct_minus_none": 0.3125,
+    "correct_minus_none_ci": [
+     0.1458,
+     0.4792
+    ],
+    "tool_calls_minus_none": 0.125,
+    "tool_calls_minus_none_ci": [
+     -0.0625,
+     0.3333
+    ],
+    "cost_usd_minus_none": 3e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.83333,
+    "correct_ci": [
+     0.7083,
+     0.9583
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.45833,
+    "tool_calls_ci": [
+     2.2083,
+     2.7083
+    ],
+    "prompt_tokens": 7857.41667,
+    "prompt_tokens_ci": [
+     6875.7917,
+     8656.625
+    ],
+    "output_tokens": 614.0,
+    "cost_usd": 0.00077,
+    "cost_usd_ci": [
+     0.0007,
+     0.0009
+    ],
+    "correct_minus_none": 0.5,
+    "correct_minus_none_ci": [
+     0.2083,
+     0.75
+    ],
+    "tool_calls_minus_none": 0.16667,
+    "tool_calls_minus_none_ci": [
+     -0.0833,
+     0.4583
+    ],
+    "cost_usd_minus_none": 4e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.41667,
+    "correct_ci": [
+     0.2083,
+     0.625
+    ],
+    "outdated": 0.125,
+    "tool_calls": 2.375,
+    "tool_calls_ci": [
+     2.0833,
+     2.7083
+    ],
+    "prompt_tokens": 7332.75,
+    "prompt_tokens_ci": [
+     6292.5833,
+     8206.5
+    ],
+    "output_tokens": 653.41667,
+    "cost_usd": 0.00072,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.5417,
+     "outdated_asserted": 0.0417,
+     "outdated_with_doubt": 0.25,
+     "abstained": 0.125,
+     "other": 0.0417
+    },
+    "correct_minus_none": 0.125,
+    "correct_minus_none_ci": [
+     0.0,
+     0.25
+    ],
+    "tool_calls_minus_none": 0.08333,
+    "tool_calls_minus_none_ci": [
+     -0.2083,
+     0.3333
+    ],
+    "cost_usd_minus_none": 2e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   }
+  },
+  "scholia_stale_valid": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.22917,
+    "correct_ci": [
+     0.0833,
+     0.3958
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.35417,
+    "tool_calls_ci": [
+     2.1875,
+     2.5208
+    ],
+    "prompt_tokens": 6767.1875,
+    "prompt_tokens_ci": [
+     6114.0417,
+     7367.2708
+    ],
+    "output_tokens": 558.125,
+    "cost_usd": 0.00065,
+    "cost_usd_ci": [
+     0.0006,
+     0.0007
+    ],
+    "stance_share": {
+     "current": 0.2917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0417,
+     "abstained": 0.4583,
+     "other": 0.2083
+    },
+    "correct_minus_none": -0.08333,
+    "correct_minus_none_ci": [
+     -0.1875,
+     0.0
+    ],
+    "tool_calls_minus_none": 0.0625,
+    "tool_calls_minus_none_ci": [
+     -0.1458,
+     0.2917
+    ],
+    "cost_usd_minus_none": -7e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     -0.0
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.25,
+    "correct_ci": [
+     0.0,
+     0.5
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.45833,
+    "tool_calls_ci": [
+     2.2083,
+     2.7083
+    ],
+    "prompt_tokens": 7059.54167,
+    "prompt_tokens_ci": [
+     6045.2083,
+     8039.5833
+    ],
+    "output_tokens": 579.5,
+    "cost_usd": 0.00069,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "correct_minus_none": -0.08333,
+    "correct_minus_none_ci": [
+     -0.2083,
+     0.0
+    ],
+    "tool_calls_minus_none": 0.16667,
+    "tool_calls_minus_none_ci": [
+     -0.125,
+     0.4583
+    ],
+    "cost_usd_minus_none": -5e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0002,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.20833,
+    "correct_ci": [
+     0.0417,
+     0.375
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.25,
+    "tool_calls_ci": [
+     2.0417,
+     2.4583
+    ],
+    "prompt_tokens": 6474.83333,
+    "prompt_tokens_ci": [
+     5610.5,
+     7266.4167
+    ],
+    "output_tokens": 536.75,
+    "cost_usd": 0.00061,
+    "cost_usd_ci": [
+     0.0005,
+     0.0007
+    ],
+    "stance_share": {
+     "current": 0.2917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0417,
+     "abstained": 0.4583,
+     "other": 0.2083
+    },
+    "correct_minus_none": -0.08333,
+    "correct_minus_none_ci": [
+     -0.25,
+     0.0833
+    ],
+    "tool_calls_minus_none": -0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.3333,
+     0.25
+    ],
+    "cost_usd_minus_none": -9e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0002,
+     -0.0
+    ]
+   }
+  },
+  "scholia_woven": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.52083,
+    "correct_ci": [
+     0.3542,
+     0.6875
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.25,
+    "tool_calls_ci": [
+     2.1042,
+     2.4167
+    ],
+    "prompt_tokens": 7153.64583,
+    "prompt_tokens_ci": [
+     6487.2292,
+     7785.6458
+    ],
+    "output_tokens": 591.66667,
+    "cost_usd": 0.00069,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.625,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.125,
+     "abstained": 0.0833,
+     "other": 0.1667
+    },
+    "correct_minus_none": 0.20833,
+    "correct_minus_none_ci": [
+     0.0625,
+     0.3542
+    ],
+    "tool_calls_minus_none": -0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.2083,
+     0.125
+    ],
+    "cost_usd_minus_none": -2e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.5,
+    "correct_ci": [
+     0.25,
+     0.75
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.16667,
+    "tool_calls_ci": [
+     2.0,
+     2.4167
+    ],
+    "prompt_tokens": 7148.75,
+    "prompt_tokens_ci": [
+     6056.75,
+     8317.4583
+    ],
+    "output_tokens": 557.625,
+    "cost_usd": 0.00069,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "correct_minus_none": 0.16667,
+    "correct_minus_none_ci": [
+     0.0,
+     0.375
+    ],
+    "tool_calls_minus_none": -0.125,
+    "tool_calls_minus_none_ci": [
+     -0.3333,
+     0.0833
+    ],
+    "cost_usd_minus_none": -4e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.54167,
+    "correct_ci": [
+     0.3333,
+     0.75
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.33333,
+    "tool_calls_ci": [
+     2.125,
+     2.5417
+    ],
+    "prompt_tokens": 7158.54167,
+    "prompt_tokens_ci": [
+     6485.8333,
+     7667.5417
+    ],
+    "output_tokens": 625.70833,
+    "cost_usd": 0.0007,
+    "cost_usd_ci": [
+     0.0006,
+     0.0008
+    ],
+    "stance_share": {
+     "current": 0.625,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.125,
+     "abstained": 0.0833,
+     "other": 0.1667
+    },
+    "correct_minus_none": 0.25,
+    "correct_minus_none_ci": [
+     0.0,
+     0.5
+    ],
+    "tool_calls_minus_none": 0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.2083,
+     0.2917
+    ],
+    "cost_usd_minus_none": -1e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   }
+  }
+ },
+ "pull+budget4+rooted": {
+  "fresh": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.70833,
+    "correct_ci": [
+     0.5417,
+     0.8542
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.77083,
+    "tool_calls_ci": [
+     3.4167,
+     4.0833
+    ],
+    "prompt_tokens": 12883.08333,
+    "prompt_tokens_ci": [
+     11034.5625,
+     14735.4792
+    ],
+    "output_tokens": 737.8125,
+    "cost_usd": 0.00092,
+    "cost_usd_ci": [
+     0.0008,
+     0.001
+    ],
+    "stance_share": {
+     "current": 0.7917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0833,
+     "other": 0.125
+    },
+    "correct_minus_none": 0.0,
+    "correct_minus_none_ci": [
+     -0.1667,
+     0.1458
+    ],
+    "tool_calls_minus_none": -0.125,
+    "tool_calls_minus_none_ci": [
+     -0.2917,
+     0.0417
+    ],
+    "cost_usd_minus_none": -0.0,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.625,
+    "correct_ci": [
+     0.375,
+     0.875
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.41667,
+    "tool_calls_ci": [
+     2.9167,
+     3.875
+    ],
+    "prompt_tokens": 11542.54167,
+    "prompt_tokens_ci": [
+     8826.625,
+     14156.125
+    ],
+    "output_tokens": 671.54167,
+    "cost_usd": 0.00085,
+    "cost_usd_ci": [
+     0.0007,
+     0.001
+    ],
+    "correct_minus_none": 0.04167,
+    "correct_minus_none_ci": [
+     -0.1667,
+     0.25
+    ],
+    "tool_calls_minus_none": -0.125,
+    "tool_calls_minus_none_ci": [
+     -0.375,
+     0.1667
+    ],
+    "cost_usd_minus_none": -2e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.79167,
+    "correct_ci": [
+     0.5417,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.125,
+    "tool_calls_ci": [
+     3.75,
+     4.5
+    ],
+    "prompt_tokens": 14223.625,
+    "prompt_tokens_ci": [
+     11894.875,
+     16472.0833
+    ],
+    "output_tokens": 804.08333,
+    "cost_usd": 0.00099,
+    "cost_usd_ci": [
+     0.0009,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.7917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0833,
+     "other": 0.125
+    },
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.25,
+     0.1667
+    ],
+    "tool_calls_minus_none": -0.125,
+    "tool_calls_minus_none_ci": [
+     -0.3333,
+     0.0833
+    ],
+    "cost_usd_minus_none": 1e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   }
+  },
+  "none": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.70833,
+    "correct_ci": [
+     0.5625,
+     0.8542
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.89583,
+    "tool_calls_ci": [
+     3.5208,
+     4.25
+    ],
+    "prompt_tokens": 13328.75,
+    "prompt_tokens_ci": [
+     11357.125,
+     15432.2083
+    ],
+    "output_tokens": 758.08333,
+    "cost_usd": 0.00092,
+    "cost_usd_ci": [
+     0.0008,
+     0.001
+    ],
+    "stance_share": {
+     "current": 0.9167,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0417,
+     "other": 0.0417
+    }
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.58333,
+    "correct_ci": [
+     0.3333,
+     0.7917
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.54167,
+    "tool_calls_ci": [
+     2.9583,
+     4.0833
+    ],
+    "prompt_tokens": 12105.375,
+    "prompt_tokens_ci": [
+     9349.2083,
+     15053.75
+    ],
+    "output_tokens": 691.33333,
+    "cost_usd": 0.00087,
+    "cost_usd_ci": [
+     0.0007,
+     0.0011
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.83333,
+    "correct_ci": [
+     0.625,
+     0.9583
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.25,
+    "tool_calls_ci": [
+     3.875,
+     4.625
+    ],
+    "prompt_tokens": 14552.125,
+    "prompt_tokens_ci": [
+     11949.2083,
+     17052.0833
+    ],
+    "output_tokens": 824.83333,
+    "cost_usd": 0.00098,
+    "cost_usd_ci": [
+     0.0008,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.9167,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0417,
+     "other": 0.0417
+    }
+   }
+  },
+  "scholia_file": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.875,
+    "correct_ci": [
+     0.75,
+     0.9792
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.54167,
+    "tool_calls_ci": [
+     3.2083,
+     3.8542
+    ],
+    "prompt_tokens": 14033.5,
+    "prompt_tokens_ci": [
+     12187.2292,
+     15738.875
+    ],
+    "output_tokens": 758.47917,
+    "cost_usd": 0.00098,
+    "cost_usd_ci": [
+     0.0009,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.9583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0417
+    },
+    "correct_minus_none": 0.16667,
+    "correct_minus_none_ci": [
+     0.0,
+     0.3333
+    ],
+    "tool_calls_minus_none": -0.35417,
+    "tool_calls_minus_none_ci": [
+     -0.6042,
+     -0.1042
+    ],
+    "cost_usd_minus_none": 5e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.83333,
+    "correct_ci": [
+     0.625,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.33333,
+    "tool_calls_ci": [
+     2.875,
+     3.7083
+    ],
+    "prompt_tokens": 12912.79167,
+    "prompt_tokens_ci": [
+     10260.0,
+     15449.0
+    ],
+    "output_tokens": 728.125,
+    "cost_usd": 0.00092,
+    "cost_usd_ci": [
+     0.0007,
+     0.0011
+    ],
+    "correct_minus_none": 0.25,
+    "correct_minus_none_ci": [
+     0.0833,
+     0.4583
+    ],
+    "tool_calls_minus_none": -0.20833,
+    "tool_calls_minus_none_ci": [
+     -0.5,
+     0.0833
+    ],
+    "cost_usd_minus_none": 5e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.91667,
+    "correct_ci": [
+     0.75,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.75,
+    "tool_calls_ci": [
+     3.2917,
+     4.1667
+    ],
+    "prompt_tokens": 15154.20833,
+    "prompt_tokens_ci": [
+     12864.1667,
+     17168.9167
+    ],
+    "output_tokens": 788.83333,
+    "cost_usd": 0.00103,
+    "cost_usd_ci": [
+     0.0009,
+     0.0012
+    ],
+    "stance_share": {
+     "current": 0.9583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0417
+    },
+    "correct_minus_none": 0.08333,
+    "correct_minus_none_ci": [
+     -0.1667,
+     0.3333
+    ],
+    "tool_calls_minus_none": -0.5,
+    "tool_calls_minus_none_ci": [
+     -0.875,
+     -0.125
+    ],
+    "cost_usd_minus_none": 5e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0002
+    ]
+   }
+  },
+  "scholia_stale": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.79167,
+    "correct_ci": [
+     0.625,
+     0.9375
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.9375,
+    "tool_calls_ci": [
+     3.5833,
+     4.2917
+    ],
+    "prompt_tokens": 14053.5625,
+    "prompt_tokens_ci": [
+     12518.9167,
+     15606.8542
+    ],
+    "output_tokens": 777.89583,
+    "cost_usd": 0.00099,
+    "cost_usd_ci": [
+     0.0009,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.7917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0417,
+     "abstained": 0.0417,
+     "other": 0.125
+    },
+    "correct_minus_none": 0.08333,
+    "correct_minus_none_ci": [
+     -0.1042,
+     0.25
+    ],
+    "tool_calls_minus_none": 0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.1875,
+     0.2708
+    ],
+    "cost_usd_minus_none": 7e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0002
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.79167,
+    "correct_ci": [
+     0.5417,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.83333,
+    "tool_calls_ci": [
+     3.2083,
+     4.4167
+    ],
+    "prompt_tokens": 13781.41667,
+    "prompt_tokens_ci": [
+     10960.0417,
+     16288.75
+    ],
+    "output_tokens": 692.5,
+    "cost_usd": 0.00095,
+    "cost_usd_ci": [
+     0.0008,
+     0.0011
+    ],
+    "correct_minus_none": 0.20833,
+    "correct_minus_none_ci": [
+     0.0,
+     0.4167
+    ],
+    "tool_calls_minus_none": 0.29167,
+    "tool_calls_minus_none_ci": [
+     0.0417,
+     0.5833
+    ],
+    "cost_usd_minus_none": 8e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0002
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.79167,
+    "correct_ci": [
+     0.5417,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.04167,
+    "tool_calls_ci": [
+     3.7083,
+     4.4167
+    ],
+    "prompt_tokens": 14325.70833,
+    "prompt_tokens_ci": [
+     12724.3333,
+     15905.4583
+    ],
+    "output_tokens": 863.29167,
+    "cost_usd": 0.00103,
+    "cost_usd_ci": [
+     0.0009,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.7917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0417,
+     "abstained": 0.0417,
+     "other": 0.125
+    },
+    "correct_minus_none": -0.04167,
+    "correct_minus_none_ci": [
+     -0.3333,
+     0.2083
+    ],
+    "tool_calls_minus_none": -0.20833,
+    "tool_calls_minus_none_ci": [
+     -0.5,
+     0.0833
+    ],
+    "cost_usd_minus_none": 5e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0002
+    ]
+   }
+  },
+  "scholia_stale_valid": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.625,
+    "correct_ci": [
+     0.4583,
+     0.7917
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.85417,
+    "tool_calls_ci": [
+     3.4792,
+     4.1875
+    ],
+    "prompt_tokens": 12987.47917,
+    "prompt_tokens_ci": [
+     11382.9583,
+     14788.75
+    ],
+    "output_tokens": 802.75,
+    "cost_usd": 0.00098,
+    "cost_usd_ci": [
+     0.0009,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.7917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0417,
+     "abstained": 0.0833,
+     "other": 0.0833
+    },
+    "correct_minus_none": -0.08333,
+    "correct_minus_none_ci": [
+     -0.2292,
+     0.0625
+    ],
+    "tool_calls_minus_none": -0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.3333,
+     0.2292
+    ],
+    "cost_usd_minus_none": 6e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.58333,
+    "correct_ci": [
+     0.3333,
+     0.8333
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.375,
+    "tool_calls_ci": [
+     2.8333,
+     3.875
+    ],
+    "prompt_tokens": 11458.16667,
+    "prompt_tokens_ci": [
+     8783.1667,
+     13912.5
+    ],
+    "output_tokens": 718.66667,
+    "cost_usd": 0.00087,
+    "cost_usd_ci": [
+     0.0007,
+     0.0011
+    ],
+    "correct_minus_none": 0.0,
+    "correct_minus_none_ci": [
+     -0.1667,
+     0.1667
+    ],
+    "tool_calls_minus_none": -0.16667,
+    "tool_calls_minus_none_ci": [
+     -0.5833,
+     0.2083
+    ],
+    "cost_usd_minus_none": 0.0,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.66667,
+    "correct_ci": [
+     0.4583,
+     0.8333
+    ],
+    "outdated": 0.0,
+    "tool_calls": 4.33333,
+    "tool_calls_ci": [
+     4.0833,
+     4.625
+    ],
+    "prompt_tokens": 14516.79167,
+    "prompt_tokens_ci": [
+     12332.9167,
+     16452.3333
+    ],
+    "output_tokens": 886.83333,
+    "cost_usd": 0.0011,
+    "cost_usd_ci": [
+     0.001,
+     0.0012
+    ],
+    "stance_share": {
+     "current": 0.7917,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0417,
+     "abstained": 0.0833,
+     "other": 0.0833
+    },
+    "correct_minus_none": -0.16667,
+    "correct_minus_none_ci": [
+     -0.4167,
+     0.0833
+    ],
+    "tool_calls_minus_none": 0.08333,
+    "tool_calls_minus_none_ci": [
+     -0.2917,
+     0.4583
+    ],
+    "cost_usd_minus_none": 0.00012,
+    "cost_usd_minus_none_ci": [
+     0.0,
+     0.0002
+    ]
+   }
+  },
+  "scholia_woven": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.8125,
+    "correct_ci": [
+     0.6667,
+     0.9375
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.66667,
+    "tool_calls_ci": [
+     3.3125,
+     4.0417
+    ],
+    "prompt_tokens": 13338.4375,
+    "prompt_tokens_ci": [
+     11633.4167,
+     15020.7083
+    ],
+    "output_tokens": 732.08333,
+    "cost_usd": 0.00094,
+    "cost_usd_ci": [
+     0.0008,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.9583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0417
+    },
+    "correct_minus_none": 0.10417,
+    "correct_minus_none_ci": [
+     0.0,
+     0.2292
+    ],
+    "tool_calls_minus_none": -0.22917,
+    "tool_calls_minus_none_ci": [
+     -0.4583,
+     0.0
+    ],
+    "cost_usd_minus_none": 2e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.70833,
+    "correct_ci": [
+     0.4583,
+     0.9167
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.41667,
+    "tool_calls_ci": [
+     2.875,
+     3.9167
+    ],
+    "prompt_tokens": 12616.08333,
+    "prompt_tokens_ci": [
+     9814.5,
+     15579.625
+    ],
+    "output_tokens": 692.33333,
+    "cost_usd": 0.0009,
+    "cost_usd_ci": [
+     0.0007,
+     0.0011
+    ],
+    "correct_minus_none": 0.125,
+    "correct_minus_none_ci": [
+     -0.0417,
+     0.3333
+    ],
+    "tool_calls_minus_none": -0.125,
+    "tool_calls_minus_none_ci": [
+     -0.375,
+     0.0833
+    ],
+    "cost_usd_minus_none": 3e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0,
+     0.0001
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.91667,
+    "correct_ci": [
+     0.7917,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 3.91667,
+    "tool_calls_ci": [
+     3.4167,
+     4.4167
+    ],
+    "prompt_tokens": 14060.79167,
+    "prompt_tokens_ci": [
+     12131.2083,
+     15847.875
+    ],
+    "output_tokens": 771.83333,
+    "cost_usd": 0.00099,
+    "cost_usd_ci": [
+     0.0009,
+     0.0011
+    ],
+    "stance_share": {
+     "current": 0.9583,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0,
+     "abstained": 0.0,
+     "other": 0.0417
+    },
+    "correct_minus_none": 0.08333,
+    "correct_minus_none_ci": [
+     0.0,
+     0.2083
+    ],
+    "tool_calls_minus_none": -0.33333,
+    "tool_calls_minus_none_ci": [
+     -0.7083,
+     0.0833
+    ],
+    "cost_usd_minus_none": 1e-05,
+    "cost_usd_minus_none_ci": [
+     -0.0001,
      0.0001
     ]
    }
@@ -1574,13 +3434,13 @@
     "outdated": 0.0,
     "tool_calls": 4.91667,
     "tool_calls_ci": [
-     4.0625,
-     5.7917
+     4.1042,
+     5.8333
     ],
     "prompt_tokens": 45342.64583,
     "prompt_tokens_ci": [
-     37869.0417,
-     53690.7083
+     37703.0833,
+     53857.2292
     ],
     "output_tokens": 876.66667,
     "cost_usd": 0.00186,
@@ -1602,7 +3462,7 @@
     ],
     "tool_calls_minus_none": -0.27083,
     "tool_calls_minus_none_ci": [
-     -0.8958,
+     -0.875,
      0.2917
     ],
     "cost_usd_minus_none": 0.00051,
@@ -1622,13 +3482,13 @@
     "outdated": 0.0,
     "tool_calls": 4.66667,
     "tool_calls_ci": [
-     3.4167,
-     6.125
+     3.375,
+     6.0417
     ],
     "prompt_tokens": 44306.16667,
     "prompt_tokens_ci": [
-     32818.5417,
-     57132.9583
+     32411.3333,
+     57501.5833
     ],
     "output_tokens": 834.20833,
     "cost_usd": 0.00184,
@@ -1643,8 +3503,8 @@
     ],
     "tool_calls_minus_none": -0.20833,
     "tool_calls_minus_none_ci": [
-     -0.9167,
-     0.5
+     -0.9583,
+     0.4583
     ],
     "cost_usd_minus_none": 0.00047,
     "cost_usd_minus_none_ci": [
@@ -1664,12 +3524,12 @@
     "tool_calls": 5.16667,
     "tool_calls_ci": [
      4.1667,
-     6.2917
+     6.25
     ],
     "prompt_tokens": 46379.125,
     "prompt_tokens_ci": [
-     37091.2083,
-     56586.7917
+     37283.3333,
+     57129.4583
     ],
     "output_tokens": 919.125,
     "cost_usd": 0.00189,
@@ -1697,7 +3557,7 @@
     "cost_usd_minus_none": 0.00054,
     "cost_usd_minus_none_ci": [
      0.0003,
-     0.0008
+     0.0007
     ]
    },
    "decision": {
@@ -1716,8 +3576,8 @@
     ],
     "prompt_tokens": 16575.125,
     "prompt_tokens_ci": [
-     13113.3333,
-     20122.3333
+     13217.25,
+     20108.125
     ],
     "output_tokens": 536.29167,
     "cost_usd": 0.0009,
@@ -1732,8 +3592,8 @@
     ],
     "tool_calls_minus_none": -4.29167,
     "tool_calls_minus_none_ci": [
-     -5.2083,
-     -3.3333
+     -5.25,
+     -3.375
     ],
     "cost_usd_minus_none": -0.00034,
     "cost_usd_minus_none_ci": [
@@ -1755,12 +3615,12 @@
     "tool_calls": 3.9375,
     "tool_calls_ci": [
      3.4792,
-     4.4167
+     4.4375
     ],
     "prompt_tokens": 57824.54167,
     "prompt_tokens_ci": [
-     51597.8333,
-     64849.2083
+     51487.5208,
+     64572.0625
     ],
     "output_tokens": 769.10417,
     "cost_usd": 0.00208,
@@ -1778,12 +3638,12 @@
     "correct_minus_none": 0.02083,
     "correct_minus_none_ci": [
      -0.0417,
-     0.1042
+     0.0833
     ],
     "tool_calls_minus_none": -1.25,
     "tool_calls_minus_none_ci": [
-     -1.9792,
-     -0.5417
+     -1.9583,
+     -0.5208
     ],
     "cost_usd_minus_none": 0.00072,
     "cost_usd_minus_none_ci": [
@@ -1803,12 +3663,12 @@
     "tool_calls": 4.25,
     "tool_calls_ci": [
      3.5417,
-     5.0833
+     5.0417
     ],
     "prompt_tokens": 63470.58333,
     "prompt_tokens_ci": [
-     56040.1667,
-     72649.4583
+     56178.5,
+     72261.7917
     ],
     "output_tokens": 785.5,
     "cost_usd": 0.00214,
@@ -1823,8 +3683,8 @@
     ],
     "tool_calls_minus_none": -0.625,
     "tool_calls_minus_none_ci": [
-     -1.625,
-     0.2917
+     -1.5833,
+     0.3333
     ],
     "cost_usd_minus_none": 0.00078,
     "cost_usd_minus_none_ci": [
@@ -1848,13 +3708,13 @@
     ],
     "prompt_tokens": 52178.5,
     "prompt_tokens_ci": [
-     43383.6667,
-     61650.4167
+     43925.0,
+     61516.7917
     ],
     "output_tokens": 752.70833,
     "cost_usd": 0.00201,
     "cost_usd_ci": [
-     0.0019,
+     0.0018,
      0.0022
     ],
     "stance_share": {
@@ -1871,8 +3731,8 @@
     ],
     "tool_calls_minus_none": -1.875,
     "tool_calls_minus_none_ci": [
-     -2.875,
-     -0.9167
+     -2.9167,
+     -0.875
     ],
     "cost_usd_minus_none": 0.00067,
     "cost_usd_minus_none_ci": [
@@ -1896,8 +3756,8 @@
     ],
     "prompt_tokens": 27353.91667,
     "prompt_tokens_ci": [
-     22697.5833,
-     33243.75
+     22679.75,
+     33273.6667
     ],
     "output_tokens": 569.54167,
     "cost_usd": 0.00137,
@@ -1912,8 +3772,8 @@
     ],
     "tool_calls_minus_none": -4.41667,
     "tool_calls_minus_none_ci": [
-     -5.2917,
-     -3.6667
+     -5.3333,
+     -3.5833
     ],
     "cost_usd_minus_none": 0.00014,
     "cost_usd_minus_none_ci": [
@@ -1935,12 +3795,12 @@
     "tool_calls": 4.29167,
     "tool_calls_ci": [
      3.75,
-     5.0417
+     5.0
     ],
     "prompt_tokens": 64354.54167,
     "prompt_tokens_ci": [
-     57405.5208,
-     72887.3958
+     57286.9792,
+     72606.9167
     ],
     "output_tokens": 826.75,
     "cost_usd": 0.00219,
@@ -1963,7 +3823,7 @@
     "tool_calls_minus_none": -0.89583,
     "tool_calls_minus_none_ci": [
      -1.5625,
-     -0.2292
+     -0.25
     ],
     "cost_usd_minus_none": 0.00083,
     "cost_usd_minus_none_ci": [
@@ -1987,13 +3847,13 @@
     ],
     "prompt_tokens": 70181.875,
     "prompt_tokens_ci": [
-     57492.7083,
-     85007.5833
+     58527.1667,
+     84502.5
     ],
     "output_tokens": 818.33333,
     "cost_usd": 0.00225,
     "cost_usd_ci": [
-     0.0019,
+     0.002,
      0.0026
     ],
     "correct_minus_none": 0.04167,
@@ -2008,7 +3868,7 @@
     ],
     "cost_usd_minus_none": 0.00088,
     "cost_usd_minus_none_ci": [
-     0.0006,
+     0.0007,
      0.0011
     ]
    },
@@ -2028,8 +3888,8 @@
     ],
     "prompt_tokens": 58527.20833,
     "prompt_tokens_ci": [
-     53081.2917,
-     65419.3333
+     53072.25,
+     65514.875
     ],
     "output_tokens": 835.16667,
     "cost_usd": 0.00213,
@@ -2051,8 +3911,8 @@
     ],
     "tool_calls_minus_none": -1.5,
     "tool_calls_minus_none_ci": [
-     -2.375,
-     -0.5
+     -2.4583,
+     -0.5417
     ],
     "cost_usd_minus_none": 0.00079,
     "cost_usd_minus_none_ci": [
@@ -2072,18 +3932,18 @@
     "tool_calls": 0.95833,
     "tool_calls_ci": [
      0.4167,
-     1.625
+     1.6667
     ],
     "prompt_tokens": 26268.45833,
     "prompt_tokens_ci": [
-     18592.5417,
-     35903.5417
+     18458.3333,
+     36145.25
     ],
     "output_tokens": 562.125,
     "cost_usd": 0.00136,
     "cost_usd_ci": [
      0.0012,
-     0.0015
+     0.0016
     ],
     "correct_minus_none": 0.95833,
     "correct_minus_none_ci": [
@@ -2093,11 +3953,11 @@
     "tool_calls_minus_none": -4.79167,
     "tool_calls_minus_none_ci": [
      -5.7917,
-     -3.875
+     -3.9167
     ],
     "cost_usd_minus_none": 0.00013,
     "cost_usd_minus_none_ci": [
-     -0.0001,
+     -0.0002,
      0.0003
     ]
    }
@@ -2114,18 +3974,18 @@
     "outdated": 0.0,
     "tool_calls": 4.35417,
     "tool_calls_ci": [
-     3.625,
-     5.1042
+     3.5417,
+     5.1458
     ],
     "prompt_tokens": 71073.58333,
     "prompt_tokens_ci": [
-     63198.4792,
-     79339.8542
+     63052.5417,
+     78993.25
     ],
     "output_tokens": 888.875,
     "cost_usd": 0.00269,
     "cost_usd_ci": [
-     0.0025,
+     0.0024,
      0.0029
     ],
     "stance_share": {
@@ -2143,7 +4003,7 @@
     "tool_calls_minus_none": -0.83333,
     "tool_calls_minus_none_ci": [
      -1.6042,
-     -0.1042
+     -0.0625
     ],
     "cost_usd_minus_none": 0.00133,
     "cost_usd_minus_none_ci": [
@@ -2167,8 +4027,8 @@
     ],
     "prompt_tokens": 64554.75,
     "prompt_tokens_ci": [
-     54843.625,
-     75976.3333
+     54247.7917,
+     74989.5417
     ],
     "output_tokens": 764.95833,
     "cost_usd": 0.0025,
@@ -2183,7 +4043,7 @@
     ],
     "tool_calls_minus_none": -1.20833,
     "tool_calls_minus_none_ci": [
-     -2.375,
+     -2.3333,
      -0.0833
     ],
     "cost_usd_minus_none": 0.00114,
@@ -2203,13 +4063,13 @@
     "outdated": 0.0,
     "tool_calls": 5.04167,
     "tool_calls_ci": [
-     3.8333,
-     6.125
+     3.9167,
+     6.1667
     ],
     "prompt_tokens": 77592.41667,
     "prompt_tokens_ci": [
-     66659.1667,
-     88706.375
+     66475.4583,
+     88160.875
     ],
     "output_tokens": 1012.79167,
     "cost_usd": 0.00287,
@@ -2231,7 +4091,7 @@
     ],
     "tool_calls_minus_none": -0.45833,
     "tool_calls_minus_none_ci": [
-     -1.4583,
+     -1.5,
      0.5
     ],
     "cost_usd_minus_none": 0.00153,
@@ -2256,8 +4116,8 @@
     ],
     "prompt_tokens": 36503.5,
     "prompt_tokens_ci": [
-     29961.8333,
-     42670.125
+     30146.4167,
+     42864.4583
     ],
     "output_tokens": 529.91667,
     "cost_usd": 0.00173,
@@ -2272,12 +4132,12 @@
     ],
     "tool_calls_minus_none": -4.58333,
     "tool_calls_minus_none_ci": [
-     -5.7917,
-     -3.5417
+     -5.75,
+     -3.5
     ],
     "cost_usd_minus_none": 0.0005,
     "cost_usd_minus_none_ci": [
-     0.0003,
+     0.0002,
      0.0007
     ]
    }
@@ -2295,12 +4155,12 @@
     "tool_calls": 4.25,
     "tool_calls_ci": [
      3.5417,
-     4.9375
+     4.9583
     ],
     "prompt_tokens": 64359.9375,
     "prompt_tokens_ci": [
-     56421.7292,
-     73118.4167
+     55694.3958,
+     73335.2708
     ],
     "output_tokens": 857.22917,
     "cost_usd": 0.00253,
@@ -2322,8 +4182,8 @@
     ],
     "tool_calls_minus_none": -0.9375,
     "tool_calls_minus_none_ci": [
-     -1.625,
-     -0.3542
+     -1.5833,
+     -0.2917
     ],
     "cost_usd_minus_none": 0.00117,
     "cost_usd_minus_none_ci": [
@@ -2347,8 +4207,8 @@
     ],
     "prompt_tokens": 55863.20833,
     "prompt_tokens_ci": [
-     46479.0,
-     65815.875
+     46740.5833,
+     65244.0417
     ],
     "output_tokens": 765.20833,
     "cost_usd": 0.00231,
@@ -2363,8 +4223,8 @@
     ],
     "tool_calls_minus_none": -1.16667,
     "tool_calls_minus_none_ci": [
-     -2.2083,
-     -0.25
+     -2.1667,
+     -0.2083
     ],
     "cost_usd_minus_none": 0.00095,
     "cost_usd_minus_none_ci": [
@@ -2388,8 +4248,8 @@
     ],
     "prompt_tokens": 72856.66667,
     "prompt_tokens_ci": [
-     60651.75,
-     86410.2917
+     60874.3333,
+     86408.9167
     ],
     "output_tokens": 949.25,
     "cost_usd": 0.00274,
@@ -2431,13 +4291,13 @@
     "outdated": 0.0,
     "tool_calls": 1.08333,
     "tool_calls_ci": [
-     0.5833,
-     1.5417
+     0.625,
+     1.5833
     ],
     "prompt_tokens": 32279.79167,
     "prompt_tokens_ci": [
-     24992.1667,
-     39617.9583
+     25290.7083,
+     40027.25
     ],
     "output_tokens": 503.16667,
     "cost_usd": 0.00155,
@@ -2452,8 +4312,8 @@
     ],
     "tool_calls_minus_none": -4.66667,
     "tool_calls_minus_none_ci": [
-     -5.6667,
-     -3.6667
+     -5.625,
+     -3.625
     ],
     "cost_usd_minus_none": 0.00032,
     "cost_usd_minus_none_ci": [
@@ -2468,19 +4328,19 @@
     "runs": 48,
     "correct": 0.9375,
     "correct_ci": [
-     0.8542,
+     0.875,
      1.0
     ],
     "outdated": 0.0,
     "tool_calls": 5.1875,
     "tool_calls_ci": [
-     4.4167,
-     6.0208
+     4.375,
+     5.9792
     ],
     "prompt_tokens": 21842.85417,
     "prompt_tokens_ci": [
-     17076.3958,
-     27207.5208
+     17156.7292,
+     27069.4792
     ],
     "output_tokens": 872.64583,
     "cost_usd": 0.00135,
@@ -2508,12 +4368,12 @@
     "tool_calls": 4.875,
     "tool_calls_ci": [
      3.7083,
-     6.2083
+     6.25
     ],
     "prompt_tokens": 22915.0,
     "prompt_tokens_ci": [
-     14660.875,
-     32207.75
+     14665.8333,
+     31948.7083
     ],
     "output_tokens": 830.875,
     "cost_usd": 0.00137,
@@ -2534,12 +4394,12 @@
     "tool_calls": 5.5,
     "tool_calls_ci": [
      4.5417,
-     6.5
+     6.4583
     ],
     "prompt_tokens": 20770.70833,
     "prompt_tokens_ci": [
-     16344.25,
-     25623.6667
+     16235.2917,
+     25704.0833
     ],
     "output_tokens": 914.41667,
     "cost_usd": 0.00134,
@@ -2566,13 +4426,13 @@
     "outdated": 0.0,
     "tool_calls": 5.75,
     "tool_calls_ci": [
-     4.7083,
+     4.6667,
      6.9167
     ],
     "prompt_tokens": 16926.5,
     "prompt_tokens_ci": [
-     12088.0417,
-     22021.6667
+     12149.5,
+     22152.875
     ],
     "output_tokens": 937.25,
     "cost_usd": 0.00124,
@@ -2594,18 +4454,18 @@
     "outdated": 0.0,
     "tool_calls": 5.1875,
     "tool_calls_ci": [
-     4.3958,
+     4.375,
      6.1458
     ],
     "prompt_tokens": 75443.10417,
     "prompt_tokens_ci": [
-     63556.0208,
-     89007.8542
+     63907.2708,
+     89265.8125
     ],
     "output_tokens": 980.77083,
     "cost_usd": 0.00248,
     "cost_usd_ci": [
-     0.0023,
+     0.0022,
      0.0027
     ],
     "stance_share": {
@@ -2622,13 +4482,13 @@
     ],
     "tool_calls_minus_none": 0.0,
     "tool_calls_minus_none_ci": [
-     -0.7708,
-     0.8542
+     -0.75,
+     0.875
     ],
     "cost_usd_minus_none": 0.00113,
     "cost_usd_minus_none_ci": [
      0.0009,
-     0.0014
+     0.0013
     ]
    },
    "stable": {
@@ -2647,8 +4507,8 @@
     ],
     "prompt_tokens": 68700.91667,
     "prompt_tokens_ci": [
-     54643.5833,
-     86718.4583
+     54711.125,
+     87596.3333
     ],
     "output_tokens": 830.5,
     "cost_usd": 0.00227,
@@ -2664,7 +4524,7 @@
     "tool_calls_minus_none": -0.45833,
     "tool_calls_minus_none_ci": [
      -1.5833,
-     0.7917
+     0.8333
     ],
     "cost_usd_minus_none": 0.00091,
     "cost_usd_minus_none_ci": [
@@ -2688,8 +4548,8 @@
     ],
     "prompt_tokens": 82185.29167,
     "prompt_tokens_ci": [
-     65058.0417,
-     102050.875
+     65982.5,
+     102073.7917
     ],
     "output_tokens": 1131.04167,
     "cost_usd": 0.00269,
@@ -2711,8 +4571,8 @@
     ],
     "tool_calls_minus_none": 0.45833,
     "tool_calls_minus_none_ci": [
-     -0.4583,
-     1.5833
+     -0.5417,
+     1.625
     ],
     "cost_usd_minus_none": 0.00134,
     "cost_usd_minus_none_ci": [
@@ -2731,13 +4591,13 @@
     "outdated": 0.0,
     "tool_calls": 1.20833,
     "tool_calls_ci": [
-     0.625,
-     1.9167
+     0.6667,
+     1.875
     ],
     "prompt_tokens": 30152.375,
     "prompt_tokens_ci": [
-     22867.4167,
-     38297.375
+     22428.9167,
+     38392.9583
     ],
     "output_tokens": 606.91667,
     "cost_usd": 0.00151,
@@ -2774,13 +4634,13 @@
     "outdated": 0.0,
     "tool_calls": 5.14583,
     "tool_calls_ci": [
-     4.4792,
-     5.8542
+     4.5,
+     5.9167
     ],
     "prompt_tokens": 76699.89583,
     "prompt_tokens_ci": [
-     67656.0833,
-     87619.5417
+     67832.1875,
+     87402.8125
     ],
     "output_tokens": 983.64583,
     "cost_usd": 0.00254,
@@ -2802,7 +4662,7 @@
     ],
     "tool_calls_minus_none": -0.04167,
     "tool_calls_minus_none_ci": [
-     -0.8333,
+     -0.7917,
      0.7083
     ],
     "cost_usd_minus_none": 0.00119,
@@ -2823,12 +4683,12 @@
     "tool_calls": 4.54167,
     "tool_calls_ci": [
      3.7917,
-     5.4167
+     5.4583
     ],
     "prompt_tokens": 72718.0,
     "prompt_tokens_ci": [
-     62778.9583,
-     86007.7917
+     63083.25,
+     87078.5
     ],
     "output_tokens": 865.125,
     "cost_usd": 0.00238,
@@ -2843,8 +4703,8 @@
     ],
     "tool_calls_minus_none": -0.33333,
     "tool_calls_minus_none_ci": [
-     -1.375,
-     0.6667
+     -1.3333,
+     0.625
     ],
     "cost_usd_minus_none": 0.00101,
     "cost_usd_minus_none_ci": [
@@ -2864,12 +4724,12 @@
     "tool_calls": 5.75,
     "tool_calls_ci": [
      4.7917,
-     6.8333
+     6.875
     ],
     "prompt_tokens": 80681.79167,
     "prompt_tokens_ci": [
-     67431.75,
-     96173.125
+     67135.375,
+     96836.3333
     ],
     "output_tokens": 1102.16667,
     "cost_usd": 0.0027,
@@ -2891,8 +4751,8 @@
     ],
     "tool_calls_minus_none": 0.25,
     "tool_calls_minus_none_ci": [
-     -0.9167,
-     1.3333
+     -0.875,
+     1.2917
     ],
     "cost_usd_minus_none": 0.00136,
     "cost_usd_minus_none_ci": [
@@ -2911,13 +4771,13 @@
     "outdated": 0.0,
     "tool_calls": 1.41667,
     "tool_calls_ci": [
-     0.5833,
-     2.4167
+     0.625,
+     2.4583
     ],
     "prompt_tokens": 31976.0,
     "prompt_tokens_ci": [
-     21703.5833,
-     43837.3333
+     22452.2917,
+     43701.0417
     ],
     "output_tokens": 609.70833,
     "cost_usd": 0.00155,
@@ -2932,7 +4792,7 @@
     ],
     "tool_calls_minus_none": -4.33333,
     "tool_calls_minus_none_ci": [
-     -5.2917,
+     -5.25,
      -3.6667
     ],
     "cost_usd_minus_none": 0.00031,
@@ -2948,19 +4808,19 @@
     "runs": 48,
     "correct": 0.9375,
     "correct_ci": [
-     0.875,
+     0.8542,
      1.0
     ],
     "outdated": 0.02083,
     "tool_calls": 5.77083,
     "tool_calls_ci": [
-     5.0,
-     6.6042
+     4.9583,
+     6.5833
     ],
     "prompt_tokens": 90302.75,
     "prompt_tokens_ci": [
-     78301.375,
-     103094.4375
+     77910.8333,
+     103639.3125
     ],
     "output_tokens": 1066.39583,
     "cost_usd": 0.00286,
@@ -2983,7 +4843,7 @@
     "tool_calls_minus_none": 0.58333,
     "tool_calls_minus_none_ci": [
      -0.0208,
-     1.1667
+     1.2083
     ],
     "cost_usd_minus_none": 0.00151,
     "cost_usd_minus_none_ci": [
@@ -3002,19 +4862,19 @@
     "outdated": 0.0,
     "tool_calls": 5.20833,
     "tool_calls_ci": [
-     4.1667,
-     6.4167
+     4.125,
+     6.375
     ],
     "prompt_tokens": 87467.83333,
     "prompt_tokens_ci": [
-     71731.0833,
-     104676.9583
+     71748.25,
+     104653.2083
     ],
     "output_tokens": 973.20833,
     "cost_usd": 0.00274,
     "cost_usd_ci": [
      0.0024,
-     0.0032
+     0.0031
     ],
     "correct_minus_none": 0.04167,
     "correct_minus_none_ci": [
@@ -3043,19 +4903,19 @@
     "outdated": 0.04167,
     "tool_calls": 6.33333,
     "tool_calls_ci": [
-     5.3333,
-     7.5
+     5.375,
+     7.5833
     ],
     "prompt_tokens": 93137.66667,
     "prompt_tokens_ci": [
-     75848.3333,
-     114526.875
+     76032.5417,
+     113322.8333
     ],
     "output_tokens": 1159.58333,
     "cost_usd": 0.00298,
     "cost_usd_ci": [
      0.0027,
-     0.0034
+     0.0033
     ],
     "stance_share": {
      "current": 0.9583,
@@ -3072,7 +4932,7 @@
     "tool_calls_minus_none": 0.83333,
     "tool_calls_minus_none_ci": [
      -0.0417,
-     1.875
+     1.7917
     ],
     "cost_usd_minus_none": 0.00164,
     "cost_usd_minus_none_ci": [
@@ -3091,13 +4951,13 @@
     "outdated": 0.0,
     "tool_calls": 1.20833,
     "tool_calls_ci": [
-     0.4583,
-     2.2917
+     0.5,
+     2.3333
     ],
     "prompt_tokens": 32543.375,
     "prompt_tokens_ci": [
-     23275.0833,
-     45434.125
+     23033.25,
+     45278.2917
     ],
     "output_tokens": 596.95833,
     "cost_usd": 0.00166,
@@ -3130,7 +4990,7 @@
     "runs": 48,
     "correct": 0.77083,
     "correct_ci": [
-     0.6458,
+     0.625,
      0.8958
     ],
     "outdated": 0.0,
@@ -3141,8 +5001,8 @@
     ],
     "prompt_tokens": 36512.14583,
     "prompt_tokens_ci": [
-     33983.4167,
-     38804.4167
+     34156.3125,
+     38889.1875
     ],
     "output_tokens": 616.47917,
     "cost_usd": 0.00157,
@@ -3189,8 +5049,8 @@
     ],
     "prompt_tokens": 38369.16667,
     "prompt_tokens_ci": [
-     34964.75,
-     40941.75
+     34838.7083,
+     41058.2083
     ],
     "output_tokens": 553.83333,
     "cost_usd": 0.00155,
@@ -3226,12 +5086,12 @@
     "tool_calls": 2.16667,
     "tool_calls_ci": [
      2.0,
-     2.3333
+     2.375
     ],
     "prompt_tokens": 34655.125,
     "prompt_tokens_ci": [
-     31444.4167,
-     37742.9167
+     31240.5,
+     37960.7083
     ],
     "output_tokens": 679.125,
     "cost_usd": 0.00159,
@@ -3253,7 +5113,7 @@
     ],
     "tool_calls_minus_none": -0.04167,
     "tool_calls_minus_none_ci": [
-     -0.2917,
+     -0.25,
      0.1667
     ],
     "cost_usd_minus_none": 0.00098,
@@ -3280,8 +5140,8 @@
     ],
     "prompt_tokens": 34999.64583,
     "prompt_tokens_ci": [
-     32473.875,
-     37376.5
+     32479.5833,
+     37493.625
     ],
     "output_tokens": 627.10417,
     "cost_usd": 0.00157,
@@ -3299,11 +5159,11 @@
     "correct_minus_none": 0.41667,
     "correct_minus_none_ci": [
      0.1875,
-     0.625
+     0.6458
     ],
     "tool_calls_minus_none": -0.125,
     "tool_calls_minus_none_ci": [
-     -0.2708,
+     -0.3125,
      0.0417
     ],
     "cost_usd_minus_none": 0.00091,
@@ -3328,8 +5188,8 @@
     ],
     "prompt_tokens": 36377.83333,
     "prompt_tokens_ci": [
-     32684.9167,
-     39928.9167
+     32608.0833,
+     39700.9167
     ],
     "output_tokens": 591.66667,
     "cost_usd": 0.00156,
@@ -3345,7 +5205,7 @@
     "tool_calls_minus_none": -0.125,
     "tool_calls_minus_none_ci": [
      -0.375,
-     0.125
+     0.1667
     ],
     "cost_usd_minus_none": 0.00085,
     "cost_usd_minus_none_ci": [
@@ -3369,8 +5229,8 @@
     ],
     "prompt_tokens": 33621.45833,
     "prompt_tokens_ci": [
-     30569.3333,
-     36806.7083
+     30521.375,
+     36786.6667
     ],
     "output_tokens": 662.54167,
     "cost_usd": 0.00157,
@@ -3388,7 +5248,7 @@
     "correct_minus_none": 0.5,
     "correct_minus_none_ci": [
      0.2083,
-     0.7917
+     0.75
     ],
     "tool_calls_minus_none": -0.125,
     "tool_calls_minus_none_ci": [
@@ -3415,12 +5275,12 @@
     "tool_calls": 2.5625,
     "tool_calls_ci": [
      2.25,
-     2.9167
+     2.875
     ],
     "prompt_tokens": 47762.25,
     "prompt_tokens_ci": [
-     43997.4167,
-     51622.3333
+     44136.5208,
+     51690.3958
     ],
     "output_tokens": 699.27083,
     "cost_usd": 0.0022,
@@ -3437,13 +5297,13 @@
     },
     "correct_minus_none": 0.33333,
     "correct_minus_none_ci": [
-     0.1458,
+     0.125,
      0.5417
     ],
     "tool_calls_minus_none": 0.35417,
     "tool_calls_minus_none_ci": [
-     0.0417,
-     0.6875
+     0.0625,
+     0.6667
     ],
     "cost_usd_minus_none": 0.00154,
     "cost_usd_minus_none_ci": [
@@ -3456,19 +5316,19 @@
     "runs": 24,
     "correct": 0.625,
     "correct_ci": [
-     0.3333,
+     0.375,
      0.875
     ],
     "outdated": 0.0,
     "tool_calls": 2.45833,
     "tool_calls_ci": [
      2.0,
-     2.9167
+     3.0
     ],
     "prompt_tokens": 47496.91667,
     "prompt_tokens_ci": [
-     42250.0417,
-     52866.5
+     42244.3333,
+     52979.125
     ],
     "output_tokens": 651.20833,
     "cost_usd": 0.00214,
@@ -3479,12 +5339,12 @@
     "correct_minus_none": 0.29167,
     "correct_minus_none_ci": [
      0.0833,
-     0.5
+     0.5417
     ],
     "tool_calls_minus_none": 0.25,
     "tool_calls_minus_none_ci": [
      -0.1667,
-     0.7083
+     0.75
     ],
     "cost_usd_minus_none": 0.00143,
     "cost_usd_minus_none_ci": [
@@ -3503,13 +5363,13 @@
     "outdated": 0.0,
     "tool_calls": 2.66667,
     "tool_calls_ci": [
-     2.25,
+     2.2917,
      3.125
     ],
     "prompt_tokens": 48027.58333,
     "prompt_tokens_ci": [
-     42929.125,
-     53333.1667
+     43015.6667,
+     53182.2083
     ],
     "output_tokens": 747.33333,
     "cost_usd": 0.00227,
@@ -3532,7 +5392,7 @@
     "tool_calls_minus_none": 0.45833,
     "tool_calls_minus_none_ci": [
      0.0833,
-     0.9583
+     0.9167
     ],
     "cost_usd_minus_none": 0.00166,
     "cost_usd_minus_none_ci": [
@@ -3548,18 +5408,18 @@
     "correct": 0.3125,
     "correct_ci": [
      0.1458,
-     0.4792
+     0.5
     ],
     "outdated": 0.0,
     "tool_calls": 2.20833,
     "tool_calls_ci": [
-     2.0625,
-     2.3542
+     2.0833,
+     2.375
     ],
     "prompt_tokens": 6361.54167,
     "prompt_tokens_ci": [
-     5594.3958,
-     7074.6875
+     5585.4167,
+     7068.5833
     ],
     "output_tokens": 543.22917,
     "cost_usd": 0.00066,
@@ -3580,7 +5440,7 @@
     "runs": 24,
     "correct": 0.33333,
     "correct_ci": [
-     0.125,
+     0.0833,
      0.5833
     ],
     "outdated": 0.0,
@@ -3591,14 +5451,14 @@
     ],
     "prompt_tokens": 6716.08333,
     "prompt_tokens_ci": [
-     5776.7917,
-     7711.5
+     5735.0833,
+     7667.0417
     ],
     "output_tokens": 557.125,
     "cost_usd": 0.00071,
     "cost_usd_ci": [
      0.0006,
-     0.0009
+     0.0008
     ]
    },
    "changed": {
@@ -3606,7 +5466,7 @@
     "runs": 24,
     "correct": 0.29167,
     "correct_ci": [
-     0.0417,
+     0.0833,
      0.5417
     ],
     "outdated": 0.0,
@@ -3617,8 +5477,8 @@
     ],
     "prompt_tokens": 6007.0,
     "prompt_tokens_ci": [
-     4907.2917,
-     6956.6667
+     4812.625,
+     7018.9167
     ],
     "output_tokens": 529.33333,
     "cost_usd": 0.00061,
@@ -3641,19 +5501,19 @@
     "runs": 48,
     "correct": 0.45833,
     "correct_ci": [
-     0.2708,
+     0.25,
      0.6458
     ],
     "outdated": 0.22917,
     "tool_calls": 2.125,
     "tool_calls_ci": [
      2.0,
-     2.25
+     2.2917
     ],
     "prompt_tokens": 34528.3125,
     "prompt_tokens_ci": [
-     31861.0,
-     37361.6667
+     31987.4792,
+     37336.1458
     ],
     "output_tokens": 614.8125,
     "cost_usd": 0.0016,
@@ -3670,13 +5530,13 @@
     },
     "correct_minus_none": 0.14583,
     "correct_minus_none_ci": [
-     -0.0833,
-     0.3958
+     -0.1042,
+     0.375
     ],
     "tool_calls_minus_none": -0.08333,
     "tool_calls_minus_none_ci": [
      -0.2292,
-     0.0625
+     0.0417
     ],
     "cost_usd_minus_none": 0.00094,
     "cost_usd_minus_none_ci": [
@@ -3700,8 +5560,8 @@
     ],
     "prompt_tokens": 38406.125,
     "prompt_tokens_ci": [
-     34499.875,
-     41863.0
+     34689.125,
+     41866.2917
     ],
     "output_tokens": 559.75,
     "cost_usd": 0.00162,
@@ -3711,7 +5571,7 @@
     ],
     "correct_minus_none": 0.5,
     "correct_minus_none_ci": [
-     0.2917,
+     0.25,
      0.7083
     ],
     "tool_calls_minus_none": -0.125,
@@ -3741,8 +5601,8 @@
     ],
     "prompt_tokens": 30650.5,
     "prompt_tokens_ci": [
-     28425.7083,
-     34008.5
+     28446.3333,
+     33739.5833
     ],
     "output_tokens": 669.875,
     "cost_usd": 0.00157,
@@ -3791,8 +5651,8 @@
     ],
     "prompt_tokens": 36160.375,
     "prompt_tokens_ci": [
-     33304.1667,
-     39038.9375
+     33292.8333,
+     38849.2917
     ],
     "output_tokens": 650.10417,
     "cost_usd": 0.00166,
@@ -3809,13 +5669,13 @@
     },
     "correct_minus_none": 0.14583,
     "correct_minus_none_ci": [
-     -0.0417,
+     -0.0625,
      0.3333
     ],
     "tool_calls_minus_none": -0.04167,
     "tool_calls_minus_none_ci": [
      -0.2292,
-     0.1667
+     0.1458
     ],
     "cost_usd_minus_none": 0.001,
     "cost_usd_minus_none_ci": [
@@ -3839,8 +5699,8 @@
     ],
     "prompt_tokens": 38330.70833,
     "prompt_tokens_ci": [
-     34844.125,
-     41538.3333
+     34650.875,
+     41640.5
     ],
     "output_tokens": 598.375,
     "cost_usd": 0.00165,
@@ -3856,7 +5716,7 @@
     "tool_calls_minus_none": -0.16667,
     "tool_calls_minus_none_ci": [
      -0.375,
-     0.0
+     0.0417
     ],
     "cost_usd_minus_none": 0.00094,
     "cost_usd_minus_none_ci": [
@@ -3880,8 +5740,8 @@
     ],
     "prompt_tokens": 33990.04167,
     "prompt_tokens_ci": [
-     30048.375,
-     38382.3333
+     30096.25,
+     38704.5833
     ],
     "output_tokens": 701.83333,
     "cost_usd": 0.00167,
@@ -3919,19 +5779,19 @@
     "runs": 48,
     "correct": 0.39583,
     "correct_ci": [
-     0.25,
+     0.2292,
      0.5625
     ],
     "outdated": 0.22917,
     "tool_calls": 2.14583,
     "tool_calls_ci": [
-     2.0208,
+     2.0417,
      2.2917
     ],
     "prompt_tokens": 38436.22917,
     "prompt_tokens_ci": [
-     35686.5417,
-     41645.9375
+     35690.5625,
+     41242.8958
     ],
     "output_tokens": 679.33333,
     "cost_usd": 0.00174,
@@ -3953,8 +5813,8 @@
     ],
     "tool_calls_minus_none": -0.0625,
     "tool_calls_minus_none_ci": [
-     -0.25,
-     0.125
+     -0.2292,
+     0.1042
     ],
     "cost_usd_minus_none": 0.00108,
     "cost_usd_minus_none_ci": [
@@ -3967,19 +5827,19 @@
     "runs": 24,
     "correct": 0.70833,
     "correct_ci": [
-     0.5417,
+     0.5,
      0.875
     ],
     "outdated": 0.0,
     "tool_calls": 2.125,
     "tool_calls_ci": [
      2.0,
-     2.3333
+     2.2917
     ],
     "prompt_tokens": 42431.41667,
     "prompt_tokens_ci": [
-     38380.2083,
-     46093.2083
+     38402.9583,
+     46030.7917
     ],
     "output_tokens": 651.79167,
     "cost_usd": 0.00177,
@@ -4019,8 +5879,8 @@
     ],
     "prompt_tokens": 34441.04167,
     "prompt_tokens_ci": [
-     32210.9583,
-     37956.625
+     32271.0417,
+     37791.9583
     ],
     "output_tokens": 706.875,
     "cost_usd": 0.00171,
@@ -4038,12 +5898,12 @@
     "correct_minus_none": -0.20833,
     "correct_minus_none_ci": [
      -0.4583,
-     0.0417
+     0.0
     ],
     "tool_calls_minus_none": -0.04167,
     "tool_calls_minus_none_ci": [
      -0.2917,
-     0.2083
+     0.1667
     ],
     "cost_usd_minus_none": 0.0011,
     "cost_usd_minus_none_ci": [
@@ -4061,24 +5921,24 @@
     "correct": 0.70833,
     "correct_ci": [
      0.5417,
-     0.8542
+     0.875
     ],
     "outdated": 0.04167,
     "tool_calls": 2.0625,
     "tool_calls_ci": [
-     1.8542,
+     1.875,
      2.2708
     ],
     "prompt_tokens": 46853.60417,
     "prompt_tokens_ci": [
-     43317.6875,
-     50755.1458
+     43222.5833,
+     50750.9167
     ],
     "output_tokens": 681.29167,
     "cost_usd": 0.00215,
     "cost_usd_ci": [
      0.0021,
-     0.0022
+     0.0023
     ],
     "stance_share": {
      "current": 0.7083,
@@ -4108,19 +5968,19 @@
     "runs": 24,
     "correct": 0.75,
     "correct_ci": [
-     0.5417,
+     0.5,
      0.9583
     ],
     "outdated": 0.0,
     "tool_calls": 2.04167,
     "tool_calls_ci": [
-     1.6667,
+     1.7083,
      2.375
     ],
     "prompt_tokens": 48499.29167,
     "prompt_tokens_ci": [
-     42802.9167,
-     53834.625
+     43146.5833,
+     53941.0
     ],
     "output_tokens": 629.95833,
     "cost_usd": 0.00214,
@@ -4135,7 +5995,7 @@
     ],
     "tool_calls_minus_none": -0.20833,
     "tool_calls_minus_none_ci": [
-     -0.4583,
+     -0.5,
      0.0417
     ],
     "cost_usd_minus_none": 0.00141,
@@ -4150,7 +6010,7 @@
     "correct": 0.66667,
     "correct_ci": [
      0.4167,
-     0.9167
+     0.875
     ],
     "outdated": 0.08333,
     "tool_calls": 2.08333,
@@ -4160,8 +6020,8 @@
     ],
     "prompt_tokens": 45207.91667,
     "prompt_tokens_ci": [
-     40841.125,
-     49993.125
+     40772.0,
+     50323.1667
     ],
     "output_tokens": 732.625,
     "cost_usd": 0.00217,
@@ -4179,11 +6039,11 @@
     "correct_minus_none": 0.41667,
     "correct_minus_none_ci": [
      0.0417,
-     0.75
+     0.7083
     ],
     "tool_calls_minus_none": -0.16667,
     "tool_calls_minus_none_ci": [
-     -0.4583,
+     -0.4167,
      0.0833
     ],
     "cost_usd_minus_none": 0.00151,
@@ -4210,8 +6070,8 @@
     ],
     "prompt_tokens": 43491.16667,
     "prompt_tokens_ci": [
-     40737.0833,
-     46497.8958
+     40845.375,
+     46468.2083
     ],
     "output_tokens": 666.375,
     "cost_usd": 0.00208,
@@ -4258,8 +6118,8 @@
     ],
     "prompt_tokens": 42874.625,
     "prompt_tokens_ci": [
-     39034.1667,
-     47368.75
+     39031.7083,
+     47114.8333
     ],
     "output_tokens": 579.29167,
     "cost_usd": 0.00201,
@@ -4269,7 +6129,7 @@
     ],
     "correct_minus_none": 0.58333,
     "correct_minus_none_ci": [
-     0.375,
+     0.3333,
      0.7917
     ],
     "tool_calls_minus_none": -0.5,
@@ -4279,7 +6139,7 @@
     ],
     "cost_usd_minus_none": 0.00129,
     "cost_usd_minus_none_ci": [
-     0.0011,
+     0.0012,
      0.0014
     ]
    },
@@ -4299,8 +6159,8 @@
     ],
     "prompt_tokens": 44107.70833,
     "prompt_tokens_ci": [
-     40482.125,
-     48127.9583
+     40501.9583,
+     48353.25
     ],
     "output_tokens": 753.45833,
     "cost_usd": 0.00214,
@@ -4328,7 +6188,7 @@
     "cost_usd_minus_none": 0.00149,
     "cost_usd_minus_none_ci": [
      0.0013,
-     0.0017
+     0.0016
     ]
    }
   },
@@ -4339,7 +6199,7 @@
     "correct": 0.75,
     "correct_ci": [
      0.6042,
-     0.875
+     0.8958
     ],
     "outdated": 0.0,
     "tool_calls": 1.95833,
@@ -4349,8 +6209,8 @@
     ],
     "prompt_tokens": 50310.14583,
     "prompt_tokens_ci": [
-     47223.875,
-     53970.5625
+     47107.6042,
+     54070.9583
     ],
     "output_tokens": 657.29167,
     "cost_usd": 0.00237,
@@ -4367,13 +6227,13 @@
     },
     "correct_minus_none": 0.4375,
     "correct_minus_none_ci": [
-     0.2083,
+     0.2292,
      0.625
     ],
     "tool_calls_minus_none": -0.29167,
     "tool_calls_minus_none_ci": [
      -0.5625,
-     0.0
+     0.0208
     ],
     "cost_usd_minus_none": 0.00167,
     "cost_usd_minus_none_ci": [
@@ -4397,8 +6257,8 @@
     ],
     "prompt_tokens": 50564.0,
     "prompt_tokens_ci": [
-     45914.7083,
-     56293.3333
+     45923.8333,
+     56213.25
     ],
     "output_tokens": 562.875,
     "cost_usd": 0.0023,
@@ -4413,7 +6273,7 @@
     ],
     "tool_calls_minus_none": -0.58333,
     "tool_calls_minus_none_ci": [
-     -0.9167,
+     -0.875,
      -0.25
     ],
     "cost_usd_minus_none": 0.00157,
@@ -4428,18 +6288,18 @@
     "correct": 0.58333,
     "correct_ci": [
      0.375,
-     0.7917
+     0.75
     ],
     "outdated": 0.0,
     "tool_calls": 2.25,
     "tool_calls_ci": [
      1.875,
-     2.625
+     2.6667
     ],
     "prompt_tokens": 50056.29167,
     "prompt_tokens_ci": [
-     46395.5,
-     54858.1667
+     46220.875,
+     54516.4583
     ],
     "output_tokens": 751.70833,
     "cost_usd": 0.00244,
@@ -4457,17 +6317,17 @@
     "correct_minus_none": 0.33333,
     "correct_minus_none_ci": [
      0.0,
-     0.625
+     0.6667
     ],
     "tool_calls_minus_none": 0.0,
     "tool_calls_minus_none_ci": [
      -0.4167,
-     0.4167
+     0.375
     ],
     "cost_usd_minus_none": 0.00178,
     "cost_usd_minus_none_ci": [
      0.0016,
-     0.002
+     0.0019
     ]
    }
   },
@@ -4488,8 +6348,8 @@
     ],
     "prompt_tokens": 34420.10417,
     "prompt_tokens_ci": [
-     31331.5,
-     37538.4375
+     31613.3125,
+     37465.5833
     ],
     "output_tokens": 603.72917,
     "cost_usd": 0.00166,
@@ -4506,7 +6366,7 @@
     },
     "correct_minus_none": 0.5625,
     "correct_minus_none_ci": [
-     0.3542,
+     0.375,
      0.75
     ],
     "tool_calls_minus_none": -0.27083,
@@ -4516,7 +6376,7 @@
     ],
     "cost_usd_minus_none": 0.00096,
     "cost_usd_minus_none_ci": [
-     0.0009,
+     0.0008,
      0.0011
     ]
    },
@@ -4525,19 +6385,19 @@
     "runs": 24,
     "correct": 0.79167,
     "correct_ci": [
-     0.5833,
+     0.5417,
      1.0
     ],
     "outdated": 0.0,
     "tool_calls": 1.83333,
     "tool_calls_ci": [
-     1.4167,
+     1.5,
      2.25
     ],
     "prompt_tokens": 34257.45833,
     "prompt_tokens_ci": [
-     30114.3333,
-     38602.9583
+     30256.5,
+     38516.75
     ],
     "output_tokens": 544.70833,
     "cost_usd": 0.00159,
@@ -4548,12 +6408,12 @@
     "correct_minus_none": 0.41667,
     "correct_minus_none_ci": [
      0.2083,
-     0.6667
+     0.625
     ],
     "tool_calls_minus_none": -0.41667,
     "tool_calls_minus_none_ci": [
      -0.75,
-     -0.0833
+     -0.0417
     ],
     "cost_usd_minus_none": 0.00087,
     "cost_usd_minus_none_ci": [
@@ -4577,8 +6437,8 @@
     ],
     "prompt_tokens": 34582.75,
     "prompt_tokens_ci": [
-     30620.2917,
-     38628.0417
+     30634.7083,
+     38571.5417
     ],
     "output_tokens": 662.75,
     "cost_usd": 0.00172,
@@ -4622,13 +6482,13 @@
     "outdated": 0.0,
     "tool_calls": 1.85417,
     "tool_calls_ci": [
-     1.625,
+     1.6458,
      2.0625
     ],
     "prompt_tokens": 32057.02083,
     "prompt_tokens_ci": [
-     30194.875,
-     34089.2917
+     30215.4792,
+     34197.4167
     ],
     "output_tokens": 592.83333,
     "cost_usd": 0.0016,
@@ -4646,12 +6506,12 @@
     "correct_minus_none": 0.5,
     "correct_minus_none_ci": [
      0.2917,
-     0.6875
+     0.7083
     ],
     "tool_calls_minus_none": -0.39583,
     "tool_calls_minus_none_ci": [
      -0.625,
-     -0.1875
+     -0.1667
     ],
     "cost_usd_minus_none": 0.00091,
     "cost_usd_minus_none_ci": [
@@ -4670,13 +6530,13 @@
     "outdated": 0.0,
     "tool_calls": 1.70833,
     "tool_calls_ci": [
-     1.4167,
+     1.375,
      2.0
     ],
     "prompt_tokens": 30556.75,
     "prompt_tokens_ci": [
-     28828.25,
-     32390.6667
+     28853.125,
+     32460.3333
     ],
     "output_tokens": 546.54167,
     "cost_usd": 0.00153,
@@ -4716,8 +6576,8 @@
     ],
     "prompt_tokens": 33557.29167,
     "prompt_tokens_ci": [
-     30554.4583,
-     37132.0833
+     30585.4583,
+     37299.75
     ],
     "output_tokens": 639.125,
     "cost_usd": 0.00167,
@@ -4739,13 +6599,152 @@
     ],
     "tool_calls_minus_none": -0.25,
     "tool_calls_minus_none_ci": [
-     -0.5833,
+     -0.5417,
      0.0417
     ],
     "cost_usd_minus_none": 0.00101,
     "cost_usd_minus_none_ci": [
-     0.0009,
+     0.0008,
      0.0012
+    ]
+   }
+  },
+  "lines_docs": {
+   "structural": {
+    "questions": 24,
+    "runs": 48,
+    "correct": 0.79167,
+    "correct_ci": [
+     0.6458,
+     0.9167
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.16667,
+    "tool_calls_ci": [
+     2.0,
+     2.3333
+    ],
+    "prompt_tokens": 45482.08333,
+    "prompt_tokens_ci": [
+     42206.0833,
+     48844.9792
+    ],
+    "output_tokens": 605.5625,
+    "cost_usd": 0.00199,
+    "cost_usd_ci": [
+     0.0019,
+     0.0021
+    ],
+    "stance_share": {
+     "current": 0.875,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0833,
+     "abstained": 0.0417,
+     "other": 0.0
+    },
+    "correct_minus_none": 0.47917,
+    "correct_minus_none_ci": [
+     0.2917,
+     0.6458
+    ],
+    "tool_calls_minus_none": -0.08333,
+    "tool_calls_minus_none_ci": [
+     -0.2917,
+     0.1042
+    ],
+    "cost_usd_minus_none": 0.00129,
+    "cost_usd_minus_none_ci": [
+     0.0012,
+     0.0014
+    ]
+   },
+   "stable": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.70833,
+    "correct_ci": [
+     0.4583,
+     0.9167
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.04167,
+    "tool_calls_ci": [
+     1.75,
+     2.3333
+    ],
+    "prompt_tokens": 41000.54167,
+    "prompt_tokens_ci": [
+     37764.0417,
+     44553.2917
+    ],
+    "output_tokens": 573.625,
+    "cost_usd": 0.00188,
+    "cost_usd_ci": [
+     0.0018,
+     0.002
+    ],
+    "correct_minus_none": 0.33333,
+    "correct_minus_none_ci": [
+     0.125,
+     0.5417
+    ],
+    "tool_calls_minus_none": -0.20833,
+    "tool_calls_minus_none_ci": [
+     -0.5,
+     0.0833
+    ],
+    "cost_usd_minus_none": 0.00116,
+    "cost_usd_minus_none_ci": [
+     0.001,
+     0.0013
+    ]
+   },
+   "changed": {
+    "questions": 12,
+    "runs": 24,
+    "correct": 0.875,
+    "correct_ci": [
+     0.75,
+     1.0
+    ],
+    "outdated": 0.0,
+    "tool_calls": 2.29167,
+    "tool_calls_ci": [
+     2.0833,
+     2.5
+    ],
+    "prompt_tokens": 49963.625,
+    "prompt_tokens_ci": [
+     45330.4583,
+     54251.0833
+    ],
+    "output_tokens": 637.5,
+    "cost_usd": 0.00209,
+    "cost_usd_ci": [
+     0.002,
+     0.0022
+    ],
+    "stance_share": {
+     "current": 0.875,
+     "outdated_asserted": 0.0,
+     "outdated_with_doubt": 0.0833,
+     "abstained": 0.0417,
+     "other": 0.0
+    },
+    "correct_minus_none": 0.625,
+    "correct_minus_none_ci": [
+     0.4167,
+     0.8333
+    ],
+    "tool_calls_minus_none": 0.04167,
+    "tool_calls_minus_none_ci": [
+     -0.2083,
+     0.25
+    ],
+    "cost_usd_minus_none": 0.00143,
+    "cost_usd_minus_none_ci": [
+     0.0013,
+     0.0016
     ]
    }
   },
@@ -4756,7 +6755,7 @@
     "correct": 0.3125,
     "correct_ci": [
      0.1458,
-     0.5
+     0.4792
     ],
     "outdated": 0.02083,
     "tool_calls": 2.25,
@@ -4766,8 +6765,8 @@
     ],
     "prompt_tokens": 6543.04167,
     "prompt_tokens_ci": [
-     5716.1875,
-     7334.8542
+     5704.125,
+     7312.0
     ],
     "output_tokens": 560.75,
     "cost_usd": 0.00069,
@@ -4788,19 +6787,19 @@
     "runs": 24,
     "correct": 0.375,
     "correct_ci": [
-     0.1667,
+     0.125,
      0.625
     ],
     "outdated": 0.0,
     "tool_calls": 2.25,
     "tool_calls_ci": [
      2.0417,
-     2.5
+     2.4583
     ],
     "prompt_tokens": 6827.25,
     "prompt_tokens_ci": [
-     5854.3333,
-     7940.625
+     5848.7083,
+     7920.875
     ],
     "output_tokens": 560.08333,
     "cost_usd": 0.00073,
@@ -4825,8 +6824,8 @@
     ],
     "prompt_tokens": 6258.83333,
     "prompt_tokens_ci": [
-     5044.5833,
-     7327.6667
+     5018.2917,
+     7325.7083
     ],
     "output_tokens": 561.41667,
     "cost_usd": 0.00066,
@@ -4855,13 +6854,13 @@
     "outdated": 0.0,
     "tool_calls": 2.22917,
     "tool_calls_ci": [
-     1.9792,
-     2.5
+     2.0,
+     2.4792
     ],
     "prompt_tokens": 24507.5625,
     "prompt_tokens_ci": [
-     22484.5208,
-     26823.6458
+     22341.1458,
+     26775.1667
     ],
     "output_tokens": 668.4375,
     "cost_usd": 0.00143,
@@ -4879,12 +6878,12 @@
     "correct_minus_none": 0.29167,
     "correct_minus_none_ci": [
      0.0417,
-     0.5208
+     0.5
     ],
     "tool_calls_minus_none": -0.02083,
     "tool_calls_minus_none_ci": [
      -0.2917,
-     0.2708
+     0.2917
     ],
     "cost_usd_minus_none": 0.00074,
     "cost_usd_minus_none_ci": [
@@ -4903,13 +6902,13 @@
     "outdated": 0.0,
     "tool_calls": 1.95833,
     "tool_calls_ci": [
-     1.7917,
+     1.75,
      2.125
     ],
     "prompt_tokens": 23330.66667,
     "prompt_tokens_ci": [
-     20946.625,
-     26265.5
+     20958.375,
+     26196.5
     ],
     "output_tokens": 615.0,
     "cost_usd": 0.00134,
@@ -4920,7 +6919,7 @@
     "correct_minus_none": 0.16667,
     "correct_minus_none_ci": [
      -0.125,
-     0.4583
+     0.4167
     ],
     "tool_calls_minus_none": -0.29167,
     "tool_calls_minus_none_ci": [
@@ -4944,13 +6943,13 @@
     "outdated": 0.0,
     "tool_calls": 2.5,
     "tool_calls_ci": [
-     2.0833,
-     2.9583
+     2.0417,
+     2.9167
     ],
     "prompt_tokens": 25684.45833,
     "prompt_tokens_ci": [
-     22544.2083,
-     28828.2917
+     22413.5833,
+     28985.375
     ],
     "output_tokens": 721.875,
     "cost_usd": 0.00152,
@@ -4988,19 +6987,19 @@
     "runs": 48,
     "correct": 0.5,
     "correct_ci": [
-     0.3333,
+     0.3125,
      0.6875
     ],
     "outdated": 0.0,
     "tool_calls": 2.375,
     "tool_calls_ci": [
      2.0625,
-     2.75
+     2.7292
     ],
     "prompt_tokens": 23454.97917,
     "prompt_tokens_ci": [
-     21667.3333,
-     25427.2708
+     21726.1458,
+     25306.0833
     ],
     "output_tokens": 677.85417,
     "cost_usd": 0.00142,
@@ -5017,13 +7016,13 @@
     },
     "correct_minus_none": 0.1875,
     "correct_minus_none_ci": [
-     -0.1042,
+     -0.0833,
      0.4583
     ],
     "tool_calls_minus_none": 0.125,
     "tool_calls_minus_none_ci": [
      -0.2083,
-     0.5
+     0.5208
     ],
     "cost_usd_minus_none": 0.00073,
     "cost_usd_minus_none_ci": [
@@ -5047,8 +7046,8 @@
     ],
     "prompt_tokens": 23744.125,
     "prompt_tokens_ci": [
-     21767.875,
-     25907.5417
+     21811.4167,
+     25952.5833
     ],
     "output_tokens": 631.625,
     "cost_usd": 0.00139,
@@ -5059,7 +7058,7 @@
     "correct_minus_none": 0.125,
     "correct_minus_none_ci": [
      -0.2083,
-     0.4167
+     0.4583
     ],
     "tool_calls_minus_none": 0.0,
     "tool_calls_minus_none_ci": [
@@ -5084,12 +7083,12 @@
     "tool_calls": 2.5,
     "tool_calls_ci": [
      2.0,
-     3.0417
+     3.0833
     ],
     "prompt_tokens": 23165.83333,
     "prompt_tokens_ci": [
-     20415.1667,
-     26225.9167
+     20503.5417,
+     26268.4583
     ],
     "output_tokens": 724.08333,
     "cost_usd": 0.00145,
@@ -5106,13 +7105,13 @@
     },
     "correct_minus_none": 0.25,
     "correct_minus_none_ci": [
-     -0.1667,
-     0.625
+     -0.2083,
+     0.6667
     ],
     "tool_calls_minus_none": 0.25,
     "tool_calls_minus_none_ci": [
      -0.25,
-     0.9167
+     0.875
     ],
     "cost_usd_minus_none": 0.00079,
     "cost_usd_minus_none_ci": [
@@ -5138,8 +7137,8 @@
     ],
     "prompt_tokens": 35205.10417,
     "prompt_tokens_ci": [
-     32859.7708,
-     37943.3958
+     32646.3333,
+     37957.2083
     ],
     "output_tokens": 631.77083,
     "cost_usd": 0.00173,
@@ -5156,8 +7155,8 @@
     },
     "correct_minus_none": 0.375,
     "correct_minus_none_ci": [
-     0.125,
-     0.6042
+     0.1458,
+     0.625
     ],
     "tool_calls_minus_none": -0.20833,
     "tool_calls_minus_none_ci": [
@@ -5186,8 +7185,8 @@
     ],
     "prompt_tokens": 35974.375,
     "prompt_tokens_ci": [
-     32372.1667,
-     39637.4167
+     32309.3333,
+     40046.375
     ],
     "output_tokens": 546.70833,
     "cost_usd": 0.00168,
@@ -5223,12 +7222,12 @@
     "tool_calls": 2.125,
     "tool_calls_ci": [
      2.0,
-     2.3333
+     2.2917
     ],
     "prompt_tokens": 34435.83333,
     "prompt_tokens_ci": [
-     30756.8333,
-     38458.0833
+     30822.4167,
+     38309.875
     ],
     "output_tokens": 716.83333,
     "cost_usd": 0.00179,
@@ -5266,7 +7265,7 @@
     "runs": 48,
     "correct": 0.77083,
     "correct_ci": [
-     0.5833,
+     0.6042,
      0.9167
     ],
     "outdated": 0.02083,
@@ -5277,14 +7276,14 @@
     ],
     "prompt_tokens": 45064.125,
     "prompt_tokens_ci": [
-     42043.1875,
-     48409.75
+     41762.4375,
+     48428.5417
     ],
     "output_tokens": 694.66667,
     "cost_usd": 0.00214,
     "cost_usd_ci": [
      0.002,
-     0.0022
+     0.0023
     ],
     "stance_share": {
      "current": 0.7083,
@@ -5300,7 +7299,7 @@
     ],
     "tool_calls_minus_none": -0.02083,
     "tool_calls_minus_none_ci": [
-     -0.2708,
+     -0.2917,
      0.25
     ],
     "cost_usd_minus_none": 0.00145,
@@ -5320,13 +7319,13 @@
     "outdated": 0.0,
     "tool_calls": 2.08333,
     "tool_calls_ci": [
-     1.6667,
-     2.5
+     1.625,
+     2.5417
     ],
     "prompt_tokens": 45599.75,
     "prompt_tokens_ci": [
-     40975.5,
-     50765.1667
+     41198.75,
+     50628.3333
     ],
     "output_tokens": 631.75,
     "cost_usd": 0.00208,
@@ -5341,12 +7340,12 @@
     ],
     "tool_calls_minus_none": -0.16667,
     "tool_calls_minus_none_ci": [
-     -0.5,
+     -0.4583,
      0.125
     ],
     "cost_usd_minus_none": 0.00135,
     "cost_usd_minus_none_ci": [
-     0.0012,
+     0.0013,
      0.0015
     ]
    },
@@ -5366,14 +7365,14 @@
     ],
     "prompt_tokens": 44528.5,
     "prompt_tokens_ci": [
-     40334.125,
-     48822.9583
+     40423.7083,
+     48932.7083
     ],
     "output_tokens": 757.58333,
     "cost_usd": 0.0022,
     "cost_usd_ci": [
      0.0021,
-     0.0023
+     0.0024
     ],
     "stance_share": {
      "current": 0.7083,
@@ -5389,7 +7388,7 @@
     ],
     "tool_calls_minus_none": 0.125,
     "tool_calls_minus_none_ci": [
-     -0.2917,
+     -0.25,
      0.5417
     ],
     "cost_usd_minus_none": 0.00154,
@@ -5412,12 +7411,12 @@
     "tool_calls": 2.10417,
     "tool_calls_ci": [
      1.8958,
-     2.3333
+     2.3125
     ],
     "prompt_tokens": 35230.20833,
     "prompt_tokens_ci": [
-     32548.875,
-     38265.5208
+     32474.7292,
+     38301.2083
     ],
     "output_tokens": 629.70833,
     "cost_usd": 0.00175,
@@ -5460,12 +7459,12 @@
     "tool_calls": 1.95833,
     "tool_calls_ci": [
      1.625,
-     2.2917
+     2.3333
     ],
     "prompt_tokens": 36816.66667,
     "prompt_tokens_ci": [
-     32281.8333,
-     41740.25
+     32276.6667,
+     41460.3333
     ],
     "output_tokens": 564.95833,
     "cost_usd": 0.00173,
@@ -5480,7 +7479,7 @@
     ],
     "tool_calls_minus_none": -0.29167,
     "tool_calls_minus_none_ci": [
-     -0.5417,
+     -0.5,
      -0.0833
     ],
     "cost_usd_minus_none": 0.001,
@@ -5505,8 +7504,8 @@
     ],
     "prompt_tokens": 33643.75,
     "prompt_tokens_ci": [
-     30972.5833,
-     37090.8333
+     31004.0417,
+     36841.75
     ],
     "output_tokens": 694.45833,
     "cost_usd": 0.00178,
@@ -5545,23 +7544,23 @@
     "correct": 0.70833,
     "correct_ci": [
      0.5625,
-     0.8333
+     0.8542
     ],
     "outdated": 0.0625,
     "tool_calls": 2.125,
     "tool_calls_ci": [
      1.8958,
-     2.3542
+     2.375
     ],
     "prompt_tokens": 38065.02083,
     "prompt_tokens_ci": [
-     36081.1667,
-     40279.2292
+     36161.375,
+     40240.7083
     ],
     "output_tokens": 668.33333,
     "cost_usd": 0.00194,
     "cost_usd_ci": [
-     0.0019,
+     0.0018,
      0.002
     ],
     "stance_share": {
@@ -5573,7 +7572,7 @@
     },
     "correct_minus_none": 0.39583,
     "correct_minus_none_ci": [
-     0.1667,
+     0.1875,
      0.6042
     ],
     "tool_calls_minus_none": -0.125,
@@ -5603,8 +7602,8 @@
     ],
     "prompt_tokens": 40294.125,
     "prompt_tokens_ci": [
-     36924.5833,
-     44246.4167
+     36980.7083,
+     43854.75
     ],
     "output_tokens": 648.75,
     "cost_usd": 0.00196,
@@ -5620,7 +7619,7 @@
     "tool_calls_minus_none": -0.04167,
     "tool_calls_minus_none_ci": [
      -0.4583,
-     0.4583
+     0.4167
     ],
     "cost_usd_minus_none": 0.00123,
     "cost_usd_minus_none_ci": [
@@ -5633,7 +7632,7 @@
     "runs": 24,
     "correct": 0.58333,
     "correct_ci": [
-     0.375,
+     0.3333,
      0.7917
     ],
     "outdated": 0.125,
@@ -5644,8 +7643,8 @@
     ],
     "prompt_tokens": 35835.91667,
     "prompt_tokens_ci": [
-     34570.5,
-     37694.125
+     34593.7917,
+     37561.5417
     ],
     "output_tokens": 687.91667,
     "cost_usd": 0.00192,
@@ -5668,7 +7667,7 @@
     "tool_calls_minus_none": -0.20833,
     "tool_calls_minus_none_ci": [
      -0.4583,
-     0.0
+     0.0417
     ],
     "cost_usd_minus_none": 0.00126,
     "cost_usd_minus_none_ci": [
@@ -5685,19 +7684,19 @@
     "runs": 48,
     "correct": 0.85417,
     "correct_ci": [
-     0.7708,
+     0.75,
      0.9375
     ],
     "outdated": 0.0,
     "tool_calls": 3.3125,
     "tool_calls_ci": [
      2.8333,
-     3.7917
+     3.7708
     ],
     "prompt_tokens": 65457.25,
     "prompt_tokens_ci": [
-     59804.25,
-     71658.8542
+     59648.1667,
+     71509.9792
     ],
     "output_tokens": 783.375,
     "cost_usd": 0.00146,
@@ -5719,8 +7718,8 @@
     ],
     "tool_calls_minus_none": -0.75,
     "tool_calls_minus_none_ci": [
-     -1.1667,
-     -0.2917
+     -1.2083,
+     -0.3125
     ],
     "cost_usd_minus_none": 0.00043,
     "cost_usd_minus_none_ci": [
@@ -5744,8 +7743,8 @@
     ],
     "prompt_tokens": 62674.16667,
     "prompt_tokens_ci": [
-     53383.2917,
-     72738.75
+     52856.9583,
+     73260.2917
     ],
     "output_tokens": 679.04167,
     "cost_usd": 0.00134,
@@ -5761,7 +7760,7 @@
     "tool_calls_minus_none": -0.79167,
     "tool_calls_minus_none_ci": [
      -1.4583,
-     -0.0833
+     -0.0417
     ],
     "cost_usd_minus_none": 0.00035,
     "cost_usd_minus_none_ci": [
@@ -5780,13 +7779,13 @@
     "outdated": 0.0,
     "tool_calls": 3.70833,
     "tool_calls_ci": [
-     3.1667,
+     3.125,
      4.25
     ],
     "prompt_tokens": 68240.33333,
     "prompt_tokens_ci": [
-     61968.6667,
-     75926.9167
+     61758.25,
+     75226.375
     ],
     "output_tokens": 887.70833,
     "cost_usd": 0.00157,
@@ -5803,13 +7802,13 @@
     },
     "correct_minus_none": 0.04167,
     "correct_minus_none_ci": [
-     -0.1667,
+     -0.125,
      0.2083
     ],
     "tool_calls_minus_none": -0.70833,
     "tool_calls_minus_none_ci": [
-     -1.2083,
-     -0.1667
+     -1.1667,
+     -0.2083
     ],
     "cost_usd_minus_none": 0.0005,
     "cost_usd_minus_none_ci": [
@@ -5830,13 +7829,13 @@
     "outdated": 0.0,
     "tool_calls": 2.72917,
     "tool_calls_ci": [
-     2.2917,
-     3.1667
+     2.2708,
+     3.1875
     ],
     "prompt_tokens": 53315.58333,
     "prompt_tokens_ci": [
-     48537.7083,
-     58698.1875
+     48405.8125,
+     58553.0
     ],
     "output_tokens": 729.16667,
     "cost_usd": 0.00124,
@@ -5854,7 +7853,7 @@
     "correct_minus_none": 0.14583,
     "correct_minus_none_ci": [
      0.0,
-     0.3125
+     0.2917
     ],
     "tool_calls_minus_none": -1.33333,
     "tool_calls_minus_none_ci": [
@@ -5864,7 +7863,7 @@
     "cost_usd_minus_none": 0.00021,
     "cost_usd_minus_none_ci": [
      0.0001,
-     0.0004
+     0.0003
     ]
    },
    "stable": {
@@ -5879,12 +7878,12 @@
     "tool_calls": 2.16667,
     "tool_calls_ci": [
      1.7083,
-     2.625
+     2.6667
     ],
     "prompt_tokens": 49822.58333,
     "prompt_tokens_ci": [
-     44084.4167,
-     57357.6667
+     44326.625,
+     57089.2917
     ],
     "output_tokens": 582.375,
     "cost_usd": 0.00108,
@@ -5899,8 +7898,8 @@
     ],
     "tool_calls_minus_none": -1.54167,
     "tool_calls_minus_none_ci": [
-     -2.125,
-     -1.0
+     -2.0833,
+     -0.9583
     ],
     "cost_usd_minus_none": 9e-05,
     "cost_usd_minus_none_ci": [
@@ -5919,13 +7918,13 @@
     "outdated": 0.0,
     "tool_calls": 3.29167,
     "tool_calls_ci": [
-     2.625,
+     2.6667,
      3.875
     ],
     "prompt_tokens": 56808.58333,
     "prompt_tokens_ci": [
-     49637.6667,
-     64490.5
+     49723.0417,
+     64607.4167
     ],
     "output_tokens": 875.95833,
     "cost_usd": 0.00141,
@@ -5943,7 +7942,7 @@
     "correct_minus_none": 0.04167,
     "correct_minus_none_ci": [
      -0.125,
-     0.25
+     0.2083
     ],
     "tool_calls_minus_none": -1.125,
     "tool_calls_minus_none_ci": [
@@ -5952,7 +7951,7 @@
     ],
     "cost_usd_minus_none": 0.00033,
     "cost_usd_minus_none_ci": [
-     0.0001,
+     0.0002,
      0.0005
     ]
    }
@@ -5970,12 +7969,12 @@
     "tool_calls": 2.64583,
     "tool_calls_ci": [
      2.125,
-     3.1875
+     3.1667
     ],
     "prompt_tokens": 61001.75,
     "prompt_tokens_ci": [
-     55443.9583,
-     66723.5625
+     55733.0625,
+     66937.5417
     ],
     "output_tokens": 712.91667,
     "cost_usd": 0.0013,
@@ -5992,13 +7991,13 @@
     },
     "correct_minus_none": 0.16667,
     "correct_minus_none_ci": [
-     0.0,
-     0.3333
+     -0.0208,
+     0.3542
     ],
     "tool_calls_minus_none": -1.41667,
     "tool_calls_minus_none_ci": [
-     -1.8333,
-     -0.9792
+     -1.8542,
+     -1.0
     ],
     "cost_usd_minus_none": 0.00027,
     "cost_usd_minus_none_ci": [
@@ -6018,12 +8017,12 @@
     "tool_calls": 2.04167,
     "tool_calls_ci": [
      1.4583,
-     2.7083
+     2.6667
     ],
     "prompt_tokens": 56464.91667,
     "prompt_tokens_ci": [
-     50402.8333,
-     62863.9583
+     50354.6667,
+     62662.9167
     ],
     "output_tokens": 572.08333,
     "cost_usd": 0.0011,
@@ -6038,8 +8037,8 @@
     ],
     "tool_calls_minus_none": -1.66667,
     "tool_calls_minus_none_ci": [
-     -2.2083,
-     -1.1667
+     -2.1667,
+     -1.125
     ],
     "cost_usd_minus_none": 0.00011,
     "cost_usd_minus_none_ci": [
@@ -6058,13 +8057,13 @@
     "outdated": 0.0,
     "tool_calls": 3.25,
     "tool_calls_ci": [
-     2.5833,
-     3.9167
+     2.5417,
+     3.875
     ],
     "prompt_tokens": 65538.58333,
     "prompt_tokens_ci": [
-     57449.4167,
-     73851.7083
+     57244.0,
+     74536.0
     ],
     "output_tokens": 853.75,
     "cost_usd": 0.00149,
@@ -6087,7 +8086,7 @@
     "tool_calls_minus_none": -1.16667,
     "tool_calls_minus_none_ci": [
      -1.7917,
-     -0.5833
+     -0.5417
     ],
     "cost_usd_minus_none": 0.00042,
     "cost_usd_minus_none_ci": [
@@ -6108,13 +8107,13 @@
     "outdated": 0.0,
     "tool_calls": 2.58333,
     "tool_calls_ci": [
-     2.125,
-     3.0625
+     2.1042,
+     3.0417
     ],
     "prompt_tokens": 41132.39583,
     "prompt_tokens_ci": [
-     37528.6458,
-     44681.0
+     37362.9792,
+     44749.1042
     ],
     "output_tokens": 647.89583,
     "cost_usd": 0.00103,
@@ -6136,7 +8135,7 @@
     ],
     "tool_calls_minus_none": -1.47917,
     "tool_calls_minus_none_ci": [
-     -1.875,
+     -1.8958,
      -1.1042
     ],
     "cost_usd_minus_none": -1e-05,
@@ -6156,13 +8155,13 @@
     "outdated": 0.0,
     "tool_calls": 2.45833,
     "tool_calls_ci": [
-     1.7083,
+     1.75,
      3.1667
     ],
     "prompt_tokens": 40622.45833,
     "prompt_tokens_ci": [
-     34925.4167,
-     46235.7083
+     35048.5,
+     45816.5417
     ],
     "output_tokens": 608.375,
     "cost_usd": 0.00099,
@@ -6173,11 +8172,11 @@
     "correct_minus_none": 0.25,
     "correct_minus_none_ci": [
      0.0417,
-     0.5
+     0.4583
     ],
     "tool_calls_minus_none": -1.25,
     "tool_calls_minus_none_ci": [
-     -1.6667,
+     -1.7083,
      -0.875
     ],
     "cost_usd_minus_none": 0.0,
@@ -6198,12 +8197,12 @@
     "tool_calls": 2.70833,
     "tool_calls_ci": [
      2.125,
-     3.25
+     3.2917
     ],
     "prompt_tokens": 41642.33333,
     "prompt_tokens_ci": [
-     36649.875,
-     46078.6667
+     37180.6667,
+     46149.0833
     ],
     "output_tokens": 687.41667,
     "cost_usd": 0.00106,
@@ -6221,12 +8220,12 @@
     "correct_minus_none": 0.20833,
     "correct_minus_none_ci": [
      0.0417,
-     0.4167
+     0.375
     ],
     "tool_calls_minus_none": -1.70833,
     "tool_calls_minus_none_ci": [
      -2.375,
-     -1.0417
+     -1.0
     ],
     "cost_usd_minus_none": -2e-05,
     "cost_usd_minus_none_ci": [
@@ -6247,13 +8246,13 @@
     "outdated": 0.0,
     "tool_calls": 4.0625,
     "tool_calls_ci": [
-     3.6875,
+     3.7083,
      4.3958
     ],
     "prompt_tokens": 13659.14583,
     "prompt_tokens_ci": [
-     11621.0,
-     15632.9583
+     11648.1458,
+     15752.5
     ],
     "output_tokens": 802.39583,
     "cost_usd": 0.00103,
@@ -6274,19 +8273,19 @@
     "runs": 24,
     "correct": 0.70833,
     "correct_ci": [
-     0.5,
+     0.4583,
      0.9167
     ],
     "outdated": 0.0,
     "tool_calls": 3.70833,
     "tool_calls_ci": [
-     3.125,
-     4.25
+     3.0833,
+     4.2917
     ],
     "prompt_tokens": 13222.375,
     "prompt_tokens_ci": [
-     9970.0,
-     16404.2917
+     9961.6667,
+     16718.0833
     ],
     "output_tokens": 750.29167,
     "cost_usd": 0.00099,
@@ -6311,8 +8310,8 @@
     ],
     "prompt_tokens": 14095.91667,
     "prompt_tokens_ci": [
-     11730.2917,
-     16183.5833
+     11709.5833,
+     16252.0417
     ],
     "output_tokens": 854.5,
     "cost_usd": 0.00107,
@@ -6335,19 +8334,19 @@
     "runs": 48,
     "correct": 0.83333,
     "correct_ci": [
-     0.7083,
-     0.9375
+     0.6875,
+     0.9583
     ],
     "outdated": 0.0,
     "tool_calls": 3.47917,
     "tool_calls_ci": [
-     2.9792,
-     3.9167
+     3.0,
+     3.9375
     ],
     "prompt_tokens": 34890.08333,
     "prompt_tokens_ci": [
-     31543.7708,
-     38437.6667
+     31529.1875,
+     38527.1042
     ],
     "output_tokens": 801.3125,
     "cost_usd": 0.00122,
@@ -6369,7 +8368,7 @@
     ],
     "tool_calls_minus_none": -0.58333,
     "tool_calls_minus_none_ci": [
-     -0.9375,
+     -0.9792,
      -0.2292
     ],
     "cost_usd_minus_none": 0.00019,
@@ -6383,19 +8382,19 @@
     "runs": 24,
     "correct": 0.83333,
     "correct_ci": [
-     0.625,
-     1.0
+     0.6667,
+     0.9583
     ],
     "outdated": 0.0,
     "tool_calls": 3.125,
     "tool_calls_ci": [
-     2.5,
-     3.7083
+     2.4583,
+     3.75
     ],
     "prompt_tokens": 35322.625,
     "prompt_tokens_ci": [
-     30086.7917,
-     40636.9583
+     29982.625,
+     40570.4583
     ],
     "output_tokens": 721.875,
     "cost_usd": 0.00114,
@@ -6415,7 +8414,7 @@
     ],
     "cost_usd_minus_none": 0.00015,
     "cost_usd_minus_none_ci": [
-     0.0,
+     -0.0,
      0.0003
     ]
    },
@@ -6431,12 +8430,12 @@
     "tool_calls": 3.83333,
     "tool_calls_ci": [
      3.2083,
-     4.375
+     4.3333
     ],
     "prompt_tokens": 34457.54167,
     "prompt_tokens_ci": [
-     29914.2083,
-     38841.1667
+     30010.9583,
+     38955.4583
     ],
     "output_tokens": 880.75,
     "cost_usd": 0.0013,
@@ -6458,7 +8457,7 @@
     ],
     "tool_calls_minus_none": -0.58333,
     "tool_calls_minus_none_ci": [
-     -1.1667,
+     -1.2083,
      -0.0833
     ],
     "cost_usd_minus_none": 0.00022,
@@ -6475,18 +8474,18 @@
     "correct": 0.79167,
     "correct_ci": [
      0.625,
-     0.9167
+     0.9375
     ],
     "outdated": 0.0,
     "tool_calls": 3.375,
     "tool_calls_ci": [
-     2.875,
-     3.7917
+     2.8958,
+     3.8333
     ],
     "prompt_tokens": 33394.22917,
     "prompt_tokens_ci": [
-     29840.1042,
-     37568.125
+     29693.8125,
+     37502.1667
     ],
     "output_tokens": 765.0,
     "cost_usd": 0.00118,
@@ -6508,7 +8507,7 @@
     ],
     "tool_calls_minus_none": -0.6875,
     "tool_calls_minus_none_ci": [
-     -1.1042,
+     -1.0833,
      -0.3125
     ],
     "cost_usd_minus_none": 0.00015,
@@ -6533,8 +8532,8 @@
     ],
     "prompt_tokens": 34766.5,
     "prompt_tokens_ci": [
-     28426.3333,
-     41710.1667
+     28382.4583,
+     41652.25
     ],
     "output_tokens": 720.25,
     "cost_usd": 0.00116,
@@ -6544,8 +8543,8 @@
     ],
     "correct_minus_none": 0.04167,
     "correct_minus_none_ci": [
-     -0.2917,
-     0.3333
+     -0.25,
+     0.375
     ],
     "tool_calls_minus_none": -0.58333,
     "tool_calls_minus_none_ci": [
@@ -6569,13 +8568,13 @@
     "outdated": 0.0,
     "tool_calls": 3.625,
     "tool_calls_ci": [
-     3.0833,
+     3.0,
      4.125
     ],
     "prompt_tokens": 32021.95833,
     "prompt_tokens_ci": [
-     28580.75,
-     35596.2917
+     28705.75,
+     35447.0417
     ],
     "output_tokens": 809.75,
     "cost_usd": 0.00119,
@@ -6593,7 +8592,7 @@
     "correct_minus_none": 0.04167,
     "correct_minus_none_ci": [
      -0.2083,
-     0.25
+     0.2083
     ],
     "tool_calls_minus_none": -0.79167,
     "tool_calls_minus_none_ci": [
@@ -6603,7 +8602,7 @@
     "cost_usd_minus_none": 0.00012,
     "cost_usd_minus_none_ci": [
      -0.0,
-     0.0003
+     0.0002
     ]
    }
   },
@@ -6619,13 +8618,13 @@
     "outdated": 0.04167,
     "tool_calls": 3.1875,
     "tool_calls_ci": [
-     2.7292,
-     3.625
+     2.75,
+     3.6458
     ],
     "prompt_tokens": 48688.79167,
     "prompt_tokens_ci": [
-     44057.5417,
-     53281.5417
+     44249.2083,
+     53293.9167
     ],
     "output_tokens": 789.29167,
     "cost_usd": 0.00125,
@@ -6647,7 +8646,7 @@
     ],
     "tool_calls_minus_none": -0.875,
     "tool_calls_minus_none_ci": [
-     -1.3333,
+     -1.3125,
      -0.3958
     ],
     "cost_usd_minus_none": 0.00022,
@@ -6667,13 +8666,13 @@
     "outdated": 0.0,
     "tool_calls": 2.66667,
     "tool_calls_ci": [
-     2.0,
+     1.9583,
      3.3333
     ],
     "prompt_tokens": 45609.91667,
     "prompt_tokens_ci": [
-     38359.8333,
-     53977.2917
+     38168.25,
+     53539.75
     ],
     "output_tokens": 675.45833,
     "cost_usd": 0.00112,
@@ -6683,7 +8682,7 @@
     ],
     "correct_minus_none": 0.20833,
     "correct_minus_none_ci": [
-     -0.0417,
+     0.0,
      0.4583
     ],
     "tool_calls_minus_none": -1.04167,
@@ -6713,8 +8712,8 @@
     ],
     "prompt_tokens": 51767.66667,
     "prompt_tokens_ci": [
-     47267.25,
-     56520.5
+     47172.0,
+     56382.5417
     ],
     "output_tokens": 903.125,
     "cost_usd": 0.00139,
@@ -6741,7 +8740,7 @@
     ],
     "cost_usd_minus_none": 0.00032,
     "cost_usd_minus_none_ci": [
-     0.0002,
+     0.0001,
      0.0005
     ]
    }
@@ -6752,25 +8751,25 @@
     "runs": 48,
     "correct": 0.875,
     "correct_ci": [
-     0.7292,
+     0.75,
      0.9792
     ],
     "outdated": 0.0,
     "tool_calls": 3.25,
     "tool_calls_ci": [
-     2.7917,
-     3.7292
+     2.7708,
+     3.7083
     ],
     "prompt_tokens": 59569.3125,
     "prompt_tokens_ci": [
-     54541.6042,
-     64694.0417
+     54645.6458,
+     64521.2708
     ],
     "output_tokens": 800.25,
     "cost_usd": 0.0014,
     "cost_usd_ci": [
      0.0012,
-     0.0015
+     0.0016
     ],
     "stance_share": {
      "current": 0.9583,
@@ -6786,8 +8785,8 @@
     ],
     "tool_calls_minus_none": -0.8125,
     "tool_calls_minus_none_ci": [
-     -1.25,
-     -0.375
+     -1.2708,
+     -0.3958
     ],
     "cost_usd_minus_none": 0.00037,
     "cost_usd_minus_none_ci": [
@@ -6800,7 +8799,7 @@
     "runs": 24,
     "correct": 0.875,
     "correct_ci": [
-     0.7083,
+     0.6667,
      1.0
     ],
     "outdated": 0.0,
@@ -6811,8 +8810,8 @@
     ],
     "prompt_tokens": 60165.83333,
     "prompt_tokens_ci": [
-     51944.9167,
-     67793.9583
+     51964.7917,
+     68026.875
     ],
     "output_tokens": 711.58333,
     "cost_usd": 0.00135,
@@ -6827,12 +8826,12 @@
     ],
     "tool_calls_minus_none": -0.75,
     "tool_calls_minus_none_ci": [
-     -1.5833,
-     0.0417
+     -1.5417,
+     0.0
     ],
     "cost_usd_minus_none": 0.00036,
     "cost_usd_minus_none_ci": [
-     0.0001,
+     0.0002,
      0.0006
     ]
    },
@@ -6852,8 +8851,8 @@
     ],
     "prompt_tokens": 58972.79167,
     "prompt_tokens_ci": [
-     53080.5833,
-     64795.625
+     53259.8333,
+     64719.375
     ],
     "output_tokens": 888.91667,
     "cost_usd": 0.00145,
@@ -6871,11 +8870,11 @@
     "correct_minus_none": 0.08333,
     "correct_minus_none_ci": [
      -0.0833,
-     0.25
+     0.2083
     ],
     "tool_calls_minus_none": -0.875,
     "tool_calls_minus_none_ci": [
-     -1.3333,
+     -1.2917,
      -0.5
     ],
     "cost_usd_minus_none": 0.00038,
@@ -6897,13 +8896,13 @@
     "outdated": 0.0,
     "tool_calls": 3.3125,
     "tool_calls_ci": [
-     2.8542,
+     2.875,
      3.75
     ],
     "prompt_tokens": 52229.45833,
     "prompt_tokens_ci": [
-     46740.6875,
-     57421.5833
+     47048.0,
+     57832.25
     ],
     "output_tokens": 811.79167,
     "cost_usd": 0.00134,
@@ -6925,8 +8924,8 @@
     ],
     "tool_calls_minus_none": -0.75,
     "tool_calls_minus_none_ci": [
-     -1.125,
-     -0.3542
+     -1.1458,
+     -0.375
     ],
     "cost_usd_minus_none": 0.00031,
     "cost_usd_minus_none_ci": [
@@ -6950,8 +8949,8 @@
     ],
     "prompt_tokens": 49454.625,
     "prompt_tokens_ci": [
-     41697.6667,
-     57330.125
+     41881.9167,
+     57446.4167
     ],
     "output_tokens": 683.45833,
     "cost_usd": 0.00122,
@@ -6967,7 +8966,7 @@
     "tool_calls_minus_none": -0.875,
     "tool_calls_minus_none_ci": [
      -1.4583,
-     -0.2083
+     -0.25
     ],
     "cost_usd_minus_none": 0.00023,
     "cost_usd_minus_none_ci": [
@@ -6980,7 +8979,7 @@
     "runs": 24,
     "correct": 0.75,
     "correct_ci": [
-     0.5417,
+     0.5,
      0.9583
     ],
     "outdated": 0.0,
@@ -6991,8 +8990,8 @@
     ],
     "prompt_tokens": 55004.29167,
     "prompt_tokens_ci": [
-     48246.0833,
-     61709.8333
+     48474.75,
+     62055.4167
     ],
     "output_tokens": 940.125,
     "cost_usd": 0.00146,
@@ -7010,12 +9009,12 @@
     "correct_minus_none": -0.04167,
     "correct_minus_none_ci": [
      -0.2917,
-     0.25
+     0.2083
     ],
     "tool_calls_minus_none": -0.625,
     "tool_calls_minus_none_ci": [
      -1.0417,
-     -0.2083
+     -0.1667
     ],
     "cost_usd_minus_none": 0.00039,
     "cost_usd_minus_none_ci": [
@@ -7037,12 +9036,12 @@
     "tool_calls": 3.45833,
     "tool_calls_ci": [
      3.0417,
-     3.8542
+     3.875
     ],
     "prompt_tokens": 57446.25,
     "prompt_tokens_ci": [
-     52280.0417,
-     62957.5625
+     51863.0,
+     62614.2083
     ],
     "output_tokens": 857.64583,
     "cost_usd": 0.00142,
@@ -7064,8 +9063,8 @@
     ],
     "tool_calls_minus_none": -0.60417,
     "tool_calls_minus_none_ci": [
-     -0.9583,
-     -0.2292
+     -1.0,
+     -0.2083
     ],
     "cost_usd_minus_none": 0.00039,
     "cost_usd_minus_none_ci": [
@@ -7079,18 +9078,18 @@
     "correct": 0.875,
     "correct_ci": [
      0.75,
-     1.0
+     0.9583
     ],
     "outdated": 0.0,
     "tool_calls": 3.04167,
     "tool_calls_ci": [
-     2.4583,
-     3.625
+     2.4167,
+     3.5833
     ],
     "prompt_tokens": 55789.79167,
     "prompt_tokens_ci": [
-     49408.9583,
-     62656.9583
+     49124.875,
+     62440.0833
     ],
     "output_tokens": 754.16667,
     "cost_usd": 0.00132,
@@ -7125,13 +9124,13 @@
     "outdated": 0.04167,
     "tool_calls": 3.875,
     "tool_calls_ci": [
-     3.375,
+     3.3333,
      4.3333
     ],
     "prompt_tokens": 59102.70833,
     "prompt_tokens_ci": [
-     50790.0417,
-     67944.1667
+     50949.375,
+     67411.6667
     ],
     "output_tokens": 961.125,
     "cost_usd": 0.00153,
@@ -7153,13 +9152,13 @@
     ],
     "tool_calls_minus_none": -0.54167,
     "tool_calls_minus_none_ci": [
-     -1.0833,
+     -1.0417,
      -0.0417
     ],
     "cost_usd_minus_none": 0.00045,
     "cost_usd_minus_none_ci": [
-     0.0003,
-     0.0007
+     0.0002,
+     0.0006
     ]
    }
   }
@@ -7178,12 +9177,12 @@
     "tool_calls": 4.85417,
     "tool_calls_ci": [
      4.1875,
-     5.5417
+     5.5625
     ],
     "prompt_tokens": 47426.9375,
     "prompt_tokens_ci": [
-     40655.6042,
-     54453.7292
+     40161.0625,
+     54410.3542
     ],
     "output_tokens": 875.04167,
     "cost_usd": 0.00193,
@@ -7205,7 +9204,7 @@
     ],
     "tool_calls_minus_none": -0.4375,
     "tool_calls_minus_none_ci": [
-     -1.0208,
+     -0.9792,
      0.125
     ],
     "cost_usd_minus_none": 0.00056,
@@ -7225,13 +9224,13 @@
     "outdated": 0.0,
     "tool_calls": 4.58333,
     "tool_calls_ci": [
-     3.5,
+     3.4583,
      5.6667
     ],
     "prompt_tokens": 46682.79167,
     "prompt_tokens_ci": [
-     36000.875,
-     58009.375
+     35912.8333,
+     58433.2083
     ],
     "output_tokens": 823.625,
     "cost_usd": 0.00188,
@@ -7247,7 +9246,7 @@
     "tool_calls_minus_none": -0.41667,
     "tool_calls_minus_none_ci": [
      -1.0833,
-     0.3333
+     0.2917
     ],
     "cost_usd_minus_none": 0.00052,
     "cost_usd_minus_none_ci": [
@@ -7266,13 +9265,13 @@
     "outdated": 0.0,
     "tool_calls": 5.125,
     "tool_calls_ci": [
-     4.2917,
+     4.3333,
      6.0
     ],
     "prompt_tokens": 48171.08333,
     "prompt_tokens_ci": [
-     40661.7083,
-     56933.7917
+     40505.1667,
+     56149.0833
     ],
     "output_tokens": 926.45833,
     "cost_usd": 0.00197,
@@ -7294,8 +9293,8 @@
     ],
     "tool_calls_minus_none": -0.45833,
     "tool_calls_minus_none_ci": [
-     -1.3333,
-     0.375
+     -1.2917,
+     0.4167
     ],
     "cost_usd_minus_none": 0.00059,
     "cost_usd_minus_none_ci": [
@@ -7316,13 +9315,13 @@
     "outdated": 0.0,
     "tool_calls": 3.89583,
     "tool_calls_ci": [
-     3.5208,
-     4.3542
+     3.5,
+     4.3333
     ],
     "prompt_tokens": 57267.8125,
     "prompt_tokens_ci": [
-     53187.5208,
-     61883.1458
+     53206.9583,
+     61967.7708
     ],
     "output_tokens": 751.875,
     "cost_usd": 0.00205,
@@ -7339,12 +9338,12 @@
     },
     "correct_minus_none": 0.0,
     "correct_minus_none_ci": [
-     -0.0417,
+     -0.0625,
      0.0625
     ],
     "tool_calls_minus_none": -1.39583,
     "tool_calls_minus_none_ci": [
-     -2.0417,
+     -2.0833,
      -0.75
     ],
     "cost_usd_minus_none": 0.00068,
@@ -7364,13 +9363,13 @@
     "outdated": 0.0,
     "tool_calls": 4.125,
     "tool_calls_ci": [
-     3.4583,
-     4.9583
+     3.5,
+     4.9167
     ],
     "prompt_tokens": 62031.375,
     "prompt_tokens_ci": [
-     56074.375,
-     68359.0417
+     56230.5,
+     68689.9167
     ],
     "output_tokens": 754.91667,
     "cost_usd": 0.00211,
@@ -7385,13 +9384,13 @@
     ],
     "tool_calls_minus_none": -0.875,
     "tool_calls_minus_none_ci": [
-     -1.7083,
-     -0.125
+     -1.6667,
+     -0.0833
     ],
     "cost_usd_minus_none": 0.00075,
     "cost_usd_minus_none_ci": [
      0.0005,
-     0.0009
+     0.001
     ]
    },
    "changed": {
@@ -7410,8 +9409,8 @@
     ],
     "prompt_tokens": 52504.25,
     "prompt_tokens_ci": [
-     47898.1667,
-     57740.1667
+     47893.2917,
+     57568.9583
     ],
     "output_tokens": 748.83333,
     "cost_usd": 0.00198,
@@ -7434,7 +9433,7 @@
     "tool_calls_minus_none": -1.91667,
     "tool_calls_minus_none_ci": [
      -2.9167,
-     -0.9583
+     -1.0
     ],
     "cost_usd_minus_none": 0.0006,
     "cost_usd_minus_none_ci": [
@@ -7455,13 +9454,13 @@
     "outdated": 0.0,
     "tool_calls": 5.29167,
     "tool_calls_ci": [
-     4.5417,
-     6.1042
+     4.5625,
+     6.0833
     ],
     "prompt_tokens": 22239.33333,
     "prompt_tokens_ci": [
-     17852.7292,
-     26899.4583
+     17643.3125,
+     26919.3125
     ],
     "output_tokens": 873.5625,
     "cost_usd": 0.00137,
@@ -7488,13 +9487,13 @@
     "outdated": 0.0,
     "tool_calls": 5.0,
     "tool_calls_ci": [
-     3.9167,
-     6.1667
+     3.8333,
+     6.2083
     ],
     "prompt_tokens": 22579.91667,
     "prompt_tokens_ci": [
-     15123.875,
-     30796.6667
+     14979.4583,
+     30731.1667
     ],
     "output_tokens": 813.58333,
     "cost_usd": 0.00136,
@@ -7508,19 +9507,19 @@
     "runs": 24,
     "correct": 0.875,
     "correct_ci": [
-     0.6667,
+     0.7083,
      1.0
     ],
     "outdated": 0.0,
     "tool_calls": 5.58333,
     "tool_calls_ci": [
-     4.7083,
-     6.5
+     4.6667,
+     6.5833
     ],
     "prompt_tokens": 21898.75,
     "prompt_tokens_ci": [
-     17739.7917,
-     26747.7083
+     17719.2083,
+     26701.6667
     ],
     "output_tokens": 933.54167,
     "cost_usd": 0.00138,
@@ -7549,13 +9548,13 @@
     "outdated": 0.0,
     "tool_calls": 4.79167,
     "tool_calls_ci": [
-     4.2292,
-     5.4583
+     4.2083,
+     5.4375
     ],
     "prompt_tokens": 69857.08333,
     "prompt_tokens_ci": [
-     61326.2292,
-     79242.9375
+     61471.2083,
+     79823.0625
     ],
     "output_tokens": 929.70833,
     "cost_usd": 0.00239,
@@ -7577,7 +9576,7 @@
     ],
     "tool_calls_minus_none": -0.5,
     "tool_calls_minus_none_ci": [
-     -1.1042,
+     -1.0833,
      0.0208
     ],
     "cost_usd_minus_none": 0.00103,
@@ -7598,12 +9597,12 @@
     "tool_calls": 4.08333,
     "tool_calls_ci": [
      3.4583,
-     4.875
+     4.9167
     ],
     "prompt_tokens": 63035.29167,
     "prompt_tokens_ci": [
-     52922.4167,
-     77779.7083
+     53169.75,
+     78006.125
     ],
     "output_tokens": 784.66667,
     "cost_usd": 0.00215,
@@ -7618,8 +9617,8 @@
     ],
     "tool_calls_minus_none": -0.91667,
     "tool_calls_minus_none_ci": [
-     -1.875,
-     0.0417
+     -1.9167,
+     0.0833
     ],
     "cost_usd_minus_none": 0.00079,
     "cost_usd_minus_none_ci": [
@@ -7638,13 +9637,13 @@
     "outdated": 0.0,
     "tool_calls": 5.5,
     "tool_calls_ci": [
-     4.6667,
-     6.4167
+     4.625,
+     6.4583
     ],
     "prompt_tokens": 76678.875,
     "prompt_tokens_ci": [
-     66378.875,
-     88209.9583
+     66334.5,
+     88216.2917
     ],
     "output_tokens": 1074.75,
     "cost_usd": 0.00264,
@@ -7688,13 +9687,13 @@
     "outdated": 0.0,
     "tool_calls": 5.8125,
     "tool_calls_ci": [
-     4.9167,
-     6.8542
+     4.875,
+     6.8125
     ],
     "prompt_tokens": 88842.91667,
     "prompt_tokens_ci": [
-     77848.6875,
-     101749.7708
+     77183.2292,
+     101081.7708
     ],
     "output_tokens": 1070.875,
     "cost_usd": 0.00283,
@@ -7712,16 +9711,16 @@
     "correct_minus_none": 0.02083,
     "correct_minus_none_ci": [
      -0.0833,
-     0.1458
+     0.125
     ],
     "tool_calls_minus_none": 0.52083,
     "tool_calls_minus_none_ci": [
      -0.1667,
-     1.2083
+     1.2708
     ],
     "cost_usd_minus_none": 0.00146,
     "cost_usd_minus_none_ci": [
-     0.0013,
+     0.0012,
      0.0017
     ]
    },
@@ -7737,17 +9736,17 @@
     "tool_calls": 5.375,
     "tool_calls_ci": [
      4.0,
-     7.0417
+     7.0833
     ],
     "prompt_tokens": 87398.95833,
     "prompt_tokens_ci": [
-     70810.75,
-     107278.0417
+     70863.375,
+     108040.4167
     ],
     "output_tokens": 993.91667,
     "cost_usd": 0.00271,
     "cost_usd_ci": [
-     0.0023,
+     0.0024,
      0.0031
     ],
     "correct_minus_none": -0.04167,
@@ -7757,8 +9756,8 @@
     ],
     "tool_calls_minus_none": 0.375,
     "tool_calls_minus_none_ci": [
-     -0.4167,
-     1.2083
+     -0.4583,
+     1.25
     ],
     "cost_usd_minus_none": 0.00135,
     "cost_usd_minus_none_ci": [
@@ -7782,8 +9781,8 @@
     ],
     "prompt_tokens": 90286.875,
     "prompt_tokens_ci": [
-     76002.2917,
-     106354.5417
+     76283.125,
+     106289.9583
     ],
     "output_tokens": 1147.83333,
     "cost_usd": 0.00294,
@@ -7806,7 +9805,7 @@
     "tool_calls_minus_none": 0.66667,
     "tool_calls_minus_none_ci": [
      -0.375,
-     1.8333
+     1.7083
     ],
     "cost_usd_minus_none": 0.00157,
     "cost_usd_minus_none_ci": [
@@ -7834,8 +9833,8 @@
     ],
     "prompt_tokens": 36158.95833,
     "prompt_tokens_ci": [
-     33829.9792,
-     38300.8542
+     33913.3125,
+     38413.1667
     ],
     "output_tokens": 613.875,
     "cost_usd": 0.00084,
@@ -7858,7 +9857,7 @@
     "tool_calls_minus_none": -0.10417,
     "tool_calls_minus_none_ci": [
      -0.2917,
-     0.0833
+     0.1042
     ],
     "cost_usd_minus_none": 0.00025,
     "cost_usd_minus_none_ci": [
@@ -7882,8 +9881,8 @@
     ],
     "prompt_tokens": 36929.33333,
     "prompt_tokens_ci": [
-     33894.5,
-     39808.5417
+     33788.375,
+     39715.2917
     ],
     "output_tokens": 554.95833,
     "cost_usd": 0.00076,
@@ -7893,8 +9892,8 @@
     ],
     "correct_minus_none": 0.29167,
     "correct_minus_none_ci": [
-     0.125,
-     0.5
+     0.0833,
+     0.5417
     ],
     "tool_calls_minus_none": -0.16667,
     "tool_calls_minus_none_ci": [
@@ -7919,12 +9918,12 @@
     "tool_calls": 2.25,
     "tool_calls_ci": [
      2.0417,
-     2.4583
+     2.5
     ],
     "prompt_tokens": 35388.58333,
     "prompt_tokens_ci": [
-     32112.5,
-     38751.3333
+     32034.0833,
+     38615.4583
     ],
     "output_tokens": 672.79167,
     "cost_usd": 0.00091,
@@ -7946,8 +9945,8 @@
     ],
     "tool_calls_minus_none": -0.04167,
     "tool_calls_minus_none_ci": [
-     -0.4167,
-     0.3333
+     -0.375,
+     0.2917
     ],
     "cost_usd_minus_none": 0.00039,
     "cost_usd_minus_none_ci": [
@@ -7962,7 +9961,7 @@
     "runs": 48,
     "correct": 0.39583,
     "correct_ci": [
-     0.2292,
+     0.2083,
      0.5833
     ],
     "outdated": 0.0,
@@ -7973,8 +9972,8 @@
     ],
     "prompt_tokens": 6453.1875,
     "prompt_tokens_ci": [
-     5663.6042,
-     7201.3125
+     5677.1667,
+     7162.875
     ],
     "output_tokens": 556.0,
     "cost_usd": 0.00059,
@@ -8002,12 +10001,12 @@
     "tool_calls": 2.16667,
     "tool_calls_ci": [
      2.0,
-     2.3333
+     2.375
     ],
     "prompt_tokens": 6862.41667,
     "prompt_tokens_ci": [
-     5842.25,
-     7783.5833
+     5821.3333,
+     7720.9167
     ],
     "output_tokens": 560.54167,
     "cost_usd": 0.00066,
@@ -8032,8 +10031,8 @@
     ],
     "prompt_tokens": 6043.95833,
     "prompt_tokens_ci": [
-     4910.9583,
-     7117.8333
+     4849.375,
+     7141.1667
     ],
     "output_tokens": 551.45833,
     "cost_usd": 0.00052,
@@ -8063,12 +10062,12 @@
     "tool_calls": 2.0625,
     "tool_calls_ci": [
      2.0,
-     2.125
+     2.1458
     ],
     "prompt_tokens": 33394.79167,
     "prompt_tokens_ci": [
-     31046.2083,
-     35906.6667
+     31126.2083,
+     35907.9167
     ],
     "output_tokens": 640.52083,
     "cost_usd": 0.00077,
@@ -8115,8 +10114,8 @@
     ],
     "prompt_tokens": 35714.79167,
     "prompt_tokens_ci": [
-     32287.25,
-     39470.375
+     31923.375,
+     39485.5417
     ],
     "output_tokens": 606.41667,
     "cost_usd": 0.00078,
@@ -8126,7 +10125,7 @@
     ],
     "correct_minus_none": 0.45833,
     "correct_minus_none_ci": [
-     0.2083,
+     0.25,
      0.7083
     ],
     "tool_calls_minus_none": -0.08333,
@@ -8146,7 +10145,7 @@
     "correct": 0.20833,
     "correct_ci": [
      0.0,
-     0.4583
+     0.4167
     ],
     "outdated": 0.29167,
     "tool_calls": 2.04167,
@@ -8156,8 +10155,8 @@
     ],
     "prompt_tokens": 31074.79167,
     "prompt_tokens_ci": [
-     28710.6667,
-     33909.25
+     28751.0,
+     33945.3333
     ],
     "output_tokens": 674.625,
     "cost_usd": 0.00077,
@@ -8180,7 +10179,7 @@
     "tool_calls_minus_none": -0.25,
     "tool_calls_minus_none_ci": [
      -0.5417,
-     0.0417
+     0.0
     ],
     "cost_usd_minus_none": 0.00025,
     "cost_usd_minus_none_ci": [
@@ -8206,8 +10205,8 @@
     ],
     "prompt_tokens": 39687.89583,
     "prompt_tokens_ci": [
-     36717.4792,
-     42632.3333
+     36804.5208,
+     42652.5208
     ],
     "output_tokens": 669.72917,
     "cost_usd": 0.00084,
@@ -8229,8 +10228,8 @@
     ],
     "tool_calls_minus_none": -0.0625,
     "tool_calls_minus_none_ci": [
-     -0.25,
-     0.1667
+     -0.2708,
+     0.1458
     ],
     "cost_usd_minus_none": 0.00025,
     "cost_usd_minus_none_ci": [
@@ -8254,8 +10253,8 @@
     ],
     "prompt_tokens": 42902.91667,
     "prompt_tokens_ci": [
-     38694.1667,
-     46537.4583
+     38878.625,
+     46570.2083
     ],
     "output_tokens": 646.875,
     "cost_usd": 0.00085,
@@ -8295,8 +10294,8 @@
     ],
     "prompt_tokens": 36472.875,
     "prompt_tokens_ci": [
-     32948.0,
-     40669.75
+     33015.6667,
+     40667.375
     ],
     "output_tokens": 692.58333,
     "cost_usd": 0.00083,
@@ -8342,13 +10341,13 @@
     "outdated": 0.0,
     "tool_calls": 4.10417,
     "tool_calls_ci": [
-     3.3542,
-     4.9792
+     3.3125,
+     4.9583
     ],
     "prompt_tokens": 42833.9375,
     "prompt_tokens_ci": [
-     35834.2708,
-     51117.9167
+     35431.625,
+     50495.1458
     ],
     "output_tokens": 856.66667,
     "cost_usd": 0.00136,
@@ -8376,12 +10375,12 @@
     "tool_calls": 3.5,
     "tool_calls_ci": [
      2.5,
-     4.625
+     4.5833
     ],
     "prompt_tokens": 39497.95833,
     "prompt_tokens_ci": [
-     30433.875,
-     51131.5417
+     30416.0833,
+     50746.75
     ],
     "output_tokens": 738.95833,
     "cost_usd": 0.00121,
@@ -8401,13 +10400,13 @@
     "outdated": 0.0,
     "tool_calls": 4.70833,
     "tool_calls_ci": [
-     3.625,
+     3.6667,
      5.9167
     ],
     "prompt_tokens": 46169.91667,
     "prompt_tokens_ci": [
-     35236.9167,
-     57786.875
+     35815.9167,
+     58046.625
     ],
     "output_tokens": 974.375,
     "cost_usd": 0.0015,
@@ -8436,13 +10435,13 @@
     "outdated": 0.0,
     "tool_calls": 4.5,
     "tool_calls_ci": [
-     3.5208,
-     5.5
+     3.5417,
+     5.5833
     ],
     "prompt_tokens": 44596.16667,
     "prompt_tokens_ci": [
-     36463.125,
-     53614.0
+     36309.5208,
+     53614.8333
     ],
     "output_tokens": 900.54167,
     "cost_usd": 0.00143,
@@ -8474,8 +10473,8 @@
     ],
     "prompt_tokens": 40966.33333,
     "prompt_tokens_ci": [
-     30682.375,
-     53123.75
+     30802.25,
+     52877.0
     ],
     "output_tokens": 799.91667,
     "cost_usd": 0.0013,
@@ -8495,13 +10494,13 @@
     "outdated": 0.0,
     "tool_calls": 5.20833,
     "tool_calls_ci": [
-     3.875,
-     6.5833
+     3.8333,
+     6.625
     ],
     "prompt_tokens": 48226.0,
     "prompt_tokens_ci": [
-     36061.625,
-     61804.9583
+     35783.7083,
+     62038.7917
     ],
     "output_tokens": 1001.16667,
     "cost_usd": 0.00157,
