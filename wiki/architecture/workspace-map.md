@@ -105,8 +105,9 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
   altındaki kümeler `data/README.md` içindeki kurulum zinciriyle bayt düzeyinde yeniden üretilir.
 - Tez ve makale taslakları `wiki/thesis/` altındadır (özel wiki reposu). Proje önerisi taslağı
   (`proposal.md`) ders reposunun çalışma ağacındadır ve hiçbir uzak repoda durmaz.
-- `web` reposunun `fix/landing-claims` dalının çalışma ağacında, kodda karşılığı olmayan site
-  cümlelerini düzelten commit edilmemiş metin değişiklikleri durur (2026-10-12, 6 dosya).
+- `web` reposunun `fix/landing-claims` dalı `origin`'dedir ve `main`e alınmadı (2026-10-13, 6 dosya):
+  site cümlelerini Core `main`in yaptığına göre düzeltir. Site yalnız `main`e push ile yayınlanır
+  (`web/.github/workflows/deploy.yml`).
 - Core'un `feat/identity-ledger` dalı `origin`'dedir ve `main`e alınmadı (2026-10-13): kimlik karar
   defteri benzetimi (`evaluation/identity_ledger.py`), yeniden uygulama ölçümü
   (`evaluation/decision_reapplication.py`), testleri ve iki sonuç dosyası. Motor koduna dokunmaz.

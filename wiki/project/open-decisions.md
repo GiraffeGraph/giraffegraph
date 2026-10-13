@@ -62,7 +62,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 
 | # | Soru | Öneri | Fiilî durum | Sahip |
 |---|---|---|---|---|
-| 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | `web` reposunun `fix/landing-claims` dalında 6 dosyada commit edilmemiş metin düzeltmesi durur; yayına alınmadı. Katkıcı listesi kararı yok | E |
+| 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | `web` reposunun `fix/landing-claims` dalında 6 dosyalık metin düzeltmesi commit edildi ve `origin`'e gönderildi; `main`e alınmadı, yayında değil. Katkıcı listesi kararı yok | E |
 | 15 | Formdaki doğrulanamayan referanslar nasıl ele alınır? | Üçü silinir ya da gerçek karşılığıyla değiştirilir; Ji vd.'ye atfedilen sayı kaldırılır | Doğrulanmış kaynakça hazır ve tez taslağı onu kullanır. Formun düzeltildiğine ya da danışmana bildirildiğine dair kayıt yok | E, D |
 | 16 | Yayın hedefi nedir? | UBMK ya da INISTA bildirisi, arXiv ön baskı, bir uluslararası atölye | Makale biçimli taslak var, gönderilmedi. Hedef seçilmedi | E, D |
 | 19 | Core hangi lisansla yayımlanır? | Öneri: lisans eklenir (form "açık kaynak" der) | Repo herkese açık, LICENSE dosyası yok | E |
