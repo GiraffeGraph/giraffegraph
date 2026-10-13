@@ -19,7 +19,7 @@ Projenin kim tarafından, hangi çerçevede, hangi taahhütlerle yürütüldüğ
 | Kurum | Akdeniz Üniversitesi, Mühendislik Fakültesi, Bilgisayar Mühendisliği |
 | Danışman | Dr. Taha Yiğit Alkan |
 | Alan uzmanı | Prof. Dr. Rifat Atay (İlahiyat) |
-| Site | giraffegraph.com (`web/`) |
+| Site | giraffegraph.com (`landing/`) |
 
 ## İki çerçeve
 

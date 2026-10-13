@@ -25,7 +25,7 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
 | `wiki/sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı: mimari analizi, revize deney protokolü, pilot kodu ve sayıları, iş planı, yayın planı | **Referans (donmuş).** Ölçüm ve protokol önerilerinin kaynağı | wiki reposunun parçası |
 | `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | wiki reposunun parçası |
 | `data/cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Projenin iddiasının kaynağı ve destek deneyleri.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride ve canlı ajanla sınanması `wiki/evaluation/decision-ledger-experiments.md`, `wiki/evaluation/wiki-for-agents-experiments.md`; özet `data/cache-and-ledger/MEASUREMENTS.md` | özel veri reposunun parçası |
-| `web/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/web` (herkese açık), `main`; `main`e push siteyi yayınlar (`web/.github/workflows/deploy.yml`) |
+| `landing/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/landing` (herkese açık), `main`; `main`e push siteyi yayınlar (`landing/.github/workflows/deploy.yml`) |
 
 ## Rules
 
@@ -58,7 +58,7 @@ mkdir GiraffeGraph && cd GiraffeGraph
 git clone git@github.com:GiraffeGraph/giraffegraph-wiki.git wiki
 git clone git@github.com:GiraffeGraph/giraffegraph-core.git
 git clone git@github.com:GiraffeGraph/giraffegraph-eval-data.git data
-git clone git@github.com:GiraffeGraph/web.git
+git clone git@github.com:GiraffeGraph/landing.git
 printf '@wiki/CLAUDE.md\n' > CLAUDE.md
 ```
 
@@ -106,7 +106,7 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
   altındaki kümeler `data/README.md` içindeki kurulum zinciriyle bayt düzeyinde yeniden üretilir.
 - Tez ve makale taslakları `wiki/thesis/` altındadır (özel wiki reposu). Proje önerisi taslağı
   (`proposal.md`) ders reposunun çalışma ağacındadır ve hiçbir uzak repoda durmaz.
-- Sitedeki cümleler Core `main`in yaptığına göre yazılıdır (`web` commit `b92fc4b`, 2026-10-13, 6 dosya).
+- Sitedeki cümleler Core `main`in yaptığına göre yazılıdır (`landing` commit `b92fc4b`, 2026-10-13, 6 dosya).
 - Core `main`, kimlik karar defteri benzetimini (`evaluation/identity_ledger.py`), yeniden uygulama
   ölçümünü (`evaluation/decision_reapplication.py`), testlerini ve iki sonuç dosyasını taşır
   (2026-10-13). Bunlar ölçüm betikleridir; motor koduna dokunmaz.
@@ -115,7 +115,7 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 ## Verification checklist
 
 - [ ] `ls /Users/efe/projects/GiraffeGraph` çıktısındaki her klasör tabloda var
-- [ ] Çalışma alanı kökünde `giraffegraph-core/`, `data/`, `web/`, `wiki/` ve `CLAUDE.md` dışında bir şey yok
+- [ ] Çalışma alanı kökünde `giraffegraph-core/`, `data/`, `landing/`, `wiki/` ve `CLAUDE.md` dışında bir şey yok
 - [ ] Core durumu notu `git -C giraffegraph-core log -1` ile uyumlu
 - [ ] Test sayıları `cd giraffegraph-core/backend && uv run pytest -q` çıktısıyla aynı
 - [ ] `du -sh data` çıktısı tablodaki boyutla uyumlu

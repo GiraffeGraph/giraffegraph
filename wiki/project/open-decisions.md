@@ -64,7 +64,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 
 | # | Soru | Öneri | Fiilî durum | Sahip |
 |---|---|---|---|---|
-| 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | **Karar (proje sahibi, 2026-10-13):** kodun gerçeğine doğru. 6 dosyalık metin düzeltmesi `web` `main`dedir ve yayındadır (commit `b92fc4b`). Katkıcı listesi kararı yok | E |
+| 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | **Karar (proje sahibi, 2026-10-13):** kodun gerçeğine doğru. 6 dosyalık metin düzeltmesi `landing` `main`dedir ve yayındadır (commit `b92fc4b`). Katkıcı listesi kararı yok | E |
 | 15 | Formdaki doğrulanamayan referanslar nasıl ele alınır? | Üçü silinir ya da gerçek karşılığıyla değiştirilir; Ji vd.'ye atfedilen sayı kaldırılır | Doğrulanmış kaynakça hazır ve tez taslağı onu kullanır. Formun düzeltildiğine ya da danışmana bildirildiğine dair kayıt yok | E, D |
 | 16 | Yayın hedefi nedir? | UBMK ya da INISTA bildirisi, arXiv ön baskı, bir uluslararası atölye | Makale biçimli taslak var, gönderilmedi. Hedef seçilmedi | E, D |
 | 19 | Core hangi lisansla yayımlanır? | Öneri: lisans eklenir (form "açık kaynak" der) | Repo herkese açık, LICENSE dosyası yok | E |
@@ -105,7 +105,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 - [ ] Her satırın sahibi var
 - [ ] Karara bağlanmış hiçbir soru bu sayfada durmuyor; `wiki/decisions/` ile çapraz kontrol
 - [ ] "Fiilî durum" sütunundaki her sayı çapa verilen dosyada bulunuyor
-- [ ] `git -C web status --short` çıktısı soru 14'teki durumla aynı
+- [ ] `git -C landing status --short` çıktısı soru 14'teki durumla aynı
 
 ## Related docs
 
