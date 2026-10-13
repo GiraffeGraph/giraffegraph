@@ -16,7 +16,7 @@ wiki pages named under each heading.
 | LLM output is not deterministic, so a derived cache cannot be kept valid | Overstated | Early cutoff needs equal outputs; validating a stored result against the hashes of its inputs does not (Build Systems à la Carte, §6.3). What breaks in practice is granularity: a file-level hash is invalid after one month for 46% of documented files |
 | A resolving anchor proves the file exists, not that the claim is true | Holds, measured twice | Verbatim copies account for 82% of the extractions that disagree with human labels on a biomedical corpus; a "the cited code changed" note on a stale section changes no outcome measurably |
 | Anchors must be repo-rooted | Holds, by accident | The same stale page gave 50% on changed facts when its code paths could be opened as written and 8% when they could not (no documentation: 29%). Unplanned comparison |
-| Documentation in a folder of its own reaches the agent | Fails | In 432 structural runs the agent opened `docs/` in none; the same statements as comments in the searched tree were shown in 47 of 48 runs and raised accuracy from 31% to 65% at two tool calls |
+| Documentation in a folder of its own reaches the agent | Fails for structure, holds for decisions | In 432 structural runs the agent opened `docs/` in none; for "why" questions it opens it (about one call per question). The same structural statements as comments in the searched tree raised accuracy from 31% to 65% at two tool calls only while the search returned the notes file first; with a shuffled file order 42% to 46% |
 | Store a decision once, forever | Needs one more variable: scope | In 150,904 narrator mentions a decision keyed by name alone is reused wrongly 10% of the time; keyed by name and context, 0.6%, at three times the questions |
 
 ## Seven extensions that were tried
@@ -56,9 +56,12 @@ wiki pages named under each heading.
    (+0.33 [0.15, 0.52]), for 8% more prompt tokens; the page in the prompt gives 88% for five times
    the tokens. A note showed up in a grep result in 47 of 48 runs and the notes file was opened in
    none. Notes written at the earlier commit behave like the stale page (83% on stable facts, 42% on
-   changed ones), and keeping only those whose code is unchanged leaves 23%, below nothing. **Kept:
-   the one extension of the day that passed the kill criteria written before the run. It moves the
-   statements; it does not keep them fresh.**
+   changed ones), and keeping only those whose code is unchanged leaves 23%, below nothing. The
+   gain repeats on a second model (Sonnet 5.5: 77% against 52%, +0.25 [0.08, 0.44]) and disappears
+   when the search tool walks the files in a shuffled order (46% against 42%, +0.04 [-0.15, 0.23]):
+   it came from the notes file being returned first. The same holds for decisions as notes (67%
+   against 33% for `decisions.md` in `docs/` in path order; 50% against 42% shuffled). **Kept only
+   as: a search that returns the notes first delivers them; putting them in the tree does not.**
 
 ## What the essay becomes
 
@@ -71,9 +74,9 @@ axis, the price of derivation at the moment of use:
   page gives 88% against 31% with nothing, and a stale one 69%; keep its anchors openable. Nothing a
   script did to an earlier page (notes, pointers, late-bound values, a list of additions) came near
   a page written again by a reader of the current source, so the cache is regenerated, not patched.
-  Where it is put matters as much as what it says: in the prompt it costs five times the tokens, in
-  a documentation folder it is not opened, as one-line notes in the searched tree it arrives with
-  the agent's own grep.
+  Where it is put matters: in the prompt it costs five times the tokens, in a documentation folder
+  it is not opened, and as one-line notes in the searched tree it arrives only if the search ranks
+  the notes first. Decisions are small enough to go in the prompt: 100% at two tool calls.
 
 The second line is where the essay stood. The third is the regime of large code bases, of extraction
 that costs a model call and a human review, and of any reader that cannot afford to look.
@@ -92,6 +95,5 @@ that costs a model call and a human review, and of any reader that cannot afford
 
 A code base large enough that search is expensive for real; a second model; statement-level witnesses
 harvested from the agent's own tool calls; human-written documentation; a human reviewer in the
-ledger experiments; a search tool that does not return the notes file first; decisions as notes in
-the tree. From the idea sessions: standing queries for "only" and "never" claims that deliver the
+ledger experiments; a search tool built to rank matching notes first. From the idea sessions: standing queries for "only" and "never" claims that deliver the
 difference to their baseline; stored experiments that run the code.

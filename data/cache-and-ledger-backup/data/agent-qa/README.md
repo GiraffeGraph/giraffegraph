@@ -173,11 +173,62 @@ bury them. The woven form does not depend on that order for its 142 notes and ga
 
 Cost of this round: about USD 0.8 (agent runs 0.68).
 
+## Does the note result survive another file order, another model, and decisions?
+
+A fourth round. `--grep-order shuffled` makes `grep` walk the files in an order seeded by the call,
+so the notes file is not returned first. `--model claude-sonnet-5-5` runs the agent on a second
+model (the judge stays the same). The decision ledger was rewritten into 139 one-line notes
+(`inputs/notes-decisions.json`, no symbols, so all of them sit in `src/app/_scholia.py`). `pull`,
+2 repetitions, 720 runs.
+
+Structural questions (24), share correct:
+
+| grep order, model | calls | nothing | notes, file | notes, woven | file against nothing | runs showing a note (file / woven) |
+|---|---|---|---|---|---|---|
+| path order, Haiku (from above) | 2 | 0.312 | 0.646 | 0.521 | +0.33 [0.15, 0.52] | 47 / 47 of 48 |
+| shuffled, Haiku | 2 | 0.417 [0.25, 0.60] | 0.458 [0.29, 0.62] | 0.479 [0.31, 0.65] | +0.04 [-0.15, 0.23] | 22 / 43 of 48 |
+| shuffled, Haiku | 4 | 0.604 [0.42, 0.79] | 0.771 [0.62, 0.90] | 0.708 [0.56, 0.85] | +0.17 [0.00, 0.35] | 28 / 44 of 48 |
+| path order, Sonnet 5.5 | 2 | 0.521 [0.33, 0.71] | 0.771 [0.60, 0.92] | | +0.25 [0.08, 0.44] | 47 of 48 |
+
+Decision questions (12), share correct:
+
+| grep order | calls | nothing | `decisions.md` in `docs/` | decision notes in the tree | notes against `docs/` |
+|---|---|---|---|---|---|
+| path order | 2 | 0.000 | 0.333 [0.12, 0.58] | 0.667 [0.42, 0.92] | +0.33 [0.04, 0.62] |
+| path order | 4 | 0.042 | 0.875 | 1.000 | +0.13 [0.00, 0.29] |
+| path order | 14 | 0.042 | 1.000 | 1.000 | 0 |
+| shuffled | 2 | 0.000 | 0.417 [0.17, 0.67] | 0.500 [0.29, 0.71] | +0.08 [-0.17, 0.33] |
+| shuffled | 4 | 0.000 | 0.917 [0.79, 1.00] | 0.750 [0.50, 0.96] | -0.17 [-0.42, 0.04] |
+
+`decisions.md` in the prompt (`push`) at 2 calls: 1.000, with 14,922 prompt tokens per question
+(2,674 to 3,056 in the `pull` arms).
+
+The criteria were written before the runs. Other file order: a gain below +0.10 or an interval
+that includes 0 means the first result came from the order; that happened (+0.04 [-0.15, 0.23]).
+Second model: the interval of the gain excludes 0; it does (+0.25 [0.08, 0.44]). Decisions: at
+least 0.50 at 2 calls and not more than 0.15 below `docs/`; met in path order, and at 2 calls in
+shuffled order, not at 4 calls in shuffled order.
+
+What this shows: the gain of the note round came from the notes file being the first thing the
+search returned, on two models. With a neutral order the notes are cut off by the 40-hit limit in
+more than half the runs, and the woven notes, which still appear in 43 of 48 runs, do not raise
+accuracy at 2 calls. Placing statements in the tree is not enough; what was measured is the effect
+of a search that returns the notes first. For decisions the plain way wins: the ledger in the
+prompt answers every "why" question at 2 calls.
+
+Sonnet 5.5 returned a final message without text in 15 requests after the tool budget was used
+up; the harness asks again up to twice (`empty_replies` in the run record), and 4 of the 96 answers
+stayed empty.
+
+Cost of this round: about USD 1.6 (agent runs 1.50, of which Sonnet 1.05).
+
 ## Reading
 
 - Decisions are the only stored content with a large effect: 0 to 4% without them, 88 to 100% with.
-- Where a stored statement sits decides whether it is used: in `docs/` the agent does not open it,
-  in the tree it searches the statement arrives by itself.
+- A stored statement in `docs/` is not opened for structural questions. As a note in the searched
+  tree it helps only when the search returns the notes first; with a neutral file order the gain at
+  2 calls is gone.
+- Decisions are few and short: in the prompt they answer every "why" question at 2 calls.
 - No script-made refresh of an earlier description (witness notes, pointers, late-bound values, a
   list of what was added) came close to a page written again from the current code.
 - With enough tool calls the agent answers structural questions from the code; no kind of
@@ -225,5 +276,6 @@ then run with `--regime pull --conditions none,fresh,scholia_file,scholia_woven,
 `python3 -I scholia.py surfaced --work <dir> --arm pull+budget2+rooted --condition scholia_file`
 replays the stored tool calls and counts the runs in which a note was shown.
 
-`runs.tar.gz` holds every run, verdict and stance label (3,984 runs). API cost of the whole
-experiment: about USD 6.3 (first round 4.8, frame round 0.75, note round 0.8).
+`runs.tar.gz` holds every run and verdict (4,704 runs) and the stance labels of the first three
+rounds. API cost of the whole experiment: about USD 7.9 (first round 4.8, frame round 0.75, note
+round 0.8, robustness round 1.6).

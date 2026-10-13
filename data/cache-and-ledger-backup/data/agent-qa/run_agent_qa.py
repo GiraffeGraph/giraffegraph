@@ -35,16 +35,21 @@ import argparse
 import ast
 import hashlib
 import json
+import random
 import re
 import shutil
 import statistics
 import sys
+import zlib
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 MODEL = "claude-haiku-5-5"
-PRICE = {"input": 0.10, "output": 0.50, "cache_write": 0.125, "cache_read": 0.01}  # USD per MTok
+PRICES = {  # USD per MTok
+    "claude-haiku-5-5": {"input": 0.10, "output": 0.50, "cache_write": 0.125, "cache_read": 0.01},
+    "claude-sonnet-5-5": {"input": 2.0, "output": 10.0, "cache_write": 2.5, "cache_read": 0.2},
+}
 MAX_TOOL_CALLS = 14
 CONDITIONS = ["none", "decisions", "fresh", "fresh_witness", "stale", "stale_witness",
               "stale_generic", "map_fresh", "map_stale", "pointers_fresh", "pointers_stale"]
@@ -250,7 +255,7 @@ def inside(root, path):
     return target
 
 
-def execute(root, name, arguments):
+def execute(root, name, arguments, grep_order="sorted"):
     try:
         if name == "list_dir":
             target = inside(root, arguments["path"])
@@ -271,6 +276,9 @@ def execute(root, name, arguments):
             pattern = re.compile(arguments["pattern"])
             files = [target] if target.is_file() else sorted(
                 p for p in target.rglob("*") if p.is_file() and p.suffix in (".py", ".md"))
+            if grep_order == "shuffled":
+                seed = zlib.crc32(f"{arguments['pattern']}\0{arguments['path']}".encode())
+                random.Random(seed).shuffle(files)
             hits = []
             for path in files:
                 for number, line in enumerate(
@@ -298,10 +306,9 @@ def api_client(env_path):
     sys.exit("ANTHROPIC_API_KEY not found in the env file")
 
 
-def usage_cost(usage):
-    return (usage["input"] * PRICE["input"] + usage["output"] * PRICE["output"]
-            + usage["cache_write"] * PRICE["cache_write"]
-            + usage["cache_read"] * PRICE["cache_read"]) / 1e6
+def usage_cost(usage, model=MODEL):
+    price = PRICES[model]
+    return sum(usage[kind] * price[kind] for kind in price) / 1e6
 
 
 def system_prompt(root, regime, wording):
@@ -313,15 +320,16 @@ def system_prompt(root, regime, wording):
     return base + "\n\nThe contents of `docs/`:\n\n" + "\n\n".join(parts)
 
 
-def answer_question(client, root, question, regime, wording="caveat", max_calls=MAX_TOOL_CALLS):
+def answer_question(client, root, question, regime, wording="caveat", max_calls=MAX_TOOL_CALLS,
+                    model=MODEL, grep_order="sorted"):
     messages = [{"role": "user", "content": question}]
     system = system_prompt(root, regime, wording)
     usage = {"input": 0, "output": 0, "cache_write": 0, "cache_read": 0}
-    calls, turns, answer, stop = [], 0, "", None
+    calls, turns, answer, stop, empty_replies = [], 0, "", None, 0
     while True:
         exhausted = len(calls) >= max_calls
         response = client.messages.create(
-            model=MODEL,
+            model=model,
             max_tokens=4000,
             system=system,
             tools=TOOLS,
@@ -339,18 +347,22 @@ def answer_question(client, root, question, regime, wording="caveat", max_calls=
         tool_uses = [block for block in response.content if block.type == "tool_use"]
         if stop != "tool_use" or not tool_uses:
             answer = "\n".join(b.text for b in response.content if b.type == "text").strip()
+            if not answer and empty_replies < 2:  # a reply without text is asked for again
+                empty_replies += 1
+                continue
             break
         messages.append({"role": "assistant", "content": response.content})
         results = []
         for block in tool_uses:
             calls.append({"tool": block.name, "input": block.input})
             results.append({"type": "tool_result", "tool_use_id": block.id,
-                            "content": execute(root, block.name, block.input)})
+                            "content": execute(root, block.name, block.input, grep_order)})
         if len(calls) >= max_calls:
             results.append({"type": "text", "text": "Tool budget used up. Give your answer now."})
         messages.append({"role": "user", "content": results})
     return {"answer": answer, "stop_reason": stop, "turns": turns, "tool_calls": calls,
-            "usage": usage, "cost_usd": round(usage_cost(usage), 6)}
+            "empty_replies": empty_replies,
+            "usage": usage, "cost_usd": round(usage_cost(usage, model), 6)}
 
 
 def run(args):
@@ -372,6 +384,10 @@ def run(args):
         label += f"+budget{args.max_tool_calls}"
     if args.tag:
         label += "+" + args.tag
+    if args.grep_order != "sorted":
+        label += "+" + args.grep_order
+    if args.model != MODEL:
+        label += "+" + args.model.removeprefix("claude-")
     spent = [0.0]
 
     def work_one(job):
@@ -383,11 +399,12 @@ def run(args):
             return 0.0
         try:
             record = answer_question(client, work / "sandbox" / condition, question["question"],
-                                     args.regime, args.wording, args.max_tool_calls)
+                                     args.regime, args.wording, args.max_tool_calls,
+                                     args.model, args.grep_order)
         except Exception as error:  # noqa: BLE001 - one failed run must not stop the batch
             print(f"failed {path.name}: {type(error).__name__}: {str(error)[:200]}", flush=True)
             return 0.0
-        record.update({"regime": label, "condition": condition,
+        record.update({"regime": label, "condition": condition, "model": args.model,
                        "question_id": question["id"], "rep": rep})
         path.write_text(json.dumps(record, ensure_ascii=False), encoding="utf-8")
         spent[0] += record["cost_usd"]
@@ -460,8 +477,8 @@ def judge(args):
                               and not verdict.get("contradicts_key"))
         verdict["prompt_key"] = key
         target.write_text(json.dumps(verdict), encoding="utf-8")
-        return (response.usage.input_tokens * PRICE["input"]
-                + response.usage.output_tokens * PRICE["output"]) / 1e6
+        return (response.usage.input_tokens * PRICES[MODEL]["input"]
+                + response.usage.output_tokens * PRICES[MODEL]["output"]) / 1e6
 
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         costs = list(pool.map(judge_one, sorted((work / "runs").glob("*.json"))))
@@ -608,6 +625,9 @@ def main():
     r.add_argument("--classes", help="comma-separated question classes to run")
     r.add_argument("--tag", help="suffix for the arm label, e.g. the docs variant in the sandbox")
     r.add_argument("--conditions")
+    r.add_argument("--model", choices=sorted(PRICES), default=MODEL)
+    r.add_argument("--grep-order", choices=["sorted", "shuffled"], default="sorted",
+                   help="order in which grep walks the files; shuffled is seeded by the call")
     r.add_argument("--limit", type=int)
     r.add_argument("--workers", type=int, default=8)
     r.add_argument("--max-usd", type=float, default=3.0)

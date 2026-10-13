@@ -11,7 +11,7 @@ lines.json: [{"claim": "segmentation strategy: ...", "symbols": ["Service.method
 usage: scholia.py check lines.json
        scholia.py build --lines lines.json --written-from APP_DIR --current APP_DIR
                         --base SANDBOX --out SANDBOX --form file|woven [--only-valid]
-       scholia.py surfaced --work DIR --arm LABEL --condition NAME
+       scholia.py surfaced --work DIR --arm LABEL --condition NAME [--grep-order shuffled]
 """
 import argparse
 import ast
@@ -129,7 +129,8 @@ def surfaced(args):
     shown = opened = 0
     for path in runs:
         calls = json.loads(path.read_text(encoding="utf-8"))["tool_calls"]
-        shown += any(MARK in execute(root, call["tool"], call["input"]) for call in calls)
+        shown += any(MARK in execute(root, call["tool"], call["input"], args.grep_order)
+                     for call in calls)
         opened += any(call["tool"] == "read_file" and NOTES_FILE in str(call["input"].get("path"))
                       for call in calls)
     print(json.dumps({"arm": args.arm, "condition": args.condition, "runs": len(runs),
@@ -149,6 +150,7 @@ def main():
     s = sub.add_parser("surfaced")
     for name in ("work", "arm", "condition"):
         s.add_argument(f"--{name}", required=True)
+    s.add_argument("--grep-order", choices=["sorted", "shuffled"], default="sorted")
     args = parser.parse_args()
     {"check": check, "build": build, "surfaced": surfaced}[args.command](args)
 

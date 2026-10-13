@@ -52,6 +52,8 @@ sessions were read.
 The executable family was tested in the form Opus gave it (the cloze ledger), with a frozen control
 arm: `../agent-qa/README.md`, section "Late-bound frames and a list of added symbols". It did not
 pass its own kill criteria. Scholia (delivery through the agent's own grep) was tested next and
-passed its four: `../agent-qa/README.md`, section "Notes inside the tree the agent searches". Not
+passed its four, but the gain did not survive a shuffled file order in the search tool:
+`../agent-qa/README.md`, sections "Notes inside the tree the agent searches" and "Does the note
+result survive another file order, another model, and decisions?". Not
 tested: the closed-world ledger (differences of standing queries), executable experiments that run
 the code.
