@@ -11,7 +11,7 @@ lines.json: [{"claim": "segmentation strategy: ...", "symbols": ["Service.method
 usage: scholia.py check lines.json
        scholia.py build --lines lines.json --written-from APP_DIR --current APP_DIR
                         --base SANDBOX --out SANDBOX --form file|woven [--only-valid]
-       scholia.py surfaced --work DIR --arm LABEL --condition NAME [--grep-order shuffled]
+       scholia.py surfaced --work DIR --arm LABEL --condition NAME [--grep-order shuffled|notes-first]
 """
 import argparse
 import ast
@@ -150,7 +150,7 @@ def main():
     s = sub.add_parser("surfaced")
     for name in ("work", "arm", "condition"):
         s.add_argument(f"--{name}", required=True)
-    s.add_argument("--grep-order", choices=["sorted", "shuffled"], default="sorted")
+    s.add_argument("--grep-order", choices=["sorted", "shuffled", "notes-first"], default="sorted")
     args = parser.parse_args()
     {"check": check, "build": build, "surfaced": surfaced}[args.command](args)
 

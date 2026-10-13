@@ -222,13 +222,57 @@ stayed empty.
 
 Cost of this round: about USD 1.6 (agent runs 1.50, of which Sonnet 1.05).
 
+## A search that returns the notes first
+
+A fifth round builds the thing the fourth round pointed at. With `--grep-order notes-first`, `grep`
+walks the files in the shuffled order and puts up to 20 matching note lines from anywhere under
+`src/` before the code hits, whatever path was searched. Where the notes sit and how the files are
+ordered no longer matter. Haiku, `pull`, 2 repetitions, 624 runs.
+
+Structural questions (24), share correct:
+
+| calls | nothing | notes, file | notes, woven | earlier notes, file | file against nothing | woven against nothing |
+|---|---|---|---|---|---|---|
+| 2 | 0.396 [0.23, 0.56] | 0.542 [0.35, 0.71] | 0.625 [0.48, 0.77] | 0.583 [0.40, 0.77] | +0.15 [-0.02, 0.31] | +0.23 [0.04, 0.42] |
+| 4 | 0.625 [0.44, 0.79] | 0.875 [0.75, 0.98] | 0.833 [0.71, 0.96] | 0.812 [0.67, 0.94] | +0.25 [0.10, 0.42] | +0.21 [0.08, 0.35] |
+| 14 | 0.979 | 0.979 | | | 0.00 | |
+
+At 14 calls the notes arm uses 18,054 prompt tokens and 4.2 tool calls per question against 25,212
+and 5.3 with nothing. A note was shown in 46 and 47 of 48 runs at 2 calls. With the earlier notes,
+0% of the answers to changed questions assert the outdated behaviour and 13% relay it with a caveat
+(2 calls); at 4 calls neither occurs.
+
+Decision questions (12), share correct:
+
+| calls | nothing | `decisions.md` in `docs/` | decision notes | notes against `docs/` | prompt tokens, notes |
+|---|---|---|---|---|---|
+| 2 | 0.000 | 0.292 [0.08, 0.50] | 0.833 [0.58, 1.00] | +0.54 [0.29, 0.79] | 3,105 |
+| 4 | 0.042 | 0.958 | 1.000 | +0.04 [0.00, 0.12] | 5,741 |
+
+For comparison, `decisions.md` in the prompt gives 1.000 at 2 calls with 14,922 prompt tokens.
+
+The criteria were written before the runs. At 2 calls a gain of at least +0.20 with an interval
+that excludes 0: the woven form meets it, the file form does not (+0.15, interval touching 0); the
+two forms do not differ from each other (-0.08 [-0.23, 0.06]). A note shown in at least 80% of the
+runs: met. At 14 calls no more than 1.2 times the tokens of nothing and no loss of accuracy: met
+(0.72 times). Decision notes ahead of `docs/` with an interval that excludes 0: met at 2 calls.
+
+What this shows: ranking the notes first restores a gain that does not depend on file order or on
+where the notes are placed. For structural questions it is smaller at 2 calls than the +0.33 of the
+third round and clear at 4 calls; with a full budget it saves about a quarter of the prompt tokens
+at equal accuracy. For decisions it is large: 83% at 2 calls against 29% for the ledger in `docs/`,
+at a fifth of the tokens of putting the ledger in the prompt.
+
+Cost of this round: about USD 0.65 (agent runs 0.53).
+
 ## Reading
 
 - Decisions are the only stored content with a large effect: 0 to 4% without them, 88 to 100% with.
 - A stored statement in `docs/` is not opened for structural questions. As a note in the searched
   tree it helps only when the search returns the notes first; with a neutral file order the gain at
-  2 calls is gone.
-- Decisions are few and short: in the prompt they answer every "why" question at 2 calls.
+  2 calls is gone, and a search built to put matching notes first brings part of it back.
+- Decisions are few and short: in the prompt they answer every "why" question at 2 calls; as notes
+  behind a notes-first search they answer 83% at 2 calls and all at 4, for a fifth of the tokens.
 - No script-made refresh of an earlier description (witness notes, pointers, late-bound values, a
   list of what was added) came close to a page written again from the current code.
 - With enough tool calls the agent answers structural questions from the code; no kind of
@@ -276,6 +320,6 @@ then run with `--regime pull --conditions none,fresh,scholia_file,scholia_woven,
 `python3 -I scholia.py surfaced --work <dir> --arm pull+budget2+rooted --condition scholia_file`
 replays the stored tool calls and counts the runs in which a note was shown.
 
-`runs.tar.gz` holds every run and verdict (4,704 runs) and the stance labels of the first three
-rounds. API cost of the whole experiment: about USD 7.9 (first round 4.8, frame round 0.75, note
-round 0.8, robustness round 1.6).
+`runs.tar.gz` holds every run, verdict and stance label (5,328 runs). API cost of the whole
+experiment: about USD 8.6 (first round 4.8, frame round 0.75, note round 0.8, robustness round 1.6,
+notes-first round 0.65).

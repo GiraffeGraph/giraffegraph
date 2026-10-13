@@ -60,8 +60,14 @@ wiki pages named under each heading.
    gain repeats on a second model (Sonnet 5.5: 77% against 52%, +0.25 [0.08, 0.44]) and disappears
    when the search tool walks the files in a shuffled order (46% against 42%, +0.04 [-0.15, 0.23]):
    it came from the notes file being returned first. The same holds for decisions as notes (67%
-   against 33% for `decisions.md` in `docs/` in path order; 50% against 42% shuffled). **Kept only
-   as: a search that returns the notes first delivers them; putting them in the tree does not.**
+   against 33% for `decisions.md` in `docs/` in path order; 50% against 42% shuffled). A search
+   tool built to put up to 20 matching notes before the code hits, in a shuffled file order, brings
+   part of it back: at two calls +0.15 [-0.02, 0.31] with the notes in one file and +0.23
+   [0.04, 0.42] woven above the symbols; at four calls +0.25 and +0.21, both clear; at fourteen the
+   same accuracy with 28% fewer prompt tokens. Decision notes behind that search: 83% at two calls
+   against 29% for the ledger in `docs/` (+0.54 [0.29, 0.79]) and 100% at four. **Kept as: a
+   search that ranks notes first delivers them, most clearly for decisions; putting them in the
+   tree does not.**
 
 ## What the essay becomes
 
@@ -76,7 +82,8 @@ axis, the price of derivation at the moment of use:
   a page written again by a reader of the current source, so the cache is regenerated, not patched.
   Where it is put matters: in the prompt it costs five times the tokens, in a documentation folder
   it is not opened, and as one-line notes in the searched tree it arrives only if the search ranks
-  the notes first. Decisions are small enough to go in the prompt: 100% at two tool calls.
+  the notes first. Decisions are small enough to go in the prompt (100% at two tool calls); as
+  notes behind a notes-first search they cost a fifth of those tokens for 83% at two calls.
 
 The second line is where the essay stood. The third is the regime of large code bases, of extraction
 that costs a model call and a human review, and of any reader that cannot afford to look.
@@ -95,5 +102,6 @@ that costs a model call and a human review, and of any reader that cannot afford
 
 A code base large enough that search is expensive for real; a second model; statement-level witnesses
 harvested from the agent's own tool calls; human-written documentation; a human reviewer in the
-ledger experiments; a search tool built to rank matching notes first. From the idea sessions: standing queries for "only" and "never" claims that deliver the
+ledger experiments; the notes-first search on a second model and a larger code base. From the
+idea sessions: standing queries for "only" and "never" claims that deliver the
 difference to their baseline; stored experiments that run the code.

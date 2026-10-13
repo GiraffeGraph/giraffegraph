@@ -51,6 +51,8 @@ PRICES = {  # USD per MTok
     "claude-sonnet-5-5": {"input": 2.0, "output": 10.0, "cache_write": 2.5, "cache_read": 0.2},
 }
 MAX_TOOL_CALLS = 14
+NOTE_MARK = "#~ "  # start of a note line written by scholia.py
+MAX_NOTE_HITS = 20
 CONDITIONS = ["none", "decisions", "fresh", "fresh_witness", "stale", "stale_witness",
               "stale_generic", "map_fresh", "map_stale", "pointers_fresh", "pointers_stale"]
 SYSTEM = (
@@ -276,13 +278,15 @@ def execute(root, name, arguments, grep_order="sorted"):
             pattern = re.compile(arguments["pattern"])
             files = [target] if target.is_file() else sorted(
                 p for p in target.rglob("*") if p.is_file() and p.suffix in (".py", ".md"))
-            if grep_order == "shuffled":
+            if grep_order in ("shuffled", "notes-first"):
                 seed = zlib.crc32(f"{arguments['pattern']}\0{arguments['path']}".encode())
                 random.Random(seed).shuffle(files)
-            hits = []
+            hits = note_hits(root, pattern) if grep_order == "notes-first" else []
             for path in files:
                 for number, line in enumerate(
                         path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+                    if grep_order == "notes-first" and line.lstrip().startswith(NOTE_MARK):
+                        continue
                     if pattern.search(line):
                         hits.append(f"{path.relative_to(root)}:{number}:{line.strip()[:200]}")
                         if len(hits) >= 40:
@@ -291,6 +295,19 @@ def execute(root, name, arguments, grep_order="sorted"):
     except (ValueError, KeyError, re.error, OSError) as error:
         return f"error: {error}"
     return "unknown tool"
+
+
+def note_hits(root, pattern):
+    """Matching note lines from anywhere under `src/`, whatever path the search was given."""
+    hits = []
+    for path in sorted((root / "src").rglob("*.py")):
+        for number, line in enumerate(
+                path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+            if line.lstrip().startswith(NOTE_MARK) and pattern.search(line):
+                hits.append(f"{path.relative_to(root)}:{number}:{line.strip()[:200]}")
+                if len(hits) >= MAX_NOTE_HITS:
+                    return hits
+    return hits
 
 
 # ---------------------------------------------------------------- running the agent
@@ -626,8 +643,9 @@ def main():
     r.add_argument("--tag", help="suffix for the arm label, e.g. the docs variant in the sandbox")
     r.add_argument("--conditions")
     r.add_argument("--model", choices=sorted(PRICES), default=MODEL)
-    r.add_argument("--grep-order", choices=["sorted", "shuffled"], default="sorted",
-                   help="order in which grep walks the files; shuffled is seeded by the call")
+    r.add_argument("--grep-order", choices=["sorted", "shuffled", "notes-first"], default="sorted",
+                   help="order in which grep walks the files; shuffled is seeded by the call; "
+                        "notes-first is shuffled with up to 20 matching note lines put first")
     r.add_argument("--limit", type=int)
     r.add_argument("--workers", type=int, default=8)
     r.add_argument("--max-usd", type=float, default=3.0)

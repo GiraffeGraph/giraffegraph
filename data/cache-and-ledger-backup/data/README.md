@@ -87,7 +87,7 @@ reproducible. A number without a script here is a claim, not a fact.
 ## Agent experiment and witness survival (2026-10-13)
 
 `agent-qa/` holds the question-answering experiment (does stored documentation help, do nothing or
-mislead an agent; 4,704 runs, including the frames whose facts are filled in from the code at read
+mislead an agent; 5,328 runs, including the frames whose facts are filled in from the code at read
 time and the one-line notes placed inside the searched tree) and `witness-survival/` the measurement of how long the code that
 documentation cites stays unchanged in eight public repositories. Each has its own README or REPORT.
 `idea-sessions/` holds the brief given to five agents in three orderings and their fifteen answers.
