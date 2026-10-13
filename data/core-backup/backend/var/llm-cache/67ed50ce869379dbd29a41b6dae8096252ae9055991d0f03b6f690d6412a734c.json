@@ -1,0 +1,288 @@
+{
+  "key": "67ed50ce869379dbd29a41b6dae8096252ae9055991d0f03b6f690d6412a734c",
+  "created_at": "2026-10-12T20:37:20.484931+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-95867"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "كَانَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-muhammad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مُحَمَّدُ بْنُ سُلَيْمَانَ الْمِصِّيصِيُّ لُوَيْنٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ سُلَيْمَانَ الْمِصِّيصِيُّ لُوَيْنٌ"
+          }
+        ]
+      },
+      {
+        "ref": "n-ibn-abi-zinad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ أَبِي الزِّنَادِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنُ أَبِي الزِّنَادِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-abu-zinad",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِيهِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِيهِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-urwa",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُرْوَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-hisham",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "هِشَامٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عُرْوَةَ وَهِشَامٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-aisha",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَائِشَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-muhammad",
+        "to_ref": "n-ibn-abi-zinad",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-95867",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "نَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا ابْنُ أَبِي الزِّنَادِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-ibn-abi-zinad",
+        "to_ref": "n-abu-zinad",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-95867",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِيهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-abu-zinad",
+        "to_ref": "n-urwa",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-95867",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ وَهِشَامٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-abu-zinad",
+        "to_ref": "n-hisham",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-95867",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُرْوَةَ وَهِشَامٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-urwa",
+        "to_ref": "n-aisha",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-95867",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-muhammad",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "مُحَمَّدُ بْنُ سُلَيْمَانَ الْمِصِّيصِيُّ لُوَيْنٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-ibn-abi-zinad",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "ابْنُ أَبِي الزِّنَادِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-abu-zinad",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَبِيهِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-urwa",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عُرْوَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-hisham",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "هِشَامٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-aisha",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَائِشَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3146,
+    "output_tokens": 4675,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

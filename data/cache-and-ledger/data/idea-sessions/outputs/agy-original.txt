@@ -1,0 +1,83 @@
+### 1. Name
+**The Precedent Docket**: an append-only, content-addressed caselaw ledger of non-derivable decisions and symbol-gated derivation expedients, structured as a Ripple-Down exception trie.
+
+---
+
+### 2. What is stored
+The unit is a **Precedent Record** stored in an append-only, plain-text file (`.docket`). It distinguishes non-derivable architectural intent (`RATIO`) from transient, expensive derivation shortcuts (`EXPEDIENT`).
+
+**Fields**:
+- `cid`: Content hash of the payload (`sha256[:8]`).
+- `anchor`: Repo-rooted path and symbol with its G2 definition-block hash (`path::Symbol#g2_hash`).
+- `tier`: `RATIO` (decision) or `EXPEDIENT` (expensive derivation).
+- `payload`: For `RATIO`, `intent` and `rejected` alternative; for `EXPEDIENT`, `derivation` fact and `cached_g2`.
+- `scope`: Predicate defining applicability (defaults to `*`).
+- `distinguishes`: Parent CID and contradiction condition (Ripple-Down exception link).
+
+```docket
+case 8f1a2d01 src/app/cms/faq.py::FAQ#e4b102 RATIO
+  intent: FAQ is a dedicated entity owning items, NOT a content block with conventions.
+  rejected: ContentBlock inheritance (causes cascading delete bugs across localization tables).
+  scope: *
+  distinguishes: -
+
+case c93b04a2 src/app/cms/faq.py::FAQ#e4b102 RATIO
+  intent: FAQ items are ordered by explicit sequence index, not creation timestamp.
+  rejected: Timestamp ordering (breaks drag-and-drop reordering in admin UI).
+  scope: context == "admin_reorder"
+  distinguishes: 8f1a2d01 (on_conflict: "reordering items corrupted display sequence")
+
+case 410e7b89 src/app/cms/faq.py::FaqController#7a89f0 EXPEDIENT
+  derivation: Routes PUT /api/faq/{id} to UpdateFaqCommand; requires AdminRole authorization.
+  cached_g2: 7a89f0
+  distinguishes: -
+```
+
+---
+
+### 3. Operations
+- **Writing**:
+  - `RATIO`: Written once by the agent (or human) when an un-derivable design choice is made. Appended to `.docket`.
+  - `EXPEDIENT`: Written by the agent only after exploratory sessions (>3 tool calls) to memoize complex structural facts. Trivial derivations are omitted by rule.
+- **Reading (Tight Tool Budget $\le 2$)**: A deterministic script parses `.docket` in <2 ms. For `RATIO`, it resolves active rulings via RDR scope rules. For `EXPEDIENT`, it computes the symbol's current G2 body hash: if matching, it emits the derivation; if mismatched, it suppresses stale text and emits *only* the repo-rooted pointer (`path:Symbol`). The agent receives this filtered stream in its prompt or via 1 lookup tool call.
+- **Invalidation & Narrowing**:
+  - `RATIO`: Never edited or deleted. When an agent or human spots a contradiction, a new record is appended that `distinguishes` the old CID, narrowing the active scope.
+  - `EXPEDIENT`: Deterministically invalidated by script when the G2 hash diverges. No LLM needed.
+
+---
+
+### 4. Why it beats a markdown wiki and a knowledge graph
+- **Against Markdown Wikis**:
+  - *Facts 1 & 3*: Wikis mix cheap derivations, expensive derivations, and decisions into prose, inflating prompt tokens 2–4×. High-budget agents ignore pull-docs completely (Fact 1: 0/432 runs). The Docket bans cheap derivations, keeping tokens minimal.
+  - *Facts 4, 5, 6 & 7*: Section-level witness notes failed to help (Fact 5). File-level hashes rot at 46% within one month, while symbol-level G2 hashes survive at 78% after 12 months (Fact 7). When G2 diverges, the Docket collapses the entry into a repo-rooted pointer (Fact 6: captures half the gain of fresh pages with 0% risk of stale assertions), preventing the agent from relaying outdated facts with doubt (Fact 4).
+  - *Facts 8 & 9*: Wikis lack formal scope. Broad decisions produce 10% errors (Fact 8). The Docket's Ripple-Down narrowing reduces silent errors from 10% to 1.3% at half the interrogation cost (Fact 8), and content-addressed CIDs survive prompt changes at 86–98% (Fact 9).
+- **Against Knowledge Graphs**:
+  - Graphs fragment decisions into triples `(S, P, O)` and trigger invalidation cascades across community summaries (e.g. GraphRAG build costs). The Docket's `RATIO` explicitly preserves non-derivable intent (`intent` vs `rejected`, Fact 2).
+  - Fact 10: Surface entity extraction yields 82% verbatim wrong extractions in biomedical text. The Docket anchors to AST symbol blocks rather than fuzzy surface triples.
+
+---
+
+### 5. Closest prior work
+**Ripple-Down Rules** (Compton & Jansen, 1990) and **Architecture Decision Records** (Nygard, 2011).  
+**Exact difference**: RDR was designed for manual expert classification over fixed feature vectors. ADRs are human-facing markdown files lacking machine-checkable scopes or AST anchoring. The Docket combines RDR's exception-narrowing semantics with G2 symbol-hash gating and a dual-tier (`RATIO` vs `EXPEDIENT`) append-only ledger for autonomous agents.
+
+---
+
+### 6. One falsifiable experiment
+- **Harness**: [`run_agent_qa.py`](file:///Users/efe/projects/GiraffeGraph/cache-and-ledger/data/agent-qa/run_agent_qa.py) on `giraffegraph-core` (36 questions: 12 stable, 12 changed, 12 decision).
+- **Test arm**: Budget 2 calls, `push` regime. Sandbox contains `.docket` built from commit `4279c98`. On `changed` questions, G2 mismatches suppress stale text to pointers.
+- **Comparison arm**: Stale markdown page (`stale page`, scored 0.500 on changed questions, 0.688 overall at budget 2).
+- **Metric**: Accuracy on `changed` questions at tool budget 2.
+- **Killing result**: If accuracy on `changed` questions is $\le 0.500$ (failing to beat the stale page) or overall accuracy is $\le 0.312$ (failing to beat "nothing"), the hypothesis that symbol-level hash-suppression into pointers improves agent accuracy under tight budgets is falsified.
+- **Cost**: 72 runs $\approx$ $0.15 USD.
+
+---
+
+### 7. Two runner-up ideas
+1. **The Invariant Refutation Sieve**: An append-only registry of counter-examples and forbidden state transitions expressed as executable AST predicates, steering agents away from known dead ends without prose.
+2. **The Intent-Relocation Table**: An ELF-inspired symbol relocation file where exported interfaces carry machine-readable headers of rejected alternatives and sequencing constraints, queried via a fast CLI probe.
+
+---
+
+### 8. The weakest point
+G2 symbol hashing assumes code is modularized into discrete classes and functions; it breaks on dispersed, cross-cutting architectural changes (e.g., config cascades, multi-file protocols, SQL migrations) that lack a single symbol anchor.

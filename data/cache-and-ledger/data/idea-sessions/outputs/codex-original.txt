@@ -1,0 +1,85 @@
+1. Name
+
+Contrast Bench: persistent project knowledge stored as runnable experiments and human-ranked counterfactual outcomes, rather than descriptions of what the project currently does.
+
+2. What is stored
+
+The unit is a contrast: a fixture, an intervention, an executable observation, a scope, and optionally a human preference between explicitly described consequences. Current answers are not stored.
+
+Illustrative format, with invented adapter names:
+
+    contrast/v1
+    topic: validation.evidence
+    scope: newly-added-grounding-gate
+    fixture: candidate(valid-schema, quote="absent")
+    source: segment(text="different")
+    adapter: local.validation
+    run A: validate(candidate, source)
+    run B: validate(candidate.with(quote="different"), source)
+    observe: status, reason_code, persisted, countable
+    alternative X: reject_failed_candidate
+    consequence X: information_silently_discarded
+    alternative Y: retain_failed_candidate_for_review
+    consequence Y: information_retained_and_countable
+    preference: Y > X
+    priority: retain_countable_information > automatic_disposal
+    authority: human-confirmed
+    on-adapter-failure: emit_unknown
+
+Behavioral runs and normative alternatives are distinct. The preference does not claim that the implementation follows it, or that a hypothetical alternative was executed.
+
+3. Operations
+
+Write: after an agent discovers a useful distinction, it proposes a minimal contrast. A deterministic runner checks that the probe executes and its intervention reaches the intended boundary. A human confirms preferences and their consequence descriptions; an agent cannot infer historical intent from implementation.
+
+Read: before a session, a local runner executes applicable contrasts against the current checkout, without network access or model calls. It produces a compact observation matrix containing inputs, interventions, current outputs, and applicable preferences. Under two tool calls, the agent can read this matrix once. Under generous budgets, it can inspect source directly.
+
+Invalidate: observations expire every session; they are regenerated, never accepted because a hash still matches. Broken adapters, missing fixtures, and ambiguous observations produce unknown, not an old answer.
+
+Narrow: contradictory human judgments trigger a discriminating fixture and a scope exception. The human supplies the distinction; a deterministic selector applies it thereafter. Content-normalized fixtures identify units across regeneration.
+
+4. Why it should beat a markdown page and a graph
+
+Fact 3 supports spending deterministic work before the agent starts: cheap local execution can supply useful results when exploration is scarce. Fact 6 suggests supplying outcomes, not merely locations.
+
+Unlike prose, the behavioral output is recomputed from the current implementation. This attacks the stale-result problem behind facts 4–5 rather than asking the agent to interpret another warning. It avoids treating file churn as semantic invalidation, consistent with fact 7.
+
+Fact 2 requires independent intent information. Ranked consequences preserve that information while exposing the tradeoff the agent must explain. Facts 8–9 support contradiction-driven scope refinement and content-based identity.
+
+Fact 10 forbids treating a copied quote as a correctness certificate. A contrast therefore tests operational consequences; human judgments remain separately attributed.
+
+The proposed advantage over a graph is that answering "what changes if this input changes?" requires executing a stored intervention, not extracting and maintaining another collection of relations. At 14 calls, fact 1 predicts little structural accuracy benefit; success there means avoiding substantial overhead.
+
+5. Closest prior work
+
+Metamorphic testing compares related executions rather than requiring an exact expected answer. Contrast Bench adopts that experimental structure but uses observed differences as session knowledge, without requiring every difference to satisfy a correctness assertion. [Primary research](https://arxiv.org/abs/2108.02694)
+
+Preference-based reinforcement learning accepts comparative judgments instead of absolute rewards. Here, preferences remain explicit, scoped data read by the agent; they do not train a policy or become an inferred universal reward function. [Primary research](https://proceedings.mlr.press/v206/saha23a.html)
+
+The proposed novelty is their use as a persistent, executable knowledge medium. I have not established that this combination is unprecedented.
+
+6. One falsifiable experiment
+
+Author contrasts from the earlier checkout and existing intent records, without consulting the answer key. Freeze them, then execute them against the current checkout.
+
+Use the same 36 questions, push regime, and budgets 2/4/14. Arms:
+
+- Contrast: generated observation matrix plus ranked consequences.
+- Stale comparison: rooted earlier description plus decisions.
+- Fresh ceiling: rooted current description plus decisions.
+
+Only sandbox contents differ. The harness already pushes every file directly inside docs/, so a text matrix requires no new agent tool.
+
+One repetition gives 324 runs. The reported USD 4.8 for 2,880 runs suggests ample room, although costs need not scale linearly. Use one worker, enforce a prospective USD 4 spending ceiling including outstanding-request allowance, and score blindly with humans at zero API cost. An incomplete grid is inconclusive. This experiment is proposed, not run.
+
+Primary metric: changed-question accuracy at two calls. Kill the idea if it fails to beat the stale arm by 15 percentage points, or decision accuracy falls more than 10 points below the ledger arms. Also report prompt tokens and probe failures; expensive preparation must remain visible.
+
+7. Two runner-up ideas
+
+Repair specimens: store minimized faulty inputs and executable repairs that turn them into acceptable inputs. Reading demonstrates the boundary through transformation; repair failure forces rediscovery.
+
+Question auctions: persist unresolved competing hypotheses and deterministic experiments ordered by expected discrimination per unit cost. Each session spends its available budget resolving hypotheses, leaving uncertainty explicit rather than accumulating confident summaries.
+
+8. The weakest point
+
+Ranked consequences may preserve a tradeoff while losing its historical reason, accepted disadvantages, or empirical provenance. Restoring that richness could turn the format into an ADR in disguise; if faithful "why" answers require narrative records, this proposal fails its central ambition.

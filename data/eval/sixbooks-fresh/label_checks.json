@@ -1,0 +1,87 @@
+{
+  "set": "sixbooks-fresh",
+  "hadiths": 300,
+  "duplicate_hadith_ids": 0,
+  "reference_ids_equal_hadith_ids": true,
+  "mentions": 1778,
+  "mentions_verbatim_in_text_after_normalisation": 1778,
+  "share_verbatim": 1.0,
+  "mentions_not_verbatim": [],
+  "hadiths_all_mentions_found_in_text_order": 300,
+  "empty_mentions": 0,
+  "mentions_with_markup": 0,
+  "mentions_per_hadith": {
+    "min": 2,
+    "median": 6.0,
+    "mean": 5.927,
+    "max": 11,
+    "histogram": {
+      "2": 1,
+      "3": 3,
+      "4": 18,
+      "5": 100,
+      "6": 103,
+      "7": 45,
+      "8": 17,
+      "9": 6,
+      "10": 5,
+      "11": 2
+    }
+  },
+  "text_chars": {
+    "min": 131,
+    "median": 449.5,
+    "mean": 547.187,
+    "max": 2743
+  },
+  "hadiths_with_more_than_one_chain": 74,
+  "share_with_more_than_one_chain": 0.2467,
+  "chains_per_hadith": {
+    "1": 226,
+    "2": 60,
+    "3": 10,
+    "4": 3,
+    "6": 1
+  },
+  "chain_positions_with_a_mention": 2150,
+  "mentions_outside_chains": 15,
+  "hadiths_with_mentions_outside_chains": 11,
+  "per_collection": {
+    "Bukhari": {
+      "hadiths": 50,
+      "mentions": 298,
+      "share_verbatim": 1.0,
+      "hadiths_with_more_than_one_chain": 8
+    },
+    "Muslim": {
+      "hadiths": 50,
+      "mentions": 295,
+      "share_verbatim": 1.0,
+      "hadiths_with_more_than_one_chain": 24
+    },
+    "AbuDawud": {
+      "hadiths": 50,
+      "mentions": 294,
+      "share_verbatim": 1.0,
+      "hadiths_with_more_than_one_chain": 9
+    },
+    "Tirmidhi": {
+      "hadiths": 50,
+      "mentions": 292,
+      "share_verbatim": 1.0,
+      "hadiths_with_more_than_one_chain": 12
+    },
+    "Nasai": {
+      "hadiths": 50,
+      "mentions": 300,
+      "share_verbatim": 1.0,
+      "hadiths_with_more_than_one_chain": 7
+    },
+    "IbnMajah": {
+      "hadiths": 50,
+      "mentions": 299,
+      "share_verbatim": 1.0,
+      "hadiths_with_more_than_one_chain": 14
+    }
+  }
+}

@@ -1,0 +1,72 @@
+1. **Question Virtual Machine (QVM).** Persist executable methods for answering recurring questions, not prose answers: each “capsule” recompiles a small typed observation from the current workspace on demand.
+
+2. **What is stored**
+
+The unit is a question capsule. Fields: question pattern, parameters, scope guard, deterministic probe instructions, output type, dynamically discovered symbol dependencies, calibration cases, cost estimate, and scope exceptions. Probe results are ephemeral.
+
+Illustrative 16-line format:
+
+```text
+capsule faq.item_owner
+  asks "what owns FAQ items in {service}?"
+  param service : directory
+  scope service = "backend"
+  locate class name="FaqItem"
+  require unique
+  read annotation name="Table"
+  follow property name="FaqId"
+  resolve foreign_key
+  emit owner : identifier
+  render "{owner} owns FAQ items"
+  unknown_if missing_or_ambiguous
+  dependency symbol_body
+  cost 1
+  example service="backend"
+  expect owner="Faq"
+end
+```
+
+This is neither an extracted fact nor a pointer: it is a reusable computation that must produce a current value or `UNKNOWN`.
+
+3. **Operations**
+
+A capsule is proposed by the agent after it spends several calls deriving a question likely to recur. A deterministic compiler type-checks it and runs its calibration cases; no capsule is admitted merely because an LLM says it works. Humans approve only probes that encode policy rather than observable structure.
+
+At session start, a script reruns cheap affected capsules. Under a tight budget, the agent makes one call such as `qvm ask "what owns FAQ items in backend?"`; a dispatcher selects the cheapest applicable capsule and returns its typed result plus the symbols inspected. With ample calls, QVM is omitted and the agent explores normally.
+
+Dependencies are recorded at symbol granularity. A changed dependency reruns the capsule—it does not make an old answer available with a warning. Parser failure, ambiguity, or failed calibration yields `UNKNOWN` and queues agent repair. Matching begins broadly; a contradictory calibration example adds a scope exception, following Ripple-Down Rules rather than multiplying narrow capsules pre-emptively. The script executes and invalidates; the agent proposes repairs; a human resolves genuinely semantic ambiguity.
+
+4. **Why it should beat a markdown page and a graph**
+
+Facts **7** and **10** show the target regime precisely: stored derivations matter at two calls but become useless at fourteen. QVM therefore stores the expensive *method* and invokes it only when exploration is constrained.
+
+Unlike a page, it cannot quietly serve an old result: outputs are rebuilt or become `UNKNOWN`. Symbol dependencies exploit their 78% twelve-month survival (**fact 1**) without treating an unchanged symbol as proof of truth. The probe performs extraction, so it should exceed pointers-only context (**fact 5**). It does not rely on ineffective staleness prose (**facts 6 and 8**).
+
+Unlike a knowledge graph, it does not persist LLM-extracted relations whose truth and scope must later be reconciled. It can begin with broad applicability and acquire exceptions only after contradictions (**fact 4**). It also avoids the unsafe assumption that verbatim source text is correct (**fact 3**): correctness comes from a typed operation and calibration, not copying.
+
+QVM deliberately does **not** recover non-derivable rationale; **fact 9** says those decisions still require a human-authored source. Its claim is narrower: replace prose caches and extracted structural graphs, not decision records.
+
+5. **Closest prior work**
+
+Closest are incremental build systems, self-adjusting computation, prepared database queries, and structural-search tools (characterization from memory, **unverified**). Their unit is an artifact or query plan; QVM’s unit is a natural-language question family with budget, applicability, `UNKNOWN` semantics, calibration examples, and contradiction-driven scope refinement. It persists the derivation program while treating every answer as disposable.
+
+6. **Falsifiable experiment**
+
+Author structural capsules against the earlier commit, then execute them unchanged on the current commit to produce one compact `docs/qvm.out`. Run the same 36 questions at budgets 2/4/14 with two arms:
+
+- QVM arm: `decisions.md` plus current compiled `qvm.out`.
+- Comparison: `decisions.md` plus the stale behaviour page.
+
+Use the existing push/rooted setup and judge. Primary metric: correctness on the 12 changed structural questions; secondary metrics: all structural questions and prompt tokens. This is roughly 432 runs and should remain well below USD 5 at the reported prices.
+
+Kill the idea if, at two calls, QVM scores below 80% on changed questions or improves by less than 15 percentage points over the stale page. Also kill it if capsule failures return plausible old values rather than `UNKNOWN`.
+
+7. **Runner-up ideas**
+
+**Contradiction Deck.** Store minimal paired cases that look similar but require different answers; retrieve contrasts rather than facts. Add a card only after an actual scope error, making memory an error-driven boundary set.
+
+**Knowledge Fuzzing Corpus.** Persist questions and executable graders, never answers. At session start, sample them against the current checkout; failures create a short work queue of concepts the next agent must rediscover.
+
+8. **Weakest point**
+
+Writing robust probes may cost more engineering than repeatedly searching the code, especially for behavioural questions requiring whole-program reasoning; the approach wins only where question families recur and can be operationalized deterministically.

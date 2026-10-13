@@ -1,0 +1,101 @@
+{
+ "chains": 27056,
+ "distinct_chains": 26820,
+ "mentions": 150904,
+ "people": 6378,
+ "name_strings": 15301,
+ "all_chains": {
+  "mentions": 150904,
+  "name": {
+   "decisions_after_1pct": 806,
+   "decisions_after_10pct": 3885,
+   "decisions_after_25pct": 6893,
+   "decisions_after_50pct": 10355,
+   "decisions_after_100pct": 15301,
+   "tail10_decision_rate": 0.0574,
+   "tail10_wrong_reuse_rate": 0.1005,
+   "overall_wrong_reuse_rate": 0.0987,
+   "heaps_beta": 0.639
+  },
+  "name+teacher": {
+   "decisions_after_1pct": 1208,
+   "decisions_after_10pct": 8742,
+   "decisions_after_25pct": 18181,
+   "decisions_after_50pct": 30736,
+   "decisions_after_100pct": 50877,
+   "tail10_decision_rate": 0.2439,
+   "tail10_wrong_reuse_rate": 0.0258,
+   "overall_wrong_reuse_rate": 0.0248,
+   "heaps_beta": 0.813
+  },
+  "student+name": {
+   "decisions_after_1pct": 1271,
+   "decisions_after_10pct": 8974,
+   "decisions_after_25pct": 18515,
+   "decisions_after_50pct": 31096,
+   "decisions_after_100pct": 51244,
+   "tail10_decision_rate": 0.2435,
+   "tail10_wrong_reuse_rate": 0.0067,
+   "overall_wrong_reuse_rate": 0.0061,
+   "heaps_beta": 0.804
+  },
+  "student+name+teacher": {
+   "decisions_after_1pct": 1420,
+   "decisions_after_10pct": 11972,
+   "decisions_after_25pct": 26803,
+   "decisions_after_50pct": 48156,
+   "decisions_after_100pct": 84939,
+   "tail10_decision_rate": 0.4582,
+   "tail10_wrong_reuse_rate": 0.002,
+   "overall_wrong_reuse_rate": 0.0018,
+   "heaps_beta": 0.889
+  }
+ },
+ "distinct_chains_only": {
+  "mentions": 149708,
+  "name": {
+   "decisions_after_1pct": 805,
+   "decisions_after_10pct": 3900,
+   "decisions_after_25pct": 6893,
+   "decisions_after_50pct": 10370,
+   "decisions_after_100pct": 15301,
+   "tail10_decision_rate": 0.0559,
+   "tail10_wrong_reuse_rate": 0.0996,
+   "overall_wrong_reuse_rate": 0.0967,
+   "heaps_beta": 0.638
+  },
+  "name+teacher": {
+   "decisions_after_1pct": 1210,
+   "decisions_after_10pct": 8738,
+   "decisions_after_25pct": 18207,
+   "decisions_after_50pct": 30842,
+   "decisions_after_100pct": 50877,
+   "tail10_decision_rate": 0.2401,
+   "tail10_wrong_reuse_rate": 0.0264,
+   "overall_wrong_reuse_rate": 0.025,
+   "heaps_beta": 0.813
+  },
+  "student+name": {
+   "decisions_after_1pct": 1260,
+   "decisions_after_10pct": 8967,
+   "decisions_after_25pct": 18520,
+   "decisions_after_50pct": 31192,
+   "decisions_after_100pct": 51244,
+   "tail10_decision_rate": 0.2401,
+   "tail10_wrong_reuse_rate": 0.0067,
+   "overall_wrong_reuse_rate": 0.0063,
+   "heaps_beta": 0.805
+  },
+  "student+name+teacher": {
+   "decisions_after_1pct": 1414,
+   "decisions_after_10pct": 11946,
+   "decisions_after_25pct": 26778,
+   "decisions_after_50pct": 48225,
+   "decisions_after_100pct": 84939,
+   "tail10_decision_rate": 0.4568,
+   "tail10_wrong_reuse_rate": 0.0019,
+   "overall_wrong_reuse_rate": 0.0019,
+   "heaps_beta": 0.891
+  }
+ }
+}

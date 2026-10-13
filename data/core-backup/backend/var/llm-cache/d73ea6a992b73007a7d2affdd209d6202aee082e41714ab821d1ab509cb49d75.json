@@ -1,0 +1,255 @@
+{
+  "key": "d73ea6a992b73007a7d2affdd209d6202aee082e41714ab821d1ab509cb49d75",
+  "created_at": "2026-10-12T20:21:24.089167+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَخْلَدُ بْنُ خَالِدٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَخْلَدُ بْنُ خَالِدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدُ الرَّزَّاقِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا عَبْدُ الرَّزَّاقِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ جُرَيْجٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا ابْنُ جُرَيْجٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سَعِيدُ بْنُ أَبِي أَيُّوبَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنِي سَعِيدُ بْنُ أَبِي أَيُّوبَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَزِيدَ بْنَ أَبِي حَبِيبٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ يَزِيدَ بْنَ أَبِي حَبِيبٍ أَخْبَرَهُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبَا الْخَيْرِ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ أَبَا الْخَيْرِ حَدَّثَهُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُقْبَةَ بْنِ عَامِرٍ الْجُهَنِيِّ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُقْبَةَ بْنِ عَامِرٍ الْجُهَنِيِّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-8",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَذَرَتْ أُخْتِي أَنْ تَمْشِيَ إِلَى بَيْتِ اللهِ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-1",
+        "to_ref": "node-2",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا مَخْلَدُ بْنُ خَالِدٍ ، قَالَ : نَا عَبْدُ الرَّزَّاقِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-2",
+        "to_ref": "node-3",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "نَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا عَبْدُ الرَّزَّاقِ ، قَالَ : نَا ابْنُ جُرَيْجٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-3",
+        "to_ref": "node-4",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "أَخْبَرَنِي"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "نَا ابْنُ جُرَيْجٍ ، قَالَ : أَخْبَرَنِي سَعِيدُ بْنُ أَبِي أَيُّوبَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-4",
+        "to_ref": "node-5",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "أَنَّ ... أَخْبَرَهُ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ يَزِيدَ بْنَ أَبِي حَبِيبٍ أَخْبَرَهُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-5",
+        "to_ref": "node-6",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "أَنَّ ... حَدَّثَهُ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ أَبَا الْخَيْرِ حَدَّثَهُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-6",
+        "to_ref": "node-7",
+        "properties": {
+          "hadith_ref": "AbuDawud:ifta-93574",
+          "chain_no": 1,
+          "position": 6,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عُقْبَةَ بْنِ عَامِرٍ الْجُهَنِيِّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-7",
+        "to_ref": "node-8",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّهُ قَالَ : نَذَرَتْ أُخْتِي أَنْ تَمْشِيَ إِلَى بَيْتِ اللهِ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3125,
+    "output_tokens": 4465,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "key": "cf7459b76ab8b4ac1748b42f1757f5076deeb451cd937f0f02b1bfa97b4b5380",
+  "created_at": "2026-10-12T20:23:07.449151+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "n-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-66555"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ أَنَّ رَسُولَ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ كَانَ يُصَلِّي رَكْعَتَيْنِ خَفِيفَتَيْنِ بَيْنَ النِّدَاءِ ، وَالْإِقَامَةِ مِنْ صَلَاةِ الْفَجْرِ"
+          }
+        ]
+      },
+      {
+        "ref": "n-mahmud",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "مَحْمُودُ بْنُ خَالِدٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا مَحْمُودُ بْنُ خَالِدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-walid",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الْوَلِيدُ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْوَلِيدُ"
+          }
+        ]
+      },
+      {
+        "ref": "n-abuamr",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي عَمْرٍو"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي عَمْرٍو"
+          }
+        ]
+      },
+      {
+        "ref": "n-yahya",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "يَحْيَى"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "ref": "n-abusalama",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو سَلَمَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي أَبُو سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "n-aisha",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَائِشَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-mahmud",
+        "to_ref": "n-walid",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-66555",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "أَخْبَرَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْوَلِيدُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-walid",
+        "to_ref": "n-abuamr",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-66555",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي عَمْرٍو"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-abuamr",
+        "to_ref": "n-yahya",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-66555",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَن"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ يَحْيَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-yahya",
+        "to_ref": "n-abusalama",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-66555",
+          "chain_no": 1,
+          "position": 4,
+          "sigha": "حَدَّثَنِي"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي أَبُو سَلَمَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-abusalama",
+        "to_ref": "n-aisha",
+        "properties": {
+          "hadith_ref": "Nasai:ifta-66555",
+          "chain_no": 1,
+          "position": 5,
+          "sigha": "عَن"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-aisha",
+        "to_ref": "n-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَائِشَةَ أَنَّ رَسُولَ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ كَانَ يُصَلِّي رَكْعَتَيْنِ خَفِيفَتَيْنِ بَيْنَ النِّدَاءِ ، وَالْإِقَامَةِ مِنْ صَلَاةِ الْفَجْرِ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 2927,
+    "output_tokens": 3284,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

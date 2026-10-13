@@ -1,0 +1,500 @@
+{
+  "files": [
+    {
+      "path": "ar-sanad/Narrator-Disambiguation-main.zip",
+      "bytes": 31678691,
+      "sha256": "b00d891067d82a8f8a37297adf2e8b92423970e03c33ef6136f99749786bcee4"
+    },
+    {
+      "path": "ar-sanad-paper/crossref_10.3390_info13020055.json",
+      "bytes": 16856,
+      "sha256": "d2353e4532bb9c30df26e962c1c71d9baaa09cae359a682798a83504fbe27147"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/EvaluateOnTest.ipynb",
+      "bytes": 137458,
+      "sha256": "7f0687bc75886c664af5e246aee6e991882234346991aaf422f7069c13dcc309"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Lite Narrators data.csv",
+      "bytes": 1979639,
+      "sha256": "42ac92009c32a5575350b3e3f5b33b8a286b762528aace28517b84ad8c625791"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Narrators data.csv",
+      "bytes": 8644569,
+      "sha256": "d66fa14aa1bba9500f914d20899de197391f6cb5fc16e86c63c856128f0e3545"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/README.md",
+      "bytes": 1323,
+      "sha256": "86faa1bb8ddde98ed44d7df77ad56f8c3718a020034b0ce8c3b60c88704948c7"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Large dataset/labels.test",
+      "bytes": 654613,
+      "sha256": "c727c232a90acf162b2b7baa5461f54e8672bfd745c9ee0d62df70580ec9c746"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Large dataset/labels.train",
+      "bytes": 5275903,
+      "sha256": "3206a941669067f2f298c651bc96a320640a982615a08ea7a9ed1b06cbf0f869"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Large dataset/labels.val",
+      "bytes": 1316510,
+      "sha256": "49a710e372c20340aa1fef2fe4b71e982c4fc298feb12856b419ac9dd41556fd"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Large dataset/sanads.test",
+      "bytes": 4664527,
+      "sha256": "d7e794f040917ddfddf413319f2c0a594a9360f4305e48290d4ba7eddd682702"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Large dataset/sanads.train",
+      "bytes": 52980285,
+      "sha256": "c9e151f653effaf276a13bb21172577a86302065ba4a5ab7a0e66ecac4e103d7"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Large dataset/sanads.val",
+      "bytes": 13225791,
+      "sha256": "ee569d82f622b2a17838f26eb5cec59561f196518757ae28906fcb400a53cd8f"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Lite dataset/labels-lite.train",
+      "bytes": 593431,
+      "sha256": "b510b134f74334230a7b09d8fe73754decd5f498c6fb2e335ad156fb23b2add4"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Lite dataset/labels-lite.val",
+      "bytes": 148499,
+      "sha256": "b7ff2f1eedfd51815bc616d96440c8d44751c6a91d2b37c3cf2f9250c75d391d"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Lite dataset/sanads-lite.train",
+      "bytes": 6719086,
+      "sha256": "f4af2acc6e78ba34e3e677780db9a9899afbfa65430ac7df1c71bf8271b7939f"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/Lite dataset/sanads-lite.val",
+      "bytes": 1683036,
+      "sha256": "46626c26386df03602b732893381ff5de53bb28904881b336172c7c6ec4c99c5"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/v2/labels.train",
+      "bytes": 5275903,
+      "sha256": "3206a941669067f2f298c651bc96a320640a982615a08ea7a9ed1b06cbf0f869"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/v2/labels.val",
+      "bytes": 1316510,
+      "sha256": "49a710e372c20340aa1fef2fe4b71e982c4fc298feb12856b419ac9dd41556fd"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/v2/sanads.train",
+      "bytes": 44234539,
+      "sha256": "989b60bf8466e8d6020c023ebf07c4bab855e52cc2600e903997f5b3f772b63e"
+    },
+    {
+      "path": "ar-sanad/extracted/Narrator-Disambiguation-main/v2/sanads.val",
+      "bytes": 11029181,
+      "sha256": "fdd47607cf2c2ca5fa213dc6995b470b910981e412c48d3e14607d1e597f5a0b"
+    },
+    {
+      "path": "bc5cdr/CDR_Data.zip",
+      "bytes": 20403150,
+      "sha256": "0a359a7f038d283a7b05b084fa73de014e7410e1f5d7034bf3fd01f016fc2444"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/BC5CDR.corpus.pdf",
+      "bytes": 769565,
+      "sha256": "07a3cde6fa35499daa7c2e11bd1ff440981527e01ea6ba981671982d2a1572ea"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/BC5CDR.overview.pdf",
+      "bytes": 250806,
+      "sha256": "93fea8ce19cdbc506167c36a837e06e24b31e8b01fa58a212448237a881ffcde"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/BC5CDR.presentation.pdf",
+      "bytes": 16672687,
+      "sha256": "9fda3b08c98a89d1ad75581acbd7dcf5f876ff490ee312fd2d1c91c8792bca95"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/README.txt",
+      "bytes": 2841,
+      "sha256": "926992c39d681becfdf9ba907de8d9e5096d1b44eabc014d22ba8f8d387a491f"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.BioC.xml",
+      "bytes": 2538784,
+      "sha256": "6ec138899a4b6448b40adf4e159a06184f68f8a5a7e13575903c5e127d734d88"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.PubTator.txt",
+      "bytes": 1127990,
+      "sha256": "9e18d8e700168887a7919e62f67ac2ce2357e3f409a48ee992906abdd80fe3e5"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TestSet.BioC.xml",
+      "bytes": 2666867,
+      "sha256": "32d94f03c52e028931513ab52719b5bc7bb8e4fc0e3d99bba37e2b7442e3da35"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TestSet.PubTator.txt",
+      "bytes": 1168687,
+      "sha256": "a3c48d5f35bdfce20c2371778abedc9fd24d1da092207072e5181ad53c8d0e2f"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TrainingSet.BioC.xml",
+      "bytes": 2519542,
+      "sha256": "37d03c8ebb22369fbf8f2099e4bc6570accba8473e9129dddd6278e7e01e1adc"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TrainingSet.PubTator.txt",
+      "bytes": 1129998,
+      "sha256": "7afcec134e3d4871e74b0398d92850d3c9ac94c0bdc780003f2d60184c012bd8"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/DNorm.TestSet/TestSet.DNorm.BioC.xml",
+      "bytes": 1557365,
+      "sha256": "2a171f45ad5f68724f27ca1ace70ec2bde71f3570a3d13738aa3efefd4f19bc2"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/DNorm.TestSet/TestSet.DNorm.PubTator.txt",
+      "bytes": 913288,
+      "sha256": "6f9564880e3d6f0353157f626046bb37f8e414e0f749085e06dac3b44cfe102b"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/tmChem.TestSet/TestSet.tmChem.BioC.xml",
+      "bytes": 1669151,
+      "sha256": "daeabbd1f3c648145095c3b724d6efe455f59b85ba14ca738bb7a88593a54058"
+    },
+    {
+      "path": "bc5cdr/extracted/CDR_Data/tmChem.TestSet/TestSet.tmChem.PubTator.txt",
+      "bytes": 932385,
+      "sha256": "dee85c0aac68f88a7f8c061afe9c2ca6c6539c674e1341c3a160dfb2a35d6bdd"
+    },
+    {
+      "path": "ifta-github/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main.zip",
+      "bytes": 1147028,
+      "sha256": "78f1950c40ac8acfba6bd5778caba70e7aef5484cff762cacf2431d8053c020f"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/Hadith Graph Relationships Schema Demonstration.pdf",
+      "bytes": 503021,
+      "sha256": "6c20acc473bb43cdbf3f537a0655b05d8ba8e6d3e09dcf3183738cb850077f29"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/README.md",
+      "bytes": 6423,
+      "sha256": "a54c49ae25e6002c356608856d3548e73e61caabbb51582d438665bb8c1a1d15"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/NER_RE_splits_mainids/README.md",
+      "bytes": 700,
+      "sha256": "1e7d4c0c27d3ec1b3ab8ac081635a633d519f6191f97bf6a244161af27c8fed3"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/NER_RE_splits_mainids/split_manifest.json",
+      "bytes": 455,
+      "sha256": "a4857d85d56a1004821f230bd1612b9e988c03209b5111d08b999bc54922ad29"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/NER_RE_splits_mainids/test_mainids.txt",
+      "bytes": 259709,
+      "sha256": "75b4e5f9b3ac1ba9ecca74311c0be524626fa49304a3bc35a4c7fe18627ba929"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/NER_RE_splits_mainids/train_mainids.txt",
+      "bytes": 1211921,
+      "sha256": "491f05da53eaff6c728fdcb917ce8c56bf44ea2a2cde923cc00d4f87dcf84265"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/NER_RE_splits_mainids/val_mainids.txt",
+      "bytes": 259604,
+      "sha256": "8bb86bd458c8246858554dc03d8990993502881d1e1f25747936ae0f5d745424"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/README.md",
+      "bytes": 11326,
+      "sha256": "677d99a2a95d5eba7ecd1bf91b2c68a92509a6cb926047cb37b3680813d10f3d"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/_common.py",
+      "bytes": 4251,
+      "sha256": "eddaced90dd9b18e029b5d75391ac6ca6edfa574e01c2c1e6ec14bb822644ba0"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/_smoke_02_narrators.cypher",
+      "bytes": 13291,
+      "sha256": "8fc25eb2065408c7871a70cdae55ff6d4d78dd07661321995af2dc9d6bbfadb2"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/_smoke_03_hadith_nodes.cypher",
+      "bytes": 183311,
+      "sha256": "b7e632e2151173d2756099b90782cfb8d6e6b201bb115e79a632c667efb3bece"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/_smoke_04_relationships.cypher",
+      "bytes": 170593,
+      "sha256": "92c0b1629fa34ddaa6cba84ff20367858d317b9169a9cbb37667ef300ca4fbb1"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/export_hadith_nodes.py",
+      "bytes": 3170,
+      "sha256": "6ce364f7d32ab63674b0e3165a5297f60242358ea21377ea4d43cc4a94d1dfd8"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/export_narrator_nodes.py",
+      "bytes": 3312,
+      "sha256": "2de095a2d3556402da680eb6b5676dce6e618845564c70a460ac41dc6d98c8c8"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/export_relationships.py",
+      "bytes": 8314,
+      "sha256": "24eac22e9387c8f1b3b90852ff205679a6815e8abca142a3500cb9beaf0001e1"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/generate_constraints.py",
+      "bytes": 778,
+      "sha256": "e9f975a4f0ac1e9c344ef58b6e3e5180b3a1b81a7393440c6ca5b9f9af90aa07"
+    },
+    {
+      "path": "ifta-github/extracted/Ifta-Sunnah-Hadith-and-Narrators-Dataset-main/json-to-cypher-scripts/requirements.txt",
+      "bytes": 12,
+      "sha256": "b91b9c0e3f7ef949085860efc893369500cb287856b899943ca3ee5113f11d06"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/README.md",
+      "bytes": 7231,
+      "sha256": "da20656cc06f574a636f7a967b8ff9f494c06a348d32c2d7c23a17ab7b32a42c"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/_kaggle_api_list.json",
+      "bytes": 12602,
+      "sha256": "d7f2bf0e8acbb161a424ae26e598acb19b825600e416c7255d1df09d1cc82909"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/_kaggle_api_view.json",
+      "bytes": 3749,
+      "sha256": "05e822d69381af5158abe01debaa1193e5bae73a20deca71871929e565518d63"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/book_manifest.json",
+      "bytes": 6781,
+      "sha256": "452e29246a736ebcd34f920b434f1874660cda630e1bb479cad5cf782182c4f9"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/ifta_narrators.json",
+      "bytes": 16826873,
+      "sha256": "ac2d4b4eb7e6f3630ea2034b5c9ddb10743cb9d09c4fd1a7dc1924150755e6bf"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/jami-al-tirmidhi.json",
+      "bytes": 156817105,
+      "sha256": "b8b90a01ce4023ff8661768f9125d9f767b700c989e3ef703c296c85309f7297"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/sahih-al-bukhari.json",
+      "bytes": 337272566,
+      "sha256": "ad5762d230ed0976aadcf91dd6f1bf572f33333c17e04941d3e39a49175f74c6"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/sahih-muslim.json",
+      "bytes": 355797622,
+      "sha256": "1da79a52c902fcd15ff3a49fa95303e08bfb10075e00119a717feb60b8b3bcc8"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/sunan-abi-dawud.json",
+      "bytes": 207179200,
+      "sha256": "406f44bbb117d89cbe876686bd7db1c9e96943de1637aebb8ca7c93c86dfe3ec"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/sunan-al-nasai.json",
+      "bytes": 318872908,
+      "sha256": "d6aa1d5cc014aaca9072dbe8785ecf59e180ca578d9165bc9769caa98b9cca2d"
+    },
+    {
+      "path": "ifta-kaggle/corpus-original/sunan-ibn-majah.json",
+      "bytes": 166916962,
+      "sha256": "5a91ada15738dbf0bd2be00919df340d58ce9573e111a84f767faa627514370e"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/README.md",
+      "bytes": 22592,
+      "sha256": "dd0fd9e9948087a61d98f495ae822516bab890b2ec776068acee56bebda55886"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/_kaggle_api_list.json",
+      "bytes": 12266,
+      "sha256": "9583736870a7d081e82ef74a3c37cabe9d5325b28f40bccf4d90cfa311c0bcfc"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/_kaggle_api_view.json",
+      "bytes": 4116,
+      "sha256": "cd221032e9020b3859212b62de63a6c20f321074979673a1b7dc14a125d3fb62"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/dataset_manifest.json",
+      "bytes": 6677,
+      "sha256": "5d45907f91838af45bcb6ada3991adb5db6a5c281194036957a927090f2f3d9d"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/jami-al-tirmidhi.json",
+      "bytes": 85781757,
+      "sha256": "9d623880c94c7499e34b786e884909bc07fc8af9f3a6f60b41b0fff14afc5cc7"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/sahih-al-bukhari.json",
+      "bytes": 187406718,
+      "sha256": "521599724d2b092db84add51c795d7f515cfadeabf016f675289abbffa71655f"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/sahih-muslim.json",
+      "bytes": 228065558,
+      "sha256": "95861fdcf53be954b9c3697c201347ee61c20509fe9606cdd6e2d51f2a2cb450"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/sunan-abi-dawud.json",
+      "bytes": 121883311,
+      "sha256": "e5352501c1e432dbfb2587049348c8ce6c28b57df43304123288038d5c3e1351"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/sunan-al-nasai.json",
+      "bytes": 191426257,
+      "sha256": "9351d36e71e198b1b01ce4e7bd4186773894c7f9b2d8b650c6bc86e1d33a2570"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-isnad-linked-graph-data/sunan-ibn-majah.json",
+      "bytes": 99919359,
+      "sha256": "db040a55712c43b4429eaf81a7cc19a7573a8e2cd99f6eb9121ed676511baebc"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/README.md",
+      "bytes": 4139,
+      "sha256": "65c2b40acce4881951fb1f0ee6239c81011d649054b8258cf40bcbf94d9f44d8"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/_kaggle_api_list.json",
+      "bytes": 13583,
+      "sha256": "ada941781f88bb997021d491c82f626a88a701937d0a74f45185f7248a70689b"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/_kaggle_api_view.json",
+      "bytes": 4714,
+      "sha256": "9d77923ab9b4a6ec41f62dfc902d52dd64b0e8108eaa1e823d57379bfe2c700b"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/dataset_manifest.json",
+      "bytes": 6813,
+      "sha256": "abdede8fe7d7aa4dfe11c08cffd4f5634fd38b1c47a1e60dfafe33845b010a1f"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/jami-al-tirmidhi.json",
+      "bytes": 63752793,
+      "sha256": "9d090720aab444e474ed25d3dc165e092ee2c89680a69eed7b58df3852f0e978"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/sahih-al-bukhari.json",
+      "bytes": 58773655,
+      "sha256": "80ea33d0c75d71b1ebc09e40fbd0795f57a70c2d66cb8e2b07ffd1d3fc2e2362"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/sahih-muslim.json",
+      "bytes": 76229857,
+      "sha256": "3aa60c9ae16246f00835a0e066231f248d80f3dde5977a2df5acc098bd4b8495"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/split_manifest.json",
+      "bytes": 455,
+      "sha256": "a4857d85d56a1004821f230bd1612b9e988c03209b5111d08b999bc54922ad29"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/sunan-abi-dawud.json",
+      "bytes": 59512343,
+      "sha256": "f16bcf0ce017a0a9ebdf4c621f8fdbaf04266b8521f8578a3e04547f353d5059"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/sunan-al-nasai.json",
+      "bytes": 66494220,
+      "sha256": "51d7b9173f2615f74adcccc1ee1bb6b9a4822383086c21c960a6c0e0074e4469"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/sunan-ibn-majah.json",
+      "bytes": 53764974,
+      "sha256": "2c38fb09bce46edfe1f9a159cf49006dbbd987c33e6cde5ecb4e24d5313a89d6"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/test_mainids.txt",
+      "bytes": 259709,
+      "sha256": "75b4e5f9b3ac1ba9ecca74311c0be524626fa49304a3bc35a4c7fe18627ba929"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/train_mainids.txt",
+      "bytes": 1211921,
+      "sha256": "491f05da53eaff6c728fdcb917ce8c56bf44ea2a2cde923cc00d4f87dcf84265"
+    },
+    {
+      "path": "ifta-kaggle/ifta-hadith-with-narrators-entities-and-relations/val_mainids.txt",
+      "bytes": 259604,
+      "sha256": "8bb86bd458c8246858554dc03d8990993502881d1e1f25747936ae0f5d745424"
+    },
+    {
+      "path": "medmentions/README.md",
+      "bytes": 7127,
+      "sha256": "42abe3166482c7ab6946e657d900e6a4e7df30ae4048394256b322a79ffed700"
+    },
+    {
+      "path": "medmentions/corpus_pubtator.txt.gz",
+      "bytes": 6928546,
+      "sha256": "95bebda2776e4cd8f59456af3d977eb7c640fa7997db64c112a18fb09158b1ce"
+    },
+    {
+      "path": "sanadset-hf/README.md",
+      "bytes": 90053,
+      "sha256": "d164749644946f6848b5f181e5466c62c9711f717c3928407475aeb974f686d7"
+    },
+    {
+      "path": "sanadset-hf/_hf_api_dataset.json",
+      "bytes": 1859,
+      "sha256": "25fdfb16f1e64b5cf1f2fca55bd65f854cf5ee6ff9822a917dea04a6c7c106c2"
+    },
+    {
+      "path": "sanadset-hf/other/books.csv",
+      "bytes": 48209,
+      "sha256": "0e6d45ce409e8fb8d9a246f2ed3d773237a1acc779e9f55b0c026efe87757924"
+    },
+    {
+      "path": "sanadset-hf/other/hadith_samples.csv",
+      "bytes": 16020,
+      "sha256": "50873d1c987d4f977d3d1fe0643a98345323ce08d58a6b6c5715b039f02277a6"
+    },
+    {
+      "path": "sanadset-hf/other/translated_samples.csv",
+      "bytes": 8399,
+      "sha256": "e63b06970ce7c3fe5b580042c16be0c302a237c6876cb0f8df3923e139df9f34"
+    },
+    {
+      "path": "sanadset-hf/train/sanadset.csv",
+      "bytes": 1430646035,
+      "sha256": "bbe4fd3d9ef797a78c9ddfdc7d31a9d2185c2f7efa0ecee75c9fc46b6dcfb5b3"
+    },
+    {
+      "path": "sanadset-paper/PMC9440281_fulltext.xml",
+      "bytes": 24898,
+      "sha256": "9ecff8270d67b6f35602b60894278e86f8fc99a76a6c4ce490666a8219bcbed5"
+    },
+    {
+      "path": "sanadset-paper/europepmc_search.json",
+      "bytes": 5129,
+      "sha256": "fe1b9688ba812b533791a9ece2b231cc388a883dfea5cff4eea024d675c46734"
+    },
+    {
+      "path": "sanadset-paper/mendeley_api.json",
+      "bytes": 3419,
+      "sha256": "ad16afb7da52e8844467168b9fd9a8b4ad5b999ca48236428fb655ee3562f6d8"
+    }
+  ],
+  "total_bytes": 4541997359
+}

@@ -1,0 +1,208 @@
+{
+  "reference": "/Users/efe/projects/GiraffeGraph/data/eval/sixbooks-fresh/reference_chains.jsonl",
+  "mentions_without_a_person_id_skipped": 0,
+  "keys": {
+    "exact_written_name": {
+      "mentions": 2150,
+      "distinct_narrator_ids": 740,
+      "distinct_keys": 964,
+      "keys_covering_more_than_one_person": 24,
+      "share_of_keys_covering_more_than_one_person": 0.024896265560165973,
+      "mentions_under_such_keys": 216,
+      "share_of_mentions_under_such_keys": 0.10046511627906977,
+      "people_split_over_several_keys": 191,
+      "share_of_people_split_over_several_keys": 0.2581081081081081,
+      "pairwise": {
+        "precision": 0.736624450762471,
+        "recall": 0.559042761867399,
+        "f1": 0.6356641017062562,
+        "same_key_pairs": 7738,
+        "same_person_pairs": 10196,
+        "pairs_in_both": 5700
+      },
+      "bcubed": {
+        "precision": 0.9410412437331176,
+        "recall": 0.7154386280628472,
+        "f1": 0.8128770748503304
+      },
+      "most_ambiguous_keys": [
+        {
+          "key": "أَبِيهِ",
+          "people": 34,
+          "mentions": 57
+        },
+        {
+          "key": "أَبِي",
+          "people": 15,
+          "mentions": 23
+        },
+        {
+          "key": "خَالِدٍ",
+          "people": 3,
+          "mentions": 5
+        },
+        {
+          "key": "يَحْيَى",
+          "people": 3,
+          "mentions": 12
+        },
+        {
+          "key": "أَبُو دَاوُدَ",
+          "people": 2,
+          "mentions": 6
+        },
+        {
+          "key": "إِسْمَاعِيلُ",
+          "people": 2,
+          "mentions": 3
+        },
+        {
+          "key": "ابْنُ نُمَيْرٍ",
+          "people": 2,
+          "mentions": 4
+        },
+        {
+          "key": "ابْنِ أَبِي لَيْلَى",
+          "people": 2,
+          "mentions": 5
+        },
+        {
+          "key": "جَدِّهِ",
+          "people": 2,
+          "mentions": 4
+        },
+        {
+          "key": "حَيْوَةُ بْنُ شُرَيْحٍ",
+          "people": 2,
+          "mentions": 2
+        },
+        {
+          "key": "سُفْيَانَ",
+          "people": 2,
+          "mentions": 13
+        },
+        {
+          "key": "سُفْيَانُ",
+          "people": 2,
+          "mentions": 21
+        },
+        {
+          "key": "سُلَيْمَانَ",
+          "people": 2,
+          "mentions": 2
+        },
+        {
+          "key": "عَامِرِ بْنِ سَعْدٍ",
+          "people": 2,
+          "mentions": 2
+        },
+        {
+          "key": "عَبْدُ الْأَعْلَى",
+          "people": 2,
+          "mentions": 2
+        }
+      ]
+    },
+    "normalised_name": {
+      "mentions": 2150,
+      "distinct_narrator_ids": 740,
+      "distinct_keys": 878,
+      "keys_covering_more_than_one_person": 28,
+      "share_of_keys_covering_more_than_one_person": 0.03189066059225513,
+      "mentions_under_such_keys": 262,
+      "share_of_mentions_under_such_keys": 0.12186046511627907,
+      "people_split_over_several_keys": 161,
+      "share_of_people_split_over_several_keys": 0.21756756756756757,
+      "pairwise": {
+        "precision": 0.7589162874378241,
+        "recall": 0.7033150255001962,
+        "f1": 0.7300585390684653,
+        "same_key_pairs": 9449,
+        "same_person_pairs": 10196,
+        "pairs_in_both": 7171
+      },
+      "bcubed": {
+        "precision": 0.9305745022362802,
+        "recall": 0.7917779279586262,
+        "f1": 0.8555837217454879
+      },
+      "most_ambiguous_keys": [
+        {
+          "key": "ابيه",
+          "people": 34,
+          "mentions": 57
+        },
+        {
+          "key": "ابي",
+          "people": 15,
+          "mentions": 23
+        },
+        {
+          "key": "خالد",
+          "people": 4,
+          "mentions": 6
+        },
+        {
+          "key": "عبد الله",
+          "people": 3,
+          "mentions": 12
+        },
+        {
+          "key": "محمد",
+          "people": 3,
+          "mentions": 5
+        },
+        {
+          "key": "يحيي",
+          "people": 3,
+          "mentions": 12
+        },
+        {
+          "key": "ابن ابي ليلي",
+          "people": 2,
+          "mentions": 5
+        },
+        {
+          "key": "ابن نمير",
+          "people": 2,
+          "mentions": 4
+        },
+        {
+          "key": "ابو داود",
+          "people": 2,
+          "mentions": 6
+        },
+        {
+          "key": "اسماعيل",
+          "people": 2,
+          "mentions": 3
+        },
+        {
+          "key": "جده",
+          "people": 2,
+          "mentions": 4
+        },
+        {
+          "key": "حيوه بن شريح",
+          "people": 2,
+          "mentions": 4
+        },
+        {
+          "key": "سفيان",
+          "people": 2,
+          "mentions": 34
+        },
+        {
+          "key": "سليمان",
+          "people": 2,
+          "mentions": 2
+        },
+        {
+          "key": "عامر بن سعد",
+          "people": 2,
+          "mentions": 3
+        }
+      ]
+    }
+  }
+}

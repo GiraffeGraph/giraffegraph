@@ -1,0 +1,384 @@
+{
+  "rule": "best Ifta record of the same collection; kept when ratio >= 0.9",
+  "hadiths": 50,
+  "sanadset_mentions": 327,
+  "sanadset_mentions_that_carried_a_tag": 17,
+  "matched_to_ifta": 43,
+  "match_rate": 0.86,
+  "ifta_mentions_in_matched": 255,
+  "matched_with_fewer_than_2_ifta_mentions": 0,
+  "per_collection": {
+    "AbuDawud": {
+      "total": 10,
+      "matched": 9
+    },
+    "IbnMajah": {
+      "total": 10,
+      "matched": 10
+    },
+    "Muslim": {
+      "total": 10,
+      "matched": 6
+    },
+    "Nasai": {
+      "total": 10,
+      "matched": 9
+    },
+    "Tirmidhi": {
+      "total": 10,
+      "matched": 9
+    }
+  },
+  "links": [
+    {
+      "hadith_id": "Muslim:978",
+      "ifta_main_id": 13200,
+      "ratio": 0.6722,
+      "containment": 0.8933,
+      "matched": false
+    },
+    {
+      "hadith_id": "Muslim:1050",
+      "ifta_main_id": 13302,
+      "ratio": 0.9987,
+      "containment": 0.9592,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3204",
+      "ifta_main_id": 101810,
+      "ratio": 0.8798,
+      "containment": 0.8524,
+      "matched": false
+    },
+    {
+      "hadith_id": "AbuDawud:3030",
+      "ifta_main_id": 93855,
+      "ratio": 0.9854,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:693",
+      "ifta_main_id": 64849,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3307",
+      "ifta_main_id": 94289,
+      "ratio": 0.9425,
+      "containment": 0.8726,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:1003",
+      "ifta_main_id": 13236,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3144",
+      "ifta_main_id": 101731,
+      "ratio": 0.9648,
+      "containment": 0.9517,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:595",
+      "ifta_main_id": 64685,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3052",
+      "ifta_main_id": 93889,
+      "ratio": 0.9828,
+      "containment": 0.8308,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3499",
+      "ifta_main_id": 94572,
+      "ratio": 0.6922,
+      "containment": 0.9723,
+      "matched": false
+    },
+    {
+      "hadith_id": "Tirmidhi:3087",
+      "ifta_main_id": 101646,
+      "ratio": 0.9296,
+      "containment": 0.6857,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:678",
+      "ifta_main_id": 64822,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3122",
+      "ifta_main_id": 93999,
+      "ratio": 0.9504,
+      "containment": 0.9406,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1593",
+      "ifta_main_id": 110101,
+      "ratio": 0.9925,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:1047",
+      "ifta_main_id": 13297,
+      "ratio": 0.9988,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:3378",
+      "ifta_main_id": 68884,
+      "ratio": 0.8681,
+      "containment": 0.9941,
+      "matched": false
+    },
+    {
+      "hadith_id": "Nasai:3459",
+      "ifta_main_id": 69010,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1042",
+      "ifta_main_id": 109343,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1123",
+      "ifta_main_id": 109451,
+      "ratio": 0.94,
+      "containment": 0.83,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:2984",
+      "ifta_main_id": 93784,
+      "ratio": 0.9478,
+      "containment": 0.9355,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:3758",
+      "ifta_main_id": 17811,
+      "ratio": 0.7888,
+      "containment": 1.0,
+      "matched": false
+    },
+    {
+      "hadith_id": "AbuDawud:3355",
+      "ifta_main_id": 94363,
+      "ratio": 0.9823,
+      "containment": 0.8559,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:3745",
+      "ifta_main_id": 17793,
+      "ratio": 0.725,
+      "containment": 1.0,
+      "matched": false
+    },
+    {
+      "hadith_id": "IbnMajah:1158",
+      "ifta_main_id": 109505,
+      "ratio": 0.9933,
+      "containment": 0.9899,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3308",
+      "ifta_main_id": 101959,
+      "ratio": 0.9844,
+      "containment": 0.8789,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1235",
+      "ifta_main_id": 109617,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1472",
+      "ifta_main_id": 109938,
+      "ratio": 0.9905,
+      "containment": 0.9858,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1074",
+      "ifta_main_id": 109384,
+      "ratio": 0.9981,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:3827",
+      "ifta_main_id": 17939,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:881",
+      "ifta_main_id": 65181,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3258",
+      "ifta_main_id": 101885,
+      "ratio": 0.9411,
+      "containment": 0.8671,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1242",
+      "ifta_main_id": 109626,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:882",
+      "ifta_main_id": 65183,
+      "ratio": 0.9781,
+      "containment": 0.9834,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:906",
+      "ifta_main_id": 65220,
+      "ratio": 0.916,
+      "containment": 0.875,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3065",
+      "ifta_main_id": 101619,
+      "ratio": 0.9386,
+      "containment": 0.8165,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1399",
+      "ifta_main_id": 109838,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3466",
+      "ifta_main_id": 94536,
+      "ratio": 0.9412,
+      "containment": 0.8812,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3327",
+      "ifta_main_id": 94320,
+      "ratio": 0.99,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3200",
+      "ifta_main_id": 101804,
+      "ratio": 0.9723,
+      "containment": 0.9259,
+      "matched": true
+    },
+    {
+      "hadith_id": "AbuDawud:3007",
+      "ifta_main_id": 93820,
+      "ratio": 0.9805,
+      "containment": 0.9893,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3279",
+      "ifta_main_id": 101915,
+      "ratio": 0.929,
+      "containment": 0.8221,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3290",
+      "ifta_main_id": 101933,
+      "ratio": 0.9589,
+      "containment": 0.9292,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:563",
+      "ifta_main_id": 64641,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "IbnMajah:1375",
+      "ifta_main_id": 109805,
+      "ratio": 0.9673,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Nasai:374",
+      "ifta_main_id": 64347,
+      "ratio": 0.9895,
+      "containment": 0.9976,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:1338",
+      "ifta_main_id": 13741,
+      "ratio": 0.8091,
+      "containment": 1.0,
+      "matched": false
+    },
+    {
+      "hadith_id": "Muslim:974",
+      "ifta_main_id": 13194,
+      "ratio": 0.9739,
+      "containment": 1.0,
+      "matched": true
+    },
+    {
+      "hadith_id": "Tirmidhi:3184",
+      "ifta_main_id": 101781,
+      "ratio": 0.9556,
+      "containment": 0.8273,
+      "matched": true
+    },
+    {
+      "hadith_id": "Muslim:967",
+      "ifta_main_id": 13186,
+      "ratio": 1.0,
+      "containment": 1.0,
+      "matched": true
+    }
+  ]
+}

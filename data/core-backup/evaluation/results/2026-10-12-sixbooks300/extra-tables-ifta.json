@@ -1,0 +1,677 @@
+{
+ "criterion": "M2",
+ "reference": "/Users/efe/projects/GiraffeGraph/data/eval/sixbooks-fresh/reference.jsonl",
+ "runs": {
+  "rule": {
+   "condition": "rule",
+   "model": null,
+   "backend": "in-memory",
+   "by_collection": {
+    "AbuDawud": {
+     "hadiths": 50,
+     "tp": 228,
+     "fp": 7,
+     "fn": 66,
+     "precision": 0.9702127659574468,
+     "recall": 0.7755102040816326,
+     "f1": 0.8620037807183364
+    },
+    "Bukhari": {
+     "hadiths": 50,
+     "tp": 265,
+     "fp": 13,
+     "fn": 33,
+     "precision": 0.9532374100719424,
+     "recall": 0.889261744966443,
+     "f1": 0.9201388888888888
+    },
+    "IbnMajah": {
+     "hadiths": 50,
+     "tp": 270,
+     "fp": 5,
+     "fn": 29,
+     "precision": 0.9818181818181818,
+     "recall": 0.903010033444816,
+     "f1": 0.940766550522648
+    },
+    "Muslim": {
+     "hadiths": 50,
+     "tp": 254,
+     "fp": 14,
+     "fn": 41,
+     "precision": 0.9477611940298507,
+     "recall": 0.8610169491525423,
+     "f1": 0.9023090586145648
+    },
+    "Nasai": {
+     "hadiths": 50,
+     "tp": 283,
+     "fp": 5,
+     "fn": 17,
+     "precision": 0.9826388888888888,
+     "recall": 0.9433333333333334,
+     "f1": 0.9625850340136054
+    },
+    "Tirmidhi": {
+     "hadiths": 50,
+     "tp": 267,
+     "fp": 7,
+     "fn": 25,
+     "precision": 0.9744525547445255,
+     "recall": 0.9143835616438356,
+     "f1": 0.9434628975265018
+    }
+   },
+   "by_reference_mentions": {
+    "2-4": {
+     "hadiths": 22,
+     "tp": 70,
+     "fp": 3,
+     "fn": 13,
+     "precision": 0.958904109589041,
+     "recall": 0.8433734939759037,
+     "f1": 0.8974358974358975
+    },
+    "5-6": {
+     "hadiths": 203,
+     "tp": 1032,
+     "fp": 32,
+     "fn": 86,
+     "precision": 0.9699248120300752,
+     "recall": 0.9230769230769231,
+     "f1": 0.9459211732355637
+    },
+    "7-11": {
+     "hadiths": 75,
+     "tp": 465,
+     "fp": 16,
+     "fn": 112,
+     "precision": 0.9667359667359667,
+     "recall": 0.8058925476603119,
+     "f1": 0.8790170132325142
+    }
+   },
+   "committed_output_only": {
+    "hadiths_committed": 300,
+    "hadiths_blocked": 0,
+    "tp": 1567,
+    "fp": 51,
+    "fn": 211,
+    "precision": 0.9684796044499382,
+    "recall": 0.8813273340832396,
+    "f1": 0.9228504122497055
+   },
+   "provider_calls_per_hadith": {
+    "1": 290,
+    "2": 10
+   },
+   "hadiths_with_more_than_one_call": 10,
+   "confidence_as_review_signal": {
+    "mentions": 1618,
+    "wrong_mentions": 51,
+    "distinct_confidence_values": 1,
+    "by_threshold": [],
+    "value_not_in_quote_check": {
+     "mentions_sent_to_review": 0,
+     "share_of_mentions": 0.0,
+     "wrong_mentions_among_them": 0
+    }
+   },
+   "by_reference_chain_count": {
+    "1 chain": {
+     "hadiths": 226,
+     "tp": 1161,
+     "fp": 39,
+     "fn": 95,
+     "precision": 0.9675,
+     "recall": 0.9243630573248408,
+     "f1": 0.9454397394136809
+    },
+    "2+ chains": {
+     "hadiths": 74,
+     "tp": 406,
+     "fp": 12,
+     "fn": 116,
+     "precision": 0.9712918660287081,
+     "recall": 0.7777777777777778,
+     "f1": 0.8638297872340425
+    }
+   }
+  },
+  "haiku-llm_schema_whole": {
+   "condition": "llm_schema_whole",
+   "model": "claude-haiku-5-5",
+   "backend": "in-memory",
+   "by_collection": {
+    "AbuDawud": {
+     "hadiths": 50,
+     "tp": 245,
+     "fp": 37,
+     "fn": 49,
+     "precision": 0.8687943262411347,
+     "recall": 0.8333333333333334,
+     "f1": 0.8506944444444444
+    },
+    "Bukhari": {
+     "hadiths": 50,
+     "tp": 263,
+     "fp": 12,
+     "fn": 35,
+     "precision": 0.9563636363636364,
+     "recall": 0.8825503355704698,
+     "f1": 0.9179755671902269
+    },
+    "IbnMajah": {
+     "hadiths": 50,
+     "tp": 267,
+     "fp": 17,
+     "fn": 32,
+     "precision": 0.9401408450704225,
+     "recall": 0.8929765886287625,
+     "f1": 0.915951972555746
+    },
+    "Muslim": {
+     "hadiths": 50,
+     "tp": 248,
+     "fp": 24,
+     "fn": 47,
+     "precision": 0.9117647058823529,
+     "recall": 0.8406779661016949,
+     "f1": 0.8747795414462082
+    },
+    "Nasai": {
+     "hadiths": 50,
+     "tp": 253,
+     "fp": 40,
+     "fn": 47,
+     "precision": 0.863481228668942,
+     "recall": 0.8433333333333334,
+     "f1": 0.8532883642495784
+    },
+    "Tirmidhi": {
+     "hadiths": 50,
+     "tp": 267,
+     "fp": 15,
+     "fn": 25,
+     "precision": 0.9468085106382979,
+     "recall": 0.9143835616438356,
+     "f1": 0.9303135888501741
+    }
+   },
+   "by_reference_mentions": {
+    "2-4": {
+     "hadiths": 22,
+     "tp": 77,
+     "fp": 11,
+     "fn": 6,
+     "precision": 0.875,
+     "recall": 0.927710843373494,
+     "f1": 0.9005847953216374
+    },
+    "5-6": {
+     "hadiths": 203,
+     "tp": 979,
+     "fp": 97,
+     "fn": 139,
+     "precision": 0.9098513011152416,
+     "recall": 0.8756708407871199,
+     "f1": 0.8924339106654512
+    },
+    "7-11": {
+     "hadiths": 75,
+     "tp": 487,
+     "fp": 37,
+     "fn": 90,
+     "precision": 0.9293893129770993,
+     "recall": 0.8440207972270364,
+     "f1": 0.8846503178928246
+    }
+   },
+   "committed_output_only": {
+    "hadiths_committed": 190,
+    "hadiths_blocked": 110,
+    "tp": 1034,
+    "fp": 18,
+    "fn": 744,
+    "precision": 0.9828897338403042,
+    "recall": 0.5815523059617548,
+    "f1": 0.7307420494699647
+   },
+   "provider_calls_per_hadith": {
+    "1": 300
+   },
+   "hadiths_with_more_than_one_call": 0,
+   "confidence_as_review_signal": {
+    "mentions": 1688,
+    "wrong_mentions": 145,
+    "distinct_confidence_values": 7,
+    "by_threshold": [
+     {
+      "review_if_confidence_below": 0.6,
+      "mentions_sent_to_review": 1,
+      "share_of_mentions": 0.0005924170616113745,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.7,
+      "mentions_sent_to_review": 6,
+      "share_of_mentions": 0.0035545023696682463,
+      "wrong_mentions_among_them": 3
+     },
+     {
+      "review_if_confidence_below": 0.75,
+      "mentions_sent_to_review": 44,
+      "share_of_mentions": 0.026066350710900472,
+      "wrong_mentions_among_them": 11
+     },
+     {
+      "review_if_confidence_below": 0.8,
+      "mentions_sent_to_review": 65,
+      "share_of_mentions": 0.03850710900473934,
+      "wrong_mentions_among_them": 16
+     },
+     {
+      "review_if_confidence_below": 0.85,
+      "mentions_sent_to_review": 275,
+      "share_of_mentions": 0.16291469194312796,
+      "wrong_mentions_among_them": 50
+     },
+     {
+      "review_if_confidence_below": 0.9,
+      "mentions_sent_to_review": 1018,
+      "share_of_mentions": 0.6030805687203792,
+      "wrong_mentions_among_them": 110
+     }
+    ],
+    "value_not_in_quote_check": {
+     "mentions_sent_to_review": 155,
+     "share_of_mentions": 0.09182464454976304,
+     "wrong_mentions_among_them": 122
+    }
+   },
+   "by_reference_chain_count": {
+    "1 chain": {
+     "hadiths": 226,
+     "tp": 1113,
+     "fp": 98,
+     "fn": 143,
+     "precision": 0.9190751445086706,
+     "recall": 0.8861464968152867,
+     "f1": 0.9023104985812729
+    },
+    "2+ chains": {
+     "hadiths": 74,
+     "tp": 430,
+     "fp": 47,
+     "fn": 92,
+     "precision": 0.9014675052410901,
+     "recall": 0.8237547892720306,
+     "f1": 0.8608608608608609
+    }
+   }
+  },
+  "haiku-llm_isnad_whole": {
+   "condition": "llm_isnad_whole",
+   "model": "claude-haiku-5-5",
+   "backend": "in-memory",
+   "by_collection": {
+    "AbuDawud": {
+     "hadiths": 50,
+     "tp": 263,
+     "fp": 0,
+     "fn": 31,
+     "precision": 1.0,
+     "recall": 0.8945578231292517,
+     "f1": 0.9443447037701975
+    },
+    "Bukhari": {
+     "hadiths": 50,
+     "tp": 262,
+     "fp": 0,
+     "fn": 36,
+     "precision": 1.0,
+     "recall": 0.8791946308724832,
+     "f1": 0.9357142857142857
+    },
+    "IbnMajah": {
+     "hadiths": 50,
+     "tp": 279,
+     "fp": 0,
+     "fn": 20,
+     "precision": 1.0,
+     "recall": 0.9331103678929766,
+     "f1": 0.9653979238754326
+    },
+    "Muslim": {
+     "hadiths": 50,
+     "tp": 265,
+     "fp": 4,
+     "fn": 30,
+     "precision": 0.9851301115241635,
+     "recall": 0.8983050847457628,
+     "f1": 0.9397163120567376
+    },
+    "Nasai": {
+     "hadiths": 50,
+     "tp": 288,
+     "fp": 0,
+     "fn": 12,
+     "precision": 1.0,
+     "recall": 0.96,
+     "f1": 0.9795918367346939
+    },
+    "Tirmidhi": {
+     "hadiths": 50,
+     "tp": 277,
+     "fp": 1,
+     "fn": 15,
+     "precision": 0.9964028776978417,
+     "recall": 0.9486301369863014,
+     "f1": 0.9719298245614034
+    }
+   },
+   "by_reference_mentions": {
+    "2-4": {
+     "hadiths": 22,
+     "tp": 81,
+     "fp": 0,
+     "fn": 2,
+     "precision": 1.0,
+     "recall": 0.9759036144578314,
+     "f1": 0.9878048780487805
+    },
+    "5-6": {
+     "hadiths": 203,
+     "tp": 1060,
+     "fp": 2,
+     "fn": 58,
+     "precision": 0.9981167608286252,
+     "recall": 0.9481216457960644,
+     "f1": 0.9724770642201835
+    },
+    "7-11": {
+     "hadiths": 75,
+     "tp": 493,
+     "fp": 3,
+     "fn": 84,
+     "precision": 0.9939516129032258,
+     "recall": 0.854419410745234,
+     "f1": 0.9189189189189189
+    }
+   },
+   "committed_output_only": {
+    "hadiths_committed": 294,
+    "hadiths_blocked": 6,
+    "tp": 1606,
+    "fp": 2,
+    "fn": 172,
+    "precision": 0.9987562189054726,
+    "recall": 0.9032620922384702,
+    "f1": 0.9486119314825753
+   },
+   "provider_calls_per_hadith": {
+    "1": 300
+   },
+   "hadiths_with_more_than_one_call": 0,
+   "confidence_as_review_signal": {
+    "mentions": 1639,
+    "wrong_mentions": 5,
+    "distinct_confidence_values": 8,
+    "by_threshold": [
+     {
+      "review_if_confidence_below": 0.6,
+      "mentions_sent_to_review": 1,
+      "share_of_mentions": 0.0006101281269066504,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.7,
+      "mentions_sent_to_review": 6,
+      "share_of_mentions": 0.0036607687614399025,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.75,
+      "mentions_sent_to_review": 13,
+      "share_of_mentions": 0.007931665649786455,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.8,
+      "mentions_sent_to_review": 14,
+      "share_of_mentions": 0.008541793776693106,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.85,
+      "mentions_sent_to_review": 56,
+      "share_of_mentions": 0.034167175106772425,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.9,
+      "mentions_sent_to_review": 270,
+      "share_of_mentions": 0.16473459426479561,
+      "wrong_mentions_among_them": 1
+     },
+     {
+      "review_if_confidence_below": 0.95,
+      "mentions_sent_to_review": 1628,
+      "share_of_mentions": 0.9932885906040269,
+      "wrong_mentions_among_them": 5
+     }
+    ],
+    "value_not_in_quote_check": {
+     "mentions_sent_to_review": 3,
+     "share_of_mentions": 0.0018303843807199512,
+     "wrong_mentions_among_them": 3
+    }
+   },
+   "by_reference_chain_count": {
+    "1 chain": {
+     "hadiths": 226,
+     "tp": 1181,
+     "fp": 2,
+     "fn": 75,
+     "precision": 0.9983093829247676,
+     "recall": 0.9402866242038217,
+     "f1": 0.968429684296843
+    },
+    "2+ chains": {
+     "hadiths": 74,
+     "tp": 453,
+     "fp": 3,
+     "fn": 69,
+     "precision": 0.993421052631579,
+     "recall": 0.867816091954023,
+     "f1": 0.9263803680981596
+    }
+   }
+  },
+  "haiku-llm_isnad_chain": {
+   "condition": "llm_isnad_chain",
+   "model": "claude-haiku-5-5",
+   "backend": "in-memory",
+   "by_collection": {
+    "AbuDawud": {
+     "hadiths": 50,
+     "tp": 264,
+     "fp": 0,
+     "fn": 30,
+     "precision": 1.0,
+     "recall": 0.8979591836734694,
+     "f1": 0.9462365591397849
+    },
+    "Bukhari": {
+     "hadiths": 50,
+     "tp": 266,
+     "fp": 0,
+     "fn": 32,
+     "precision": 1.0,
+     "recall": 0.8926174496644296,
+     "f1": 0.9432624113475176
+    },
+    "IbnMajah": {
+     "hadiths": 50,
+     "tp": 258,
+     "fp": 0,
+     "fn": 41,
+     "precision": 1.0,
+     "recall": 0.862876254180602,
+     "f1": 0.9263913824057451
+    },
+    "Muslim": {
+     "hadiths": 50,
+     "tp": 262,
+     "fp": 3,
+     "fn": 33,
+     "precision": 0.9886792452830189,
+     "recall": 0.888135593220339,
+     "f1": 0.9357142857142857
+    },
+    "Nasai": {
+     "hadiths": 50,
+     "tp": 283,
+     "fp": 0,
+     "fn": 17,
+     "precision": 1.0,
+     "recall": 0.9433333333333334,
+     "f1": 0.9708404802744426
+    },
+    "Tirmidhi": {
+     "hadiths": 50,
+     "tp": 272,
+     "fp": 0,
+     "fn": 20,
+     "precision": 1.0,
+     "recall": 0.9315068493150684,
+     "f1": 0.9645390070921985
+    }
+   },
+   "by_reference_mentions": {
+    "2-4": {
+     "hadiths": 22,
+     "tp": 80,
+     "fp": 0,
+     "fn": 3,
+     "precision": 1.0,
+     "recall": 0.963855421686747,
+     "f1": 0.9815950920245399
+    },
+    "5-6": {
+     "hadiths": 203,
+     "tp": 1040,
+     "fp": 0,
+     "fn": 78,
+     "precision": 1.0,
+     "recall": 0.9302325581395349,
+     "f1": 0.963855421686747
+    },
+    "7-11": {
+     "hadiths": 75,
+     "tp": 485,
+     "fp": 3,
+     "fn": 92,
+     "precision": 0.9938524590163934,
+     "recall": 0.8405545927209706,
+     "f1": 0.9107981220657277
+    }
+   },
+   "committed_output_only": {
+    "hadiths_committed": 295,
+    "hadiths_blocked": 5,
+    "tp": 1572,
+    "fp": 3,
+    "fn": 206,
+    "precision": 0.9980952380952381,
+    "recall": 0.8841394825646794,
+    "f1": 0.9376677602147332
+   },
+   "provider_calls_per_hadith": {
+    "1": 290,
+    "2": 10
+   },
+   "hadiths_with_more_than_one_call": 10,
+   "confidence_as_review_signal": {
+    "mentions": 1608,
+    "wrong_mentions": 3,
+    "distinct_confidence_values": 9,
+    "by_threshold": [
+     {
+      "review_if_confidence_below": 0.6,
+      "mentions_sent_to_review": 1,
+      "share_of_mentions": 0.0006218905472636816,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.7,
+      "mentions_sent_to_review": 3,
+      "share_of_mentions": 0.0018656716417910447,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.75,
+      "mentions_sent_to_review": 13,
+      "share_of_mentions": 0.00808457711442786,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.8,
+      "mentions_sent_to_review": 14,
+      "share_of_mentions": 0.008706467661691543,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.85,
+      "mentions_sent_to_review": 49,
+      "share_of_mentions": 0.030472636815920398,
+      "wrong_mentions_among_them": 0
+     },
+     {
+      "review_if_confidence_below": 0.9,
+      "mentions_sent_to_review": 232,
+      "share_of_mentions": 0.14427860696517414,
+      "wrong_mentions_among_them": 2
+     },
+     {
+      "review_if_confidence_below": 0.93,
+      "mentions_sent_to_review": 1588,
+      "share_of_mentions": 0.9875621890547264,
+      "wrong_mentions_among_them": 3
+     },
+     {
+      "review_if_confidence_below": 0.95,
+      "mentions_sent_to_review": 1591,
+      "share_of_mentions": 0.9894278606965174,
+      "wrong_mentions_among_them": 3
+     }
+    ],
+    "value_not_in_quote_check": {
+     "mentions_sent_to_review": 0,
+     "share_of_mentions": 0.0,
+     "wrong_mentions_among_them": 0
+    }
+   },
+   "by_reference_chain_count": {
+    "1 chain": {
+     "hadiths": 226,
+     "tp": 1149,
+     "fp": 0,
+     "fn": 107,
+     "precision": 1.0,
+     "recall": 0.9148089171974523,
+     "f1": 0.9555093555093556
+    },
+    "2+ chains": {
+     "hadiths": 74,
+     "tp": 456,
+     "fp": 3,
+     "fn": 66,
+     "precision": 0.9934640522875817,
+     "recall": 0.8735632183908046,
+     "f1": 0.9296636085626911
+    }
+   }
+  }
+ }
+}

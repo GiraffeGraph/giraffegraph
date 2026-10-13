@@ -1,0 +1,83 @@
+1. Name
+
+Discriminator Cartridges: persist small experiments that distinguish competing interpretations of a project, rather than descriptions of the interpretation currently believed.
+
+2. What is stored
+
+The unit is an executable distinction: a scope, competing hypotheses, distinguishing inputs, an observation adapter, and optionally a human-supplied objective for comparing alternatives. Identity comes from normalized case content, not extraction IDs. Results are disposable; the experiment persists.
+
+Illustrative invented format, not a claim about the repository:
+
+    cartridge new-validation-gate
+    key canonical(scope,cases,alternatives)
+    scope gate.kind=new; candidate.kind=node
+    fixture candidate(value="A", gate_pass=false)
+    observe status, persisted, countable, reason_code
+    alternative discard = apply_gate(mode="reject")
+    alternative retain  = apply_gate(mode="review")
+    case failing = fixture
+    case passing = fixture(gate_pass=true)
+    probe current = project.apply_gate(cases)
+    objective human = minimize(uncountable_candidates)
+    objective_domain = failing_candidates
+    compare discard,retain using objective
+    require distinction(discard,retain,failing)
+    result current = regenerated_at_checkout
+    export cases,observations,objective_comparison
+    unknown = adapter_failure|indistinguishable
+
+An agent can read "failing → review, persisted, countable" and the alternative's loss without receiving a stored prose answer. Historical intent enters only through an explicitly supplied objective; execution cannot discover it.
+
+3. Operations
+
+Write: after resolving an expensive ambiguity, the agent proposes competing interpretations and constructs the smallest case separating them. A deterministic runner checks that the alternatives actually produce different observations. A human supplies or confirms objectives representing intent; the agent cannot infer those from behavior.
+
+Read: before a session, a deterministic runner executes cartridges against the current checkout in an isolated, network-disabled environment and exports compact tables. One read supplies inputs, current outcomes, and distinctions. Tight budgets receive those tables; generous budgets omit them by default.
+
+Invalidate: adapter failure or newly indistinguishable alternatives produces "unresolved," not an outdated answer plus warning. Changed observations replace disposable results without rewriting explanations.
+
+Narrow: a contradictory real case becomes an additional discriminator. Scope splits only when that case demonstrates that one interpretation cannot cover both contexts. The agent proposes the split; deterministic cases check it. Human objectives remain unchanged unless a human changes them.
+
+4. Why it should beat a page and a graph
+
+Facts 1 and 7 favor carrying substantive conclusions under scarce exploration. Cartridges deliver behavioral observations, rather than just locations.
+
+Facts 3 and 4 suggest that warning about stale assertions is insufficient. Here, old observations are removed from the reading surface and experiments rerun; failure yields no observation.
+
+Fact 5 motivates invalidation by observable behavior rather than file identity. A refactor can change every byte while preserving a discriminator's outcome. This is a proposed advantage, not something the hash-survival measurement proves.
+
+Fact 2 forbids treating successful execution as semantic certification: fixtures can encode the wrong category or omit important context. Their advertised scope must remain the tested cases.
+
+Facts 6 and 8 support contradiction-driven scope splitting and content identity. Fact 9 requires recording irreducible human intent; executable objectives preserve some of it without pretending behavior reveals rationale.
+
+Against pages, the advantage is refreshing observations without generating new prose. Against graphs, it is storing interventions that can reject an interpretation, rather than relationships that merely assert one. Fact 10 predicts little accuracy advantage at fourteen calls; token cost becomes the relevant benefit.
+
+5. Closest prior work
+
+Executable acceptance tables connect examples to fixtures in [FitNesse](https://fitnesse.org/FitNesse/UserGuide/WritingAcceptanceTests/FitFramework/WritingFitTables.html). [Mutation testing](https://research.google/pubs/practical-mutation-testing-at-scale-a-view-from-google/) evaluates tests by introducing artificial faults.
+
+The difference is the memory contract: retain a minimal distinction between plausible explanations, regenerate the current observation, and export it for agent consumption. Passing against an expected answer is secondary; discriminating interpretations is primary. This is not answer memoization: no previous answer or sequence of source reads is stored.
+
+6. Falsifiable experiment
+
+Prepare cartridges from the earlier snapshot, with authors blind to the 36 questions and answer keys. Use three sandbox arms:
+
+A: cartridges rerun against current code, exported as text.
+B: identical cartridges with earlier observations frozen.
+C: existing stale description plus decisions.
+
+All arms receive equivalent historical intent. Use unchanged questions, tools, judging, push delivery, budgets 2/4/14, and two repetitions: 648 answers.
+
+Primary metric: changed-question correctness at two calls. Kill the proposal if A beats neither B nor C by at least ten percentage points, or decision correctness trails C by over five points. Also measure prompt tokens at fourteen calls.
+
+The reported 2,880-run cost suggests roughly USD 1.1, not a guarantee. Run serially with accounting, a USD 4 answer allowance and USD 0.90 judging reserve; stop before exceeding USD 4.90. This is a proposed experiment; none was executed.
+
+7. Two runner-up ideas
+
+Ambiguity Register stores unresolved alternatives and the next observation needed to separate them. It preserves investigation progress, but may provide too little substantive context under two-call budgets.
+
+Loss Surface Memory stores human comparisons between concrete outcomes, fitting a small preference function with explicit domains. It preserves tradeoffs without narrative chronology, but loses historical circumstances that "why" questions may require.
+
+8. Weakest point
+
+Constructing faithful, cheap discriminators may cost more than writing descriptions. Worse, passing cases can encourage unjustified generalization: refreshing observations does not repair an incomplete experiment.

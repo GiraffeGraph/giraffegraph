@@ -1,0 +1,254 @@
+#!/usr/bin/env bash
+#
+# ledger — the decision half. Write-once records of the non-derivable "why".
+#
+# The whole thesis of this repo, in one executable:
+#   * A decision is stored ONCE and never edited. It is superseded, not changed.
+#   * Only the FORWARD link is written ("this supersedes N"), by the author who
+#     is already editing their own new record.
+#   * The BACK link ("what superseded me") is NEVER stored — it is DERIVED by
+#     scanning, exactly like git derives a commit's children. Storing it would
+#     mean mutating an old, immutable record every time something points at it.
+#   * "Which decision is current" is resolved by max(serial) in code — never by
+#     asking a model which fact is newer. (The one benchmark built to test that
+#     found deterministic resolution beats LLM judgment by 10+ points.)
+#
+# A decision is one Markdown file: NNNN-slug.md, NNNN a zero-padded serial.
+# Frontmatter carries ONLY non-derivable fields. No `superseded_by:` — that's
+# derived. No `updated:` — git owns that.
+#
+#   ---
+#   id: 0007
+#   title: FAQ owns its items
+#   date: 2026-07-17
+#   supersedes: [0003]
+#   ---
+#   We considered modelling FAQ as a content block with a naming convention.
+#   Rejected: an FAQ owns ordered items; a content block is a single blob...
+#
+# Usage:
+#   ledger init   <dir>
+#   ledger new    <dir> "<title>" [--supersedes N[,N...]]
+#   ledger show   <dir>               # current decisions (max-serial heads)
+#   ledger show   <dir> --all         # every record, with DERIVED back-links
+#   ledger check  <dir>               # supersession chains acyclic & single-headed
+#   ledger redact <dir> N "<reason>"  # remove a record's CONTENT, keep its skeleton
+#
+# On redact: the WHY prose is replaced by a tombstone, but id/date/supersedes are
+# preserved so the supersession chain and every DERIVED back-link stay intact.
+# This is the one, deliberate, narrow exception to write-once — the GDPR /
+# "recorded in error" path, designed in from the start rather than bolted on
+# later (which is what every mature append-only system regretted). It is logged
+# in the record itself; it never renumbers, never rewrites links.
+#
+# Deliberately tiny. Smallness is the point — see README.md.
+
+set -euo pipefail
+
+die() { echo "ledger: $*" >&2; exit 1; }
+
+# --- frontmatter helpers (line-oriented; no YAML dependency) -----------------
+
+# Print the value of a scalar frontmatter key from a file.
+fm_get() {
+  # $1 file, $2 key
+  awk -v k="$2" '
+    /^---[[:space:]]*$/ { n++; next }
+    n==1 && $0 ~ "^"k":" { sub("^"k":[[:space:]]*",""); print; exit }
+  ' "$1"
+}
+
+# Print serials listed in `supersedes: [a, b]` (space/comma separated), one per line.
+fm_supersedes() {
+  local raw
+  raw="$(fm_get "$1" supersedes)"
+  [ -n "$raw" ] || return 0
+  echo "$raw" | tr -d '[]' | tr ',' ' ' | tr -s ' ' '\n' | sed '/^$/d'
+}
+
+records() {
+  # emit every NNNN-*.md in serial order
+  find "$1" -maxdepth 1 -type f -name '[0-9][0-9][0-9][0-9]-*.md' 2>/dev/null | sort
+}
+
+next_serial() {
+  local last
+  last="$(records "$1" | sed -E 's#.*/([0-9]{4})-.*#\1#' | tail -1)"
+  [ -n "$last" ] || { echo "0001"; return; }
+  printf '%04d' "$((10#$last + 1))"
+}
+
+slugify() {
+  echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g' | cut -c1-50
+}
+
+# --- commands ----------------------------------------------------------------
+
+cmd_init() {
+  local dir="${1:?usage: ledger init <dir>}"
+  mkdir -p "$dir"
+  echo "ledger: initialized $dir"
+}
+
+cmd_new() {
+  local dir="${1:?usage: ledger new <dir> \"<title>\" [--supersedes N]}"
+  shift
+  local title="${1:?title required}"; shift || true
+  local sup=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --supersedes) sup="${2:?}"; shift 2 ;;
+      *) die "unknown arg: $1" ;;
+    esac
+  done
+  [ -d "$dir" ] || die "not a ledger dir: $dir (run: ledger init $dir)"
+
+  local serial slug file supersedes_line="[]"
+  serial="$(next_serial "$dir")"
+  slug="$(slugify "$title")"
+  file="$dir/$serial-$slug.md"
+
+  if [ -n "$sup" ]; then
+    # normalize "3" or "3,5" or "0003" -> [0003, 0005], and verify targets exist
+    local norm="" s
+    for s in $(echo "$sup" | tr ',' ' '); do
+      s="$(printf '%04d' "$((10#$s))")"
+      records "$dir" | grep -q "/$s-" || die "supersedes target not found: $s"
+      norm="${norm:+$norm, }$s"
+    done
+    supersedes_line="[$norm]"
+  fi
+
+  # date passed in is avoided (no clock in this script's contract); use git-free stamp
+  local today; today="$(date +%Y-%m-%d 2>/dev/null || echo 'YYYY-MM-DD')"
+
+  cat > "$file" <<EOF
+---
+id: $serial
+title: $title
+date: $today
+supersedes: $supersedes_line
+---
+
+<!-- The non-derivable WHY. What was considered and rejected, and the constraint
+     that forced the call. This file is write-once: never edit it, supersede it. -->
+
+EOF
+  echo "$file"
+}
+
+# Build the DERIVED back-link map: for each serial, who supersedes it.
+# Printed as "SERIAL SUPERSEDER" lines. This is never stored.
+_derive_backlinks() {
+  local dir="$1" f id t
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    id="$(fm_get "$f" id)"
+    for t in $(fm_supersedes "$f"); do
+      t="$(printf '%04d' "$((10#$t))")"
+      echo "$t $id"
+    done
+  done < <(records "$dir")
+}
+
+cmd_show() {
+  local dir="${1:?usage: ledger show <dir> [--all]}"; shift || true
+  local all=0
+  [ "${1:-}" = "--all" ] && all=1
+  [ -d "$dir" ] || die "not a ledger dir: $dir"
+
+  local backlinks; backlinks="$(_derive_backlinks "$dir")"
+
+  local f id title superseded_by
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    id="$(fm_get "$f" id)"
+    title="$(fm_get "$f" title)"
+    # DERIVE: is this record superseded by anyone?
+    superseded_by="$(echo "$backlinks" | awk -v k="$id" '$1==k{print $2}' | paste -sd, - 2>/dev/null || true)"
+
+    if [ -n "$superseded_by" ]; then
+      [ "$all" -eq 1 ] && printf '  %s  %-40s  (superseded by %s)\n' "$id" "$title" "$superseded_by"
+    else
+      # no successor => current head
+      printf '* %s  %-40s  [current]\n' "$id" "$title"
+    fi
+  done < <(records "$dir")
+}
+
+cmd_redact() {
+  local dir="${1:?usage: ledger redact <dir> N \"<reason>\"}"
+  local id="${2:?record id required}"
+  local reason="${3:?reason required (this is logged in the record)}"
+  [ -d "$dir" ] || die "not a ledger dir: $dir"
+
+  id="$(printf '%04d' "$((10#$id))")"
+  local file
+  file="$(records "$dir" | grep "/$id-" | head -1)"
+  [ -n "$file" ] || die "record not found: $id"
+
+  grep -q '^redacted:' "$file" && die "already redacted: $id"
+
+  local today; today="$(date +%Y-%m-%d 2>/dev/null || echo 'YYYY-MM-DD')"
+
+  # Keep the frontmatter skeleton (id/title/date/supersedes drive derivation);
+  # drop the body; stamp the redaction inside the record.
+  local tmp; tmp="$(mktemp)"
+  awk -v d="$today" -v r="$reason" '
+    BEGIN { fm=0 }
+    /^---[[:space:]]*$/ { fm++; print; if (fm==2){ print "redacted: " d " — " r } next }
+    fm<2 { print; next }
+    fm>=2 && !done { print ""; print "[REDACTED " d ": " r "]"; done=1 }
+  ' "$file" > "$tmp"
+  mv "$tmp" "$file"
+  echo "redacted $id — skeleton and links preserved: $file"
+}
+
+# Verify the supersession graph is sane: acyclic, single-headed per chain.
+cmd_check() {
+  local dir="${1:?usage: ledger check <dir>}"
+  [ -d "$dir" ] || die "not a ledger dir: $dir"
+  local backlinks rc=0
+  backlinks="$(_derive_backlinks "$dir")"
+
+  # 1. every supersedes target must exist (new already enforces this; re-check)
+  local f t
+  while IFS= read -r f; do
+    for t in $(fm_supersedes "$f"); do
+      t="$(printf '%04d' "$((10#$t))")"
+      records "$dir" | grep -q "/$t-" || { echo "BROKEN: $(basename "$f") supersedes missing $t" >&2; rc=1; }
+    done
+  done < <(records "$dir")
+
+  # 2. no record superseded by more than one head (multi-headed chain = ambiguous current)
+  local dup
+  dup="$(echo "$backlinks" | awk '{c[$1]++} END{for(k in c) if(c[k]>1) print k}')"
+  if [ -n "$dup" ]; then
+    echo "AMBIGUOUS: record(s) superseded by multiple successors: $dup" >&2
+    rc=1
+  fi
+
+  # 3. no self-supersession (cheapest cycle)
+  echo "$backlinks" | awk '$1==$2{print} ' | while read -r a b; do
+    echo "CYCLE: $a supersedes itself" >&2
+  done
+  echo "$backlinks" | awk '$1==$2' | grep -q . && rc=1
+
+  [ "$rc" -eq 0 ] && echo "ledger check: chains acyclic, single-headed, all targets present."
+  return $rc
+}
+
+# --- dispatch ----------------------------------------------------------------
+
+cmd="${1:-}"; shift || true
+case "$cmd" in
+  init)   cmd_init   "$@" ;;
+  new)    cmd_new    "$@" ;;
+  show)   cmd_show   "$@" ;;
+  check)  cmd_check  "$@" ;;
+  redact) cmd_redact "$@" ;;
+  ""|-h|--help)
+    sed -n '2,40p' "$0" | sed 's/^# \{0,1\}//'
+    ;;
+  *) die "unknown command: $cmd (try: init|new|show|check)" ;;
+esac

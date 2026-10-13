@@ -1,0 +1,232 @@
+{
+  "key": "19e4911be2e9dd5a8646c503db6ec44d921ae6501286a125f2724d8f0c284350",
+  "created_at": "2026-10-12T20:16:03.225780+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-h",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Muslim:1047"
+        },
+        "confidence": 0.95,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "إِنَّ أَثْقَلَ صَلَاةٍ عَلَى الْمُنَافِقِينَ صَلَاةُ الْعِشَاءِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو هُرَيْرَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبِي صَالِحٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي صَالِحٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "الأَعْمَشُ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنِ الأَعْمَشِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو مُعَاوِيَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو مُعَاوِيَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n6",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو كُرَيْبٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبُو كُرَيْبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n7",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنُ نُمَيْرٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ نُمَيْرٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n2",
+        "to_ref": "node-n1",
+        "properties": {
+          "hadith_ref": "Muslim:1047",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي صَالِحٍ ، عَنْ أَبِي هُرَيْرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n3",
+        "to_ref": "node-n2",
+        "properties": {
+          "hadith_ref": "Muslim:1047",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ أَبِي صَالِحٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n4",
+        "to_ref": "node-n3",
+        "properties": {
+          "hadith_ref": "Muslim:1047",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو مُعَاوِيَةَ ، عَنِ الأَعْمَشِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n7",
+        "to_ref": "node-n3",
+        "properties": {
+          "hadith_ref": "Muslim:1047",
+          "chain_no": 2,
+          "position": 3,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا ابْنُ نُمَيْرٍ ، حَدَّثَنَا أَبِي حَدَّثَنَا الأَعْمَشُ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n5",
+        "to_ref": "node-h",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n6",
+        "to_ref": "node-h",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "وَأَبُو كُرَيْبٍ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3330,
+    "output_tokens": 3707,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

@@ -1,0 +1,4042 @@
+{
+ "method": {
+  "horizons_months": [
+   1,
+   3,
+   6,
+   12,
+   24
+  ],
+  "block_cap_lines": 80,
+  "seed": 20261013,
+  "git_version": "git version 2.50.1 (Apple Git-155)",
+  "table_cells": "witness changed x doc sentence edited; changed includes a deleted target",
+  "anchors_with_directory": "sensitivity subset: the path token has a directory component",
+  "selection_rule": "per language group (Rust, Python, Go, JavaScript/TypeScript by GitHub primary language) the two candidates with the most distinct targets among anchors with a directory component, skipping any whose first-parent history leaves a horizon commit more than 31 days before its horizon date",
+  "screened_out_columns": [
+   "anchors",
+   "distinct_targets_with_directory",
+   "max_horizon_lag_days"
+  ],
+  "screened_out": {
+   "astral-sh/ruff": [
+    124,
+    32,
+    0
+   ],
+   "cli/cli": [
+    19,
+    10,
+    3
+   ],
+   "containerd/containerd": [
+    18,
+    8,
+    1
+   ],
+   "curl/curl": [
+    33,
+    16,
+    0
+   ],
+   "dbt-labs/dbt-core": [
+    40,
+    24,
+    2
+   ],
+   "denoland/deno": [
+    43,
+    23,
+    3
+   ],
+   "electron/electron": [
+    47,
+    13,
+    1
+   ],
+   "element-hq/synapse": [
+    93,
+    35,
+    1
+   ],
+   "eslint/eslint": [
+    167,
+    7,
+    1
+   ],
+   "go-delve/delve": [
+    15,
+    14,
+    5
+   ],
+   "golang/tools": [
+    16,
+    7,
+    2
+   ],
+   "golangci/golangci-lint": [
+    29,
+    9,
+    2
+   ],
+   "hashicorp/terraform": [
+    23,
+    6,
+    2
+   ],
+   "helix-editor/helix": [
+    34,
+    4,
+    66
+   ],
+   "huggingface/diffusers": [
+    57,
+    4,
+    3
+   ],
+   "jestjs/jest": [
+    122,
+    3,
+    24
+   ],
+   "kubernetes-sigs/cluster-api": [
+    48,
+    17,
+    1
+   ],
+   "kubevirt/kubevirt": [
+    93,
+    31,
+    1
+   ],
+   "mermaid-js/mermaid": [
+    120,
+    15,
+    36
+   ],
+   "mitmproxy/mitmproxy": [
+    17,
+    10,
+    26
+   ],
+   "moby/moby": [
+    53,
+    8,
+    2
+   ],
+   "netbox-community/netbox": [
+    37,
+    9,
+    5
+   ],
+   "nushell/nushell": [
+    24,
+    2,
+    0
+   ],
+   "open-telemetry/opentelemetry-collector": [
+    36,
+    20,
+    1
+   ],
+   "prettier/prettier": [
+    155,
+    11,
+    91
+   ],
+   "prometheus/prometheus": [
+    39,
+    27,
+    2
+   ],
+   "pydantic/pydantic": [
+    22,
+    13,
+    3
+   ],
+   "python-poetry/poetry": [
+    126,
+    0,
+    17
+   ],
+   "rust-lang/cargo": [
+    424,
+    3,
+    1
+   ],
+   "rust-lang/miri": [
+    17,
+    7,
+    1
+   ],
+   "rust-lang/rust-analyzer": [
+    6,
+    3,
+    1
+   ],
+   "rust-lang/rust-clippy": [
+    51,
+    14,
+    0
+   ],
+   "rust-lang/rustfmt": [
+    22,
+    9,
+    17
+   ],
+   "sveltejs/svelte": [
+    20,
+    8,
+    1
+   ],
+   "tauri-apps/tauri": [
+    55,
+    5,
+    1
+   ],
+   "temporalio/temporal": [
+    13,
+    4,
+    3
+   ],
+   "Textualize/textual": [
+    826,
+    430,
+    89
+   ],
+   "tokio-rs/tokio": [
+    23,
+    8,
+    4
+   ],
+   "typescript-eslint/typescript-eslint": [
+    96,
+    11,
+    3
+   ],
+   "vuejs/core": [
+    20,
+    7,
+    23
+   ],
+   "wagtail/wagtail": [
+    32,
+    11,
+    3
+   ]
+  }
+ },
+ "pooled": {
+  "all_anchors": {
+   "n_anchors": 1804,
+   "n_symbol_anchors": 122,
+   "n_doc_files": 367,
+   "n_unique_targets": 944,
+   "survival": {
+    "1": {
+     "G0_exists": 0.9795,
+     "G1_file": 0.5416,
+     "G2_symbol": 0.9836,
+     "G1_file_symbol_anchors_only": 0.541,
+     "doc_line_verbatim": 0.9728
+    },
+    "3": {
+     "G0_exists": 0.9678,
+     "G1_file": 0.4407,
+     "G2_symbol": 0.9672,
+     "G1_file_symbol_anchors_only": 0.4672,
+     "doc_line_verbatim": 0.9595
+    },
+    "6": {
+     "G0_exists": 0.9058,
+     "G1_file": 0.2561,
+     "G2_symbol": 0.8443,
+     "G1_file_symbol_anchors_only": 0.2787,
+     "doc_line_verbatim": 0.8808
+    },
+    "12": {
+     "G0_exists": 0.8764,
+     "G1_file": 0.1802,
+     "G2_symbol": 0.7787,
+     "G1_file_symbol_anchors_only": 0.2049,
+     "doc_line_verbatim": 0.796
+    },
+    "24": {
+     "G0_exists": 0.8282,
+     "G1_file": 0.1037,
+     "G2_symbol": 0.6148,
+     "G1_file_symbol_anchors_only": 0.1557,
+     "doc_line_verbatim": 0.6868
+    }
+   },
+   "tables": {
+    "1": {
+     "G1": {
+      "changed_edited": 49,
+      "changed_verbatim": 778,
+      "unchanged_edited": 0,
+      "unchanged_verbatim": 977,
+      "n": 1804,
+      "share_changed_and_verbatim": 0.4313,
+      "share_verbatim_given_changed": 0.9407,
+      "share_edited_given_changed": 0.0593,
+      "share_edited_given_unchanged": 0.0
+     },
+     "G2": {
+      "changed_edited": 0,
+      "changed_verbatim": 2,
+      "unchanged_edited": 0,
+      "unchanged_verbatim": 120,
+      "n": 122,
+      "share_changed_and_verbatim": 0.0164,
+      "share_verbatim_given_changed": 1.0,
+      "share_edited_given_changed": 0.0,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "3": {
+     "G1": {
+      "changed_edited": 72,
+      "changed_verbatim": 937,
+      "unchanged_edited": 1,
+      "unchanged_verbatim": 794,
+      "n": 1804,
+      "share_changed_and_verbatim": 0.5194,
+      "share_verbatim_given_changed": 0.9286,
+      "share_edited_given_changed": 0.0714,
+      "share_edited_given_unchanged": 0.0013
+     },
+     "G2": {
+      "changed_edited": 1,
+      "changed_verbatim": 3,
+      "unchanged_edited": 0,
+      "unchanged_verbatim": 118,
+      "n": 122,
+      "share_changed_and_verbatim": 0.0246,
+      "share_verbatim_given_changed": 0.75,
+      "share_edited_given_changed": 0.25,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "6": {
+     "G1": {
+      "changed_edited": 212,
+      "changed_verbatim": 1130,
+      "unchanged_edited": 3,
+      "unchanged_verbatim": 459,
+      "n": 1804,
+      "share_changed_and_verbatim": 0.6264,
+      "share_verbatim_given_changed": 0.842,
+      "share_edited_given_changed": 0.158,
+      "share_edited_given_unchanged": 0.0065
+     },
+     "G2": {
+      "changed_edited": 4,
+      "changed_verbatim": 15,
+      "unchanged_edited": 3,
+      "unchanged_verbatim": 100,
+      "n": 122,
+      "share_changed_and_verbatim": 0.123,
+      "share_verbatim_given_changed": 0.7895,
+      "share_edited_given_changed": 0.2105,
+      "share_edited_given_unchanged": 0.0291
+     }
+    },
+    "12": {
+     "G1": {
+      "changed_edited": 338,
+      "changed_verbatim": 1141,
+      "unchanged_edited": 30,
+      "unchanged_verbatim": 295,
+      "n": 1804,
+      "share_changed_and_verbatim": 0.6325,
+      "share_verbatim_given_changed": 0.7715,
+      "share_edited_given_changed": 0.2285,
+      "share_edited_given_unchanged": 0.0923
+     },
+     "G2": {
+      "changed_edited": 6,
+      "changed_verbatim": 21,
+      "unchanged_edited": 8,
+      "unchanged_verbatim": 87,
+      "n": 122,
+      "share_changed_and_verbatim": 0.1721,
+      "share_verbatim_given_changed": 0.7778,
+      "share_edited_given_changed": 0.2222,
+      "share_edited_given_unchanged": 0.0842
+     }
+    },
+    "24": {
+     "G1": {
+      "changed_edited": 530,
+      "changed_verbatim": 1087,
+      "unchanged_edited": 35,
+      "unchanged_verbatim": 152,
+      "n": 1804,
+      "share_changed_and_verbatim": 0.6025,
+      "share_verbatim_given_changed": 0.6722,
+      "share_edited_given_changed": 0.3278,
+      "share_edited_given_unchanged": 0.1872
+     },
+     "G2": {
+      "changed_edited": 21,
+      "changed_verbatim": 26,
+      "unchanged_edited": 16,
+      "unchanged_verbatim": 59,
+      "n": 122,
+      "share_changed_and_verbatim": 0.2131,
+      "share_verbatim_given_changed": 0.5532,
+      "share_edited_given_changed": 0.4468,
+      "share_edited_given_unchanged": 0.2133
+     }
+    }
+   }
+  },
+  "anchors_with_directory": {
+   "n_anchors": 1537,
+   "n_symbol_anchors": 84,
+   "n_doc_files": 298,
+   "n_unique_targets": 818,
+   "survival": {
+    "1": {
+     "G0_exists": 0.9759,
+     "G1_file": 0.5374,
+     "G2_symbol": 0.9762,
+     "G1_file_symbol_anchors_only": 0.6071,
+     "doc_line_verbatim": 0.9681
+    },
+    "3": {
+     "G0_exists": 0.9623,
+     "G1_file": 0.4236,
+     "G2_symbol": 0.9524,
+     "G1_file_symbol_anchors_only": 0.5,
+     "doc_line_verbatim": 0.9525
+    },
+    "6": {
+     "G0_exists": 0.9219,
+     "G1_file": 0.272,
+     "G2_symbol": 0.8452,
+     "G1_file_symbol_anchors_only": 0.3452,
+     "doc_line_verbatim": 0.8953
+    },
+    "12": {
+     "G0_exists": 0.8953,
+     "G1_file": 0.1919,
+     "G2_symbol": 0.7857,
+     "G1_file_symbol_anchors_only": 0.2857,
+     "doc_line_verbatim": 0.8113
+    },
+    "24": {
+     "G0_exists": 0.8478,
+     "G1_file": 0.1126,
+     "G2_symbol": 0.619,
+     "G1_file_symbol_anchors_only": 0.2143,
+     "doc_line_verbatim": 0.7046
+    }
+   },
+   "tables": {
+    "1": {
+     "G1": {
+      "changed_edited": 49,
+      "changed_verbatim": 662,
+      "unchanged_edited": 0,
+      "unchanged_verbatim": 826,
+      "n": 1537,
+      "share_changed_and_verbatim": 0.4307,
+      "share_verbatim_given_changed": 0.9311,
+      "share_edited_given_changed": 0.0689,
+      "share_edited_given_unchanged": 0.0
+     },
+     "G2": {
+      "changed_edited": 0,
+      "changed_verbatim": 2,
+      "unchanged_edited": 0,
+      "unchanged_verbatim": 82,
+      "n": 84,
+      "share_changed_and_verbatim": 0.0238,
+      "share_verbatim_given_changed": 1.0,
+      "share_edited_given_changed": 0.0,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "3": {
+     "G1": {
+      "changed_edited": 72,
+      "changed_verbatim": 814,
+      "unchanged_edited": 1,
+      "unchanged_verbatim": 650,
+      "n": 1537,
+      "share_changed_and_verbatim": 0.5296,
+      "share_verbatim_given_changed": 0.9187,
+      "share_edited_given_changed": 0.0813,
+      "share_edited_given_unchanged": 0.0015
+     },
+     "G2": {
+      "changed_edited": 1,
+      "changed_verbatim": 3,
+      "unchanged_edited": 0,
+      "unchanged_verbatim": 80,
+      "n": 84,
+      "share_changed_and_verbatim": 0.0357,
+      "share_verbatim_given_changed": 0.75,
+      "share_edited_given_changed": 0.25,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "6": {
+     "G1": {
+      "changed_edited": 158,
+      "changed_verbatim": 961,
+      "unchanged_edited": 3,
+      "unchanged_verbatim": 415,
+      "n": 1537,
+      "share_changed_and_verbatim": 0.6252,
+      "share_verbatim_given_changed": 0.8588,
+      "share_edited_given_changed": 0.1412,
+      "share_edited_given_unchanged": 0.0072
+     },
+     "G2": {
+      "changed_edited": 1,
+      "changed_verbatim": 12,
+      "unchanged_edited": 1,
+      "unchanged_verbatim": 70,
+      "n": 84,
+      "share_changed_and_verbatim": 0.1429,
+      "share_verbatim_given_changed": 0.9231,
+      "share_edited_given_changed": 0.0769,
+      "share_edited_given_unchanged": 0.0141
+     }
+    },
+    "12": {
+     "G1": {
+      "changed_edited": 260,
+      "changed_verbatim": 982,
+      "unchanged_edited": 30,
+      "unchanged_verbatim": 265,
+      "n": 1537,
+      "share_changed_and_verbatim": 0.6389,
+      "share_verbatim_given_changed": 0.7907,
+      "share_edited_given_changed": 0.2093,
+      "share_edited_given_unchanged": 0.1017
+     },
+     "G2": {
+      "changed_edited": 2,
+      "changed_verbatim": 16,
+      "unchanged_edited": 3,
+      "unchanged_verbatim": 63,
+      "n": 84,
+      "share_changed_and_verbatim": 0.1905,
+      "share_verbatim_given_changed": 0.8889,
+      "share_edited_given_changed": 0.1111,
+      "share_edited_given_unchanged": 0.0455
+     }
+    },
+    "24": {
+     "G1": {
+      "changed_edited": 419,
+      "changed_verbatim": 945,
+      "unchanged_edited": 35,
+      "unchanged_verbatim": 138,
+      "n": 1537,
+      "share_changed_and_verbatim": 0.6148,
+      "share_verbatim_given_changed": 0.6928,
+      "share_edited_given_changed": 0.3072,
+      "share_edited_given_unchanged": 0.2023
+     },
+     "G2": {
+      "changed_edited": 11,
+      "changed_verbatim": 21,
+      "unchanged_edited": 9,
+      "unchanged_verbatim": 43,
+      "n": 84,
+      "share_changed_and_verbatim": 0.25,
+      "share_verbatim_given_changed": 0.6562,
+      "share_edited_given_changed": 0.3438,
+      "share_edited_given_unchanged": 0.1731
+     }
+    }
+   }
+  }
+ },
+ "per_repository_mean": {
+  "all_anchors": {
+   "n_repositories": 8,
+   "n_repositories_with_symbol_anchors": 8,
+   "survival": {
+    "1": {
+     "G0_exists": 0.9681,
+     "G1_file": 0.6492,
+     "G2_symbol": 0.9196,
+     "G1_file_symbol_anchors_only": 0.6445,
+     "doc_line_verbatim": 0.9572
+    },
+    "3": {
+     "G0_exists": 0.9575,
+     "G1_file": 0.5426,
+     "G2_symbol": 0.9142,
+     "G1_file_symbol_anchors_only": 0.5725,
+     "doc_line_verbatim": 0.9444
+    },
+    "6": {
+     "G0_exists": 0.9282,
+     "G1_file": 0.3588,
+     "G2_symbol": 0.7774,
+     "G1_file_symbol_anchors_only": 0.2823,
+     "doc_line_verbatim": 0.9098
+    },
+    "12": {
+     "G0_exists": 0.9055,
+     "G1_file": 0.2427,
+     "G2_symbol": 0.7285,
+     "G1_file_symbol_anchors_only": 0.1511,
+     "doc_line_verbatim": 0.7783
+    },
+    "24": {
+     "G0_exists": 0.861,
+     "G1_file": 0.1492,
+     "G2_symbol": 0.5489,
+     "G1_file_symbol_anchors_only": 0.1233,
+     "doc_line_verbatim": 0.6914
+    }
+   },
+   "tables": {
+    "1": {
+     "G1": {
+      "share_changed_and_verbatim": 0.308,
+      "share_verbatim_given_changed": 0.9225,
+      "share_edited_given_changed": 0.0775,
+      "share_edited_given_unchanged": 0.0
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.0804,
+      "share_verbatim_given_changed": 1.0,
+      "share_edited_given_changed": 0.0,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "3": {
+     "G1": {
+      "share_changed_and_verbatim": 0.4022,
+      "share_verbatim_given_changed": 0.907,
+      "share_edited_given_changed": 0.093,
+      "share_edited_given_unchanged": 0.0017
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.0831,
+      "share_verbatim_given_changed": 0.8333,
+      "share_edited_given_changed": 0.1667,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "6": {
+     "G1": {
+      "share_changed_and_verbatim": 0.5518,
+      "share_verbatim_given_changed": 0.8743,
+      "share_edited_given_changed": 0.1257,
+      "share_edited_given_unchanged": 0.0038
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.2012,
+      "share_verbatim_given_changed": 0.8167,
+      "share_edited_given_changed": 0.1833,
+      "share_edited_given_unchanged": 0.0163
+     }
+    },
+    "12": {
+     "G1": {
+      "share_changed_and_verbatim": 0.5729,
+      "share_verbatim_given_changed": 0.7741,
+      "share_edited_given_changed": 0.2259,
+      "share_edited_given_unchanged": 0.1021
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.241,
+      "share_verbatim_given_changed": 0.8653,
+      "share_edited_given_changed": 0.1347,
+      "share_edited_given_unchanged": 0.0991
+     }
+    },
+    "24": {
+     "G1": {
+      "share_changed_and_verbatim": 0.5773,
+      "share_verbatim_given_changed": 0.6874,
+      "share_edited_given_changed": 0.3126,
+      "share_edited_given_unchanged": 0.1342
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.3052,
+      "share_verbatim_given_changed": 0.6528,
+      "share_edited_given_changed": 0.3472,
+      "share_edited_given_unchanged": 0.3704
+     }
+    }
+   }
+  },
+  "anchors_with_directory": {
+   "n_repositories": 8,
+   "n_repositories_with_symbol_anchors": 7,
+   "survival": {
+    "1": {
+     "G0_exists": 0.9578,
+     "G1_file": 0.6601,
+     "G2_symbol": 0.9,
+     "G1_file_symbol_anchors_only": 0.6313,
+     "doc_line_verbatim": 0.9433
+    },
+    "3": {
+     "G0_exists": 0.946,
+     "G1_file": 0.5403,
+     "G2_symbol": 0.8911,
+     "G1_file_symbol_anchors_only": 0.5233,
+     "doc_line_verbatim": 0.9291
+    },
+    "6": {
+     "G0_exists": 0.9239,
+     "G1_file": 0.4112,
+     "G2_symbol": 0.7485,
+     "G1_file_symbol_anchors_only": 0.3482,
+     "doc_line_verbatim": 0.9022
+    },
+    "12": {
+     "G0_exists": 0.9014,
+     "G1_file": 0.2469,
+     "G2_symbol": 0.7247,
+     "G1_file_symbol_anchors_only": 0.2137,
+     "doc_line_verbatim": 0.7242
+    },
+    "24": {
+     "G0_exists": 0.851,
+     "G1_file": 0.1542,
+     "G2_symbol": 0.5598,
+     "G1_file_symbol_anchors_only": 0.178,
+     "doc_line_verbatim": 0.6453
+    }
+   },
+   "tables": {
+    "1": {
+     "G1": {
+      "share_changed_and_verbatim": 0.2832,
+      "share_verbatim_given_changed": 0.8997,
+      "share_edited_given_changed": 0.1003,
+      "share_edited_given_unchanged": 0.0
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.1,
+      "share_verbatim_given_changed": 1.0,
+      "share_edited_given_changed": 0.0,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "3": {
+     "G1": {
+      "share_changed_and_verbatim": 0.3892,
+      "share_verbatim_given_changed": 0.8786,
+      "share_edited_given_changed": 0.1214,
+      "share_edited_given_unchanged": 0.0017
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.1045,
+      "share_verbatim_given_changed": 0.8333,
+      "share_edited_given_changed": 0.1667,
+      "share_edited_given_unchanged": 0.0
+     }
+    },
+    "6": {
+     "G1": {
+      "share_changed_and_verbatim": 0.4919,
+      "share_verbatim_given_changed": 0.8667,
+      "share_edited_given_changed": 0.1333,
+      "share_edited_given_unchanged": 0.0039
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.247,
+      "share_verbatim_given_changed": 0.9714,
+      "share_edited_given_changed": 0.0286,
+      "share_edited_given_unchanged": 0.0185
+     }
+    },
+    "12": {
+     "G1": {
+      "share_changed_and_verbatim": 0.5197,
+      "share_verbatim_given_changed": 0.7204,
+      "share_edited_given_changed": 0.2796,
+      "share_edited_given_unchanged": 0.1082
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.2664,
+      "share_verbatim_given_changed": 0.9636,
+      "share_edited_given_changed": 0.0364,
+      "share_edited_given_unchanged": 0.082
+     }
+    },
+    "24": {
+     "G1": {
+      "share_changed_and_verbatim": 0.5311,
+      "share_verbatim_given_changed": 0.6446,
+      "share_edited_given_changed": 0.3553,
+      "share_edited_given_unchanged": 0.1469
+     },
+     "G2": {
+      "share_changed_and_verbatim": 0.3414,
+      "share_verbatim_given_changed": 0.7698,
+      "share_edited_given_changed": 0.2302,
+      "share_edited_given_unchanged": 0.3718
+     }
+    }
+   }
+  }
+ },
+ "repositories": [
+  {
+   "url": "https://github.com/bevyengine/bevy",
+   "name": "bevyengine_bevy",
+   "language": "Rust",
+   "head_sha": "12a94e0cd6b18df7a0dc2e5a202a55156d80e9a6",
+   "head_date": "2026-10-12T17:46:08+00:00",
+   "first_commit_date": "2019-11-13T03:36:02+00:00",
+   "history_years": 6.9,
+   "lookback_months": 24,
+   "t0_sha": "813c75958df8a518353c6b50cb62a27353bbfd51",
+   "t0_date": "2024-10-12T09:07:01+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "813c75958df8a518353c6b50cb62a27353bbfd51",
+     "date": "2024-10-12T09:07:01+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "4225848b0aa08519e2715070b9e617813e3ac6ad",
+     "date": "2024-11-11T23:28:16+00:00",
+     "days_before_horizon_date": 0
+    },
+    "3": {
+     "sha": "bb0a82b9a73003ee6d5da689fb4d6e5ecd217e4e",
+     "date": "2025-01-12T05:40:30+00:00",
+     "days_before_horizon_date": 0
+    },
+    "6": {
+     "sha": "a9b0b4e7f7a51db77df0ca75c7029d7b60daa369",
+     "date": "2025-04-11T23:18:26+00:00",
+     "days_before_horizon_date": 0
+    },
+    "12": {
+     "sha": "ea8f22eb5ab93f72afcd2651089bb2926f189b04",
+     "date": "2025-10-10T16:23:55+00:00",
+     "days_before_horizon_date": 1
+    },
+    "24": {
+     "sha": "c9c21c2b7af92a396b5f93ecfa1536a8a2afcc68",
+     "date": "2026-10-11T04:42:08+00:00",
+     "days_before_horizon_date": 1
+    }
+   },
+   "n_markdown_files_at_t0": 72,
+   "target_extensions_top10": {
+    ".rs": 296,
+    ".toml": 6,
+    ".yml": 3,
+    "(none)": 1,
+    ".html": 1
+   },
+   "all_anchors": {
+    "n_anchors": 307,
+    "n_symbol_anchors": 11,
+    "n_doc_files": 9,
+    "n_unique_targets": 296,
+    "survival": {
+     "1": {
+      "G0_exists": 0.9967,
+      "G1_file": 0.329,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.4545,
+      "doc_line_verbatim": 0.9967
+     },
+     "3": {
+      "G0_exists": 0.9935,
+      "G1_file": 0.241,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.2727,
+      "doc_line_verbatim": 0.987
+     },
+     "6": {
+      "G0_exists": 0.9902,
+      "G1_file": 0.1889,
+      "G2_symbol": 0.9091,
+      "G1_file_symbol_anchors_only": 0.2727,
+      "doc_line_verbatim": 0.9772
+     },
+     "12": {
+      "G0_exists": 0.9446,
+      "G1_file": 0.1107,
+      "G2_symbol": 0.9091,
+      "G1_file_symbol_anchors_only": 0.0909,
+      "doc_line_verbatim": 0.9251
+     },
+     "24": {
+      "G0_exists": 0.8371,
+      "G1_file": 0.0814,
+      "G2_symbol": 0.8182,
+      "G1_file_symbol_anchors_only": 0.0909,
+      "doc_line_verbatim": 0.7818
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 1,
+       "changed_verbatim": 205,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 101,
+       "n": 307,
+       "share_changed_and_verbatim": 0.6678,
+       "share_verbatim_given_changed": 0.9951,
+       "share_edited_given_changed": 0.0049,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 11,
+       "n": 11,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 3,
+       "changed_verbatim": 230,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 73,
+       "n": 307,
+       "share_changed_and_verbatim": 0.7492,
+       "share_verbatim_given_changed": 0.9871,
+       "share_edited_given_changed": 0.0129,
+       "share_edited_given_unchanged": 0.0135
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 11,
+       "n": 11,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 6,
+       "changed_verbatim": 243,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 57,
+       "n": 307,
+       "share_changed_and_verbatim": 0.7915,
+       "share_verbatim_given_changed": 0.9759,
+       "share_edited_given_changed": 0.0241,
+       "share_edited_given_unchanged": 0.0172
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 10,
+       "n": 11,
+       "share_changed_and_verbatim": 0.0909,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 22,
+       "changed_verbatim": 251,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 33,
+       "n": 307,
+       "share_changed_and_verbatim": 0.8176,
+       "share_verbatim_given_changed": 0.9194,
+       "share_edited_given_changed": 0.0806,
+       "share_edited_given_unchanged": 0.0294
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 10,
+       "n": 11,
+       "share_changed_and_verbatim": 0.0909,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 66,
+       "changed_verbatim": 216,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 24,
+       "n": 307,
+       "share_changed_and_verbatim": 0.7036,
+       "share_verbatim_given_changed": 0.766,
+       "share_edited_given_changed": 0.234,
+       "share_edited_given_unchanged": 0.04
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 7,
+       "n": 11,
+       "share_changed_and_verbatim": 0.1818,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.2222
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 301,
+    "n_symbol_anchors": 10,
+    "n_doc_files": 8,
+    "n_unique_targets": 295,
+    "survival": {
+     "1": {
+      "G0_exists": 0.9967,
+      "G1_file": 0.3322,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 0.9967
+     },
+     "3": {
+      "G0_exists": 0.9934,
+      "G1_file": 0.2425,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.3,
+      "doc_line_verbatim": 0.9867
+     },
+     "6": {
+      "G0_exists": 0.99,
+      "G1_file": 0.1894,
+      "G2_symbol": 0.9,
+      "G1_file_symbol_anchors_only": 0.3,
+      "doc_line_verbatim": 0.9767
+     },
+     "12": {
+      "G0_exists": 0.9435,
+      "G1_file": 0.1096,
+      "G2_symbol": 0.9,
+      "G1_file_symbol_anchors_only": 0.1,
+      "doc_line_verbatim": 0.9236
+     },
+     "24": {
+      "G0_exists": 0.8339,
+      "G1_file": 0.0831,
+      "G2_symbol": 0.8,
+      "G1_file_symbol_anchors_only": 0.1,
+      "doc_line_verbatim": 0.7907
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 1,
+       "changed_verbatim": 200,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 100,
+       "n": 301,
+       "share_changed_and_verbatim": 0.6645,
+       "share_verbatim_given_changed": 0.995,
+       "share_edited_given_changed": 0.005,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 10,
+       "n": 10,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 3,
+       "changed_verbatim": 225,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 72,
+       "n": 301,
+       "share_changed_and_verbatim": 0.7475,
+       "share_verbatim_given_changed": 0.9868,
+       "share_edited_given_changed": 0.0132,
+       "share_edited_given_unchanged": 0.0137
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 10,
+       "n": 10,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 6,
+       "changed_verbatim": 238,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 56,
+       "n": 301,
+       "share_changed_and_verbatim": 0.7907,
+       "share_verbatim_given_changed": 0.9754,
+       "share_edited_given_changed": 0.0246,
+       "share_edited_given_unchanged": 0.0175
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 9,
+       "n": 10,
+       "share_changed_and_verbatim": 0.1,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 22,
+       "changed_verbatim": 246,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 32,
+       "n": 301,
+       "share_changed_and_verbatim": 0.8173,
+       "share_verbatim_given_changed": 0.9179,
+       "share_edited_given_changed": 0.0821,
+       "share_edited_given_unchanged": 0.0303
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 9,
+       "n": 10,
+       "share_changed_and_verbatim": 0.1,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 62,
+       "changed_verbatim": 214,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 24,
+       "n": 301,
+       "share_changed_and_verbatim": 0.711,
+       "share_verbatim_given_changed": 0.7754,
+       "share_edited_given_changed": 0.2246,
+       "share_edited_given_unchanged": 0.04
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 7,
+       "n": 10,
+       "share_changed_and_verbatim": 0.2,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.125
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/bytecodealliance/wasmtime",
+   "name": "bytecodealliance_wasmtime",
+   "language": "Rust",
+   "head_sha": "d6ad2b172449bb79e55d733de685b63d2e63fd71",
+   "head_date": "2026-10-12T22:11:28+00:00",
+   "first_commit_date": "2017-08-29T14:01:55+00:00",
+   "history_years": 9.1,
+   "lookback_months": 24,
+   "t0_sha": "460a4c0ad5d3655b7dbaec193e726196de848898",
+   "t0_date": "2024-10-11T23:06:08+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "460a4c0ad5d3655b7dbaec193e726196de848898",
+     "date": "2024-10-11T23:06:08+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "f406347a6e8af835f52bfb6868a64f01be2ee533",
+     "date": "2024-11-11T21:00:34+00:00",
+     "days_before_horizon_date": 0
+    },
+    "3": {
+     "sha": "8b42faf44c26ebd33fd90e1c1137e8fbc41564a9",
+     "date": "2025-01-10T22:19:48+00:00",
+     "days_before_horizon_date": 1
+    },
+    "6": {
+     "sha": "9ca321ee852638321c86bc918bd44b588cf37cbb",
+     "date": "2025-04-11T21:59:58+00:00",
+     "days_before_horizon_date": 0
+    },
+    "12": {
+     "sha": "557cc2d60c562a07203fe91e078b6aa837588c7d",
+     "date": "2025-10-10T17:12:23+00:00",
+     "days_before_horizon_date": 1
+    },
+    "24": {
+     "sha": "e4657a0ceb5cf020fb68a553f6f839c5e6f99d69",
+     "date": "2026-10-11T00:25:17+00:00",
+     "days_before_horizon_date": 0
+    }
+   },
+   "n_markdown_files_at_t0": 161,
+   "target_extensions_top10": {
+    ".rs": 43,
+    ".wat": 19,
+    ".c": 8,
+    ".toml": 6,
+    ".isle": 3,
+    ".sh": 3,
+    ".onnx": 2,
+    ".h": 2,
+    ".js": 1,
+    ".txt": 1
+   },
+   "all_anchors": {
+    "n_anchors": 91,
+    "n_symbol_anchors": 7,
+    "n_doc_files": 41,
+    "n_unique_targets": 59,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.7582,
+      "G2_symbol": 0.8571,
+      "G1_file_symbol_anchors_only": 0.5714,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 0.9451,
+      "G1_file": 0.5275,
+      "G2_symbol": 0.8571,
+      "G1_file_symbol_anchors_only": 0.2857,
+      "doc_line_verbatim": 0.9341
+     },
+     "6": {
+      "G0_exists": 0.9451,
+      "G1_file": 0.4945,
+      "G2_symbol": 0.7143,
+      "G1_file_symbol_anchors_only": 0.1429,
+      "doc_line_verbatim": 0.9341
+     },
+     "12": {
+      "G0_exists": 0.9011,
+      "G1_file": 0.3736,
+      "G2_symbol": 0.7143,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.5495
+     },
+     "24": {
+      "G0_exists": 0.8352,
+      "G1_file": 0.3077,
+      "G2_symbol": 0.5714,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.4615
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 22,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 69,
+       "n": 91,
+       "share_changed_and_verbatim": 0.2418,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 6,
+       "n": 7,
+       "share_changed_and_verbatim": 0.1429,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 6,
+       "changed_verbatim": 37,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 48,
+       "n": 91,
+       "share_changed_and_verbatim": 0.4066,
+       "share_verbatim_given_changed": 0.8605,
+       "share_edited_given_changed": 0.1395,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 6,
+       "n": 7,
+       "share_changed_and_verbatim": 0.1429,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 6,
+       "changed_verbatim": 40,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 45,
+       "n": 91,
+       "share_changed_and_verbatim": 0.4396,
+       "share_verbatim_given_changed": 0.8696,
+       "share_edited_given_changed": 0.1304,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 5,
+       "n": 7,
+       "share_changed_and_verbatim": 0.2857,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 16,
+       "changed_verbatim": 41,
+       "unchanged_edited": 25,
+       "unchanged_verbatim": 9,
+       "n": 91,
+       "share_changed_and_verbatim": 0.4505,
+       "share_verbatim_given_changed": 0.7193,
+       "share_edited_given_changed": 0.2807,
+       "share_edited_given_unchanged": 0.7353
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 3,
+       "n": 7,
+       "share_changed_and_verbatim": 0.2857,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.4
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 26,
+       "changed_verbatim": 37,
+       "unchanged_edited": 23,
+       "unchanged_verbatim": 5,
+       "n": 91,
+       "share_changed_and_verbatim": 0.4066,
+       "share_verbatim_given_changed": 0.5873,
+       "share_edited_given_changed": 0.4127,
+       "share_edited_given_unchanged": 0.8214
+      },
+      "G2": {
+       "changed_edited": 2,
+       "changed_verbatim": 1,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 2,
+       "n": 7,
+       "share_changed_and_verbatim": 0.1429,
+       "share_verbatim_given_changed": 0.3333,
+       "share_edited_given_changed": 0.6667,
+       "share_edited_given_unchanged": 0.5
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 80,
+    "n_symbol_anchors": 5,
+    "n_doc_files": 36,
+    "n_unique_targets": 54,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.7875,
+      "G2_symbol": 0.8,
+      "G1_file_symbol_anchors_only": 0.6,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 0.9375,
+      "G1_file": 0.5375,
+      "G2_symbol": 0.8,
+      "G1_file_symbol_anchors_only": 0.2,
+      "doc_line_verbatim": 0.925
+     },
+     "6": {
+      "G0_exists": 0.9375,
+      "G1_file": 0.5375,
+      "G2_symbol": 0.6,
+      "G1_file_symbol_anchors_only": 0.2,
+      "doc_line_verbatim": 0.925
+     },
+     "12": {
+      "G0_exists": 0.8875,
+      "G1_file": 0.4,
+      "G2_symbol": 0.6,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.5
+     },
+     "24": {
+      "G0_exists": 0.825,
+      "G1_file": 0.3375,
+      "G2_symbol": 0.4,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.4125
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 17,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 63,
+       "n": 80,
+       "share_changed_and_verbatim": 0.2125,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 4,
+       "n": 5,
+       "share_changed_and_verbatim": 0.2,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 6,
+       "changed_verbatim": 31,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 43,
+       "n": 80,
+       "share_changed_and_verbatim": 0.3875,
+       "share_verbatim_given_changed": 0.8378,
+       "share_edited_given_changed": 0.1622,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 4,
+       "n": 5,
+       "share_changed_and_verbatim": 0.2,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 6,
+       "changed_verbatim": 31,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 43,
+       "n": 80,
+       "share_changed_and_verbatim": 0.3875,
+       "share_verbatim_given_changed": 0.8378,
+       "share_edited_given_changed": 0.1622,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 3,
+       "n": 5,
+       "share_changed_and_verbatim": 0.4,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 15,
+       "changed_verbatim": 33,
+       "unchanged_edited": 25,
+       "unchanged_verbatim": 7,
+       "n": 80,
+       "share_changed_and_verbatim": 0.4125,
+       "share_verbatim_given_changed": 0.6875,
+       "share_edited_given_changed": 0.3125,
+       "share_edited_given_unchanged": 0.7812
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 2,
+       "n": 5,
+       "share_changed_and_verbatim": 0.4,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.3333
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 24,
+       "changed_verbatim": 29,
+       "unchanged_edited": 23,
+       "unchanged_verbatim": 4,
+       "n": 80,
+       "share_changed_and_verbatim": 0.3625,
+       "share_verbatim_given_changed": 0.5472,
+       "share_edited_given_changed": 0.4528,
+       "share_edited_given_unchanged": 0.8519
+      },
+      "G2": {
+       "changed_edited": 2,
+       "changed_verbatim": 1,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 1,
+       "n": 5,
+       "share_changed_and_verbatim": 0.2,
+       "share_verbatim_given_changed": 0.3333,
+       "share_edited_given_changed": 0.6667,
+       "share_edited_given_unchanged": 0.5
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/zulip/zulip",
+   "name": "zulip_zulip",
+   "language": "Python",
+   "head_sha": "ef6e64bd3cb4e2fe7ed993e68e3b05ff576ee816",
+   "head_date": "2026-10-12T19:21:41+00:00",
+   "first_commit_date": "2012-08-28T16:41:50+00:00",
+   "history_years": 14.1,
+   "lookback_months": 24,
+   "t0_sha": "723346b05cc2c4b37814cf4ce7c1af1411ecd18c",
+   "t0_date": "2024-10-12T00:38:17+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "723346b05cc2c4b37814cf4ce7c1af1411ecd18c",
+     "date": "2024-10-12T00:38:17+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "e7346942292fff3c554d3c307ba71a9f2e8ff5b3",
+     "date": "2024-11-11T22:19:20+00:00",
+     "days_before_horizon_date": 0
+    },
+    "3": {
+     "sha": "97e8ed58505fbeb69c8712450cabed3b12537623",
+     "date": "2025-01-10T22:32:55+00:00",
+     "days_before_horizon_date": 1
+    },
+    "6": {
+     "sha": "c5b005833c25b9139ab5b4e7c441ee2afd5af131",
+     "date": "2025-04-12T00:37:06+00:00",
+     "days_before_horizon_date": 0
+    },
+    "12": {
+     "sha": "83719cd5be9c9e69e58d48524700ebeaf5688615",
+     "date": "2025-10-10T16:57:23+00:00",
+     "days_before_horizon_date": 1
+    },
+    "24": {
+     "sha": "9e0a204240acea3cfcaaa993307cd344d1f87a75",
+     "date": "2026-10-11T16:15:54+00:00",
+     "days_before_horizon_date": 0
+    }
+   },
+   "n_markdown_files_at_t0": 773,
+   "target_extensions_top10": {
+    "(none)": 237,
+    ".py": 206,
+    ".js": 26,
+    ".ts": 24,
+    ".yaml": 23,
+    ".json": 13,
+    ".in": 5,
+    ".pp": 5,
+    ".yml": 4,
+    ".toml": 4
+   },
+   "all_anchors": {
+    "n_anchors": 561,
+    "n_symbol_anchors": 46,
+    "n_doc_files": 91,
+    "n_unique_targets": 238,
+    "survival": {
+     "1": {
+      "G0_exists": 0.9964,
+      "G1_file": 0.6239,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.3043,
+      "doc_line_verbatim": 0.9964
+     },
+     "3": {
+      "G0_exists": 0.9697,
+      "G1_file": 0.4652,
+      "G2_symbol": 0.9565,
+      "G1_file_symbol_anchors_only": 0.1957,
+      "doc_line_verbatim": 0.9697
+     },
+     "6": {
+      "G0_exists": 0.9447,
+      "G1_file": 0.2745,
+      "G2_symbol": 0.7826,
+      "G1_file_symbol_anchors_only": 0.0652,
+      "doc_line_verbatim": 0.9127
+     },
+     "12": {
+      "G0_exists": 0.9323,
+      "G1_file": 0.1889,
+      "G2_symbol": 0.6957,
+      "G1_file_symbol_anchors_only": 0.0435,
+      "doc_line_verbatim": 0.852
+     },
+     "24": {
+      "G0_exists": 0.9287,
+      "G1_file": 0.1319,
+      "G2_symbol": 0.413,
+      "G1_file_symbol_anchors_only": 0.0435,
+      "doc_line_verbatim": 0.7308
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 2,
+       "changed_verbatim": 209,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 350,
+       "n": 561,
+       "share_changed_and_verbatim": 0.3725,
+       "share_verbatim_given_changed": 0.9905,
+       "share_edited_given_changed": 0.0095,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 46,
+       "n": 46,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 17,
+       "changed_verbatim": 283,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 261,
+       "n": 561,
+       "share_changed_and_verbatim": 0.5045,
+       "share_verbatim_given_changed": 0.9433,
+       "share_edited_given_changed": 0.0567,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 44,
+       "n": 46,
+       "share_changed_and_verbatim": 0.0217,
+       "share_verbatim_given_changed": 0.5,
+       "share_edited_given_changed": 0.5,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 47,
+       "changed_verbatim": 360,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 152,
+       "n": 561,
+       "share_changed_and_verbatim": 0.6417,
+       "share_verbatim_given_changed": 0.8845,
+       "share_edited_given_changed": 0.1155,
+       "share_edited_given_unchanged": 0.013
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 9,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 34,
+       "n": 46,
+       "share_changed_and_verbatim": 0.1957,
+       "share_verbatim_given_changed": 0.9,
+       "share_edited_given_changed": 0.1,
+       "share_edited_given_unchanged": 0.0556
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 81,
+       "changed_verbatim": 374,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 104,
+       "n": 561,
+       "share_changed_and_verbatim": 0.6667,
+       "share_verbatim_given_changed": 0.822,
+       "share_edited_given_changed": 0.178,
+       "share_edited_given_unchanged": 0.0189
+      },
+      "G2": {
+       "changed_edited": 2,
+       "changed_verbatim": 12,
+       "unchanged_edited": 3,
+       "unchanged_verbatim": 29,
+       "n": 46,
+       "share_changed_and_verbatim": 0.2609,
+       "share_verbatim_given_changed": 0.8571,
+       "share_edited_given_changed": 0.1429,
+       "share_edited_given_unchanged": 0.0938
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 141,
+       "changed_verbatim": 346,
+       "unchanged_edited": 10,
+       "unchanged_verbatim": 64,
+       "n": 561,
+       "share_changed_and_verbatim": 0.6168,
+       "share_verbatim_given_changed": 0.7105,
+       "share_edited_given_changed": 0.2895,
+       "share_edited_given_unchanged": 0.1351
+      },
+      "G2": {
+       "changed_edited": 12,
+       "changed_verbatim": 15,
+       "unchanged_edited": 5,
+       "unchanged_verbatim": 14,
+       "n": 46,
+       "share_changed_and_verbatim": 0.3261,
+       "share_verbatim_given_changed": 0.5556,
+       "share_edited_given_changed": 0.4444,
+       "share_edited_given_unchanged": 0.2632
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 523,
+    "n_symbol_anchors": 32,
+    "n_doc_files": 90,
+    "n_unique_targets": 226,
+    "survival": {
+     "1": {
+      "G0_exists": 0.9962,
+      "G1_file": 0.6386,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.375,
+      "doc_line_verbatim": 0.9962
+     },
+     "3": {
+      "G0_exists": 0.9675,
+      "G1_file": 0.4685,
+      "G2_symbol": 0.9375,
+      "G1_file_symbol_anchors_only": 0.2188,
+      "doc_line_verbatim": 0.9675
+     },
+     "6": {
+      "G0_exists": 0.9446,
+      "G1_file": 0.2772,
+      "G2_symbol": 0.7812,
+      "G1_file_symbol_anchors_only": 0.0625,
+      "doc_line_verbatim": 0.9159
+     },
+     "12": {
+      "G0_exists": 0.9312,
+      "G1_file": 0.1969,
+      "G2_symbol": 0.6562,
+      "G1_file_symbol_anchors_only": 0.0625,
+      "doc_line_verbatim": 0.8509
+     },
+     "24": {
+      "G0_exists": 0.9273,
+      "G1_file": 0.1358,
+      "G2_symbol": 0.3438,
+      "G1_file_symbol_anchors_only": 0.0625,
+      "doc_line_verbatim": 0.7342
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 2,
+       "changed_verbatim": 187,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 334,
+       "n": 523,
+       "share_changed_and_verbatim": 0.3576,
+       "share_verbatim_given_changed": 0.9894,
+       "share_edited_given_changed": 0.0106,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 32,
+       "n": 32,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 17,
+       "changed_verbatim": 261,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 245,
+       "n": 523,
+       "share_changed_and_verbatim": 0.499,
+       "share_verbatim_given_changed": 0.9388,
+       "share_edited_given_changed": 0.0612,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 30,
+       "n": 32,
+       "share_changed_and_verbatim": 0.0312,
+       "share_verbatim_given_changed": 0.5,
+       "share_edited_given_changed": 0.5,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 42,
+       "changed_verbatim": 336,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 143,
+       "n": 523,
+       "share_changed_and_verbatim": 0.6424,
+       "share_verbatim_given_changed": 0.8889,
+       "share_edited_given_changed": 0.1111,
+       "share_edited_given_unchanged": 0.0138
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 6,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 25,
+       "n": 32,
+       "share_changed_and_verbatim": 0.1875,
+       "share_verbatim_given_changed": 0.8571,
+       "share_edited_given_changed": 0.1429,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 76,
+       "changed_verbatim": 344,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 101,
+       "n": 523,
+       "share_changed_and_verbatim": 0.6577,
+       "share_verbatim_given_changed": 0.819,
+       "share_edited_given_changed": 0.181,
+       "share_edited_given_unchanged": 0.0194
+      },
+      "G2": {
+       "changed_edited": 2,
+       "changed_verbatim": 9,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 20,
+       "n": 32,
+       "share_changed_and_verbatim": 0.2812,
+       "share_verbatim_given_changed": 0.8182,
+       "share_edited_given_changed": 0.1818,
+       "share_edited_given_unchanged": 0.0476
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 129,
+       "changed_verbatim": 323,
+       "unchanged_edited": 10,
+       "unchanged_verbatim": 61,
+       "n": 523,
+       "share_changed_and_verbatim": 0.6176,
+       "share_verbatim_given_changed": 0.7146,
+       "share_edited_given_changed": 0.2854,
+       "share_edited_given_unchanged": 0.1408
+      },
+      "G2": {
+       "changed_edited": 8,
+       "changed_verbatim": 13,
+       "unchanged_edited": 3,
+       "unchanged_verbatim": 8,
+       "n": 32,
+       "share_changed_and_verbatim": 0.4062,
+       "share_verbatim_given_changed": 0.619,
+       "share_edited_given_changed": 0.381,
+       "share_edited_given_unchanged": 0.2727
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/huggingface/transformers",
+   "name": "huggingface_transformers",
+   "language": "Python",
+   "head_sha": "78633ef9ff2338284e0c9da2218381b7ed755bc4",
+   "head_date": "2026-10-12T19:11:54+00:00",
+   "first_commit_date": "2018-10-29T13:56:02+00:00",
+   "history_years": 8.0,
+   "lookback_months": 24,
+   "t0_sha": "37ea04013b34b39c01b51aeaacd8d56f2c62a7eb",
+   "t0_date": "2024-10-12T15:45:52+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "37ea04013b34b39c01b51aeaacd8d56f2c62a7eb",
+     "date": "2024-10-12T15:45:52+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "33eef992503689ba1af98090e26d3e98865b2a9b",
+     "date": "2024-11-11T19:52:09+00:00",
+     "days_before_horizon_date": 0
+    },
+    "3": {
+     "sha": "15bd3e61f8d3680ca472c9314ad07584d20f7b81",
+     "date": "2025-01-10T17:59:36+00:00",
+     "days_before_horizon_date": 1
+    },
+    "6": {
+     "sha": "953196a43dae6a3c474165fba7d215fcbc7b7730",
+     "date": "2025-04-11T21:24:23+00:00",
+     "days_before_horizon_date": 0
+    },
+    "12": {
+     "sha": "3927ffed31e3c0d2929bf98bd05b7c61fcc48b62",
+     "date": "2025-10-10T20:27:01+00:00",
+     "days_before_horizon_date": 1
+    },
+    "24": {
+     "sha": "9996277ca43ce2382b8bf788b8ee420c03bc5c4a",
+     "date": "2026-10-12T15:36:21+00:00",
+     "days_before_horizon_date": 0
+    }
+   },
+   "n_markdown_files_at_t0": 1099,
+   "target_extensions_top10": {
+    ".py": 478,
+    ".json": 15,
+    ".sh": 13,
+    ".txt": 3,
+    "(none)": 1
+   },
+   "all_anchors": {
+    "n_anchors": 510,
+    "n_symbol_anchors": 20,
+    "n_doc_files": 129,
+    "n_unique_targets": 148,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.4255,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.4,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3843,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.4,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 0.8157,
+      "G1_file": 0.1098,
+      "G2_symbol": 0.85,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.7902
+     },
+     "12": {
+      "G0_exists": 0.7686,
+      "G1_file": 0.098,
+      "G2_symbol": 0.75,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.7039
+     },
+     "24": {
+      "G0_exists": 0.698,
+      "G1_file": 0.002,
+      "G2_symbol": 0.7,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.5902
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 293,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 217,
+       "n": 510,
+       "share_changed_and_verbatim": 0.5745,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 20,
+       "n": 20,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 314,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 196,
+       "n": 510,
+       "share_changed_and_verbatim": 0.6157,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 20,
+       "n": 20,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 107,
+       "changed_verbatim": 347,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 56,
+       "n": 510,
+       "share_changed_and_verbatim": 0.6804,
+       "share_verbatim_given_changed": 0.7643,
+       "share_edited_given_changed": 0.2357,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 3,
+       "changed_verbatim": 0,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 16,
+       "n": 20,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": 0.0,
+       "share_edited_given_changed": 1.0,
+       "share_edited_given_unchanged": 0.0588
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 151,
+       "changed_verbatim": 309,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 50,
+       "n": 510,
+       "share_changed_and_verbatim": 0.6059,
+       "share_verbatim_given_changed": 0.6717,
+       "share_edited_given_changed": 0.3283,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 4,
+       "changed_verbatim": 1,
+       "unchanged_edited": 3,
+       "unchanged_verbatim": 12,
+       "n": 20,
+       "share_changed_and_verbatim": 0.05,
+       "share_verbatim_given_changed": 0.2,
+       "share_edited_given_changed": 0.8,
+       "share_edited_given_unchanged": 0.2
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 209,
+       "changed_verbatim": 300,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 510,
+       "share_changed_and_verbatim": 0.5882,
+       "share_verbatim_given_changed": 0.5894,
+       "share_edited_given_changed": 0.4106,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 5,
+       "changed_verbatim": 1,
+       "unchanged_edited": 5,
+       "unchanged_verbatim": 9,
+       "n": 20,
+       "share_changed_and_verbatim": 0.05,
+       "share_verbatim_given_changed": 0.1667,
+       "share_edited_given_changed": 0.8333,
+       "share_edited_given_unchanged": 0.3571
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 378,
+    "n_symbol_anchors": 9,
+    "n_doc_files": 90,
+    "n_unique_targets": 72,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3968,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.4444,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3413,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.4444,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 0.8783,
+      "G1_file": 0.1429,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.8466
+     },
+     "12": {
+      "G0_exists": 0.8466,
+      "G1_file": 0.1296,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.7857
+     },
+     "24": {
+      "G0_exists": 0.7831,
+      "G1_file": 0.0026,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.664
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 228,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 150,
+       "n": 378,
+       "share_changed_and_verbatim": 0.6032,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 9,
+       "n": 9,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 249,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 129,
+       "n": 378,
+       "share_changed_and_verbatim": 0.6587,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 9,
+       "n": 9,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 58,
+       "changed_verbatim": 266,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 54,
+       "n": 378,
+       "share_changed_and_verbatim": 0.7037,
+       "share_verbatim_given_changed": 0.821,
+       "share_edited_given_changed": 0.179,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 8,
+       "n": 9,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.1111
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 81,
+       "changed_verbatim": 248,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 49,
+       "n": 378,
+       "share_changed_and_verbatim": 0.6561,
+       "share_verbatim_given_changed": 0.7538,
+       "share_edited_given_changed": 0.2462,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 8,
+       "n": 9,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.1111
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 127,
+       "changed_verbatim": 250,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 378,
+       "share_changed_and_verbatim": 0.6614,
+       "share_verbatim_given_changed": 0.6631,
+       "share_edited_given_changed": 0.3369,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 3,
+       "unchanged_verbatim": 6,
+       "n": 9,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.3333
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/argoproj/argo-cd",
+   "name": "argoproj_argo-cd",
+   "language": "Go",
+   "head_sha": "3cc4faa2cbf92dfa92990070908ea2d49d9d60b6",
+   "head_date": "2026-10-12T14:41:03+00:00",
+   "first_commit_date": "2018-02-15T00:56:17+00:00",
+   "history_years": 8.7,
+   "lookback_months": 24,
+   "t0_sha": "cf498f674de7082f5d34d5c9df4f0b4c9b4fabd5",
+   "t0_date": "2024-10-11T22:58:08+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "cf498f674de7082f5d34d5c9df4f0b4c9b4fabd5",
+     "date": "2024-10-11T22:58:08+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "76537ce5576209f2976efd39a486e6f608e152d0",
+     "date": "2024-11-11T18:42:25+00:00",
+     "days_before_horizon_date": 0
+    },
+    "3": {
+     "sha": "4d9835927d8de3b96c51c1d0fc00edcd92c65f63",
+     "date": "2025-01-10T21:14:00+00:00",
+     "days_before_horizon_date": 1
+    },
+    "6": {
+     "sha": "923edeafa07d84be602f40b5698d58b93ea711f9",
+     "date": "2025-04-11T14:42:23+00:00",
+     "days_before_horizon_date": 0
+    },
+    "12": {
+     "sha": "95b191d349448b56ccd258ca9e44f41352e0b0af",
+     "date": "2025-10-09T22:03:30+00:00",
+     "days_before_horizon_date": 2
+    },
+    "24": {
+     "sha": "d028ee1e9d3f0cabbee5cc0dd0c37a7df5f2aa1f",
+     "date": "2026-10-11T18:49:24+00:00",
+     "days_before_horizon_date": 0
+    }
+   },
+   "n_markdown_files_at_t0": 432,
+   "target_extensions_top10": {
+    ".yaml": 45,
+    ".html": 43,
+    ".sh": 19,
+    ".json": 7,
+    ".lock": 7,
+    ".mod": 4,
+    ".go": 3,
+    ".crt": 3,
+    ".key": 3,
+    ".sum": 2
+   },
+   "all_anchors": {
+    "n_anchors": 137,
+    "n_symbol_anchors": 6,
+    "n_doc_files": 41,
+    "n_unique_targets": 88,
+    "survival": {
+     "1": {
+      "G0_exists": 0.7518,
+      "G1_file": 0.4453,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 0.6642
+     },
+     "3": {
+      "G0_exists": 0.7518,
+      "G1_file": 0.3723,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 0.6642
+     },
+     "6": {
+      "G0_exists": 0.7299,
+      "G1_file": 0.3285,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 0.6642
+     },
+     "12": {
+      "G0_exists": 0.7226,
+      "G1_file": 0.1533,
+      "G2_symbol": 0.8333,
+      "G1_file_symbol_anchors_only": 0.3333,
+      "doc_line_verbatim": 0.6277
+     },
+     "24": {
+      "G0_exists": 0.6715,
+      "G1_file": 0.0949,
+      "G2_symbol": 0.6667,
+      "G1_file_symbol_anchors_only": 0.3333,
+      "doc_line_verbatim": 0.562
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 46,
+       "changed_verbatim": 30,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 61,
+       "n": 137,
+       "share_changed_and_verbatim": 0.219,
+       "share_verbatim_given_changed": 0.3947,
+       "share_edited_given_changed": 0.6053,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 6,
+       "n": 6,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 46,
+       "changed_verbatim": 40,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 51,
+       "n": 137,
+       "share_changed_and_verbatim": 0.292,
+       "share_verbatim_given_changed": 0.4651,
+       "share_edited_given_changed": 0.5349,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 6,
+       "n": 6,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 46,
+       "changed_verbatim": 46,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 45,
+       "n": 137,
+       "share_changed_and_verbatim": 0.3358,
+       "share_verbatim_given_changed": 0.5,
+       "share_edited_given_changed": 0.5,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 6,
+       "n": 6,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 51,
+       "changed_verbatim": 65,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 21,
+       "n": 137,
+       "share_changed_and_verbatim": 0.4745,
+       "share_verbatim_given_changed": 0.5603,
+       "share_edited_given_changed": 0.4397,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 5,
+       "n": 6,
+       "share_changed_and_verbatim": 0.1667,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 59,
+       "changed_verbatim": 65,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 12,
+       "n": 137,
+       "share_changed_and_verbatim": 0.4745,
+       "share_verbatim_given_changed": 0.5242,
+       "share_edited_given_changed": 0.4758,
+       "share_edited_given_unchanged": 0.0769
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 3,
+       "n": 6,
+       "share_changed_and_verbatim": 0.3333,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.25
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 103,
+    "n_symbol_anchors": 2,
+    "n_doc_files": 31,
+    "n_unique_targets": 74,
+    "survival": {
+     "1": {
+      "G0_exists": 0.6699,
+      "G1_file": 0.3495,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 0.5534
+     },
+     "3": {
+      "G0_exists": 0.6699,
+      "G1_file": 0.2718,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 0.5534
+     },
+     "6": {
+      "G0_exists": 0.6408,
+      "G1_file": 0.2427,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 0.5534
+     },
+     "12": {
+      "G0_exists": 0.6311,
+      "G1_file": 0.0777,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 0.5146
+     },
+     "24": {
+      "G0_exists": 0.5631,
+      "G1_file": 0.068,
+      "G2_symbol": 0.5,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 0.4854
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 46,
+       "changed_verbatim": 21,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 36,
+       "n": 103,
+       "share_changed_and_verbatim": 0.2039,
+       "share_verbatim_given_changed": 0.3134,
+       "share_edited_given_changed": 0.6866,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 2,
+       "n": 2,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 46,
+       "changed_verbatim": 29,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 28,
+       "n": 103,
+       "share_changed_and_verbatim": 0.2816,
+       "share_verbatim_given_changed": 0.3867,
+       "share_edited_given_changed": 0.6133,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 2,
+       "n": 2,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 46,
+       "changed_verbatim": 32,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 25,
+       "n": 103,
+       "share_changed_and_verbatim": 0.3107,
+       "share_verbatim_given_changed": 0.4103,
+       "share_edited_given_changed": 0.5897,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 2,
+       "n": 2,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 50,
+       "changed_verbatim": 45,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 8,
+       "n": 103,
+       "share_changed_and_verbatim": 0.4369,
+       "share_verbatim_given_changed": 0.4737,
+       "share_edited_given_changed": 0.5263,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 2,
+       "n": 2,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 52,
+       "changed_verbatim": 44,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 6,
+       "n": 103,
+       "share_changed_and_verbatim": 0.4272,
+       "share_verbatim_given_changed": 0.4583,
+       "share_edited_given_changed": 0.5417,
+       "share_edited_given_unchanged": 0.1429
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 0.5,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 1.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/tektoncd/pipeline",
+   "name": "tektoncd_pipeline",
+   "language": "Go",
+   "head_sha": "90b2235c66fb02d98e51c148a66725c537c805d6",
+   "head_date": "2026-10-12T18:53:21+00:00",
+   "first_commit_date": "2018-08-29T18:21:56+00:00",
+   "history_years": 8.1,
+   "lookback_months": 24,
+   "t0_sha": "5aa28739425b9f350bacfb764ad93b480279c414",
+   "t0_date": "2024-10-10T14:10:09+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "5aa28739425b9f350bacfb764ad93b480279c414",
+     "date": "2024-10-10T14:10:09+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "7056a411c4815c345f3c861356c636df4ee051d1",
+     "date": "2024-11-06T10:52:30+00:00",
+     "days_before_horizon_date": 4
+    },
+    "3": {
+     "sha": "c55e393a01be94727aa35e8d77d3ccfc767f77bb",
+     "date": "2025-01-09T19:00:04+00:00",
+     "days_before_horizon_date": 0
+    },
+    "6": {
+     "sha": "99c805aa4b0855956b7d43d66836b4043b2be8e6",
+     "date": "2025-04-09T12:20:56+00:00",
+     "days_before_horizon_date": 1
+    },
+    "12": {
+     "sha": "83039bd80337f0fa4d26cab28becc7afbe977144",
+     "date": "2025-10-10T09:28:16+00:00",
+     "days_before_horizon_date": 0
+    },
+    "24": {
+     "sha": "f898ade717c84f9f32b7377d8f66d39e5449f3c2",
+     "date": "2026-10-09T09:49:20+00:00",
+     "days_before_horizon_date": 1
+    }
+   },
+   "n_markdown_files_at_t0": 84,
+   "target_extensions_top10": {
+    ".yaml": 76,
+    ".sh": 18,
+    ".go": 15,
+    ".env": 3,
+    ".mod": 2,
+    ".txt": 2,
+    ".sum": 1,
+    ".json": 1,
+    "(none)": 1
+   },
+   "all_anchors": {
+    "n_anchors": 119,
+    "n_symbol_anchors": 27,
+    "n_doc_files": 28,
+    "n_unique_targets": 71,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.9496,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.9259,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.8992,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.9259,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 1.0,
+      "G1_file": 0.5714,
+      "G2_symbol": 0.963,
+      "G1_file_symbol_anchors_only": 0.7778,
+      "doc_line_verbatim": 1.0
+     },
+     "12": {
+      "G0_exists": 0.9748,
+      "G1_file": 0.5042,
+      "G2_symbol": 0.9259,
+      "G1_file_symbol_anchors_only": 0.7407,
+      "doc_line_verbatim": 0.9832
+     },
+     "24": {
+      "G0_exists": 0.9664,
+      "G1_file": 0.2941,
+      "G2_symbol": 0.8889,
+      "G1_file_symbol_anchors_only": 0.5185,
+      "doc_line_verbatim": 0.9412
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 6,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 113,
+       "n": 119,
+       "share_changed_and_verbatim": 0.0504,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 27,
+       "n": 27,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 12,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 107,
+       "n": 119,
+       "share_changed_and_verbatim": 0.1008,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 27,
+       "n": 27,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 51,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 68,
+       "n": 119,
+       "share_changed_and_verbatim": 0.4286,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 26,
+       "n": 27,
+       "share_changed_and_verbatim": 0.037,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 59,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 58,
+       "n": 119,
+       "share_changed_and_verbatim": 0.4958,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0333
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 25,
+       "n": 27,
+       "share_changed_and_verbatim": 0.0741,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 7,
+       "changed_verbatim": 77,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 35,
+       "n": 119,
+       "share_changed_and_verbatim": 0.6471,
+       "share_verbatim_given_changed": 0.9167,
+       "share_edited_given_changed": 0.0833,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 24,
+       "n": 27,
+       "share_changed_and_verbatim": 0.0741,
+       "share_verbatim_given_changed": 0.6667,
+       "share_edited_given_changed": 0.3333,
+       "share_edited_given_unchanged": 0.0
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 104,
+    "n_symbol_anchors": 24,
+    "n_doc_files": 27,
+    "n_unique_targets": 65,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.9615,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.9423,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 1.0,
+      "G1_file": 0.625,
+      "G2_symbol": 0.9583,
+      "G1_file_symbol_anchors_only": 0.875,
+      "doc_line_verbatim": 1.0
+     },
+     "12": {
+      "G0_exists": 0.9712,
+      "G1_file": 0.5481,
+      "G2_symbol": 0.9167,
+      "G1_file_symbol_anchors_only": 0.8333,
+      "doc_line_verbatim": 0.9808
+     },
+     "24": {
+      "G0_exists": 0.9712,
+      "G1_file": 0.3365,
+      "G2_symbol": 0.875,
+      "G1_file_symbol_anchors_only": 0.5833,
+      "doc_line_verbatim": 0.9327
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 4,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 100,
+       "n": 104,
+       "share_changed_and_verbatim": 0.0385,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 24,
+       "n": 24,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 6,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 98,
+       "n": 104,
+       "share_changed_and_verbatim": 0.0577,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 24,
+       "n": 24,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 39,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 65,
+       "n": 104,
+       "share_changed_and_verbatim": 0.375,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 23,
+       "n": 24,
+       "share_changed_and_verbatim": 0.0417,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 47,
+       "unchanged_edited": 2,
+       "unchanged_verbatim": 55,
+       "n": 104,
+       "share_changed_and_verbatim": 0.4519,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0351
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 22,
+       "n": 24,
+       "share_changed_and_verbatim": 0.0833,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 7,
+       "changed_verbatim": 62,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 35,
+       "n": 104,
+       "share_changed_and_verbatim": 0.5962,
+       "share_verbatim_given_changed": 0.8986,
+       "share_edited_given_changed": 0.1014,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 21,
+       "n": 24,
+       "share_changed_and_verbatim": 0.0833,
+       "share_verbatim_given_changed": 0.6667,
+       "share_edited_given_changed": 0.3333,
+       "share_edited_given_unchanged": 0.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/desktop/desktop",
+   "name": "desktop_desktop",
+   "language": "TypeScript",
+   "head_sha": "64fb73a68c582b2fc370a100bb2d28fdc5eb6372",
+   "head_date": "2026-10-12T13:13:53+00:00",
+   "first_commit_date": "2016-05-11T16:10:57+00:00",
+   "history_years": 10.4,
+   "lookback_months": 24,
+   "t0_sha": "f9f79c27231e712c52289916ca22037e2a89e827",
+   "t0_date": "2024-10-11T15:42:44+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "f9f79c27231e712c52289916ca22037e2a89e827",
+     "date": "2024-10-11T15:42:44+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "882893730e81bc0c0e16abf198868c3fefb9ef02",
+     "date": "2024-11-08T09:33:00+00:00",
+     "days_before_horizon_date": 3
+    },
+    "3": {
+     "sha": "b5937beb1d4c710a73dc4c4ee31cdf251218c3ab",
+     "date": "2025-01-08T15:53:09+00:00",
+     "days_before_horizon_date": 2
+    },
+    "6": {
+     "sha": "eb3f1649f1e8ca64a3d96638d234a4cedde0129c",
+     "date": "2025-04-09T16:31:52+00:00",
+     "days_before_horizon_date": 1
+    },
+    "12": {
+     "sha": "cdb7d23fffb1e248522771830aba80f556f4cf41",
+     "date": "2025-10-09T14:10:16+00:00",
+     "days_before_horizon_date": 2
+    },
+    "24": {
+     "sha": "c37f28a9a561547778a0edbb93e8d0eea47f036a",
+     "date": "2026-10-09T12:40:56+00:00",
+     "days_before_horizon_date": 2
+    }
+   },
+   "n_markdown_files_at_t0": 86,
+   "target_extensions_top10": {
+    ".ts": 16,
+    ".json": 13,
+    "(none)": 5,
+    ".yml": 2,
+    ".yaml": 1,
+    ".sh": 1
+   },
+   "all_anchors": {
+    "n_anchors": 38,
+    "n_symbol_anchors": 2,
+    "n_doc_files": 14,
+    "n_unique_targets": 25,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.7105,
+      "G2_symbol": 0.5,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.5,
+      "G2_symbol": 0.5,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3421,
+      "G2_symbol": 0.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     },
+     "12": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3421,
+      "G2_symbol": 0.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     },
+     "24": {
+      "G0_exists": 1.0,
+      "G1_file": 0.1842,
+      "G2_symbol": 0.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 11,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 27,
+       "n": 38,
+       "share_changed_and_verbatim": 0.2895,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 2,
+       "share_changed_and_verbatim": 0.5,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 19,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 19,
+       "n": 38,
+       "share_changed_and_verbatim": 0.5,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 2,
+       "share_changed_and_verbatim": 0.5,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 25,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 13,
+       "n": 38,
+       "share_changed_and_verbatim": 0.6579,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 1.0,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 25,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 13,
+       "n": 38,
+       "share_changed_and_verbatim": 0.6579,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 1.0,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 31,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 7,
+       "n": 38,
+       "share_changed_and_verbatim": 0.8158,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 1.0,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": null
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 27,
+    "n_symbol_anchors": 2,
+    "n_doc_files": 12,
+    "n_unique_targets": 20,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.8148,
+      "G2_symbol": 0.5,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.5185,
+      "G2_symbol": 0.5,
+      "G1_file_symbol_anchors_only": 0.5,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3704,
+      "G2_symbol": 0.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     },
+     "12": {
+      "G0_exists": 1.0,
+      "G1_file": 0.3704,
+      "G2_symbol": 0.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     },
+     "24": {
+      "G0_exists": 1.0,
+      "G1_file": 0.2222,
+      "G2_symbol": 0.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 5,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 22,
+       "n": 27,
+       "share_changed_and_verbatim": 0.1852,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 2,
+       "share_changed_and_verbatim": 0.5,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 13,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 14,
+       "n": 27,
+       "share_changed_and_verbatim": 0.4815,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 1,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 2,
+       "share_changed_and_verbatim": 0.5,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 17,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 10,
+       "n": 27,
+       "share_changed_and_verbatim": 0.6296,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 1.0,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 17,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 10,
+       "n": 27,
+       "share_changed_and_verbatim": 0.6296,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 1.0,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 21,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 6,
+       "n": 27,
+       "share_changed_and_verbatim": 0.7778,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 2,
+       "share_changed_and_verbatim": 1.0,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": null
+      }
+     }
+    }
+   }
+  },
+  {
+   "url": "https://github.com/microsoft/playwright",
+   "name": "microsoft_playwright",
+   "language": "TypeScript",
+   "head_sha": "5d2cd726001a10eafbdfd02086f0414164057b07",
+   "head_date": "2026-10-12T21:35:04+00:00",
+   "first_commit_date": "2019-11-15T18:32:44+00:00",
+   "history_years": 6.9,
+   "lookback_months": 24,
+   "t0_sha": "699f51b227d98d6d6e912f9490828337d1011340",
+   "t0_date": "2024-10-12T00:18:06+00:00",
+   "horizon_commits": {
+    "0": {
+     "sha": "699f51b227d98d6d6e912f9490828337d1011340",
+     "date": "2024-10-12T00:18:06+00:00",
+     "days_before_horizon_date": 0
+    },
+    "1": {
+     "sha": "d8a98a2bf52fa579af58ef7cce4a8a56a267c425",
+     "date": "2024-11-11T21:19:58+00:00",
+     "days_before_horizon_date": 0
+    },
+    "3": {
+     "sha": "6179b5b1d7fb7b65ba19f1b245a0d2488e32fe53",
+     "date": "2025-01-11T18:14:21+00:00",
+     "days_before_horizon_date": 0
+    },
+    "6": {
+     "sha": "c9cd9dc1e48424fc8afcf0d3c4d4442efb4f0f42",
+     "date": "2025-04-11T16:57:18+00:00",
+     "days_before_horizon_date": 0
+    },
+    "12": {
+     "sha": "99515d7003c6e32a37935712e511ed39b1220ab8",
+     "date": "2025-10-10T11:29:16+00:00",
+     "days_before_horizon_date": 1
+    },
+    "24": {
+     "sha": "d9f2fd3e2232ace8e317a84eda6cb86e25bcf49c",
+     "date": "2026-10-09T18:01:12+00:00",
+     "days_before_horizon_date": 2
+    }
+   },
+   "n_markdown_files_at_t0": 218,
+   "target_extensions_top10": {
+    ".pem": 15,
+    ".json": 13,
+    "(none)": 5,
+    ".js": 4,
+    ".sln": 1,
+    ".pfx": 1,
+    ".sh": 1,
+    ".css": 1
+   },
+   "all_anchors": {
+    "n_anchors": 41,
+    "n_symbol_anchors": 3,
+    "n_doc_files": 14,
+    "n_unique_targets": 19,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 0.9512,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 0.9512,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 1.0,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 1.0,
+      "G1_file": 0.561,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 1.0
+     },
+     "12": {
+      "G0_exists": 1.0,
+      "G1_file": 0.1707,
+      "G2_symbol": 1.0,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.5854
+     },
+     "24": {
+      "G0_exists": 0.9512,
+      "G1_file": 0.0976,
+      "G2_symbol": 0.3333,
+      "G1_file_symbol_anchors_only": 0.0,
+      "doc_line_verbatim": 0.4634
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 39,
+       "n": 41,
+       "share_changed_and_verbatim": 0.0488,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 3,
+       "n": 3,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 39,
+       "n": 41,
+       "share_changed_and_verbatim": 0.0488,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 3,
+       "n": 3,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 18,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 23,
+       "n": 41,
+       "share_changed_and_verbatim": 0.439,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 3,
+       "n": 3,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 17,
+       "changed_verbatim": 17,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 7,
+       "n": 41,
+       "share_changed_and_verbatim": 0.4146,
+       "share_verbatim_given_changed": 0.5,
+       "share_edited_given_changed": 0.5,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 3,
+       "n": 3,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 22,
+       "changed_verbatim": 15,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 4,
+       "n": 41,
+       "share_changed_and_verbatim": 0.3659,
+       "share_verbatim_given_changed": 0.4054,
+       "share_edited_given_changed": 0.5946,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 1,
+       "changed_verbatim": 1,
+       "unchanged_edited": 1,
+       "unchanged_verbatim": 0,
+       "n": 3,
+       "share_changed_and_verbatim": 0.3333,
+       "share_verbatim_given_changed": 0.5,
+       "share_edited_given_changed": 0.5,
+       "share_edited_given_unchanged": 1.0
+      }
+     }
+    }
+   },
+   "anchors_with_directory": {
+    "n_anchors": 21,
+    "n_symbol_anchors": 0,
+    "n_doc_files": 4,
+    "n_unique_targets": 12,
+    "survival": {
+     "1": {
+      "G0_exists": 1.0,
+      "G1_file": 1.0,
+      "G2_symbol": null,
+      "G1_file_symbol_anchors_only": null,
+      "doc_line_verbatim": 1.0
+     },
+     "3": {
+      "G0_exists": 1.0,
+      "G1_file": 1.0,
+      "G2_symbol": null,
+      "G1_file_symbol_anchors_only": null,
+      "doc_line_verbatim": 1.0
+     },
+     "6": {
+      "G0_exists": 1.0,
+      "G1_file": 0.9048,
+      "G2_symbol": null,
+      "G1_file_symbol_anchors_only": null,
+      "doc_line_verbatim": 1.0
+     },
+     "12": {
+      "G0_exists": 1.0,
+      "G1_file": 0.1429,
+      "G2_symbol": null,
+      "G1_file_symbol_anchors_only": null,
+      "doc_line_verbatim": 0.2381
+     },
+     "24": {
+      "G0_exists": 0.9048,
+      "G1_file": 0.0476,
+      "G2_symbol": null,
+      "G1_file_symbol_anchors_only": null,
+      "doc_line_verbatim": 0.1429
+     }
+    },
+    "tables": {
+     "1": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 21,
+       "n": 21,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 0,
+       "share_changed_and_verbatim": null,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "3": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 21,
+       "n": 21,
+       "share_changed_and_verbatim": 0.0,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 0,
+       "share_changed_and_verbatim": null,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "6": {
+      "G1": {
+       "changed_edited": 0,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 19,
+       "n": 21,
+       "share_changed_and_verbatim": 0.0952,
+       "share_verbatim_given_changed": 1.0,
+       "share_edited_given_changed": 0.0,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 0,
+       "share_changed_and_verbatim": null,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "12": {
+      "G1": {
+       "changed_edited": 16,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 3,
+       "n": 21,
+       "share_changed_and_verbatim": 0.0952,
+       "share_verbatim_given_changed": 0.1111,
+       "share_edited_given_changed": 0.8889,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 0,
+       "share_changed_and_verbatim": null,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": null
+      }
+     },
+     "24": {
+      "G1": {
+       "changed_edited": 18,
+       "changed_verbatim": 2,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 1,
+       "n": 21,
+       "share_changed_and_verbatim": 0.0952,
+       "share_verbatim_given_changed": 0.1,
+       "share_edited_given_changed": 0.9,
+       "share_edited_given_unchanged": 0.0
+      },
+      "G2": {
+       "changed_edited": 0,
+       "changed_verbatim": 0,
+       "unchanged_edited": 0,
+       "unchanged_verbatim": 0,
+       "n": 0,
+       "share_changed_and_verbatim": null,
+       "share_verbatim_given_changed": null,
+       "share_edited_given_changed": null,
+       "share_edited_given_unchanged": null
+      }
+     }
+    }
+   }
+  }
+ ],
+ "sanity": {
+  "horizon_0_all_unchanged": true,
+  "horizon_0_pooled": {
+   "G0_exists": 1.0,
+   "G1_file": 1.0,
+   "G2_symbol": 1.0,
+   "G1_file_symbol_anchors_only": 1.0,
+   "doc_line_verbatim": 1.0
+  },
+  "sample": [
+   {
+    "repo": "huggingface_transformers",
+    "doc": "docs/source/zh/contributing.md",
+    "line": 287,
+    "text": "更多环境变量和额外信息可以在 [testing_utils.py](src/transformers/testing_utils.py) 中找到。",
+    "target": "src/transformers/testing_utils.py",
+    "symbol": null
+   },
+   {
+    "repo": "zulip_zulip",
+    "doc": "help/import-from-slack.md",
+    "line": 117,
+    "text": "    ./scripts/stop-server",
+    "target": "scripts/stop-server",
+    "symbol": null
+   },
+   {
+    "repo": "bytecodealliance_wasmtime",
+    "doc": "examples/min-platform/README.md",
+    "line": 34,
+    "text": "* `examples/min-platform/build.sh` - a script to build/run this example.",
+    "target": "examples/min-platform/build.sh",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "docs/source/ja/testing.md",
+    "line": 174,
+    "text": "RUN_SLOW=1 pytest -m accelerate_tests tests/models/opt/test_modeling_opt.py",
+    "target": "tests/models/opt/test_modeling_opt.py",
+    "symbol": null
+   },
+   {
+    "repo": "microsoft_playwright",
+    "doc": "tests/assets/wpt/README.md",
+    "line": 10,
+    "text": "- `wai-aria/scripts/manual.css`",
+    "target": "tests/assets/wpt/wai-aria/scripts/manual.css",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "examples/research_projects/wav2vec2/FINE_TUNE_XLSR_WAV2VEC2.md",
+    "line": 161,
+    "text": "2. Next, take a look at the `run_common_voice.py` script to get an understanding of how it works. In short the script does the following:",
+    "target": "examples/research_projects/wav2vec2/run_common_voice.py",
+    "symbol": null
+   },
+   {
+    "repo": "zulip_zulip",
+    "doc": "docs/subsystems/email.md",
+    "line": 26,
+    "text": "  by a supervisor job that runs `zerver/management/commands/deliver_scheduled_emails.py`.",
+    "target": "zerver/management/commands/deliver_scheduled_emails.py",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "docs/source/ar/run_scripts.md",
+    "line": 307,
+    "text": "python examples/pytorch/summarization/run_summarization.py",
+    "target": "examples/pytorch/summarization/run_summarization.py",
+    "symbol": null
+   },
+   {
+    "repo": "bevyengine_bevy",
+    "doc": "examples/README.md",
+    "line": 364,
+    "text": "[Rendering Primitives](../examples/math/render_primitives.rs) | Shows off rendering for all math primitives as both Meshes and Gizmos",
+    "target": "examples/math/render_primitives.rs",
+    "symbol": null
+   },
+   {
+    "repo": "zulip_zulip",
+    "doc": "docs/testing/testing.md",
+    "line": 68,
+    "text": "- `tools/test-help-documentation`: Checks for broken links in the",
+    "target": "tools/test-help-documentation",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "examples/README.md",
+    "line": 120,
+    "text": "    --example pytorch/text-generation/run_generation.py \\",
+    "target": "examples/pytorch/text-generation/run_generation.py",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "docs/source/zh/perf_hardware.md",
+    "line": 148,
+    "text": "--nproc_per_node 2 examples/pytorch/language-modeling/run_clm.py --model_name_or_path openai-community/gpt2 \\",
+    "target": "examples/pytorch/language-modeling/run_clm.py",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "examples/tensorflow/language-modeling-tpu/README.md",
+    "line": 42,
+    "text": "The next step is to prepare the dataset. This consists of loading a text dataset from the Hugging Face Hub, tokenizing it and grouping it into chunks of a fixed length ready for training. The script for this is `prepare_tfrecord_shards.py`.",
+    "target": "examples/tensorflow/language-modeling-tpu/prepare_tfrecord_shards.py",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "docs/source/ko/pr_checks.md",
+    "line": 138,
+    "text": "- 모든 모델이 올바르게 테스트되었는지 (`utils/check_repo.py`에서 수행)",
+    "target": "utils/check_repo.py",
+    "symbol": null
+   },
+   {
+    "repo": "bevyengine_bevy",
+    "doc": "examples/README.md",
+    "line": 220,
+    "text": "[Logs](../examples/app/logs.rs) | Illustrate how to use generate log output",
+    "target": "examples/app/logs.rs",
+    "symbol": null
+   },
+   {
+    "repo": "tektoncd_pipeline",
+    "doc": "docs/workspaces.md",
+    "line": 314,
+    "text": "For a more in-depth example, see [`Workspaces` in a `TaskRun`](../examples/v1/taskruns/workspace.yaml).",
+    "target": "examples/v1/taskruns/workspace.yaml",
+    "symbol": "TaskRun"
+   },
+   {
+    "repo": "argoproj_argo-cd",
+    "doc": "docs/developer-guide/debugging-remote-environment.md",
+    "line": 76,
+    "text": "            \"program\": \"${workspaceFolder}/cmd/main.go\",",
+    "target": "cmd/main.go",
+    "symbol": null
+   },
+   {
+    "repo": "zulip_zulip",
+    "doc": "docs/documentation/api.md",
+    "line": 57,
+    "text": "  `zerver/openapi/curl_param_value_generators.py`.",
+    "target": "zerver/openapi/curl_param_value_generators.py",
+    "symbol": null
+   },
+   {
+    "repo": "tektoncd_pipeline",
+    "doc": "test/README.md",
+    "line": 426,
+    "text": "`e2e-tests.sh` directly and provide the `--run-tests` argument:",
+    "target": "test/e2e-tests.sh",
+    "symbol": null
+   },
+   {
+    "repo": "huggingface_transformers",
+    "doc": "docs/source/ko/perf_hardware.md",
+    "line": 139,
+    "text": "--nproc_per_node 2 examples/pytorch/language-modeling/run_clm.py --model_name_or_path openai-community/gpt2 \\",
+    "target": "examples/pytorch/language-modeling/run_clm.py",
+    "symbol": null
+   }
+  ]
+ }
+}

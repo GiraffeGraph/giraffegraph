@@ -1,0 +1,290 @@
+{
+  "source_files": [
+    "Large dataset/sanads.test",
+    "Large dataset/labels.test",
+    "Narrators data.csv"
+  ],
+  "chains": 27056,
+  "mentions": 150904,
+  "empty_mentions": 0,
+  "chains_where_mention_and_id_counts_differ": 0,
+  "chain_ids_where_counts_differ": [],
+  "chain_length_distribution": {
+    "3": 627,
+    "4": 2748,
+    "5": 10049,
+    "6": 9060,
+    "7": 3443,
+    "8": 874,
+    "9": 217,
+    "10": 38
+  },
+  "distinct_narrator_ids_in_test_chains": 6378,
+  "test_ids_missing_from_narrator_table": [],
+  "narrator_table_rows": 18298,
+  "narrator_table_distinct_ids": 18298,
+  "narrator_table_columns_in_source": [
+    "name",
+    "namings",
+    "Ibnhajar_rank",
+    "shuhra",
+    "laqab",
+    "nasab",
+    "selat_karaba",
+    "mazhab",
+    "kunia",
+    "death_year",
+    "tabaqa",
+    "zahabi_rank",
+    "living_city",
+    "birth_year",
+    "death_city",
+    "journey_city",
+    "id",
+    "narrated_from",
+    "narrated_to"
+  ],
+  "narrator_table_columns_written": [
+    "id",
+    "name",
+    "shuhra",
+    "kunia",
+    "death_year",
+    "birth_year",
+    "tabaqa",
+    "Ibnhajar_rank",
+    "zahabi_rank"
+  ],
+  "narrator_table_non_missing": {
+    "id": 18298,
+    "name": 18298,
+    "shuhra": 1275,
+    "kunia": 10105,
+    "death_year": 9434,
+    "birth_year": 1406,
+    "tabaqa": 8125,
+    "Ibnhajar_rank": 8132,
+    "zahabi_rank": 5353
+  },
+  "ambiguity_exact_surface": {
+    "distinct_names": 15301,
+    "names_with_one_id": 14486,
+    "names_with_more_than_one_id": 815,
+    "ids_per_name_distribution": {
+      "1": 14486,
+      "2": 552,
+      "3": 122,
+      "4": 65,
+      "5": 24,
+      "6": 15,
+      "7": 13,
+      "8": 5,
+      "9": 1,
+      "10": 4,
+      "11": 2,
+      "12": 3,
+      "13": 1,
+      "15": 1,
+      "18": 1,
+      "23": 1,
+      "27": 1,
+      "36": 1,
+      "79": 1,
+      "167": 1,
+      "421": 1
+    },
+    "top20": [
+      {
+        "name": "أبيه",
+        "distinct_ids": 421
+      },
+      {
+        "name": "أبي",
+        "distinct_ids": 167
+      },
+      {
+        "name": "جده",
+        "distinct_ids": 79
+      },
+      {
+        "name": "أباه",
+        "distinct_ids": 36
+      },
+      {
+        "name": "محمد",
+        "distinct_ids": 27
+      },
+      {
+        "name": "أمه",
+        "distinct_ids": 23
+      },
+      {
+        "name": "عبد الله",
+        "distinct_ids": 18
+      },
+      {
+        "name": "عمه",
+        "distinct_ids": 15
+      },
+      {
+        "name": "سليمان",
+        "distinct_ids": 13
+      },
+      {
+        "name": "أبيها",
+        "distinct_ids": 12
+      },
+      {
+        "name": "إسحاق",
+        "distinct_ids": 12
+      },
+      {
+        "name": "عبد الرحمن",
+        "distinct_ids": 12
+      },
+      {
+        "name": "محمد بن عبد الرحمن",
+        "distinct_ids": 11
+      },
+      {
+        "name": "يحيى",
+        "distinct_ids": 11
+      },
+      {
+        "name": "إبراهيم",
+        "distinct_ids": 10
+      },
+      {
+        "name": "جدي",
+        "distinct_ids": 10
+      },
+      {
+        "name": "سعيد",
+        "distinct_ids": 10
+      },
+      {
+        "name": "عمرو",
+        "distinct_ids": 10
+      },
+      {
+        "name": "الحسن",
+        "distinct_ids": 9
+      },
+      {
+        "name": "أخيه",
+        "distinct_ids": 8
+      }
+    ]
+  },
+  "ambiguity_normalised_surface": {
+    "distinct_names": 13261,
+    "names_with_one_id": 12497,
+    "names_with_more_than_one_id": 764,
+    "ids_per_name_distribution": {
+      "1": 12497,
+      "2": 516,
+      "3": 116,
+      "4": 58,
+      "5": 22,
+      "6": 12,
+      "7": 15,
+      "8": 5,
+      "9": 1,
+      "10": 3,
+      "11": 4,
+      "12": 2,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "19": 1,
+      "23": 1,
+      "27": 1,
+      "36": 1,
+      "79": 1,
+      "168": 1,
+      "422": 1
+    },
+    "top20": [
+      {
+        "name": "ابيه",
+        "distinct_ids": 422
+      },
+      {
+        "name": "ابي",
+        "distinct_ids": 168
+      },
+      {
+        "name": "جده",
+        "distinct_ids": 79
+      },
+      {
+        "name": "اباه",
+        "distinct_ids": 36
+      },
+      {
+        "name": "محمد",
+        "distinct_ids": 27
+      },
+      {
+        "name": "امه",
+        "distinct_ids": 23
+      },
+      {
+        "name": "عبد الله",
+        "distinct_ids": 19
+      },
+      {
+        "name": "عمه",
+        "distinct_ids": 15
+      },
+      {
+        "name": "سليمان",
+        "distinct_ids": 14
+      },
+      {
+        "name": "عبد الرحمن",
+        "distinct_ids": 13
+      },
+      {
+        "name": "ابيها",
+        "distinct_ids": 12
+      },
+      {
+        "name": "اسحاق",
+        "distinct_ids": 12
+      },
+      {
+        "name": "ابراهيم",
+        "distinct_ids": 11
+      },
+      {
+        "name": "سعيد",
+        "distinct_ids": 11
+      },
+      {
+        "name": "محمد بن عبد الرحمن",
+        "distinct_ids": 11
+      },
+      {
+        "name": "يحيي",
+        "distinct_ids": 11
+      },
+      {
+        "name": "الحسن",
+        "distinct_ids": 10
+      },
+      {
+        "name": "جدي",
+        "distinct_ids": 10
+      },
+      {
+        "name": "عمرو",
+        "distinct_ids": 10
+      },
+      {
+        "name": "علي",
+        "distinct_ids": 9
+      }
+    ]
+  }
+}

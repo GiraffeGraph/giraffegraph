@@ -1,0 +1,77 @@
+**1. Name: Probe Shelf.** Store the derivation of a fact as a small deterministic program and run it at read time, so the agent gets a freshly derived statement and not a stored one.
+
+**2. What is stored.** The unit is a probe: a parameterised question plus the script that answers it. It also carries the evidence that the script depends on the tree. Fields:
+- `q`: the normalised question.
+- `args`: its parameters.
+- `run`: a deterministic pipeline (rg, an AST query, jq).
+- `emits`: the template for the output statement.
+- `shape`: an assertion on the output (row count, field types).
+- `diffs_on`: pairs of commits where the output was seen to differ.
+- `scope`: the context that bounds the probe. It starts broad.
+- `exceptions`: an ordered list of (condition, alternate `run`).
+- `because`: content-keys of decision records, if any.
+- `key`: a hash of the normalised `q` and the `run` signature.
+
+```
+probe 7f3a9c
+q:     which HTTP status does the API return for <exc>
+args:  exc: identifier
+run:   rg -n "raise\s+$exc\b" src --type py -l
+       | xargs python3 -I probes/ast_handler_status.py $exc
+emits: "{symbol} maps {exc} to HTTP {status} at {file}:{line}"
+shape: rows>=1; int(status) in 100..599
+scope: repo=core lang=py                      # broad
+diffs_on: [4279c98 -> bfb0f9c: 404 -> 409]    # output depends on the tree
+exceptions: []                                # RDR chain, empty so far
+because:  [dec:c81e..]                        # content key, not an id
+born:  agent run q17 (6 calls), distilled
+```
+
+At read time the agent sees `emits` lines from fresh output, not stored prose. Stored prose only appears in `because`, which points to the decision ledger.
+
+**3. Operations.**
+- **Write.** After an exploratory answer that cost 4 or more tool calls, the agent distils its calls into a parameterised probe. A deterministic script then checks it three ways:
+  - It must replay on at least two commits.
+  - Its output must change where the code changed. This is a mutation check, and it is the only evidence the probe derives and does not just copy.
+  - It must pass `shape`.
+  The agent writes the probe, the script admits it, and a human is not involved.
+- **Read.** The prompt holds a catalogue of `key | q` lines, about 15 tokens each. At a budget of 2 calls, one call is `probe run <key> args`; the other is spare for a read or grep. If no probe matches, the agent explores as usual, so the shelf costs nothing when it misses.
+- **Invalidate.** There is no timer and no hash witness. A probe is checked each time it runs. If `shape` fails or the output is empty, the tool returns a loud error with the failing case, and the agent falls back to exploring.
+- **Narrow.** When a probe fails, the repair is a Ripple-Down-Rules step. The agent adds an `exception` (condition, alternate `run`) covering only the failing case, and the script re-validates it on both commits. The probe's key is unchanged.
+- **Human.** Only the `because` links and decision records need a human. Probes never hold a decision.
+
+**4. Why it should beat a page and a graph.**
+- Fact 7: a stored derivation is worth as much as derivation is expensive at the moment of use. A probe makes the 2-call regime a 1-call derivation. A fresh page gave 88% against 31% with nothing, and a probe is fresh by construction.
+- Facts 3 and 4: prose staleness is silent. A page does not tell you which sentence broke, and per-section notes did not help. A probe's staleness is binary and loud, because the script fails its `shape`. It also cannot be asserted as outdated, because the statement is recomputed each time.
+- Fact 5: the anchor is the symbol and the argument, resolved at runtime. A symbol body survived 78% over 12 months, against 18% for a file hash.
+- Fact 6: the `scope` plus `exceptions` field is the RDR mechanism, applied to derivations.
+- Fact 8: the key is content-based, so re-distilling with a changed prompt maps onto an existing probe.
+- Fact 10: the agent never opens docs for structural questions (0 of 432 runs), and prompt documents cost 2-4x tokens. A probe is a tool in the loop, and the catalogue is small.
+- Fact 1: a probe returns the statement and not "look here", so it should not suffer the half-gain of pointers.
+- Fact 9: decisions stay in the ledger. The shelf covers only the derivable side.
+
+A graph stores derived edges, which go stale silently. A page stores prose, which goes stale silently. The shelf stores neither.
+
+**5. Closest prior work (all unverified, from memory).**
+- Saved queries and views: CodeQL queries, Glean facts, Datalog rules, and database virtual versus materialized views. These are hand-written by experts, not agent-distilled. They have no differential-commit validation and no narrowing chain.
+- Voyager's skill library (Wang et al., 2023). It stores agent-written executable skills, but for actions, not for answering questions about a fixed code base.
+- Build Systems à la Carte (cited in your own MEASUREMENTS.md). It validates by input hashes. Here the validation is the probe's own re-execution plus a mutation test.
+- Ripple-Down Rules (Compton, 1990), used here for the exception chain.
+
+The difference is a per-question derivation program that the agent distils, a deterministic script that admits it only if it provably tracks the tree, and a repair step that is an RDR exception.
+
+**6. Falsifiable experiment** (under USD 5).
+- **Build.** One agent writes the shelf at the earlier commit `4279c98`. It sees the same outline used for the page prompt and never sees the 36 questions. A script runs the mutation check against `bfb0f9c`. Cost is about USD 1.
+- **Arm.** The sandbox has the shelf and a `run_probe` tool, with a push-style catalogue in the prompt. The probe call counts toward the budget. Budgets are 2 and 4. The 24 structural questions, rooted paths, 2 repetitions: about 100 runs.
+- **Comparison arms** (already measured, harness unchanged):
+  - nothing: 0.312 at 2 calls
+  - stale page: 0.688 overall, 0.500 on changed questions
+  - fresh page: 0.875
+- **Metric.** The share of correct answers on changed questions at 2 calls, with an overall figure alongside.
+- **Kill.** The idea is dead if the earlier-commit shelf scores at or below the stale page on changed questions (0.50) or below 0.69 overall. If it does not clear 0.75 on changed questions, it has no advantage over a fresh page. The idea is also dead if fewer than half the questions have a matching probe, because the shelf is then no different from memoizing the questions.
+
+**7. Runner-ups.**
+- **Surprise Ledger.** Store a statement only when the agent's prior guess, made before it looked, was wrong. A cheap pre-pass from the model with no tools collects the guesses, and exploration verifies them. Most structural facts are guessable, so the ledger stays tiny and holds exactly what a page would otherwise carry at 2-call budgets.
+- **Cost-priced admission.** Log how many tool calls each question needed to derive. Admit a derivation to storage only when that cost is at least the budget, and evict when cost falls. This turns fact 7 into an eviction policy, where the other designs only describe it.
+
+**8. Weakest point.** Probes are generalizable only if questions share a shape. If each of the 36 questions needs its own bespoke probe, the shelf is a stored list of queries and a hit needs the right parameters supplied in a single call. The mutation check proves the output depends on the tree, but not that the output is the right answer. A probe can be consistently wrong, and fact 2 (verbatim copies are risky) says that consistent wrongness is real. The experiment also tests a shelf written by an agent that saw the code outline but not the questions, so a good result will not show how broadly probes generalise. Probes also cannot express questions whose answers are conceptual or cross-cutting, which a page covers in one read.

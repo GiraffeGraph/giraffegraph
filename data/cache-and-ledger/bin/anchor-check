@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+#
+# anchor-check — the immune system, not the certifier.
+#
+# Every doc anchor `repo/path/File.ext` or `repo/path/File.ext:Symbol` must
+# resolve against the code: the file exists, and (if a symbol is named) the
+# symbol appears in it. A broken anchor IS drift — caught the moment it happens.
+#
+# What this DOESN'T do, on purpose: it does not claim the doc is correct.
+# A resolving anchor proves the file exists, not that the prose about it is true.
+# A validated anchor makes a stale claim sound MORE authoritative, not less.
+# So this flags; it never blesses. Detecting structural drift is cheap and worth
+# gating in CI. Semantic truth is not machine-checkable — that stays a human's job.
+#
+# Usage:
+#   anchor-check <docs-dir> <code-root>
+#
+# Example (this repo's test-bed — read-only, never modified):
+#   anchor-check ../../SANTSG/wiki ../../SANTSG
+#
+# Exit: 0 if every anchor resolves, 1 if any is broken.
+
+set -euo pipefail
+
+DOCS="${1:?usage: anchor-check <docs-dir> <code-root>}"
+CODE="${2:?usage: anchor-check <docs-dir> <code-root>}"
+
+[ -d "$DOCS" ] || { echo "anchor-check: docs dir not found: $DOCS" >&2; exit 2; }
+[ -d "$CODE" ] || { echo "anchor-check: code root not found: $CODE" >&2; exit 2; }
+
+# An anchor is a backtick-quoted path with a source extension, optional :Symbol.
+# Extend the extension list for your stack.
+ANCHOR_RE='`[A-Za-z0-9_.][A-Za-z0-9_./-]*\.(cs|tsx|ts|js|jsx|sql|py|go|rs|java|rb)(:[A-Za-z_][A-Za-z0-9_]*)?`'
+
+# An anchor is repo-ROOTED when its first path segment is a real directory under
+# the code root (e.g. `santsg.b2c.cms/...`). Only rooted anchors are addresses a
+# machine can resolve; a bare `FaqDtos.cs` or `components/Foo.tsx` is a human
+# mention, not an anchor. This distinction IS the point — an anchor must be a
+# fully-qualified address, or it can't be a load-bearing link. We verify the
+# rooted ones and report the unrooted ones as a discipline gap, not as drift.
+
+rooted() {
+  # $1 = anchor path (no :symbol). True if first segment is a dir under CODE
+  # AND the path carries no `...` elision (an elided path is a human mention,
+  # not a resolvable address).
+  case "$1" in
+    *...*) return 1 ;;             # elision => not a full address
+    */*)   [ -d "$CODE/${1%%/*}" ] ;;
+    *)     return 1 ;;            # single segment => bare basename, never rooted
+  esac
+}
+
+total=0 ok=0 broken=0 unrooted=0
+broken_list=""
+
+# Harvest unique anchors across all markdown, strip the backticks.
+anchors="$(grep -rhoE "$ANCHOR_RE" "$DOCS" --include='*.md' 2>/dev/null | tr -d '`' | sort -u || true)"
+
+if [ -z "$anchors" ]; then
+  echo "anchor-check: no anchors found under $DOCS" >&2
+  exit 0
+fi
+
+while IFS= read -r anchor; do
+  [ -n "$anchor" ] || continue
+
+  # Split optional :Symbol. Colons are illegal in these paths, so last field is safe.
+  path="${anchor%%:*}"
+  symbol=""
+  [ "$anchor" != "$path" ] && symbol="${anchor##*:}"
+
+  if ! rooted "$path"; then
+    unrooted=$((unrooted + 1))
+    continue
+  fi
+
+  total=$((total + 1))
+  file="$CODE/$path"
+
+  if [ ! -f "$file" ]; then
+    broken=$((broken + 1))
+    broken_list="${broken_list}  BROKEN(file)   $anchor"$'\n'
+    continue
+  fi
+
+  if [ -n "$symbol" ]; then
+    # Symbol must appear as a whole word somewhere in the file.
+    if ! grep -qE "\\b${symbol}\\b" "$file" 2>/dev/null; then
+      broken=$((broken + 1))
+      broken_list="${broken_list}  BROKEN(symbol) $anchor"$'\n'
+      continue
+    fi
+  fi
+
+  ok=$((ok + 1))
+done <<EOF
+$anchors
+EOF
+
+echo "rooted anchors: $total | resolve: $ok | broken: $broken"
+echo "unrooted mentions (not verifiable, discipline gap): $unrooted"
+
+if [ "$broken" -gt 0 ]; then
+  printf '\n%s' "$broken_list"
+  echo "drift detected: $broken rooted anchor(s) fail to resolve." >&2
+  exit 1
+fi
+
+echo "clean: every rooted anchor resolves."

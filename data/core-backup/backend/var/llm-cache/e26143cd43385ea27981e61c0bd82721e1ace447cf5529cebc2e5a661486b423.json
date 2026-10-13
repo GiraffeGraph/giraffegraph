@@ -1,0 +1,44 @@
+{
+  "key": "e26143cd43385ea27981e61c0bd82721e1ace447cf5529cebc2e5a661486b423",
+  "created_at": "2026-10-12T20:40:21.916277+00:00",
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Bukhari:ifta-2517"
+        },
+        "confidence": 0.99,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا الْحُمَيْدِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-2",
+        "node_type": "Narrator",
+        "properties": {
+          "الْحُمَيْدِيُّ": "x"
+        },
+        "confidence": 0.9,
+        "evidence_refs": []
+      }
+    ],
+    "relations": []
+  },
+  "usage": {
+    "input_tokens": 3422,
+    "output_tokens": 234,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-sonnet-5-5"
+  }
+}

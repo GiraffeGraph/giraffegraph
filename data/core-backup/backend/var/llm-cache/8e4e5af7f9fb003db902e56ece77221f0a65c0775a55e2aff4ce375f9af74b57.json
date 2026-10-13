@@ -1,0 +1,198 @@
+{
+  "key": "8e4e5af7f9fb003db902e56ece77221f0a65c0775a55e2aff4ce375f9af74b57",
+  "created_at": "2026-10-12T20:33:16.608698+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "hadith-1",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111499"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَنَّ النَّبِيَّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ رَجَمَ يَهُودِيًّا وَيَهُودِيَّةً"
+          }
+        ]
+      },
+      {
+        "ref": "n-ismail",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "إِسْمَاعِيلُ بْنُ مُوسَى"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا إِسْمَاعِيلُ بْنُ مُوسَى"
+          }
+        ]
+      },
+      {
+        "ref": "n-sharik",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "شَرِيكٌ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا شَرِيكٌ"
+          }
+        ]
+      },
+      {
+        "ref": "n-simak",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "سِمَاكِ بْنِ حَرْبٍ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سِمَاكِ بْنِ حَرْبٍ"
+          }
+        ]
+      },
+      {
+        "ref": "n-jabir",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "جَابِرِ بْنِ سَمُرَةَ"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ جَابِرِ بْنِ سَمُرَةَ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-ismail",
+        "to_ref": "n-sharik",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111499",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا إِسْمَاعِيلُ بْنُ مُوسَى ، حَدَّثَنَا شَرِيكٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-sharik",
+        "to_ref": "n-simak",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111499",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا شَرِيكٌ ، عَنْ سِمَاكِ بْنِ حَرْبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "n-simak",
+        "to_ref": "n-jabir",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-111499",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سِمَاكِ بْنِ حَرْبٍ ، عَنْ جَابِرِ بْنِ سَمُرَةَ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-ismail",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا إِسْمَاعِيلُ بْنُ مُوسَى"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-sharik",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا شَرِيكٌ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-simak",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ سِمَاكِ بْنِ حَرْبٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "n-jabir",
+        "to_ref": "hadith-1",
+        "properties": {},
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ جَابِرِ بْنِ سَمُرَةَ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3175,
+    "output_tokens": 2979,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

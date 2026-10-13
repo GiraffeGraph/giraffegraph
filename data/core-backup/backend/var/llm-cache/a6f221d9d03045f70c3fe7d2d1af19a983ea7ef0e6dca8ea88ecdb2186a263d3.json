@@ -1,0 +1,225 @@
+{
+  "key": "a6f221d9d03045f70c3fe7d2d1af19a983ea7ef0e6dca8ea88ecdb2186a263d3",
+  "created_at": "2026-10-12T20:33:22.900896+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-113064"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "إِنَّ أَحْسَنَ مَا اخْتَضَبْتُمْ بِهِ لَهَذَا السَّوَادُ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n1",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "أَبُو هُرَيْرَةَ الصَّيْرَفِيُّ مُحَمَّدُ بْنُ فِرَاسٍ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو هُرَيْرَةَ الصَّيْرَفِيُّ مُحَمَّدُ بْنُ فِرَاسٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n2",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُمَرُ بْنُ الْخَطَّابِ بْنِ زَكَرِيَّا الرَّاسِبِيُّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُمَرُ بْنُ الْخَطَّابِ بْنِ زَكَرِيَّا الرَّاسِبِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n3",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "دَفَّاعُ بْنُ دَغْفَلٍ السَّدُوسِيُّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا دَفَّاعُ بْنُ دَغْفَلٍ السَّدُوسِيُّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n4",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عَبْدِ الْحَمِيدِ بْنِ صَيْفِيٍّ"
+        },
+        "confidence": 0.85,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَبْدِ الْحَمِيدِ بْنِ صَيْفِيٍّ"
+          }
+        ]
+      },
+      {
+        "ref": "node-n5",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "صُهَيْبِ الْخَيْرِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ جَدِّهِ صُهَيْبِ الْخَيْرِ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n1",
+        "to_ref": "node-n2",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-113064",
+          "chain_no": 1,
+          "position": 1,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُمَرُ بْنُ الْخَطَّابِ بْنِ زَكَرِيَّا الرَّاسِبِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n2",
+        "to_ref": "node-n3",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-113064",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنَا"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا دَفَّاعُ بْنُ دَغْفَلٍ السَّدُوسِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-n3",
+        "to_ref": "node-n4",
+        "properties": {
+          "hadith_ref": "IbnMajah:ifta-113064",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَبْدِ الْحَمِيدِ بْنِ صَيْفِيٍّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n1",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا أَبُو هُرَيْرَةَ الصَّيْرَفِيُّ مُحَمَّدُ بْنُ فِرَاسٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n2",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا عُمَرُ بْنُ الْخَطَّابِ بْنِ زَكَرِيَّا الرَّاسِبِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n3",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنَا دَفَّاعُ بْنُ دَغْفَلٍ السَّدُوسِيُّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n4",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ عَبْدِ الْحَمِيدِ بْنِ صَيْفِيٍّ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-n5",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ جَدِّهِ صُهَيْبِ الْخَيْرِ"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3415,
+    "output_tokens": 3787,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "run": {
+    "condition": "llm_schema_whole",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "provider": "anthropic",
+    "segmentation_strategy": "paragraphs",
+    "budget_stopped": false,
+    "stop_reason": null
+  },
+  "evaluated_hadiths": {
+    "reference": 300,
+    "evaluated": 300,
+    "processed_by_run": 300,
+    "not_processed_by_run": []
+  },
+  "scores": {
+    "proposed": {
+      "n_hadiths": 300,
+      "n_missing_from_system": 0,
+      "bootstrap": {
+        "resamples": 2000,
+        "seed": 0,
+        "unit": "hadith"
+      },
+      "M1": {
+        "tp": 1431,
+        "fp": 257,
+        "fn": 347,
+        "precision": 0.8477488151658767,
+        "recall": 0.8048368953880765,
+        "f1": 0.8257357184073859,
+        "f0.5": 0.8388042203985931,
+        "exact_chain_rate": 0.38333333333333336,
+        "order_concordance": 0.9994172494172493,
+        "ci95": {
+          "precision": [
+            0.8203865679640155,
+            0.8735013778952971
+          ],
+          "recall": [
+            0.7774693080357143,
+            0.831081081081081
+          ],
+          "f1": [
+            0.7993103203219285,
+            0.8499137920166947
+          ]
+        }
+      },
+      "M2": {
+        "tp": 1543,
+        "fp": 145,
+        "fn": 235,
+        "precision": 0.9140995260663507,
+        "recall": 0.8678290213723284,
+        "f1": 0.8903635314483554,
+        "f0.5": 0.9044548651817115,
+        "exact_chain_rate": 0.5666666666666667,
+        "order_concordance": 0.9994005994005993,
+        "ci95": {
+          "precision": [
+            0.888289936881763,
+            0.9391603272252238
+          ],
+          "recall": [
+            0.8418358598026747,
+            0.8936055837877199
+          ],
+          "f1": [
+            0.8653125370806705,
+            0.9138292968313557
+          ]
+        }
+      }
+    },
+    "validated": {
+      "n_hadiths": 300,
+      "n_missing_from_system": 0,
+      "bootstrap": {
+        "resamples": 2000,
+        "seed": 0,
+        "unit": "hadith"
+      },
+      "M1": {
+        "tp": 1427,
+        "fp": 106,
+        "fn": 351,
+        "precision": 0.9308545335942596,
+        "recall": 0.8025871766029247,
+        "f1": 0.8619752340682574,
+        "f0.5": 0.902022756005057,
+        "exact_chain_rate": 0.38,
+        "order_concordance": 0.9994172494172493,
+        "ci95": {
+          "precision": [
+            0.9154283200052988,
+            0.944815278914348
+          ],
+          "recall": [
+            0.7754018525101057,
+            0.8284171734955186
+          ],
+          "f1": [
+            0.8428123963744888,
+            0.8797642288078855
+          ]
+        }
+      },
+      "M2": {
+        "tp": 1510,
+        "fp": 23,
+        "fn": 268,
+        "precision": 0.9849967384213959,
+        "recall": 0.8492688413948256,
+        "f1": 0.9121111446692841,
+        "f0.5": 0.95448798988622,
+        "exact_chain_rate": 0.5166666666666667,
+        "order_concordance": 0.9994005994005993,
+        "ci95": {
+          "precision": [
+            0.9742760497914743,
+            0.9933867883563006
+          ],
+          "recall": [
+            0.82254216581419,
+            0.8753643844182561
+          ],
+          "f1": [
+            0.8959512757315803,
+            0.9273809523809524
+          ]
+        }
+      }
+    }
+  },
+  "gate_table": {
+    "criterion": "M2",
+    "mentions": 1688,
+    "correct": 1543,
+    "wrong": 145,
+    "rows": [
+      {
+        "gate": "value_not_in_quote",
+        "errors_caught": 122,
+        "false_alarms": 33,
+        "errors_missed": 23,
+        "precision": 0.7870967741935484,
+        "recall": 0.8413793103448276
+      },
+      {
+        "gate": "any gate",
+        "errors_caught": 122,
+        "false_alarms": 33,
+        "errors_missed": 23,
+        "precision": 0.7870967741935484,
+        "recall": 0.8413793103448276
+      }
+    ]
+  },
+  "confidence": {
+    "auc_correct_vs_wrong": 0.6339620533220104,
+    "histogram": [
+      {
+        "from": 0.0,
+        "to": 0.1,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.2,
+        "to": 0.3,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.3,
+        "to": 0.4,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.4,
+        "to": 0.5,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.5,
+        "to": 0.6,
+        "correct": 1,
+        "wrong": 0
+      },
+      {
+        "from": 0.6,
+        "to": 0.7,
+        "correct": 2,
+        "wrong": 3
+      },
+      {
+        "from": 0.7,
+        "to": 0.8,
+        "correct": 46,
+        "wrong": 13
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "correct": 859,
+        "wrong": 94
+      },
+      {
+        "from": 0.9,
+        "to": 1.0,
+        "correct": 635,
+        "wrong": 35
+      }
+    ]
+  },
+  "review_workload": {
+    "hadiths": 300,
+    "candidates_in_review": 538,
+    "candidates_in_review_per_hadith": {
+      "mean": 1.7933333333333332,
+      "median": 0.0,
+      "max": 16
+    },
+    "open_review_items": 539,
+    "share_hadiths_without_review_items": 0.6333333333333333
+  },
+  "cost": {
+    "hadiths": 300,
+    "calls": 300,
+    "cached_calls": 0,
+    "failed_calls": 0,
+    "refused_calls": 0,
+    "truncated_calls": 0,
+    "cost_usd": 0.5618206,
+    "cost_usd_per_hadith": 0.0018727353333333333,
+    "cost_usd_per_1000_hadiths": 1.8727353333333334,
+    "cost_usd_spent_by_this_run": 0.561821,
+    "input_tokens_per_hadith": 3163.3033333333333,
+    "output_tokens_per_hadith": 3112.81,
+    "calls_per_hadith": 1.0
+  },
+  "schema_proposals": [
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "relation",
+      "type_name": "TRANSMITS",
+      "property_name": "hadith_ref",
+      "count": 1
+    }
+  ],
+  "candidates_by_reason_code": {
+    "node": {
+      "value_not_in_quote": 155
+    },
+    "relation": {
+      "missing_relation_merge_key": 192,
+      "relation_confidence_threshold": 9,
+      "relation_dependency_review": 208
+    }
+  },
+  "committed_fact_invariants": {
+    "exact_quote": false,
+    "quote_with_grounding_normalisation": true
+  }
+}

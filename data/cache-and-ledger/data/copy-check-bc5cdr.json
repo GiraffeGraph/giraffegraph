@@ -1,0 +1,114 @@
+{
+ "model": "claude-haiku-5-5",
+ "effort": "low",
+ "documents": 300,
+ "prices_usd_per_mtok": [
+  0.1,
+  0.5
+ ],
+ "conditions": {
+  "schema_only": {
+   "documents_scored": 300,
+   "calls_failed_or_truncated": 0,
+   "proposed": 2269,
+   "gold_strings": 2774,
+   "precision": 0.8665,
+   "recall": 0.7087,
+   "parts": {
+    "copy": {
+     "proposed": 2177,
+     "share_of_proposed": 0.9595,
+     "surface_matched": 1927,
+     "surface_precision": 0.8852,
+     "unmatched": 250,
+     "share_of_all_unmatched": 0.8251,
+     "unmatched_with_gold_mention_in_quote": 119,
+     "unmatched_same_concept_by_corpus_synonym": 1,
+     "unmatched_whose_name_occurs_elsewhere_in_text": 250
+    },
+    "transformed": {
+     "proposed": 89,
+     "share_of_proposed": 0.0392,
+     "surface_matched": 36,
+     "surface_precision": 0.4045,
+     "unmatched": 53,
+     "share_of_all_unmatched": 0.1749,
+     "unmatched_with_gold_mention_in_quote": 32,
+     "unmatched_same_concept_by_corpus_synonym": 8,
+     "unmatched_whose_name_occurs_elsewhere_in_text": 8
+    },
+    "unquoted": {
+     "proposed": 3,
+     "share_of_proposed": 0.0013,
+     "surface_matched": 3,
+     "surface_precision": 1.0,
+     "unmatched": 0,
+     "share_of_all_unmatched": 0.0,
+     "unmatched_with_gold_mention_in_quote": 0,
+     "unmatched_same_concept_by_corpus_synonym": 0,
+     "unmatched_whose_name_occurs_elsewhere_in_text": 0
+    }
+   },
+   "confidence_auc_for_surface_match": 0.7976,
+   "same_review_budget": {
+    "items_sent_to_review": 92,
+    "unmatched_caught_by_copy_check": 53,
+    "unmatched_caught_by_lowest_confidence": 58,
+    "unmatched_total": 303
+   },
+   "cost_usd_without_cache": 0.0925
+  },
+  "verbatim": {
+   "documents_scored": 300,
+   "calls_failed_or_truncated": 0,
+   "proposed": 2436,
+   "gold_strings": 2774,
+   "precision": 0.8584,
+   "recall": 0.7538,
+   "parts": {
+    "copy": {
+     "proposed": 2419,
+     "share_of_proposed": 0.993,
+     "surface_matched": 2081,
+     "surface_precision": 0.8603,
+     "unmatched": 338,
+     "share_of_all_unmatched": 0.9797,
+     "unmatched_with_gold_mention_in_quote": 188,
+     "unmatched_same_concept_by_corpus_synonym": 6,
+     "unmatched_whose_name_occurs_elsewhere_in_text": 338
+    },
+    "transformed": {
+     "proposed": 9,
+     "share_of_proposed": 0.0037,
+     "surface_matched": 5,
+     "surface_precision": 0.5556,
+     "unmatched": 4,
+     "share_of_all_unmatched": 0.0116,
+     "unmatched_with_gold_mention_in_quote": 2,
+     "unmatched_same_concept_by_corpus_synonym": 0,
+     "unmatched_whose_name_occurs_elsewhere_in_text": 1
+    },
+    "unquoted": {
+     "proposed": 8,
+     "share_of_proposed": 0.0033,
+     "surface_matched": 5,
+     "surface_precision": 0.625,
+     "unmatched": 3,
+     "share_of_all_unmatched": 0.0087,
+     "unmatched_with_gold_mention_in_quote": 1,
+     "unmatched_same_concept_by_corpus_synonym": 0,
+     "unmatched_whose_name_occurs_elsewhere_in_text": 3
+    }
+   },
+   "confidence_auc_for_surface_match": 0.7798,
+   "same_review_budget": {
+    "items_sent_to_review": 17,
+    "unmatched_caught_by_copy_check": 7,
+    "unmatched_caught_by_lowest_confidence": 9,
+    "unmatched_total": 345
+   },
+   "cost_usd_without_cache": 0.1054
+  }
+ },
+ "spent_this_run_usd": 0.1945
+}

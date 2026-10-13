@@ -1,0 +1,141 @@
+{
+  "key": "326b89b681be765109750c72c9d4640528095d3a5f0518d10546c3b0fbf9a901",
+  "created_at": "2026-10-12T20:16:10.038423+00:00",
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "output": {
+    "nodes": [
+      {
+        "ref": "node-hadith",
+        "node_type": "Hadith",
+        "properties": {
+          "hadith_ref": "Nasai:3459"
+        },
+        "confidence": 0.9,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "لَا عِدَّةَ عَلَيْكِ إِلَّا أَنْ تَكُونِي حَدِيثَةَ عَهْدٍ بِهِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-ubayd",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُبَيْدُ اللَّهِ بْنُ سَعْدِ بْنِ إِبْرَاهِيمَ بْنِ سَعْدٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "أَخْبَرَنَا عُبَيْدُ اللَّهِ بْنُ سَعْدِ بْنِ إِبْرَاهِيمَ بْنِ سَعْدٍ"
+          }
+        ]
+      },
+      {
+        "ref": "node-ishaq",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "ابْنِ إِسْحَاق"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ ابْنِ إِسْحَاق"
+          }
+        ]
+      },
+      {
+        "ref": "node-ubada",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "عُبَادَةُ بْنُ الْوَلِيدِ بْنِ عُبَادَةَ بْنِ الصَّامِتِ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي عُبَادَةُ بْنُ الْوَلِيدِ بْنِ عُبَادَةَ بْنِ الصَّامِتِ"
+          }
+        ]
+      },
+      {
+        "ref": "node-rubayyi",
+        "node_type": "Narrator",
+        "properties": {
+          "name": "رُبَيِّعَ بِنْتِ مُعَوِّذٍ"
+        },
+        "confidence": 0.8,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ رُبَيِّعَ بِنْتِ مُعَوِّذٍ"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-ishaq",
+        "to_ref": "node-ubada",
+        "properties": {
+          "hadith_ref": "Nasai:3459",
+          "chain_no": 1,
+          "position": 2,
+          "sigha": "حَدَّثَنِي"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "حَدَّثَنِي عُبَادَةُ بْنُ الْوَلِيدِ بْنِ عُبَادَةَ بْنِ الصَّامِتِ"
+          }
+        ]
+      },
+      {
+        "relation_type": "NARRATED_FROM",
+        "from_ref": "node-ubada",
+        "to_ref": "node-rubayyi",
+        "properties": {
+          "hadith_ref": "Nasai:3459",
+          "chain_no": 1,
+          "position": 3,
+          "sigha": "عَنْ"
+        },
+        "confidence": 0.75,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "عَنْ رُبَيِّعَ بِنْتِ مُعَوِّذٍ"
+          }
+        ]
+      },
+      {
+        "relation_type": "TRANSMITS",
+        "from_ref": "node-rubayyi",
+        "to_ref": "node-hadith",
+        "properties": {},
+        "confidence": 0.7,
+        "evidence_refs": [
+          {
+            "segment_id": "@segment.1",
+            "quote": "قَالَتْ : اخْتَلَعْتُ مِنْ زَوْجِي"
+          }
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 3317,
+    "output_tokens": 3587,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5"
+  }
+}

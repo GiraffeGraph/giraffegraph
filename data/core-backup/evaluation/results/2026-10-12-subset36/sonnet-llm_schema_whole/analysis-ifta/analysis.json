@@ -1,0 +1,396 @@
+{
+  "run": {
+    "condition": "llm_schema_whole",
+    "model": "claude-sonnet-5-5",
+    "effort": "low",
+    "provider": "anthropic",
+    "segmentation_strategy": "paragraphs",
+    "budget_stopped": false,
+    "stop_reason": null
+  },
+  "evaluated_hadiths": {
+    "reference": 36,
+    "evaluated": 36,
+    "processed_by_run": 36,
+    "not_processed_by_run": []
+  },
+  "scores": {
+    "proposed": {
+      "n_hadiths": 36,
+      "n_missing_from_system": 0,
+      "bootstrap": {
+        "resamples": 2000,
+        "seed": 0,
+        "unit": "hadith"
+      },
+      "M1": {
+        "tp": 99,
+        "fp": 19,
+        "fn": 116,
+        "precision": 0.8389830508474576,
+        "recall": 0.4604651162790698,
+        "f1": 0.5945945945945946,
+        "f0.5": 0.7205240174672489,
+        "exact_chain_rate": 0.25,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.7734197443181818,
+            0.8992441860465118
+          ],
+          "recall": [
+            0.32443518518518516,
+            0.5972033335622869
+          ],
+          "f1": [
+            0.46304852865255547,
+            0.7081096738655575
+          ]
+        }
+      },
+      "M2": {
+        "tp": 114,
+        "fp": 4,
+        "fn": 101,
+        "precision": 0.9661016949152542,
+        "recall": 0.5302325581395348,
+        "f1": 0.6846846846846847,
+        "f0.5": 0.8296943231441047,
+        "exact_chain_rate": 0.3055555555555556,
+        "order_concordance": 0.9982142857142857,
+        "ci95": {
+          "precision": [
+            0.9333333333333333,
+            0.9921275221456693
+          ],
+          "recall": [
+            0.3783754406580494,
+            0.6698893271261694
+          ],
+          "f1": [
+            0.543029520709395,
+            0.793203507050501
+          ]
+        }
+      }
+    },
+    "validated": {
+      "n_hadiths": 36,
+      "n_missing_from_system": 0,
+      "bootstrap": {
+        "resamples": 2000,
+        "seed": 0,
+        "unit": "hadith"
+      },
+      "M1": {
+        "tp": 97,
+        "fp": 10,
+        "fn": 118,
+        "precision": 0.9065420560747663,
+        "recall": 0.4511627906976744,
+        "f1": 0.6024844720496895,
+        "f0.5": 0.7542768273716951,
+        "exact_chain_rate": 0.25,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.8484848484848485,
+            0.9595959595959596
+          ],
+          "recall": [
+            0.31388091446293115,
+            0.5913512323943663
+          ],
+          "f1": [
+            0.466209556330524,
+            0.7200124223602485
+          ]
+        }
+      },
+      "M2": {
+        "tp": 106,
+        "fp": 1,
+        "fn": 109,
+        "precision": 0.9906542056074766,
+        "recall": 0.4930232558139535,
+        "f1": 0.6583850931677019,
+        "f0.5": 0.8242612752721616,
+        "exact_chain_rate": 0.3055555555555556,
+        "order_concordance": 1.0,
+        "ci95": {
+          "precision": [
+            0.9705882352941176,
+            1.0
+          ],
+          "recall": [
+            0.34242683686176834,
+            0.6376341333551769
+          ],
+          "f1": [
+            0.5084745762711864,
+            0.7740397151740048
+          ]
+        }
+      }
+    }
+  },
+  "gate_table": {
+    "criterion": "M2",
+    "mentions": 118,
+    "correct": 114,
+    "wrong": 4,
+    "rows": [
+      {
+        "gate": "node_merge_key",
+        "errors_caught": 0,
+        "false_alarms": 4,
+        "errors_missed": 4,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "gate": "required_node_property",
+        "errors_caught": 0,
+        "false_alarms": 4,
+        "errors_missed": 4,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "gate": "value_not_in_quote",
+        "errors_caught": 3,
+        "false_alarms": 4,
+        "errors_missed": 1,
+        "precision": 0.42857142857142855,
+        "recall": 0.75
+      },
+      {
+        "gate": "any gate",
+        "errors_caught": 3,
+        "false_alarms": 8,
+        "errors_missed": 1,
+        "precision": 0.2727272727272727,
+        "recall": 0.75
+      }
+    ]
+  },
+  "confidence": {
+    "auc_correct_vs_wrong": 0.9769736842105263,
+    "histogram": [
+      {
+        "from": 0.0,
+        "to": 0.1,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "correct": 1,
+        "wrong": 0
+      },
+      {
+        "from": 0.2,
+        "to": 0.3,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.3,
+        "to": 0.4,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.4,
+        "to": 0.5,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.5,
+        "to": 0.6,
+        "correct": 0,
+        "wrong": 0
+      },
+      {
+        "from": 0.6,
+        "to": 0.7,
+        "correct": 1,
+        "wrong": 0
+      },
+      {
+        "from": 0.7,
+        "to": 0.8,
+        "correct": 1,
+        "wrong": 3
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "correct": 10,
+        "wrong": 1
+      },
+      {
+        "from": 0.9,
+        "to": 1.0,
+        "correct": 101,
+        "wrong": 0
+      }
+    ]
+  },
+  "review_workload": {
+    "hadiths": 36,
+    "candidates_in_review": 21,
+    "candidates_in_review_per_hadith": {
+      "mean": 0.5833333333333334,
+      "median": 0.0,
+      "max": 6
+    },
+    "open_review_items": 38,
+    "share_hadiths_without_review_items": 0.3888888888888889
+  },
+  "cost": {
+    "hadiths": 36,
+    "calls": 36,
+    "cached_calls": 0,
+    "failed_calls": 0,
+    "refused_calls": 0,
+    "truncated_calls": 0,
+    "cost_usd": 0.713734,
+    "cost_usd_per_hadith": 0.019825944444444445,
+    "cost_usd_per_1000_hadiths": 19.825944444444442,
+    "cost_usd_spent_by_this_run": 0.713734,
+    "input_tokens_per_hadith": 3113.1111111111113,
+    "output_tokens_per_hadith": 1359.9722222222222,
+    "calls_per_hadith": 1.0
+  },
+  "schema_proposals": [
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ",
+      "count": 2
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ كَثِيرٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "الْحُمَيْدِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُسَدَّدٌ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "يَحْيَى بْنُ يَحْيَى التَّمِيمِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عَمْرٌو النَّاقِدُ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَحْمَدُ بْنُ مُحَمَّدٍ الْمَرْوَزِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عَمْرُو بْنُ مَرْزُوقٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عِيسَى بْنُ حَمَّادٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "الْحَسَنُ بْنُ عَلِيٍّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "ابْنُ أَبِي عُمَرَ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ عَبْدِ الْأَعْلَى",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "هَارُونُ بْنُ عَبْدِ اللهِ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "زَكَرِيَّا بْنُ يَحْيَى",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَبُو عُمَيْرٍ عِيسَى بْنُ مُحَمَّدٍ النَّحَّاسُ",
+      "count": 1
+    }
+  ],
+  "candidates_by_reason_code": {
+    "node": {
+      "node_merge_key": 17,
+      "required_node_property": 17,
+      "value_not_in_quote": 7
+    },
+    "relation": {
+      "relation_dependency_review": 14
+    }
+  },
+  "committed_fact_invariants": {
+    "exact_quote": false,
+    "quote_with_grounding_normalisation": true
+  }
+}

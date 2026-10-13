@@ -1,0 +1,907 @@
+{
+  "input": "../evaluation/results/2026-10-12-sixbooks300/subset36.json",
+  "condition": "llm_isnad_whole",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "prompt_version": "candidate_graph_extraction_v2",
+  "schema_hints": true,
+  "provider": "anthropic",
+  "segmentation_strategy": "paragraphs",
+  "hadiths": 36,
+  "segments": 36,
+  "fallback_to_whole_text_units": 0,
+  "llm_equivalent_calls": 36,
+  "failed_calls": 0,
+  "candidates_proposed": {
+    "nodes": 106,
+    "relations": 68
+  },
+  "candidates_validated": {
+    "nodes": 76,
+    "relations": 65
+  },
+  "candidates_in_review": {
+    "nodes": 0,
+    "relations": 0,
+    "open_review_items_by_reason_code": {
+      "schema_property_proposal": 30
+    }
+  },
+  "candidates_rejected": {
+    "nodes": 30,
+    "relations": 3
+  },
+  "narrator_mentions": {
+    "proposed": 52,
+    "validated": 40,
+    "committed": 32
+  },
+  "runs": {
+    "committed": 6,
+    "committed_without_any_fact": 0,
+    "blocked": 30,
+    "blocked_by_reason": {
+      "Run has open review items and cannot be committed.": 30
+    },
+    "blocked_hadith_ids": [
+      "Bukhari:ifta-10925",
+      "Bukhari:ifta-11245",
+      "Bukhari:ifta-2517",
+      "Bukhari:ifta-3486",
+      "Bukhari:ifta-1267",
+      "Muslim:ifta-12287",
+      "Muslim:ifta-14418",
+      "Muslim:ifta-14115",
+      "Muslim:ifta-15317",
+      "Muslim:ifta-18231",
+      "Muslim:ifta-12300",
+      "AbuDawud:ifta-92099",
+      "AbuDawud:ifta-96119",
+      "AbuDawud:ifta-95782",
+      "AbuDawud:ifta-90497",
+      "AbuDawud:ifta-91274",
+      "Tirmidhi:ifta-96607",
+      "Tirmidhi:ifta-100388",
+      "Tirmidhi:ifta-97178",
+      "Tirmidhi:ifta-99118",
+      "Tirmidhi:ifta-101371",
+      "Nasai:ifta-68105",
+      "Nasai:ifta-68634",
+      "Nasai:ifta-70022",
+      "Nasai:ifta-67493",
+      "Nasai:ifta-72056",
+      "Nasai:ifta-68830",
+      "IbnMajah:ifta-112457",
+      "IbnMajah:ifta-113975",
+      "IbnMajah:ifta-111495"
+    ]
+  },
+  "canonical_graph": {
+    "nodes": 37,
+    "edges": 58,
+    "nodes_by_type": {
+      "Hadith": 6,
+      "Narrator": 31
+    },
+    "node_writes": {
+      "created": 37,
+      "merged": 1
+    },
+    "edge_writes": {
+      "created": 58,
+      "merged": 0
+    }
+  },
+  "narrator_identity": {
+    "committed_mentions": 32,
+    "canonical_narrator_nodes": 31,
+    "distinct_committed_mentions_ignoring_diacritics": 31
+  },
+  "committed_fact_invariants": {
+    "facts_checked": {
+      "nodes": 38,
+      "relations": 58
+    },
+    "acceptance_records": {
+      "auto_validated": 96
+    },
+    "without_quote_in_source_segment": [
+      {
+        "hadith_id": "Bukhari:ifta-5608",
+        "candidate_ref": "51069386-c770-4ee4-a940-ffbf82f85c42"
+      },
+      {
+        "hadith_id": "Bukhari:ifta-5608",
+        "candidate_ref": "c2dd6f46-e58b-4695-b0a2-a9b8d242a792"
+      },
+      {
+        "hadith_id": "Bukhari:ifta-5608",
+        "candidate_ref": "df062033-e5ee-45e6-93cb-362ce8bc77fb"
+      },
+      {
+        "hadith_id": "Bukhari:ifta-5608",
+        "candidate_ref": "0c05f72c-6b9e-4915-a685-76f5ee2218db"
+      },
+      {
+        "hadith_id": "Bukhari:ifta-5608",
+        "candidate_ref": "17a4e1da-25b1-40b4-9fd7-19c800c78d7f"
+      },
+      {
+        "hadith_id": "Bukhari:ifta-5608",
+        "candidate_ref": "82ea99fe-662d-4e44-a9e6-91ea0e2ece7b"
+      },
+      {
+        "hadith_id": "AbuDawud:ifta-89095",
+        "candidate_ref": "9ae0690e-5ed4-4358-8774-b26c515faaa5"
+      },
+      {
+        "hadith_id": "AbuDawud:ifta-89095",
+        "candidate_ref": "c3a42dfc-1866-4b70-8e37-4cbb61b67f7e"
+      },
+      {
+        "hadith_id": "AbuDawud:ifta-89095",
+        "candidate_ref": "e424778f-6c0b-4f1e-acb8-9ef3d95a9af8"
+      },
+      {
+        "hadith_id": "AbuDawud:ifta-89095",
+        "candidate_ref": "728a68c2-84e5-491a-a153-a96008657118"
+      },
+      {
+        "hadith_id": "AbuDawud:ifta-89095",
+        "candidate_ref": "83a001f9-3e40-4f37-8355-ef17733035b2"
+      },
+      {
+        "hadith_id": "AbuDawud:ifta-89095",
+        "candidate_ref": "eae2ff64-0701-43ad-86b0-ebafe6a2f60d"
+      },
+      {
+        "hadith_id": "Tirmidhi:ifta-102870",
+        "candidate_ref": "887617a4-fd21-4e61-91c1-38616c43f24b"
+      },
+      {
+        "hadith_id": "Tirmidhi:ifta-102870",
+        "candidate_ref": "8e044a2f-d1cd-451f-af20-7b79a4dcfed1"
+      },
+      {
+        "hadith_id": "Tirmidhi:ifta-102870",
+        "candidate_ref": "c1c5180b-3477-4065-aa64-cb978bae900c"
+      },
+      {
+        "hadith_id": "Tirmidhi:ifta-102870",
+        "candidate_ref": "1805f76a-972d-4f86-bdc0-82b8aee83835"
+      },
+      {
+        "hadith_id": "Tirmidhi:ifta-102870",
+        "candidate_ref": "3d282186-316e-4712-a14c-7e023976bb25"
+      },
+      {
+        "hadith_id": "Tirmidhi:ifta-102870",
+        "candidate_ref": "6eddee15-4241-44a8-8ef9-b1fdef18b38f"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "3f208e6f-65e0-4ac1-92d7-cd95a3543a4d"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "73553056-6f55-4d57-93a7-dce6bfafbd80"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "86007220-1920-4388-a572-2e1f67a8d1a3"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "eca847ec-e49b-414c-89b6-3dd289afe9bf"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "03bd5e15-13b1-4837-bc6a-05906c720754"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "65ee0fd5-6198-442b-8766-4f1bf41cc2c2"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "87179988-f353-442f-b9b4-e3ff45a989ad"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "9b94e1b4-78c6-4d75-a5f1-2796af0b6620"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "abff8f5f-25e0-4fae-9a29-e807631c14c5"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109538",
+        "candidate_ref": "f9bf52b2-0148-4a8d-aa79-9c6cc9970dac"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "4cfb6a2c-5fb7-4eea-85b3-83a9f1e78cd4"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "87d34361-8ace-47fb-92d4-c2a7b0342626"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "cf44c351-8aca-450d-974f-f3a8302ee434"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "e05a40f6-9e1a-44dc-b5d2-b660f3d191fe"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "e44cadd4-8030-4651-9eca-55956d9f0252"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "266de014-9028-47fc-927c-026e44b2d014"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "28aea850-5ed8-43bd-91df-cab2d6407902"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "2bc5e2d0-b1c4-48cd-817a-5ef8f78ff8c9"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "35fc60b1-4320-4b20-93eb-2ff36c445010"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "3a0c24a8-03ae-4718-9702-3e0c8d47c557"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "47ef6281-7d1f-4ab9-a02b-216d4b10638a"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-110861",
+        "candidate_ref": "7515179c-5b16-4414-9e68-03cb44cec286"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "25b127f7-a107-49a1-96b7-9c0fdf26ed99"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "3b26f9b6-5cc7-4155-a89c-793148556404"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "58c38b8f-0705-4683-b563-ec00cc78f508"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "62062730-ea01-4a5e-8c87-535330825056"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "baaeabc9-9999-4f62-b793-e0c2fbba0cac"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "2a01a4c0-dcd3-4a82-9aa0-69b66e0722e9"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "34ab857a-019f-443f-8bdb-5a926a14c197"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "3ea040a1-78ef-412c-9ae2-2492009eab9c"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "493ea8e4-1599-4eb5-a651-0e8fbcfbba0f"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "65981296-ea1e-46fd-825e-770c3f0ab711"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "cb18d7d7-d033-4c8b-8353-2490c6dd3364"
+      },
+      {
+        "hadith_id": "IbnMajah:ifta-109232",
+        "candidate_ref": "e751d25d-c365-4f6e-ab80-e1586fb68b09"
+      }
+    ],
+    "without_acceptance_record": [],
+    "holds": false
+  },
+  "committed_fact_invariants_with_grounding_normalisation": {
+    "facts_checked": {
+      "nodes": 38,
+      "relations": 58
+    },
+    "acceptance_records": {
+      "auto_validated": 96
+    },
+    "without_quote_in_source_segment": [],
+    "without_acceptance_record": [],
+    "holds": true
+  },
+  "hadiths_requested": 36,
+  "hadith_ids_not_processed": [],
+  "calls": {
+    "total": 36,
+    "uncached": 36,
+    "cached": 0,
+    "failed": 0,
+    "refused": 0,
+    "truncated": 0,
+    "failed_by_kind": {}
+  },
+  "tokens": {
+    "input": 123658,
+    "output": 27382,
+    "cache_read_input": 0,
+    "cache_creation_input": 0
+  },
+  "cost_usd": 0.521136,
+  "cost_usd_without_response_cache": 0.521136,
+  "max_cost_usd": 1.3,
+  "budget_stopped": false,
+  "stop_reason": null,
+  "prices_usd_per_mtok": {
+    "as_of": "2026-10-06",
+    "claude-haiku-5-5": {
+      "input": 0.1,
+      "output": 0.5
+    },
+    "claude-sonnet-5-5": {
+      "input": 2.0,
+      "output": 10.0
+    }
+  },
+  "schema_proposals": [
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ",
+      "count": 2
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ كَثِيرٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "الْحُمَيْدِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُسَدَّدٌ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَبُو عَاصِمٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "يَحْيَى بْنُ يَحْيَى التَّمِيمِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "يَحْيَى بْنُ يَحْيَى",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "يَحْيَى بْنُ أَيُّوبَ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عَمْرٌو النَّاقِدُ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ حَاتِمٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَحْمَدُ بْنُ مُحَمَّدٍ الْمَرْوَزِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عَمْرُو بْنُ مَرْزُوقٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عِيسَى بْنُ حَمَّادٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "الْحَسَنُ بْنُ عَلِيٍّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "قُتَيْبَةُ بْنُ سَعِيدٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "هَنَّادٌ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "الْعَبَّاسُ الدُّورِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ عُبَيْدٍ الْمُحَارِبِيُّ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "ابْنُ أَبِي عُمَرَ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "عَبْدُ بْنُ حُمَيْدٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "سَعِيدُ بْنُ عَبْدِ الرَّحْمَنِ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "هَارُونُ بْنُ عَبْدِ اللهِ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "إِسْمَاعِيلُ بْنُ مَسْعُودٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "الْفَضْلُ بْنُ سَهْلٍ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "value",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "مُحَمَّدُ بْنُ آدَمَ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "أَبُو عُمَيْرٍ عِيسَى بْنُ مُحَمَّدٍ النَّحَّاسُ",
+      "count": 1
+    },
+    {
+      "reason_code": "schema_property_proposal",
+      "kind": "node",
+      "type_name": "Narrator",
+      "property_name": "هِشَامُ بْنُ خَالِدٍ الْأَزْرَقُ أَبُو مَرْوَانَ الدِّمَشْقِيُّ",
+      "count": 1
+    }
+  ],
+  "candidates_by_reason_code": {
+    "node": {
+      "node_merge_key": 30,
+      "required_node_property": 30
+    },
+    "relation": {
+      "relation_dependency_rejected": 3
+    }
+  },
+  "per_hadith": [
+    {
+      "hadith_id": "Bukhari:ifta-10925",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Bukhari:ifta-11245",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Bukhari:ifta-2517",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Bukhari:ifta-5608",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Bukhari:ifta-3486",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Bukhari:ifta-1267",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Muslim:ifta-12287",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Muslim:ifta-14418",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Muslim:ifta-14115",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Muslim:ifta-15317",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Muslim:ifta-18231",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Muslim:ifta-12300",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-92099",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-89095",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-96119",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-95782",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-90497",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "AbuDawud:ifta-91274",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-96607",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-100388",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-97178",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-99118",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-102870",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "Tirmidhi:ifta-101371",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Nasai:ifta-68105",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Nasai:ifta-68634",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Nasai:ifta-70022",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Nasai:ifta-67493",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Nasai:ifta-72056",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "Nasai:ifta-68830",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109538",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-112457",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-110861",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-113975",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-109232",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 0,
+      "committed": true,
+      "blocking_reason": null
+    },
+    {
+      "hadith_id": "IbnMajah:ifta-111495",
+      "segments": 1,
+      "calls": 1,
+      "candidates_in_review": 0,
+      "open_review_items": 1,
+      "committed": false,
+      "blocking_reason": "Run has open review items and cannot be committed."
+    }
+  ],
+  "wall_time_seconds": 52.816
+}

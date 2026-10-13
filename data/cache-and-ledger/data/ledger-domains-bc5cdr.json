@@ -1,0 +1,104 @@
+{
+ "source": [
+  "data/raw/bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TrainingSet.PubTator.txt",
+  "data/raw/bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.PubTator.txt",
+  "data/raw/bc5cdr/extracted/CDR_Data/CDR.Corpus.v010516/CDR_TestSet.PubTator.txt"
+ ],
+ "mentions_without_identity_dropped": 226,
+ "counting": "each string once per document",
+ "corpus": {
+  "documents": 1500,
+  "opportunities": 13642,
+  "identities": 2465,
+  "strings": 5760,
+  "ambiguous_strings": 73,
+  "share_of_strings_ambiguous": 0.0127,
+  "share_of_opportunities_under_ambiguous_strings": 0.0243,
+  "bits_to_name_an_identity": 9.988,
+  "bits_left_after_the_string_plug_in": 0.019
+ },
+ "random_order": {
+  "fixed: string": {
+   "questions_per_opportunity": 0.4222,
+   "silent_wrong_per_opportunity": 0.0086,
+   "silent_wrong_per_reuse": 0.0148,
+   "tail10_questions_per_opportunity": 0.2874,
+   "tail10_silent_wrong_per_opportunity": 0.0124,
+   "growth_exponent": 0.8222
+  },
+  "fixed: previous+string": {
+   "questions_per_opportunity": 0.9222,
+   "silent_wrong_per_opportunity": 0.0004,
+   "silent_wrong_per_reuse": 0.0054,
+   "tail10_questions_per_opportunity": 0.878,
+   "tail10_silent_wrong_per_opportunity": 0.0007,
+   "growth_exponent": 0.9837
+  },
+  "hindsight: ambiguous strings use previous+string": {
+   "questions_per_opportunity": 0.4384,
+   "silent_wrong_per_opportunity": 0.0004,
+   "silent_wrong_per_reuse": 0.0007,
+   "tail10_questions_per_opportunity": 0.3064,
+   "tail10_silent_wrong_per_opportunity": 0.0007,
+   "growth_exponent": 0.8302
+  },
+  "refine on audit, eps=0.05": {
+   "questions_per_opportunity": 0.4524,
+   "silent_wrong_per_opportunity": 0.0076,
+   "silent_wrong_per_reuse": 0.0139,
+   "tail10_questions_per_opportunity": 0.3246,
+   "tail10_silent_wrong_per_opportunity": 0.0104,
+   "growth_exponent": 0.8363
+  },
+  "refine on audit, eps=0.10": {
+   "questions_per_opportunity": 0.4819,
+   "silent_wrong_per_opportunity": 0.0069,
+   "silent_wrong_per_reuse": 0.0134,
+   "tail10_questions_per_opportunity": 0.361,
+   "tail10_silent_wrong_per_opportunity": 0.0095,
+   "growth_exponent": 0.8491
+  }
+ },
+ "file_order": {
+  "fixed: string": {
+   "questions_per_opportunity": 0.4222,
+   "silent_wrong_per_opportunity": 0.0085,
+   "silent_wrong_per_reuse": 0.0147,
+   "tail10_questions_per_opportunity": 0.296,
+   "tail10_silent_wrong_per_opportunity": 0.0183,
+   "growth_exponent": 0.8175
+  },
+  "fixed: previous+string": {
+   "questions_per_opportunity": 0.9222,
+   "silent_wrong_per_opportunity": 0.0004,
+   "silent_wrong_per_reuse": 0.0047,
+   "tail10_questions_per_opportunity": 0.8711,
+   "tail10_silent_wrong_per_opportunity": 0.0015,
+   "growth_exponent": 0.9837
+  },
+  "hindsight: ambiguous strings use previous+string": {
+   "questions_per_opportunity": 0.4384,
+   "silent_wrong_per_opportunity": 0.0004,
+   "silent_wrong_per_reuse": 0.0007,
+   "tail10_questions_per_opportunity": 0.3223,
+   "tail10_silent_wrong_per_opportunity": 0.0015,
+   "growth_exponent": 0.8254
+  },
+  "refine on audit, eps=0.05": {
+   "questions_per_opportunity": 0.4521,
+   "silent_wrong_per_opportunity": 0.0078,
+   "silent_wrong_per_reuse": 0.0142,
+   "tail10_questions_per_opportunity": 0.3319,
+   "tail10_silent_wrong_per_opportunity": 0.0167,
+   "growth_exponent": 0.8316
+  },
+  "refine on audit, eps=0.10": {
+   "questions_per_opportunity": 0.4815,
+   "silent_wrong_per_opportunity": 0.0072,
+   "silent_wrong_per_reuse": 0.0139,
+   "tail10_questions_per_opportunity": 0.3673,
+   "tail10_silent_wrong_per_opportunity": 0.0164,
+   "growth_exponent": 0.8443
+  }
+ }
+}

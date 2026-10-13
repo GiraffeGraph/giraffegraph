@@ -1,0 +1,7623 @@
+{
+ "model": "claude-haiku-5-5",
+ "effort": "low",
+ "default_max_tool_calls": 14,
+ "table": {
+  "pull:decisions": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.88,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 17880,
+    "output_tokens_mean": 864,
+    "cost_usd_mean": 0.00114
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 4.25,
+    "doc_calls_mean": 2,
+    "prompt_tokens_mean": 10557,
+    "output_tokens_mean": 719,
+    "cost_usd_mean": 0.00104
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 23156,
+    "output_tokens_mean": 843,
+    "cost_usd_mean": 0.00121
+   }
+  },
+  "pull:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.29,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 21466,
+    "output_tokens_mean": 937,
+    "cost_usd_mean": 0.00116
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 4.29,
+    "doc_calls_mean": 2.25,
+    "prompt_tokens_mean": 10429,
+    "output_tokens_mean": 711,
+    "cost_usd_mean": 0.00095
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.29,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 23971,
+    "output_tokens_mean": 837,
+    "cost_usd_mean": 0.00125
+   }
+  },
+  "pull:fresh_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.79,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 17958,
+    "output_tokens_mean": 841,
+    "cost_usd_mean": 0.00104
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 4.83,
+    "doc_calls_mean": 2.33,
+    "prompt_tokens_mean": 12887,
+    "output_tokens_mean": 790,
+    "cost_usd_mean": 0.00111
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.83,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 20170,
+    "output_tokens_mean": 824,
+    "cost_usd_mean": 0.0011
+   }
+  },
+  "pull:map_fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.75,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 18225,
+    "output_tokens_mean": 842,
+    "cost_usd_mean": 0.00103
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 4.79,
+    "doc_calls_mean": 2.21,
+    "prompt_tokens_mean": 13405,
+    "output_tokens_mean": 791,
+    "cost_usd_mean": 0.00107
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.29,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 21706,
+    "output_tokens_mean": 874,
+    "cost_usd_mean": 0.00123
+   }
+  },
+  "pull:map_stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.62,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 17665,
+    "output_tokens_mean": 816,
+    "cost_usd_mean": 0.00102
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 10,
+    "tool_calls_mean": 4.5,
+    "doc_calls_mean": 2.08,
+    "prompt_tokens_mean": 11322,
+    "output_tokens_mean": 751,
+    "cost_usd_mean": 0.00096
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 20868,
+    "output_tokens_mean": 837,
+    "cost_usd_mean": 0.00109
+   }
+  },
+  "pull:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.88,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 18103,
+    "output_tokens_mean": 834,
+    "cost_usd_mean": 0.00121
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 1,
+    "accuracy": 0.0417,
+    "accuracy_mean_over_questions": 0.0417,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 24,
+    "tool_calls_mean": 6.62,
+    "doc_calls_mean": 2.38,
+    "prompt_tokens_mean": 14497,
+    "output_tokens_mean": 969,
+    "cost_usd_mean": 0.00119
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 22767,
+    "output_tokens_mean": 850,
+    "cost_usd_mean": 0.00127
+   }
+  },
+  "pull:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.33,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 20164,
+    "output_tokens_mean": 922,
+    "cost_usd_mean": 0.00121
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 4.71,
+    "doc_calls_mean": 2.04,
+    "prompt_tokens_mean": 12901,
+    "output_tokens_mean": 805,
+    "cost_usd_mean": 0.00106
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.92,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 23145,
+    "output_tokens_mean": 821,
+    "cost_usd_mean": 0.0012
+   }
+  },
+  "pull:stale_generic": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 19369,
+    "output_tokens_mean": 849,
+    "cost_usd_mean": 0.00111
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 8,
+    "tool_calls_mean": 4.54,
+    "doc_calls_mean": 2.46,
+    "prompt_tokens_mean": 12877,
+    "output_tokens_mean": 751,
+    "cost_usd_mean": 0.00105
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 25778,
+    "output_tokens_mean": 873,
+    "cost_usd_mean": 0.00128
+   }
+  },
+  "pull:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 1,
+    "tool_calls_mean": 4.83,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 17344,
+    "output_tokens_mean": 855,
+    "cost_usd_mean": 0.00106
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 7,
+    "tool_calls_mean": 4.88,
+    "doc_calls_mean": 2.38,
+    "prompt_tokens_mean": 13211,
+    "output_tokens_mean": 798,
+    "cost_usd_mean": 0.00107
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.38,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 25646,
+    "output_tokens_mean": 860,
+    "cost_usd_mean": 0.00123
+   }
+  },
+  "push+budget2+rooted:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 2.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34583,
+    "output_tokens_mean": 663,
+    "cost_usd_mean": 0.00172
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 19,
+    "accuracy": 0.7917,
+    "accuracy_mean_over_questions": 0.7917,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 1.83,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34257,
+    "output_tokens_mean": 545,
+    "cost_usd_mean": 0.00159
+   }
+  },
+  "push+budget2+rooted:fresh_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 2,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 33557,
+    "output_tokens_mean": 639,
+    "cost_usd_mean": 0.00167
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 18,
+    "accuracy": 0.75,
+    "accuracy_mean_over_questions": 0.75,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 6,
+    "tool_calls_mean": 1.71,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 30557,
+    "output_tokens_mean": 547,
+    "cost_usd_mean": 0.00153
+   }
+  },
+  "push+budget2+rooted:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 6,
+    "accuracy": 0.25,
+    "accuracy_mean_over_questions": 0.25,
+    "gave_the_outdated_answer": 1,
+    "said_could_not_find": 17,
+    "tool_calls_mean": 2.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 6259,
+    "output_tokens_mean": 561,
+    "cost_usd_mean": 0.00066
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 9,
+    "accuracy": 0.375,
+    "accuracy_mean_over_questions": 0.375,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 17,
+    "tool_calls_mean": 2.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 6827,
+    "output_tokens_mean": 560,
+    "cost_usd_mean": 0.00073
+   }
+  },
+  "push+budget2+rooted:pointers_fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 16,
+    "accuracy": 0.6667,
+    "accuracy_mean_over_questions": 0.6667,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 7,
+    "tool_calls_mean": 2.5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 25684,
+    "output_tokens_mean": 722,
+    "cost_usd_mean": 0.00152
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 13,
+    "accuracy": 0.5417,
+    "accuracy_mean_over_questions": 0.5417,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 1.96,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 23331,
+    "output_tokens_mean": 615,
+    "cost_usd_mean": 0.00134
+   }
+  },
+  "push+budget2+rooted:pointers_stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 12,
+    "accuracy": 0.5,
+    "accuracy_mean_over_questions": 0.5,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 2.5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 23166,
+    "output_tokens_mean": 724,
+    "cost_usd_mean": 0.00145
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 12,
+    "accuracy": 0.5,
+    "accuracy_mean_over_questions": 0.5,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 12,
+    "tool_calls_mean": 2.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 23744,
+    "output_tokens_mean": 632,
+    "cost_usd_mean": 0.00139
+   }
+  },
+  "push+budget2+rooted:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 12,
+    "accuracy": 0.5,
+    "accuracy_mean_over_questions": 0.5,
+    "gave_the_outdated_answer": 2,
+    "said_could_not_find": 14,
+    "tool_calls_mean": 2.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34436,
+    "output_tokens_mean": 717,
+    "cost_usd_mean": 0.00179
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 6,
+    "tool_calls_mean": 1.96,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 35974,
+    "output_tokens_mean": 547,
+    "cost_usd_mean": 0.00168
+   }
+  },
+  "push+budget2+rooted:stale_generic": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 10,
+    "accuracy": 0.4167,
+    "accuracy_mean_over_questions": 0.4167,
+    "gave_the_outdated_answer": 5,
+    "said_could_not_find": 14,
+    "tool_calls_mean": 2.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 33644,
+    "output_tokens_mean": 694,
+    "cost_usd_mean": 0.00178
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 1.96,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 36817,
+    "output_tokens_mean": 565,
+    "cost_usd_mean": 0.00173
+   }
+  },
+  "push+budget2+rooted:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 14,
+    "accuracy": 0.5833,
+    "accuracy_mean_over_questions": 0.5833,
+    "gave_the_outdated_answer": 3,
+    "said_could_not_find": 9,
+    "tool_calls_mean": 2.04,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 35836,
+    "output_tokens_mean": 688,
+    "cost_usd_mean": 0.00192
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 2.21,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 40294,
+    "output_tokens_mean": 649,
+    "cost_usd_mean": 0.00196
+   }
+  },
+  "push+budget2:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 9,
+    "tool_calls_mean": 2.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34655,
+    "output_tokens_mean": 679,
+    "cost_usd_mean": 0.00159
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 16,
+    "accuracy": 0.6667,
+    "accuracy_mean_over_questions": 0.6667,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 14,
+    "tool_calls_mean": 2,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 38369,
+    "output_tokens_mean": 554,
+    "cost_usd_mean": 0.00155
+   }
+  },
+  "push+budget2:fresh_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 19,
+    "accuracy": 0.7917,
+    "accuracy_mean_over_questions": 0.7917,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 11,
+    "tool_calls_mean": 2.08,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 33621,
+    "output_tokens_mean": 663,
+    "cost_usd_mean": 0.00157
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 16,
+    "accuracy": 0.6667,
+    "accuracy_mean_over_questions": 0.6667,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 16,
+    "tool_calls_mean": 2.08,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 36378,
+    "output_tokens_mean": 592,
+    "cost_usd_mean": 0.00156
+   }
+  },
+  "push+budget2:map_fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 16,
+    "accuracy": 0.6667,
+    "accuracy_mean_over_questions": 0.6667,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 9,
+    "tool_calls_mean": 2.67,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 48028,
+    "output_tokens_mean": 747,
+    "cost_usd_mean": 0.00227
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 15,
+    "accuracy": 0.625,
+    "accuracy_mean_over_questions": 0.625,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 9,
+    "tool_calls_mean": 2.46,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 47497,
+    "output_tokens_mean": 651,
+    "cost_usd_mean": 0.00214
+   }
+  },
+  "push+budget2:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 7,
+    "accuracy": 0.2917,
+    "accuracy_mean_over_questions": 0.2917,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 20,
+    "tool_calls_mean": 2.21,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 6007,
+    "output_tokens_mean": 529,
+    "cost_usd_mean": 0.00061
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 8,
+    "accuracy": 0.3333,
+    "accuracy_mean_over_questions": 0.3333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 15,
+    "tool_calls_mean": 2.21,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 6716,
+    "output_tokens_mean": 557,
+    "cost_usd_mean": 0.00071
+   }
+  },
+  "push+budget2:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 2,
+    "accuracy": 0.0833,
+    "accuracy_mean_over_questions": 0.0833,
+    "gave_the_outdated_answer": 11,
+    "said_could_not_find": 18,
+    "tool_calls_mean": 2.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 30650,
+    "output_tokens_mean": 670,
+    "cost_usd_mean": 0.00157
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 10,
+    "tool_calls_mean": 2.08,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 38406,
+    "output_tokens_mean": 560,
+    "cost_usd_mean": 0.00162
+   }
+  },
+  "push+budget2:stale_generic": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 3,
+    "accuracy": 0.125,
+    "accuracy_mean_over_questions": 0.125,
+    "gave_the_outdated_answer": 8,
+    "said_could_not_find": 21,
+    "tool_calls_mean": 2.29,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 33990,
+    "output_tokens_mean": 702,
+    "cost_usd_mean": 0.00167
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 19,
+    "accuracy": 0.7917,
+    "accuracy_mean_over_questions": 0.7917,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 12,
+    "tool_calls_mean": 2.04,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 38331,
+    "output_tokens_mean": 598,
+    "cost_usd_mean": 0.00165
+   }
+  },
+  "push+budget2:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 2,
+    "accuracy": 0.0833,
+    "accuracy_mean_over_questions": 0.0833,
+    "gave_the_outdated_answer": 11,
+    "said_could_not_find": 22,
+    "tool_calls_mean": 2.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34441,
+    "output_tokens_mean": 707,
+    "cost_usd_mean": 0.00171
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 17,
+    "accuracy": 0.7083,
+    "accuracy_mean_over_questions": 0.7083,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 18,
+    "tool_calls_mean": 2.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 42431,
+    "output_tokens_mean": 652,
+    "cost_usd_mean": 0.00177
+   }
+  },
+  "push+budget4+rooted:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 2.71,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 41642,
+    "output_tokens_mean": 687,
+    "cost_usd_mean": 0.00106
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 2.46,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 40622,
+    "output_tokens_mean": 608,
+    "cost_usd_mean": 0.00099
+   }
+  },
+  "push+budget4+rooted:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 19,
+    "accuracy": 0.7917,
+    "accuracy_mean_over_questions": 0.7917,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 4.42,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 14096,
+    "output_tokens_mean": 854,
+    "cost_usd_mean": 0.00107
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 17,
+    "accuracy": 0.7083,
+    "accuracy_mean_over_questions": 0.7083,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 10,
+    "tool_calls_mean": 3.71,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 13222,
+    "output_tokens_mean": 750,
+    "cost_usd_mean": 0.00099
+   }
+  },
+  "push+budget4+rooted:pointers_fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 6,
+    "tool_calls_mean": 3.83,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34458,
+    "output_tokens_mean": 881,
+    "cost_usd_mean": 0.0013
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 3,
+    "tool_calls_mean": 3.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 35323,
+    "output_tokens_mean": 722,
+    "cost_usd_mean": 0.00114
+   }
+  },
+  "push+budget4+rooted:pointers_stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 3.62,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 32022,
+    "output_tokens_mean": 810,
+    "cost_usd_mean": 0.00119
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 18,
+    "accuracy": 0.75,
+    "accuracy_mean_over_questions": 0.75,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 6,
+    "tool_calls_mean": 3.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 34766,
+    "output_tokens_mean": 720,
+    "cost_usd_mean": 0.00116
+   }
+  },
+  "push+budget4+rooted:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 17,
+    "accuracy": 0.7083,
+    "accuracy_mean_over_questions": 0.7083,
+    "gave_the_outdated_answer": 2,
+    "said_could_not_find": 8,
+    "tool_calls_mean": 3.71,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 51768,
+    "output_tokens_mean": 903,
+    "cost_usd_mean": 0.00139
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 2.67,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 45610,
+    "output_tokens_mean": 675,
+    "cost_usd_mean": 0.00112
+   }
+  },
+  "push+budget4+rooted:stale_generic": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 18,
+    "accuracy": 0.75,
+    "accuracy_mean_over_questions": 0.75,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 3.79,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 55004,
+    "output_tokens_mean": 940,
+    "cost_usd_mean": 0.00146
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 2.83,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 49455,
+    "output_tokens_mean": 683,
+    "cost_usd_mean": 0.00122
+   }
+  },
+  "push+budget4+rooted:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 17,
+    "accuracy": 0.7083,
+    "accuracy_mean_over_questions": 0.7083,
+    "gave_the_outdated_answer": 1,
+    "said_could_not_find": 8,
+    "tool_calls_mean": 3.88,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 59103,
+    "output_tokens_mean": 961,
+    "cost_usd_mean": 0.00153
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 3,
+    "tool_calls_mean": 3.04,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 55790,
+    "output_tokens_mean": 754,
+    "cost_usd_mean": 0.00132
+   }
+  },
+  "push+plain+budget2:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 20,
+    "accuracy": 0.8333,
+    "accuracy_mean_over_questions": 0.8333,
+    "gave_the_outdated_answer": 1,
+    "said_could_not_find": 8,
+    "tool_calls_mean": 2.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 35389,
+    "output_tokens_mean": 673,
+    "cost_usd_mean": 0.00091
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 17,
+    "accuracy": 0.7083,
+    "accuracy_mean_over_questions": 0.7083,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 15,
+    "tool_calls_mean": 2,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 36929,
+    "output_tokens_mean": 555,
+    "cost_usd_mean": 0.00076
+   }
+  },
+  "push+plain+budget2:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 9,
+    "accuracy": 0.375,
+    "accuracy_mean_over_questions": 0.375,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 14,
+    "tool_calls_mean": 2.29,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 6044,
+    "output_tokens_mean": 551,
+    "cost_usd_mean": 0.00052
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 10,
+    "accuracy": 0.4167,
+    "accuracy_mean_over_questions": 0.4167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 17,
+    "tool_calls_mean": 2.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 6862,
+    "output_tokens_mean": 561,
+    "cost_usd_mean": 0.00066
+   }
+  },
+  "push+plain+budget2:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 5,
+    "accuracy": 0.2083,
+    "accuracy_mean_over_questions": 0.2083,
+    "gave_the_outdated_answer": 7,
+    "said_could_not_find": 19,
+    "tool_calls_mean": 2.04,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 31075,
+    "output_tokens_mean": 675,
+    "cost_usd_mean": 0.00077
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 13,
+    "tool_calls_mean": 2.08,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 35715,
+    "output_tokens_mean": 606,
+    "cost_usd_mean": 0.00078
+   }
+  },
+  "push+plain+budget2:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 5,
+    "accuracy": 0.2083,
+    "accuracy_mean_over_questions": 0.2083,
+    "gave_the_outdated_answer": 11,
+    "said_could_not_find": 18,
+    "tool_calls_mean": 2.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 36473,
+    "output_tokens_mean": 693,
+    "cost_usd_mean": 0.00083
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 17,
+    "accuracy": 0.7083,
+    "accuracy_mean_over_questions": 0.7083,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 18,
+    "tool_calls_mean": 2.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 42903,
+    "output_tokens_mean": 647,
+    "cost_usd_mean": 0.00085
+   }
+  },
+  "push+plain:decisions": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 48171,
+    "output_tokens_mean": 926,
+    "cost_usd_mean": 0.00197
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.58,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 46683,
+    "output_tokens_mean": 824,
+    "cost_usd_mean": 0.00188
+   }
+  },
+  "push+plain:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 3.67,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 52504,
+    "output_tokens_mean": 749,
+    "cost_usd_mean": 0.00198
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.12,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 62031,
+    "output_tokens_mean": 755,
+    "cost_usd_mean": 0.00211
+   }
+  },
+  "push+plain:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 21,
+    "accuracy": 0.875,
+    "accuracy_mean_over_questions": 0.875,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.58,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 21899,
+    "output_tokens_mean": 934,
+    "cost_usd_mean": 0.00138
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 22580,
+    "output_tokens_mean": 814,
+    "cost_usd_mean": 0.00136
+   }
+  },
+  "push+plain:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 76679,
+    "output_tokens_mean": 1075,
+    "cost_usd_mean": 0.00264
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.08,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 63035,
+    "output_tokens_mean": 785,
+    "cost_usd_mean": 0.00215
+   }
+  },
+  "push+plain:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 6.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 90287,
+    "output_tokens_mean": 1148,
+    "cost_usd_mean": 0.00294
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.38,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 87399,
+    "output_tokens_mean": 994,
+    "cost_usd_mean": 0.00271
+   }
+  },
+  "push+rooted:pointers_fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 1,
+    "tool_calls_mean": 4.71,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 46170,
+    "output_tokens_mean": 974,
+    "cost_usd_mean": 0.0015
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 3.5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 39498,
+    "output_tokens_mean": 739,
+    "cost_usd_mean": 0.00121
+   }
+  },
+  "push+rooted:pointers_stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.21,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 48226,
+    "output_tokens_mean": 1001,
+    "cost_usd_mean": 0.00157
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 3.79,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 40966,
+    "output_tokens_mean": 800,
+    "cost_usd_mean": 0.0013
+   }
+  },
+  "push:decisions": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.17,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 46379,
+    "output_tokens_mean": 919,
+    "cost_usd_mean": 0.00189
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 1.46,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 16575,
+    "output_tokens_mean": 536,
+    "cost_usd_mean": 0.0009
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.67,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 44306,
+    "output_tokens_mean": 834,
+    "cost_usd_mean": 0.00184
+   }
+  },
+  "push:fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 3.62,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 52178,
+    "output_tokens_mean": 753,
+    "cost_usd_mean": 0.00201
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 1.33,
+    "doc_calls_mean": 0.08,
+    "prompt_tokens_mean": 27354,
+    "output_tokens_mean": 570,
+    "cost_usd_mean": 0.00137
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.25,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 63471,
+    "output_tokens_mean": 786,
+    "cost_usd_mean": 0.00214
+   }
+  },
+  "push:fresh_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 58527,
+    "output_tokens_mean": 835,
+    "cost_usd_mean": 0.00213
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 4,
+    "tool_calls_mean": 0.96,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 26268,
+    "output_tokens_mean": 562,
+    "cost_usd_mean": 0.00136
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.58,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 70182,
+    "output_tokens_mean": 818,
+    "cost_usd_mean": 0.00225
+   }
+  },
+  "push:map_fresh": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.04,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 77592,
+    "output_tokens_mean": 1013,
+    "cost_usd_mean": 0.00287
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 6,
+    "tool_calls_mean": 1.17,
+    "doc_calls_mean": 0.04,
+    "prompt_tokens_mean": 36504,
+    "output_tokens_mean": 530,
+    "cost_usd_mean": 0.00173
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 3.67,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 64555,
+    "output_tokens_mean": 765,
+    "cost_usd_mean": 0.0025
+   }
+  },
+  "push:map_stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.79,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 72857,
+    "output_tokens_mean": 949,
+    "cost_usd_mean": 0.00274
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 3,
+    "tool_calls_mean": 1.08,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 32280,
+    "output_tokens_mean": 503,
+    "cost_usd_mean": 0.00155
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 3.71,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 55863,
+    "output_tokens_mean": 765,
+    "cost_usd_mean": 0.00231
+   }
+  },
+  "push:none": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.5,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 20771,
+    "output_tokens_mean": 914,
+    "cost_usd_mean": 0.00134
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 0,
+    "accuracy": 0,
+    "accuracy_mean_over_questions": 0,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 24,
+    "tool_calls_mean": 5.75,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 16926,
+    "output_tokens_mean": 937,
+    "cost_usd_mean": 0.00124
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.88,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 22915,
+    "output_tokens_mean": 831,
+    "cost_usd_mean": 0.00137
+   }
+  },
+  "push:stale": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.96,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 82185,
+    "output_tokens_mean": 1131,
+    "cost_usd_mean": 0.00269
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 2,
+    "tool_calls_mean": 1.21,
+    "doc_calls_mean": 0.04,
+    "prompt_tokens_mean": 30152,
+    "output_tokens_mean": 607,
+    "cost_usd_mean": 0.00151
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.42,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 68701,
+    "output_tokens_mean": 830,
+    "cost_usd_mean": 0.00227
+   }
+  },
+  "push:stale_generic": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 24,
+    "accuracy": 1,
+    "accuracy_mean_over_questions": 1,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 1,
+    "tool_calls_mean": 5.75,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 80682,
+    "output_tokens_mean": 1102,
+    "cost_usd_mean": 0.0027
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 1,
+    "tool_calls_mean": 1.42,
+    "doc_calls_mean": 0.04,
+    "prompt_tokens_mean": 31976,
+    "output_tokens_mean": 610,
+    "cost_usd_mean": 0.00155
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 4.54,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 72718,
+    "output_tokens_mean": 865,
+    "cost_usd_mean": 0.00238
+   }
+  },
+  "push:stale_witness": {
+   "changed": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 22,
+    "accuracy": 0.9167,
+    "accuracy_mean_over_questions": 0.9167,
+    "gave_the_outdated_answer": 1,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 6.33,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 93138,
+    "output_tokens_mean": 1160,
+    "cost_usd_mean": 0.00298
+   },
+   "decision": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 5,
+    "tool_calls_mean": 1.21,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 32543,
+    "output_tokens_mean": 597,
+    "cost_usd_mean": 0.00166
+   },
+   "stable": {
+    "runs": 24,
+    "questions": 12,
+    "correct": 23,
+    "accuracy": 0.9583,
+    "accuracy_mean_over_questions": 0.9583,
+    "gave_the_outdated_answer": 0,
+    "said_could_not_find": 0,
+    "tool_calls_mean": 5.21,
+    "doc_calls_mean": 0,
+    "prompt_tokens_mean": 87468,
+    "output_tokens_mean": 973,
+    "cost_usd_mean": 0.00274
+   }
+  }
+ },
+ "per_question": {
+  "C01": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    0,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    0
+   ]
+  },
+  "C02": {
+   "pull:decisions": [
+    0,
+    0
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    0,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    0
+   ],
+   "pull:map_stale": [
+    0,
+    0
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    0,
+    1
+   ],
+   "push+plain:none": [
+    0,
+    0
+   ],
+   "push+plain:stale": [
+    1,
+    0
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    0,
+    1
+   ],
+   "push:decisions": [
+    1,
+    0
+   ],
+   "push:fresh": [
+    1,
+    0
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    0
+   ]
+  },
+  "C03": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    0
+   ],
+   "push+budget2:none": [
+    1,
+    1
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C04": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    0,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    1
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C05": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    0,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    0,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C06": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C07": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    0
+   ],
+   "push+plain:none": [
+    1,
+    0
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    0
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C08": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C09": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    0,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    1
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain+budget2:fresh": [
+    0,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C10": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    0,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C11": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "C12": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    0
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D01": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D02": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    0,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D03": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D04": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D05": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    0,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    0
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    0,
+    1
+   ],
+   "pull:stale_generic": [
+    0,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    0
+   ],
+   "push:decisions": [
+    0,
+    1
+   ],
+   "push:fresh": [
+    0,
+    0
+   ],
+   "push:fresh_witness": [
+    1,
+    0
+   ],
+   "push:map_fresh": [
+    0,
+    1
+   ],
+   "push:map_stale": [
+    0,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    0
+   ],
+   "push:stale_generic": [
+    1,
+    0
+   ],
+   "push:stale_witness": [
+    1,
+    0
+   ]
+  },
+  "D06": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D07": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D08": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D09": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    0,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    0
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    0
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D10": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    1
+   ],
+   "pull:stale": [
+    0,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D11": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "D12": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    0
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S01": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    0
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    0,
+    0
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    0,
+    0
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S02": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+budget2:fresh_witness": [
+    0,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    1
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S03": {
+   "pull:decisions": [
+    0,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    0
+   ],
+   "pull:fresh_witness": [
+    1,
+    0
+   ],
+   "pull:map_fresh": [
+    1,
+    0
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    0,
+    1
+   ],
+   "pull:stale": [
+    0,
+    0
+   ],
+   "pull:stale_generic": [
+    1,
+    0
+   ],
+   "pull:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+budget2:fresh_witness": [
+    0,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_generic": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    0,
+    0
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    0
+   ],
+   "push+plain:fresh": [
+    1,
+    0
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    0,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    0,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    0
+   ],
+   "push:map_fresh": [
+    0,
+    0
+   ],
+   "push:map_stale": [
+    0,
+    1
+   ],
+   "push:none": [
+    1,
+    0
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    0
+   ],
+   "push:stale_witness": [
+    0,
+    1
+   ]
+  },
+  "S04": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    0,
+    0
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    0,
+    0
+   ],
+   "push+budget2:fresh_witness": [
+    0,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    0,
+    0
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    0,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S05": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    1
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S06": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    0
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    0,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    0
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S07": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    1
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S08": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    0,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    0
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    0,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S09": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    1
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S10": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    0,
+    0
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    0,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    0,
+    0
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    0
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S11": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    1,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    0
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    1,
+    0
+   ],
+   "push+budget2:stale": [
+    1,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    0,
+    1
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  },
+  "S12": {
+   "pull:decisions": [
+    1,
+    1
+   ],
+   "pull:fresh": [
+    1,
+    1
+   ],
+   "pull:fresh_witness": [
+    1,
+    1
+   ],
+   "pull:map_fresh": [
+    1,
+    1
+   ],
+   "pull:map_stale": [
+    1,
+    1
+   ],
+   "pull:none": [
+    1,
+    1
+   ],
+   "pull:stale": [
+    1,
+    1
+   ],
+   "pull:stale_generic": [
+    1,
+    1
+   ],
+   "pull:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:none": [
+    0,
+    0
+   ],
+   "push+budget2+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget2+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+budget2:fresh_witness": [
+    1,
+    1
+   ],
+   "push+budget2:map_fresh": [
+    1,
+    1
+   ],
+   "push+budget2:none": [
+    0,
+    0
+   ],
+   "push+budget2:stale": [
+    0,
+    1
+   ],
+   "push+budget2:stale_generic": [
+    0,
+    1
+   ],
+   "push+budget2:stale_witness": [
+    1,
+    0
+   ],
+   "push+budget4+rooted:fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:none": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_generic": [
+    1,
+    1
+   ],
+   "push+budget4+rooted:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain+budget2:fresh": [
+    1,
+    1
+   ],
+   "push+plain+budget2:none": [
+    1,
+    0
+   ],
+   "push+plain+budget2:stale": [
+    1,
+    1
+   ],
+   "push+plain+budget2:stale_witness": [
+    1,
+    1
+   ],
+   "push+plain:decisions": [
+    1,
+    1
+   ],
+   "push+plain:fresh": [
+    1,
+    1
+   ],
+   "push+plain:none": [
+    1,
+    1
+   ],
+   "push+plain:stale": [
+    1,
+    1
+   ],
+   "push+plain:stale_witness": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_fresh": [
+    1,
+    1
+   ],
+   "push+rooted:pointers_stale": [
+    1,
+    1
+   ],
+   "push:decisions": [
+    1,
+    1
+   ],
+   "push:fresh": [
+    1,
+    1
+   ],
+   "push:fresh_witness": [
+    1,
+    1
+   ],
+   "push:map_fresh": [
+    1,
+    1
+   ],
+   "push:map_stale": [
+    1,
+    1
+   ],
+   "push:none": [
+    1,
+    1
+   ],
+   "push:stale": [
+    1,
+    1
+   ],
+   "push:stale_generic": [
+    1,
+    1
+   ],
+   "push:stale_witness": [
+    1,
+    1
+   ]
+  }
+ }
+}
