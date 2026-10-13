@@ -50,15 +50,19 @@ ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altınd
    aranan kod ağacına konduğunda 0,646 verdi (+0,33 [0,15 – 0,52]) ve ikinci modelde tekrarlandı
    (Sonnet 5.5: +0,25 [0,08 – 0,44]); ama arama aracı dosyaları karışık sırayla gezdiğinde kazanç
    kayboldu (+0,04 [−0,15 – 0,23]). Kazanç, not dosyasının aramada ilk dönen dosya olmasından geliyordu.
-10. **Karar defteri küçüktür, isteme konur.** İstemdeki karar defteriyle "neden" soruları 2 çağrıda
-    1,000; `docs/` içinde 0,333–0,417; ağaç içi not olarak 0,500–0,667 (arama sırasına göre).
+   Eşleşen notları bilerek önce döndüren bir arama aracı kazancın bir kısmını geri getirdi: 2 çağrıda
+   +0,15 ve +0,23 (biçime göre; biri aralığıyla sıfıra değiyor), 4 çağrıda +0,25 ve +0,21 (ikisi de net).
+10. **Karar defteri küçüktür; isteme konur ya da notları önce döndüren aramanın arkasına.** İstemdeki
+    karar defteriyle "neden" soruları 2 çağrıda 1,000 (14.922 token). Notları önce döndüren aramayla
+    karar notları 2 çağrıda 0,833, 4 çağrıda 1,000 (3.105 ve 5.741 token); `docs/` içindeki defter 2
+    çağrıda 0,292–0,417.
 
 Deneme (`cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
 iki şey var. Bir sınır koşulu: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
 Bir de olumsuz sonuç: eski bir sayfayı betikle tazelemenin denenen dört yolu da (tanık notu, yalnız
 işaret, okuma anında doldurma, eklenenlerin listesi) güncel kodu okuyan bir ajanın baştan yazdığı
 sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir. Teslim yolu için ölçülen: cümleyi ajanın aradığı ağaca koymak tek başına yetmez; arama aracı notu
-önce döndürürse ulaşır (Sonuç 7 ve 8).
+önce döndürürse ulaşır (Sonuç 7, 8 ve 9).
 
 ## Tasarım: ajan soru-cevap deneyi
 
@@ -309,6 +313,44 @@ Okuma:
 - Sonnet 5.5, araç hakkı bittikten sonra 15 istekte metinsiz son mesaj döndürdü; düzenek en çok iki kez
   yeniden ister; 96 cevabın 4'ü boş kaldı.
 
+## Sonuç 9: notları önce döndüren arama
+
+Sonuç 8'in işaret ettiği şeyi doğrudan kuran tur. `--grep-order notes-first` ile `grep` dosyaları
+karışık sırayla gezer ve `src/` altının herhangi bir yerindeki eşleşen not satırlarından en çok 20'sini,
+hangi yol arandığına bakmadan, kod satırlarından önce döndürür. Notun yeri ve dosya sırası devreden
+çıkar. Haiku, çekme düzeni, ikişer tekrar, 624 koşu.
+
+Yapısal 24 soru:
+
+| Çağrı | Hiçbir şey | Notlar, tek dosya | Notlar, dokunmuş | Bayat notlar | Tek dosya − hiçbir şey | Dokunmuş − hiçbir şey |
+|---|---|---|---|---|---|---|
+| 2 | 0,396 [0,23 – 0,56] | 0,542 [0,35 – 0,71] | 0,625 [0,48 – 0,77] | 0,583 [0,40 – 0,77] | +0,15 [−0,02 – 0,31] | +0,23 [0,04 – 0,42] |
+| 4 | 0,625 [0,44 – 0,79] | 0,875 [0,75 – 0,98] | 0,833 [0,71 – 0,96] | 0,812 [0,67 – 0,94] | +0,25 [0,10 – 0,42] | +0,21 [0,08 – 0,35] |
+| 14 | 0,979 | 0,979 | | | 0,00 | |
+
+14 çağrıda notlu kol soru başına 18.054 istem token'ı ve 4,2 araç çağrısı kullandı; notsuz 25.212 ve
+5,3. Not, 2 çağrıda 48 koşunun 46 ve 47'sinde göründü. Bayat notlarla değişen sorularda eski cevabı
+kesin diye söyleme %0, kuşkuyla aktarma %13 (2 çağrı); 4 çağrıda ikisi de yok.
+
+"Neden" soruları (12):
+
+| Çağrı | Hiçbir şey | `decisions.md` `docs/` içinde | Karar notları | Notlar − `docs/` | Notlu kolun istem token'ı |
+|---|---|---|---|---|---|
+| 2 | 0,000 | 0,292 [0,08 – 0,50] | 0,833 [0,58 – 1,00] | +0,54 [0,29 – 0,79] | 3.105 |
+| 4 | 0,042 | 0,958 | 1,000 | +0,04 [0,00 – 0,12] | 5.741 |
+
+Okuma:
+
+- Koşudan önce yazılan ölçütler: 2 çağrıda en az +0,20 ve sıfırı dışlayan aralık (dokunmuş biçim
+  geçti, tek dosya geçemedi; iki biçim birbirinden ayrışmıyor: −0,08 [−0,23 – 0,06]); notun koşuların
+  en az %80'inde görünmesi (geçti); 14 çağrıda token'ın 1,2 katı aşmaması ve doğruluğun düşmemesi
+  (geçti: 0,72 katı); karar notlarının `docs/` klasörünü sıfırı dışlayan aralıkla geçmesi (2 çağrıda geçti).
+- Yapısal sorularda kazanç 2 çağrıda Sonuç 7'deki +0,33'ten küçüktür, 4 çağrıda nettir; tam bütçede
+  aynı doğrulukla istem token'ının yaklaşık dörtte birini kazandırır.
+- Kararlarda büyüktür: 2 çağrıda `docs/` içindeki defterin 0,292'sine karşı 0,833, defteri isteme
+  koymanın beşte biri token'la.
+- Sınır: tek model (Haiku), tek repo, 12 karar sorusu. İkinci modelde ve büyük kod tabanında sınanmadı.
+
 ## Emsal
 
 Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğrulanmadı.
@@ -339,7 +381,9 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
   davrandı, süzgeç kazancı yok etti; ölçülen şey teslim yoludur.
 - MUST: "notu kod ağacına koymak ajana ulaştırır" koşulsuz yazılmaz; arama aracının notu önce döndürdüğü
   belirtilir. Gerekçe: Sonuç 8'de karışık dosya sırasıyla kazanç kayboldu.
-- SHOULD: karar defteri ajanın istemine konur. Gerekçe: Sonuç 8'de 2 çağrıda 1,000; diğer yollar 0,333–0,667.
+- SHOULD: karar defteri ajanın istemine konur; token kıtsa tek satırlık notlara bölünüp notları önce
+  döndüren bir aramanın arkasına konur. Gerekçe: Sonuç 8'de istemde 2 çağrıda 1,000; Sonuç 9'da notlu
+  aramayla 0,833 ve beşte bir token; `docs/` içinde 0,292–0,417.
 - MUST: "sorguyu sakla" ya da "okuma anında doldur" bir çözüm diye sunulmaz. Gerekçe: Sonuç 5'te kendi
   ölçütünü geçemedi; sınır, yazıldığında var olmayan davranışı kapsayamamasıdır.
 - SHOULD: bu çalışma alanında ajan için yazılan belge karar ve gerekçe taşır; kodun ne yaptığını
@@ -356,7 +400,7 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - `cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
 - `cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
 - `cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json` — Sonuç 7
-- `cache-and-ledger/data/agent-qa/inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 8
+- `cache-and-ledger/data/agent-qa/inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 8 ve 9
 - `cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
 - `cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
 - `wiki/sources/claude-science-context/12_synthesis_hypothesis_source_ledger_views.md` §5 (T4) ve
