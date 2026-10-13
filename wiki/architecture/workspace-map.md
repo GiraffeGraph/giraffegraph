@@ -71,7 +71,7 @@ sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
 
 | Varlık | Yer | İlgi |
 |---|---|---|
-| CSE 491 ders reposu | `/Users/efe/cse/CSE-491-Senior-Design-Project-I` | İzlence, haftalık plan, imzalı toplantı formları. Ders reposunun kendi klonudur; proje klasörü o repoda izlenmez. Proje klasörü `assignments/2026-2027-fall-efe-kurucay/giraffegraph/`: proje önerisi taslağı `proposal.md`, imzalı toplantı formu, TÜBİTAK formunun kopyası. Aynı klasördeki `thesis`, `wiki/thesis/` klasörüne sembolik bağdır; tezin ve makalenin tek kopyası wiki reposundadır |
+| CSE 491 ders reposu | `/Users/efe/cse/CSE-491-Senior-Design-Project-I` | İzlence, haftalık plan, imzalı toplantı formları. Ders reposunun kendi klonudur; proje klasörü o repoda izlenmez. Proje klasörü `assignments/2026-2027-fall-efe-kurucay/giraffegraph/`: imzalı toplantı formu, TÜBİTAK formunun kopyası. Aynı klasördeki `thesis` ve `proposal.md`, `wiki/thesis/` altına sembolik bağdır; tezin, makalenin ve önerinin tek kopyası proje reposundadır |
 | Kur'an uygulaması | `/Users/efe/projects/rtndigital/QuranApp` | Genelleme vakası C: provenance ve bayat embedding olayı (`wiki/sources/claude-science-context/07_case_codebase_wiki_and_quran.md`) |
 | Makale kütüphanesi | Zotero: kişisel "My Library" ve "giraffegraph" grup kütüphanesi (groupID 6601142) | `LLM-Eval-Metrics` koleksiyonu iki kütüphanede de var: 38 makalenin künyesi, PDF'i ve NotebookLM review notu. `KG-Hadith-Design` koleksiyonu yalnız kişisel kütüphanede: `wiki/sources/claude-science-results/04b_dogrulanmis_kaynakca.bib` içinden 49 kayıt (tema etiketli) ve `wiki/literature/extraction_eval_precedents.bib` içinden 6 kayıt (`eval-precedent` etiketli; Oumer 2025 tezi Zotero'da yok). Zotero API anahtarının grup kütüphanesine yazma izni yoktur (2026-10-08: 403) |
 | Sanadset 650K | Hugging Face `freococo/650k_sanadset`; yerel kopya `data/raw/sanadset-hf/` | Arapça tam isnad korpusu; pilotun veri kaynağı. Lisans beyanları çelişiyor: Hugging Face kartı `cc0-1.0`, özgün Mendeley Data kaydı "CC BY 4.0" (`data/README.md`) |
@@ -109,8 +109,8 @@ sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
   `giraffegraph-core/backend/var/llm-cache/` altındadır ve depoda yok sayılır.
 - İndirilen her dosyanın boyutu ve sha256 değeri `data/raw_manifest.json` içindedir; `data/eval/`
   altındaki kümeler `data/README.md` içindeki kurulum zinciriyle bayt düzeyinde yeniden üretilir.
-- Tez ve makale taslakları `wiki/thesis/` altındadır. Proje önerisi taslağı
-  (`proposal.md`) ders reposunun çalışma ağacındadır ve hiçbir uzak repoda durmaz.
+- Tez, makale ve proje önerisi taslakları `wiki/thesis/` altındadır (öneri:
+  `wiki/thesis/proposal/proposal.md`).
 - Sitedeki cümleler Core `main`in yaptığına göre yazılıdır (`landing` commit `b92fc4b`, 2026-10-13, 6 dosya).
 - Core `main`, kimlik karar defteri benzetimini (`evaluation/identity_ledger.py`), yeniden uygulama
   ölçümünü (`evaluation/decision_reapplication.py`), testlerini ve iki sonuç dosyasını taşır

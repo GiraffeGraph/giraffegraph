@@ -7,9 +7,11 @@ betiklerini ve okunacak çıktılarını tutmak. Metinler İngilizcedir; wiki sa
 
 ## Scope
 
-- In: tez bölümleri, makale metni, derleme betikleri, şekiller, PDF çıktıları
-- Out: proje önerisi ve imzalı toplantı formları (ders reposu, yol
-  `wiki/architecture/workspace-map.md` içinde), ölçümlerin kendisi (`wiki/evaluation/`)
+- In: tez bölümleri, makale metni, CSE 491 proje önerisi taslağı, derleme betikleri, şekiller, PDF
+  çıktıları
+- Out: imzalı toplantı formları (ders klasörü, yol `wiki/architecture/workspace-map.md` içinde),
+  TÜBİTAK 2209-A formu (`wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf`;
+  tek proje çerçevesine göre yeniden yazılmadı), ölçümlerin kendisi (`wiki/evaluation/`)
 
 ## Statü
 
@@ -24,6 +26,7 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (53 sayfa, 40 kaynak) |
+| CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | Yok; teslimden önce PDF ya da DOCX'e çevrilir. Sonundaki "Open points" teslimden önce kapatılır |
 | Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 18 kaynak), `paper.tex` |
 
 ## Bölüm başına dayanak
