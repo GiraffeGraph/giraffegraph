@@ -53,6 +53,7 @@ ve çapa verdiği ölçüm dosyası esas alınır.
 | TÜBİTAK taahhütleri ve hipotezler | Taahhüt tablosu, eleştiri, dört revizyon önerisi | Taahhüt başına eldeki kanıt: `wiki/project/tubitak-commitments.md` |
 | 16 açık soru ve öneriler (`claude-science-context/13`, `claude-science-results/07`) | Soru ve öneri | Soru başına fiilî durum ve karar statüsü: `wiki/project/open-decisions.md` |
 | İş planı (`claude-science-results/06`) | İP0 ve F1–F4 | Sıradaki işler ve bağımlılıkları: `wiki/project/roadmap.md` |
+| Ölçülmemiş öngörüler T3, T4 ve çürütme testleri Ç2, Ç4 (`claude-science-context/12` §5, `claude-science-results/02` §4) | "Karar defteri alt-doğrusal büyür", "niyet soruları yalnız karar varken cevaplanır", "içerik adresli karar yeniden uygulanır", "karar defteri + arama, belgeli wiki'den kötü değildir": hepsi ölçülmemiş | Dördü de 2026-10-13'te ölçüldü: `wiki/evaluation/decision-ledger-experiments.md` (T3, Ç2), `wiki/evaluation/wiki-for-agents-experiments.md` (T4, Ç4) |
 
 Güncel karşılığı olmayan ve pakette hâlâ tek kaynak olan içerik: tasarım uzayı ve mimari tartışması
 (`claude-science-results/02`), istatistik planı ve güç analizi (`claude-science-results/03` §4), ezber

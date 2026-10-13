@@ -612,13 +612,20 @@ step, which we have not measured.
 
 The reference is platform markup, not a gold standard produced by
 independent annotators, and absolute scores should not be read as
-accuracy. No reviewer took part, so the human part of the loop is
-implemented and tested but not evaluated. All usable results come from
-one model, one setting and one run per condition. An unmatched proposal
-is not necessarily a false statement. Narrator mentions were scored, not
-relations. The hadiths are well known and are probably in the
-model\textquotesingle s training data; we did not test memorisation with
-altered names. Schema drift, which motivated the type and property
+accuracy. The share of unmatched proposals that the value-in-quotation
+check flags is specific to this task and prompt: on 300 abstracts of the
+human-annotated BC5CDR corpus {[}18{]}, with the same model and a
+schema-only prompt, the check flagged 3.9\% of 2,269 proposals and these
+held 53 of the 303 that did not match the annotations, while the
+model\textquotesingle s confidence found 58 at the same review share;
+most unmatched proposals there were verbatim copies of spans the
+annotators had not labelled. No reviewer took part, so the human part of
+the loop is implemented and tested but not evaluated. All usable results
+come from one model, one setting and one run per condition. An unmatched
+proposal is not necessarily a false statement. Narrator mentions were
+scored, not relations. The hadiths are well known and are probably in
+the model\textquotesingle s training data; we did not test memorisation
+with altered names. Schema drift, which motivated the type and property
 checks, was almost absent with the model that worked, so its frequency
 in normal use is not established. The rule-based segmenter was tuned on
 50 hadiths that are excluded from the test set.
@@ -736,5 +743,9 @@ arXiv:2306.13063, 2023. https://arxiv.org/abs/2306.13063
 {[}17{]} GiraffeGraph project, data manifest: sources, licence
 statements and construction of the evaluation sets,
 \texttt{data/README.md}, 12 October 2026 (unpublished).
+
+{[}18{]} J. Li et al., "BioCreative V CDR task corpus: a resource for
+chemical disease relation extraction," \emph{Database}, vol. 2016, pp.
+baw068, 2016. doi:10.1093/database/baw068
 
 \end{document}

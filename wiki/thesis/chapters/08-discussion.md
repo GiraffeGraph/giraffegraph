@@ -38,6 +38,8 @@ The checks keep altered names out of the accepted output, and the commit rule ke
 
 **What "wrong" means.** An unmatched proposal is not necessarily a false statement about the hadith. More than half of the unmatched proposals of the schema-only model name the right narrator in another script.
 
+**One domain.** That the value-in-quotation check flags most unmatched proposals (122 of 145) is a property of this task and this prompt, in which the model's main departure from the text was to rewrite the name. We repeated the check outside hadith, on 300 abstracts of the BC5CDR corpus, which carries human annotations of chemical and disease mentions [@li2016bc5cdr], with the same model and a schema-only prompt. There the check flagged 3.9% of 2,269 proposals, and these held 53 of the 303 proposals that did not match the annotations; the other 250 were verbatim copies of spans the annotators had not labelled. With the same number of items sent to review, the model's confidence found 58 unmatched proposals and the check 53. The check establishes that a value comes from the quoted text. It does not establish that the right text was selected.
+
 **One model, one effort setting, one run.** All usable results come from Claude Haiku 5.5 at low effort, with each condition run once. The second model failed for a reason we attribute to our own wire format and effort setting without having tested that attribution.
 
 **In-memory backend.** The experiments ran on the in-memory backend. The same pipeline is covered on PostgreSQL and Neo4j by twelve tests, not by the experiments.

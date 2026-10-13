@@ -35,6 +35,7 @@ Proje:
 - `evaluation/correctness-measurement.md` — doğruluk ölçümü: katmanlar, metrikler, ölçülen/ölçülmeyen
 - `evaluation/engine-experiments.md` — motor deneyleri: 300 hadiste LLM koşulları, değer-alıntı kapısı, maliyet, kimlik taban çizgisi
 - `evaluation/decision-ledger-experiments.md` — karar defteri keşif deneyleri: bir ravi kararı kaç kez yeniden kullanılır, kapsamı çelişkiden türetmek, kopya kontrolünün hadis dışında tutmaması
+- `evaluation/wiki-for-agents-experiments.md` — LLM'in tuttuğu wiki ajana ne kazandırır: karar defteri, taze ve bayat belge, tanık notu, araç bütçesi; belge atıflarının git geçmişindeki ömrü
 - `evaluation/related-work.md` — emsal çalışmalar çıkarım doğruluğunu nasıl ölçmüş, nerede eksik
 - `evaluation/literature-map.md` — 38 makalelik taramanın ölçüm katmanlarına eşlenmesi ve boşluk
 

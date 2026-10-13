@@ -20,8 +20,8 @@ kişinin yönlendirmesiyle, yapay zekâ ile yazıldı; ders yapay zekâ kullanı
 
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
-| Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `10-appendix.md` | `wiki/thesis/build/thesis.pdf` (48 sayfa, 37 kaynak) |
-| Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (9 sayfa, 17 kaynak), `paper.tex` |
+| Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `10-appendix.md` | `wiki/thesis/build/thesis.pdf` (48 sayfa, 38 kaynak) |
+| Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (9 sayfa, 18 kaynak), `paper.tex` |
 
 ## Derleme
 
@@ -68,7 +68,7 @@ derlemeyle yeniden üretilir.
 
 ## Verification checklist
 
-- [ ] İki derleme komutu hatasız biter; çıktı "37 references" ve "17 references" der
+- [ ] İki derleme komutu hatasız biter; çıktı "38 references" ve "18 references" der
 - [ ] `wiki/thesis/build/thesis.pdf` 48 sayfa, `wiki/thesis/paper/build/paper.pdf` 9 sayfa
 - [ ] 7. bölümdeki tablolar `giraffegraph-core/evaluation/results/2026-10-12-sixbooks300/compare-ifta.md` ile aynı
 

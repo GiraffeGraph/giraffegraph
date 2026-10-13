@@ -15,8 +15,9 @@ hangisi tutmadı, hangi koşulda.
 
 ## Statü
 
-Keşif aşaması (2026-10-13). Betikler `cache-and-ledger/data/` altındadır; o klasör hiçbir repoda
-izlenmez. Sonuçlar tek kişinin tek oturumunda üretildi; ekip ve danışman görmedi. Sayfadaki yorumlar
+Keşif aşaması (2026-10-13). İlk betikler `cache-and-ledger/data/` altındadır; o klasör hiçbir repoda
+izlenmez. Kimlik defteri benzetimi testleriyle birlikte Core'un `feat/identity-ledger` dalındadır
+(`main`e alınmadı). Sonuçlar tek kişinin tek oturumunda üretildi; ekip ve danışman görmedi. Sayfadaki yorumlar
 öneridir.
 
 ## BLUF
@@ -104,6 +105,57 @@ Sağlamlık: kişi dizisi aynı olan zincirler teke indirildiğinde (23.441 zinc
 0,192 / 0,014, yalnız soran kural 0,201 / 0,057 verir. Dosya sırasıyla okunduğunda 0,177 / 0,016 ve
 0,200 / 0,055.
 
+### İkinci veri kümesinde ve görülmemiş kitapta tekrar
+
+Aynı benzetim Core'un `evaluation/identity_ledger.py` modülüne taşındı ve İfta veri ailesinin altı
+kitabında koşuldu: ravi numarası taşıyan 34.681 hadis, 205.514 mention, 6.891 kişi; etiketler İfta
+platformunundur, AR-Sanad'dan bağımsızdır. Komşu, metin sırasındaki önceki ve sonraki mention'dır. Kuralın
+sınırları AR-Sanad'da seçildiği gibi bırakıldı; İfta'nın etiketli komşu çiftlerinin %3,4'ünü işaretler
+(AR-Sanad'da %0,8).
+
+| Politika | AR-Sanad: soru · sessiz hata | İfta: soru · sessiz hata |
+|---|---|---|
+| Sabit: ad | 0,101 · 0,100 | 0,077 · 0,102 |
+| Sabit: ad; kural yalnız o olguyu sorar | 0,204 · 0,054 | 0,229 · 0,049 |
+| Kapsam kuralla daralır | 0,178 · 0,014 | 0,199 · 0,010 |
+| Sabit: öğrenci + ad | 0,340 · 0,006 | 0,292 · 0,007 |
+| Geriye dönük | 0,187 · 0,006 | 0,157 · 0,007 |
+
+Görülmemiş kitap: defter beş kitapla ısıtıldı, sayım altıncı kitapta yapıldı (altı kitabın her biri bir
+kez dışarıda bırakıldı).
+
+| Politika | Soru / mention (altı kitabın aralığı) | Sessiz hata / mention (aralık) |
+|---|---|---|
+| Sabit: ad | 0,023 – 0,081 | 0,091 – 0,151 |
+| Sabit: ad; kural yalnız o olguyu sorar | 0,153 – 0,243 | 0,048 – 0,071 |
+| Kapsam kuralla daralır | 0,138 – 0,249 | 0,004 – 0,016 |
+| Sabit: öğrenci + ad | 0,151 – 0,307 | 0,007 – 0,023 |
+
+Başka kitaplardan taşınan kararlar soruyu azaltır, yalnız ada bağlı defterde hatayı büyütür (ilk cevap
+başka bir kitabın adaşına ait olabilir). Kuralla daralan kapsam, görülmemiş kitapta sabit (öğrenci, ad)
+anahtarının hata düzeyinde kalır ve her kitapta ondan az soru sorar.
+
+İnceleyici belirsiz adlarda %5 yanılırsa (AR-Sanad): kuralla daralan kapsam 0,219 soru · 0,018 sessiz
+hata, yalnız soran kural 0,211 · 0,064, sabit (öğrenci, ad) 0,340 · 0,019. Yanlış cevaplar sahte
+çelişki üretip soruyu artırır; sıralama değişmez. Akrabalık ifadelerini baştan bağlama bağlamak sonucu
+değiştirmez (0,178 · 0,013).
+
+## Sonuç 2b: içeriğe bağlı karar yeniden çıkarımda kaybolmaz
+
+30 Eylül paketinin kendi çürütme testi (Ç2): karar aday kimliğine değil içeriğe bağlanırsa, yeniden
+çıkarımda kararların yarısından azı yeniden uygulanabiliyorsa karar defterinin ekonomik gerekçesi düşer.
+300 hadislik dört koşunun ravi adayları karşılaştırıldı; hedef (hadis, normalize ad) ya da (hadis,
+normalize alıntı).
+
+| Kararın verildiği koşu → yeniden çıkarım | Hedefi bulunan aday payı (ad · ad ya da alıntı) |
+|---|---|
+| LLM istemi → başka LLM istemi (aynı model, altı yön) | 0,857 – 0,977 · 0,899 – 0,978 |
+| Kural tabanlı ↔ LLM (altı yön) | 0,561 – 0,634 · 0,572 – 0,636 |
+
+Aday kimliğine bağlı kararda bu pay yapısı gereği 0'dır. İstem değişince kararların büyük kısmı yerinde
+kalır; yöntem değişince (kural tabanlı çıkarım ravi adına fiil yapıştırır) üçte biri hedefini kaybeder.
+Tek model, tek veri kümesi; gerçek karar yoktur, ölçülen hedeflerin örtüşmesidir.
+
 ## Sonuç 3: aynı benzetim hadis dışında
 
 Bağlam anahtarı (önceki dizgi, dizgi). Biyomedikal derlemlerde bir dizgi belge başına bir kez sayıldı.
@@ -173,8 +225,9 @@ Bir alt ajan 2026-10-13'te birincil dizinlerden çekti; künyeler ayrıca doğru
 - "İnsan" veri kümesinin etiketidir: ilk cevap hatasız ve bedava sayılır. Soru sayısı dakika ya da
   uzmanlık değildir.
 - AR-Sanad kişi etiketlerinin nasıl atandığı bilinmiyor; etiketle çelişki hata olmayabilir.
-- Rastgele sıra doygunluğu ölçer. Yeni bir kitaba ya da yeni bir terminolojiye geçiş sınanmadı.
-- Kuralın sınırları ölçüldüğü veriden seçildi; ayrı bir veride sınanmadı.
+- Rastgele sıra doygunluğu ölçer. Yeni kitaba geçiş altı kitapla sınandı; altı kitabın ravileri büyük
+  ölçüde ortaktır, uzak bir derlemeye geçiş sınanmadı.
+- Kuralın sınırları AR-Sanad'dan seçildi; İfta'da değiştirilmeden uygulandı, başka bir alanda sınanmadı.
 - Kural yalnız AR-Sanad'da denendi; başka bir alanda karşılığı kurulmadı.
 - Kopya kontrolü tek model, tek derlem ve 300 belgede tekrarlandı; eşleşme yüzey biçimine bakar.
 - Hiçbir deneyde gerçek bir insan karar vermedi.
@@ -198,7 +251,10 @@ Bir alt ajan 2026-10-13'te birincil dizinlerden çekti; künyeler ayrıca doğru
 - `cache-and-ledger/data/explore-scoped-ledger.py`, `scoped-ledger-ar-sanad.json` — Sonuç 2, kural kalibrasyonu, bilgi ölçüleri
 - `cache-and-ledger/data/explore-ledger-domains.py`, `ledger-domains-ar-sanad.json`, `ledger-domains-medmentions.json`, `ledger-domains-bc5cdr.json` — Sonuç 3
 - `cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` — Sonuç 4
+- `giraffegraph-core/evaluation/identity_ledger.py`, `evaluation/results/2026-10-13-identity-ledger/identity-ledger.json` — iki veri kümesinde tekrar, görülmemiş kitap, yanılan inceleyici (Core'un `feat/identity-ledger` dalı)
+- `giraffegraph-core/evaluation/decision_reapplication.py`, `evaluation/results/2026-10-13-identity-ledger/decision-reapplication.json` — Sonuç 2b
 - `data/eval/ar-sanad-identity/` — zincirler ve ravi tablosu
+- `data/work/ifta_sixbooks.jsonl`, `data/raw/ifta-kaggle/corpus-original/ifta_narrators.json` — İfta mention'ları ve ravi kataloğu
 - `data/README.md`, "4. Two biomedical corpora" — MedMentions ve BC5CDR kaynakları, lisans beyanları
 - `cache-and-ledger/README.md` — sınanan iddiaların kaynağı
 

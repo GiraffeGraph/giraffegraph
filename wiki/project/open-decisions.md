@@ -15,7 +15,7 @@ aktarılmasın diye vardır.
 
 ## Statü
 
-2026-10-13 itibarıyla aşağıdaki soruların hiçbiri için ekip ya da danışman kararı kayıtlı değildir;
+2026-10-13 itibarıyla aşağıdaki 25 sorunun hiçbiri için ekip ya da danışman kararı kayıtlı değildir;
 `wiki/decisions/` klasörü yoktur. "Fiilî durum" sütunu bir kararı değil, kodun ve ölçümlerin şu an
 dayandığı varsayımı gösterir. Bu varsayımların çoğu tek kişinin çalışmasıyla oluştu ve ekipçe
 görüşülmedi.
@@ -69,6 +69,15 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 | 20 | Hangi veri, hangi biçimde yeniden dağıtılabilir? | Form: yalnız üçlü düzeyinde açık yayın | İndirilen veri yeniden dağıtılmaz; değerlendirme kümeleri özel repodadır. Lisans beyanları sürüme göre değişir, Sanadset için iki beyan çelişir | E, D |
 | 21 | Prototip davranışı (isnad bölütleme, kapılar, karar kaydı) ekipçe kabul edildi mi? | Öneri yok | Kod `main` dalındadır; ekip görüşmesi ve ADR yok | E |
 
+## Cache and Ledger çalışmasından doğanlar (2026-10-13)
+
+| # | Soru | Öneri | Fiilî durum | Sahip |
+|---|---|---|---|---|
+| 22 | "Ne saklanmalı" araştırması ayrı bir proje mi olur, hadis projesini mi destekler? | Öneri: hadis projesini destekler; genel sonuçlar tezin tartışma bölümüne girer. Gerekçe: hadis dışına taşınan iki fikir (kopya kontrolü, tanık notu) ölçümde tutmadı; tutan fikir (kararın kapsamı) isnadın tekrar eden yapısına yaslanır | Sonuçlar iki wiki sayfasında ve `cache-and-ledger/MEASUREMENTS.md` içindedir; ayrı repo ve ayrı plan yok | E, D |
+| 23 | Kapsamı çelişkiyle daralan kimlik defteri Core'a alınır mı? | Öneri: içerik adresli karar hedefiyle (C3) birlikte alınır; önce gerçek bir inceleyiciyle küçük bir deneme | Benzetim Core'un `feat/identity-ledger` dalındadır; motor kodu yoktur | E |
+| 24 | `cache-and-ledger/` kendi reposuna alınır mı? | Öneri yok | Klasör repo değildir; kopyası özel veri reposunda yedektir | E |
+| 25 | Bu wiki ajan için nasıl yazılır: davranışı anlatan cümle mi, karar ve yol çapası mı? | Öneri: karar, gerekçe ve çapa; kodun ne yaptığını anlatan cümle yazılmaz (`wiki/evaluation/wiki-for-agents-experiments.md`, Rules) | Yaşayan sayfalar türetilebilir olgu da taşır (test sayıları üç sayfada tekrar eder); sayfalardaki 968 sayının 80'i atıf verilen dosyalarda bulunmaz | E |
+
 ## Rules
 
 - MUST: "Fiilî durum" bir karar gibi aktarılmaz. Gerekçe: öneri ile karar ayrıdır; onaysız varsayım
@@ -102,6 +111,8 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 - `wiki/project/roadmap.md`
 - `wiki/project/overview.md`
 - `wiki/evaluation/correctness-measurement.md`
+- `wiki/evaluation/decision-ledger-experiments.md`
+- `wiki/evaluation/wiki-for-agents-experiments.md`
 - `wiki/sources/README.md`
 
 ## Last updated
