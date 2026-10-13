@@ -3,8 +3,8 @@
 Bitirme projesinin yaşayan bilgi katmanı: ne yapıyoruz, neden, ne ölçüldü, ne açık.
 Kod ve ölçüm dosyaları nihai otoritedir; wiki *neden* ve *nasıl ilerlenir* sorularını taşır.
 
-Bu klasör kendi git reposudur (`GiraffeGraph/giraffegraph-wiki`, özel) ve çalışma alanında `wiki/`
-adıyla durur. Projenin kod dışındaki bütün bağlamı buradadır: yaşayan sayfalar, literatür taraması,
+Bu klasör proje reposunun (`GiraffeGraph/giraffegraph`, özel) `wiki/` klasörüdür; motor
+(`giraffegraph-core/`) ve veri (`data/`) aynı repodadır. Projenin kod dışındaki bütün bağlamı buradadır: yaşayan sayfalar, literatür taraması,
 tarihli kaynak paketleri, tez ve makale taslakları.
 
 **Proje:** *A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and

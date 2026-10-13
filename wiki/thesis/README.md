@@ -65,7 +65,7 @@ Derlemenin okuduğu, bu klasörün dışındaki dosyalar:
 |---|---|---|
 | `wiki/sources/claude-science-results/04b_dogrulanmis_kaynakca.bib` | Kaynakça | Bu repo |
 | `wiki/literature/extraction_eval_precedents.bib` | Emsal çalışmaların künyeleri | Bu repo |
-| `giraffegraph-core/evaluation/results/2026-10-12-*/**/analysis.json` | Şekiller | Core reposunda izlenmez; kopyası `data/core-backup/` altında, geri yükleme komutu `data/README.md` içinde |
+| `giraffegraph-core/evaluation/results/2026-10-12-*/**/analysis.json` | Şekiller | `giraffegraph-core/` altında izlenmez; kopyası `data/core-backup/` altında, geri yükleme komutu `data/README.md` içinde |
 
 Repoda yalnız PDF'ler ve `paper.tex` izlenir; Word, HTML ve birleştirilmiş Markdown çıktıları
 derlemeyle yeniden üretilir.

@@ -29,8 +29,8 @@ Yaşayan sayfalar adıyla listelenir. `sources/` altındaki paket dosyaları ile
 bölümler tek tek listelenmez; `sources/` için tam liste `sources/MANIFEST.sha256` dosyasıdır.
 
 ```txt
-CLAUDE.md                     # çalışma alanı kökü (repo dışı): wiki/CLAUDE.md dosyasını içe aktarır
-wiki/                         # repo: GiraffeGraph/giraffegraph-wiki
+CLAUDE.md                     # repo kökü: wiki/CLAUDE.md dosyasını içe aktarır
+wiki/                         # GiraffeGraph/giraffegraph reposunun klasörü
   README.md                   # indeks + nereden başlanır
   CLAUDE.md                   # ajan kuralları, kapsam, değişmezler
   WIKI-CREATOR.md             # sayfa yazma protokolü

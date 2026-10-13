@@ -18,7 +18,7 @@ saklama biçimini (boşluklu çerçeve, ağaç içi not) sınayan deneylerin son
 ## Statü
 
 Keşif aşaması (2026-10-13). Ajanın kendi kararlarıyla yürüttüğü tek bir oturumda üretildi; ekip
-ve danışman görmedi. 5.520 ajan koşusu, yaklaşık 10,7 dolar API harcaması. Betikler ve çıktılar `data/cache-and-ledger/data/` altındadır (özel veri reposu). Bu sayfa projenin
+ve danışman görmedi. 5.520 ajan koşusu, yaklaşık 10,7 dolar API harcaması. Betikler ve çıktılar `data/cache-and-ledger/data/` altındadır. Bu sayfa projenin
 iddiasının ikinci alandaki destek kanıtıdır (`wiki/project/overview.md`, "Çerçeve"). Yorumlar öneridir.
 
 ## BLUF

@@ -18,14 +18,14 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
 
 | Klasör | Ne | Proje ilgisi | Git |
 |---|---|---|---|
-| `giraffegraph-core/` | KG üretim motoru: FastAPI backend, Postgres + Neo4j, Next.js iç panel. Aday → doğrulama → canonical graf hattı | **Çekirdek.** Deney bu kodun üzerinde koşar | `github.com/GiraffeGraph/giraffegraph-core` (herkese açık), `main`; LICENSE dosyası yok |
-| `data/` | 2026-10-12'de indirilen dış etiketli hadis verisi (`raw/`: İfta ailesinin altı kitabı ve ravi kataloğu, AR-Sanad, Sanadset; hadis dışı iki biyomedikal derlem, MedMentions ve BC5CDR, 2026-10-13'te eklendi; 99 dosya), kurulum betikleri (`scripts/`) ve bunlardan kurulan değerlendirme kümeleri (`eval/`: `sixbooks-fresh`, `pilot50`, `ar-sanad-identity`). `core-backup/`, Core'un izlemediği iki klasörün kopyasıdır: deney koşularının tam çıktısı ve model yanıt önbelleği. Manifest: `data/README.md` | **Aktif, yalnız değerlendirme.** Motor deneylerinin girdisi ve referansı. Veri yeniden dağıtılmaz; `raw/` altındaki dosyalar güvenilmeyen indirmedir, çalıştırılmaz | `github.com/GiraffeGraph/giraffegraph-eval-data` (özel), ilk commit 2026-10-13. `raw/` ve `work/` izlenmez; diskte 4,5 GB, repoda yaklaşık 35 MB |
-| `wiki/` | Projenin kod dışındaki bütün bağlamı: yaşayan sayfalar, literatür taraması, tarihli kaynak paketleri, tez ve makale taslakları (`wiki/thesis/`) | **Aktif.** Her oturumun ilk okuduğu yer | `github.com/GiraffeGraph/giraffegraph-wiki` (özel), ilk commit 2026-10-13 |
-| `wiki/literature/` | Efe'nin literatür taraması: 38 makale, LLM başarı ölçüm metrikleri | **Aktif.** Danışman toplantısı aksiyonu | wiki reposunun parçası |
-| `wiki/sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı: mimari analizi, revize deney protokolü, pilot kodu ve sayıları, iş planı, yayın planı | **Referans (donmuş).** Ölçüm ve protokol önerilerinin kaynağı | wiki reposunun parçası |
-| `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | wiki reposunun parçası |
-| `data/cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Projenin iddiasının kaynağı ve destek deneyleri.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride ve canlı ajanla sınanması `wiki/evaluation/decision-ledger-experiments.md`, `wiki/evaluation/wiki-for-agents-experiments.md`; özet `data/cache-and-ledger/MEASUREMENTS.md` | özel veri reposunun parçası |
-| `landing/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/landing` (herkese açık), `main`; `main`e push siteyi yayınlar (`landing/.github/workflows/deploy.yml`) |
+| `giraffegraph-core/` | KG üretim motoru: FastAPI backend, Postgres + Neo4j, Next.js iç panel. Aday → doğrulama → canonical graf hattı | **Çekirdek.** Deney bu kodun üzerinde koşar | proje reposunun parçası; LICENSE dosyası yok |
+| `data/` | 2026-10-12'de indirilen dış etiketli hadis verisi (`raw/`: İfta ailesinin altı kitabı ve ravi kataloğu, AR-Sanad, Sanadset; hadis dışı iki biyomedikal derlem, MedMentions ve BC5CDR, 2026-10-13'te eklendi; 99 dosya), kurulum betikleri (`scripts/`) ve bunlardan kurulan değerlendirme kümeleri (`eval/`: `sixbooks-fresh`, `pilot50`, `ar-sanad-identity`). `core-backup/`, Core'un izlemediği iki klasörün kopyasıdır: deney koşularının tam çıktısı ve model yanıt önbelleği. Manifest: `data/README.md` | **Aktif, yalnız değerlendirme.** Motor deneylerinin girdisi ve referansı. Veri yeniden dağıtılmaz; `raw/` altındaki dosyalar güvenilmeyen indirmedir, çalıştırılmaz | proje reposunun parçası. `raw/` ve `work/` izlenmez; diskte 4,5 GB, repoda yaklaşık 35 MB |
+| `wiki/` | Projenin kod dışındaki bütün bağlamı: yaşayan sayfalar, literatür taraması, tarihli kaynak paketleri, tez ve makale taslakları (`wiki/thesis/`) | **Aktif.** Her oturumun ilk okuduğu yer | proje reposunun parçası |
+| `wiki/literature/` | Efe'nin literatür taraması: 38 makale, LLM başarı ölçüm metrikleri | **Aktif.** Danışman toplantısı aksiyonu | proje reposunun parçası |
+| `wiki/sources/claude-science-results/` | 2026-09-30 Claude Science çıktısı: mimari analizi, revize deney protokolü, pilot kodu ve sayıları, iş planı, yayın planı | **Referans (donmuş).** Ölçüm ve protokol önerilerinin kaynağı | proje reposunun parçası |
+| `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | proje reposunun parçası |
+| `data/cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Projenin iddiasının kaynağı ve destek deneyleri.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride ve canlı ajanla sınanması `wiki/evaluation/decision-ledger-experiments.md`, `wiki/evaluation/wiki-for-agents-experiments.md`; özet `data/cache-and-ledger/MEASUREMENTS.md` | proje reposunun parçası |
+| `landing/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | ayrı repo: `github.com/GiraffeGraph/landing` (herkese açık), `main`; `main`e push siteyi yayınlar (`landing/.github/workflows/deploy.yml`). Proje reposunda izlenmez (kök `.gitignore`) |
 
 ## Rules
 
@@ -45,26 +45,27 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
   `backend/tests/unit/test_hadith_normalization.py`), `data/README.md` ve tez derleme betiği
   (`wiki/thesis/build.py`, `BIB_FILES`). Gerekçe: pilot regresyon testleri dosyayı bulamazsa
   hata vermez, atlanır; kırılma fark edilmez.
-- SHOULD: Core'da kod değişikliği `giraffegraph-core/` reposunun kendi commit'leriyle yapılır; wiki
-  değişikliği `wiki/` reposunda commit edilir.
+- MUST: `data/` ve `wiki/thesis/` içeriği herkese açık bir repoya kopyalanmaz. Gerekçe: `data/`
+  üçüncü taraf hadis metni, `wiki/thesis/` gönderilmemiş taslak taşır; proje reposu bu yüzden özeldir.
 
 ## Çalışma alanını kurmak
 
-Kök dizin bir repo değildir; yan yana klonlanan repolardan oluşur. Yol çapaları ve Core testleri bu
-yerleşimi varsayar.
+Kök dizin tek bir repodur: `github.com/GiraffeGraph/giraffegraph` (özel). Motor, wiki ve veri onun
+klasörleridir; yol çapaları ve Core testleri bu yerleşimi varsayar. Üç klasörün commit geçmişi repoya
+taşınmıştır (2026-10-13).
 
 ```
-mkdir GiraffeGraph && cd GiraffeGraph
-git clone git@github.com:GiraffeGraph/giraffegraph-wiki.git wiki
-git clone git@github.com:GiraffeGraph/giraffegraph-core.git
-git clone git@github.com:GiraffeGraph/giraffegraph-eval-data.git data
-git clone git@github.com:GiraffeGraph/landing.git
-printf '@wiki/CLAUDE.md\n' > CLAUDE.md
+git clone git@github.com:GiraffeGraph/giraffegraph.git GiraffeGraph
 ```
 
-Hiçbir repoda durmayan iki şey: kökteki `CLAUDE.md` (tek işi `wiki/CLAUDE.md` dosyasını içe
-aktarmaktır) ve `data/raw/` altındaki 4,5 GB indirilmiş veri (yeniden
-indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
+Site üzerinde çalışılacaksa `landing` reposu kökün içine klonlanır; kök `.gitignore` onu izlemez:
+
+```
+cd GiraffeGraph && git clone git@github.com:GiraffeGraph/landing.git
+```
+
+Repoda durmayan tek şey `data/raw/` altındaki 4,5 GB indirilmiş veridir (yeniden indirme kaynakları ve
+sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
 
 ## Çalışma alanı dışındaki ilgili varlıklar
 
@@ -79,12 +80,16 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 
 ## Bilinen durum notları
 
-- Kök dizin git reposu değildir. Dört reponun her birinde yalnız `main` dalı vardır; çalışma `main`
-  üzerinde yürür (proje sahibi kararı, 2026-10-13).
+- Proje reposunda ve `landing` reposunda yalnız `main` dalı vardır; çalışma `main` üzerinde yürür
+  (proje sahibi kararı, 2026-10-13). CI (`.github/workflows/ci.yml`) `giraffegraph-core/` altındaki
+  değişikliklerde koşar.
+- Motor kodu herkese açık yayımlanmamıştır; yayın proje sonuna bırakılmıştır (proje sahibi kararı,
+  2026-10-13).
 - Core'un `main` dalı isnad prototipini taşır (2026-10-13); GitHub Actions'ta `backend` ve `frontend`
   işleri geçer. `evaluation/results/` altından yalnız özet tablolar izlenir; hadis metni ve alıntı
-  içeren koşu dosyaları ile `backend/var/llm-cache/` Core'da izlenmez, kopyaları özel
-  `giraffegraph-eval-data` reposunda `core-backup/` altındadır (yenileme komutu `data/README.md`).
+  içeren koşu dosyaları ile `backend/var/llm-cache/` `giraffegraph-core/` altında izlenmez; motor
+  klasörü ileride açık yayımlanabilsin diye kopyaları `data/core-backup/` altındadır (yenileme komutu
+  `data/README.md`).
   `wiki/sources/claude-science-results/05_kod_degisiklik_listesi.md` içindeki C1–C14 değişikliklerinden
   `main` dalında duranlar: C1 (alıntı ve değer kapıları), C2 (aday bazında red, şema önerisi inceleme öğesi olarak),
   C4 (ASCII ad doğrulaması), C5 (ilişki `merge_keys`), C7 (isnad bölütleyici), C8 (zincir başına çağrı),
@@ -104,7 +109,7 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
   `giraffegraph-core/backend/var/llm-cache/` altındadır ve depoda yok sayılır.
 - İndirilen her dosyanın boyutu ve sha256 değeri `data/raw_manifest.json` içindedir; `data/eval/`
   altındaki kümeler `data/README.md` içindeki kurulum zinciriyle bayt düzeyinde yeniden üretilir.
-- Tez ve makale taslakları `wiki/thesis/` altındadır (özel wiki reposu). Proje önerisi taslağı
+- Tez ve makale taslakları `wiki/thesis/` altındadır. Proje önerisi taslağı
   (`proposal.md`) ders reposunun çalışma ağacındadır ve hiçbir uzak repoda durmaz.
 - Sitedeki cümleler Core `main`in yaptığına göre yazılıdır (`landing` commit `b92fc4b`, 2026-10-13, 6 dosya).
 - Core `main`, kimlik karar defteri benzetimini (`evaluation/identity_ledger.py`), yeniden uygulama
@@ -115,11 +120,11 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 ## Verification checklist
 
 - [ ] `ls /Users/efe/projects/GiraffeGraph` çıktısındaki her klasör tabloda var
-- [ ] Çalışma alanı kökünde `giraffegraph-core/`, `data/`, `landing/`, `wiki/` ve `CLAUDE.md` dışında bir şey yok
-- [ ] Core durumu notu `git -C giraffegraph-core log -1` ile uyumlu
+- [ ] Çalışma alanı kökünde `giraffegraph-core/`, `data/`, `landing/`, `wiki/`, `.github/`, `CLAUDE.md`, `README.md` ve `.gitignore` dışında bir şey yok
+- [ ] Core durumu notu `git log -1 -- giraffegraph-core` ile uyumlu
 - [ ] Test sayıları `cd giraffegraph-core/backend && uv run pytest -q` çıktısıyla aynı
 - [ ] `du -sh data` çıktısı tablodaki boyutla uyumlu
-- [ ] `gh repo view GiraffeGraph/giraffegraph-wiki --json visibility` çıktısı `PRIVATE`
+- [ ] `gh repo view GiraffeGraph/giraffegraph --json visibility` çıktısı `PRIVATE`
 - [ ] Pilot dosyalarına dayanan testler atlanmıyor: `uv run --no-project --python 3.12 --with pytest --with numpy --with scipy python -m pytest -q giraffegraph-core/evaluation/tests` çıktısında atlanan test yok
 
 ## Related docs

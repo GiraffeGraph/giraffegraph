@@ -46,8 +46,8 @@ organizasyonunda durur ama bitirme projesinin parçası değildir ve çalışma 
 
 ## Wiki disiplini
 
-Davranış, ölçüm, plan ya da karar değiştiğinde wiki aynı görevde güncellenir. Wiki kendi git reposudur
-(`GiraffeGraph/giraffegraph-wiki`, özel); değişiklik o repoda commit edilir.
+Davranış, ölçüm, plan ya da karar değiştiğinde wiki aynı görevde güncellenir. Wiki, motor ve veri tek repodadır
+(`GiraffeGraph/giraffegraph`, özel); kod ve wiki değişikliği aynı commit'te gidebilir.
 Yönlendirme kuralları: `WIKI-CREATOR.md`. Kalite çıtası: `architecture/context-quality.md`.
 
 Wiki yapısı değişirken dokunma sırası:

@@ -123,8 +123,8 @@ Design documents and ADRs are in [`docs/`](docs/README.md) (in Turkish).
 ## Run with Docker Compose
 
 ```bash
-git clone https://github.com/GiraffeGraph/giraffegraph-core.git
-cd giraffegraph-core
+git clone git@github.com:GiraffeGraph/giraffegraph.git
+cd giraffegraph/giraffegraph-core
 cp .env.example .env
 docker compose up --build
 ```

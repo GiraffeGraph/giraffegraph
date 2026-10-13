@@ -15,7 +15,7 @@ hangisi tutmadı, hangi koşulda.
 
 ## Statü
 
-Keşif aşaması (2026-10-13). İlk betikler `data/cache-and-ledger/data/` altındadır (özel veri reposu).
+Keşif aşaması (2026-10-13). İlk betikler `data/cache-and-ledger/data/` altındadır.
 Kimlik defteri benzetimi testleriyle birlikte Core'un `main` dalındadır. Bu sayfa projenin iddiasının
 hadis verisindeki destek kanıtıdır (`wiki/project/overview.md`, "Çerçeve"). Sonuçlar tek kişinin tek oturumunda üretildi; ekip ve danışman görmedi. Sayfadaki yorumlar
 öneridir.

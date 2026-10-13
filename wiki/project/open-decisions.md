@@ -67,7 +67,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 | 14 | Site ile form ve kod arasındaki tutarsızlıklar hangi yöne düzeltilir? | Kodun gerçeğine doğru; katkıcı listesinde iki isim de rolleriyle yer alır | **Karar (proje sahibi, 2026-10-13):** kodun gerçeğine doğru. 6 dosyalık metin düzeltmesi `landing` `main`dedir ve yayındadır (commit `b92fc4b`). Katkıcı listesi kararı yok | E |
 | 15 | Formdaki doğrulanamayan referanslar nasıl ele alınır? | Üçü silinir ya da gerçek karşılığıyla değiştirilir; Ji vd.'ye atfedilen sayı kaldırılır | Doğrulanmış kaynakça hazır ve tez taslağı onu kullanır. Formun düzeltildiğine ya da danışmana bildirildiğine dair kayıt yok | E, D |
 | 16 | Yayın hedefi nedir? | UBMK ya da INISTA bildirisi, arXiv ön baskı, bir uluslararası atölye | Makale biçimli taslak var, gönderilmedi. Hedef seçilmedi | E, D |
-| 19 | Core hangi lisansla yayımlanır? | Öneri: lisans eklenir (form "açık kaynak" der) | Repo herkese açık, LICENSE dosyası yok | E |
+| 19 | Core hangi lisansla yayımlanır? | Öneri: lisans eklenir (form "açık kaynak" der) | Kod özel proje reposundadır (`GiraffeGraph/giraffegraph`); açık yayın proje sonuna bırakıldı (proje sahibi kararı, 2026-10-13). LICENSE dosyası yok | E |
 | 20 | Hangi veri, hangi biçimde yeniden dağıtılabilir? | Form: yalnız üçlü düzeyinde açık yayın | İndirilen veri yeniden dağıtılmaz; değerlendirme kümeleri özel repodadır. Lisans beyanları sürüme göre değişir, Sanadset için iki beyan çelişir | E, D |
 | 21 | Prototip davranışı (isnad bölütleme, kapılar, karar kaydı) ekipçe kabul edildi mi? | Öneri yok | Kod `main` dalındadır; ekip görüşmesi ve ADR yok | E |
 
@@ -77,7 +77,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 |---|---|---|---|---|
 | 22 | "Ne saklanmalı" araştırması ayrı bir proje mi olur, hadis projesini mi destekler? | Öneri: hadis projesini destekler; genel sonuçlar tezin tartışma bölümüne girer. Gerekçe: hadis dışına taşınan iki fikir (kopya kontrolü, tanık notu) ölçümde tutmadı; tutan fikir (kararın kapsamı) isnadın tekrar eden yapısına yaslanır | **Karar (proje sahibi, 2026-10-13; danışman onayı bekler):** ayrı proje değildir, bitirme projesinin parçasıdır. Sonuçlar iki wiki sayfasında ve `data/cache-and-ledger/MEASUREMENTS.md` içindedir | E, D |
 | 23 | Kapsamı çelişkiyle daralan kimlik defteri Core'a alınır mı? | Öneri: içerik adresli karar hedefiyle (C3) birlikte alınır; önce gerçek bir inceleyiciyle küçük bir deneme | **Karar (proje sahibi, 2026-10-13):** benzetim ve testleri Core `main`dedir. Motor kodu yoktur; gerçek inceleyiciyle deneme yapılmadı | E |
-| 24 | Cache and Ledger klasörü kendi reposuna alınır mı? | Öneri yok | **Karar (proje sahibi, 2026-10-13):** alınmaz. Klasör özel veri reposunun parçasıdır (`data/cache-and-ledger/`) | E |
+| 24 | Cache and Ledger klasörü kendi reposuna alınır mı? | Öneri yok | **Karar (proje sahibi, 2026-10-13):** alınmaz. Klasör proje reposunun parçasıdır (`data/cache-and-ledger/`) | E |
 | 25 | Bu wiki ajan için nasıl yazılır: davranışı anlatan cümle mi, karar ve yol çapası mı? | Öneri: karar, gerekçe ve çapa; kodun ne yaptığını anlatan cümle yazılmaz (`wiki/evaluation/wiki-for-agents-experiments.md`, Rules) | Yaşayan sayfalar türetilebilir olgu da taşır (test sayıları üç sayfada tekrar eder); sayfalardaki 968 sayının 80'i atıf verilen dosyalarda bulunmaz | E |
 
 ## Rules
