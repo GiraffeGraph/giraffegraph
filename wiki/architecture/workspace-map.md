@@ -3,8 +3,8 @@
 ## Purpose
 
 `/Users/efe/projects/GiraffeGraph` altındaki her klasörün ne olduğunu, hangi repoda durduğunu ve
-bitirme projesiyle ilişkisini tek yerde tutmak. Bir ajanın ilgisiz 3,4 GB koda dalmasını önler ve
-çalışma alanının başka bir makinede nasıl kurulacağını söyler.
+bitirme projesiyle ilişkisini tek yerde tutmak. Çalışma alanının başka bir makinede nasıl kurulacağını
+söyler.
 
 ## Scope
 
@@ -26,13 +26,13 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
 | `wiki/sources/claude-science-context/` | Aynı çalışmaya girdi olarak hazırlanan bağlam paketi: TÜBİTAK formu, kod bundle'ı, alan özeti, açık sorular | **Referans (donmuş).** | wiki reposunun parçası |
 | `data/cache-and-ledger/` | "The Cache and the Ledger" denemesi, arXiv taslağı, karar defteri, bash araçları (`bin/ledger`, `bin/anchor-check`); `data/` altında denemenin sayılarını üreten betikler ve 2026-10-13 keşif deneyleri (`explore-*.py` ve çıktıları) | **Projenin iddiasının kaynağı ve destek deneyleri.** "Türetilebilen saklanmaz, karar saklanır" tezi; etiketli veride ve canlı ajanla sınanması `wiki/evaluation/decision-ledger-experiments.md`, `wiki/evaluation/wiki-for-agents-experiments.md`; özet `data/cache-and-ledger/MEASUREMENTS.md` | özel veri reposunun parçası |
 | `web/` | giraffegraph.com tanıtım sayfası (Next.js, statik export) | **İkincil.** Kamuya verilen iddiaların kaynağı; kodla tutarlılığı izlenir | `github.com/GiraffeGraph/web` (herkese açık), `main`; `main`e push siteyi yayınlar (`web/.github/workflows/deploy.yml`) |
-| `giraffle/` | Çevrimdışı-öncelikli, uçtan uca şifreli not ve planlama uygulaması (Expo, React, SQLite) | **İlgisiz** | `github.com/GiraffeGraph/giraffle`, 3,0 GB |
-| `giraffe-code/` | AI kodlama araçları için hiyerarşik çok-ajanlı orkestrasyon (TypeScript TUI + SwiftUI uygulaması) | **İlgisiz** | `github.com/GiraffeGraph/giraffe-code`, 371 MB |
 
 ## Rules
 
-- MUST: proje görevlerinde `giraffle/` ve `giraffe-code/` okunmaz ve aranmaz. Yalnızca ad benzerliği
-  taşırlar; bilgi grafı, hadis ya da RAG ile ortak kodları yoktur.
+- MUST: çalışma alanında yalnız bitirme projesinin dört klasörü durur. Aynı GitHub organizasyonundaki
+  `giraffle` (not ve planlama uygulaması) ve `giraffe-code` (çok-ajanlı kodlama aracı) repoları
+  projenin parçası değildir ve çalışma alanına klonlanmaz; yalnızca ad benzerliği taşırlar, bilgi
+  grafı, hadis ya da RAG ile ortak kodları yoktur.
 - MUST: `wiki/sources/claude-science-context/` ve `wiki/sources/claude-science-results/` düzenlenmez. Dosya adlarındaki numaralar
   iki pakette bağımsızdır (`wiki/sources/claude-science-context/05_…` denetim, `wiki/sources/claude-science-results/05_…`
   değişiklik listesi); atıf yaparken klasör adı yazılır.
@@ -115,7 +115,7 @@ indirme kaynakları ve sha256 değerleri `data/raw_manifest.json` ve `data/READM
 ## Verification checklist
 
 - [ ] `ls /Users/efe/projects/GiraffeGraph` çıktısındaki her klasör tabloda var
-- [ ] İlgisiz işaretli klasörlere proje görevinde dokunulmadı
+- [ ] Çalışma alanı kökünde `giraffegraph-core/`, `data/`, `web/`, `wiki/` ve `CLAUDE.md` dışında bir şey yok
 - [ ] Core durumu notu `git -C giraffegraph-core log -1` ile uyumlu
 - [ ] Test sayıları `cd giraffegraph-core/backend && uv run pytest -q` çıktısıyla aynı
 - [ ] `du -sh data` çıktısı tablodaki boyutla uyumlu
