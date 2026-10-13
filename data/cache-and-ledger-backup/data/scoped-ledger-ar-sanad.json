@@ -1,0 +1,183 @@
+{
+ "chains": 27056,
+ "mentions": 150904,
+ "shuffles": 10,
+ "information": {
+  "bits_to_name_a_person_H(P)": 9.648,
+  "bits_left_after_the_name_H(P|name)_plug_in": 0.39,
+  "names": 15301,
+  "names_with_more_than_one_person": 815,
+  "share_of_mentions_under_such_names": 0.3585
+ },
+ "guard_calibration": {
+  "true_adjacent_pairs": 123848,
+  "flagged_by_guard": 1008,
+  "false_alarm_rate_on_true_pairs": 0.0081,
+  "generation_gap_allowed": [
+   -1,
+   5
+  ],
+  "death_gap_allowed": [
+   -20,
+   85
+  ]
+ },
+ "policies": {
+  "fixed: name": {
+   "questions_per_mention": 0.1014,
+   "silent_wrong_per_mention": 0.0987,
+   "tail10_questions_per_mention": 0.0574,
+   "tail10_silent_wrong_per_mention": 0.1005,
+   "questions": 15301,
+   "silent_wrong": 14891,
+   "contradictions_found": 0,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": null
+  },
+  "fixed: student+name": {
+   "questions_per_mention": 0.3396,
+   "silent_wrong_per_mention": 0.0061,
+   "tail10_questions_per_mention": 0.2435,
+   "tail10_silent_wrong_per_mention": 0.0067,
+   "questions": 51244,
+   "silent_wrong": 919,
+   "contradictions_found": 0,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": null
+  },
+  "fixed: student+name+teacher": {
+   "questions_per_mention": 0.5629,
+   "silent_wrong_per_mention": 0.0018,
+   "tail10_questions_per_mention": 0.4582,
+   "tail10_silent_wrong_per_mention": 0.002,
+   "questions": 84939,
+   "silent_wrong": 272,
+   "contradictions_found": 0,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": null
+  },
+  "refine on audit, eps=0.02": {
+   "questions_per_mention": 0.1466,
+   "silent_wrong_per_mention": 0.0342,
+   "tail10_questions_per_mention": 0.1066,
+   "tail10_silent_wrong_per_mention": 0.0262,
+   "questions": 22120,
+   "silent_wrong": 5161,
+   "contradictions_found": 106,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": 97
+  },
+  "refine on audit, eps=0.05": {
+   "questions_per_mention": 0.1851,
+   "silent_wrong_per_mention": 0.0243,
+   "tail10_questions_per_mention": 0.1446,
+   "tail10_silent_wrong_per_mention": 0.0179,
+   "questions": 27937,
+   "silent_wrong": 3668,
+   "contradictions_found": 191,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": 169
+  },
+  "refine on audit, eps=0.10": {
+   "questions_per_mention": 0.2363,
+   "silent_wrong_per_mention": 0.0184,
+   "tail10_questions_per_mention": 0.1986,
+   "tail10_silent_wrong_per_mention": 0.0135,
+   "questions": 35659,
+   "silent_wrong": 2779,
+   "contradictions_found": 300,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": 256
+  },
+  "refine on audit, eps=0.20": {
+   "questions_per_mention": 0.3308,
+   "silent_wrong_per_mention": 0.0121,
+   "tail10_questions_per_mention": 0.2976,
+   "tail10_silent_wrong_per_mention": 0.0088,
+   "questions": 49920,
+   "silent_wrong": 1826,
+   "contradictions_found": 468,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": 388
+  },
+  "refine on guard": {
+   "questions_per_mention": 0.1788,
+   "silent_wrong_per_mention": 0.0133,
+   "tail10_questions_per_mention": 0.1321,
+   "tail10_silent_wrong_per_mention": 0.0113,
+   "questions": 26988,
+   "silent_wrong": 2000,
+   "contradictions_found": 530,
+   "guard_questions_that_found_an_error": 530,
+   "guard_questions_on_correct_answers": 1686,
+   "names_refined": 490
+  },
+  "refine on guard + audit, eps=0.02": {
+   "questions_per_mention": 0.1982,
+   "silent_wrong_per_mention": 0.0116,
+   "tail10_questions_per_mention": 0.1532,
+   "tail10_silent_wrong_per_mention": 0.0096,
+   "questions": 29916,
+   "silent_wrong": 1754,
+   "contradictions_found": 557,
+   "guard_questions_that_found_an_error": 513,
+   "guard_questions_on_correct_answers": 1636,
+   "names_refined": 508
+  },
+  "refine on guard + audit, eps=0.05": {
+   "questions_per_mention": 0.225,
+   "silent_wrong_per_mention": 0.0099,
+   "tail10_questions_per_mention": 0.1831,
+   "tail10_silent_wrong_per_mention": 0.0079,
+   "questions": 33960,
+   "silent_wrong": 1490,
+   "contradictions_found": 588,
+   "guard_questions_that_found_an_error": 484,
+   "guard_questions_on_correct_answers": 1564,
+   "names_refined": 530
+  },
+  "refine on guard + audit, eps=0.10": {
+   "questions_per_mention": 0.2693,
+   "silent_wrong_per_mention": 0.0081,
+   "tail10_questions_per_mention": 0.2298,
+   "tail10_silent_wrong_per_mention": 0.0064,
+   "questions": 40639,
+   "silent_wrong": 1218,
+   "contradictions_found": 636,
+   "guard_questions_that_found_an_error": 452,
+   "guard_questions_on_correct_answers": 1451,
+   "names_refined": 561
+  },
+  "fixed: name, with guard questions": {
+   "questions_per_mention": 0.2022,
+   "silent_wrong_per_mention": 0.0533,
+   "tail10_questions_per_mention": 0.1604,
+   "tail10_silent_wrong_per_mention": 0.0552,
+   "questions": 30515,
+   "silent_wrong": 8036,
+   "contradictions_found": 6855,
+   "guard_questions_that_found_an_error": 6855,
+   "guard_questions_on_correct_answers": 8359,
+   "names_refined": null
+  },
+  "hindsight: ambiguous names start at student+name": {
+   "questions_per_mention": 0.1865,
+   "silent_wrong_per_mention": 0.0061,
+   "tail10_questions_per_mention": 0.116,
+   "tail10_silent_wrong_per_mention": 0.0067,
+   "questions": 28140,
+   "silent_wrong": 919,
+   "contradictions_found": 0,
+   "guard_questions_that_found_an_error": 0,
+   "guard_questions_on_correct_answers": 0,
+   "names_refined": 815
+  }
+ }
+}

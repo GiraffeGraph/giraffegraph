@@ -18,6 +18,7 @@ against either measures agreement with those labels.
 | `scripts/` | Every script used. Standard library only. |
 | `work/` | Intermediate six-book extracts that the builders read (`ifta_sixbooks.jsonl`, `sanadset_sixbooks.jsonl`, and their counts). |
 | `eval/<set>/` | The evaluation sets. |
+| `cache-and-ledger-backup/` | Copy of the workspace folder `cache-and-ledger/` (essay, tools, verification scripts, the 2026-10-13 experiments and their outputs), which is not a repository of its own. Refresh: `rsync -a --delete --exclude .DS_Store --exclude __pycache__ --exclude .cache-bc5cdr ../cache-and-ledger/ cache-and-ledger-backup/`. |
 | `core-backup/` | Copy of two folders that `giraffegraph-core` does not track because they hold third-party text: `evaluation/results/` (full outputs of the experiment runs) and `backend/var/llm-cache/` (stored model responses, which replay the runs without new API calls). Paths mirror the engine repository. |
 
 `raw/` can be downloaded again with the commands under "Sources" and checked against

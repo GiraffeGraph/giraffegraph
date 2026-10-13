@@ -1,0 +1,111 @@
+{
+ "stale_page_sections": [
+  {
+   "section": "1. Source ingestion and segmentation",
+   "slices": 7,
+   "unchanged": 5
+  },
+  {
+   "section": "2. Extraction: providers, prompts, what is sent to the model",
+   "slices": 8,
+   "unchanged": 3
+  },
+  {
+   "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+   "slices": 7,
+   "unchanged": 2
+  },
+  {
+   "section": "4. Validation rules and how a candidate gets its status",
+   "slices": 8,
+   "unchanged": 3
+  },
+  {
+   "section": "5. Evidence and grounding checks",
+   "slices": 8,
+   "unchanged": 6
+  },
+  {
+   "section": "6. Duplicate detection and identity keys for nodes and relations",
+   "slices": 8,
+   "unchanged": 2
+  },
+  {
+   "section": "7. Human review: what is recorded, what a reviewer can do",
+   "slices": 8,
+   "unchanged": 4
+  },
+  {
+   "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+   "slices": 8,
+   "unchanged": 4
+  },
+  {
+   "section": "9. Schema model: node types, relation types, properties, templates",
+   "slices": 8,
+   "unchanged": 3
+  },
+  {
+   "section": "10. Runs, jobs and the public API surface",
+   "slices": 8,
+   "unchanged": 8
+  }
+ ],
+ "fresh_page_sections": [
+  {
+   "section": "1. Source ingestion and segmentation",
+   "slices": 6,
+   "unchanged": 6
+  },
+  {
+   "section": "2. Extraction: providers, prompts, what is sent to the model",
+   "slices": 8,
+   "unchanged": 8
+  },
+  {
+   "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+   "slices": 8,
+   "unchanged": 8
+  },
+  {
+   "section": "4. Validation rules and how a candidate gets its status",
+   "slices": 7,
+   "unchanged": 7
+  },
+  {
+   "section": "5. Evidence and grounding checks",
+   "slices": 7,
+   "unchanged": 7
+  },
+  {
+   "section": "6. Duplicate detection and identity keys for nodes and relations",
+   "slices": 8,
+   "unchanged": 8
+  },
+  {
+   "section": "7. Human review: what is recorded, what a reviewer can do",
+   "slices": 8,
+   "unchanged": 8
+  },
+  {
+   "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+   "slices": 8,
+   "unchanged": 8
+  },
+  {
+   "section": "9. Schema model: node types, relation types, properties, templates",
+   "slices": 8,
+   "unchanged": 8
+  },
+  {
+   "section": "10. Runs, jobs and the public API surface",
+   "slices": 8,
+   "unchanged": 8
+  }
+ ],
+ "doc_words": {
+  "stale": 1981,
+  "fresh": 1754,
+  "decisions": 2196
+ }
+}

@@ -1,0 +1,182 @@
+{
+ "summary": {
+  "pages_with_numbers": 14,
+  "numbers": 968,
+  "traced": 888,
+  "share_traced": 0.9174
+ },
+ "pages": {
+  "wiki/README.md": {
+   "numbers": 5,
+   "traced": 5,
+   "cited_sources": 14,
+   "untraced": []
+  },
+  "wiki/architecture/workspace-map.md": {
+   "numbers": 21,
+   "traced": 21,
+   "cited_sources": 42,
+   "untraced": []
+  },
+  "wiki/domains/hadith/isnad-pipeline.md": {
+   "numbers": 8,
+   "traced": 8,
+   "cited_sources": 26,
+   "untraced": []
+  },
+  "wiki/evaluation/correctness-measurement.md": {
+   "numbers": 177,
+   "traced": 174,
+   "cited_sources": 31,
+   "untraced": [
+    "0,091",
+    "0,108",
+    "0,595"
+   ]
+  },
+  "wiki/evaluation/decision-ledger-experiments.md": {
+   "numbers": 162,
+   "traced": 144,
+   "cited_sources": 13,
+   "untraced": [
+    "0,337",
+    "0,037",
+    "60,4",
+    "86,2",
+    "40,1",
+    "0,0031",
+    "0,0202",
+    "0,0027",
+    "0,0057",
+    "0,187",
+    "0,187",
+    "23.441",
+    "0,201",
+    "0,177",
+    "0,187",
+    "0,404",
+    "0,634",
+    "0,627"
+   ]
+  },
+  "wiki/evaluation/engine-experiments.md": {
+   "numbers": 225,
+   "traced": 220,
+   "cited_sources": 24,
+   "untraced": [
+    "0,047",
+    "0,108",
+    "0,041",
+    "0,091",
+    "3,49"
+   ]
+  },
+  "wiki/evaluation/literature-map.md": {
+   "numbers": 34,
+   "traced": 33,
+   "cited_sources": 14,
+   "untraced": [
+    "0,626"
+   ]
+  },
+  "wiki/evaluation/related-work.md": {
+   "numbers": 201,
+   "traced": 169,
+   "cited_sources": 14,
+   "untraced": [
+    "223.478",
+    "60,6",
+    "303.869",
+    "223.478",
+    "33.523",
+    "907.110",
+    "0,476",
+    "92,5",
+    "159.558",
+    "9,63",
+    "5,85",
+    "15,25",
+    "60,6",
+    "70,5",
+    "185.216",
+    "94.628",
+    "51,1",
+    "88.343",
+    "57.763",
+    "303.869",
+    "47.496",
+    "1,25",
+    "3,53",
+    "99,63",
+    "223.478",
+    "156.434",
+    "33.523",
+    "257.840",
+    "237072",
+    "60,6",
+    "70,5",
+    "3,53"
+   ]
+  },
+  "wiki/project/open-decisions.md": {
+   "numbers": 12,
+   "traced": 12,
+   "cited_sources": 14,
+   "untraced": []
+  },
+  "wiki/project/overview.md": {
+   "numbers": 18,
+   "traced": 12,
+   "cited_sources": 19,
+   "untraced": [
+    "0,95",
+    "1.688",
+    "0,032",
+    "0,006",
+    "0,060",
+    "0,956"
+   ]
+  },
+  "wiki/project/roadmap.md": {
+   "numbers": 8,
+   "traced": 8,
+   "cited_sources": 19,
+   "untraced": []
+  },
+  "wiki/project/supervisor-meetings.md": {
+   "numbers": 4,
+   "traced": 2,
+   "cited_sources": 3,
+   "untraced": [
+    "38",
+    "300"
+   ]
+  },
+  "wiki/project/tubitak-commitments.md": {
+   "numbers": 64,
+   "traced": 51,
+   "cited_sources": 17,
+   "untraced": [
+    "20.957",
+    "200",
+    "5.000",
+    "516",
+    "2.886",
+    "0,15",
+    "0,071",
+    "0,086",
+    "0,15",
+    "0,086",
+    "0,015",
+    "17,5",
+    "0,15"
+   ]
+  },
+  "wiki/sources/README.md": {
+   "numbers": 29,
+   "traced": 29,
+   "cited_sources": 20,
+   "untraced": []
+  }
+ }
+}

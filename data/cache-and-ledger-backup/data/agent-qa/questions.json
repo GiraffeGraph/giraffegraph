@@ -1,0 +1,548 @@
+[
+  {
+    "id": "S01",
+    "class": "stable",
+    "question": "Can a processing run be started for a source unit with a schema version different from the one the source unit was created with? What happens?",
+    "answer": "No. Starting the run raises a RuleViolationError ('Processing runs must use the same schema version as their source unit.'), which the API returns as HTTP 422, and no run is created.",
+    "must_include": [
+      "the request is refused (rule violation / HTTP 422), no run is created",
+      "a run must use the same schema version as its source unit"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/ingestion_management.py: IngestionManagementService.start_processing_run, lines 179-188; backend/src/app/interfaces/api/error_handlers.py lines 23-26. Same check at 4279c98: ingestion_management.py lines 46-55.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S02",
+    "class": "stable",
+    "question": "How does the 'paragraphs' segmentation strategy split a source unit's text, including the case where the text contains no blank lines?",
+    "answer": "It splits the text on blank lines and strips each chunk; if that gives more than one chunk, those are the segments. Otherwise it falls back to one segment per non-empty line, and if there is none, to a single segment holding the whole stripped text.",
+    "must_include": [
+      "splits on blank lines (paragraphs)",
+      "when that gives at most one chunk it falls back to one segment per non-empty line"
+    ],
+    "evidence_new": "backend/src/app/domain/extraction/segmentation.py: ParagraphSegmentation.split, lines 27-37. Same logic at 4279c98: backend/src/app/application/use_cases/pipeline_management.py: _split_into_segments, lines 870-880.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S03",
+    "class": "stable",
+    "question": "What happens when a non-dry-run candidate extraction is requested for a run that already has candidate nodes or relations? Is a dry run treated differently?",
+    "answer": "The extraction is refused with a ConflictError ('Extraction cannot append yet'), returned as HTTP 409, and the execution record is marked failed. A dry run skips this check and persists no candidates.",
+    "must_include": [
+      "refused with a ConflictError / HTTP 409 because the run already has candidates",
+      "a dry run skips the check and does not persist candidates"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/extraction_management.py: extract_candidates lines 168-169 and 232, _ensure_run_has_no_existing_candidates lines 904-912; backend/src/app/interfaces/api/error_handlers.py lines 19-22. Same at 4279c98: extraction_management.py lines 134-135, 173, 595-603.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S04",
+    "class": "stable",
+    "question": "If neither the run nor the deployment configuration names an LLM provider, which provider handles candidate extraction, and what does it return?",
+    "answer": "The default provider is `noop` (the setting default_llm_provider defaults to \"noop\"). It ignores its input and returns empty `nodes` and `relations` lists, so the extraction produces no candidates.",
+    "must_include": [
+      "the default provider is noop",
+      "it returns empty nodes and relations (no candidates)"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/config/settings.py line 32; backend/src/app/infrastructure/llm/noop_provider.py: NoOpLLMProvider.generate_structured lines 11-23; backend/src/app/application/use_cases/extraction_management.py: _require_llm_provider lines 775-790. Same at 4279c98: settings.py line 26, noop_provider.py, extraction_management.py lines 437-452.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S05",
+    "class": "stable",
+    "question": "When the OpenAI provider is used for extraction, which endpoint does it call and which sampling temperature and response format does it request?",
+    "answer": "It POSTs to `<base_url>/chat/completions` (base URL is configurable, default https://api.openai.com/v1) with `temperature: 0` and `response_format: {\"type\": \"json_object\"}`; the prompt is the system message and the JSON payload the user message.",
+    "must_include": [
+      "the chat completions endpoint (under a configurable base URL)",
+      "temperature 0",
+      "response_format of type json_object"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/llm/openai_provider.py: OpenAILLMProvider.generate_structured, lines 88-115 (base_url default line 69). Same at 4279c98: lines 87-114.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S06",
+    "class": "stable",
+    "question": "During run validation, what status does a node candidate get when it has no value for one of its node type's merge keys?",
+    "answer": "It is rejected: validation records a failed result with rule code `node_merge_key` and sets the candidate status to REJECTED; it is not sent to review.",
+    "must_include": [
+      "the candidate status becomes REJECTED (it is not routed to review)"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/pipeline_management.py: _validate_candidate_node, lines 338-370. Same at 4279c98: lines 268-300.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S07",
+    "class": "stable",
+    "question": "How does run validation set the status of a relation candidate when one of its endpoint node candidates was rejected, and when one of them is in review?",
+    "answer": "If either endpoint node is REJECTED the relation becomes REJECTED (rule code `relation_dependency_rejected`). If either endpoint is in REVIEW the relation is put in REVIEW (rule code `relation_dependency_review`).",
+    "must_include": [
+      "an endpoint node that is rejected makes the relation rejected",
+      "an endpoint node that is in review puts the relation in review"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/pipeline_management.py: _validate_candidate_relation lines 510-574 and _refresh_relation_dependency_statuses lines 748-796. Same at 4279c98: lines 430-466 and 625-669.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S08",
+    "class": "stable",
+    "question": "Can a reviewer accept or edit a relation review item while one of the relation's endpoint node candidates is not yet validated?",
+    "answer": "No. The decision is refused with a RuleViolationError: a candidate relation can only be accepted or edited when both endpoint node candidates have status VALIDATED. Rejecting the relation is still possible.",
+    "must_include": [
+      "no, the accept/edit decision is refused with a rule violation",
+      "both endpoint node candidates must be validated first"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/review_management.py: _validate_candidate_relation_state lines 348-361, called from decide_review_item lines 97-108 only when the relation is not being rejected. Same at 4279c98: lines 218-231 and 67-73.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S09",
+    "class": "stable",
+    "question": "Can a run be committed while it still has pending candidates or open review items, and candidates of which status are written to the canonical graph?",
+    "answer": "No. Commit raises a RuleViolationError if any candidate is still PENDING or any review item of the run is OPEN. When commit proceeds, only VALIDATED candidates are written; REJECTED ones are only counted in the graph delta.",
+    "must_include": [
+      "commit is refused while any candidate is pending",
+      "commit is refused while the run has open review items",
+      "only validated candidates are written to the graph"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/commit_management.py: CommitManagementService.commit_run, lines 53-77 and 99-103. Same at 4279c98: lines 44-68 and 85-89.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S10",
+    "class": "stable",
+    "question": "When a validated node candidate is written to Neo4j, how is the identity of the canonical node determined, and what happens to the properties of a node that already exists?",
+    "answer": "The node is MERGEd on (project_id, node_type, merge_key) with the labels CanonicalNode and the type name. merge_key is the SHA-256 hash of the normalized merge-key payload (candidate id as fallback when the payload is empty). Properties are applied with `SET n += $properties`, so incoming values overwrite existing ones (last writer wins).",
+    "must_include": [
+      "the MERGE identity is project_id + node_type + merge_key",
+      "merge_key is a SHA-256 hash of the normalized merge-key payload",
+      "properties are applied with SET n += so new values overwrite existing ones"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/persistence/neo4j/repositories.py: _merge_candidate_node lines 342-354, _build_merge_key lines 1157-1161; backend/src/app/domain/shared/resolution.py: build_canonical_merge_key lines 94-101, normalize_text lines 125-130. Same at 4279c98: neo4j/repositories.py lines 310-322 and 1102-1106.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S11",
+    "class": "stable",
+    "question": "In which status can node or relation types still be added to a schema version, and what happens to the currently active schema version when another version of the same project is activated?",
+    "answer": "Types can only be added while the schema version is in DRAFT status; otherwise a RuleViolationError ('Only draft schema versions can be edited.') is raised. Activating a version sets it to ACTIVE and changes the previously active version to PUBLISHED.",
+    "must_include": [
+      "only draft schema versions can be edited",
+      "activating a version demotes the previously active one to published"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/schema_management.py: _require_editable_schema lines 278-284, activate_schema_version lines 140-162. Same at 4279c98: lines 225-226 and 107-113.",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "S12",
+    "class": "stable",
+    "question": "Which HTTP status codes does the API return for the application's not-found, conflict, rule-violation and external-service errors?",
+    "answer": "NotFoundError maps to 404, ConflictError to 409, RuleViolationError to 422 and ExternalServiceError to 502; each response body is `{\"detail\": <message>}`.",
+    "must_include": [
+      "not found is 404",
+      "conflict is 409 and rule violation is 422",
+      "external service error is 502"
+    ],
+    "evidence_new": "backend/src/app/interfaces/api/error_handlers.py: register_error_handlers, lines 14-30 (file is byte-identical at 4279c98).",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "C01",
+    "class": "changed",
+    "question": "During run validation, is a candidate's evidence quote checked against the text of the segment it cites, and what happens to a candidate whose quote is not found there?",
+    "answer": "Yes. For runs whose candidates came from a successful non-dry-run extraction execution, every evidence quote must occur in the cited segment's text (compared after normalization). A candidate whose quote is not found is not rejected; it gets status REVIEW with rule/reason code `quote_not_in_segment`.",
+    "must_include": [
+      "yes, the quote is checked against the text of the cited segment",
+      "a candidate that fails the check is sent to review, not rejected"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/pipeline_management.py: _evidence_findings lines 1037-1058, _grounding_segments lines 1024-1035, _validate_candidate_node lines 372-396; backend/src/app/domain/hadith/grounding.py: quote_in_segment lines 5-27.",
+    "old_answer": "No. Validation only checked type, required properties, merge keys and confidence; the quote was stored but never compared with the segment text (only the segment id had to belong to the source unit).",
+    "evidence_old": "backend/src/app/application/use_cases/pipeline_management.py: _validate_candidate_node lines 234-330 (no quote check); backend/src/app/application/use_cases/extraction_management.py: _build_evidence_ref lines 420-435.",
+    "stale_doc_quote": "• quote'un segment metninde geçip geçmediği KONTROL EDİLMEZ",
+    "grep_check": null
+  },
+  {
+    "id": "C02",
+    "class": "changed",
+    "question": "During candidate extraction, what happens when the model's output contains a node whose type is neither a schema node type nor one of its aliases?",
+    "answer": "Only that node is dropped (together with relations that point to it); the remaining nodes and relations of the output are kept and the extraction succeeds. The unknown type is recorded as a schema proposal: an open review item of type `schema_proposal` with reason code `schema_type_proposal`.",
+    "must_include": [
+      "only the candidate with the undefined type is dropped; the rest of the output is kept and the extraction does not fail",
+      "the undefined type is recorded as a schema proposal review item (schema_type_proposal)"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/extraction_management.py: _normalize_output lines 423-442 and 510-519, _record_proposal_review_items lines 672-697; backend/src/app/domain/extraction/entities.py: SCHEMA_PROPOSAL_ITEM_TYPE, SCHEMA_TYPE_PROPOSAL lines 6-8.",
+    "old_answer": "The whole extraction failed: an undefined node or relation type raised a RuleViolationError, the execution was marked failed and no candidates were created.",
+    "evidence_old": "backend/src/app/application/use_cases/extraction_management.py: _normalize_output lines 344-347 and 382-385, _resolve_node_type lines 542-554.",
+    "stale_doc_quote": "• tanımsız node/relation tipi (alias dahil çözülür) → tüm çıkarım hata",
+    "grep_check": null
+  },
+  {
+    "id": "C03",
+    "class": "changed",
+    "question": "When a validated relation is written to Neo4j, which properties form the MERGE identity of the relationship, and can two relationships of the same type exist between the same pair of canonical nodes?",
+    "answer": "The relationship is MERGEd on project_id, relation_type and relation_identity_key, where the identity key is a SHA-256 hash of the relation type's merge-key property values. So two relationships of the same type can exist between the same two nodes when their merge-key values differ.",
+    "must_include": [
+      "the MERGE identity includes a relation_identity_key derived from the relation type's merge-key properties (besides project_id and relation_type)",
+      "yes, several same-type relationships between the same two nodes are possible when their merge-key values differ"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/persistence/neo4j/repositories.py: _merge_candidate_relation lines 456-478; backend/src/app/domain/shared/resolution.py: build_relation_identity_key lines 47-58; backend/src/app/application/use_cases/commit_management.py: _build_relation_identity_keys lines 151-205.",
+    "old_answer": "The relationship was MERGEd on project_id and relation_type only, so there was at most one relationship of a given type between the same pair of nodes; later writes overwrote its properties.",
+    "evidence_old": "backend/src/app/infrastructure/persistence/neo4j/repositories.py: _merge_candidate_relation lines 414-440 (MERGE pattern lines 435-438).",
+    "stale_doc_quote": "İlişki: `MERGE (a)-[r:<TYPE> {project_id, relation_type}]->(b)`. **Aynı çift arasında aynı tipten tek kenar olur.**",
+    "grep_check": null
+  },
+  {
+    "id": "C04",
+    "class": "changed",
+    "question": "When a reviewer decides a review item, does the system record who made the decision and when?",
+    "answer": "Yes. The decision request must carry a non-empty reviewer_id, and each decision is stored as a separate ReviewDecision record with reviewer_id, decided_at, optional duration_ms, the action and, for edits, the before and after values.",
+    "must_include": [
+      "a reviewer_id is required and stored with the decision",
+      "the decision time (decided_at) is stored"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/review_management.py: decide_review_item lines 59-140; backend/src/app/domain/review/entities.py: ReviewDecision lines 9-22; backend/src/app/interfaces/api/schemas/review.py: ReviewerDecisionRequest lines 18-23; backend/src/app/infrastructure/persistence/postgres/models.py: ReviewDecisionModel.",
+    "old_answer": "No. A decision only changed the review item's status and reviewer_note; neither the reviewer's identity nor the time of the decision was stored.",
+    "evidence_old": "backend/src/app/domain/review/entities.py: ReviewItem lines 9-19; backend/src/app/application/use_cases/review_management.py: decide_review_item lines 49-86; backend/src/app/interfaces/api/schemas/pipeline.py: ReviewDecisionRequest lines 117-128.",
+    "stale_doc_quote": "`ReviewItem` alanları: item_type, item_ref, reason_code, payload_json, status ∈ {open, accepted, rejected, edited}, reviewer_note, created_at. **reviewer kimliği ve karar zamanı yok.**",
+    "grep_check": null
+  },
+  {
+    "id": "C05",
+    "class": "changed",
+    "question": "How many Neo4j write transactions does committing one run use for its nodes, relations and provenance, and what is left in the graph if a write fails midway?",
+    "answer": "One. The whole bundle of a run (source context, nodes, relations, provenance and the delta node) is written inside a single managed write transaction, so a failed commit leaves nothing of that run in the graph. Only the one-time index creation statements run outside it.",
+    "must_include": [
+      "a single write transaction covers all graph writes of the run",
+      "a failed commit leaves no partial data of that run in Neo4j (the write is atomic)"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/persistence/neo4j/repositories.py: commit_bundle lines 43-55, _write_bundle lines 57-141.",
+    "old_answer": "Many. The source context, every node merge, every node provenance link, every relation merge, every relation provenance link and the delta were each written in their own execute_write transaction, so the commit was not atomic and a failure could leave part of the run in the graph.",
+    "evidence_old": "backend/src/app/infrastructure/persistence/neo4j/repositories.py: commit_bundle lines 33-113 (six execute_write call sites, most inside loops).",
+    "stale_doc_quote": "Her düğüm/ilişki AYRI Neo4j transaction'ında (execute_write) yazılır → toplu işlem atomik değil",
+    "grep_check": null
+  },
+  {
+    "id": "C06",
+    "class": "changed",
+    "question": "Which segmentation strategies can be requested when generating segments for a source unit?",
+    "answer": "Two: `paragraphs` and `isnad`. Any other name is refused with a RuleViolationError that lists the registered strategy names.",
+    "must_include": [
+      "paragraphs",
+      "isnad"
+    ],
+    "evidence_new": "backend/src/app/bootstrap/container.py lines 159-161; backend/src/app/application/use_cases/pipeline_management.py: generate_segments lines 82-103; backend/src/app/domain/extraction/segmentation.py: ParagraphSegmentation; backend/src/app/domain/hadith/segmentation.py: IsnadSegmentation.",
+    "old_answer": "Only `paragraphs`; any other strategy name was refused with \"Only the 'paragraphs' segmentation strategy is supported.\"",
+    "evidence_old": "backend/src/app/application/use_cases/pipeline_management.py: generate_segments lines 61-79 (check at lines 63-65).",
+    "stale_doc_quote": "└─ generate_segments: yalnızca \"paragraphs\" stratejisi (boş satıra göre, yoksa satıra göre böl)",
+    "grep_check": null
+  },
+  {
+    "id": "C07",
+    "class": "changed",
+    "question": "Which extraction providers can the backend register, and under what condition is each of them available?",
+    "answer": "Four: `noop` and `rule_based_isnad` are always registered; `openai` is registered only when an OpenAI API key is configured and `anthropic` only when an Anthropic API key is configured.",
+    "must_include": [
+      "rule_based_isnad is a registered provider",
+      "anthropic is a provider (registered when its API key is set)",
+      "noop and openai are providers (openai only when its API key is set)"
+    ],
+    "evidence_new": "backend/src/app/bootstrap/container.py lines 141-158; backend/src/app/infrastructure/llm/rule_based_isnad_provider.py line 14; backend/src/app/infrastructure/llm/anthropic_provider.py line 104.",
+    "old_answer": "Two: `noop` was always registered and `openai` only when an OpenAI API key was configured. There was no Anthropic provider and no rule-based provider.",
+    "evidence_old": "backend/src/app/bootstrap/container.py lines 137-146; backend/src/app/infrastructure/llm/ contained only noop_provider.py and openai_provider.py.",
+    "stale_doc_quote": "LLM: `noop` ve `openai` provider. [...] Anthropic/yerel provider yok.",
+    "grep_check": null
+  },
+  {
+    "id": "C08",
+    "class": "changed",
+    "question": "Which domain templates does the built-in template catalog offer, and which of them comes with a ready-made schema?",
+    "answer": "Three templates: `blank`, `story` and `isnad` (Hadith Isnad). Only `isnad` ships a schema: node types Narrator and Hadith, relation types NARRATED_FROM and TRANSMITS, with segmentation strategy `isnad`.",
+    "must_include": [
+      "the templates are blank, story and isnad",
+      "isnad (the hadith template) is the one that ships a schema"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/template/catalog.py: SYSTEM_DOMAIN_TEMPLATES lines 17-42, ISNAD_TEMPLATE_SCHEMA lines 44-127, SYSTEM_TEMPLATE_SCHEMAS line 129.",
+    "old_answer": "Two templates, `blank` and `story`; neither carried a schema and there was no hadith template.",
+    "evidence_old": "backend/src/app/infrastructure/template/catalog.py lines 6-25.",
+    "stale_doc_quote": "Tek şablon: `blank` ve `story` (Series/Season/Episode/Scene/Character/Event/Location/Organization). **Hadis şablonu yok.**",
+    "grep_check": null
+  },
+  {
+    "id": "C09",
+    "class": "changed",
+    "question": "If a schema property declares a list of allowed values, what does run validation do with a candidate whose value for that property is a string outside the list?",
+    "answer": "The allowed-value list is enforced: the candidate (node or relation) is given status REVIEW with rule/reason code `property_value_not_allowed`. It is not rejected.",
+    "must_include": [
+      "the allowed-value list is enforced during validation",
+      "the candidate is sent to review (not rejected, not silently accepted)"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/pipeline_management.py: _enum_findings lines 1105-1126, used in _validate_candidate_node line 380 and _validate_candidate_relation line 533.",
+    "old_answer": "Nothing. enum_values were stored in the schema and sent to the model in the prompt payload, but validation never compared candidate values with them.",
+    "evidence_old": "backend/src/app/application/use_cases/pipeline_management.py: _validate_candidate_node lines 234-330 and _validate_candidate_relation lines 332-494 contain no enum check; enum_values appears only in extraction_management.py lines 274 and 298 and schema_management.py line 246.",
+    "stale_doc_quote": "Uygulanmayan: data_type, enum_values, directional, kardinalite, alan kuralları, grounding, zaman/tarih kontrolleri",
+    "grep_check": null
+  },
+  {
+    "id": "C10",
+    "class": "changed",
+    "question": "Which extraction prompt version is used by default, and what does that prompt tell the model about how node and relation type names must match the schema?",
+    "answer": "The default is `candidate_graph_extraction_v2`. Its rule says node_type and relation_type must match a schema name or alias, case-insensitively.",
+    "must_include": [
+      "the default prompt version is candidate_graph_extraction_v2",
+      "type names may match a schema name or an alias, case-insensitively"
+    ],
+    "evidence_new": "backend/src/app/infrastructure/config/settings.py line 34; backend/src/app/application/use_cases/extraction_management.py line 134; backend/src/app/infrastructure/llm/prompt_catalog.py: CANDIDATE_GRAPH_EXTRACTION_V2 lines 53-62.",
+    "old_answer": "The default was `candidate_graph_extraction_v1`, the only registered version; it told the model that node_type and relation_type must exactly match schema names (case-sensitive).",
+    "evidence_old": "backend/src/app/infrastructure/config/settings.py line 28; backend/src/app/application/use_cases/extraction_management.py line 102; backend/src/app/infrastructure/llm/prompt_catalog.py lines 7-46 (rule at line 39).",
+    "stale_doc_quote": "prompt = candidate_graph_extraction_v1 (sistem promptu) + JSON payload {schema(node/relation tipleri, hint'ler, property'ler), segments}",
+    "grep_check": null
+  },
+  {
+    "id": "C11",
+    "class": "changed",
+    "question": "A user tries to define a node type whose name contains non-ASCII letters or a space. At which point of the workflow is this name first rejected?",
+    "answer": "When the type is defined: the add-node-type request (and the application DTO behind it) validates the name against `^[A-Za-z_][A-Za-z0-9_]*$`, so the type never enters the schema. The same holds for relation type and property names.",
+    "must_include": [
+      "the name is rejected when the type is added to the schema (request/input validation), before anything is committed",
+      "names must match the ASCII identifier pattern ^[A-Za-z_][A-Za-z0-9_]*$"
+    ],
+    "evidence_new": "backend/src/app/interfaces/api/schemas/schema.py lines 12, 30, 44; backend/src/app/application/dto/contracts.py lines 31, 42, 56; backend/src/app/domain/schema/identifiers.py line 3.",
+    "old_answer": "Only at commit time. The schema accepted any name, and the failure appeared when the Neo4j repository built the label and raised ValueError('Invalid Neo4j identifier ...').",
+    "evidence_old": "backend/src/app/infrastructure/persistence/neo4j/repositories.py line 26 and _quoted_identifier lines 1108-1110; backend/src/app/interfaces/api/schemas/schema.py and backend/src/app/application/dto/contracts.py had no pattern on name fields.",
+    "stale_doc_quote": "Label/tip adları `^[A-Za-z_][A-Za-z0-9_]*$` regex'inden geçmek zorunda. Uymayanlar commit anında `ValueError` fırlatıyor.",
+    "grep_check": null
+  },
+  {
+    "id": "C12",
+    "class": "changed",
+    "question": "How many provider calls does one extraction execution make for a source unit that has several segments, and what happens to the execution if one of those calls fails?",
+    "answer": "It depends on how the segments were cut: with a strategy that asks for one call per segment (isnad) there is one provider call per segment; otherwise all segments go in one call, or in batches when a max-segments-per-call setting is configured. A failed call is recorded as a failed call and the results of the other calls are kept; the execution fails only if every call fails.",
+    "must_include": [
+      "the number of calls can be more than one: one call per segment for the isnad strategy (or batches by a max-segments-per-call setting), otherwise a single call",
+      "a failed call does not discard the other calls' results; the execution fails only when all calls fail"
+    ],
+    "evidence_new": "backend/src/app/application/use_cases/extraction_management.py: _plan_calls lines 393-401, call loop lines 183-222, _absorb_call lines 568-607; backend/src/app/infrastructure/config/settings.py line 35; backend/src/app/domain/hadith/segmentation.py line 10.",
+    "old_answer": "Exactly one provider call with all segments of the source unit; any provider or output error failed the whole extraction.",
+    "evidence_old": "backend/src/app/application/use_cases/extraction_management.py: extract_candidates lines 149-167 and 227-231.",
+    "stale_doc_quote": null,
+    "grep_check": null
+  },
+  {
+    "id": "D01",
+    "class": "decision",
+    "question": "Why was the backend started as one application with its bounded contexts as modules, and which alternative architecture was set aside?",
+    "answer": "The bounded contexts were clear, but the domain language and data model were expected to change quickly in the early phase, and a microservice deployment would add operational complexity at that stage. So microservices were set aside in favour of a modular monolith.",
+    "must_include": [
+      "the rejected alternative is microservices",
+      "at least one stated reason: the domain language/data model will change quickly early on, or microservices would add operational complexity at this stage"
+    ],
+    "evidence_new": "giraffegraph-core/docs/adr/ADR-001-modular-monolith.md, Context: \"Urunun bounded context'leri net, ancak erken donemde domain dili ve veri modeli hizla degisecek. Bu asamada mikroservis dagitimi operasyonel karmasa yaratir.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'monolith|microservice' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D02",
+    "class": "decision",
+    "question": "What role is GraphRAG meant to have in relation to the core system, and why?",
+    "answer": "GraphRAG is not a hard dependency of the core; it is to be attached as an optional adapter or plugin when needed. It can be useful for retrieval and some extraction scenarios but must not be the central technology the core depends on: this keeps the core stable and replaceable and reduces dependence on experimental APIs.",
+    "must_include": [
+      "GraphRAG is an optional adapter/plugin, not a hard dependency of the core",
+      "reason: the core must not depend on it as its central technology (keeps the core stable/replaceable, less dependence on experimental APIs)"
+    ],
+    "evidence_new": "giraffegraph-core/docs/adr/ADR-004-optional-graphrag-adapter.md, Decision: \"GraphRAG cekirdege hard dependency olarak baglanmayacak. Gerekli oldugunda adapter veya plugin olarak kullanilacak.\" Context: \"ancak cekirdek sistemin bagimli oldugu merkez teknoloji olmamali.\" Consequences: \"Experimental API'lere bagimlilik azalir\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'graphrag|graph_rag|graph rag' bfb0f9c -- backend/src -> no matches. git grep -n -i -E 'experimental|adapter|plugin' bfb0f9c -- backend/src -> only package docstrings such as \"LLM adapters will live here.\"; nothing about GraphRAG."
+  },
+  {
+    "id": "D03",
+    "class": "decision",
+    "question": "The platform keeps metadata in Postgres and the canonical graph in Neo4j. Which downsides of this two-store choice did the decision record explicitly accept?",
+    "answer": "That two stores have to be operated, and that synchronisation and transaction boundaries between them must be designed explicitly.",
+    "must_include": [
+      "two stores must be operated (dual-store operations)",
+      "synchronisation and transaction boundaries must be designed explicitly"
+    ],
+    "evidence_new": "giraffegraph-core/docs/adr/ADR-002-postgres-and-neo4j.md, Consequences / Olumsuz: \"Cift store operasyonu gerekir\" and \"Senkronizasyon ve transaction sinirlari net tasarlanmalidir\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'two[- ]store|dual[- ]store|2pc|outbox|two-phase' bfb0f9c -- backend/src -> no matches. git grep -n -i -E 'synchroni[sz]|transaction bound|operational' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D04",
+    "class": "decision",
+    "question": "What must a newly added validation gate do with a candidate that fails it, and what is the reason for that rule?",
+    "answer": "It must send the candidate to review under its own reason code instead of rejecting it, because rejection silently deletes information, whereas a candidate in review can still be counted.",
+    "must_include": [
+      "a new gate sends the failing candidate to review; it does not reject it",
+      "reason: rejection silently loses information, while a candidate in review remains countable"
+    ],
+    "evidence_new": "wiki/domains/hadith/isnad-pipeline.md, Rules: \"MUST: yeni bir kapı adayı reddetmez, incelemeye yollar ve kendi neden kodunu taşır. Gerekçe: red bilgiyi sessizce siler; incelemedeki aday sayılabilir.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'silently|sessizce' bfb0f9c -- backend/src -> no matches. git grep -n -i -E 'reject.*review|review.*instead|counted|countable' bfb0f9c -- backend/src -> no matches. git grep -n -E '^[[:space:]]*#' bfb0f9c -- backend/src -> 21 comment lines; none states this rule or its reason."
+  },
+  {
+    "id": "D05",
+    "class": "decision",
+    "question": "The generic validation use case imports its grounding comparison functions from the hadith domain package. Is this coupling the intended design, and which rule governs it?",
+    "answer": "No. The rule is that no hadith-specific names enter engine code and domain behaviour is added as a strategy, template or provider, because Core is a general engine and hadith is only its first case. This import is one of three acknowledged violations of that rule.",
+    "must_include": [
+      "it is not the intended design; it is an acknowledged violation of a rule",
+      "the rule: no hadith-specific names in engine code; domain behaviour is added as a strategy, template or provider",
+      "reason: Core is a general engine and hadith is only the first case"
+    ],
+    "evidence_new": "wiki/domains/hadith/isnad-pipeline.md, Rules: \"MUST: motor koduna hadise özgü ad girmez; alan davranışı strateji, şablon ya da sağlayıcı olarak eklenir. Gerekçe: Core genel bir motordur, hadis ilk vakadır. Kod bu kurala üç yerde uymaz:\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'general engine|generic engine|first case|hadith-specific|domain-specific' bfb0f9c -- backend/src -> no matches. git grep -n -i -E 'violat.*rule|should not import|must not import|engine code' bfb0f9c -- backend/src -> no matches. git grep -n 'domain.hadith' bfb0f9c -- backend/src -> the imports exist (pipeline_management.py:31, container.py:44, rule_based_isnad_provider.py:6) with no comment about a rule."
+  },
+  {
+    "id": "D06",
+    "class": "decision",
+    "question": "Candidates are routed to human review partly by comparing the model's confidence with a schema threshold. Is the LLM confidence score the recommended routing signal, and why?",
+    "answer": "No. Deterministic risk flags are to be used instead of the LLM confidence score, because the model's own confidence proved a weak signal for separating correct from incorrect output (AUC 0.626 in the pilot, 0.634 in the 300-hadith schema-only run).",
+    "must_include": [
+      "deterministic risk flags are preferred over the LLM confidence score",
+      "reason: LLM confidence is a weak signal for telling correct from wrong output"
+    ],
+    "evidence_new": "wiki/evaluation/correctness-measurement.md, Rules: \"SHOULD: yönlendirme sinyali olarak LLM güven skoru yerine deterministik risk işaretleri kullanılır.\" and section Ölçülmüş olanlar: \"(3) LLM'in kendi güven skoru insana yönlendirme için zayıf bir sinyal.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'auc|weak signal|risk flag|deterministic risk' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D07",
+    "class": "decision",
+    "question": "For narrator identity resolution, which error metric is designated as the primary one, and why is that kind of error considered worse than its opposite?",
+    "answer": "The over-merge rate. Wrongly merging two different narrators changes the ruling on the chain, while a missed merge only produces duplicates.",
+    "must_include": [
+      "the primary metric is the over-merge rate",
+      "a wrong merge of two narrators changes the ruling of the chain, whereas a missed merge only produces duplicates"
+    ],
+    "evidence_new": "wiki/evaluation/correctness-measurement.md, Rules: \"SHOULD: L2'de birincil metrik over-merge oranıdır; iki ravinin yanlış birleşmesi zincirin hükmünü değiştirir, kaçan birleşme yalnız tekrar üretir.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'over-merge|over_merge|overmerge' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D08",
+    "class": "decision",
+    "question": "Is the system's 'hallucination rate' to be reported as one figure? If not, what is reported instead?",
+    "answer": "No. Three things are reported separately: mentions that do not occur in the source, values that do not occur in their quote, and category errors.",
+    "must_include": [
+      "it is not reported as a single number",
+      "mentions absent from the source and values absent from their quote are reported separately",
+      "category errors are reported separately"
+    ],
+    "evidence_new": "wiki/evaluation/correctness-measurement.md, Rules: \"MUST: \\\"halüsinasyon oranı\\\" tek sayı olarak verilmez; kaynakta olmayan mention, alıntıda olmayan değer ve kategori hatası ayrı raporlanır.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'hallucinat|fabricat|category error' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D09",
+    "class": "decision",
+    "question": "Extraction was also run with Claude Sonnet 5.5 on a 36-hadith subset and reached far lower recall than Claude Haiku 5.5. May this result be reported as a comparison between the two models, and why?",
+    "answer": "No. What was measured is a configuration error: the Anthropic provider's wire format (properties sent as a list of name/value entries) combined with the effort setting `low`, not the quality of the model.",
+    "must_include": [
+      "it must not be reported as a model comparison",
+      "the result reflects a configuration error caused by the provider's wire format together with the effort setting"
+    ],
+    "evidence_new": "wiki/evaluation/engine-experiments.md, Rules: \"MUST: Sonnet koşuları model karşılaştırması olarak aktarılmaz. Gerekçe: ölçülen şey tel biçimi ile effort ayarının hatasıdır.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'sonnet|haiku|model comparison' bfb0f9c -- backend/src -> no matches. git grep -n -i 'effort' bfb0f9c -- backend/src -> only the setting and its plumbing (settings.py:31 default \"low\", anthropic_provider.py, cached_provider.py, container.py:155). The comment at anthropic_provider.py:19-20 explains why properties travel as a list (structured outputs accept closed objects only) but says nothing about any run."
+  },
+  {
+    "id": "D10",
+    "class": "decision",
+    "question": "The rule-based isnad parser was scored on a set of 50 pilot hadiths. Can that score be presented as a test result, and why?",
+    "answer": "No, because the rule-based segmenter was tuned on those same 50 hadiths, so the number is optimistic. The test set is the 300-hadith set, which shares no hadith with the pilot.",
+    "must_include": [
+      "no, it is not a test result",
+      "because the rule-based segmenter was tuned on those 50 hadiths"
+    ],
+    "evidence_new": "wiki/evaluation/engine-experiments.md, Rules: \"MUST: 50 pilot hadisteki kural tabanlı sayı test sonucu olarak sunulmaz. Gerekçe: bölütleyici o hadislerde ayarlandı.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'pilot|tuned' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D11",
+    "class": "decision",
+    "question": "Why does the core repository's version control keep only aggregate comparison tables from evaluation runs and leave the per-run output files untracked?",
+    "answer": "Because the evaluation outputs contain third-party hadith text and quotations; only the aggregate tables are tracked.",
+    "must_include": [
+      "the run outputs contain third-party hadith text and quotations"
+    ],
+    "evidence_new": "giraffegraph-core/.gitignore: \"# Evaluation outputs hold third-party hadith text and quotations; only aggregate tables are tracked.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'third-party|third party|aggregate|redistribut|licen[sc]e|copyright' bfb0f9c -- backend/src -> no matches."
+  },
+  {
+    "id": "D12",
+    "class": "decision",
+    "question": "Extraction scores are computed against Ifta platform labels and rule-generated Sanadset labels. May such a score be called 'accuracy', and how must it be reported instead?",
+    "answer": "No. Neither reference is a human gold standard, so the value is reported as agreement with that label set and as a difference between systems, always naming the reference and the matching criterion.",
+    "must_include": [
+      "the score must not be called accuracy",
+      "because neither reference is a human gold standard",
+      "it is reported as agreement with the named label set (reference name and matching criterion stated)"
+    ],
+    "evidence_new": "wiki/evaluation/engine-experiments.md, Rules: \"MUST: bu sayfadaki sayılar aktarılırken referansın adı (İfta platform etiketi / Sanadset kural etiketi) ve eşleşme kriteri birlikte yazılır; \\\"doğruluk\\\" kelimesi kullanılmaz. Gerekçe: iki referans da insan altın standardı değildir.\" Also wiki/evaluation/correctness-measurement.md, Rules: \"MUST: gümüş standarda ya da platform etiketine karşı ölçülen değer \\\"doğruluk\\\" diye sunulmaz; o etiket kümesiyle uyum ve sistemler arası fark olarak sunulur.\"",
+    "old_answer": null,
+    "evidence_old": null,
+    "stale_doc_quote": null,
+    "grep_check": "Run from giraffegraph-core: git grep -n -i -E 'accuracy|gold standard|silver|ifta|sanadset' bfb0f9c -- backend/src -> no matches."
+  }
+]

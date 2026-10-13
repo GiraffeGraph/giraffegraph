@@ -1,0 +1,66 @@
+# What the measurements say
+
+The essay in `README.md` argues from prior art and three public corpora. This file lists what happened
+when its claims, and four extensions of them, were tested on labelled data and with a live agent on
+2026-10-13. Every number is behind a script in `data/`; details, limits and prior work are in the two
+wiki pages named under each heading.
+
+## Scorecard
+
+| Claim | Status | Evidence |
+|---|---|---|
+| Decisions cannot be derived; they must be stored | Holds, strongly | An agent answers "why" questions 0–4% correctly from code alone and 88–100% with a decision ledger |
+| The derivable half does not need to be stored: the agent can read the code | Holds when search is cheap | With 14 tool calls an agent answers structural questions 94–98% correctly with no documentation; no kind of documentation changes that, and documentation in the prompt costs 2–4× the prompt tokens |
+| … and stored derivations are worth nothing | Too strong | With 2 tool calls: 31% without documentation, 88% with a fresh page. The value of a stored derivation is a function of how expensive derivation is |
+| Stale documentation misleads | Holds, in a milder form than feared | On facts that changed, a stale page halves accuracy at 2 tool calls (50% against 96% fresh). The agent almost never asserts the outdated fact (0–4%); it relays it with a caveat (21–33%). With enough tool calls it verifies and is not misled |
+| LLM output is not deterministic, so a derived cache cannot be kept valid | Overstated | Early cutoff needs equal outputs; validating a stored result against the hashes of its inputs does not (Build Systems à la Carte, §6.3). What breaks in practice is granularity: a file-level hash is invalid after one month for 46% of documented files |
+| A resolving anchor proves the file exists, not that the claim is true | Holds, measured twice | Verbatim copies account for 82% of the extractions that disagree with human labels on a biomedical corpus; a "the cited code changed" note on a stale section changes no outcome measurably |
+| Anchors must be repo-rooted | Holds, by accident | The same stale page gave 50% on changed facts when its code paths could be opened as written and 8% when they could not (no documentation: 29%). Unplanned comparison |
+| Store a decision once, forever | Needs one more variable: scope | In 150,904 narrator mentions a decision keyed by name alone is reused wrongly 10% of the time; keyed by name and context, 0.6%, at three times the questions |
+
+## Four extensions that were tried
+
+1. **The scope of a decision is derived, not stored.** A name starts with the broadest scope and is
+   tied to its context only after a contradiction is seen. With a deterministic domain rule as the
+   contradiction detector this reaches about the error of the narrow key with about half the
+   questions (0.179 questions and 0.013 silent errors per mention, against 0.340 and 0.006), on two
+   independently labelled hadith corpora and on held-out collections. The mechanism is Ripple-Down
+   Rules (1990); the application and the measurement appear to be open. **Kept.**
+2. **Content-addressed decisions survive re-extraction.** When the prompt changes, 86–98% of the new
+   candidates map to an existing content target; with candidate ids it is 0% by construction. **Kept.**
+3. **The copy check locates the errors.** True on Arabic isnad extraction with one prompt; false on a
+   human-labelled biomedical corpus, where model confidence routes as well. **Dropped as a general
+   claim.**
+4. **A witnessed wiki** (each derived section carries the result of re-hashing the code it was
+   written from). The notes changed no measurable outcome in any arm, and did not beat a generic
+   "may be outdated" sentence. File-level witnesses die within a month; symbol-level ones last
+   (78% at 12 months) but were not what was tested. **Dropped at section granularity; untested at
+   statement granularity.**
+
+## What the essay becomes
+
+The cut still runs between what can be derived and what was decided. The measurements add a second
+axis, the price of derivation at the moment of use:
+
+- decided → store once, with the context that bounds its scope;
+- derivable and cheap to derive at the moment of use → store nothing, not even a pointer;
+- derivable and expensive at the moment of use → a stored derivation pays: at two tool calls a fresh
+  page gives 88% against 31% with nothing, and a stale one 69%; keep its anchors openable.
+
+The second line is where the essay stood. The third is the regime of large code bases, of extraction
+that costs a model call and a human review, and of any reader that cannot afford to look.
+
+## Where each result lives
+
+- Agent experiment, witness survival, number check: `data/agent-qa/README.md`,
+  `data/witness-survival/REPORT.md`, `data/explore-number-check.py`; write-up in
+  `../wiki/evaluation/wiki-for-agents-experiments.md`.
+- Decision reuse, scope, copy check: `data/explore-*.py`,
+  `../giraffegraph-core/evaluation/identity_ledger.py` (branch `feat/identity-ledger`); write-up in
+  `../wiki/evaluation/decision-ledger-experiments.md`.
+
+## Not yet tested
+
+A code base large enough that search is expensive for real; a second model; statement-level witnesses
+harvested from the agent's own tool calls; human-written documentation; a human reviewer in the
+ledger experiments.
