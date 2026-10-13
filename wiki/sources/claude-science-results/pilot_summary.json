@@ -1,0 +1,285 @@
+{
+ "Cx_rule_parser|strict": {
+  "P": 0.6209,
+  "R": 0.6361,
+  "F1": 0.6284,
+  "F0.5": 0.6239,
+  "tp": 208,
+  "fp": 127,
+  "fn": 119,
+  "ungrounded": 0,
+  "ungrounded_rate": 0.0,
+  "order_conc": 0.9932,
+  "n_hyp": 335,
+  "F1_CI": [
+   0.5723,
+   0.6833
+  ]
+ },
+ "Cx_rule_parser|lenient": {
+  "P": 0.8687,
+  "R": 0.8899,
+  "F1": 0.8792,
+  "F0.5": 0.8728,
+  "tp": 291,
+  "fp": 44,
+  "fn": 36,
+  "ungrounded": 0,
+  "ungrounded_rate": 0.0,
+  "order_conc": 0.9945,
+  "n_hyp": 335,
+  "F1_CI": [
+   0.8476,
+   0.9102
+  ]
+ },
+ "C1_LLM_generic|strict": {
+  "P": 0.7799,
+  "R": 0.7584,
+  "F1": 0.769,
+  "F0.5": 0.7755,
+  "tp": 248,
+  "fp": 70,
+  "fn": 79,
+  "ungrounded": 13,
+  "ungrounded_rate": 0.0409,
+  "order_conc": 0.9972,
+  "n_hyp": 318,
+  "F1_CI": [
+   0.7245,
+   0.8133
+  ]
+ },
+ "C1_LLM_generic|lenient": {
+  "P": 0.8774,
+  "R": 0.8532,
+  "F1": 0.8651,
+  "F0.5": 0.8724,
+  "tp": 279,
+  "fp": 39,
+  "fn": 48,
+  "ungrounded": 13,
+  "ungrounded_rate": 0.0409,
+  "order_conc": 0.9908,
+  "n_hyp": 318,
+  "F1_CI": [
+   0.8225,
+   0.9032
+  ]
+ },
+ "C1d_LLM_domain|strict": {
+  "P": 0.9199,
+  "R": 0.8073,
+  "F1": 0.8599,
+  "F0.5": 0.8949,
+  "tp": 264,
+  "fp": 23,
+  "fn": 63,
+  "ungrounded": 0,
+  "ungrounded_rate": 0.0,
+  "order_conc": 1.0,
+  "n_hyp": 287,
+  "F1_CI": [
+   0.793,
+   0.9201
+  ]
+ },
+ "C1d_LLM_domain|lenient": {
+  "P": 1.0,
+  "R": 0.8777,
+  "F1": 0.9349,
+  "F0.5": 0.9729,
+  "tp": 287,
+  "fp": 0,
+  "fn": 40,
+  "ungrounded": 0,
+  "ungrounded_rate": 0.0,
+  "order_conc": 0.9932,
+  "n_hyp": 287,
+  "F1_CI": [
+   0.8762,
+   0.9786
+  ]
+ },
+ "deltas": {
+  "F1|LLM_generic - rule": [
+   -0.017,
+   -0.0722,
+   0.0394,
+   0.728
+  ],
+  "F1|domain - generic": [
+   0.073,
+   0.0077,
+   0.1291,
+   0.0152
+  ],
+  "F1|domain - rule": [
+   0.056,
+   -0.0061,
+   0.1086,
+   0.0398
+  ],
+  "P|LLM_generic - rule": [
+   0.0056,
+   -0.0633,
+   0.0791,
+   0.4472
+  ],
+  "P|domain - generic": [
+   0.1254,
+   0.0839,
+   0.1698,
+   0.0
+  ],
+  "P|domain - rule": [
+   0.1309,
+   0.0785,
+   0.1872,
+   0.0
+  ],
+  "R|LLM_generic - rule": [
+   -0.0396,
+   -0.109,
+   0.0228,
+   0.8918
+  ],
+  "R|domain - generic": [
+   0.0286,
+   -0.0732,
+   0.1162,
+   0.2765
+  ],
+  "R|domain - rule": [
+   -0.011,
+   -0.1093,
+   0.0643,
+   0.583
+  ]
+ },
+ "calibration": {
+  "n": 318,
+  "mean_conf": 0.8929,
+  "acc": 0.8742,
+  "AUC": 0.6257,
+  "ECE4": 0.0281,
+  "bins": {
+   "0-0.8": [
+    12,
+    0.6667
+   ],
+   "0.8-0.9": [
+    13,
+    0.3846
+   ],
+   "0.9-0.95": [
+    261,
+    0.9042
+   ],
+   "0.95-1.01": [
+    32,
+    0.9062
+   ]
+  }
+ },
+ "grounding": {
+  "A_quote_ok": 318,
+  "A_quote_bad": 0,
+  "A_name_in_quote": 286,
+  "A_name_not_in_quote": 32,
+  "B_quote_ok": 287,
+  "B_quote_bad": 0,
+  "B_name_in_quote": 287,
+  "B_name_not_in_quote": 0
+ },
+ "drift": {
+  "A_bad_node_type": 0,
+  "A_bad_rel_type": 0,
+  "B_bad_node_type": 0,
+  "B_bad_rel_type": 0,
+  "A_truncated": 6,
+  "B_truncated": 6,
+  "n_items": 50
+ },
+ "er": {
+  "mentions": 327,
+  "gg_merge_keys": 240,
+  "folded_keys": 230,
+  "short_form_candidates": 32,
+  "folding_reduction": 0.0417,
+  "ceiling_reduction": 0.175
+ },
+ "power": {
+  "n100_d0.02": 0.1925,
+  "n100_d0.03": 0.3175,
+  "n100_d0.05": 0.655,
+  "n100_d0.1": 0.9775,
+  "n100_d0.15": 1.0,
+  "n200_d0.02": 0.3525,
+  "n200_d0.03": 0.56,
+  "n200_d0.05": 0.895,
+  "n200_d0.1": 1.0,
+  "n200_d0.15": 1.0,
+  "n350_d0.02": 0.4875,
+  "n350_d0.03": 0.76,
+  "n350_d0.05": 0.9725,
+  "n350_d0.1": 1.0,
+  "n350_d0.15": 1.0,
+  "n500_d0.02": 0.5925,
+  "n500_d0.03": 0.87,
+  "n500_d0.05": 1.0,
+  "n500_d0.1": 1.0,
+  "n500_d0.15": 1.0
+ },
+ "corpus": {
+  "n_hadith": 50,
+  "n_mentions": 327,
+  "collections": [
+   [
+    "Muslim",
+    10
+   ],
+   [
+    "Tirmidhi",
+    10
+   ],
+   [
+    "AbuDawud",
+    10
+   ],
+   [
+    "Nasai",
+    10
+   ],
+   [
+    "IbnMajah",
+    10
+   ]
+  ],
+  "chain_len": {
+   "14": 1,
+   "8": 3,
+   "6": 16,
+   "7": 5,
+   "5": 14,
+   "4": 4,
+   "12": 2,
+   "10": 1,
+   "9": 1,
+   "13": 2,
+   "3": 1
+  },
+  "mentions_per_hadith_mean": 6.36
+ },
+ "recall_by_len": {
+  "Cx_rule_parser|3-5": 0.9326,
+  "Cx_rule_parser|6-7": 0.9542,
+  "Cx_rule_parser|8-20": 0.7757,
+  "C1_LLM_generic|3-5": 0.9213,
+  "C1_LLM_generic|6-7": 0.8931,
+  "C1_LLM_generic|8-20": 0.7477,
+  "C1d_LLM_domain|3-5": 1.0,
+  "C1d_LLM_domain|6-7": 0.9771,
+  "C1d_LLM_domain|8-20": 0.6542
+ }
+}

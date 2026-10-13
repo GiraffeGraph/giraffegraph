@@ -1,0 +1,42 @@
+{
+ "Cx_rule_parser": {
+  "fn": {
+   "miss:other": 25,
+   "miss:parallel/secondary chain (after first matn)": 6,
+   "miss:single-token name": 5
+  },
+  "fp": {
+   "spurious:fragment (over-segmentation)": 4,
+   "spurious:over-long span (siga/honorific bleed)": 18,
+   "spurious:other span-boundary error": 16,
+   "spurious:Prophet/Allah as narrator": 6
+  },
+  "fp_total": 44,
+  "fn_total": 36
+ },
+ "C1_LLM_generic": {
+  "fn": {
+   "miss:single-token name": 15,
+   "miss:other": 25,
+   "miss:parallel/secondary chain (after first matn)": 8
+  },
+  "fp": {
+   "spurious:not a substring of source (fabrication/normalisation)": 17,
+   "spurious:fragment (over-segmentation)": 2,
+   "spurious:Prophet/Allah as narrator": 19,
+   "spurious:other span-boundary error": 1
+  },
+  "fp_total": 39,
+  "fn_total": 48
+ },
+ "C1d_LLM_domain": {
+  "fn": {
+   "miss:other": 17,
+   "miss:parallel/secondary chain (after first matn)": 9,
+   "miss:single-token name": 14
+  },
+  "fp": {},
+  "fp_total": 0,
+  "fn_total": 40
+ }
+}

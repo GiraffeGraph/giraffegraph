@@ -1,0 +1,751 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  english,
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off]{babel}
+\else
+\usepackage[bidi=default,shorthands=off]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\ifPDFTeX
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+\ifluatex
+  \newcommand{\RL}[1]{\bgroup\textdir TRT#1\egroup}
+  \newcommand{\LR}[1]{\bgroup\textdir TLT#1\egroup}
+  \newenvironment{RTL}{\textdir TRT\pardir TRT\bodydir TRT}{}
+  \newenvironment{LTR}{\textdir TLT\pardir TLT\bodydir TLT}{}
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Quoted Correctly{,} Extracted Differently},
+  pdflang={en},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Quoted Correctly, Extracted Differently}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Quoted Correctly, Extracted Differently: Measuring the Checks
+Between a Language Model and a Knowledge Graph on Hadith Narrator
+Chains}\label{quoted-correctly-extracted-differently-measuring-the-checks-between-a-language-model-and-a-knowledge-graph-on-hadith-narrator-chains}
+
+Yahya Efe Kuruçay, Deniz Büyükşahin, Alperen Ulukaya
+
+Department of Computer Engineering, Akdeniz University, Antalya, Türkiye
+
+Preprint draft, 13 October 2026. Not peer reviewed.
+
+\textbf{Abstract.} Systems that build knowledge graphs with large
+language models commonly ask the model for a source quotation and a
+confidence score, and use them to decide which extracted facts to trust.
+We test that practice inside a working extraction engine on the narrator
+chains (isnad) of Arabic hadith texts. The engine treats the model as a
+proposer: every candidate carries a quotation, deterministic checks
+route doubtful candidates to human review, and each accepted fact has a
+recorded acceptance. On 300 hadiths from the six canonical collections,
+scored against platform-derived narrator labels, a model given only a
+schema returns quotations that are all found in the source, so a
+quotation check flags nothing. A check that the extracted name occurs
+inside the model\textquotesingle s own quotation flags 9.2\% of its
+proposals, and these contain 122 of the 145 proposals that do not match
+the reference. Most of them are not invented narrators: the model
+transliterated the name, changed its grammatical case, or replaced a
+kinship reference by a name. At a comparable share of proposals sent to
+review, the model\textquotesingle s confidence finds 50 unmatched
+proposals where the check finds 122. Adding type descriptions and a few
+domain hints to the prompt reduces unmatched proposals from 145 to 5 and
+leaves the checks little to find. A rule-based parser without any model
+call is competitive under loose matching and clearly worse under strict
+matching. The reference labels are not a human gold standard, no
+reviewer took part in the runs, and one model produced usable results;
+we state what follows from the measurements and what does not.
+
+\section{1 Introduction}\label{introduction}
+
+Extraction with large language models has made it cheap to turn text
+into graph facts. A model receives a passage and a schema and returns
+nodes and relations. The difficulty is not producing facts but deciding
+which of them may enter a graph that people will rely on. Two safeguards
+are common. The model is asked to quote the source for each fact, and it
+is asked how confident it is. A quotation is meant to show where a fact
+came from; a confidence score is meant to select the facts a person
+should check.
+
+We examine both safeguards in a setting where a wrong fact has
+consequences and where labelled data exists. A hadith opens with its
+isnad, the chain of people through whom the report was transmitted: "A
+told us, from B, from C". Scholars judge a hadith from the people in its
+chain, so one wrong name changes the judgement. Fine-tuned models
+already extract narrators and their links well when large labelled
+training sets are available {[}1{]}, a knowledge graph of the six
+canonical collections exists {[}2, 3{]}, and narrator names have been
+linked to biographical databases {[}4{]}. We do not try to improve on
+that work. We ask a different question: when a general-purpose model
+proposes facts, which checks between the model and the graph find the
+proposals that depart from the text, and what do they cost?
+
+Our contributions are the following.
+
+\begin{itemize}
+\tightlist
+\item
+  An open engine in which a model can only propose, deterministic checks
+  route candidates to review with a reason code, and every accepted fact
+  has an acceptance record that names a reviewer or an automatic policy
+  (Section 3).
+\item
+  A measurement, made inside that engine on 300 unseen hadiths, of what
+  two inexpensive checks flag: quotation-in-source and
+  value-in-quotation. The first flags nothing. The second flags 84\% of
+  the proposals that do not match the reference labels (Section 5.2).
+\item
+  A classification of what the flagged proposals are. Under these labels
+  most "errors" of a schema-only model are unrecorded transformations of
+  a correct name, not fabricated narrators.
+\item
+  A comparison of the check with the model\textquotesingle s confidence
+  at equal review budgets (Section 5.3), and of four extraction
+  conditions run through one pipeline with paired bootstrap intervals
+  (Section 5.1).
+\item
+  A baseline that quantifies how often a written name stands for more
+  than one narrator in labelled chains (Section 5.6).
+\end{itemize}
+
+\section{2 Related work}\label{related-work}
+
+\textbf{Hadith corpora and extraction.} Sanadset 650K provides 650,986
+records with narrator tags produced by regular expressions and text
+matching; its data paper reports no accuracy measurement {[}5{]}. The
+Ifta Sunnah data family restructures the markup of an official hadith
+platform into narrator spans, transmission relations and narrator
+identifiers, and fine-tuned models trained on it reach, according to the
+author\textquotesingle s model repository, F1 0.98 for narrators and
+0.95 for relation pairs {[}1{]}. Earlier work located isnad spans in
+long unpunctuated texts and showed how much the matching rule matters:
+the same CRF output scored F1 0.254 under exact and 0.835 under partial
+matching, and experts agreed exactly on the end of an isnad in 53\% of
+cases {[}6{]}. Segmentation of isnad from report text with n-grams
+reached 92.5\% on 240 hadiths {[}7{]}.
+
+\textbf{Narrator identity.} AR-Sanad 280K frames narrator disambiguation
+as classification over 18,298 narrators. On 27,056 real chains its best
+model reaches micro F1 83.5 while 60.6\% of chains contain at least one
+wrong narrator {[}8{]}. A recent pipeline links 185,216 name variants to
+two biographical databases without an evaluation against labelled links
+{[}4{]}.
+
+\textbf{Hadith knowledge graphs and LLMs.} SemanticHadith publishes an
+ontology and graph for the six collections; its extension extracts
+entities with a custom NER model and relies on experts checking a sample
+of 100 instances per collection, and it lists a framework for expert
+validation of ambiguous names as future work {[}3{]}. LLM-based
+processing of hadith corpora has been evaluated with expert scores on a
+0 to 10 scale {[}9{]} or by one author comparing 100 records with the
+source {[}10{]}. A critical review names weak benchmark comparability
+and sparse expert validation as open problems of the field {[}11{]}.
+
+\textbf{Checking extracted facts.} Text2KGBench measures, besides
+precision and recall against reference triples, whether the subject and
+object of a triple occur in the sentence, and reports subject
+hallucination of 0.17 next to precision of 0.38 for one model and
+dataset: presence in the text does not imply correctness {[}12{]}.
+Attribution and factuality metrics for generated text work at the level
+of sentences or atomic claims {[}13, 14{]}. Self-reported confidence of
+language models has been studied as a calibration problem {[}15, 16{]}.
+We did not find a study that measures, for knowledge graph extraction,
+the separate effect of a check on the relation between a
+model\textquotesingle s quotation and the value it extracted. Our search
+was not systematic.
+
+\section{3 System}\label{system}
+
+GiraffeGraph Core is a schema-first extraction engine with a FastAPI
+backend, PostgreSQL for metadata, Neo4j for the committed graph and a
+web dashboard. A project defines node types, relation types, their
+properties and the properties that form the identity of a node or
+relation. A source text is ingested as a source unit and cut into
+segments. A provider, which may be a language model or a rule-based
+program, proposes candidate nodes and relations for the segments; each
+candidate carries one or more quotations with a segment reference.
+Validation then assigns each candidate a status: validated, needs
+review, or rejected. A run can be committed to the graph only when no
+candidate of the run waits for review.
+
+\textbf{Checks.} Three checks concern us here. (i) \emph{Schema}: a
+candidate whose type is not in the schema is dropped on its own, the
+other candidates of the call survive, and the unknown type is recorded
+as a review item; undeclared property keys are removed and recorded the
+same way. (ii) \emph{Quotation in source}: the
+candidate\textquotesingle s quotation must occur in the text of the
+segment it cites. (iii) \emph{Value in quotation}: a string value that
+forms the identity of a node, such as a narrator\textquotesingle s name,
+must occur in one of the candidate\textquotesingle s quotations.
+Comparisons ignore Arabic vowel marks and letter variants. A candidate
+that fails check (ii) or (iii) is routed to review whatever its
+confidence, and is not rejected, because a failed check does not show
+that the fact is false.
+
+\textbf{Acceptance record.} A review decision is stored with the
+reviewer\textquotesingle s name, the time, the time spent and, for an
+edit, the value before and after. Decisions are appended, never
+overwritten, and later re-validation does not change a candidate a
+reviewer has decided. For each committed fact the engine reports either
+the human decision or the automatic policy that accepted it.
+
+\textbf{Relation identity.} A relation type can declare identity
+properties. For the chain relation these are the hadith reference, the
+chain number and the position, so that two transmissions between the
+same two narrators in different hadiths are two edges. Without this, the
+second transmission overwrote the first.
+
+\textbf{Case-study components.} Three components are specific to hadith:
+a rule-based segmenter that finds the chain span from a lexicon of 26
+transmission formulas and splits it at the chain-switch marker, a schema
+template (narrator, hadith, "narrated from", "transmits") with short
+extraction hints, and a provider that turns the
+segmenter\textquotesingle s output into candidates without any model
+call.
+
+\section{4 Experimental setup}\label{experimental-setup}
+
+\textbf{Data.} The test set contains 300 hadiths, 50 from each of the
+six canonical collections, drawn with a fixed seed from the Ifta data
+after removing every record whose text matches one of 50 hadiths used
+during development {[}17{]}. The reference labels are the narrator
+mentions marked on the platform, 1,778 in total, between 2 and 11 per
+hadith (median 6); 74 hadiths contain more than one chain. The labels
+are platform markup restructured by a third party, not annotations by
+independent annotators, and they are inconsistent in places: narrators
+inside a compiler\textquotesingle s comment are sometimes marked and
+sometimes not. For 253 of the 300 hadiths a matching record exists in
+Sanadset; its regular-expression labels agree with the Ifta labels at F1
+0.959 under loose matching (95\% interval 0.943 to 0.972).
+
+\textbf{Scoring.} The unit of analysis is the hadith. System and
+reference mentions are aligned by maximum-weight bipartite matching.
+Under \emph{strict} matching two mentions match when their normalised
+strings are equal; under \emph{loose} matching also when one contains
+the other or their token F1 is at least 0.60. Precision, recall and F1
+are micro-averaged. Intervals are 95\% percentile bootstrap intervals
+over 2,000 resamples of hadiths, and differences between conditions use
+paired resamples. A proposal is called \emph{unmatched} when it is not
+aligned to a reference mention under loose matching. Unmatched is a
+statement about the labels\textquotesingle{} surface form, not about
+truth.
+
+\textbf{Conditions.} All conditions run through the same engine with no
+review decision.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Input to the provider
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Provider
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prompt
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Rule & Chain span from the segmenter & rule-based, no model & none \\
+Schema only & Whole hadith, one call & Claude Haiku 5.5 & Type names and
+output contract; descriptions removed \\
+Isnad-aware & Whole hadith, one call & Claude Haiku 5.5 & Descriptions
+and hints: copy names verbatim, exclude transmission verbs, the Prophet
+is not a narrator \\
+Isnad-aware, chain span & Chain span from the segmenter & Claude Haiku
+5.5 & Same as isnad-aware \\
+\end{longtable}
+}
+
+The model runs with structured output and its effort parameter set to
+\texttt{low}. Responses are stored in a content-addressed cache, so
+every run can be replayed without new calls. The runs used the
+engine\textquotesingle s in-memory storage; the same pipeline is covered
+on PostgreSQL and Neo4j by integration tests.
+
+\section{5 Results}\label{results}
+
+\subsection{5.1 Extraction}\label{extraction}
+
+\textbf{Table 1.} Narrator mentions on 300 hadiths (1,778 reference
+mentions). P, R, F1 under loose matching, with the 95\% interval of F1.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+P
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+F1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Strict F1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exact chains
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Rule & 0.968 & 0.881 & 0.923 {[}0.910, 0.935{]} & 0.633 & 0.490 \\
+Schema only & 0.914 & 0.868 & 0.890 {[}0.865, 0.914{]} & 0.826 &
+0.567 \\
+Isnad-aware & 0.997 & 0.919 & 0.956 {[}0.946, 0.966{]} & 0.904 &
+0.690 \\
+Isnad-aware, chain span & 0.998 & 0.903 & 0.948 {[}0.936, 0.959{]} &
+0.897 & 0.650 \\
+\end{longtable}
+}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 1. Loose precision, recall and F1 by condition. Error bars on F1 are 95\% bootstrap intervals.}]{../figures/fig-7-1-conditions.png}}
+\caption{Figure 1. Loose precision, recall and F1 by condition. Error
+bars on F1 are 95\% bootstrap intervals.}
+\end{figure}
+
+Under loose matching the schema-only model is below the rule-based
+parser by 0.032 F1 (interval 0.006 to 0.060). Under strict matching the
+order is reversed, 0.826 against 0.633: the parser finds the right names
+but its spans run past the end of a name, while the model returns clean
+names and alters some. Adding descriptions and hints to the schema-only
+prompt raises F1 by 0.066 (0.041 to 0.091) and precision by 0.083 (0.059
+to 0.108); unmatched proposals fall from 145 to 5. Restricting the
+model\textquotesingle s input to the chain span does not help
+(difference 0.008, interval −0.002 to 0.019). Only 10 of the 300 hadiths
+were split into more than one call, so this condition does not test
+per-chain calling on long hadiths. All conditions lose recall on hadiths
+with parallel chains; the parser loses most (0.924 on single-chain
+hadiths, 0.778 otherwise).
+
+\subsection{5.2 What the checks flag}\label{what-the-checks-flag}
+
+In the schema-only condition every quotation that reached the check was
+found in its segment. The quotation check flagged no candidate. The
+value-in-quotation check flagged 155 of 1,688 proposed mentions (9.2\%).
+
+\textbf{Table 2.} Schema-only condition: proposals by match with the
+reference and by the value-in-quotation check.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& Unmatched & Matched \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Flagged & 122 & 33 \\
+Not flagged & 23 & 1,510 \\
+\end{longtable}
+}
+
+Of the flagged proposals 79\% are unmatched, and they are 84\% of all
+145 unmatched proposals. Table 3 classifies the flagged names with fixed
+rules.
+
+\textbf{Table 3.} Flagged names by kind of change (schema-only
+condition).
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Kind of change
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example: quotation, then name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Flagged
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unmatched
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Matched
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Transliterated into Latin script & \RL{\foreignlanguage{arabic}{حَدَّثَنَا
+الْأَعْمَشُ}}, "al-A\textquotesingle mash" & 79 & 79 & 0 \\
+Grammatical case changed & \RL{\foreignlanguage{arabic}{عَنْ أَبِي بِشْرٍ}},
+\RL{\foreignlanguage{arabic}{أَبُو بِشْرٍ}} & 34 & 21 & 13 \\
+Kinship reference replaced by a name & \RL{\foreignlanguage{arabic}{عَنْ
+أَبِيهِ}} ("from his father"), \RL{\foreignlanguage{arabic}{عُرْوَةَ}} & 25 &
+18 & 7 \\
+Other, name elsewhere in the text & & 7 & 3 & 4 \\
+Other, name not in the text & & 10 & 1 & 9 \\
+\end{longtable}
+}
+
+Three points qualify these numbers. First, most unmatched proposals name
+the right narrator. Seventy-nine are Latin transliterations, all from 14
+hadiths in which the model switched script, and 21 are a change of
+grammatical case. The same case change is unmatched on a two-word name
+and matched on a longer one, because of the token threshold of the loose
+rule; the check and the scorer both compare surface forms, so part of
+their agreement is by construction. Second, the kinship cases are
+inferences the text supports: in the example the text reads "Hisham ibn
+Urwa, from his father". Fifteen of the 25 names occur in the hadith
+text. We found one flagged name that the text does not contain in any
+form. Third, the check does not cover category errors. Ten unmatched
+proposals name the Prophet as a narrator; the check flags the two
+written in Latin script and misses the eight that are copied correctly.
+
+What the check establishes is that the model wrote something other than
+what it quoted and did not say so. Of the 145 unmatched proposals, 102
+have a name that does not occur in the hadith text, and the check flags
+all 102.
+
+Because a flagged candidate is not accepted until a person decides,
+candidates accepted without review have precision 0.985 instead of
+0.914, at recall 0.849 instead of 0.868. The graph receives less until a
+reviewer acts: a run with an open review item is not committed, which
+holds back 110 of the 300 hadiths and leaves the committed output at
+precision 0.983 and recall 0.582.
+
+In the isnad-aware condition 5 of 1,639 proposals are unmatched and the
+check flags 3 of them, with no matched proposal flagged.
+
+\subsection{5.3 Confidence against the
+check}\label{confidence-against-the-check}
+
+The area under the ROC curve of the model\textquotesingle s confidence
+as a predictor of a matched proposal is 0.634 in the schema-only
+condition. The model used seven distinct values, and 1,623 of 1,688
+proposals have a confidence between 0.8 and 1.0.
+
+\textbf{Table 4.} Unmatched proposals sent to review by a confidence
+threshold and by the check (145 unmatched in total).
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Signal & Proposals sent to review & Unmatched among them \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Confidence below 0.80 & 65 (3.9\%) & 16 \\
+Confidence below 0.85 & 275 (16.3\%) & 50 \\
+Confidence below 0.90 & 1,018 (60.3\%) & 110 \\
+Value-in-quotation check & 155 (9.2\%) & 122 \\
+\end{longtable}
+}
+
+\subsection{5.4 Review workload and
+cost}\label{review-workload-and-cost}
+
+The schema-only condition sends 538 candidates to review (155 nodes and
+383 relations) and commits 190 of 300 hadiths without review. The
+isnad-aware condition sends 16 and commits 294. With the
+provider\textquotesingle s list prices of 6 October 2026, extraction
+costs USD 1.87 per 1,000 hadiths in the schema-only condition and USD
+2.29 in the isnad-aware condition, at a median latency of 11 to 13
+seconds per call. All runs in this paper cost USD 3.49. We did not
+measure human review time.
+
+\subsection{5.5 A failed run with a second
+model}\label{a-failed-run-with-a-second-model}
+
+We ran a larger model of the same family, Claude Sonnet 5.5, with the
+same settings on 36 of the hadiths. In the isnad-aware condition it
+returned a single narrator for 28 of them and usually wrote the
+narrator\textquotesingle s name into the field for a
+property\textquotesingle s key. Loose recall was 0.237 against 0.916 for
+Haiku 5.5 on the same hadiths. We suspect two causes in our
+configuration, an ambiguous wire format in which both the list entry and
+the property are called \texttt{name}, and a reasoning setting that is
+not calibrated alike across models; we did not test either. The run is
+not a comparison of models. It does show the engine failing safely: 29
+unknown property keys were recorded for review, nodes without an
+identity value were rejected, 30 of 36 runs were blocked from commit,
+and the precision of what was proposed stayed at 0.966 or above.
+
+\subsection{5.6 A written name is not an
+identity}\label{a-written-name-is-not-an-identity}
+
+The engine identifies a narrator node by the written name. The Ifta
+labels attach a person identifier to each chain position, which lets us
+measure the consequence without running a system. The 300 hadiths have
+2,150 chain positions filled by 740 people. Grouping positions by the
+name exactly as written gives 964 groups; 24 of them cover more than one
+person and contain 10.0\% of the positions, and 25.8\% of the people are
+split over several groups (pairwise precision 0.737, recall 0.559;
+B-cubed 0.941 and 0.715). Normalising the name reduces splitting
+(21.8\%) and increases conflation (12.2\% of positions). The most
+ambiguous name is a kinship reference, "his father", which stands for 34
+people.
+
+\section{6 Discussion}\label{discussion}
+
+\textbf{The quotation is not where the model departs from the text.} A
+quotation requirement is satisfied by pointing at real text. In our runs
+the model did that every time and then wrote a value that the quoted
+text does not contain. A check on the quotation alone therefore says
+nothing about the value. Checking the value against the quotation costs
+one more string comparison and was the only signal that separated
+matched from unmatched proposals.
+
+\textbf{Flagged is not false.} One flagged name in five matched the
+reference, and most unmatched ones were the right person in another
+form. A check of this kind should route to a person or to an explicit
+rule, not reject. A rule that accepts changes of grammatical case and
+records that it did so would clear 13 of the 33 matched names that were
+flagged.
+
+\textbf{Instructions matter more than checks, and checks matter when
+instructions fail.} A few short hints and the type descriptions removed
+almost all unmatched proposals, more than any check found. The checks
+earn their place in the cases where the prompt, the model or the
+configuration is wrong, as the failed run illustrates.
+
+\textbf{Strict acceptance moves work to the reviewer.} Keeping a whole
+hadith out of the graph while one candidate waits for review protects
+the graph and leaves it incomplete: recall 0.582 in the schema-only
+condition before any review. The design is only as good as the review
+step, which we have not measured.
+
+\section{7 Limitations}\label{limitations}
+
+The reference is platform markup, not a gold standard produced by
+independent annotators, and absolute scores should not be read as
+accuracy. The share of unmatched proposals that the value-in-quotation
+check flags is specific to this task and prompt: on 300 abstracts of the
+human-annotated BC5CDR corpus {[}18{]}, with the same model and a
+schema-only prompt, the check flagged 3.9\% of 2,269 proposals and these
+held 53 of the 303 that did not match the annotations, while the
+model\textquotesingle s confidence found 58 at the same review share;
+most unmatched proposals there were verbatim copies of spans the
+annotators had not labelled. No reviewer took part, so the human part of
+the loop is implemented and tested but not evaluated. All usable results
+come from one model, one setting and one run per condition. An unmatched
+proposal is not necessarily a false statement. Narrator mentions were
+scored, not relations. The hadiths are well known and are probably in
+the model\textquotesingle s training data; we did not test memorisation
+with altered names. Schema drift, which motivated the type and property
+checks, was almost absent with the model that worked, so its frequency
+in normal use is not established. The rule-based segmenter was tuned on
+50 hadiths that are excluded from the test set.
+
+\section{8 Conclusion}\label{conclusion}
+
+Inside a working extraction engine and on 300 unseen hadiths, a check
+that the extracted value occurs in the model\textquotesingle s own
+quotation flagged most proposals of a weakly instructed model that do
+not match the reference, while a check that the quotation occurs in the
+source flagged none and the model\textquotesingle s confidence found far
+fewer at the same review budget. What the check finds are mostly
+unrecorded transformations of correct names. Better instructions made
+the problem nearly disappear for this model. The next steps are a
+human-labelled reference, a reviewer in the loop with measured review
+time, more models, relation-level scoring, and linking narrator names to
+an authority list.
+
+\section{Statement on the use of AI
+tools}\label{statement-on-the-use-of-ai-tools}
+
+AI assistants wrote most of the code of the evaluated system, the
+analysis scripts and a first draft of this text under the
+authors\textquotesingle{} direction. Bibliographic records were
+retrieved from indexes or publishers\textquotesingle{} pages. Every
+measured number is produced by a script from stored model responses. A
+draft was checked against the result files by an independent AI
+reviewer, and the claims were narrowed where the files did not support
+them. The authors are responsible for the content.
+
+\section{Data and code}\label{data-and-code}
+
+The code, the evaluation scripts, the cached model responses and the
+result files are in the project repository. The hadith data comes from
+third-party sources and is used for evaluation only; the manifest lists
+each source with the licence statement as given by the source {[}17{]}.
+
+\section{References}\label{references}
+
+{[}1{]} J. M. Oumer, "Relation extraction for graph-based representation
+of Hadith Isnad," M.S. thesis, University of Malta, Faculty of
+Information and Communication Technology, Department of Artificial
+Intelligence, 2025.
+https://www.um.edu.mt/library/oar/handle/123456789/137629
+
+{[}2{]} A. B. Kamran, B. Abro, and A. Basharat, "SemanticHadith: An
+ontology-driven knowledge graph for the hadith corpus," \emph{Journal of
+Web Semantics}, vol. 78, pp. 100797, 2023.
+doi:10.1016/j.websem.2023.100797
+
+{[}3{]} A. B. Kamran, N. A. Butt, and A. Basharat, "Semantic Enrichment
+of Hadith Corpus---Knowledge Graph Generation From Islamic Text,"
+\emph{Semantic Web}, vol. 17, no. 2, pp. 1--27, 2026.
+doi:10.1177/22104968261431425
+
+{[}4{]} T. Wirahman, "Linking Hadith Narrator Identities Across
+Heterogeneous Arabic Biographical Databases: A Multi-Signal Entity
+Resolution Pipeline," arXiv:2607.05424, 2026.
+https://arxiv.org/abs/2607.05424
+
+{[}5{]} M. Mghari, O. Bouras, and A. El Hibaoui, "Sanadset 650K: Data on
+Hadith narrators," \emph{Data in Brief}, vol. 44, pp. 108540, 2022.
+doi:10.1016/j.dib.2022.108540
+
+{[}6{]} R. Muther and D. Smith, "Tracing Traditions: Automatic
+Extraction of Isnads from Classical Arabic Texts," in \emph{Proceedings
+of the Fifth Arabic Natural Language Processing Workshop}, pp. 130--138,
+2020. https://aclanthology.org/2020.wanlp-1.12/
+
+{[}7{]} S. Altammami, E. Atwell, and A. Alsalka, "Text Segmentation
+Using N-grams to Annotate Hadith Corpus," in \emph{Proceedings of the
+3rd Workshop on Arabic Corpus Linguistics}, pp. 31--39, 2019.
+https://aclanthology.org/W19-5605/
+
+{[}8{]} S. Mahmoud, O. Saif, E. Nabil, M. Abdeen, M. ElNainay, and M.
+Torki, "AR-Sanad 280K: A Novel 280K Artificial Sanads Dataset for Hadith
+Narrator Disambiguation," \emph{Information}, vol. 13, no. 2, pp. 55,
+2022. doi:10.3390/info13020055
+
+{[}9{]} M. Asgari-Bidhendi, M. A. Ghaseminia, A. Shahbazi, S. A.
+Hossayni, N. Torabian, and B. Minaei-Bidgoli, "Rezwan: Leveraging Large
+Language Models for Comprehensive Hadith Text Processing: A 1.2M Corpus
+Development," arXiv:2510.03781, 2025. https://arxiv.org/abs/2510.03781
+
+{[}10{]} O. Çinici, "Hadis Araştırmalarında Büyük Dil Modelleri (LLM):
+Teorik Çerçeve, Sınırlar ve Yapay Zekâ Destekli Yapılandırılmış Veri
+İnşası," \emph{Mevzu: Sosyal Bilimler Dergisi}, no. 16, pp. 299--326,
+2026. doi:10.56720/msbd.2026.s16.326
+
+{[}11{]} M. A. Haque and R. Islam, "Hadith computational science in the
+age of large language models: a critical narrative review,"
+arXiv:2608.20364, 2026. https://arxiv.org/abs/2608.20364
+
+{[}12{]} N. Mihindukulasooriya, S. Tiwari, C. F. Enguix, and K. Lata,
+"Text2KGBench: A Benchmark for Ontology-Driven Knowledge Graph
+Generation from Text," arXiv:2308.02357, 2023.
+doi:10.48550/arXiv.2308.02357
+
+{[}13{]} H. Rashkin et al., "Measuring Attribution in Natural Language
+Generation Models," \emph{Computational Linguistics}, pp. 1--66, 2023.
+doi:10.1162/coli\_a\_00490
+
+{[}14{]} S. Min et al., "FActScore: Fine-grained Atomic Evaluation of
+Factual Precision in Long Form Text Generation," in \emph{Proceedings of
+the 2023 Conference on Empirical Methods in Natural Language
+Processing}, pp. 12076--12100, 2023. doi:10.18653/v1/2023.emnlp-main.741
+
+{[}15{]} S. Kadavath et al., "Language Models (Mostly) Know What They
+Know," arXiv:2207.05221, 2022. https://arxiv.org/abs/2207.05221
+
+{[}16{]} M. Xiong et al., "Can LLMs Express Their Uncertainty? An
+Empirical Evaluation of Confidence Elicitation in LLMs,"
+arXiv:2306.13063, 2023. https://arxiv.org/abs/2306.13063
+
+{[}17{]} GiraffeGraph project, data manifest: sources, licence
+statements and construction of the evaluation sets,
+\texttt{data/README.md}, 12 October 2026 (unpublished).
+
+{[}18{]} J. Li et al., "BioCreative V CDR task corpus: a resource for
+chemical disease relation extraction," \emph{Database}, vol. 2016, pp.
+baw068, 2016. doi:10.1093/database/baw068
+
+\end{document}

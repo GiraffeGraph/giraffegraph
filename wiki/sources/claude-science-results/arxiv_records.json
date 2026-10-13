@@ -1,0 +1,240 @@
+{
+ "2310.08560": {
+  "arxiv_id": "2310.08560",
+  "version": "2310.08560v2",
+  "title": "MemGPT: Towards LLMs as Operating Systems",
+  "authors": [
+   "Charles Packer",
+   "Sarah Wooders",
+   "Kevin Lin",
+   "Vivian Fang",
+   "Shishir G. Patil",
+   "Ion Stoica",
+   "Joseph E. Gonzalez"
+  ],
+  "published": "2023-10-12",
+  "updated": "2024-02-12",
+  "abstract": "Large language models (LLMs) have revolutionized AI, but are constrained by limited context windows, hindering their utility in tasks like extended conversations and document analysis. To enable using context beyond limited context windows, we propose virtual context management, a technique drawing inspiration from hierarchical memory systems in traditional operating systems that provide the appearance of large memory resources through data movement between fast and slow memory. Using this technique, we introduce MemGPT (Memory-GPT), a system that intelligently manages different memory tiers in order to effectively provide extended context within the LLM's limited context window, and utilizes interrupts to manage control flow between itself and the user. We evaluate our OS-inspired design in two domains where the limited context windows of modern LLMs severely handicaps their performance: document analysis, where MemGPT is able to analyze large documents that far exceed the underlying LLM's context window, and multi-session chat, where MemGPT can create conversational agents that remember, reflect, and evolve dynamically through long-term interactions with their users. We release MemGPT code and data for our experiments at https://memgpt.ai."
+ },
+ "2510.03781": {
+  "arxiv_id": "2510.03781",
+  "version": "2510.03781v1",
+  "title": "Rezwan: Leveraging Large Language Models for Comprehensive Hadith Text Processing: A 1.2M Corpus Development",
+  "authors": [
+   "Majid Asgari-Bidhendi",
+   "Muhammad Amin Ghaseminia",
+   "Alireza Shahbazi",
+   "Sayyed Ali Hossayni",
+   "Najmeh Torabian",
+   "Behrouz Minaei-Bidgoli"
+  ],
+  "published": "2025-10-04",
+  "updated": "2025-10-04",
+  "abstract": "This paper presents the development of Rezwan, a large-scale AI-assisted Hadith corpus comprising over 1.2M narrations, extracted and structured through a fully automated pipeline. Building on digital repositories such as Maktabat Ahl al-Bayt, the pipeline employs Large Language Models (LLMs) for segmentation, chain--text separation, validation, and multi-layer enrichment. Each narration is enhanced with machine translation into twelve languages, intelligent diacritization, abstractive summarization, thematic tagging, and cross-text semantic analysis. This multi-step process transforms raw text into a richly annotated research-ready infrastructure for digital humanities and Islamic studies. A rigorous evaluation was conducted on 1,213 randomly sampled narrations, assessed by six domain experts. Results show near-human accuracy in structured tasks such as chain--text separation (9.33/10) and summarization (9.33/10), while highlighting ongoing challenges in diacritization and semantic similarity detection. Comparative analysis against the manually curated Noor Corpus demonstrates the superiority of Najm in both scale and quality, with a mean overall score of 8.46/10 versus 3.66/10. Furthermore, cost analysis confirms the economic feasibility of the AI approach: tasks requiring over 229,000 hours of expert labor were completed within months at a fraction of the cost. The work introduces a new paradigm in religious text processing by showing how AI can augment human expertise, enabling large-scale, multilingual, and semantically enriched access to Islamic heritage."
+ },
+ "2607.24117": {
+  "arxiv_id": "2607.24117",
+  "version": "2607.24117v1",
+  "title": "Grading the Narrators: An Isnad-Rijal Framework for Claim-Level Provenance in Multi-Agent Knowledge Systems",
+  "authors": [
+   "Ali Zahid Raja"
+  ],
+  "published": "2026-07-27",
+  "updated": "2026-07-27",
+  "abstract": "Modern multi-agent knowledge systems increasingly accumulate knowledge through chains of autonomous transformations rather than direct retrieval. Existing provenance work records what happened - execution traces, tool calls, evidence links - and source-reliability estimation is long established (truth discovery, reputation systems). What is missing is an operational framework that attaches graded, per-domain transmitter reliability to claim-level transmission chains, with completeness semantics, transformation-typed aggregation, decoupled content criticism, and serve/review/quarantine routing. Classical Islamic hadith science confronted a structurally similar problem: deciding whether knowledge transmitted through chains of human narrators should be accepted. Over centuries it developed a rigorous methodology - isnad (a complete transmission chain attached to every claim), rijal (systematic grading of each narrator's integrity and precision), weakest-link chain evaluation, corroboration through independent chains, and matn criticism (content evaluated independently of chain quality). This paper transfers that methodology to AI system design. We contribute a formal mapping from hadith-science concepts to multi-agent pipelines, a relational schema implementing claim chains and a graded narrator registry, a decision matrix combining chain grade with content criticism, and an evaluation on 20,000 claims from real physics textbooks. The evaluation validates weakest-link quarantine and independent-chain corroboration; reports a partial failure of the grade-recovery loop, which missed the highest-fault narrator; and reports two analyses as inconclusive, including a matched-coverage comparison the framework could not reach with the reference content critic. The paper is explicit throughout about which claims the evidence does and does not yet support."
+ },
+ "2607.05424": {
+  "arxiv_id": "2607.05424",
+  "version": "2607.05424v1",
+  "title": "Linking Hadith Narrator Identities Across Heterogeneous Arabic Biographical Databases: A Multi-Signal Entity Resolution Pipeline",
+  "authors": [
+   "Taufiq Wirahman"
+  ],
+  "published": "2026-06-30",
+  "updated": "2026-06-30",
+  "abstract": "The transmission chains (sanad) of Islamic Hadith literature encode relationships among tens of thousands of historical narrators whose biographical records are dispersed across independently maintained digital databases that share no common identifier. We present a two-phase entity resolution pipeline that links narrator names from the Sanadset 650K corpus - 650,986 Hadith records from 926 books containing 185,216 unique narrator name variants - to two biographical databases: Hadithtransmitters (Hawramani; 100,915 entries) and Muslimscholars (25,247 entries). Phase 1 matches Sanadset names to Hawramani using name-only similarity (Sanadset carries no metadata), yielding 94,628 links (51.1%; HIGH 39,938 / MED 54,690). Phase 2 cross-references Hawramani against Muslimscholars via a weighted multi-signal function combining name similarity, death-year proximity, and reliability grade polarity, yielding 95,573 links (94.7% of Hawramani; HIGH 18,245 / MED 71,546 / LOW 5,782). Chaining the two phases gives Sanadset narrators transitive access to Muslimscholars data. The linked data enable construction of a 185,216-node, 814,093-edge directed transmission graph enriched with cross-source biographical metadata. The annotated link corpora and enriched graph are released as open resources."
+ },
+ "2608.20364": {
+  "arxiv_id": "2608.20364",
+  "version": "2608.20364v1",
+  "title": "Hadith computational science in the age of large language models: a critical narrative review",
+  "authors": [
+   "Md. Ashraful Haque",
+   "Riasat Islam"
+  ],
+  "published": "2026-06-18",
+  "updated": "2026-06-18",
+  "abstract": "We examine how hadith computational science is being reshaped by transformer models, retrieval-grounded pipelines, and large language models (LLMs). Recent reviews document growth in the literature, but they do not yet provide a critical account of which advances are methodologically robust, which remain benchmark-bound, and which unresolved problems still limit scholarly use. We address this gap through a critical narrative review that combines critique of existing reviews, paper-level appraisal of representative original studies, and synthesis of Islamic scholar and domain-expert perspectives on authenticity, authority, and responsible use. We find uneven progress. Data resources have expanded, segmentation tasks have matured, narrator and source-verification problems are better formalized, and LLM-assisted workflows now support corpus-scale enrichment, multilingual access, and grounded evaluation. At the same time, progress remains constrained by narrow corpora, weak benchmark comparability, synthetic-to-real transfer gaps, narrator identity resolution, preprocessing fragility, limited reproducibility, and sparse expert-grounded validation. We show that important gaps lie beyond dominant benchmarks: non-canonical and obscure corpora, commentary and explanatory literature, cross-source links with Qur'an and seerah, and fiqh-facing evidence support. We argue that hadith computation should be assessed less as isolated model performance than as an evidence infrastructure problem requiring knowledge integration, provenance, and expert supervision. On this basis, we define a research agenda for making the field methodologically stronger and more useful to Islamic scholarship."
+ },
+ "2102.02009": {
+  "arxiv_id": "2102.02009",
+  "version": "2102.02009v1",
+  "title": "Social Network Analysis of Hadith Narrators from Sahih Bukhari",
+  "authors": [
+   "Tanvir Alam",
+   "Jens Schneider"
+  ],
+  "published": "2021-02-03",
+  "updated": "2021-02-03",
+  "abstract": "The ahadith, prophetic traditions for the Muslims around the world, are narrations originating from the sayings and the deeds of Prophet Muhammad (pbuh). They are considered one of the fundamental sources of Islamic legislation along with the Quran. The list of persons involved in the narration of each hadith is carefully scrutinized by scholars studying the hadith, with respect to their reputation and authenticity of the hadith. This is due to the its legislative importance in Islamic principles. There were many narrators who contributed to this responsibility of preserving prophetic narrations over the centuries. But to date, no systematic and comprehensive study, based on the social network, has been adapted to understand the contribution of early hadith narrators and the propagation of hadith across generations. In this study, we represented the chain of narrators of the hadith collection from Sahih Bukhari as a social graph. Based on social network analysis (SNA) on this graph, we found that the network of narrators is a scale-free network. We identified a list of influential narrators from the companions as well as the narrators from the second and third-generation who contribute significantly in the propagation of hadith collected in Sahih Bukhari. We discovered sixteen communities from the narrators of Sahih Bukhari. In each of these communities, there are other narrators who contributed significantly to the propagation of prophetic narrations. We also found that most narrators were centered in Makkah and Madinah in the era of companions and, then, gradually the center of hadith narrators shifted towards Kufa, Baghdad and central Asia over a period of time. To the best of our knowledge, this the first comprehensive and systematic study based on SNA, representing the narrators as a social graph to analyze their contribution to the preservation and propagation of hadith."
+ },
+ "2404.16130": {
+  "arxiv_id": "2404.16130",
+  "version": "2404.16130v2",
+  "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+  "authors": [
+   "Darren Edge",
+   "Ha Trinh",
+   "Newman Cheng",
+   "Joshua Bradley",
+   "Alex Chao",
+   "Apurva Mody",
+   "Steven Truitt",
+   "Dasha Metropolitansky",
+   "Robert Osazuwa Ness",
+   "Jonathan Larson"
+  ],
+  "published": "2024-04-24",
+  "updated": "2025-02-19",
+  "abstract": "The use of retrieval-augmented generation (RAG) to retrieve relevant information from an external knowledge source enables large language models (LLMs) to answer questions over private and/or previously unseen document collections. However, RAG fails on global questions directed at an entire text corpus, such as \"What are the main themes in the dataset?\", since this is inherently a query-focused summarization (QFS) task, rather than an explicit retrieval task. Prior QFS methods, meanwhile, do not scale to the quantities of text indexed by typical RAG systems. To combine the strengths of these contrasting methods, we propose GraphRAG, a graph-based approach to question answering over private text corpora that scales with both the generality of user questions and the quantity of source text. Our approach uses an LLM to build a graph index in two stages: first, to derive an entity knowledge graph from the source documents, then to pregenerate community summaries for all groups of closely related entities. Given a question, each community summary is used to generate a partial response, before all partial responses are again summarized in a final response to the user. For a class of global sensemaking questions over datasets in the 1 million token range, we show that GraphRAG leads to substantial improvements over a conventional RAG baseline for both the comprehensiveness and diversity of generated answers."
+ },
+ "2207.05221": {
+  "arxiv_id": "2207.05221",
+  "version": "2207.05221v4",
+  "title": "Language Models (Mostly) Know What They Know",
+  "authors": [
+   "Saurav Kadavath",
+   "Tom Conerly",
+   "Amanda Askell",
+   "Tom Henighan",
+   "Dawn Drain",
+   "Ethan Perez",
+   "Nicholas Schiefer",
+   "Zac Hatfield-Dodds",
+   "Nova DasSarma",
+   "Eli Tran-Johnson",
+   "Scott Johnston",
+   "Sheer El-Showk",
+   "Andy Jones",
+   "Nelson Elhage",
+   "Tristan Hume",
+   "Anna Chen",
+   "Yuntao Bai",
+   "Sam Bowman",
+   "Stanislav Fort",
+   "Deep Ganguli",
+   "Danny Hernandez",
+   "Josh Jacobson",
+   "Jackson Kernion",
+   "Shauna Kravec",
+   "Liane Lovitt",
+   "Kamal Ndousse",
+   "Catherine Olsson",
+   "Sam Ringer",
+   "Dario Amodei",
+   "Tom Brown",
+   "Jack Clark",
+   "Nicholas Joseph",
+   "Ben Mann",
+   "Sam McCandlish",
+   "Chris Olah",
+   "Jared Kaplan"
+  ],
+  "published": "2022-07-11",
+  "updated": "2022-11-21",
+  "abstract": "We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We first show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format. Thus we can approach self-evaluation on open-ended sampling tasks by asking models to first propose answers, and then to evaluate the probability \"P(True)\" that their answers are correct. We find encouraging performance, calibration, and scaling for P(True) on a diverse array of tasks. Performance at self-evaluation further improves when we allow models to consider many of their own samples before predicting the validity of one specific possibility. Next, we investigate whether models can be trained to predict \"P(IK)\", the probability that \"I know\" the answer to a question, without reference to any particular proposed answer. Models perform well at predicting P(IK) and partially generalize across tasks, though they struggle with calibration of P(IK) on new tasks. The predicted P(IK) probabilities also increase appropriately in the presence of relevant source materials in the context, and in the presence of hints towards the solution of mathematical word problems. We hope these observations lay the groundwork for training more honest models, and for investigating how honesty generalizes to cases where models are trained on objectives other than the imitation of human writing."
+ },
+ "2107.07511": {
+  "arxiv_id": "2107.07511",
+  "version": "2107.07511v6",
+  "title": "A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification",
+  "authors": [
+   "Anastasios N. Angelopoulos",
+   "Stephen Bates"
+  ],
+  "published": "2021-07-15",
+  "updated": "2022-12-07",
+  "abstract": "Black-box machine learning models are now routinely used in high-risk settings, like medical diagnostics, which demand uncertainty quantification to avoid consequential model failures. Conformal prediction is a user-friendly paradigm for creating statistically rigorous uncertainty sets/intervals for the predictions of such models. Critically, the sets are valid in a distribution-free sense: they possess explicit, non-asymptotic guarantees even without distributional assumptions or model assumptions. One can use conformal prediction with any pre-trained model, such as a neural network, to produce sets that are guaranteed to contain the ground truth with a user-specified probability, such as 90%. It is easy-to-understand, easy-to-use, and general, applying naturally to problems arising in the fields of computer vision, natural language processing, deep reinforcement learning, and so on. This hands-on introduction is aimed to provide the reader a working understanding of conformal prediction and related distribution-free uncertainty quantification techniques with one self-contained document. We lead the reader through practical theory for and examples of conformal prediction and describe its extensions to complex machine learning tasks involving structured outputs, distribution shift, time-series, outliers, models that abstain, and more. Throughout, there are many explanatory illustrations, examples, and code samples in Python. With each code sample comes a Jupyter notebook implementing the method on a real-data example; the notebooks can be accessed and easily run using our codebase."
+ },
+ "2005.11401": {
+  "arxiv_id": "2005.11401",
+  "version": "2005.11401v4",
+  "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+  "authors": [
+   "Patrick Lewis",
+   "Ethan Perez",
+   "Aleksandra Piktus",
+   "Fabio Petroni",
+   "Vladimir Karpukhin",
+   "Naman Goyal",
+   "Heinrich Küttler",
+   "Mike Lewis",
+   "Wen-tau Yih",
+   "Tim Rocktäschel",
+   "Sebastian Riedel",
+   "Douwe Kiela"
+  ],
+  "published": "2020-05-22",
+  "updated": "2021-04-12",
+  "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+ },
+ "2501.13956": {
+  "arxiv_id": "2501.13956",
+  "version": "2501.13956v1",
+  "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory",
+  "authors": [
+   "Preston Rasmussen",
+   "Pavlo Paliychuk",
+   "Travis Beauvais",
+   "Jack Ryan",
+   "Daniel Chalef"
+  ],
+  "published": "2025-01-20",
+  "updated": "2025-01-20",
+  "abstract": "We introduce Zep, a novel memory layer service for AI agents that outperforms the current state-of-the-art system, MemGPT, in the Deep Memory Retrieval (DMR) benchmark. Additionally, Zep excels in more comprehensive and challenging evaluations than DMR that better reflect real-world enterprise use cases. While existing retrieval-augmented generation (RAG) frameworks for large language model (LLM)-based agents are limited to static document retrieval, enterprise applications demand dynamic knowledge integration from diverse sources including ongoing conversations and business data. Zep addresses this fundamental limitation through its core component Graphiti -- a temporally-aware knowledge graph engine that dynamically synthesizes both unstructured conversational data and structured business data while maintaining historical relationships. In the DMR benchmark, which the MemGPT team established as their primary evaluation metric, Zep demonstrates superior performance (94.8% vs 93.4%). Beyond DMR, Zep's capabilities are further validated through the more challenging LongMemEval benchmark, which better reflects enterprise use cases through complex temporal reasoning tasks. In this evaluation, Zep achieves substantial results with accuracy improvements of up to 18.5% while simultaneously reducing response latency by 90% compared to baseline implementations. These results are particularly pronounced in enterprise-critical tasks such as cross-session information synthesis and long-term context maintenance, demonstrating Zep's effectiveness for deployment in real-world applications."
+ },
+ "2502.14802": {
+  "arxiv_id": "2502.14802",
+  "version": "2502.14802v2",
+  "title": "From RAG to Memory: Non-Parametric Continual Learning for Large Language Models",
+  "authors": [
+   "Bernal Jiménez Gutiérrez",
+   "Yiheng Shu",
+   "Weijian Qi",
+   "Sizhe Zhou",
+   "Yu Su"
+  ],
+  "published": "2025-02-20",
+  "updated": "2025-06-19",
+  "abstract": "Our ability to continuously acquire, organize, and leverage knowledge is a key feature of human intelligence that AI systems must approximate to unlock their full potential. Given the challenges in continual learning with large language models (LLMs), retrieval-augmented generation (RAG) has become the dominant way to introduce new information. However, its reliance on vector retrieval hinders its ability to mimic the dynamic and interconnected nature of human long-term memory. Recent RAG approaches augment vector embeddings with various structures like knowledge graphs to address some of these gaps, namely sense-making and associativity. However, their performance on more basic factual memory tasks drops considerably below standard RAG. We address this unintended deterioration and propose HippoRAG 2, a framework that outperforms standard RAG comprehensively on factual, sense-making, and associative memory tasks. HippoRAG 2 builds upon the Personalized PageRank algorithm used in HippoRAG and enhances it with deeper passage integration and more effective online use of an LLM. This combination pushes this RAG system closer to the effectiveness of human long-term memory, achieving a 7% improvement in associative memory tasks over the state-of-the-art embedding model while also exhibiting superior factual knowledge and sense-making memory capabilities. This work paves the way for non-parametric continual learning for LLMs. Code and data are available at https://github.com/OSU-NLP-Group/HippoRAG."
+ },
+ "2306.13063": {
+  "arxiv_id": "2306.13063",
+  "version": "2306.13063v2",
+  "title": "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs",
+  "authors": [
+   "Miao Xiong",
+   "Zhiyuan Hu",
+   "Xinyang Lu",
+   "Yifei Li",
+   "Jie Fu",
+   "Junxian He",
+   "Bryan Hooi"
+  ],
+  "published": "2023-06-22",
+  "updated": "2024-03-17",
+  "abstract": "Empowering large language models to accurately express confidence in their answers is essential for trustworthy decision-making. Previous confidence elicitation methods, which primarily rely on white-box access to internal model information or model fine-tuning, have become less suitable for LLMs, especially closed-source commercial APIs. This leads to a growing need to explore the untapped area of black-box approaches for LLM uncertainty estimation. To better break down the problem, we define a systematic framework with three components: prompting strategies for eliciting verbalized confidence, sampling methods for generating multiple responses, and aggregation techniques for computing consistency. We then benchmark these methods on two key tasks-confidence calibration and failure prediction-across five types of datasets (e.g., commonsense and arithmetic reasoning) and five widely-used LLMs including GPT-4 and LLaMA 2 Chat. Our analysis uncovers several key insights: 1) LLMs, when verbalizing their confidence, tend to be overconfident, potentially imitating human patterns of expressing confidence. 2) As model capability scales up, both calibration and failure prediction performance improve. 3) Employing our proposed strategies, such as human-inspired prompts, consistency among multiple responses, and better aggregation strategies can help mitigate this overconfidence from various perspectives. 4) Comparisons with white-box methods indicate that while white-box methods perform better, the gap is narrow, e.g., 0.522 to 0.605 in AUROC. Despite these advancements, none of these techniques consistently outperform others, and all investigated methods struggle in challenging tasks, such as those requiring professional knowledge, indicating significant scope for improvement. We believe this study can serve as a strong baseline and provide insights for eliciting confidence in black-box LLMs."
+ },
+ "2311.14740": {
+  "arxiv_id": "2311.14740",
+  "version": "2311.14740v1",
+  "title": "AutoKG: Efficient Automated Knowledge Graph Generation for Language Models",
+  "authors": [
+   "Bohan Chen",
+   "Andrea L. Bertozzi"
+  ],
+  "published": "2023-11-22",
+  "updated": "2023-11-22",
+  "abstract": "Traditional methods of linking large language models (LLMs) to knowledge bases via the semantic similarity search often fall short of capturing complex relational dynamics. To address these limitations, we introduce AutoKG, a lightweight and efficient approach for automated knowledge graph (KG) construction. For a given knowledge base consisting of text blocks, AutoKG first extracts keywords using a LLM and then evaluates the relationship weight between each pair of keywords using graph Laplace learning. We employ a hybrid search scheme combining vector similarity and graph-based associations to enrich LLM responses. Preliminary experiments demonstrate that AutoKG offers a more comprehensive and interconnected knowledge retrieval mechanism compared to the semantic similarity search, thereby enhancing the capabilities of LLMs in generating more insightful and relevant outputs."
+ }
+}
