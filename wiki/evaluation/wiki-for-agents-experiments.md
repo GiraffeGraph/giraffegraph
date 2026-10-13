@@ -10,7 +10,8 @@ sonucudur.
 ## Scope
 
 - In: ajan soru-cevap deneyi (belge türü × düzen × araç bütçesi), belge-kod atıflarının git geçmişindeki
-  ömrü, wiki'nin kendi sayılarının izlenebilirliği, emsal taraması
+  ömrü, wiki'nin kendi sayılarının izlenebilirliği, okuma anında doldurulan çerçeveler, beş ajanla
+  yapılan fikir turu, emsal taraması
 - Out: hadis çıkarımı ve kimlik deneyleri (`wiki/evaluation/engine-experiments.md`,
   `wiki/evaluation/decision-ledger-experiments.md`), denemenin metni (`cache-and-ledger/README.md`)
 
@@ -37,9 +38,19 @@ ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altınd
    gecenin ana fikri bu ölçekte tutmadı.
 6. **Dosya düzeyinde tanık bir ayda ölür.** Sekiz açık repoda belgenin atıf verdiği dosyaların %54'ü
    bir ay sonra bayt bayt aynı; 24 ayda %10. Sembol bloğu düzeyinde %98 ve %62.
+7. **"Cevabı değil sorguyu sakla" fikri tutmadı.** Olguları koddan okuma anında doldurulan boşluklu
+   cümleler, 2 çağrıda değişen sorularda 0,625 verdi; aynı cümlelerin eski koddan doldurulmuş hâli
+   0,667, bayat sayfa 0,500, baştan yazılmış sayfa 0,958. Sorgu bilinen bir olgunun değerini
+   tazeler; yazıldığında var olmayan davranışı bulamaz.
+8. **Beş ajana aynı soru üç sırayla soruldu; fikri sıra değil model belirledi.** On beş oturumun on
+   biri "çalıştırılabilir bir şey sakla" ailesine düştü. Sonnet, Codex ve Antigravity üç sırada da
+   kendi fikrini tekrarladı.
 
 Deneme (`cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
-tek şey bir sınır koşuludur: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
+iki şey var. Bir sınır koşulu: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
+Bir de olumsuz sonuç: eski bir sayfayı betikle tazelemenin denenen dört yolu da (tanık notu, yalnız
+işaret, okuma anında doldurma, eklenenlerin listesi) güncel kodu okuyan bir ajanın baştan yazdığı
+sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir.
 
 ## Tasarım: ajan soru-cevap deneyi
 
@@ -148,6 +159,62 @@ hesabı) ve dosyası çalışma alanında olmayan makale sayıları. Bulunmayan 
 örneklerde yanlış çıkmadı; tamamı elle denetlenmedi. Büyük kaynak dosyalarında rastlantısal eşleşme
 olabileceği için %91,7 üst sınırdır.
 
+## Sonuç 5: okuma anında doldurulan çerçeveler
+
+Fikir: cümleyi sakla, içindeki olguyu saklama. Cümlede isim, sayı ya da değer bulunamaz; her olgu bir
+boşluktur ve boşluk `yol.py::Sınıf.metot` biçiminde bir seçici ile `ast` üzerinde çalışan bir
+indirgeyiciden oluşur (`cache-and-ledger/data/agent-qa/cloze.py`). Yalnız `4279c98` ağacını ve on
+bölüm başlığını gören, soruları görmeyen bir ajan 58 cümle ve 95 boşluk yazdı. `bfb0f9c` ağacında 95
+boşluğun 92'si çözüldü (biri başka dosyada bulundu), 3 cümle geri çekildi.
+
+İtme düzeni, kök yollu, yapısal 24 soru, ikişer tekrar (384 koşu):
+
+| `docs/` | 2 çağrı: hepsi | değişmeyen | değişen | 4 çağrı: hepsi | değişmeyen | değişen |
+|---|---|---|---|---|---|---|
+| bayat sayfa (Sonuç 2) | 0,688 | 0,875 | 0,500 | 0,812 | 0,917 | 0,708 |
+| bayat sayfa + eklenen semboller | 0,771 [0,58 – 0,92] | 0,958 | 0,583 | 0,875 | 0,875 | 0,875 |
+| çerçeveler, eski koddan dolu | 0,708 [0,54 – 0,85] | 0,750 | 0,667 | 0,854 | 0,875 | 0,833 |
+| çerçeveler, güncel koddan dolu | 0,792 [0,65 – 0,92] | 0,958 | 0,625 | 0,896 | 0,958 | 0,833 |
+| çerçeveler, güncel + eklenen semboller | 0,750 [0,60 – 0,88] | 0,917 | 0,583 | 0,917 | 0,917 | 0,917 |
+| taze sayfa (Sonuç 2) | 0,875 | 0,792 | 0,958 | 0,979 | 0,958 | 1,000 |
+
+"Eklenen semboller": `4279c98`'de olmayıp `bfb0f9c`'de olan 201 sınıf, fonksiyon ve metodun dosya
+başına ad:satır listesi (320 kelime), betikle üretilir (`added_symbols.py`).
+
+Değişen 12 soruda, 2 çağrıda eşli farklar: güncel dolu çerçeve − bayat sayfa +0,13 [−0,13 – 0,42];
+güncel dolu − eski dolu −0,04 [−0,25 – 0,17]; taze sayfa − güncel dolu +0,33 [0,08 – 0,63].
+
+Okuma:
+
+- Öldürme ölçütleri koşudan önce yazıldı: değişen sorularda 0,667 ya da altı (yalnız işaret sayfasının
+  düzeyi), ya da bayat sayfaya karşı aralığın sıfırı içermesi. İkisi de gerçekleşti.
+- Boşluğu güncel koddan doldurmak, eski koddan doldurmaya göre değişen sorularda fark yaratmadı.
+  Kaçırılan sorular (C01, C09, C12; kısmen C03, C07, C10) çerçeveler yazıldıktan sonra eklenen
+  denetim ve dalları sorar; hiçbir boşluk oraya bakmaz.
+- Eklenenlerin adını vermek 2 çağrıda açığı kapatmadı; 4 çağrıda bayat sayfaya eklendiğinde değişen
+  sorularda 0,875'e karşı 0,708 (+0,17 [0,00 – 0,38]), aralık sıfıra değiyor.
+- Taze sayfaya uzaklık ölçülmüştür; bayat sayfayla eşitlik ölçülmemiştir (12 soru, geniş aralık).
+
+## Sonuç 6: beş ajan, üç sıra
+
+Çerçeve fikri bir fikir turundan çıktı. Beş ajana (Claude Sonnet, Claude Opus, Codex `gpt-6.1-sol`,
+Pi `gpt-5.6-sol`, Antigravity `gemini-3.8-flash-high`; üç model ailesi) aynı görev metni verildi:
+bilgi grafiği ve markdown wiki dışında bir saklama biçimi öner, on ölçülmüş olguya uy, yasak listeye
+girme. Sonra her ajana aynı metin, olguların ve yasak listenin sırası tohumlu karıştırmayla
+değiştirilerek iki ayrı oturumda daha verildi. On beş oturumun tablosu ve tam cevaplar:
+`cache-and-ledger/data/idea-sessions/README.md`.
+
+- "Çalıştırılabilir" ölçütü (ana fikir, okuma anında güncel kaynağa karşı çalışan bir program, sorgu
+  ya da test saklar) karıştırılmış oturumlar okunmadan önce yazıldı. On karıştırılmış oturumun yedisi
+  bu aileye düştü (okumadan yazılan tahmin: en az yedi); özgün sırayla birlikte on beşte on bir, biri
+  kısmen.
+- Sıra neredeyse hiçbir şeyi değiştirmedi. Sonnet üç kez sonda/tarif, Codex üç kez karşıolgusal deney,
+  Antigravity üç kez hash'li iddia defteri önerdi. Yalnız Opus üç farklı fikir verdi.
+- Karıştırma yalnız sırayı değiştirir; olguların ve yasak listenin içeriği sabitti.
+- Sınanmayan iki fikir ölçümlere dayanıyor: bilgiyi ajanın zaten grep attığı ağacın içine tek satır
+  olarak koymak (Sonuç 1: ajan `docs/` klasörünü 432 koşuda hiç açmadı) ve yalnız "yalnızca / hiç /
+  tam N" iddialarını sorgu olarak saklayıp taban kümeye göre farkı vermek.
+
 ## Emsal
 
 Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğrulanmadı.
@@ -174,6 +241,8 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - MUST: "belge ajanı yanıltır" ya da "belge işe yaramaz" cümlesi koşulsuz yazılmaz; araç bütçesi ve
   olgunun değişip değişmediği belirtilir. Gerekçe: sonuç bütçeye göre işaret değiştirir (Sonuç 1 ve 2).
 - MUST: tanık notu "işe yarıyor" diye sunulmaz. Gerekçe: bölüm düzeyinde ölçülebilir etkisi çıkmadı.
+- MUST: "sorguyu sakla" ya da "okuma anında doldur" bir çözüm diye sunulmaz. Gerekçe: Sonuç 5'te kendi
+  ölçütünü geçemedi; sınır, yazıldığında var olmayan davranışı kapsayamamasıdır.
 - SHOULD: bu çalışma alanında ajan için yazılan belge karar ve gerekçe taşır; kodun ne yaptığını
   anlatan cümle yazılmaz, yol çapası yazılır. Gerekçe: Sonuç 1, 2 ve 3.
 - SHOULD: yol çapaları ajanın çalıştığı köke göre yazılır (`wiki/architecture/context-quality.md`
@@ -185,6 +254,8 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - `cache-and-ledger/data/agent-qa/analysis.json` — hücre başına doğruluk, aralık, eşli fark, tutum payları
 - `cache-and-ledger/data/agent-qa/results.json`, `build.json`, `questions.json`, `decisions.md`, `inputs/`
 - `cache-and-ledger/data/agent-qa/run_agent_qa.py`, `analyse.py`; ham koşular `runs.tar.gz`
+- `cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
+- `cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
 - `cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
 - `cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
 - `wiki/sources/claude-science-context/12_synthesis_hypothesis_source_ledger_views.md` §5 (T4) ve
