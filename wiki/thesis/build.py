@@ -25,6 +25,10 @@ INTERNAL = {
         'Y. E. Kuruçay, "The Cache and the Ledger," project essay, GiraffeGraph workspace, '
         "`data/cache-and-ledger/README.md`, 2026 (unpublished)."
     ),
+    "internal-agent-experiment": (
+        "GiraffeGraph project, agent question-answering experiment: design, questions, runs and "
+        "analysis, `data/cache-and-ledger/data/agent-qa/README.md`, 13 October 2026 (unpublished)."
+    ),
     "internal-data-manifest": (
         "GiraffeGraph project, data manifest: sources, licence statements and construction of the "
         "evaluation sets, `data/README.md`, 12 October 2026 (unpublished)."

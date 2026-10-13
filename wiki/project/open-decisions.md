@@ -30,7 +30,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 | # | Soru | Öneri (Claude Science, 2026-09-30) | Fiilî durum | Sahip |
 |---|---|---|---|---|
 | 1 | TÜBİTAK başvurusunun durumu nedir? | Kabulse revizyonlar yazılı onaya sunulur; değerlendirmedeyse kaynakça hemen düzeltilir; retse kısıt kalkar | Gönderilmedi (proje sahibinin beyanı, 2026-10-13). Form taslaktır; hedefleri ve kaynakçası gönderilmeden önce değiştirilebilir | E |
-| 2 | Tezin ana iddiası dar mı (hadis için güvenilir KG motoru), geniş mi (bilgi katmanları için genel mimari, hadis kanıtıyla)? | Geniş iddia, hadiste derin kanıtla | **Karar (proje sahibi, 2026-10-13; danışman onayı bekler):** tek proje. İddia ve üç parçası `wiki/project/overview.md`, "Çerçeve" içindedir. Tez ve makale taslakları dar çerçevededir (motor, kapılar ve hadis ölçümü) ve bu çerçeveye çevrilecektir. Taslaklar `wiki/thesis/` altındadır, gönderilmedi | E, D |
+| 2 | Tezin ana iddiası dar mı (hadis için güvenilir KG motoru), geniş mi (bilgi katmanları için genel mimari, hadis kanıtıyla)? | Geniş iddia, hadiste derin kanıtla | **Karar (proje sahibi, 2026-10-13; danışman onayı bekler):** tek proje. İddia ve üç parçası `wiki/project/overview.md`, "Çerçeve" içindedir. Tez, makale ve proje önerisi taslakları bu çerçevededir (2026-10-13). Taslaklar `wiki/thesis/` altındadır, gönderilmedi | E, D |
 | 3 | Genelleme vakaları (kod tabanı, Kur'an) teze girer mi? | Kod vakası 20 soruluk kümeyle, Kur'an vakası anlatı olarak girer | İkisi için de ölçüm yok. Kur'an olayının kaydı: `wiki/sources/claude-science-context/07_case_codebase_wiki_and_quran.md` | E, D |
 
 ## Veri

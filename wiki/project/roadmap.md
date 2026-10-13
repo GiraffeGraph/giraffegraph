@@ -23,7 +23,7 @@ Yeni bir oturumun ya da ekibe yeni katılan birinin "şimdi ne yapılır" sorusu
 | Ölçüm | 300 hadiste dört koşul, İfta platform etiketine karşı; değer-alıntı kapısının yakalama gücü; güven skorunun ayırma gücü; ad yazımıyla kimliğin taban çizgisi | `wiki/evaluation/engine-experiments.md` |
 | Veri | Üç dış etiketli veri ailesi indirildi, üç değerlendirme kümesi kuruldu | `data/README.md` |
 | Emsal taraması | Emsal çalışmaların ölçüm yöntemi birincil kaynaktan okundu; 38 makalelik metrik taraması | `wiki/evaluation/related-work.md`, `wiki/evaluation/literature-map.md` |
-| Yazı | Tez taslağı (48 sayfa) ve makale biçimli taslak (9 sayfa); ekip ve danışman okumadı, gönderilmedi | `wiki/thesis/README.md` |
+| Yazı | Tez taslağı (53 sayfa) ve makale biçimli taslak (11 sayfa); ekip ve danışman okumadı, gönderilmedi | `wiki/thesis/README.md` |
 
 Ölçümlerin ortak sınırı: referans insan altın standardı değildir ve hiçbir koşuda bir insan inceleme
 kararı vermedi. Projenin adındaki "insan döngüsü" kodda vardır, ölçümde yoktur.
@@ -35,7 +35,7 @@ bitmeden alttakinin emeği boşa gidebilir.
 
 | Sıra | İş | Neyi bekler | Neyi karşılar |
 |---|---|---|---|
-| 1 | **Kararlar.** CSE 491 proje önerisi tek proje çerçevesiyle yazılır ve danışmana sunulur (son gün 2026-10-18; çerçeve `wiki/project/overview.md`, "Çerçeve"); tez girişi ve tartışması aynı çerçeveye çevrilir. TÜBİTAK formu gönderilmeden önce kaynakça hataları düzeltilir ve ölçümle çelişen hedefler gözden geçirilir; çalışma dili, platform etiketinin yeterliliği ve dönem kapsamı danışmanla konuşulur | Yok | `wiki/project/open-decisions.md` soru 1, 2, 4, 15, 17, 18, 22 |
+| 1 | **Kararlar.** CSE 491 proje önerisi tek proje çerçevesiyle yazılır ve danışmana sunulur (son gün 2026-10-18; çerçeve `wiki/project/overview.md`, "Çerçeve"); tez, makale ve öneri taslakları bu çerçevededir. TÜBİTAK formu gönderilmeden önce kaynakça hataları düzeltilir ve ölçümle çelişen hedefler gözden geçirilir; çalışma dili, platform etiketinin yeterliliği ve dönem kapsamı danışmanla konuşulur | Yok | `wiki/project/open-decisions.md` soru 1, 2, 4, 15, 17, 18, 22 |
 | 2 | **Karar hedefini kalıcı yapmak.** İnceleme kararı adayın kimliğine değil içeriğine bağlanır | Yok | Değişiklik C3. Yapılmazsa 3. ve 4. işteki insan emeği her yeniden çıkarımda sıfırlanır |
 | 3 | **İnsan altın standardı, küçük başlangıç.** İki kodlayıcı aynı hadisleri sistem çıktısını görmeden etiketler; kodlayıcılar arası karşılıklı F1 hesaplanır; 300 hadislik koşular bu referansa karşı yeniden puanlanır | Soru 11'deki atama; etiketleme kılavuzu üzerinde anlaşma | K-5'in ilk adımı; H1 ve L1 için mutlak sayı. Kit hazır: `giraffegraph-core/evaluation/annotation/` |
 | 4 | **İncelemesi yapılmış bir koşu.** İnceleme kuyruğundaki adaylar (şema-only koşulda 538, isnad-farkındalıklı koşulda 16) kör protokolle karara bağlanır; red oranı ve aday başına süre kaydedilir | 2. iş; 3. işteki atama | H3 için ilk veri; "doğrulanmış olgu başına uzman süresi" |

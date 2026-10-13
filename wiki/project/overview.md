@@ -68,7 +68,8 @@ Sınırlar:
   iki fikir ölçümde tutmadı (`wiki/evaluation/decision-ledger-experiments.md`, BLUF 3 ve 4).
 - Üç parçanın hiçbirinde gerçek insan kararı yoktur; ilk insan verisi etiketleme kitinden gelecektir
   (`giraffegraph-core/evaluation/annotation/`).
-- Tez ve makale taslakları dar çerçeveyi (yalnız motor) taşır (`wiki/thesis/README.md`, "Statü").
+- Tez ve makale taslakları bu çerçeveyi taşır (`wiki/thesis/README.md`, "Statü"). Proje önerisi
+  taslağı da bu çerçevededir; içindeki "Open points" 8. madde danışman onayını bekler.
 
 ## Sistem, bir paragrafta
 

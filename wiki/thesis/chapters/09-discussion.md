@@ -1,6 +1,6 @@
-# 8 Discussion
+# 9 Discussion
 
-## 8.1 Where the check belongs
+## 9.1 Where the check belongs
 
 The project began with the claim that tying each fact to a source quotation keeps unsupported facts out of a graph. In our runs the quotation was not where the model departed from the text. Every quotation that reached the check was found in its segment. What differed was the relation between the quotation and the extracted value: the model quoted "from his father" and wrote a name, or quoted a name in Arabic and wrote it in Latin letters.
 
@@ -10,7 +10,7 @@ The check also flags values a reviewer would accept. Of the 155 flagged names, 3
 
 The check does not tell an invented narrator from a transformed one. Most flagged names are the right person in another script or case, and most kinship cases are inferences the text supports. What the check establishes is narrower and still useful: the model changed something and did not say so. For a graph whose facts must be traceable to the wording of a source, that is the event that needs a decision.
 
-## 8.2 What the model is needed for
+## 9.2 What the model is needed for
 
 Under loose matching a rule-based parser with no model call reaches F1 0.923, a model with only a schema 0.890, and a model with descriptions and hints 0.956.
 
@@ -22,15 +22,23 @@ The model with hints is above the parser by 0.034 F1 under loose matching, mostl
 
 When the prompt is good the checks find little. They are what protects the graph when the prompt, the model or the configuration is not good. The failed run with a second model is an example: the output was malformed in most calls, and nothing malformed was committed.
 
-## 8.3 Confidence
+## 9.3 Confidence
 
 With this model and prompt, the model's confidence was a poor basis for routing. At a comparable share of mentions sent to review it found fewer than half as many unmatched mentions as the check (Table 7.8). The original code sent candidates to review by a confidence threshold alone. The current code keeps the threshold and adds the checks.
 
-## 8.4 The cost of a strict commit rule
+## 9.4 The cost of a strict commit rule
 
 The checks keep altered names out of the accepted output, and the commit rule keeps a whole hadith out of the graph while any of its candidates waits for review. In the schema-only condition that leaves 110 of 300 hadiths uncommitted and the graph at recall 0.582 until a person acts. With a good prompt the cost almost disappears (6 of 300). The design moves work to the reviewer; it does not remove it, and we have not measured how long that work takes.
 
-## 8.5 Threats to validity
+## 9.5 Stored decisions and derived facts
+
+The engine keeps two kinds of thing apart. Candidates are derived: the same text can be extracted again, and Chapter 7 is about checking that derivation. Decisions are not derived: an acceptance, a correction or an identity cannot be recovered from the text, so the engine records them once and never overwrites them. Chapter 8 tested the second kind in two places and the result was the same in both. The coding agent could not answer why the code is the way it is from the code, and it could with a ledger of decisions. A narrator's identity could not be read from the written name, and a stored identity decision was reusable.
+
+Two things follow for the engine. The first is that a stored decision needs a scope, and that the scope can start broad and be narrowed when a contradiction appears. In the simulation one deterministic rule on generations and death years was enough to bring the silent error near that of a narrow key at about half the questions. The engine has no such rule (rules that need biographical dates are out of scope, Chapter 4), and its decisions are attached to candidates, which a second extraction replaces. The measurement in Section 8.1 says how much would carry over if they were attached to content instead: most of them between two prompts of one model, and under two thirds between the parser and a model.
+
+The second is a limit on the other half of the claim. "Derive it again" is advice for a reader that can afford to derive. The agent with fourteen tool calls needed no description of the code; with two it needed one, and a description that had not been regenerated misled it on the facts that had changed. Extraction in the engine is the expensive case, because each derivation costs a model call and possibly a review. That is the reason the committed graph is kept as a store at all, and the reason every fact in it carries the record of how it was accepted, so that it can be checked against a new extraction instead of trusted.
+
+## 9.6 Threats to validity
 
 **Reference labels.** The Ifta labels are platform markup restructured by a third party, with inconsistencies we observed and did not repair. A system is sometimes penalised for extracting a narrator the platform did not mark. Two label sets produced in different ways agree closely on the hadiths they share (F1 0.959), which suggests the labels are adequate for comparing conditions. We do not know how independent the two sets are, and absolute values should not be read as accuracy.
 
@@ -48,15 +56,15 @@ The checks keep altered names out of the accepted output, and the commit rule ke
 
 **Memorisation.** The hadiths are well known and are likely to be in the model's training data. We found one flagged name that the text does not contain in any form, which is too little to say whether the model recalls chains. We did not test this with altered names.
 
-**No human in the measured loop.** The review queue, the decision record and the commit guards are covered by tests, but the evaluation ran without a reviewer. The claim that the engine reduces errors with a person in the loop is not measured here.
+**No human in the measured loop.** The review queue, the decision record and the commit guards are covered by tests, but the evaluation ran without a reviewer. The claim that the engine reduces errors with a person in the loop is not measured here. The same holds for Chapter 8: the reviewer of the ledger study is the label of the dataset, and the reader of the second study is a language model.
 
 **Schema drift.** The title names schema drift. With Haiku 5.5 we observed almost none, and what we observed with the second model came from a failed configuration. The engine's handling of drift is tested; its frequency in normal use is not established.
 
 **Authorship of the code and analysis.** Most of the code on the evaluated branch, the analysis scripts and a first draft of this text were produced with AI coding assistants under the authors' direction. The measurements are reproducible from the cached model responses and the scripts. The authors remain responsible for every statement.
 
-## 8.6 Limits of the system
+## 9.7 Limits of the system
 
-A narrator node is identified by its written name. Section 7.10 shows the size of the resulting error in the reference labels: a graph keyed this way merges different people who share a short name and splits one person across spellings. Any analysis of the narrator network built on the current graph inherits this.
+A narrator node is identified by its written name. Section 7.10 shows the size of the resulting error in the reference labels: a graph keyed this way merges different people who share a short name and splits one person across spellings. Any analysis of the narrator network built on the current graph inherits this. The ledger of Section 8.1 is an evaluation module that replays labels; it is not part of the engine.
 
 Chains that begin after the report text has started are not segmented, and joined co-narrators stay in one mention. Both reduce the recall of the conditions that use the segmenter.
 

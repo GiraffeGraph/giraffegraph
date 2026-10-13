@@ -16,13 +16,15 @@ betiklerini ve okunacak çıktılarını tutmak. Metinler İngilizcedir; wiki sa
 İkisi de taslaktır (2026-10-13). Ekip üyeleri ve danışman okumadı; hiçbir yere gönderilmedi. Metin tek
 kişinin yönlendirmesiyle, yapay zekâ ile yazıldı; ders yapay zekâ kullanımının raporda beyan edilmesini ister
 (`wiki/project/overview.md`, "İki çerçeve"). Proje sahibi tek proje çerçevesini seçti
-(`wiki/project/overview.md`, "Çerçeve"; danışman onayı bekler). Taslak dar çerçeveyi (yalnız motor)
-taşır; giriş, tartışma ve iki destek bölümü o çerçeveye göre yazılacaktır.
+(`wiki/project/overview.md`, "Çerçeve"; danışman onayı bekler). Tez ve makale bu çerçeveyi taşır
+(2026-10-13): tezde özet, giriş, 8. bölüm (iki destek çalışması), 9.5 ve sonuç; makalede giriş
+paragrafı, 5.7 ve tartışma. Kod ajanı deneyi makalede yer almaz. İki metin de kodun özel repoda
+olduğunu ve proje sonunda yayımlanacağını söyler.
 
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
-| Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `10-appendix.md` | `wiki/thesis/build/thesis.pdf` (48 sayfa, 38 kaynak) |
-| Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (9 sayfa, 18 kaynak), `paper.tex` |
+| Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (53 sayfa, 40 kaynak) |
+| Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 18 kaynak), `paper.tex` |
 
 ## Bölüm başına dayanak
 
@@ -35,15 +37,16 @@ dayanağı değildir.
 | 2 Background, 3 Related work | `wiki/evaluation/related-work.md`, `wiki/evaluation/literature-map.md` | `wiki/literature/`, iki `.bib` dosyası; 2.6 için `data/cache-and-ledger/README.md` |
 | 5 Design, 6 Implementation | `wiki/domains/hadith/isnad-pipeline.md` | `giraffegraph-core/docs/`, `giraffegraph-core/backend/` |
 | 7 Evaluation | `wiki/evaluation/engine-experiments.md`, `wiki/evaluation/correctness-measurement.md` | `giraffegraph-core/evaluation/results/2026-10-12-*/`, `data/eval/`, `data/README.md` |
-| 8.5 "One domain" paragrafı | `wiki/evaluation/decision-ledger-experiments.md` | `data/cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` |
-| 9.1 Plan | `wiki/project/roadmap.md`, `wiki/project/open-decisions.md` | `giraffegraph-core/evaluation/annotation/` |
+| 8.1 Karar defteri benzetimi (makalede 5.7) | `wiki/evaluation/decision-ledger-experiments.md` | `giraffegraph-core/evaluation/identity_ledger.py`, `decision_reapplication.py`, `giraffegraph-core/evaluation/results/2026-10-13-identity-ledger/` |
+| 8.2 Kod ajanı deneyi | `wiki/evaluation/wiki-for-agents-experiments.md` | `data/cache-and-ledger/data/agent-qa/` (`README.md`, `analysis.json`) |
+| 9.6 "One domain" paragrafı | `wiki/evaluation/decision-ledger-experiments.md` | `data/cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` |
+| 10.1 Plan | `wiki/project/roadmap.md`, `wiki/project/open-decisions.md` | `giraffegraph-core/evaluation/annotation/` |
 | Appendix | Bu sayfa | `giraffegraph-core/README.md`, `data/README.md` |
 
-Teze bölüm olarak girecek, taslakta yer almayan iki destek çalışması (2026-10-13): karar defterinin
-kapsamı ve yeniden kullanımı (`wiki/evaluation/decision-ledger-experiments.md`; kodu
-`giraffegraph-core/evaluation/identity_ledger.py`) ve ajan için neyin saklanacağı
-(`wiki/evaluation/wiki-for-agents-experiments.md`). Özetleri `data/cache-and-ledger/MEASUREMENTS.md`
-içindedir.
+İki destek çalışmasının teze girmeyen kolları (tanık ömrü, beş ajanla fikir oturumları, not
+yerleşiminin ayrıntıları) wiki sayfalarında ve `data/cache-and-ledger/MEASUREMENTS.md` içindedir.
+Ripple-Down Rules atfının (`compton1990philosophical`) künyesi Crossref'ten doğrulanmıştır; kaynak
+metin okunmamıştır ve tez bunu söyler.
 
 ## Derleme
 
@@ -90,8 +93,8 @@ derlemeyle yeniden üretilir.
 
 ## Verification checklist
 
-- [ ] İki derleme komutu hatasız biter; çıktı "38 references" ve "18 references" der
-- [ ] `wiki/thesis/build/thesis.pdf` 48 sayfa, `wiki/thesis/paper/build/paper.pdf` 9 sayfa
+- [ ] İki derleme komutu hatasız biter; çıktı "40 references" ve "18 references" der
+- [ ] `wiki/thesis/build/thesis.pdf` 53 sayfa, `wiki/thesis/paper/build/paper.pdf` 11 sayfa
 - [ ] 7. bölümdeki tablolar `giraffegraph-core/evaluation/results/2026-10-12-sixbooks300/compare-ifta.md` ile aynı
 
 ## Related docs

@@ -1,6 +1,6 @@
 # Appendix A Reproducing the results
 
-All commands are run from `giraffegraph-core/`. The evaluation data is described in `data/README.md` in the project workspace and is not redistributed.
+All commands are run from `giraffegraph-core/` in the project repository unless a path says otherwise. The repository is private during development; the engine will be published at the end of the project. The evaluation data is described in `data/README.md` and is not redistributed.
 
 Backend tests, with no database or network:
 
@@ -34,6 +34,8 @@ python evaluation/identity_baseline.py --reference-chains <reference_chains.json
 
 Model responses are cached under `backend/var/llm-cache/`. With the cache present a run makes no API call and reproduces the same output.
 
+The supporting studies of Chapter 8. The ledger simulation and the re-extraction overlap are run as described in `evaluation/README.md` (`identity_ledger.py`, `decision_reapplication.py`). The agent experiment is run from `data/cache-and-ledger/data/agent-qa/` in the project repository; its README gives the commands, the questions, the answer key and the cost of each arm.
+
 # Appendix B Result files
 
 | Content | Path under `giraffegraph-core/evaluation/results/` |
@@ -43,6 +45,9 @@ Model responses are cached under `backend/var/llm-cache/`. With the cache presen
 | Second-model subset | `2026-10-12-subset36/` (`compare-ifta.md`) |
 | Narrator identity baseline | `2026-10-12-identity-baseline/sixbooks300.json` |
 | Rule-based baseline of the first end-to-end run | `2026-10-12-rule-based-baseline/` |
+| Identity ledger simulation and re-extraction overlap (Section 8.1) | `2026-10-13-identity-ledger/` (`identity-ledger.json`, `decision-reapplication.json`) |
+
+The runs and the analysis of the agent experiment (Section 8.2) are outside this folder, in `data/cache-and-ledger/data/agent-qa/` (`analysis.json`, `runs.tar.gz`).
 
 Each run folder holds the system output in the scorer's format, one line per candidate with its status and reason codes, one line per provider call with tokens and latency, a run report and the analysis.
 
