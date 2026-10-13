@@ -11,7 +11,7 @@ sonucudur.
 
 - In: ajan soru-cevap deneyi (belge türü × düzen × araç bütçesi), belge-kod atıflarının git geçmişindeki
   ömrü, wiki'nin kendi sayılarının izlenebilirliği, okuma anında doldurulan çerçeveler, beş ajanla
-  yapılan fikir turu, emsal taraması
+  yapılan fikir turu, aranan ağacın içine konan notlar, emsal taraması
 - Out: hadis çıkarımı ve kimlik deneyleri (`wiki/evaluation/engine-experiments.md`,
   `wiki/evaluation/decision-ledger-experiments.md`), denemenin metni (`cache-and-ledger/README.md`)
 
@@ -45,12 +45,18 @@ ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altınd
 8. **Beş ajana aynı soru üç sırayla soruldu; fikri sıra değil model belirledi.** On beş oturumun on
    biri "çalıştırılabilir bir şey sakla" ailesine düştü. Sonnet, Codex ve Antigravity üç sırada da
    kendi fikrini tekrarladı.
+9. **Cümlenin nerede durduğu, kullanılıp kullanılmayacağını belirler.** Aynı sayfa `docs/` içinde
+   durup ajanın açması gerektiğinde 2 çağrıda hiçbir şey kazandırmadı (0,333; belgesiz 0,312). Tek
+   satırlık notlar hâlinde aranan kod ağacının içine konduğunda 0,646 verdi (+0,33 [0,15 – 0,52]),
+   istem token'ı yalnız %8 arttı. Gün içinde denenen fikirlerden ölçütünü geçen tek fikir budur.
 
 Deneme (`cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
 iki şey var. Bir sınır koşulu: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
 Bir de olumsuz sonuç: eski bir sayfayı betikle tazelemenin denenen dört yolu da (tanık notu, yalnız
 işaret, okuma anında doldurma, eklenenlerin listesi) güncel kodu okuyan bir ajanın baştan yazdığı
-sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir.
+sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir. Bir de olumlu sonuç: saklanan
+cümle ajanın aradığı yere konursa kendiliğinden ulaşır (Sonuç 7); bu cümleyi taze tutmaz, yalnız
+teslim eder.
 
 ## Tasarım: ajan soru-cevap deneyi
 
@@ -215,6 +221,50 @@ değiştirilerek iki ayrı oturumda daha verildi. On beş oturumun tablosu ve ta
   olarak koymak (Sonuç 1: ajan `docs/` klasörünü 432 koşuda hiç açmadı) ve yalnız "yalnızca / hiç /
   tam N" iddialarını sorgu olarak saklayıp taban kümeye göre farkı vermek.
 
+## Sonuç 7: aranan ağacın içindeki notlar (haşiye)
+
+Fikir turunda Opus'un önerisi: bilgiyi belge olarak tutma, ajanın zaten grep attığı ağacın içine tek
+satırlık notlar olarak koy. İki davranış sayfası, yalnız sayfayı gören bir ajan tarafından en çok 130
+karakterlik notlara çevrildi (taze sayfa 234 not, bayat sayfa 214 not); her not ilgili sembollerin
+adını taşır. `cache-and-ledger/data/agent-qa/scholia.py` notları `docs/` klasöründe "belge yok" yazan
+bir sandbox'a yerleştirir: tek dosya (`src/app/_scholia.py`, her satırın sonunda kök yollu adres) ya
+da sembolün hemen üstünde yorum satırı (dokunmuş). Taze notların 142'si bir sembole bağlanabildi.
+
+Çekme düzeni (istemde belge yok), yapısal 24 soru, ikişer tekrar, kontrollerle 720 koşu:
+
+| Sandbox'ta ne var | 2 çağrı: hepsi | değişmeyen | değişen | 4 çağrı | 14 çağrı | İstem token'ı (2 / 14 çağrı) |
+|---|---|---|---|---|---|---|
+| hiçbir şey | 0,312 [0,17 – 0,48] | 0,333 | 0,292 | 0,708 | 0,979 | 6.911 / 20.435 |
+| taze sayfa `docs/` içinde | 0,333 [0,17 – 0,52] | 0,417 | 0,250 | 0,708 | 0,979 | 6.854 / 22.718 |
+| notlar, tek dosya | 0,646 [0,46 – 0,81] | 0,667 | 0,625 | 0,875 | 0,938 | 7.472 / 16.611 |
+| notlar, dokunmuş | 0,521 [0,35 – 0,69] | 0,500 | 0,542 | 0,812 | 0,958 | 7.154 / 17.938 |
+| bayat notlar, tek dosya | 0,625 [0,46 – 0,77] | 0,833 | 0,417 | 0,792 | | 7.595 |
+| bayat notlar, yalnız kodu değişmeyenler (69 not) | 0,229 [0,08 – 0,40] | 0,250 | 0,208 | 0,625 | | 6.767 |
+| taze sayfa istemde (itme, Sonuç 2) | 0,875 | 0,792 | 0,958 | 0,979 | | 34.420 |
+| 234 not istemde (itme) | 0,792 [0,65 – 0,92] | 0,708 | 0,875 | | | 45.482 |
+
+2 çağrıda eşli farklar: tek dosya − hiçbir şey +0,33 [0,15 – 0,52]; tek dosya − aynı sayfa `docs/`
+içinde +0,31 [0,13 – 0,50]; dokunmuş − hiçbir şey +0,21 [0,06 – 0,35]; istemdeki sayfa − tek dosya
++0,23 [0,04 – 0,42]; yalnız kodu değişmeyen bayat notlar − hiçbir şey −0,08 [−0,19 – 0,00].
+14 çağrıda tek dosya − hiçbir şey −0,04 [−0,10 – 0,00]; soru başına 4,1 araç çağrısı (belgesiz 5,0).
+
+Okuma:
+
+- Koşudan önce yazılan dört öldürme ölçütü: belgesize göre kazanç +0,28'in altında ya da aralığı sıfırı
+  içeriyor; koşuların yarısından azında not görünüyor; süzülmüş bayat notlarla eski cevabı kesin diye
+  söyleme %4'ün üstünde; 14 çağrıda istem token'ı belgesizin 1,2 katından fazla. Tek dosya biçimi
+  dördünü de geçti. Dokunmuş biçim +0,28'in altında kaldı.
+- Not, 2 çağrıdaki 48 koşunun 47'sinde bir araç sonucunda göründü; not dosyası hiçbir koşuda doğrudan
+  açılmadı. Notlar ajanın zaten attığı grep'in sonucu olarak geliyor.
+- Aynı bilgi istemde daha çok kazandırır (+0,56) ama beş katı token'a; `docs/` içinde hiç açılmaz.
+- Bayat notlar bayat sayfa gibi davranır: değişmeyen olguda 0,833, değişende 0,417; eski cevabı kesin
+  diye söyleme %4, kuşkuyla aktarma %25.
+- Kodu değişen notları saklamak kazancı yok eder: 214 notun 69'u kalır, sonuç belgesizin altına iner.
+  Haşiye bilgiyi teslim eder, taze tutmaz; tazelik yine yeniden üretimden gelir (Sonuç 5).
+- Sınır: düzenekteki `grep` dosyaları yol sırasıyla döndürür, `_scholia.py` koddan önce gelir ve 40
+  satır sınırına takılmaz. Sırası farklı bir arama aracında notlar gömülebilir. Dokunmuş biçim bu sıraya
+  142 notu için bağlı değildir ve daha az kazandırır.
+
 ## Emsal
 
 Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğrulanmadı.
@@ -241,6 +291,8 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - MUST: "belge ajanı yanıltır" ya da "belge işe yaramaz" cümlesi koşulsuz yazılmaz; araç bütçesi ve
   olgunun değişip değişmediği belirtilir. Gerekçe: sonuç bütçeye göre işaret değiştirir (Sonuç 1 ve 2).
 - MUST: tanık notu "işe yarıyor" diye sunulmaz. Gerekçe: bölüm düzeyinde ölçülebilir etkisi çıkmadı.
+- MUST: haşiye "wiki'yi taze tutar" diye sunulmaz. Gerekçe: Sonuç 7'de bayat notlar bayat sayfa gibi
+  davrandı, süzgeç kazancı yok etti; ölçülen şey teslim yoludur.
 - MUST: "sorguyu sakla" ya da "okuma anında doldur" bir çözüm diye sunulmaz. Gerekçe: Sonuç 5'te kendi
   ölçütünü geçemedi; sınır, yazıldığında var olmayan davranışı kapsayamamasıdır.
 - SHOULD: bu çalışma alanında ajan için yazılan belge karar ve gerekçe taşır; kodun ne yaptığını
@@ -256,6 +308,7 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - `cache-and-ledger/data/agent-qa/run_agent_qa.py`, `analyse.py`; ham koşular `runs.tar.gz`
 - `cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
 - `cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
+- `cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json` — Sonuç 7
 - `cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
 - `cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
 - `wiki/sources/claude-science-context/12_synthesis_hypothesis_source_ledger_views.md` §5 (T4) ve
