@@ -1,0 +1,89 @@
+### 1. Name and Statement
+
+**Ripple-Down Justification Register (RDJR)**  
+A flat, content-addressed register of project propositions strictly divided into non-derivable decisions and multi-hop code bridges, whose validity is deterministically maintained via AST symbol-body hashes (justifications) and whose applicability is narrowed upon contradiction using Ripple-Down exception rules.
+
+---
+
+### 2. What is Stored
+
+The fundamental unit is the **Justified Proposition**.
+- `id`: Content-hash of the claim string (guarantees survival across re-prompting).
+- `kind`: `DECISION` (non-derivable intent/tradeoff) or `BRIDGE` (derivation spanning $\ge 2$ symbols/files; 1-hop facts are forbidden).
+- `claim`: Atomic natural-language assertion.
+- `scope`: Target symbol stub with optional `except_when` context predicates.
+- `justification`: For `DECISION`, author/intent and optional forward `supersedes: [id]`. For `BRIDGE`, a set of symbol witnesses `[file:symbol#body_hash, ...]`.
+
+```yaml
+- id: c8f1a92e
+  kind: DECISION
+  claim: FAQ owns its items; rejected content-block convention because items require ordered sorting and localization.
+  scope: { symbol: "FaqController", except_when: null }
+  justification: { author: "human:architect", supersedes: null }
+
+- id: 7a90f31b
+  kind: BRIDGE
+  claim: FaqController routes to B2C_FaqItem table via FaqService.Save (3 hops: Controller -> Service -> Model).
+  scope: { symbol: "FaqController", except_when: null }
+  justification:
+    witnesses:
+      - "Controllers/FaqController.cs:FaqController#e9a1"
+      - "Services/FaqService.cs:Save#4b72"
+      - "Models/FaqItem.cs:FaqItem#18f0"
+```
+
+---
+
+### 3. Operations
+
+- **Writing**: The agent logs a `DECISION` when an architectural choice or rejected alternative occurs. The agent logs a `BRIDGE` only when resolving a multi-hop traversal ($\ge 2$ hops). A linter rejects single-hop derivations (e.g. local function signatures) because they are cheap to derive at runtime.
+- **Reading under tight budget (2 calls)**: Call 1: `grep("FaqController", "docs/register.yaml")`. A single grep returns the decision rationale and the multi-hop destination table in one block. Call 2: `read_file` on the cited target file. Total: 2 calls, 0 wasted hops.
+- **Invalidation & Narrowing**:
+  - *Invalidation (deterministic script)*: A CI/pre-session AST script re-hashes symbol bodies. If all match, the bridge is valid; if any hash differs, the bridge is pruned from the agent's view. Decisions carry no code witness and never rot unless superseded.
+  - *Narrowing (deterministic rule or agent)*: If a proposition encounters an observed collision or domain contradiction, an `except_when` context predicate is appended to `scope` without modifying past records (Ripple-Down Rules).
+- **Actors**: The agent writes claims and queries the register; deterministic scripts re-hash AST symbols, prune stale bridges, and enforce the 1-hop ban; humans provide root decisions and arbitrate domain contradictions.
+
+---
+
+### 4. Why it Beats a Markdown Page and a Graph
+
+- **Beating Markdown Wiki**:
+  1. *Token economy (Fact 7)*: Monolithic wikis inflate prompt tokens by 2–4×. RDJR stores only decisions (Fact 9) and multi-hop bridges (Fact 10), omitting cheap 1-hop facts that 14-call agents derive freely from code (Fact 7).
+  2. *Symbol longevity vs. file rot (Fact 1)*: Wiki file anchors decay within 1 month (46% dead); symbol-body witnesses survive 78% after 12 months.
+  3. *Zero stale doubt (Facts 6, 8)*: Section staleness notes fail to help (Fact 8); stale text induces 21–33% doubt (Fact 6). RDJR prunes invalid bridges completely rather than annotating them with warnings.
+  4. *Content keys (Fact 2)*: Content-addressed IDs survive re-prompting at 86–98% (vs. 0% for candidate IDs).
+  5. *Pull discovery (Fact 7)*: Agents never opened wiki docs for code in pull mode (0/432). Grep-friendly symbol keys make RDJR discoverable on standard code queries.
+- **Beating Knowledge Graph**:
+  1. *Zero cascade cost*: Avoids GraphRAG’s ~375× build cost and global community invalidation cascades.
+  2. *Preserves rationale (Fact 9)*: Graphs atomize facts into triples `(entity, relation, entity)`, erasing "why" (where agents score 0–4% without decisions). RDJR preserves full decision rationale.
+  3. *Ripple-Down scoping (Fact 4)*: Broad keys with exception narrowing avoid the 10% false-reuse rate without the 3× question cost of narrow keys.
+
+---
+
+### 5. Closest Prior Work and Exact Difference
+
+1. **Justification-Based Truth Maintenance Systems (JTMS; Doyle 1979 [unverified], de Kleer 1986 ATMS [unverified])**: Maintained beliefs via propositional justifications and retracted them without search. *Difference*: JTMS operated over formal logic in expert systems; RDJR anchors justifications to AST symbol hashes in source trees (Fact 1) and bounds derivations by tool-call distance ($d \ge 2$).
+2. **Ripple-Down Rules (RDR; Compton & Jansen 1990 [unverified])**: Built hierarchical exception trees around human cornerstone cases. *Difference*: RDJR couples RDR to content-addressed code symbols and automated AST witness invalidation.
+
+---
+
+### 6. One Falsifiable Experiment
+
+- **Harness**: `cache-and-ledger/data/agent-qa/run_agent_qa.py` (36 questions: 12 stable, 12 changed, 12 decision).
+- **Arm**: `rdjr_stale_budget2` (Sandbox `docs/register.yaml` generated from commit `4279c98`; witness hashes pre-evaluated against `bfb0f9c` so changed bridges are pruned, surviving bridges and decisions kept; budget = 2 tool calls, `push` regime).
+- **Comparison Arm**: `stale_witness` at budget 2 (stale page + witness notes; scored 50% on changed questions).
+- **Metric**: Correctness on 12 `changed` structural questions at 2 calls.
+- **Result that kills the idea**: Scoring $\le 55\%$ on changed questions (failing to beat `stale_witness`'s 50%), OR prompt tokens exceeding 30,000 in `push` mode. (Cost: 72 runs $\approx$ USD 0.15).
+
+---
+
+### 7. Two Runner-Up Ideas
+
+1. **Invariant Contract Shards (ICS)**: Project knowledge is stored as machine-checkable pre/post-conditions on symbol interfaces verified by AST linters. Decisions become boundary axioms and derivations become interface type bounds.
+2. **Counterfactual Refutation Ledger (CRL)**: An append-only log storing strictly *negative knowledge* (dead architectures, rejected PRs, regression traps) indexed by symbol regex. It leaves positive facts to code search and intervenes only when the agent approaches known failures.
+
+---
+
+### 8. The Weakest Point
+
+The weakest point is the multi-hop derivation threshold ($d \ge 2$). If an authoring agent misjudges derivation difficulty and omits a 2-hop bridge, a 2-call reader drops to 31% accuracy; if it logs trivial 1-hop facts, the register suffers the exact maintenance rot and token bloat it was designed to prevent.

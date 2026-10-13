@@ -1,0 +1,70 @@
+1. **Counterfactual Assay Cabinet**
+
+Persistent knowledge is stored as small executable experiments that answer recurring questions against the current material, including “why” by testing a recorded rejected alternative against a human-chosen invariant.
+
+2. **What is stored**
+
+The unit is an assay: question triggers, applicability guard, current-world probe, optional counterfactual mutation, invariant, bounded output renderer, failure behavior, cost, and parent exception. It stores an instrument rather than its last answer.
+
+```text
+assay faq-ownership/v3
+asks: "why does FAQ own items?"; "what happens when FAQ is deleted?"
+scope: product == "B2C"
+guard: import Faq, FaqItem; relation(Faq.items) exists
+setup: create faq F with items [A,B]
+current: delete F
+counterfactual: replace owned relation with shared ContentBlock refs
+run: transaction(current); transaction(counterfactual)
+observe: remaining(A,B), ordering_scope, localization_scope
+invariant: no orphan items; ordering is FAQ-local
+answer: diff(current,counterfactual), failed(invariant)
+failure: return UNKNOWN(reason), never previous output
+cost: medium; timeout: 3s
+parent: faq-ownership/v1
+id: sha256(canonical setup+counterfactual+invariant)
+signed-invariant: human:alice
+```
+
+A successful result might be: “Current deletion leaves no items. The shared-block alternative leaves two orphans and cannot preserve FAQ-local ordering; therefore ownership was retained.”
+
+3. **Operations**
+
+An agent writes an assay after it has twice paid substantial search cost for the same question, or when a human makes a choice among alternatives. A deterministic runner checks that it is repeatable and hermetic; a human signs only normative invariants, not derived observations.
+
+Under a tight budget, a broker lexically matches the question to `asks`, executes the best applicable assay, and returns its bounded result in one tool call. It does not preload the cabinet. With a large budget, structural assays are bypassed because direct exploration is already effective.
+
+Results are never persistent ground truth. A failed guard, timeout, nondeterministic result, or missing observation returns `UNKNOWN`. A contradiction adds a narrower child assay with one distinguishing predicate—Ripple-Down Rules—rather than editing the broad assay. Assays are content-addressed; generated run IDs are not identities.
+
+4. **Why it should beat a markdown page and a graph**
+
+A pointer is insufficient (fact 1), so an assay returns the observation, not merely a location. It does not treat copied source text as truth, which matters because verbatim extraction failed badly on the biomedical corpus (fact 2). It fails closed instead of attaching ineffectual freshness warnings (facts 3–4).
+
+Guards may use relatively durable symbol interfaces, while execution observes changed behavior even when the symbol survives (fact 5). Contradictions narrow applicability incrementally (fact 6), and one broker call targets exactly the low-budget regime where stored derivation matters (fact 7). Content identity survives regenerated candidates (fact 8).
+
+Counterfactuals plus human-signed invariants preserve otherwise unrecoverable “why” knowledge (fact 9). At 14 calls, the broker stays out of the way, avoiding the token tax and ignored documentation seen in fact 10.
+
+Unlike a wiki, there is no frozen description to become stale. Unlike a graph, there is no extracted global ontology or relation-maintenance cascade.
+
+5. **Closest prior work**
+
+Closest are characterization tests, mutation testing, executable specifications, and architectural fitness functions (**unverified from memory**). Ordinary tests decide pass/fail for developers; mutation testing generates mostly disposable faults. An assay instead retains a meaningful rejected alternative, is selected by user questions, emits an explanatory differential, fails closed as knowledge, and narrows through contradiction cases.
+
+6. **Falsifiable experiment**
+
+Use all 36 existing questions at budgets 2/4/14 in `push` mode.
+
+- **Assay arm:** question-blind assays derived from the same fresh behavior page and decisions; the sandbox build deterministically materializes their current bounded outputs as `docs/assays.out`, since the existing harness cannot execute a fourth tool.
+- **Comparison:** `decisions.md` plus the fresh description page.
+- **Metrics:** judged accuracy, prompt tokens, and `UNKNOWN` rate, reported by question class.
+
+Two repetitions produce 432 runs, roughly under USD 1 using the experiment’s published cost per run. Kill the idea if, at two calls, assays are more than five percentage points less accurate **or** fail to reduce documentation tokens by at least 30%.
+
+7. **Runner-up ideas**
+
+**Negative-Space Register:** Store only disproven hypotheses with their smallest surviving counterexample. Remove an entry when the counterexample no longer reproduces; split it by a distinguishing predicate when it is valid only in some contexts.
+
+**Search Grammar:** Persist parameterized finite-state search procedures—“locate registration, follow constructor, inspect dispatch”—without answers, exact lines, or fixed paths. Successful procedures receive higher priority; structural failure resets them rather than returning an old result.
+
+8. **Weakest point**
+
+A plausible but incomplete assay can produce stronger false confidence than stale prose. There is no general automatic test that its observations capture the whole meaning of the question, and many historical or social rationales cannot be made executable without distorting them.

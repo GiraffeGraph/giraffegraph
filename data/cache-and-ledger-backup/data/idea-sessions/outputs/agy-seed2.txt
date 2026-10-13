@@ -1,0 +1,100 @@
+### 1. Name
+
+**Epistemic Precedent Deck (EPD)**: An append-only, record-jar register of contrastive assertions (`affirms`/`denies`) anchored to repository-rooted code symbols, strictly segregating write-once decisions from symbol-hash-witnessed derivations, with scope narrowed only upon contradiction via Ripple-Down exception pointers.
+
+---
+
+### 2. What is stored
+
+The unit is the **Precedent Card**, stored in a single flat file (`docs/precedents.rec`, using line-delimited record-jar syntax).
+
+**Fields:**
+- `id`: Content-addressed hash of normalized assertion text (survives prompt changes).
+- `type`: `decision` (non-derivable "why") or `derivation` (expensive multi-symbol synthesis).
+- `anchor`: Repository-rooted symbol address (`path/to/file.py:symbol`).
+- `witness`: Symbol-level AST body hashes (`file:symbol@sha`) of supporting code.
+- `affirms`: Distilled statement of behavior or architecture.
+- `denies`: Explicit counterfactual or rejected alternative.
+- `scope`: Context predicate (defaults to `*`).
+- `except`: Child card ID narrowing scope upon contradiction.
+- `supersedes`: Forward pointer to an obsoleted card (back-links derived by scanning).
+
+**Example (15 lines):**
+```rec
+%rec: Precedent
+id: 5a8e1b
+type: decision
+anchor: src/app/cms/faq.py:FaqController
+affirms: FAQ is a dedicated aggregate that owns its items
+denies: FAQ is a generic CMS content block with a convention
+scope: *
+supersedes: 1f09c2
+
+id: c92d44
+type: derivation
+anchor: src/app/api/auth.py:verify_token
+witness: src/app/api/auth.py:verify_token@8f1a, src/app/db/session.py:get_db@3c90
+affirms: Raises 401 on expired token, 403 on tenant mismatch
+denies: Returns None or redirects to login
+scope: *
+except: e41b70
+```
+
+---
+
+### 3. Operations
+
+- **Write**: An agent drafts a card when recording a non-derivable choice ("why") or after synthesizing a multi-hop contract (>3 tool calls). Cheap single-symbol facts are never stored. A human confirms `decision` intent; a deterministic script computes the content `id` and symbol-level `witness` hashes.
+- **Read**: Under a 2-call budget in `pull` mode, the agent uses 1 call: `grep("<symbol>", "docs/precedents.rec")`. Because cards are compact (~8 lines), `grep` returns the exact target card without loading large files or inflating prompt tokens. In call 2, the agent opens the repository-rooted `anchor` to inspect the code directly.
+- **Invalidate / Narrow**:
+  - `derivation`: A deterministic script recomputes symbol AST hashes on commit. If any cited `witness` hash changes, the card is automatically evicted/tombstoned. No LLM judgment; zero stale prose survives.
+  - `decision`: Never invalidated by code changes (write-once). If an agent or test encounters a contradiction under a new context, an exception card is appended with an `except: <new_id>` pointer on the parent (Ripple-Down Rules).
+
+---
+
+### 4. Why it should beat a markdown page and a graph
+
+- **Beats Markdown Pages**:
+  - *Prevents stale degradation* (Facts 3, 7): At 2 tool calls, a stale page drops accuracy on changed facts to 50% (fresh is 96%), and section warnings do not help (Fact 4). EPD relies on symbol-level AST hashes (Fact 5: 78% survive 12 months) to hard-evict changed derivations before the agent reads them.
+  - *Zero token bloat* (Fact 10): Pushing docs into context costs 2–4× prompt tokens; in pull mode agents ignore prose docs. EPD is pulled on demand via 1 targeted `grep`.
+  - *Eliminates verbatim extraction traps* (Fact 2): 82% of extraction errors on biomedical text were verbatim copies. The mandatory `denies` clause enforces contrastive synthesis over shallow text copying.
+  - *Repository-rooted anchors* (Fact 18): Anchors are rooted, preventing the drop to 8% seen with unrooted references.
+  - *Full gain over pointers* (Fact 1): Pointers give only half the gain; EPD provides the full synthesized assertion (`affirms`).
+- **Beats Knowledge Graphs**:
+  - *Zero invalidation cascades*: Modifying a symbol evicts only cards citing its AST hash, avoiding GraphRAG-style community re-summaries.
+  - *Preserves "why" with content addressing* (Facts 8, 9): "Why" accuracy drops to 0–4% without decision storage. EPD keys cards by content hash, which survives prompt changes at 86–98% (unlike graph node IDs which decay to 0%).
+  - *Contradiction-driven scoping* (Fact 6): Keying broadly causes 10% false reuses, while narrow keying triples questions. EPD uses RDR exception pointers to reach narrow accuracy at half the questions without rigid ontologies.
+
+---
+
+### 5. Closest prior work and the exact difference
+
+1. **Ripple-Down Rules (Compton & Jansen, 1990)**: Builds exception trees for expert diagnostic rules.  
+   *Difference*: Applied to project decision boundaries and coupled with content-addressed, AST-witnessed derivation caching in an append-only flat deck.
+2. **GNU recutils / Record Jar (Marchesi, 2010; Raymond, 2004)**: Line-oriented, plain-text relational format.  
+   *Difference*: Recutils is a general database format; EPD introduces epistemic typing (`decision` vs `derivation`), contrastive semantics (`affirms`/`denies`), and deterministic AST-hash eviction.
+3. *[Unverified]* **Build Systems à la Carte (Mokhov et al., 2018)**: Verifying traces cache non-deterministic build outputs via input hashes.  
+   *Difference*: Mokhov caches build execution artifacts; EPD stores semantic assertions and separates write-once decisions from cached derivations.
+
+---
+
+### 6. One falsifiable experiment
+
+- **Harness**: `cache-and-ledger/data/agent-qa/run_agent_qa.py`, 36 questions, 2 tool calls, `pull` regime, Claude Haiku 5.5, 2 reps (~USD 0.20 total).
+- **Arm**: Sandbox contains `docs/precedents.rec` with decisions and fresh expensive derivations (stale derivations evicted by symbol AST check).
+- **Comparison Arm**: `stale` (and `fresh`) at 2 tool calls (`push+budget2` and `pull+budget2`).
+- **Metric**: Accuracy on the 12 `changed` questions, and overall accuracy across all 36 questions.
+- **Killing Result**: If accuracy on `changed` questions is $\le 0.50$ (failing to beat the un-evicted stale page) OR overall accuracy fails to beat `none` (0.312) because grepping the deck burns the first call without leaving enough budget to inspect code.
+
+---
+
+### 7. Two runner-up ideas
+
+1. **Refutation Registry**: An append-only store of disproven hypotheses and rejected paths keyed to symbol ASTs, assuming code documents what *is* and context should only record what was *deliberately excluded*. Invalidation occurs deterministically when the cited symbol's precondition disappears.
+2. **Behavioral Shadow-Sheet**: A tabular sidecar of executable property contracts (pre/post-conditions) keyed to symbol hashes. Agents query it like a compiler type table, with staleness detected by evaluating assertions during CI without LLM re-reading.
+
+---
+
+### 8. The weakest point
+
+**Multi-symbol witness fragility (over-eager eviction)**: While single-symbol AST hashes survive 78% after 12 months (Fact 5), expensive derivations typically span interactions among 3–6 symbols. If *any* referenced symbol undergoes a harmless cosmetic refactor or type annotation edit, its AST hash changes, triggering an eager false-positive eviction of a derivation that was still true, dropping the agent back to a cold search.

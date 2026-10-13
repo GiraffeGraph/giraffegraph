@@ -78,9 +78,52 @@ page gives 0.083 on changed questions (nothing: 0.292), with or without witness 
 How the stale page fails: of the changed-question answers at 2 calls (rooted), 0 to 4% assert the
 outdated behaviour as fact, 21 to 33% report it and say it could not be verified.
 
+## Late-bound frames and a list of added symbols
+
+A second round on the same day tests whether a description written at the earlier commit can be
+refreshed by a script, without a model reading the current code.
+
+- Frames (`cloze.py`, `inputs/frames-earlier-commit.json`): 58 sentences with 95 blanks, written by
+  an agent that saw only the tree at `4279c98` and the ten section headings, not the questions. A
+  sentence may not contain an identifier, number or literal; each blank is a selector
+  (`path.py::Class.method`) with a reducer that `ast` evaluates. Filled against `4279c98` the page
+  has 2,086 words (`frozen`); filled against `bfb0f9c` 92 of the 95 blanks resolve, one of them in
+  another file, 3 sentences are withdrawn, and the page has 2,010 words (`live`).
+- Added symbols (`added_symbols.py`): the 201 classes, functions and methods that exist at
+  `bfb0f9c` and not at `4279c98` (800 against 995 symbols), as name:line per file, 320 words,
+  appended to a page.
+
+`push`, rooted paths, structural questions, 2 repetitions (384 runs):
+
+| docs/ contains | 2 calls: all | stable | changed | 4 calls: all | stable | changed |
+|---|---|---|---|---|---|---|
+| stale page (from above) | 0.688 | 0.875 | 0.500 | 0.812 | 0.917 | 0.708 |
+| stale page + added symbols | 0.771 [0.58, 0.92] | 0.958 | 0.583 | 0.875 | 0.875 | 0.875 |
+| frames, frozen | 0.708 [0.54, 0.85] | 0.750 | 0.667 | 0.854 | 0.875 | 0.833 |
+| frames, live | 0.792 [0.65, 0.92] | 0.958 | 0.625 | 0.896 | 0.958 | 0.833 |
+| frames, live + added symbols | 0.750 [0.60, 0.88] | 0.917 | 0.583 | 0.917 | 0.917 | 0.917 |
+| fresh page (from above) | 0.875 | 0.792 | 0.958 | 0.979 | 0.958 | 1.000 |
+
+Paired differences on the 12 changed questions at 2 calls: live frames against the stale page
++0.13 [-0.13, 0.42]; live against frozen frames -0.04 [-0.25, 0.17]; fresh page against live frames
++0.33 [0.08, 0.63]; stale page with added symbols against the stale page +0.08 [0.00, 0.25]. On the
+12 stable questions live against frozen frames is +0.21 [0.00, 0.42].
+
+The kill criteria were written before the runs: live frames at or below 0.667 on changed questions
+at 2 calls (the level of a pointers-only page), or a paired interval against the stale page that
+includes 0. Both happened. Filling the blanks from the current tree did not help on the facts that
+changed. The changed questions the live page misses (C01, C09, C12, and partly C03, C07, C10) ask
+about checks and branches that were added after the frames were written; no blank points at them.
+Naming the added symbols did not close the gap at 2 calls either. Prompt tokens per question at 2
+calls: 43,491 for live frames, 34,420 for the fresh page.
+
+Cost of this round: about USD 0.75 (agent runs 0.68).
+
 ## Reading
 
 - Decisions are the only stored content with a large effect: 0 to 4% without them, 88 to 100% with.
+- No script-made refresh of an earlier description (witness notes, pointers, late-bound values, a
+  list of what was added) came close to a page written again from the current code.
 - With enough tool calls the agent answers structural questions from the code; no kind of
   documentation changes accuracy, and documentation in the prompt costs 2 to 4 times the prompt tokens.
 - A description of the code pays off only when exploration is scarce, and then a fresh one is worth
@@ -109,5 +152,15 @@ uv run --no-project --with anthropic python -I run_agent_qa.py stance --work <di
 python3 -I analyse.py <dir> questions.json analysis.json
 ```
 
-`runs.tar.gz` holds every run, verdict and stance label. API cost of the whole experiment: about
-USD 4.8 (agent runs 4.33, judging and stance about 0.45).
+The frame arms are sandboxes made by hand: copy `<dir>/sandbox/stale` to `<dir>/sandbox/cloze_live`
+and replace its `docs/behaviour.md` with the output of
+
+```
+python3 -I cloze.py render --tree <app at bfb0f9c> --frames inputs/frames-earlier-commit.json --out behaviour.md
+python3 -I added_symbols.py <app at 4279c98> <app at bfb0f9c> >> behaviour.md   # for the "+ added symbols" arms
+```
+
+then run with `--conditions cloze_frozen,cloze_live,stale_added,cloze_live_added --max-tool-calls 2 --tag rooted`.
+
+`runs.tar.gz` holds every run, verdict and stance label (3,264 runs). API cost of the whole
+experiment: about USD 5.5 (first round 4.8, frame round 0.75).

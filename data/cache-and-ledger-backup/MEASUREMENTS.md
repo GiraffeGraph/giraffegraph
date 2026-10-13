@@ -1,7 +1,7 @@
 # What the measurements say
 
 The essay in `README.md` argues from prior art and three public corpora. This file lists what happened
-when its claims, and four extensions of them, were tested on labelled data and with a live agent on
+when its claims, and six extensions of them, were tested on labelled data and with a live agent on
 2026-10-13. Every number is behind a script in `data/`; details, limits and prior work are in the two
 wiki pages named under each heading.
 
@@ -18,7 +18,7 @@ wiki pages named under each heading.
 | Anchors must be repo-rooted | Holds, by accident | The same stale page gave 50% on changed facts when its code paths could be opened as written and 8% when they could not (no documentation: 29%). Unplanned comparison |
 | Store a decision once, forever | Needs one more variable: scope | In 150,904 narrator mentions a decision keyed by name alone is reused wrongly 10% of the time; keyed by name and context, 0.6%, at three times the questions |
 
-## Four extensions that were tried
+## Six extensions that were tried
 
 1. **The scope of a decision is derived, not stored.** A name starts with the broadest scope and is
    tied to its context only after a contradiction is seen. With a deterministic domain rule as the
@@ -36,6 +36,19 @@ wiki pages named under each heading.
    "may be outdated" sentence. File-level witnesses die within a month; symbol-level ones last
    (78% at 12 months) but were not what was tested. **Dropped at section granularity; untested at
    statement granularity.**
+5. **Store the query, not the answer.** Five agents from three model families were asked for a
+   storage form that is neither a graph nor a wiki, in fifteen sessions; eleven answers were some
+   form of "keep a program that derives the fact from the current source at read time". Tested as
+   sentences whose facts are blanks filled by `ast` selectors, written at the earlier commit: 92 of
+   95 selectors still resolve six months later, and the page they produce scores 63% on the facts
+   that changed at two tool calls, against 67% for the same sentences filled from the earlier code,
+   50% for the stale page and 96% for a page written again. The facts it misses are checks and
+   branches that did not exist when the selectors were written. **Dropped: a selector refreshes the
+   value of a known fact and cannot find a fact nobody asked about.**
+6. **Tell the reader what was added.** A script-made list of the 201 symbols added since the page
+   was written, appended to the stale page or to the filled sentences: 58% on changed facts at two
+   calls in both cases. **No effect at two calls; a hint at four (88% against 71%, interval touching
+   zero).**
 
 ## What the essay becomes
 
@@ -45,7 +58,9 @@ axis, the price of derivation at the moment of use:
 - decided → store once, with the context that bounds its scope;
 - derivable and cheap to derive at the moment of use → store nothing, not even a pointer;
 - derivable and expensive at the moment of use → a stored derivation pays: at two tool calls a fresh
-  page gives 88% against 31% with nothing, and a stale one 69%; keep its anchors openable.
+  page gives 88% against 31% with nothing, and a stale one 69%; keep its anchors openable. Nothing a
+  script did to an earlier page (notes, pointers, late-bound values, a list of additions) came near
+  a page written again by a reader of the current source, so the cache is regenerated, not patched.
 
 The second line is where the essay stood. The third is the regime of large code bases, of extraction
 that costs a model call and a human review, and of any reader that cannot afford to look.
@@ -55,6 +70,7 @@ that costs a model call and a human review, and of any reader that cannot afford
 - Agent experiment, witness survival, number check: `data/agent-qa/README.md`,
   `data/witness-survival/REPORT.md`, `data/explore-number-check.py`; write-up in
   `../wiki/evaluation/wiki-for-agents-experiments.md`.
+- The fifteen idea sessions and their brief: `data/idea-sessions/README.md`.
 - Decision reuse, scope, copy check: `data/explore-*.py`,
   `../giraffegraph-core/evaluation/identity_ledger.py` (branch `feat/identity-ledger`); write-up in
   `../wiki/evaluation/decision-ledger-experiments.md`.
@@ -63,4 +79,6 @@ that costs a model call and a human review, and of any reader that cannot afford
 
 A code base large enough that search is expensive for real; a second model; statement-level witnesses
 harvested from the agent's own tool calls; human-written documentation; a human reviewer in the
-ledger experiments.
+ledger experiments. From the idea sessions: one-line notes placed inside the tree the agent already
+greps (delivery, since the agent opened `docs/` in 0 of 432 runs); standing queries for "only" and
+"never" claims that deliver the difference to their baseline; stored experiments that run the code.

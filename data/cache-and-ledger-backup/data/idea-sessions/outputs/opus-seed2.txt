@@ -1,0 +1,85 @@
+**1. Name**
+
+**Scholia** (margin lines; haşiye): knowledge is stored as self-contained single lines keyed to the content hash of the code symbol they describe, and is never opened as a document, because a script places the still-valid lines inside the search space the agent already greps.
+
+**2. What is stored**
+
+The unit is one line of at most 200 characters, which is where the harness grep cuts a hit. Fields: kind (`obs` derived, `why` decided, `exc` exception), id (hash of the normalised claim), derivation cost in tool calls, scope rung, claim, and one to three `file::symbol#bodyhash` anchors. The log is append-only.
+
+```
+# scholia.log: view = lines whose anchors all hash-match the tree, latest per id
+# kind id cost scope | claim, question vocabulary first | anchors
+obs 7c1e c5 sym  | evidence quote check: quote must occur in cited segment text; else status REVIEW, reason quote_not_in_segment | @use_cases/pipeline_management.py::_evidence_findings#a91f
+obs 1d40 c4 sym  | unknown node type in model output: only that node and its relations dropped; extraction succeeds; schema_proposal review item | @use_cases/extraction_management.py::_normalize_output#c2e7
+obs 9aa2 c6 mod  | providers registered: noop, rule_based_isnad always; openai, anthropic only with API key | @bootstrap/container.py::build_container#77d0
+why e3b8 h1 repo | a new validation gate sends a failing candidate to review, never rejects: rejection silently deletes information | @use_cases/pipeline_management.py::validate_run#04c1
+exc 52f1 narrows 9aa2 to sym | cornerstone @bootstrap/container.py::build_container#b8e1
+```
+
+The claims are taken from `questions.json` keys; the hashes and `build_container` are invented.
+
+What the agent sees on its own first grep for `quote`:
+
+```
+src/app/_scholia.py:3:# evidence quote check: quote must occur in cited segment text; else status REVIEW … @…::_evidence_findings
+```
+
+**3. Operations**
+
+- **Write (agent, end of a full-budget session):** append a line for each fact that took three or more tool calls, and for every human-given reason. The cost is read from the tool log by a script. One-grep facts are not admitted.
+- **Stamp (script):** resolve each anchor with `ast` and hash the symbol body.
+- **View (script, per checkout):** emit only lines whose anchors all match, as a comment-only file that sorts first under the search root and as comments above each anchored `def`. Mismatched lines are withheld and queued. The reader never sees a note.
+- **Read (agent):** no dedicated call. Its grep returns the line, and its second call verifies at the anchor.
+- **Re-derive (agent, offline, full budget):** re-answer queued lines and append the result. Nothing is edited.
+- **Narrow (script detects, agent appends `exc`):** a line starts at the broadest scope and narrows to the symbol once a contradiction site is seen.
+- **Human:** answers each `why` once and settles conflicts between `why` lines.
+
+**4. Why it should beat a page and a graph**
+
+- **Fact 10:** a pulled page was opened in 0 of 432 runs, and a pushed one costs 2–4× the tokens. Scholia cost no prompt tokens and no extra call. My count from `runs.tar.gz` (no docs, 2 calls, structural): 77 of 108 calls are greps under `src` in question vocabulary (`quote`, `merge_key|merge key`, `(?i)template`), and 34 of 48 answers say they could not find out. Mean prompt tokens were 6,543 against 34,420 with the fresh page pushed.
+- **Reader's query language:** the agent queries with regex over lines. A page's unit is a section and a graph's is a triple behind a query language; a line matches what grep returns.
+- **Fact 1:** each line carries the statement and the pointer.
+- **Fact 7:** admission is by measured derivation cost.
+- **Facts 4 and 5:** symbol-level hashes last, and invalid lines are withheld instead of annotated.
+- **Facts 6 and 8:** scope narrows on contradiction, and ids are content hashes.
+- **Fact 9:** `why` lines live in the same channel.
+- **Fact 2:** a hash match is never read as truth; truth comes from authoring at full budget, which is 94–98% correct.
+
+**5. Closest prior work**
+
+- **Docstrings and literate programming:** these live in the source and tax refactoring. Scholia live outside it and drop silently.
+- **Standoff annotation (TEI, brat; unverified) and W3C TextQuoteSelector (search snippets only):** annotation layers for people, with no cost admission, no hash withholding, and no design as search bait.
+- **ctags:** line-oriented and grep-native, but pointers only.
+- **Claude Code path-scoped rules and nested CLAUDE.md (secondary sources):** delivered when a matching file is read, but the unit is a whole document keyed by glob, with no hash.
+- **grepmem (search snippet only):** memory files the agent chooses to grep. Scholia sit where it already greps for code.
+
+**6. Experiment**
+
+- **Arms** (`pull` regime, `docs/` holds only the "no documentation" note, 24 structural questions, 2 reps, budgets 2/4/14):
+  - A: `src/app/_scholia.py`, the fresh page's statements split into lines of at most 200 characters.
+  - B: the same lines woven above their anchors.
+  - C: lines from the April page, filtered by symbol hash against the current tree.
+- **Comparison:** `none` rerun in `pull`; published reference is the fresh page pushed (0.875 at 2 calls).
+- **Metrics:** share correct; prompt tokens per question; share of runs whose grep returns a scholium (replayed offline, free); share asserting the outdated answer.
+- **Cost:** about 720 runs, roughly USD 1.5 at the archive's per-run cost.
+- **Kills the idea:**
+  - A minus `none` at 2 calls is below +0.28 (half the page's gain, the pointer level), or its interval includes 0.
+  - Fewer than half the runs surface a scholium.
+  - C asserts outdated behaviour in more than 4% of changed-question answers.
+  - A at 14 calls costs more than 1.2× the tokens of `none`.
+
+**7. Runner-ups**
+
+- **Volatility-sorted source prefix:** store no derivation; keep the raw source as a prompt-cached prefix ordered from least to most frequently changed symbol, so most commits leave the cache intact and derivation costs no tool calls. It stops working once the corpus outgrows the context window.
+- **Decision tripwires:** each `why` carries a pattern that, once it matches the tree, means the decision was reversed. A script runs them per commit and opens a supersession question for a human, which gives the ledger the self-check the essay says it lacks.
+
+**8. Weakest point**
+
+The content is still wiki statements; only the unit size and the read path are new. Delivery depends on the agent's grep words matching the line, and a miss is silent. Text under `src/` carries no "may be outdated" caveat, so a line whose anchor still matches but whose truth depends on an unlisted symbol may be asserted as fact, not relayed with doubt as in fact 3. Hash-withholding alone buys nothing (stale pointers and the stale page both score 0.50 on changed facts), so the value rests on offline re-derivation. All of it matters only where search is scarce, which is still unmeasured on a large code base.
+
+Sources:
+- [Steering Claude Code: CLAUDE.md files, skills, hooks, rules, subagents](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more)
+- [Claude Code Rules (Novita)](https://blogs.novita.ai/claude-code-rules/)
+- [Web Annotation Extensions for Web Publications (W3C)](https://www.w3.org/TR/wpub-ann/)
+- [Apache Annotator DOM API](https://annotator.apache.org/docs/api/modules/dom.html)
+- [grepmem](https://gitblind.noratr.app/WAPA0012/grepmem)

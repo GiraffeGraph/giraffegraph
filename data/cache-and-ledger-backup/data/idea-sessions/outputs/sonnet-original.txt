@@ -1,0 +1,80 @@
+**1. Name: Live probes (late-bound derivations).**
+Store the program that derives a fact, not the fact. Each stored unit is a small deterministic query that is re-executed against the current source whenever the agent asks for it. It returns freshly sliced code with the decisions that constrain it attached, all in one tool call.
+
+**2. What is stored.**
+The unit is a probe with these fields:
+- `name`
+- `answers`: a one-line description of the question family
+- `select`: a list of symbol-level selectors (`path::Class.method`, or a grep pattern plus an AST kind), never a line range or a file hash
+- `expect`: a cheap postcondition on the result
+- `decisions`: a list of content-keyed decision ids, each bound to a selector
+- `render`: how the result is cut down (signature only, body only, N lines of context)
+
+```
+probe: review-queue-routing
+answers: how an item reaches human review, and what status the API returns
+select:
+  - app/review/router.py::route_item        render=body
+  - app/review/models.py::ReviewItem        render=fields
+  - grep "def .*review" in app/api/**       render=sig  max=8
+expect:
+  - resolved >= 3
+  - not_found == 0
+decisions:
+  - d:7f3a  bind=route_item   # why review is per-item and not per-batch
+  - d:c210  bind=ReviewItem   # why status is a string and not an enum
+on_miss: print "MISSING <selector> (was in app/review/router.py)" and keep going
+```
+
+When the agent calls `probe("review-queue-routing")`, it gets about 40 lines in this shape:
+
+```
+[route_item @ app/review/router.py:88-121]  <live body>
+  DECISION d:7f3a: per-item because ...
+[ReviewItem @ app/review/models.py:14]  <live fields>
+  DECISION d:c210: ...
+[MISSING app/api/review_views.py::list_open  (selector did not resolve)]
+```
+
+The system prompt lists only the probe names and their `answers` lines, about 100 words.
+
+**3. Operations.**
+- **Write.** An agent drafts a probe at the end of a session in which it spent three or more tool calls on one question family. A script then checks that every selector resolves and that the `expect` line holds. Only probes that pass are kept. A human reviews only the `decisions` bindings.
+- **Read.** The agent calls `probe(name)`, which costs one tool call. A script executes the selectors against the current tree and returns the result. No LLM is involved at read time.
+- **Invalidation.**
+  - It happens by execution, not by comparing hashes. Selectors are late-bound, so a moved or edited function is returned in its new form.
+  - A symbol that is gone shows up as a literal `MISSING` line inside the content. This is local to one statement and removes the stale claim instead of annotating it.
+  - If `expect` fails, the probe is flagged "needs rewrite". The agent re-derives it on the next session where it spends the calls anyway.
+  - Decisions are never narrowed by the probe. They follow the existing content-key and Ripple-Down-Rules path.
+- **Retire.** A script drops a probe after N sessions without a call, or when more than half its selectors are missing.
+
+**4. Why it should beat a markdown page and a graph.**
+- **Fact 3:** a stored derivation pays when derivation is expensive at the moment of use. A fresh page gave 88% at 2 calls, against 31% with nothing. A probe delivers fresh content for one call, so it keeps the fresh page's value and removes its staleness.
+- **Facts 3 and 4:** a stale page gave 69% overall and 50% on changed facts. A probe has no stale prose to relay, so the 21–33% doubt-relay failure mode disappears.
+- **Fact 6:** pointers alone gave only half the gain, because the agent still has to spend calls to open them. A probe dereferences its pointers on the server side.
+- **Fact 7:** selectors are symbol-level and late-bound. They do not use file hashes, which are invalid for 46% of documented files after one month. Symbol-level matching still holds for 78% after 12 months.
+- **Fact 5:** a note saying "the code changed" did nothing. Here the missing symbol is absent from the content itself, so there is nothing for the agent to be misled by.
+- **Facts 1 and 2:** the probe does not load a page into the prompt, which avoids the 2–4x token cost. It carries the decisions that are bound to the same symbols, so a "why" question and a "what" question are answered by one call.
+- **Against a graph:** a graph stores extracted answers and has to be re-extracted when the source changes. A probe stores only the extraction procedure, so it never has to be re-extracted.
+
+**5. Closest prior work (all unverified, from memory).**
+- **Database views and stored procedures, and Datalog-backed code queries (CodeQL, Semgrep rules).** These store queries. They are written by humans, are not tied to a question family, and do not carry decisions.
+- **Voyager's skill library.** It stores executable skills for actions.
+- **Build Systems à la Carte (cited in `MEASUREMENTS.md`).** Its constructive-trace idea is closest to the invalidation logic.
+
+The difference is that a probe is an agent-authored, question-shaped, read-only derivation. It is verified by running it and not by hashing. It returns code and bound decisions in a single call. A memoized trace (excluded) stores the answer and the lines read, whereas a probe stores a program that recomputes them.
+
+**6. Falsifiable experiment.**
+- **Setup.** Add one tool, `probe(name)`, to the harness. The probes are generated from the earlier commit `4279c98`, one per section of the existing 10-section outline, so no probe is written for a specific question. They are then run against the current tree `bfb0f9c`. The sandbox adds the `decisions.md` content as decision bindings. The 24 structural questions are run at budgets 2 and 4, 5 repetitions each, rooted. This is about 480 runs plus judging, roughly USD 1.5–2.5.
+- **Arm:** probes (derived from the earlier commit, executed live).
+- **Comparison arms:** nothing, stale page, fresh page, and stale pointers-only.
+- **Metric:** accuracy on `changed` questions at 2 calls. Overall accuracy is secondary. The `decision` questions are added to check that the bound decisions do not hurt.
+- **Reference points:** nothing 0.25, stale page 0.50, fresh page 0.96.
+- **Kill result:** the idea dies if the probe arm scores below 0.75 on `changed` at 2 calls (it must be clearly above the stale page and closer to the fresh page). It also dies if it does not beat the stale page by at least 0.15 on all structural questions, or if the 95% bootstrap interval of its gain over stale includes 0.
+
+**7. Runner-ups.**
+- **Dead-end ledger.** Store failed search paths keyed by question content, for example "grep X returned noise, the answer was behind Y". Under a 2–4 call budget, skipping known dead ends should recover calls. It can be tested with the same harness by writing negative hints into `docs/`.
+- **Executable decisions.** Store each decision as a check that fails when its rationale is violated, such as a property test or a lint rule, instead of a prose record. Invalidation happens when the check fails, and the "why" prose becomes the failure message.
+
+**8. Weakest point.**
+The benefit exists only in the 2–4 call regime. At 14 calls the agent already scores 94–98% with nothing stored, so a probe adds cost and no accuracy. The test base is 17k lines of Python, where search is cheap. The advantage may also come mostly from "fresh text inlined in one call", which a regenerated page does equally well. Writing probes also needs a selector language that works on code, and I have no evidence it works on text corpora such as hadith, where there are no stable symbols. Last, probes are a tool, not a document, so they need a runtime and cannot just be dropped into `docs/`.

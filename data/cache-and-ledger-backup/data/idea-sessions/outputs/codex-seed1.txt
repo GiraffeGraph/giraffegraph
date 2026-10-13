@@ -1,0 +1,88 @@
+1. Name
+
+Counterfactual Bench: persist a small executable set of contrasting worlds that exposes both what the project does and which consequences its authors prefer.
+
+2. What is stored
+
+The unit is a "discriminator": a fixture, an intervention, observable measurements, and an optional human-attested preference between outcomes. A deterministic minimizer retains the smallest set distinguishing the competing explanations encountered during work.
+
+Illustrative format, not an assertion about current code:
+
+bench 1
+topic candidate-gates
+key canonical(fixture, intervention, measurements)
+scope gate.kind = newly-added
+fixture candidate(valid=true, uncertain=true)
+baseline invoke(current.validation, fixture)
+intervention replace_gate_action(REVIEW, REJECT)
+measure baseline.status
+measure baseline.review_queue_count
+measure intervention.review_queue_count
+measure intervention.unaccounted_candidates
+prefer baseline over intervention
+because preserve_countable_information
+attested_by project-owner
+binding resolve(validation-entrypoint)
+on_unbound emit UNKNOWN
+
+The preference attaches to a reproducible contrast, rather than a historical decision entry. Its reason vocabulary describes consequences. The bench can reveal an implementation violating the preference.
+
+It stores neither previous agent answers nor the lines used to produce them.
+
+3. Operations
+
+Writing: after expensive exploration, the agent proposes fixtures separating plausible explanations. For intent unavailable in source, a human labels a contrast and attests its reason; existing explicit author statements can supply initial labels. A deterministic script canonicalizes keys and removes redundant probes.
+
+Reading: before a session, a local, network-disabled runner executes probes against current material and emits compact observation tables. Under two calls, these tables enter through the existing push mechanism. With ample exploration budget, behavioral tables can be omitted; intent contrasts remain available.
+
+Invalidation: outputs expire every session and are regenerated. An unresolved binding produces UNKNOWN, never yesterday's result. A changed observation remains useful evidence, rather than triggering a staleness warning.
+
+Narrowing: contradictory human judgments for the same contrast cause the agent to propose a separating contextual feature. The human approves the distinction; a deterministic script partitions its scope. Execution disagreement alone cannot change a preference.
+
+4. Why it should beat a page and a graph
+
+Facts 5 and 10 require substantive results under scarce exploration. The bench supplies actual observations, not directions to files.
+
+Facts 6 and 8 suggest replacing stale statements rather than decorating them with warnings. Regeneration removes the old observation from the reading surface.
+
+Fact 1 argues against whole-file invalidation. Executable bindings can survive unrelated edits and renames through explicit adapters; successful execution still does not prove adequate coverage.
+
+Fact 3 prevents treating copied text as correctness. A discriminator tests consequences, although its fixture or oracle can still be wrong.
+
+Facts 2 and 4 motivate canonical content keys and contradiction-driven scope splitting.
+
+Fact 9 requires independently supplied intent. Human-attested contrasts preserve rejected consequences without claiming that code reveals historical motives.
+
+Fact 7 limits the claim: expect gains at two calls and reduced context consumption, not higher structural accuracy at fourteen.
+
+Compared with a graph, retrieval returns experimentally separated outcomes directly; the agent need not traverse relations and reconstruct behavior. This advantage remains a hypothesis.
+
+5. Closest prior work
+
+[Metamorphic testing](https://arxiv.org/abs/2002.12543) generates follow-up tests and checks relations between executions. The exact difference proposed here is to maintain a minimal discriminating basis as persistent agent context, include author-attested preferences over counterfactual consequences, and render current observations for budget-constrained reading.
+
+Tests alone check behavior. This bench also distinguishes observed behavior from intended preference and identifies contexts where a preference stops applying. Contradiction-driven narrowing uses the Ripple-Down Rules mechanism already identified in the supplied measurements; that component is not novel.
+
+6. One falsifiable experiment
+
+Proposed only; no runs or paid calls performed.
+
+Freeze probes using the earlier commit and its available rationale, without consulting the question answer key. Execute them locally against the current commit with fake providers and disposable in-memory state.
+
+Arm: docs/ contains generated observations and attested contrast tables. Comparison: existing stale rooted description plus decisions. Use identical source, push prompts, tools, all 36 questions, budgets 2/4/14, and two repetitions: 432 answers. Arm selection is already supported; only sandbox contents differ.
+
+Metrics: existing blind correctness, separately for stable/changed/decision questions; prompt tokens; failed-probe coverage. Human blind grading adds no API cost.
+
+The recorded USD 4.8 for 2,880 runs suggests roughly USD 0.72, not a price guarantee. Impose a USD 4.50 aggregate reservation ceiling using confirmed rates and request limits; do not rely solely on the harness's concurrent --max-usd check. Stop and report incomplete coverage if necessary.
+
+Kill the idea if changed-question accuracy at two calls improves by less than 15 percentage points, or decision accuracy falls below 88%. Count UNKNOWN probes as failures.
+
+7. Two runner-up ideas
+
+Disagreement reservoir: store minimal examples on which plausible interpretations diverge, with human labels rather than general descriptions. Retrieval presents the nearest unresolved distinction; its weakness is recognizing applicability without embeddings.
+
+Exploration bytecode: persist parameterized search-and-analysis programs that regenerate compact task views from current material. It preserves expensive discovery procedures, but cannot preserve historical intent by itself.
+
+8. Weakest point
+
+Writing trustworthy probes may cost more than writing a page. Worse, a beautifully minimized bench can omit the decisive case: successful execution establishes only measured behavior, and historical motives remain unrecoverable unless someone actually supplied them.

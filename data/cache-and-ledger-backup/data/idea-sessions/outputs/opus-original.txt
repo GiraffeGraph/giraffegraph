@@ -1,0 +1,74 @@
+**1. Name.** Cloze Ledger: every derivable statement is stored as a sentence with its facts cut out, each blank being a deterministic query over the raw material that a script fills at read time, so the store holds frames and recipes but no value that can go stale.
+
+**2. What is stored.** The unit is a *frame*: prose containing no identifier, number or literal outside a blank (enforced by lint). Its fields are:
+- `id`: content hash of the normalised frame and selectors.
+- `blanks`: selectors addressed as `path::symbol` plus a reducer (`default`, `dict_keys`, `raises`, `enum`, `body<=25`). For a data set the selector is SQL; for a corpus it is a span or count query.
+- `shape`: the type and cardinality of each blank at authoring time, never its value.
+- `cost`: the tool calls the authoring session spent deriving it.
+- `guard` (decisions only): a selector that must keep holding for the decision to apply.
+
+```
+frame 7c1e  cost=6
+  text:  Segmentation strategies that can be requested: {S}. An unknown name ends in {E}.
+  S := dict_keys  src/app/bootstrap/container.py::get_container.segmentation_strategies
+  E := raises     src/app/application/use_cases/ingestion_management.py::generate_segments
+  shape: S=list[str]>=1, E=list[class]>=1
+
+frame a904  cost=4
+  text:  Default extraction prompt version: {V}.
+  V := default    src/app/application/use_cases/extraction_management.py::default_extraction_prompt_version
+  shape: V=str
+
+decision d41b
+  text:  A new validation gate sends a failing candidate to review under its own
+         reason code; rejection silently deletes information.
+  guard: G := statuses_assigned src/app/application/use_cases/pipeline_management.py::validate_run
+  contradiction: a rule code first seen after this record maps to REJECTED
+```
+
+The symbol names in the first two frames were checked in `giraffegraph-core`; the reducers and the guard are invented.
+
+**3. Operations.**
+- **Write (agent, then script):** at session end the agent proposes frames only for facts that cost at least k calls, counted from its own tool log. The script rejects a frame that has a literal outside a blank, a selector that does not resolve, or a result that differs across two evaluations.
+- **Read (script, no model):** at session start it evaluates all selectors in milliseconds and renders a compact block, highest `cost` first, cut to a token cap. The block goes in the prompt only when the tool budget is tight; with a large budget nothing is pushed.
+- **Invalidate (script):** values are never invalidated, because they are recomputed. If a blank fails to resolve or changes shape, the sentence is dropped and only its address is rendered, and the unit is queued for re-authoring by a full-budget agent.
+- **Narrow (human, once per contradiction):** when a decision's guard is contradicted, the human says exception or superseded. An exception adds a narrower guard as a child; a supersession writes a new record and leaves the old one untouched.
+
+**4. Why it should beat a page and a graph.**
+- **Fact 3:** a fresh page gives 88% and a stale one 50% on changed facts. A frame is rendered fresh every session at zero model cost, which the essay's determinism objection said was impossible for LLM prose.
+- **Facts 5 and 6:** notes change nothing, so the ledger never annotates. A failed blank removes the claim and leaves the pointer, which is still worth half the gain.
+- **Fact 4:** the 21–33% hedged relaying disappears, because no outdated sentence is ever shown.
+- **Fact 7:** a hash witness dies when the symbol body changes (22% at 12 months). A selector only needs the symbol to still resolve, and a changed body updates the unit instead of killing it.
+- **Fact 1:** admission by measured `cost` plus the no-push rule keeps the 2–4x token bill out of the regime where documents add nothing.
+- **Facts 2, 8, 9:** decisions are stored; guards give the deterministic contradiction detector that Ripple-Down narrowing needs; ids are content hashes.
+- **Against the alternatives:** a page fuses frame and fact in one sentence, so no script can tell which token went stale. A graph stores extracted values, every edge being a cached derivation.
+
+**5. Closest prior work.**
+- **Sweave (Leisch 2002, DOI 10.1007/978-3-642-57489-4_89; checked):** reports whose results are computed when the document is compiled. Difference: there a human authors a whole report; here an agent emits frames as exhaust, a lint forbids facts outside blanks, a failed blank demotes to an address, and admission is by derivation cost.
+- **Swimm Smart Tokens (docs checked):** tokens bound to identifiers that update on code change, inside ordinary prose that still carries claims.
+- **"User as Code" (Li 2026, arXiv:2606.16707; seen only through a secondary pattern page):** compiles observations into typed objects holding literal values. This is the opposite choice.
+- **Materialized views, knitr/Quarto inline expressions:** unverified, from memory.
+- Two short searches found no agent-memory system storing queries instead of facts over a code base; that is a weak negative, not a novelty claim.
+
+**6. Experiment.**
+- **Arm `cloze_earlier`:** an agent given the same outline as the two behaviour pages authors frames from the earlier tree (`4279c98`) only, without seeing the questions. An `ast` script fills them against the current tree and writes `docs/behaviour.md`, alongside `decisions.md`. Run `push`, rooted, budgets 2 and 4, on the 24 structural questions with 2 repetitions.
+- **Comparison arms (already run, at 2 calls):** `stale` 0.500 on changed and 0.875 on stable; `pointers_fresh` 0.667 on changed; `fresh` 0.958 on changed.
+- **Metric:** share correct on the 12 changed questions at 2 calls, as a paired difference to `stale`, bootstrapped over questions. Secondary: stance labels and prompt tokens.
+- **Kill:** changed-question accuracy at or below 0.667, meaning filled blanks add nothing over addresses; or a paired difference to `stale` whose interval includes 0; or stable accuracy below 0.70. There is also a free pre-check: if fewer than half of the earlier-authored selectors resolve on the current tree, stop before spending.
+- **Cost:** 96 runs at roughly USD 0.0015 each (the earlier 2,880 runs cost 4.33), plus judging and one authoring session — under USD 1.
+
+**7. Runner-ups.**
+- **Surprise ledger:** store only facts where a cold 2-call reader's answer differs from the full-budget answer, written as an expected/actual contrast. Admission and eviction are both a replay (re-ask cold; if it now succeeds, delete), so the store is the reader's measured residual.
+- **Ride-along sidecars:** one-line units in files inside the tree the agent already greps, each line carrying the identifiers it concerns, so an ordinary grep returns them. This tests whether "0 of 432 opened docs" is about location, at zero prompt tokens.
+
+**8. Weakest point.** A filled blank is a verbatim copy, and fact 10 says verbatim does not mean true. The frame's wording ("an unknown name ends in…") can become false while every blank still resolves with the right shape, and nothing detects that. Two further limits:
+- Selectors encode the code's structure at authoring time. At `4279c98` the strategy was a hard-coded check, not a registry, so an old selector can resolve and still miss where the truth moved.
+- Behaviour that is not a value, such as ordering or transaction scope, reduces only to `body`, which is a pointer with the code inlined and costs tokens.
+
+Sources:
+- [Sweave — Wikipedia](https://en.wikipedia.org/wiki/Sweave)
+- [Sweave CITATION file, R Project SVN](https://svn.r-project.org/R-packages/trunk/Old/Sweave/inst/CITATION)
+- [Swimm editor commands (Smart Tokens)](https://docs.swimm.io/features/editor-commands)
+- [Swimm release 0.11.0](https://docs.swimm.io/changelog/release-0.11.0)
+- [Executable Memory: User State as Code](https://agentpatterns.ai/patterns/agent-design/executable-memory-user-as-code/)
+- [STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?](https://arxiv.org/pdf/2605.06527)

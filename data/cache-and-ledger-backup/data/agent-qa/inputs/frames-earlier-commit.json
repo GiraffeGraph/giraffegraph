@@ -1,0 +1,779 @@
+[
+ {
+  "section": "1. Source ingestion and segmentation",
+  "text": "Route that creates a source unit: {A}. Status it is stored with: {T}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/ingestion.py::create_source_unit",
+    "reduce": "decorators"
+   },
+   "T": {
+    "at": "application/use_cases/ingestion_management.py::IngestionManagementService._persist_source_unit",
+    "reduce": "lines",
+    "arg": "status="
+   }
+  }
+ },
+ {
+  "section": "1. Source ingestion and segmentation",
+  "text": "The schema version of a source unit must pass a check that raises: {E}.",
+  "blanks": {
+   "E": {
+    "at": "application/use_cases/ingestion_management.py::IngestionManagementService._require_usable_schema",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "1. Source ingestion and segmentation",
+  "text": "Route that generates segments: {A}. Default strategy: {D}. Strategy check: {C}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/pipeline.py::generate_segments",
+    "reduce": "decorators"
+   },
+   "D": {
+    "at": "application/dto/contracts.py::SegmentGenerationInput.strategy",
+    "reduce": "value"
+   },
+   "C": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService.generate_segments",
+    "reduce": "lines",
+    "arg": "strategy !=|raise"
+   }
+  }
+ },
+ {
+  "section": "1. Source ingestion and segmentation",
+  "text": "How raw content is split into segments: {B}.",
+  "blanks": {
+   "B": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._split_into_segments",
+    "reduce": "lines",
+    "arg": "split[(]r|splitlines|len[(]|return|if line_chunks"
+   }
+  }
+ },
+ {
+  "section": "1. Source ingestion and segmentation",
+  "text": "Segment numbering and replacement: {L}.",
+  "blanks": {
+   "L": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService.generate_segments",
+    "reduce": "lines",
+    "arg": "enumerate|replace_for_source_unit"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "Default provider: {P}. Default model: {M}. Default prompt version: {V}. Prompt key: {K}.",
+  "blanks": {
+   "P": {
+    "at": "infrastructure/config/settings.py::Settings.default_llm_provider",
+    "reduce": "value"
+   },
+   "M": {
+    "at": "infrastructure/config/settings.py::Settings.default_llm_model",
+    "reduce": "value"
+   },
+   "V": {
+    "at": "infrastructure/config/settings.py::Settings.default_extraction_prompt_version",
+    "reduce": "value"
+   },
+   "K": {
+    "at": "application/use_cases/extraction_management.py::EXTRACTION_PROMPT_KEY",
+    "reduce": "value"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "Providers registered at startup: {L}.",
+  "blanks": {
+   "L": {
+    "at": "bootstrap/container.py::get_container",
+    "reduce": "lines",
+    "arg": "llm_providers: |openai_api_key is|OpenAILLMProvider[(]"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "Order of steps in candidate extraction: {O}.",
+  "blanks": {
+   "O": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService.extract_candidates",
+    "reduce": "lines",
+    "arg": "self[.]_(ensure|mark_run_running|require_llm|require_prompt|build_prompt|normalize_output)\\w*[(]|generate_structured[(]"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "Top-level keys of the payload sent to the model: {K}. Fields per node type and per segment: {N}.",
+  "blanks": {
+   "K": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._build_prompt_payload",
+    "reduce": "keys"
+   },
+   "N": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._build_prompt_payload",
+    "reduce": "lines",
+    "arg": "\\bnode_type[.]\\w+,|segment[.]\\w+,"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "Prompt lines on type names: {L}.",
+  "blanks": {
+   "L": {
+    "at": "infrastructure/llm/prompt_catalog.py::",
+    "reduce": "lines",
+    "arg": "case-sensitive|including aliases"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "Request built by the remote provider: {Q}.",
+  "blanks": {
+   "Q": {
+    "at": "infrastructure/llm/openai_provider.py::OpenAILLMProvider.generate_structured",
+    "reduce": "lines",
+    "arg": "url=|\"model\"|\"temperature\"|\"response_format\"|requires"
+   }
+  }
+ },
+ {
+  "section": "2. Extraction: providers, prompts, what is sent to the model",
+  "text": "The placeholder provider returns: {N}. Dry run default: {D}. The extraction use case itself raises: {X}.",
+  "blanks": {
+   "N": {
+    "at": "infrastructure/llm/noop_provider.py::NoOpLLMProvider.generate_structured",
+    "reduce": "returns"
+   },
+   "D": {
+    "at": "application/dto/contracts.py::ExtractionExecutionInput.dry_run",
+    "reduce": "value"
+   },
+   "X": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService.extract_candidates",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+  "text": "The model output is validated against: {C}. Constraints on a node suggestion: {N}.",
+  "blanks": {
+   "C": {
+    "at": "application/use_cases/extraction_management.py::StructuredExtractionContract",
+    "reduce": "members"
+   },
+   "N": {
+    "at": "application/use_cases/extraction_management.py::SuggestedNodeContract",
+    "reduce": "lines",
+    "arg": "ref:|confidence"
+   }
+  }
+ },
+ {
+  "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+  "text": "Errors raised while normalising the output: {E}.",
+  "blanks": {
+   "E": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._normalize_output",
+    "reduce": "lines",
+    "arg": "raise RuleViolationError|\"Structured extraction|\"unknown node refs"
+   }
+  }
+ },
+ {
+  "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+  "text": "Type lookups are registered under: {G}, normalised by: {K}. An undefined node type raises: {N}.",
+  "blanks": {
+   "G": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._build_node_type_registry",
+    "reduce": "lines",
+    "arg": "lookup_value="
+   },
+   "K": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._register_type_lookup",
+    "reduce": "lines",
+    "arg": "casefold"
+   },
+   "N": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._resolve_node_type",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+  "text": "Model values are carried into a suggestion like this: {P}. Candidates created from suggestions start with status {T}.",
+  "blanks": {
+   "P": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._normalize_output",
+    "reduce": "lines",
+    "arg": "node_type=resolved_node_type[.]|properties=node_contract|confidence=node_contract"
+   },
+   "T": {
+    "at": "domain/extraction/entities.py::CandidateNode.status",
+    "reduce": "value"
+   }
+  }
+ },
+ {
+  "section": "3. What happens to the model's output (parsing, undefined types and properties, failures)",
+  "text": "Failure handling in extraction: {F}. A failed run sets: {V}.",
+  "blanks": {
+   "F": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService.extract_candidates",
+    "reduce": "lines",
+    "arg": "except Exception|_mark_execution_failed|_mark_run_failed"
+   },
+   "V": {
+    "at": "domain/ingestion/lifecycle.py::mark_run_failed",
+    "reduce": "lines",
+    "arg": "status ="
+   }
+  }
+ },
+ {
+  "section": "4. Validation rules and how a candidate gets its status",
+  "text": "Candidate statuses: {T}.",
+  "blanks": {
+   "T": {
+    "at": "domain/shared/enums.py::CandidateStatus",
+    "reduce": "members"
+   }
+  }
+ },
+ {
+  "section": "4. Validation rules and how a candidate gets its status",
+  "text": "Validation route: {A}. Order of steps when a run is validated: {O}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/pipeline.py::validate_run",
+    "reduce": "decorators"
+   },
+   "O": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService.validate_run",
+    "reduce": "lines",
+    "arg": "self[.]_(validate|apply|annotate|build_review)\\w*[(]|replace_for_run"
+   }
+  }
+ },
+ {
+  "section": "4. Validation rules and how a candidate gets its status",
+  "text": "Node validation, with lookup, rule codes and assigned statuses in order: {L}.",
+  "blanks": {
+   "L": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._validate_candidate_node",
+    "reduce": "lines",
+    "arg": "casefold|rule_code=|status = |confidence <|if results"
+   }
+  }
+ },
+ {
+  "section": "4. Validation rules and how a candidate gets its status",
+  "text": "Relation validation rule codes: {L}. Assignments and conditions that decide the relation status: {C}.",
+  "blanks": {
+   "L": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._validate_candidate_relation",
+    "reduce": "lines",
+    "arg": "rule_code="
+   },
+   "C": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._validate_candidate_relation",
+    "reduce": "lines",
+    "arg": "status = |if candidate_relation.confidence <|severity =="
+   }
+  }
+ },
+ {
+  "section": "4. Validation rules and how a candidate gets its status",
+  "text": "A value counts as missing when: {B}.",
+  "blanks": {
+   "B": {
+    "at": "domain/shared/resolution.py::is_missing_value",
+    "reduce": "lines",
+    "arg": "if |return"
+   }
+  }
+ },
+ {
+  "section": "5. Evidence and grounding checks",
+  "text": "Fields of an evidence reference: {M}. Constraint on an offset: {O}. Default evidence list of a candidate input: {D}.",
+  "blanks": {
+   "M": {
+    "at": "domain/extraction/entities.py::EvidenceRef",
+    "reduce": "members"
+   },
+   "O": {
+    "at": "application/dto/contracts.py::EvidenceRefInput.start_offset",
+    "reduce": "value"
+   },
+   "D": {
+    "at": "application/dto/contracts.py::CandidateNodeInput.evidence_refs",
+    "reduce": "value"
+   }
+  }
+ },
+ {
+  "section": "5. Evidence and grounding checks",
+  "text": "Evidence from the model is checked, and its quote copied, by: {B}.",
+  "blanks": {
+   "B": {
+    "at": "application/use_cases/extraction_management.py::ExtractionManagementService._build_evidence_ref",
+    "reduce": "lines",
+    "arg": "not in|f\"|quote="
+   }
+  }
+ },
+ {
+  "section": "5. Evidence and grounding checks",
+  "text": "Evidence on a manually added candidate raises: {E}.",
+  "blanks": {
+   "E": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._ensure_evidence_refs_belong_to_source_unit",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "5. Evidence and grounding checks",
+  "text": "Prompt rule on evidence: {P}.",
+  "blanks": {
+   "P": {
+    "at": "infrastructure/llm/prompt_catalog.py::",
+    "reduce": "lines",
+    "arg": "Only reference"
+   }
+  }
+ },
+ {
+  "section": "5. Evidence and grounding checks",
+  "text": "At commit, node evidence is linked to segments like this: {L}.",
+  "blanks": {
+   "L": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository._link_node_provenance",
+    "reduce": "lines",
+    "arg": "in candidate_node.evidence_refs|segment_map.get|segment is None|continue|SUPPORTED_BY"
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "Resolution key of a candidate node: {N}. Identity key of a node, with and without a merge key payload: {I}.",
+  "blanks": {
+   "N": {
+    "at": "domain/shared/resolution.py::build_candidate_node_resolution_key",
+    "reduce": "returns"
+   },
+   "I": {
+    "at": "domain/shared/resolution.py::candidate_node_identity_key",
+    "reduce": "returns"
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "Resolution key of a candidate relation: {L}.",
+  "blanks": {
+   "L": {
+    "at": "domain/shared/resolution.py::build_candidate_relation_resolution_key",
+    "reduce": "lines",
+    "arg": "f\"candidate::|\"::\"[.]join|normalize_text|normalized_payload_key|^\\s+(from|to)_key,"
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "Text normalisation used in keys: {T}.",
+  "blanks": {
+   "T": {
+    "at": "domain/shared/resolution.py::normalize_text",
+    "reduce": "lines",
+    "arg": "NFKC|sub[(]|casefold"
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "The merge key payload of a node is derived by: {D}.",
+  "blanks": {
+   "D": {
+    "at": "domain/shared/resolution.py::derive_merge_key_payload",
+    "reduce": "lines",
+    "arg": "for merge_key|properties[.]get|provided_merge_key_payload[.]get|merge_key_payload\\["
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "Canonical merge key: {C}. Fallback when the merge key payload is empty: {F}.",
+  "blanks": {
+   "C": {
+    "at": "domain/shared/resolution.py::build_canonical_merge_key",
+    "reduce": "lines",
+    "arg": "payload =|sha256"
+   },
+   "F": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository._build_merge_key",
+    "reduce": "returns"
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "Duplicate candidate nodes are flagged by: {L}. The duplicate resolution use case returns {V}.",
+  "blanks": {
+   "L": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._flag_duplicate_candidate_nodes",
+    "reduce": "lines",
+    "arg": "REJECTED|not candidate_node.merge_key_payload|key=lambda|status =|rule_code="
+   },
+   "V": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService.resolve_duplicates",
+    "reduce": "returns"
+   }
+  }
+ },
+ {
+  "section": "6. Duplicate detection and identity keys for nodes and relations",
+  "text": "Matches against the committed graph are recorded as: {L}.",
+  "blanks": {
+   "L": {
+    "at": "application/use_cases/pipeline_management.py::PipelineManagementService._annotate_canonical_matches",
+    "reduce": "lines",
+    "arg": "rule_code=|severity=|result="
+   }
+  }
+ },
+ {
+  "section": "7. Human review: what is recorded, what a reviewer can do",
+  "text": "Decision route: {A}. A decision raises: {E}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/review.py::decide_review_item",
+    "reduce": "decorators"
+   },
+   "E": {
+    "at": "application/use_cases/review_management.py::ReviewManagementService.decide_review_item",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "7. Human review: what is recorded, what a reviewer can do",
+  "text": "Effect of a decision on a node candidate: {N}. Further fields an edit can change on a relation: {T}.",
+  "blanks": {
+   "N": {
+    "at": "application/use_cases/review_management.py::ReviewManagementService._apply_node_decision",
+    "reduce": "lines",
+    "arg": "candidate[.]\\w+ = |if action == \"edit\""
+   },
+   "T": {
+    "at": "application/use_cases/review_management.py::ReviewManagementService._apply_relation_decision",
+    "reduce": "lines",
+    "arg": "candidate[.](relation_type|\\w+_candidate_ref) = "
+   }
+  }
+ },
+ {
+  "section": "7. Human review: what is recorded, what a reviewer can do",
+  "text": "Checks after a decision, in order, and what is recorded on the review item: {O}.",
+  "blanks": {
+   "O": {
+    "at": "application/use_cases/review_management.py::ReviewManagementService.decide_review_item",
+    "reduce": "lines",
+    "arg": "self[.]_(validate|ensure|refresh)\\w+[(]|review_item[.]\\w+ = "
+   }
+  }
+ },
+ {
+  "section": "7. Human review: what is recorded, what a reviewer can do",
+  "text": "Requirement on the endpoints of an accepted or edited relation: {Q}.",
+  "blanks": {
+   "Q": {
+    "at": "application/use_cases/review_management.py::ReviewManagementService._validate_candidate_relation_state",
+    "reduce": "lines",
+    "arg": "can only be accepted|are validated"
+   }
+  }
+ },
+ {
+  "section": "7. Human review: what is recorded, what a reviewer can do",
+  "text": "Open review items of a relation are closed automatically with: {G}.",
+  "blanks": {
+   "G": {
+    "at": "application/use_cases/review_management.py::ReviewManagementService._sync_relation_review_items",
+    "reduce": "lines",
+    "arg": "auto_status = |note = \""
+   }
+  }
+ },
+ {
+  "section": "7. Human review: what is recorded, what a reviewer can do",
+  "text": "Review queue route: {A}, with parameters: {D}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/review.py::get_project_review_queue",
+    "reduce": "decorators"
+   },
+   "D": {
+    "at": "interfaces/api/routers/review.py::get_project_review_queue",
+    "reduce": "lines",
+    "arg": "Query[(]"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Commit route: {A}. Preconditions: {E}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/commit.py::commit_run",
+    "reduce": "decorators"
+   },
+   "E": {
+    "at": "application/use_cases/commit_management.py::CommitManagementService.commit_run",
+    "reduce": "lines",
+    "arg": "raise (Conflict|RuleViolation)Error[(][\"f]"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Candidates passed to the graph, then order of the commit with metadata store writes: {O}.",
+  "blanks": {
+   "O": {
+    "at": "application/use_cases/commit_management.py::CommitManagementService.commit_run",
+    "reduce": "lines",
+    "arg": "if candidate.status ==|reserve_source_for_run|mark_run_\\w+[(]|commit_bundle[(]|repository[.](save|add)[(]|except Exception"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Graph writes of one commit and how they are wrapped in transactions: {T}.",
+  "blanks": {
+   "T": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository.commit_bundle",
+    "reduce": "lines",
+    "arg": "execute_write|^\\s+self[.]_\\w+,$"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Canonical node merge: {N}. Created versus merged is told by: {C}.",
+  "blanks": {
+   "N": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository._merge_candidate_node",
+    "reduce": "lines",
+    "arg": "MERGE|(project_id|node_type|merge_key): [$]|SET n|^\\s+n[.](source|last)"
+   },
+   "C": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository._merge_candidate_node",
+    "reduce": "returns"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Canonical relation merge: {T}.",
+  "blanks": {
+   "T": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository._merge_candidate_relation",
+    "reduce": "lines",
+    "arg": "MATCH|MERGE|SET r [+]|: [$](project|from|to|relation)"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Other merges in a commit: {G}.",
+  "blanks": {
+   "G": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::Neo4jCanonicalGraphRepository",
+    "reduce": "lines",
+    "arg": "MERGE [(](su|sg|e)[:)]|MERGE [(]n[)]|AFFECTED"
+   }
+  }
+ },
+ {
+  "section": "8. Commit to the graph: transactions, MERGE keys, what is written to Neo4j and Postgres",
+  "text": "Labels and relationship types must match {I}. Uniqueness of a graph delta in the metadata store: {U}. A successful commit sets: {C}.",
+  "blanks": {
+   "I": {
+    "at": "infrastructure/persistence/neo4j/repositories.py::IDENTIFIER_PATTERN",
+    "reduce": "value"
+   },
+   "U": {
+    "at": "infrastructure/persistence/postgres/models.py::GraphDeltaModel.__table_args__",
+    "reduce": "value"
+   },
+   "C": {
+    "at": "domain/ingestion/lifecycle.py::mark_run_completed",
+    "reduce": "lines",
+    "arg": "status ="
+   }
+  }
+ },
+ {
+  "section": "9. Schema model: node types, relation types, properties, templates",
+  "text": "Schema entities with their distinguishing fields and defaults: {M}.",
+  "blanks": {
+   "M": {
+    "at": "domain/schema/entities.py::",
+    "reduce": "lines",
+    "arg": "^class (Prop|Node|Rel)|data_type|required|merge_keys|confidence_threshold|aliases|from_type|to_type"
+   }
+  }
+ },
+ {
+  "section": "9. Schema model: node types, relation types, properties, templates",
+  "text": "Schema statuses: {T}. Status of a new version: {D}. Editing a version raises: {E}.",
+  "blanks": {
+   "T": {
+    "at": "domain/shared/enums.py::SchemaStatus",
+    "reduce": "members"
+   },
+   "D": {
+    "at": "domain/schema/entities.py::SchemaVersion.status",
+    "reduce": "value"
+   },
+   "E": {
+    "at": "application/use_cases/schema_management.py::SchemaManagementService._require_editable_schema",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "9. Schema model: node types, relation types, properties, templates",
+  "text": "Adding a relation type raises: {T}.",
+  "blanks": {
+   "T": {
+    "at": "application/use_cases/schema_management.py::SchemaManagementService.add_relation_type",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "9. Schema model: node types, relation types, properties, templates",
+  "text": "Status changes on activation: {L}.",
+  "blanks": {
+   "L": {
+    "at": "application/use_cases/schema_management.py::SchemaManagementService.activate_schema_version",
+    "reduce": "lines",
+    "arg": "status = |status =="
+   }
+  }
+ },
+ {
+  "section": "9. Schema model: node types, relation types, properties, templates",
+  "text": "System templates: {L}. Default template: {D}.",
+  "blanks": {
+   "L": {
+    "at": "infrastructure/template/catalog.py::SYSTEM_DOMAIN_TEMPLATES",
+    "reduce": "lines",
+    "arg": "template_id=|name="
+   },
+   "D": {
+    "at": "infrastructure/template/catalog.py::StaticDomainTemplateCatalog.default_template_id",
+    "reduce": "value"
+   }
+  }
+ },
+ {
+  "section": "10. Runs, jobs and the public API surface",
+  "text": "Run statuses: {V}. Job types: {T}.",
+  "blanks": {
+   "V": {
+    "at": "domain/shared/enums.py::RunStatus",
+    "reduce": "members"
+   },
+   "T": {
+    "at": "domain/shared/enums.py::ProcessingJobType",
+    "reduce": "members"
+   }
+  }
+ },
+ {
+  "section": "10. Runs, jobs and the public API surface",
+  "text": "Route that starts a run: {A}. It raises: {E}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/ingestion.py::start_processing_run",
+    "reduce": "decorators"
+   },
+   "E": {
+    "at": "application/use_cases/ingestion_management.py::IngestionManagementService.start_processing_run",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "10. Runs, jobs and the public API surface",
+  "text": "Route that enqueues a job: {A}. Enqueue errors: {F}; {G}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/processing_jobs.py::enqueue_processing_job",
+    "reduce": "decorators"
+   },
+   "F": {
+    "at": "application/use_cases/processing_job_management.py::ProcessingJobManagementService._enqueue_job",
+    "reduce": "raises"
+   },
+   "G": {
+    "at": "application/use_cases/processing_job_management.py::ProcessingJobManagementService._build_payload_json",
+    "reduce": "raises"
+   }
+  }
+ },
+ {
+  "section": "10. Runs, jobs and the public API surface",
+  "text": "Default pipeline version: {V}. Its steps and the jobs chained after success: {P}.",
+  "blanks": {
+   "V": {
+    "at": "domain/orchestration/pipeline_definitions.py::DEFAULT_PIPELINE_VERSION",
+    "reduce": "value"
+   },
+   "P": {
+    "at": "domain/orchestration/pipeline_definitions.py::build_default_pipeline_steps",
+    "reduce": "lines",
+    "arg": "job_type=|chain_on_success="
+   }
+  }
+ },
+ {
+  "section": "10. Runs, jobs and the public API surface",
+  "text": "Route that processes the next job: {A}. Steps: {L}.",
+  "blanks": {
+   "A": {
+    "at": "interfaces/api/routers/processing_jobs.py::process_next_job",
+    "reduce": "decorators"
+   },
+   "L": {
+    "at": "application/use_cases/processing_job_management.py::ProcessingJobManagementService.process_next_job",
+    "reduce": "lines",
+    "arg": "claim_next|_execute_job|_enqueue_chained_jobs|mark_processing_job_\\w+[(]|save[(]job[)]|except"
+   }
+  }
+ },
+ {
+  "section": "10. Runs, jobs and the public API surface",
+  "text": "Application errors map to HTTP statuses: {M}.",
+  "blanks": {
+   "M": {
+    "at": "interfaces/api/error_handlers.py::register_error_handlers",
+    "reduce": "lines",
+    "arg": "Error,$|HTTP_"
+   }
+  }
+ }
+]

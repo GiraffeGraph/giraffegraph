@@ -1,0 +1,72 @@
+1. Name: Counterfactual Capsules
+
+Project memory is an append-only collection of executable choices: each capsule preserves the accepted implementation, a concrete rejected alternative, the human reason, and a test determining where that choice still applies.
+
+2. What is stored
+
+The unit is a choice capsule, not a description of current state. Fields are: topic terms; normalized accepted and rejected patches; a human-authored rationale quote; an executable discriminator; expected observation; initial scope; contradiction-derived exceptions; source commit; and a content-derived identity.
+
+Example:
+
+```text
+capsule v1
+id := digest(accepted, rejected, rationale)
+topic: faq ownership deletion
+accepted:
+  + class Faq: items = owned(Item, cascade=true)
+rejected:
+  + class Faq: items = content_block_relation()
+rationale-by: product-owner
+rationale: "Deleting an FAQ must remove its items; blocks are reusable."
+discriminator:
+  run: pytest tests/faq/test_delete.py::test_items_are_removed
+expect: pass
+scope:
+  initially: topic contains "faq"
+exceptions:
+  - when item.kind == "shared_link": capsule 91ad...
+introduced-by: commit 82ac4c1
+state := discriminator still distinguishes accepted from rejected
+```
+
+The patches need not be complete or applicable; they are minimal counterfactuals sufficient to expose the choice. The rationale is preserved as attributed testimony, not rewritten into authoritative prose.
+
+3. Operations
+
+Write: when a merge settles a contested or non-obvious choice, the agent extracts minimal accepted/rejected patches and proposes a discriminator. A human supplies or approves the rationale sentence. A deterministic hook normalizes the patches, computes the content identity, and appends the capsule.
+
+Read: under a two-call budget, the agent greps the compact topic catalog, then reads the matching capsule. It gets the road not taken, reason, and a live behavioral check without reading a narrative page. With a normal budget it ignores capsules for ordinary structural questions and reads the source.
+
+Invalidate: a deterministic runner periodically executes the discriminator. If it no longer distinguishes the alternatives, the capsule becomes dormant; it is never “updated.” If reuse produces a contradiction, the agent proposes an exception capsule and a human confirms it. This is Ripple-Down narrowing: broad initially, narrower only after evidence of misapplication.
+
+4. Why it should beat a markdown page and a graph
+
+Fact 1 says current structural prose is unnecessary with 14 calls, so capsules store no architecture tour. Fact 2 says the unavailable information is the road not taken; accepted/rejected alternatives plus attributed testimony preserve exactly that.
+
+Fact 3 supports a compact, question-addressable unit when exploration is expensive. Unlike a pointers-only page, which retained only half the benefit (Fact 6), a capsule includes the consequence and the rejected construction.
+
+Stale prose warnings did nothing (Facts 4–5). Capsules instead have operational dormancy: a failed discriminator removes the unit from automatic use. They do not interpret an unchanged hash as proof of truth. Symbol-local discriminators should also survive better than file witnesses, consistent with Fact 7.
+
+Broad scope is narrowed only after contradiction, directly applying Fact 8. Identity comes from normalized content rather than extraction-run IDs (Fact 9). Verbatim rationale is treated only as provenance, not correctness evidence, respecting Fact 10.
+
+A graph fragments a choice into nodes and edges, losing the atomic counterfactual and executable discriminator. Markdown foregrounds fluent current-state explanation—the content that becomes stale.
+
+5. Closest prior work
+
+Closest is IBIS/design-rationale systems (unverified from memory), which record issues, positions, and arguments, often as prose or a graph. A capsule instead requires a concrete rejected implementation and executable behavioral discriminator, uses content identity, and acquires scope through contradiction-driven exceptions rather than manually modelled relations.
+
+6. Falsifiable experiment
+
+Add one `docs/choices.caps` arm by recasting the existing 30 decisions without adding information; compare against `docs/decisions.md`. Run the same 36 questions, push regime, budgets 2/4/14, two repetitions: 432 agent runs, roughly USD 1 given the reported harness cost.
+
+Primary metric: accuracy on the 12 decision questions. Secondary metrics: prompt tokens and incorrect reuse of a capsule. Kill the idea if capsules score more than five percentage points below `decisions.md`, or fail to reduce decision-context tokens by at least 20%.
+
+7. Runner-up ideas
+
+Query Bytecode stores small deterministic programs that return typed answers from the live repository rather than materialized answers. One invocation could replace several exploration calls, but it cannot preserve genuinely non-derivable rationale.
+
+An Error Atlas stores only previously observed agent mistakes and progressively specialized correction rules. It minimizes memory and naturally supports Ripple-Down exceptions, but helps only after a failure has occurred.
+
+8. Weakest point
+
+Many important decisions never have a clean rejected patch or executable discriminator. Requiring one may impose enough authoring friction that teams capture only unusually tidy decisions.

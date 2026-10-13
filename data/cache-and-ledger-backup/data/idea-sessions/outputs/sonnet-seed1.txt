@@ -1,0 +1,80 @@
+**1. Name: Compiled Trajectories (call-compression recipes)**
+
+Store a derivation as a short read-only program, not as text. One recipe call replaces the 3–6 exploratory tool calls an agent would otherwise spend, and it computes its answer from the current tree each time.
+
+**2. What is stored**
+
+The unit is a recipe: a parameterized pipeline over a tiny fixed vocabulary (`grep`, `span`, `within`, `emit`). Its fields are:
+- `answers`: one line, the only part that goes into the prompt, as the tool description.
+- `args`.
+- `steps`.
+- `emit`: the shape of the output.
+- `expect`: cheap assertions about what the steps should find.
+- `derived_at`: provenance only, never used for validation.
+
+```
+recipe: review-item-creation
+answers: "where review items are created, and with what initial status"
+args:    []
+steps:
+  1 grep   -n 'ReviewItem\('            in src/app
+  2 span   enclosing def of step1.hits where name ~ '^(create|enqueue)'  max 60 lines
+  3 grep   -n 'status\s*='              within step2
+emit:
+  - step2 as  path:line + body        # paths repo-rooted, so read_file can open them
+  - step3 lines
+expect:
+  - step1.count >= 1
+  - step2.count between 1 and 5
+on_expect_fail:
+  emit "BROKEN at step <n>: <assertion>" + raw output of that step
+derived_at: bfb0f9c
+```
+
+The prompt carries about 15 words per recipe. A page of 10 sections becomes 10 one-line tool descriptions.
+
+**3. Operations**
+
+- **Write.** When the agent finishes a task that took at least 4 tool calls and was answered correctly, it proposes a recipe from its own trajectory. A deterministic script replays the recipe on the current tree. It accepts the recipe only if the replay reproduces the files and lines the agent used. A script can also mine repeated call prefixes across sessions to suggest candidates. No human is involved. Decisions are not stored here, because they are not derivable (fact 9). They stay in whatever decision store exists.
+- **Read.** The agent sees the one-line descriptions as extra tools. Under a 2-call budget it picks one recipe and gets rooted, current output, then spends the second call on `read_file` if needed. It never has to open a doc, which fits fact 7: 0 of 432 pull runs opened docs for structural questions.
+- **Invalidate.** This is deterministic and happens on every run. A failed `expect` returns `BROKEN at step n`, plus that step's raw output, so the agent gets a pointer to the break instead of a wrong claim. Staleness is detected by running the recipe, not by hashing. A script re-runs all recipes when the tree changes and demotes broken ones.
+- **Narrow.** This follows the Ripple-Down Rules idea (fact 4). A recipe starts broad, for example `grep ReviewItem(`. When the agent later corrects its output in a session, the script adds a narrowing step (a path filter or a name pattern) and keeps the old recipe as the parent. The narrowing is triggered by a contradiction, not up front.
+
+**4. Why it should beat a markdown page and a graph**
+
+- Facts 10 and 6: a stored derivation is worth what derivation costs at the moment of use. A recipe pays for that cost in one call but is not itself stale. The stale page lost 38 points on changed facts at 2 calls (50% against 96%). A recipe regenerates the fact, so it should recover most of that loss.
+- Fact 1: file hashes die in a month but symbol-level matches live. A recipe anchors on symbols and patterns, not blobs, so it survives edits that kill file-level witnesses.
+- Fact 8: telling the agent that something changed did nothing. A recipe does not warn, it recomputes.
+- Fact 5: pointers alone give half the gain, because the agent still has to derive. A recipe returns the derived content, not a pointer.
+- Fact 7: pushed docs cost 2–4× in prompt tokens. Here the prompt cost is one line per recipe, and the content is paid for only when a recipe is called.
+- A graph stores extracted triples, which are fixed at extraction time and queried by the agent. A recipe stores the extraction procedure, so there is nothing to go stale between sessions.
+
+**5. Closest prior work (all unverified, from memory)**
+
+- Stored procedures and materialized views in databases. A view is a stored query, but the author is a human and nothing handles "the schema drifted".
+- CodeQL and Semgrep rule packs, written by humans for fixed vulnerability classes.
+- Voyager-style skill libraries (Wang et al., 2023): agent-written executable skills for Minecraft.
+- Claude "skills" with scripts.
+- Build Systems à la Carte (cited in the repo): validating a result against its inputs without byte equality.
+
+The difference: the unit is compiled from the agent's own successful trajectory over a repository, it carries machine-checked `expect` clauses, and its descriptions are priced against a tool-call budget. The existing system's own problem, a stale prose derivation, is solved by recomputation.
+
+**6. Falsifiable experiment (about USD 1)**
+
+- **Harness change.** Add one tool, `recipe(name)`, to the sandbox. Recipes are authored by an agent that sees only the earlier-commit (`4279c98`) tree and the stale page's section outline, never the 36 questions. Each recipe replays against that tree at build time. Run at the current commit (`bfb0f9c`), push regime, rooted paths.
+- **Arms at budget 2, 36 questions, 2 repetitions each (about 72 runs per arm):**
+  - A: recipes (earlier commit) plus decisions.
+  - B: stale page plus decisions (comparison).
+  - C: fresh page plus decisions.
+  - D: nothing plus decisions.
+- **Metric.** Accuracy on the 12 `changed` questions, plus overall structural accuracy at 2 calls. Also report the share of recipe calls that returned `BROKEN`.
+- **Kill rule.** The idea dies if A is not above B on `changed` questions by at least 0.15 (B is 0.50). It also dies if A falls below D plus 0.30 overall (D is 0.31). I would also stop if more than half the recipe calls come back `BROKEN`, because that means recipes do not survive the one commit gap.
+
+**7. Runner-ups**
+
+- **Tripwire decisions.** Store decisions as `when this symbol shows up in a tool result, append this one-line why`. A wrapper around `read_file` and `grep` injects them. This replaces the pull model that fact 7 shows agents ignore, and keeps the 88–100% effect of fact 9 without needing a docs lookup.
+- **Dead-end ledger.** Store negative results: `searched X in scope Y, nothing there`, keyed by the content of Y. These are neither derivable cheaply nor decisions, and they save the 2-call agent from repeating failed greps.
+
+**8. Weakest point**
+
+A recipe is only as good as the question shape it was compiled for. A new question shape gets nothing, and an author-written `grep` may be no better than the single grep the agent would run itself. Fact 7 also says that with 14 calls the gain disappears, so this idea is useful only in the scarce-exploration regime, which the current 17k-line repo barely tests. The first experiment would show the idea works on 36 questions from the same repository but would not show it scales to real repository size.

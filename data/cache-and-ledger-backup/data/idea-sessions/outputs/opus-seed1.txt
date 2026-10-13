@@ -1,0 +1,74 @@
+**1. Name.** Closed-World Ledger. Store only the claims that an addition can falsify ("only", "never", "none", "exactly N", "all"), each as a standing query plus the answer set it returned when written; a script reruns every query before a session and hands the agent the current set and the difference.
+
+**2. What is stored.** The unit is a census: claim, scope, query, baseline set, optional reason. Positive facts ("X calls Y") are never stored. The key is the hash of baseline set and scope.
+
+```
+census  providers.registered            key 3fa9c1(set+scope)
+claim   exactly these extraction providers exist
+scope   src/app/infrastructure/llm/
+query   files *_provider.py
+base    {noop, openai}                  @4279c98
+why     -
+-- rendered by script @bfb0f9c --
+now     {anthropic, cached, noop, openai, rule_based_isnad}
+delta   +anthropic +cached +rule_based_isnad   CLAIM BROKEN
+
+census  review.decision_identity
+claim   no reviewer identity or decision time is stored
+scope   src/app/domain/review/, use_cases/review_management.py
+query   grep reviewer_id|decided_at|decided_by|reviewed_by
+base    {}                              @4279c98
+why     audit trail deferred for the pilot   (invented reason)
+now     {reviewer_id x8, decided_at x1}
+delta   +2   CLAIM BROKEN, reason needs a human
+```
+
+The sets are real: I ran both queries with `git grep` / `git ls-tree` at the two commits.
+
+**3. Operations.**
+- **Write (agent):** at session end, only after an exhaustive search ended in a closed-world conclusion, or when a human states an intentional absence, which is a decision and carries `why`.
+- **Refresh (script):** at session start, rerun the queries. An unchanged census renders as one line; a changed one as the delta plus hit paths. Execution is deterministic, so equal sets cut off early.
+- **Read (agent):** one pushed line per census (about 20 tokens). Hit paths are symbol-level and current, so one call opens the new code.
+- **Narrow (agent):** when a search finds a missed member or a false hit, append an exception clause (`minus cached_provider.py`). Nothing is rewritten.
+- **Human:** only when a census carrying a `why` breaks, to supersede or revert.
+
+**4. Why it should beat a page and a graph.**
+- **Staleness concentrates in closed-world claims.** Of the 11 stale-page sentences quoted for the "changed" questions (`questions.json: stale_doc_quote`), 8 are explicit negations or "only" claims. This is my hand count, on one repo, on questions chosen because they changed.
+- **Fact 10 and fact 6:** the stale page loses on exactly these facts (50% against 96%). A census never shows the old set as current.
+- **Fact 1:** there is no hash to die. A census changes only when its answer changes, where a file hash is invalid after a month for 46% of files.
+- **Fact 8:** "the code changed" is not an answer; "+anthropic" is.
+- **Fact 7:** positive facts are a grep away, so nothing is stored for them and the 2–4x prompt cost is not paid.
+- **Fact 9, fact 4, fact 2:** a decision is an intentional absence, so its scope is a query and a contradiction is detected by script. Narrowing follows Ripple-Down Rules. Content keys survive re-authoring.
+- **Fact 5:** the delta is a fresh pointer plus the statement a pointer lacks ("this is all of them").
+- **Feasibility, not blind:** of 8 trivial queries I ran at both commits after seeing the keys, 7 returned a different set. The eighth returned nothing at either commit; my pattern was wrong.
+- **Against a graph:** a graph stores positive edges and cannot say "nothing else".
+
+**5. Closest prior work.**
+- Closed-world assumption: Reiter, "On closed world data bases", 1978 (existence checked by search).
+- Truth maintenance: Doyle 1979 (unverified).
+- Snapshot or golden-master tests, and ArchUnit-style fitness functions (the Ford, Parsons and Kua book is confirmed; ArchUnit details unverified).
+- Li 2026, "User as Code", arXiv:2606.16707 (abstract read): memory as executable Python over user state.
+- Lemmalog, a Datalog memory engine (search hit only, not read).
+
+Those enforce constraints or compute answers. None of them, as far as I found:
+- uses monotonicity as the rule for what an agent stores about a source;
+- delivers the baseline-versus-now difference as the thing the agent reads;
+- narrows the query on contradiction.
+
+**6. Experiment.**
+- **Arm `census_stale`:** `docs/` holds `decisions.md` and `census.md`. An agent sees only the tree at `4279c98` and the stale page, and turns each "only/no/never/exactly" sentence into a query. A script runs them on `bfb0f9c`.
+- **Comparison arms:** `stale` and `pointers_stale` (same vintage), `fresh` (ceiling), `none`.
+- **Runs:** `push+budget2+rooted` and `budget4`, 24 structural questions, 2 repetitions. That is 96 new runs, or 480 with comparisons rerun, under USD 1 at the recorded USD 4.8 per 2,880 runs.
+- **Metric:** share correct on the 12 changed questions at 2 calls, paired by question against `stale` (0.50).
+- **Free step first:** count how many blind-authored censuses differ between the two commits.
+- **Kills the idea:** fewer than 6 changed facts show a delta; or the paired interval against `stale` includes 0; or the arm does not beat `pointers_stale` (0.50).
+
+**7. Runner-ups.**
+- **Surprise-gated store:** admit a statement only when a docless agent at the deployment budget fails the question it answers, and evict it when the agent passes. This turns fact 10 into a measured admission policy, but the contents are still statements that go stale.
+- **Probes:** store deterministic query programs for positive facts too, each collating the symbol bodies a topic needs into one read, rerun every session. One call buys a fresh multi-file read, but it sits too close to resolved pointers.
+
+**8. Weakest point.**
+- **Query recall.** A census proves textual absence under its own pattern. A feature added under an unanticipated name leaves "still only two" standing, now with fresh authority, which is fact 3 again.
+- **Precision is also imperfect.** My provider census counted `cached_provider.py`, which the answer key does not count as a provider.
+- **The harder-to-derive premise failed on existing data.** In the `none` arm, the seven questions I classed as closed-world were not clearly harder: 3/14 against 12/34 runs correct at 2 calls, 11/14 against 25/34 at 4. The case rests on staleness alone.
+- **Positive behaviour is uncovered.** On stable questions at 2 calls the census should lose to a fresh page.
