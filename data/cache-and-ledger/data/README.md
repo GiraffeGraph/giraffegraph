@@ -15,7 +15,7 @@ Every file here is a script, the output of one, or an input to one.
 |---|---|---|
 | `verify-pep-reciprocity.py`, `verify-kep-decay.py`, `verify-adr-writeonce.py`, `adr-sweep-results.md` | The essay's numbers on three public corpora | PEP, KEP, ADR |
 | `explore-decision-growth.py` → `decision-growth-ar-sanad.json`; `explore-scoped-ledger.py` → `scoped-ledger-ar-sanad.json`; `explore-ledger-domains.py` → `ledger-domains-ar-sanad.json`, `ledger-domains-bc5cdr.json`, `ledger-domains-medmentions.json` | Reuse and scope of a stored decision on labelled corpora | Exploratory replays |
-| `explore-copy-check-bc5cdr.py` → `copy-check-bc5cdr.json`; `.cache-bc5cdr/` | The copy check outside hadith; the folder caches the model responses and is left out of the backup copy (rebuilding it costs about USD 0.20) | Exploratory replays |
+| `explore-copy-check-bc5cdr.py` → `copy-check-bc5cdr.json`; `.cache-bc5cdr/` | The copy check outside hadith; the folder caches the model responses and is not tracked in the repository (rebuilding it costs about USD 0.20) | Exploratory replays |
 | `explore-number-check.py` → `number-check-wiki.json` | Whether the numbers in a wiki page occur in the files it cites | Agent experiment |
 | `agent-qa/` | The question-answering experiment with a live agent; own README | Agent experiment |
 | `witness-survival/` | How long cited code stays unchanged in eight public repositories; own REPORT | Agent experiment |
@@ -112,15 +112,15 @@ scorecard over all of it is `../MEASUREMENTS.md`.
 
 Four scripts test two claims of the essay against labelled corpora: "store the decision once" and
 "a machine can verify only what is a copy of the source". They are exploratory; the write-up with
-every table, limit and prior-work note is `../../wiki/evaluation/decision-ledger-experiments.md`.
+every table, limit and prior-work note is `../../../wiki/evaluation/decision-ledger-experiments.md`.
 Paths below are relative to the workspace root.
 
 ```
-python3 -I cache-and-ledger/data/explore-decision-growth.py data/eval/ar-sanad-identity/chains.jsonl
-python3 -I cache-and-ledger/data/explore-scoped-ledger.py data/eval/ar-sanad-identity/chains.jsonl \
+python3 -I data/cache-and-ledger/data/explore-decision-growth.py data/eval/ar-sanad-identity/chains.jsonl
+python3 -I data/cache-and-ledger/data/explore-scoped-ledger.py data/eval/ar-sanad-identity/chains.jsonl \
     data/eval/ar-sanad-identity/narrators.csv
-python3 -I cache-and-ledger/data/explore-ledger-domains.py chains data/eval/ar-sanad-identity/chains.jsonl
-python3 -I cache-and-ledger/data/explore-ledger-domains.py pubtator \
+python3 -I data/cache-and-ledger/data/explore-ledger-domains.py chains data/eval/ar-sanad-identity/chains.jsonl
+python3 -I data/cache-and-ledger/data/explore-ledger-domains.py pubtator \
     data/raw/medmentions/corpus_pubtator.txt.gz --first-per-document
 ```
 

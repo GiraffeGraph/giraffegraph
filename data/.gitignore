@@ -2,3 +2,5 @@ raw/
 work/
 .DS_Store
 __pycache__/
+.cache-bc5cdr/
+.ruff_cache/

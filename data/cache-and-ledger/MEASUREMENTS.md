@@ -96,11 +96,11 @@ that costs a model call and a human review, and of any reader that cannot afford
 
 - Agent experiment, witness survival, number check: `data/agent-qa/README.md`,
   `data/witness-survival/REPORT.md`, `data/explore-number-check.py`; write-up in
-  `../wiki/evaluation/wiki-for-agents-experiments.md`.
+  `../../wiki/evaluation/wiki-for-agents-experiments.md`.
 - The fifteen idea sessions and their brief: `data/idea-sessions/README.md`.
 - Decision reuse, scope, copy check: `data/explore-*.py`,
-  `../giraffegraph-core/evaluation/identity_ledger.py` (branch `feat/identity-ledger`); write-up in
-  `../wiki/evaluation/decision-ledger-experiments.md`.
+  `../../giraffegraph-core/evaluation/identity_ledger.py`; write-up in
+  `../../wiki/evaluation/decision-ledger-experiments.md`.
 
 ## Not yet tested
 
