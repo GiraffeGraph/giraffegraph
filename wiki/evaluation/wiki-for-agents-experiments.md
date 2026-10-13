@@ -4,21 +4,21 @@
 
 "Bir LLM ajanı için neyi saklamak gerekir?" sorusunun ölçülmüş cevabını tutmak. 30 Eylül paketinin
 hiç koşulmamış iki öngörüsünü (kod vakası: niyet soruları yalnız karar varken cevaplanır; karar defteri
-ve arama, belgeli wiki'den kötü değildir) ve bu gece denenen "tanıklı wiki" fikrini sınayan deneylerin
-sonucudur.
+ve arama, belgeli wiki'den kötü değildir), "tanıklı wiki" fikrini ve beş ajanlı fikir turundan çıkan iki
+saklama biçimini (boşluklu çerçeve, ağaç içi not) sınayan deneylerin sonucudur.
 
 ## Scope
 
 - In: ajan soru-cevap deneyi (belge türü × düzen × araç bütçesi), belge-kod atıflarının git geçmişindeki
   ömrü, wiki'nin kendi sayılarının izlenebilirliği, okuma anında doldurulan çerçeveler, beş ajanla
-  yapılan fikir turu, aranan ağacın içine konan notlar, emsal taraması
+  yapılan fikir turu, aranan ağacın içine konan notlar ve arama sonucunun sırası, emsal taraması
 - Out: hadis çıkarımı ve kimlik deneyleri (`wiki/evaluation/engine-experiments.md`,
   `wiki/evaluation/decision-ledger-experiments.md`), denemenin metni (`cache-and-ledger/README.md`)
 
 ## Statü
 
-Keşif aşaması (2026-10-13). Tek gecede, ajanın kendi kararlarıyla yürüttüğü bir oturumda üretildi; ekip
-ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altındadır; o klasörün bir kopyası
+Keşif aşaması (2026-10-13). Ajanın kendi kararlarıyla yürüttüğü tek bir oturumda üretildi; ekip
+ve danışman görmedi. 5.520 ajan koşusu, yaklaşık 10,7 dolar API harcaması. Betikler ve çıktılar `cache-and-ledger/data/` altındadır; o klasörün bir kopyası
 `data/cache-and-ledger-backup/` altında özel veri reposundadır. Yorumlar öneridir.
 
 ## BLUF
@@ -34,8 +34,7 @@ ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altınd
    taze %96, bayat %50. Bayat cevabı kesin diye sunma oranı %0–4; "belge böyle diyor, doğrulayamadım"
    diye aktarma %21–33.
 5. **Tanık notu işe yaramadı.** Bayat bölümlerin üstüne makinenin koyduğu "dayandığı kod değişti" notu
-   hiçbir kolda ölçülebilir fark yaratmadı; her bölüme konan sıradan bir uyarıdan da ayrışmadı. Bu
-   gecenin ana fikri bu ölçekte tutmadı.
+   hiçbir kolda ölçülebilir fark yaratmadı; her bölüme konan sıradan bir uyarıdan da ayrışmadı.
 6. **Dosya düzeyinde tanık bir ayda ölür.** Sekiz açık repoda belgenin atıf verdiği dosyaların %54'ü
    bir ay sonra bayt bayt aynı; 24 ayda %10. Sembol bloğu düzeyinde %98 ve %62.
 7. **"Cevabı değil sorguyu sakla" fikri tutmadı.** Olguları koddan okuma anında doldurulan boşluklu
@@ -45,24 +44,22 @@ ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altınd
 8. **Beş ajana aynı soru üç sırayla soruldu; fikri sıra değil model belirledi.** On beş oturumun on
    biri "çalıştırılabilir bir şey sakla" ailesine düştü. Sonnet, Codex ve Antigravity üç sırada da
    kendi fikrini tekrarladı.
-9. **Notu ağaca koymak yetmez; aramanın onu önce döndürmesi gerekir.** Aynı sayfa `docs/` içinde
-   durduğunda 2 çağrıda hiçbir şey kazandırmadı (0,333; belgesiz 0,312). Tek satırlık notlar hâlinde
-   aranan kod ağacına konduğunda 0,646 verdi (+0,33 [0,15 – 0,52]) ve ikinci modelde tekrarlandı
-   (Sonnet 5.5: +0,25 [0,08 – 0,44]); ama arama aracı dosyaları karışık sırayla gezdiğinde kazanç
-   kayboldu (+0,04 [−0,15 – 0,23]). Kazanç, not dosyasının aramada ilk dönen dosya olmasından geliyordu.
-   Eşleşen notları bilerek önce döndüren bir arama aracı kazancın bir kısmını geri getirdi: 2 çağrıda
-   +0,15 ve +0,23 (biçime göre; biri aralığıyla sıfıra değiyor), 4 çağrıda +0,25 ve +0,21 (ikisi de net).
+9. **Notu ağaca koymak yetmez; aramanın onu önce döndürmesi gerekir.** Sayfa `docs/` içinde
+   durduğunda 2 çağrıda hiçbir şey kazandırmaz (0,333; belgesiz 0,312). Aynı cümleler tek satırlık
+   notlar hâlinde aranan kod ağacına konduğunda kazanç arama sonucunun sırasına bağlıdır: dosyalar
+   karışık sırayla gezilirse +0,04 [−0,15 – 0,23]; eşleşen notlar bilerek önce döndürülürse Haiku'da
+   +0,15 ve +0,23 (biçime göre; biri aralığıyla sıfıra değer), Sonnet 5.5'te +0,31 ve +0,27.
 10. **Karar defteri küçüktür; isteme konur ya da notları önce döndüren aramanın arkasına.** İstemdeki
     karar defteriyle "neden" soruları 2 çağrıda 1,000 (14.922 token). Notları önce döndüren aramayla
-    karar notları 2 çağrıda 0,833, 4 çağrıda 1,000 (3.105 ve 5.741 token); `docs/` içindeki defter 2
-    çağrıda 0,292–0,417.
+    karar notları 2 çağrıda Haiku'da 0,833, Sonnet 5.5'te 0,875 (yaklaşık 3.100 token). `docs/`
+    içindeki defter 2 çağrıda Haiku'da 0,292–0,417, Sonnet 5.5'te 0,625.
 
 Deneme (`cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
 iki şey var. Bir sınır koşulu: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
 Bir de olumsuz sonuç: eski bir sayfayı betikle tazelemenin denenen dört yolu da (tanık notu, yalnız
 işaret, okuma anında doldurma, eklenenlerin listesi) güncel kodu okuyan bir ajanın baştan yazdığı
-sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir. Teslim yolu için ölçülen: cümleyi ajanın aradığı ağaca koymak tek başına yetmez; arama aracı notu
-önce döndürürse ulaşır (Sonuç 7, 8 ve 9).
+sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir. Teslim yolu için ölçülen: cümleyi
+ajanın aradığı ağaca koymak tek başına yetmez; arama aracı notu önce döndürürse ulaşır (Sonuç 7).
 
 ## Tasarım: ajan soru-cevap deneyi
 
@@ -223,20 +220,67 @@ değiştirilerek iki ayrı oturumda daha verildi. On beş oturumun tablosu ve ta
 - Sıra neredeyse hiçbir şeyi değiştirmedi. Sonnet üç kez sonda/tarif, Codex üç kez karşıolgusal deney,
   Antigravity üç kez hash'li iddia defteri önerdi. Yalnız Opus üç farklı fikir verdi.
 - Karıştırma yalnız sırayı değiştirir; olguların ve yasak listenin içeriği sabitti.
-- Sınanmayan iki fikir ölçümlere dayanıyor: bilgiyi ajanın zaten grep attığı ağacın içine tek satır
-  olarak koymak (Sonuç 1: ajan `docs/` klasörünü 432 koşuda hiç açmadı) ve yalnız "yalnızca / hiç /
-  tam N" iddialarını sorgu olarak saklayıp taban kümeye göre farkı vermek.
+- Turdan iki fikir sınandı: boşluklu çerçeveler (Sonuç 5) ve ağaç içi notlar (Sonuç 7). Sınanmayan:
+  yalnız "yalnızca / hiç / tam N" iddialarını sorgu olarak saklayıp taban kümeye göre farkı vermek;
+  kodu çalıştıran saklı deneyler.
 
-## Sonuç 7: aranan ağacın içindeki notlar (haşiye)
+## Sonuç 7: notlar, yerleşim ve arama sıralaması
 
-Fikir turunda Opus'un önerisi: bilgiyi belge olarak tutma, ajanın zaten grep attığı ağacın içine tek
-satırlık notlar olarak koy. İki davranış sayfası, yalnız sayfayı gören bir ajan tarafından en çok 130
-karakterlik notlara çevrildi (taze sayfa 234 not, bayat sayfa 214 not); her not ilgili sembollerin
-adını taşır. `cache-and-ledger/data/agent-qa/scholia.py` notları `docs/` klasöründe "belge yok" yazan
-bir sandbox'a yerleştirir: tek dosya (`src/app/_scholia.py`, her satırın sonunda kök yollu adres) ya
-da sembolün hemen üstünde yorum satırı (dokunmuş). Taze notların 142'si bir sembole bağlanabildi.
+Fikir turunda Opus'un önerisi (haşiye): bilgiyi belge olarak tutma, ajanın zaten grep attığı ağacın
+içine tek satırlık notlar olarak koy. İki davranış sayfası, yalnız sayfayı gören bir ajan tarafından en
+çok 130 karakterlik notlara çevrildi (taze sayfa 234 not, bayat sayfa 214 not); her not ilgili
+sembollerin adını taşır. Karar defteri aynı yolla 139 nota çevrildi. `cache-and-ledger/data/agent-qa/scholia.py`
+notları `docs/` klasöründe "belge yok" yazan bir sandbox'a yerleştirir: tek dosya (`src/app/_scholia.py`,
+her satırın sonunda kök yollu adres) ya da sembolün hemen üstünde yorum satırı (dokunmuş). Taze notların
+142'si bir sembole bağlanabildi.
 
-Çekme düzeni (istemde belge yok), yapısal 24 soru, ikişer tekrar, kontrollerle 720 koşu:
+Arama aracının üç sırası sınandı: **yol sırası** (dosyalar ada göre gezilir; not dosyası koddan önce
+döner), **karışık** (çağrıya göre tohumlanan sıra) ve **notlar önce** (karışık sıra; `src/` altının
+herhangi bir yerindeki eşleşen not satırlarından en çok 20'si, hangi yol arandığına bakmadan, kod
+satırlarından önce döner). İkinci model Sonnet 5.5'tir; puanlayıcı aynıdır. Bütün kollar çekme
+düzenindedir (istemde belge yok), ikişer tekrarlıdır; toplam 2.256 koşu.
+
+### Karşılaştırmaların gösterdiği
+
+Yapısal 24 soru, 2 araç çağrısı:
+
+| Arama sırası | Model | Hiçbir şey | Notlar, tek dosya | Notlar, dokunmuş | Tek dosya − hiçbir şey | Dokunmuş − hiçbir şey | Not görünen koşu (dosya / dokunmuş, 48'de) |
+|---|---|---|---|---|---|---|---|
+| yol sırası | Haiku | 0,312 | 0,646 | 0,521 | +0,33 [0,15 – 0,52] | +0,21 [0,06 – 0,35] | 47 / 47 |
+| yol sırası | Sonnet 5.5 | 0,521 | 0,771 | | +0,25 [0,08 – 0,44] | | 47 |
+| karışık | Haiku | 0,417 | 0,458 | 0,479 | +0,04 [−0,15 – 0,23] | +0,06 [−0,10 – 0,23] | 22 / 43 |
+| notlar önce | Haiku | 0,396 | 0,542 | 0,625 | +0,15 [−0,02 – 0,31] | +0,23 [0,04 – 0,42] | 46 / 47 |
+| notlar önce | Sonnet 5.5 | 0,417 | 0,729 | 0,688 | +0,31 [0,15 – 0,48] | +0,27 [0,08 – 0,46] | 47 / 45 |
+
+"Neden" soruları (12), 2 araç çağrısı:
+
+| Arama sırası | Model | `decisions.md` `docs/` içinde | Karar notları | Notlar − `docs/` |
+|---|---|---|---|---|
+| yol sırası | Haiku | 0,333 | 0,667 | +0,33 [0,04 – 0,62] |
+| karışık | Haiku | 0,417 | 0,500 | +0,08 [−0,17 – 0,33] |
+| notlar önce | Haiku | 0,292 | 0,833 | +0,54 [0,29 – 0,79] |
+| notlar önce | Sonnet 5.5 | 0,625 | 0,875 | +0,25 [0,04 – 0,50]; güvenilmez: `docs/` kolundaki 24 cevabın 4'ü boş |
+
+Okuma:
+
+- Notu aranan ağaca koymak onu ajana ulaştırmaz. Karışık sırada not dosyası 40 satır sınırına takılır,
+  koşuların yarısından azında görünür ve 2 çağrıdaki kazanç kaybolur. Dokunmuş notlar 48 koşunun 43'ünde
+  görünür ama doğruluğu yine artırmaz.
+- Ulaştıran şey arama sonucunun sırasıdır. Yol sırası bunu rastlantıyla yapar (not dosyası ada göre
+  ilk sıradadır); notları bilerek önce döndüren arama aynı şeyi sıradan bağımsız yapar. Kazanç iki
+  modelde de çıkar: Sonnet 5.5'te iki biçimde, Haiku'da dokunmuş biçimde aralık sıfırı dışlar.
+- Aynı cümleler `docs/` içinde durduğunda yapısal sorularda açılmaz (0,333; belgesiz 0,312). İstemde
+  daha çok kazandırır (0,875) ama beş katı istem token'ına.
+- Karar notları, notları önce döndüren aramanın arkasında 2 çağrıda iki modelde 0,83–0,88 verir,
+  soru başına yaklaşık 3.100 istem token'ıyla; defter istemdeyken 1,000 ve 14.922 token. Notların
+  `docs/` içindeki deftere üstünlüğü modele bağlıdır: Haiku 2 çağrıda `docs/` klasörüne seyrek ulaşır
+  (0,292), Sonnet 5.5 daha sık (0,625).
+- Not bilgiyi teslim eder, taze tutmaz. Nisan sayfasından yazılan notlar bayat sayfa gibi davranır;
+  yalnız kodu değişmeyenleri bırakmak sonucu belgesizin altına indirir (0,229).
+
+### Yol sırası: yerleşimler ve kontroller
+
+Yapısal 24 soru, Haiku, kontrollerle 720 koşu:
 
 | Sandbox'ta ne var | 2 çağrı: hepsi | değişmeyen | değişen | 4 çağrı | 14 çağrı | İstem token'ı (2 / 14 çağrı) |
 |---|---|---|---|---|---|---|
@@ -249,43 +293,26 @@ da sembolün hemen üstünde yorum satırı (dokunmuş). Taze notların 142'si b
 | taze sayfa istemde (itme, Sonuç 2) | 0,875 | 0,792 | 0,958 | 0,979 | | 34.420 |
 | 234 not istemde (itme) | 0,792 [0,65 – 0,92] | 0,708 | 0,875 | | | 45.482 |
 
-2 çağrıda eşli farklar: tek dosya − hiçbir şey +0,33 [0,15 – 0,52]; tek dosya − aynı sayfa `docs/`
-içinde +0,31 [0,13 – 0,50]; dokunmuş − hiçbir şey +0,21 [0,06 – 0,35]; istemdeki sayfa − tek dosya
-+0,23 [0,04 – 0,42]; yalnız kodu değişmeyen bayat notlar − hiçbir şey −0,08 [−0,19 – 0,00].
+2 çağrıda eşli farklar: tek dosya − aynı sayfa `docs/` içinde +0,31 [0,13 – 0,50]; istemdeki sayfa −
+tek dosya +0,23 [0,04 – 0,42]; yalnız kodu değişmeyen bayat notlar − hiçbir şey −0,08 [−0,19 – 0,00].
 14 çağrıda tek dosya − hiçbir şey −0,04 [−0,10 – 0,00]; soru başına 4,1 araç çağrısı (belgesiz 5,0).
+Not dosyası hiçbir koşuda doğrudan açılmadı; notlar ajanın zaten attığı grep'in sonucu olarak gelir.
+Bayat notlarla değişen sorularda eski cevabı kesin diye söyleme %4, kuşkuyla aktarma %25.
 
-Okuma:
+Koşudan önce yazılan dört ölçüt: belgesize göre kazanç +0,28'in altında ya da aralığı sıfırı içeriyor;
+koşuların yarısından azında not görünüyor; süzülmüş bayat notlarla eski cevabı kesin diye söyleme
+%4'ün üstünde; 14 çağrıda istem token'ı belgesizin 1,2 katından fazla. Tek dosya biçimi dördünü de
+geçti, dokunmuş biçim +0,28'in altında kaldı. Ölçütler arama aracının dosya sırasını kapsamıyordu;
+onu karışık sıra kolu ayırır.
 
-- Koşudan önce yazılan dört öldürme ölçütü: belgesize göre kazanç +0,28'in altında ya da aralığı sıfırı
-  içeriyor; koşuların yarısından azında not görünüyor; süzülmüş bayat notlarla eski cevabı kesin diye
-  söyleme %4'ün üstünde; 14 çağrıda istem token'ı belgesizin 1,2 katından fazla. Tek dosya biçimi
-  dördünü de geçti. Dokunmuş biçim +0,28'in altında kaldı.
-- Not, 2 çağrıdaki 48 koşunun 47'sinde bir araç sonucunda göründü; not dosyası hiçbir koşuda doğrudan
-  açılmadı. Notlar ajanın zaten attığı grep'in sonucu olarak geliyor.
-- Aynı bilgi istemde daha çok kazandırır (+0,56) ama beş katı token'a; `docs/` içinde hiç açılmaz.
-- Bayat notlar bayat sayfa gibi davranır: değişmeyen olguda 0,833, değişende 0,417; eski cevabı kesin
-  diye söyleme %4, kuşkuyla aktarma %25.
-- Kodu değişen notları saklamak kazancı yok eder: 214 notun 69'u kalır, sonuç belgesizin altına iner.
-  Haşiye bilgiyi teslim eder, taze tutmaz; tazelik yine yeniden üretimden gelir (Sonuç 5).
-- Sınır: düzenekteki `grep` dosyaları yol sırasıyla döndürür, `_scholia.py` koddan önce gelir ve 40
-  satır sınırına takılmaz. Sırası farklı bir arama aracında notlar gömülebilir. Dokunmuş biçim bu sıraya
-  142 notu için bağlı değildir ve daha az kazandırır.
+### Karışık sıra ve kararlar
 
-## Sonuç 8: haşiye sonucu başka dosya sırasında, başka modelde ve kararlarda
+Haiku; yol sırasındaki Sonnet 5.5 koluyla birlikte 720 koşu. Yapısal 24 soru:
 
-Sonuç 7'nin sınırını sınayan tur. `--grep-order shuffled` ile `grep` dosyaları çağrıya göre tohumlanan
-karışık bir sırayla gezer; not dosyası ilk dönen dosya olmaz. `--model claude-sonnet-5-5` ajanı ikinci
-bir modelde koşar (puanlayıcı aynı). Karar defteri 139 tek satırlık nota çevrildi. Çekme düzeni, ikişer
-tekrar, 720 koşu.
-
-Yapısal 24 soru:
-
-| Arama sırası, model | Çağrı | Hiçbir şey | Notlar, tek dosya | Notlar, dokunmuş | Tek dosya − hiçbir şey | Not görünen koşu (dosya / dokunmuş) |
+| Arama sırası | Çağrı | Hiçbir şey | Notlar, tek dosya | Notlar, dokunmuş | Tek dosya − hiçbir şey | Not görünen koşu (dosya / dokunmuş, 48'de) |
 |---|---|---|---|---|---|---|
-| yol sırası, Haiku (Sonuç 7) | 2 | 0,312 | 0,646 | 0,521 | +0,33 [0,15 – 0,52] | 47 / 47 (48'de) |
-| karışık, Haiku | 2 | 0,417 [0,25 – 0,60] | 0,458 [0,29 – 0,62] | 0,479 [0,31 – 0,65] | +0,04 [−0,15 – 0,23] | 22 / 43 (48'de) |
-| karışık, Haiku | 4 | 0,604 [0,42 – 0,79] | 0,771 [0,62 – 0,90] | 0,708 [0,56 – 0,85] | +0,17 [0,00 – 0,35] | 28 / 44 (48'de) |
-| yol sırası, Sonnet 5.5 | 2 | 0,521 [0,33 – 0,71] | 0,771 [0,60 – 0,92] | | +0,25 [0,08 – 0,44] | 47 (48'de) |
+| karışık | 2 | 0,417 [0,25 – 0,60] | 0,458 [0,29 – 0,62] | 0,479 [0,31 – 0,65] | +0,04 [−0,15 – 0,23] | 22 / 43 |
+| karışık | 4 | 0,604 [0,42 – 0,79] | 0,771 [0,62 – 0,90] | 0,708 [0,56 – 0,85] | +0,17 [0,00 – 0,35] | 28 / 44 |
 
 "Neden" soruları (12):
 
@@ -298,29 +325,14 @@ Yapısal 24 soru:
 | karışık | 4 | 0,000 | 0,917 [0,79 – 1,00] | 0,750 [0,50 – 0,96] | −0,17 [−0,42 – 0,04] |
 
 Karar defteri istemde (itme), 2 çağrı: 1,000; soru başına 14.922 istem token'ı (çekme kollarında
-2.674 – 3.056).
+2.674 – 3.056). Ajan "neden" soruları için `docs/` klasörüne zaten bakar (soru başına yaklaşık bir çağrı).
 
-Okuma:
+Koşudan önce yazılan ölçüt: karışık sırada kazanç +0,10'un altına düşer ya da aralığı sıfırı içerirse
+yol sırasındaki kazanç sıralamanın eseridir. Gerçekleşti.
 
-- Koşudan önce yazılan ölçüt: karışık sırada kazanç +0,10'un altına düşer ya da aralığı sıfırı içerirse
-  Sonuç 7 sıralamanın eseridir. Gerçekleşti. Not dosyası yol sırasında koddan önce döner; karışık sırada
-  40 satır sınırına takılır ve koşuların yarısından azında görünür.
-- Dokunmuş notlar karışık sırada da 48 koşunun 43'ünde göründü, ama 2 çağrıda doğruluğu artırmadı.
-  Notun görünmesi tek başına yetmiyor.
-- İkinci modelde, aynı (elverişli) sırada kazanç tekrarlandı. Etki modele özgü değil, sıraya bağlı.
-- Kararlarda ağaç içi notun `docs/` klasörüne üstünlüğü de sıraya bağlıdır. Ajan "neden" soruları için
-  `docs/` klasörüne zaten bakıyor (soru başına yaklaşık bir çağrı).
-- Sonnet 5.5, araç hakkı bittikten sonra 15 istekte metinsiz son mesaj döndürdü; düzenek en çok iki kez
-  yeniden ister; 96 cevabın 4'ü boş kaldı.
+### Notlar önce: Haiku
 
-## Sonuç 9: notları önce döndüren arama
-
-Sonuç 8'in işaret ettiği şeyi doğrudan kuran tur. `--grep-order notes-first` ile `grep` dosyaları
-karışık sırayla gezer ve `src/` altının herhangi bir yerindeki eşleşen not satırlarından en çok 20'sini,
-hangi yol arandığına bakmadan, kod satırlarından önce döndürür. Notun yeri ve dosya sırası devreden
-çıkar. Haiku, çekme düzeni, ikişer tekrar, 624 koşu.
-
-Yapısal 24 soru:
+624 koşu. Yapısal 24 soru:
 
 | Çağrı | Hiçbir şey | Notlar, tek dosya | Notlar, dokunmuş | Bayat notlar | Tek dosya − hiçbir şey | Dokunmuş − hiçbir şey |
 |---|---|---|---|---|---|---|
@@ -329,8 +341,8 @@ Yapısal 24 soru:
 | 14 | 0,979 | 0,979 | | | 0,00 | |
 
 14 çağrıda notlu kol soru başına 18.054 istem token'ı ve 4,2 araç çağrısı kullandı; notsuz 25.212 ve
-5,3. Not, 2 çağrıda 48 koşunun 46 ve 47'sinde göründü. Bayat notlarla değişen sorularda eski cevabı
-kesin diye söyleme %0, kuşkuyla aktarma %13 (2 çağrı); 4 çağrıda ikisi de yok.
+5,3. Bayat notlarla değişen sorularda eski cevabı kesin diye söyleme %0, kuşkuyla aktarma %13 (2
+çağrı); 4 çağrıda ikisi de yok.
 
 "Neden" soruları (12):
 
@@ -339,17 +351,39 @@ kesin diye söyleme %0, kuşkuyla aktarma %13 (2 çağrı); 4 çağrıda ikisi d
 | 2 | 0,000 | 0,292 [0,08 – 0,50] | 0,833 [0,58 – 1,00] | +0,54 [0,29 – 0,79] | 3.105 |
 | 4 | 0,042 | 0,958 | 1,000 | +0,04 [0,00 – 0,12] | 5.741 |
 
-Okuma:
+Koşudan önce yazılan ölçütler: 2 çağrıda en az +0,20 ve sıfırı dışlayan aralık (dokunmuş biçim geçti,
+tek dosya geçemedi; iki biçim birbirinden ayrışmıyor: −0,08 [−0,23 – 0,06]); notun koşuların en az
+%80'inde görünmesi (geçti); 14 çağrıda token'ın 1,2 katı aşmaması ve doğruluğun düşmemesi (geçti: 0,72
+katı); karar notlarının `docs/` klasörünü sıfırı dışlayan aralıkla geçmesi (2 çağrıda geçti).
 
-- Koşudan önce yazılan ölçütler: 2 çağrıda en az +0,20 ve sıfırı dışlayan aralık (dokunmuş biçim
-  geçti, tek dosya geçemedi; iki biçim birbirinden ayrışmıyor: −0,08 [−0,23 – 0,06]); notun koşuların
-  en az %80'inde görünmesi (geçti); 14 çağrıda token'ın 1,2 katı aşmaması ve doğruluğun düşmemesi
-  (geçti: 0,72 katı); karar notlarının `docs/` klasörünü sıfırı dışlayan aralıkla geçmesi (2 çağrıda geçti).
-- Yapısal sorularda kazanç 2 çağrıda Sonuç 7'deki +0,33'ten küçüktür, 4 çağrıda nettir; tam bütçede
-  aynı doğrulukla istem token'ının yaklaşık dörtte birini kazandırır.
-- Kararlarda büyüktür: 2 çağrıda `docs/` içindeki defterin 0,292'sine karşı 0,833, defteri isteme
-  koymanın beşte biri token'la.
-- Sınır: tek model (Haiku), tek repo, 12 karar sorusu. İkinci modelde ve büyük kod tabanında sınanmadı.
+### Notlar önce: Sonnet 5.5
+
+2 çağrılı kolların ikinci modeldeki tekrarı, 192 koşu:
+
+| Soru sınıfı | Hiçbir şey | `decisions.md` `docs/` içinde | Notlar, tek dosya | Notlar, dokunmuş | Eşli fark |
+|---|---|---|---|---|---|
+| yapısal (24) | 0,417 [0,25 – 0,60] | | 0,729 [0,56 – 0,88] | 0,688 [0,52 – 0,83] | tek dosya − hiçbir şey +0,31 [0,15 – 0,48]; dokunmuş +0,27 [0,08 – 0,46]; tek dosya − dokunmuş +0,04 [−0,08 – 0,19] |
+| karar (12) | | 0,625 [0,38 – 0,88] | 0,875 [0,71 – 1,00] | | notlar − `docs/` +0,25 [0,04 – 0,50] |
+
+Not, yapısal 48 koşunun 47 ve 45'inde, karar sorularında 24 koşunun 24'ünde göründü. Karar sorusu
+başına istem token'ı: notlarla 3.035, `docs/` içindeki defterle 4.403.
+
+Koşudan önce yazılan ölçütler: yapısal kazancın aralığı iki biçimden en az birinde sıfırı dışlar (ikisinde
+de dışladı); not koşuların en az %80'inde görünür (geçti); karar notları `docs/` klasörünü sıfırı
+dışlayan aralıkla geçer ve en az 0,70 verir (sayılar karşılıyor); bir kolda cevapların %10'undan fazlası
+boş kalırsa o kolun karşılaştırması güvenilmez diye bildirilir. Sonnet 5.5 araç hakkı bittikten sonra
+metinsiz son mesaj döndürebiliyor; düzenek en çok iki kez yeniden ister. Belgesiz kolda 48 cevabın 5'i
+(%10,4), `docs/` defteri kolunda 24 cevabın 4'ü (%16,7) boş kaldı; yapısal notlu kollarda 96'da 0, karar
+notlarında 24'te 1. Boş cevap yanlış sayılır.
+
+Boş cevapların iki okuması (koşudan sonra hesaplandı). Dışarıda bırakılınca: tek dosya +0,28
+[0,11 – 0,48], dokunmuş +0,24 [0,04 – 0,44], karar notları − `docs/` +0,15 [0,00 – 0,40] (10 soru).
+Doğru sayılınca (en elverişsiz durum): tek dosya +0,21 [0,04 – 0,40], dokunmuş +0,17 [−0,04 – 0,38],
+karar notları +0,13 [0,00 – 0,33].
+
+Yapısal kazanç ikinci modele taşınır; tek dosya biçiminde her okumada sıfırı dışlar. Karar notlarının
+düzeyi taşınır (0,875). `docs/` içindeki deftere üstünlükleri Haiku'dakinden küçüktür ve kanıtlanmış
+değildir: boş cevaplar ayrıldığında aralık sıfıra değer.
 
 ## Emsal
 
@@ -365,8 +399,11 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 
 ## Sınırlar
 
-- Tek repo (17 bin satır), tek model, sınıf başına 12 soru, hücre başına 2 tekrar. Büyük bir kod
-  tabanında arama pahalılaşır; "kıt bütçe" kolu bunu taklit eder, yerini tutmaz.
+- Tek repo (17 bin satır), sınıf başına 12 soru, hücre başına 2 tekrar. Ajan modeli Haiku 5.5'tir;
+  Sonnet 5.5 yalnız Sonuç 7'nin 2 çağrılı iki karşılaştırmasında koştu, başka aileden model koşmadı.
+  Büyük bir kod tabanında arama pahalılaşır; "kıt bütçe" kolu bunu taklit eder, yerini tutmaz.
+- Aralıklar bütün hücrelerin paylaştığı tek bir yeniden örnekleme dizisinden gelir; kol eklendikçe
+  bir sınır `analysis.json` ile bu sayfa arasında en çok 0,02 oynar.
 - Puanlayıcı aynı model ailesidir; elle yalnız yanlış sayılan yapısal cevaplar incelendi.
 - Tanık notu bölüm düzeyindedir. İddia düzeyinde tanık sınanmadı.
 - Taze ve bayat sayfayı ajanlar yazdı; insan yazımı belge sınanmadı.
@@ -380,10 +417,12 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - MUST: haşiye "wiki'yi taze tutar" diye sunulmaz. Gerekçe: Sonuç 7'de bayat notlar bayat sayfa gibi
   davrandı, süzgeç kazancı yok etti; ölçülen şey teslim yoludur.
 - MUST: "notu kod ağacına koymak ajana ulaştırır" koşulsuz yazılmaz; arama aracının notu önce döndürdüğü
-  belirtilir. Gerekçe: Sonuç 8'de karışık dosya sırasıyla kazanç kayboldu.
+  belirtilir. Gerekçe: Sonuç 7'de karışık dosya sırasıyla kazanç kayboldu.
+- MUST: "karar notları `docs/` içindeki defterden iyidir" cümlesi model adıyla yazılır. Gerekçe: Sonuç
+  7'de üstünlük Haiku'da +0,54, Sonnet 5.5'te boş cevaplar ayrılınca sıfıra değen bir aralıktır.
 - SHOULD: karar defteri ajanın istemine konur; token kıtsa tek satırlık notlara bölünüp notları önce
-  döndüren bir aramanın arkasına konur. Gerekçe: Sonuç 8'de istemde 2 çağrıda 1,000; Sonuç 9'da notlu
-  aramayla 0,833 ve beşte bir token; `docs/` içinde 0,292–0,417.
+  döndüren bir aramanın arkasına konur. Gerekçe: Sonuç 7'de istemde 2 çağrıda 1,000; notlu aramayla iki
+  modelde 0,83–0,88 ve beşte bir token.
 - MUST: "sorguyu sakla" ya da "okuma anında doldur" bir çözüm diye sunulmaz. Gerekçe: Sonuç 5'te kendi
   ölçütünü geçemedi; sınır, yazıldığında var olmayan davranışı kapsayamamasıdır.
 - SHOULD: bu çalışma alanında ajan için yazılan belge karar ve gerekçe taşır; kodun ne yaptığını
@@ -399,8 +438,7 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - `cache-and-ledger/data/agent-qa/run_agent_qa.py`, `analyse.py`; ham koşular `runs.tar.gz`
 - `cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
 - `cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
-- `cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json` — Sonuç 7
-- `cache-and-ledger/data/agent-qa/inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 8 ve 9
+- `cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json`, `inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 7
 - `cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
 - `cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
 - `wiki/sources/claude-science-context/12_synthesis_hypothesis_source_ledger_views.md` §5 (T4) ve

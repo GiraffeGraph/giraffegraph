@@ -23,6 +23,26 @@ kişinin yönlendirmesiyle, yapay zekâ ile yazıldı; ders yapay zekâ kullanı
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `10-appendix.md` | `wiki/thesis/build/thesis.pdf` (48 sayfa, 38 kaynak) |
 | Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (9 sayfa, 18 kaynak), `paper.tex` |
 
+## Bölüm başına dayanak
+
+Bir bölümü değiştirecek kişi önce o bölümün dayandığı yeri açar. Tabloda olmayan bir dosya tezin
+dayanağı değildir.
+
+| Bölüm | Dayandığı wiki sayfası | Kod, veri ya da ölçüm dosyası |
+|---|---|---|
+| 1 Introduction, 4 Requirements | `wiki/project/overview.md`, `wiki/project/tubitak-commitments.md` | `wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md` |
+| 2 Background, 3 Related work | `wiki/evaluation/related-work.md`, `wiki/evaluation/literature-map.md` | `wiki/literature/`, iki `.bib` dosyası; 2.6 için `cache-and-ledger/README.md` |
+| 5 Design, 6 Implementation | `wiki/domains/hadith/isnad-pipeline.md` | `giraffegraph-core/docs/`, `giraffegraph-core/backend/` |
+| 7 Evaluation | `wiki/evaluation/engine-experiments.md`, `wiki/evaluation/correctness-measurement.md` | `giraffegraph-core/evaluation/results/2026-10-12-*/`, `data/eval/`, `data/README.md` |
+| 8.5 "One domain" paragrafı | `wiki/evaluation/decision-ledger-experiments.md` | `cache-and-ledger/data/explore-copy-check-bc5cdr.py`, `copy-check-bc5cdr.json` |
+| 9.1 Plan | `wiki/project/roadmap.md`, `wiki/project/open-decisions.md` | `giraffegraph-core/evaluation/annotation/` |
+| Appendix | Bu sayfa | `giraffegraph-core/README.md`, `data/README.md` |
+
+Tezde yer almayan keşif çalışması (2026-10-13): karar defterinin kapsamı ve yeniden kullanımı
+(`wiki/evaluation/decision-ledger-experiments.md`; kodu Core'un `feat/identity-ledger` dalında) ve
+ajan için neyin saklanacağı (`wiki/evaluation/wiki-for-agents-experiments.md`). Teze girip
+girmeyecekleri karara bağlanmadı; özetleri `cache-and-ledger/MEASUREMENTS.md` içindedir.
+
 ## Derleme
 
 Çalışma alanı kökünden değil, bu klasörden çalıştırılır:

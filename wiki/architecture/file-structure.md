@@ -54,7 +54,7 @@ wiki/                         # repo: GiraffeGraph/giraffegraph-wiki
     correctness-measurement.md  # doğruluk katmanları, metrikler, ölçülen / ölçülmeyen
     engine-experiments.md       # motor deneyleri: koşullar, 300 hadislik İfta kümesi, kapı yakalama, maliyet, kimlik taban çizgisi
     decision-ledger-experiments.md  # karar yeniden kullanımı, kapsam daraltma, kopya kontrolünün hadis dışı tekrarı (keşif)
-    wiki-for-agents-experiments.md  # ajan soru-cevap deneyi: ne saklanmalı; tanık ömrü; okuma anında doldurulan çerçeveler; beş ajanlı fikir turu; ağaç içi notlar (keşif)
+    wiki-for-agents-experiments.md  # ajan soru-cevap deneyi: ne saklanmalı; tanık ömrü; okuma anında doldurulan çerçeveler; beş ajanlı fikir turu; ağaç içi notlar ve arama sırası (keşif)
     literature-map.md           # 38 makalenin katmanlara eşlenmesi, boşluk
     related-work.md             # emsal çalışmaların ölçüm yöntemi, sayıları, projeye çıkarım
 
@@ -71,7 +71,7 @@ wiki/                         # repo: GiraffeGraph/giraffegraph-wiki
     extraction_eval_precedents.bib                  # emsal çalışmaların künyeleri
 
   thesis/                     # tez ve makale taslakları (İngilizce)
-    README.md                 # statü, derleme komutu, derlemenin dayandığı dosyalar
+    README.md                 # statü, bölüm başına dayanak, derleme komutu, derlemenin dayandığı dosyalar
     build.py  build_paper.py  # derleme betikleri
     chapters/                 # 00-front.md … 10-appendix.md
     figures/                  # build.py'nin ölçüm dosyalarından çizdiği şekiller
