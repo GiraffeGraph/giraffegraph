@@ -45,18 +45,20 @@ ve danışman görmedi. Betikler ve çıktılar `cache-and-ledger/data/` altınd
 8. **Beş ajana aynı soru üç sırayla soruldu; fikri sıra değil model belirledi.** On beş oturumun on
    biri "çalıştırılabilir bir şey sakla" ailesine düştü. Sonnet, Codex ve Antigravity üç sırada da
    kendi fikrini tekrarladı.
-9. **Cümlenin nerede durduğu, kullanılıp kullanılmayacağını belirler.** Aynı sayfa `docs/` içinde
-   durup ajanın açması gerektiğinde 2 çağrıda hiçbir şey kazandırmadı (0,333; belgesiz 0,312). Tek
-   satırlık notlar hâlinde aranan kod ağacının içine konduğunda 0,646 verdi (+0,33 [0,15 – 0,52]),
-   istem token'ı yalnız %8 arttı. Gün içinde denenen fikirlerden ölçütünü geçen tek fikir budur.
+9. **Notu ağaca koymak yetmez; aramanın onu önce döndürmesi gerekir.** Aynı sayfa `docs/` içinde
+   durduğunda 2 çağrıda hiçbir şey kazandırmadı (0,333; belgesiz 0,312). Tek satırlık notlar hâlinde
+   aranan kod ağacına konduğunda 0,646 verdi (+0,33 [0,15 – 0,52]) ve ikinci modelde tekrarlandı
+   (Sonnet 5.5: +0,25 [0,08 – 0,44]); ama arama aracı dosyaları karışık sırayla gezdiğinde kazanç
+   kayboldu (+0,04 [−0,15 – 0,23]). Kazanç, not dosyasının aramada ilk dönen dosya olmasından geliyordu.
+10. **Karar defteri küçüktür, isteme konur.** İstemdeki karar defteriyle "neden" soruları 2 çağrıda
+    1,000; `docs/` içinde 0,333–0,417; ağaç içi not olarak 0,500–0,667 (arama sırasına göre).
 
 Deneme (`cache-and-ledger/README.md`) haklı çıktı: türetilebilen şeyi saklama, kararı sakla. Eklenen
 iki şey var. Bir sınır koşulu: türetmek pahalıysa (arama hakkı azsa) saklanan türetim değer kazanır.
 Bir de olumsuz sonuç: eski bir sayfayı betikle tazelemenin denenen dört yolu da (tanık notu, yalnız
 işaret, okuma anında doldurma, eklenenlerin listesi) güncel kodu okuyan bir ajanın baştan yazdığı
-sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir. Bir de olumlu sonuç: saklanan
-cümle ajanın aradığı yere konursa kendiliğinden ulaşır (Sonuç 7); bu cümleyi taze tutmaz, yalnız
-teslim eder.
+sayfaya yaklaşmadı; türetilmiş sayfa yamanmaz, yeniden üretilir. Teslim yolu için ölçülen: cümleyi ajanın aradığı ağaca koymak tek başına yetmez; arama aracı notu
+önce döndürürse ulaşır (Sonuç 7 ve 8).
 
 ## Tasarım: ajan soru-cevap deneyi
 
@@ -265,6 +267,48 @@ Okuma:
   satır sınırına takılmaz. Sırası farklı bir arama aracında notlar gömülebilir. Dokunmuş biçim bu sıraya
   142 notu için bağlı değildir ve daha az kazandırır.
 
+## Sonuç 8: haşiye sonucu başka dosya sırasında, başka modelde ve kararlarda
+
+Sonuç 7'nin sınırını sınayan tur. `--grep-order shuffled` ile `grep` dosyaları çağrıya göre tohumlanan
+karışık bir sırayla gezer; not dosyası ilk dönen dosya olmaz. `--model claude-sonnet-5-5` ajanı ikinci
+bir modelde koşar (puanlayıcı aynı). Karar defteri 139 tek satırlık nota çevrildi. Çekme düzeni, ikişer
+tekrar, 720 koşu.
+
+Yapısal 24 soru:
+
+| Arama sırası, model | Çağrı | Hiçbir şey | Notlar, tek dosya | Notlar, dokunmuş | Tek dosya − hiçbir şey | Not görünen koşu (dosya / dokunmuş) |
+|---|---|---|---|---|---|---|
+| yol sırası, Haiku (Sonuç 7) | 2 | 0,312 | 0,646 | 0,521 | +0,33 [0,15 – 0,52] | 47 / 47 (48'de) |
+| karışık, Haiku | 2 | 0,417 [0,25 – 0,60] | 0,458 [0,29 – 0,62] | 0,479 [0,31 – 0,65] | +0,04 [−0,15 – 0,23] | 22 / 43 (48'de) |
+| karışık, Haiku | 4 | 0,604 [0,42 – 0,79] | 0,771 [0,62 – 0,90] | 0,708 [0,56 – 0,85] | +0,17 [0,00 – 0,35] | 28 / 44 (48'de) |
+| yol sırası, Sonnet 5.5 | 2 | 0,521 [0,33 – 0,71] | 0,771 [0,60 – 0,92] | | +0,25 [0,08 – 0,44] | 47 (48'de) |
+
+"Neden" soruları (12):
+
+| Arama sırası | Çağrı | Hiçbir şey | `decisions.md` `docs/` içinde | Karar notları ağaçta | Notlar − `docs/` |
+|---|---|---|---|---|---|
+| yol sırası | 2 | 0,000 | 0,333 [0,12 – 0,58] | 0,667 [0,42 – 0,92] | +0,33 [0,04 – 0,62] |
+| yol sırası | 4 | 0,042 | 0,875 | 1,000 | +0,13 [0,00 – 0,29] |
+| yol sırası | 14 | 0,042 | 1,000 | 1,000 | 0 |
+| karışık | 2 | 0,000 | 0,417 [0,17 – 0,67] | 0,500 [0,29 – 0,71] | +0,08 [−0,17 – 0,33] |
+| karışık | 4 | 0,000 | 0,917 [0,79 – 1,00] | 0,750 [0,50 – 0,96] | −0,17 [−0,42 – 0,04] |
+
+Karar defteri istemde (itme), 2 çağrı: 1,000; soru başına 14.922 istem token'ı (çekme kollarında
+2.674 – 3.056).
+
+Okuma:
+
+- Koşudan önce yazılan ölçüt: karışık sırada kazanç +0,10'un altına düşer ya da aralığı sıfırı içerirse
+  Sonuç 7 sıralamanın eseridir. Gerçekleşti. Not dosyası yol sırasında koddan önce döner; karışık sırada
+  40 satır sınırına takılır ve koşuların yarısından azında görünür.
+- Dokunmuş notlar karışık sırada da 48 koşunun 43'ünde göründü, ama 2 çağrıda doğruluğu artırmadı.
+  Notun görünmesi tek başına yetmiyor.
+- İkinci modelde, aynı (elverişli) sırada kazanç tekrarlandı. Etki modele özgü değil, sıraya bağlı.
+- Kararlarda ağaç içi notun `docs/` klasörüne üstünlüğü de sıraya bağlıdır. Ajan "neden" soruları için
+  `docs/` klasörüne zaten bakıyor (soru başına yaklaşık bir çağrı).
+- Sonnet 5.5, araç hakkı bittikten sonra 15 istekte metinsiz son mesaj döndürdü; düzenek en çok iki kez
+  yeniden ister; 96 cevabın 4'ü boş kaldı.
+
 ## Emsal
 
 Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğrulanmadı.
@@ -293,6 +337,9 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - MUST: tanık notu "işe yarıyor" diye sunulmaz. Gerekçe: bölüm düzeyinde ölçülebilir etkisi çıkmadı.
 - MUST: haşiye "wiki'yi taze tutar" diye sunulmaz. Gerekçe: Sonuç 7'de bayat notlar bayat sayfa gibi
   davrandı, süzgeç kazancı yok etti; ölçülen şey teslim yoludur.
+- MUST: "notu kod ağacına koymak ajana ulaştırır" koşulsuz yazılmaz; arama aracının notu önce döndürdüğü
+  belirtilir. Gerekçe: Sonuç 8'de karışık dosya sırasıyla kazanç kayboldu.
+- SHOULD: karar defteri ajanın istemine konur. Gerekçe: Sonuç 8'de 2 çağrıda 1,000; diğer yollar 0,333–0,667.
 - MUST: "sorguyu sakla" ya da "okuma anında doldur" bir çözüm diye sunulmaz. Gerekçe: Sonuç 5'te kendi
   ölçütünü geçemedi; sınır, yazıldığında var olmayan davranışı kapsayamamasıdır.
 - SHOULD: bu çalışma alanında ajan için yazılan belge karar ve gerekçe taşır; kodun ne yaptığını
@@ -309,6 +356,7 @@ Bir alt ajan 2026-10-13'te birincil kaynaklardan çekti; künyeler ayrıca doğr
 - `cache-and-ledger/data/agent-qa/cloze.py`, `added_symbols.py`, `inputs/frames-earlier-commit.json` — Sonuç 5
 - `cache-and-ledger/data/idea-sessions/README.md`, `brief.md`, `shuffle_brief.py`, `outputs/` — Sonuç 6
 - `cache-and-ledger/data/agent-qa/scholia.py`, `inputs/notes-current-commit.json`, `inputs/notes-earlier-commit.json` — Sonuç 7
+- `cache-and-ledger/data/agent-qa/inputs/notes-decisions.json`; `run_agent_qa.py` seçenekleri `--grep-order`, `--model` — Sonuç 8
 - `cache-and-ledger/data/witness-survival/REPORT.md`, `results.json`, `witness_survival.py` — Sonuç 3
 - `cache-and-ledger/data/explore-number-check.py`, `number-check-wiki.json` — Sonuç 4
 - `wiki/sources/claude-science-context/12_synthesis_hypothesis_source_ledger_views.md` §5 (T4) ve
