@@ -63,7 +63,7 @@ Wiki yapısı değişirken dokunma sırası:
 ## Dil
 
 Wiki Türkçedir; kaynak belgeler (`wiki/sources/`, `wiki/literature/`) Türkçe olduğu
-için tek söz dağarcığı korunur. Tez ve makale metni (`wiki/thesis/`) İngilizcedir. Teknik terimler ve kod kimlikleri özgün hâliyle yazılır. Dosya adları
+için tek söz dağarcığı korunur. Tez ve makale (`wiki/thesis/`) İngilizce yazılır; Türkçe sürümleri ondan çevrilir (`wiki/thesis/turkish-edition.md`). Teknik terimler ve kod kimlikleri özgün hâliyle yazılır. Dosya adları
 İngilizce `kebab-case`.
 
 ## Verification checklist

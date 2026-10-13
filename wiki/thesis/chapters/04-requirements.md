@@ -1,6 +1,6 @@
 # 4 Requirements and scope
 
-This chapter states what the system must do, where each requirement is implemented and which test checks it. Implementation paths are relative to `backend/src/app/` unless they start with another directory. Test files are in `backend/tests/unit/` or `backend/tests/integration/`. We list a requirement only if its code is on the `feat/hadith-prototype` branch.
+This chapter states what the system must do, where each requirement is implemented and which test checks it. Implementation paths are relative to `backend/src/app/` unless they start with another directory. Test files are in `backend/tests/unit/` or `backend/tests/integration/`. We list a requirement only if its code is on the `main` branch.
 
 ## 4.1 Users and use cases
 

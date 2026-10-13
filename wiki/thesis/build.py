@@ -2,9 +2,11 @@
 
 Usage (from this directory):
     uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build.py
+    uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build.py --lang tr
 
 Outputs: figures/*.png, build/thesis.md, build/thesis.docx, build/thesis.html, build/thesis.pdf
-(the PDF needs Google Chrome; it is skipped when Chrome is not installed).
+(the PDF needs Google Chrome; it is skipped when Chrome is not installed). With --lang tr the
+chapters come from chapters-tr/ and the outputs are named thesis-tr.
 """
 
 import json
@@ -33,6 +35,12 @@ INTERNAL = {
         "GiraffeGraph project, data manifest: sources, licence statements and construction of the "
         "evaluation sets, `data/README.md`, 12 October 2026 (unpublished)."
     ),
+}
+EDITIONS = {
+    "en": {"chapters": "chapters", "name": "thesis", "references": "References",
+           "title": "GiraffeGraph senior design report"},
+    "tr": {"chapters": "chapters-tr", "name": "thesis-tr", "references": "Kaynaklar",
+           "title": "GiraffeGraph bitirme projesi raporu"},
 }
 ARABIC_CODE = re.compile(r"`([^`\n]*[\u0600-\u06FF][^`\n]*)`")
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
@@ -150,7 +158,7 @@ def load_references():
     return entries
 
 
-def assemble(entries):
+def assemble(entries, edition):
     order = []
 
     def replace(match):
@@ -164,16 +172,16 @@ def assemble(entries):
             numbers.append(order.index(key) + 1)
         return "[" + ", ".join(str(number) for number in sorted(numbers)) + "]"
 
-    chapters = sorted((HERE / "chapters").glob("*.md"))
+    chapters = sorted((HERE / edition["chapters"]).glob("*.md"))
     body_parts, appendix_parts = [], []
     for chapter in chapters:
         text = chapter.read_text(encoding="utf-8")
         text = re.sub(r"<!--.*?-->", "", text, flags=re.S).strip()
         text = re.sub(r"\[(@[^\]]+)\]", replace, text)
         text = ARABIC_CODE.sub(lambda match: f"[{match.group(1)}]{{lang=ar dir=rtl}}", text)
-        (appendix_parts if chapter.name.startswith("10-") else body_parts).append(text)
+        (appendix_parts if chapter.name.endswith("-appendix.md") else body_parts).append(text)
 
-    references = ["# References", ""]
+    references = [f"# {edition['references']}", ""]
     for number, key in enumerate(order, start=1):
         entry = INTERNAL.get(key) or format_entry(entries[key])
         references.append(f"[{number}] {entry}")
@@ -292,39 +300,50 @@ figcaption, p > img + em { font-size: 9pt; }
 """
 
 
-def export(document):
+def export(document, edition):
     build = HERE / "build"
     build.mkdir(exist_ok=True)
-    markdown = build / "thesis.md"
+    name = edition["name"]
+    markdown = build / f"{name}.md"
     markdown.write_text(document, encoding="utf-8")
     try:
         import pypandoc
     except ImportError:
-        print("pypandoc not available: wrote build/thesis.md only")
+        print(f"pypandoc not available: wrote build/{name}.md only")
         return
     common = ["--from=markdown+pipe_tables+implicit_figures-smart", "--toc", "--toc-depth=2",
-              f"--resource-path={HERE}", "--metadata=title:GiraffeGraph senior design report"]
-    pypandoc.convert_file(str(markdown), "docx", outputfile=str(build / "thesis.docx"),
+              f"--resource-path={HERE}", f"--metadata=title:{edition['title']}"]
+    pypandoc.convert_file(str(markdown), "docx", outputfile=str(build / f"{name}.docx"),
                           extra_args=common)
     css = build / "thesis.css"
     css.write_text(CSS, encoding="utf-8")
     pypandoc.convert_file(
-        str(markdown), "html5", outputfile=str(build / "thesis.html"),
+        str(markdown), "html5", outputfile=str(build / f"{name}.html"),
         extra_args=common + ["--standalone", "--embed-resources", f"--css={css}"],
     )
     if CHROME.exists():
         subprocess.run(
             [str(CHROME), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
-             f"--print-to-pdf={build / 'thesis.pdf'}", (build / "thesis.html").as_uri()],
+             f"--print-to-pdf={build / f'{name}.pdf'}", (build / f"{name}.html").as_uri()],
             check=True, capture_output=True, timeout=180,
         )
 
 
+def edition_from_arguments(arguments):
+    if "--lang" not in arguments:
+        return "en"
+    language = arguments[arguments.index("--lang") + 1]
+    if language not in EDITIONS:
+        raise SystemExit(f"unknown language: {language}")
+    return language
+
+
 def main():
+    edition = EDITIONS[edition_from_arguments(sys.argv[1:])]
     entries = load_references()
     figures()
-    document, order = assemble(entries)
-    export(document)
+    document, order = assemble(entries, edition)
+    export(document, edition)
     words = len(re.findall(r"\w+", document))
     print(f"{len(order)} references, about {words} words")
     return 0

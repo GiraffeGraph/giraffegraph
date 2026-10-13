@@ -70,7 +70,7 @@ wiki/                         # GiraffeGraph/giraffegraph reposunun klasörü
     llm_eval_metrics.bib                            # taramanın künyeleri
     extraction_eval_precedents.bib                  # emsal çalışmaların künyeleri
 
-  thesis/                     # tez ve makale taslakları (İngilizce)
+  thesis/                     # tez ve makale (İngilizce, Türkçe sürümleriyle), proje önerisi, TÜBİTAK formu
     README.md                 # statü, bölüm başına dayanak, derleme komutu, derlemenin dayandığı dosyalar
     build.py  build_paper.py  # derleme betikleri
     chapters/                 # 00-front.md … 10-appendix.md
@@ -97,7 +97,7 @@ wiki/                         # GiraffeGraph/giraffegraph reposunun klasörü
 | Yeni bir açık soru çıktı ya da bir soru karara bağlandı | `project/open-decisions.md`; karar `decisions/` |
 | Bir iş bitti ya da sıra değişti | `project/roadmap.md` |
 | Yeni makale review'u ya da künye | `literature/`; katmana eşlemesi `evaluation/literature-map.md` |
-| Tez ya da makale metni | `thesis/chapters/`, `thesis/paper/paper.md`; ardından yeniden derleme |
+| Tez ya da makale metni | `thesis/chapters/`, `thesis/paper/paper.md` ve Türkçe karşılığı (`thesis/chapters-tr/`, `thesis/paper/paper-tr.md`); ardından yeniden derleme |
 | Dışarıdan gelen tarihli paket (analiz çıktısı, bağlam dökümü) | `sources/<paket-adı>/`; `sources/README.md` tablosuna satır |
 | Hadis şeması, ER, isnad kuralları gibi alan davranışı | `domains/hadith/` |
 | Core'un mimarisi | `giraffegraph-core/docs/` (wiki yalnız bağlar) |

@@ -2,6 +2,9 @@
 
 Usage (from this directory):
     uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_paper.py
+    uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_paper.py --lang tr
+
+With --lang tr the source is paper/paper-tr.md and the outputs are named paper-tr.
 """
 
 import re
@@ -11,6 +14,12 @@ import sys
 import build
 
 PAPER = build.HERE / "paper"
+EDITIONS = {
+    "en": {"name": "paper", "references": "References",
+           "title": "Quoted Correctly, Extracted Differently"},
+    "tr": {"name": "paper-tr", "references": "Kaynaklar",
+           "title": "Alıntı doğru, çıkarılan değer farklı"},
+}
 
 CSS = """
 body { font-family: 'CMU Serif', 'Latin Modern Roman', 'Times New Roman', Times, serif;
@@ -37,7 +46,7 @@ p { margin: 0.45em 0; }
 """
 
 
-def assemble(entries):
+def assemble(entries, edition):
     order = []
 
     def replace(match):
@@ -51,10 +60,10 @@ def assemble(entries):
             numbers.append(order.index(key) + 1)
         return "[" + ", ".join(str(number) for number in sorted(numbers)) + "]"
 
-    text = (PAPER / "paper.md").read_text(encoding="utf-8")
+    text = (PAPER / f"{edition['name']}.md").read_text(encoding="utf-8")
     text = re.sub(r"\[(@[^\]]+)\]", replace, text)
     text = build.ARABIC_CODE.sub(lambda match: f"[{match.group(1)}]{{lang=ar dir=rtl}}", text)
-    references = ["# References", ""]
+    references = [f"# {edition['references']}", ""]
     for number, key in enumerate(order, start=1):
         references.append(f"[{number}] {build.INTERNAL.get(key) or build.format_entry(entries[key])}")
         references.append("")
@@ -64,31 +73,33 @@ def assemble(entries):
 def main():
     import pypandoc
 
+    edition = EDITIONS[build.edition_from_arguments(sys.argv[1:])]
+    name = edition["name"]
     build.figures()
-    document, order = assemble(build.load_references())
+    document, order = assemble(build.load_references(), edition)
     out = PAPER / "build"
     out.mkdir(exist_ok=True)
-    markdown = out / "paper.md"
+    markdown = out / f"{name}.md"
     markdown.write_text(document, encoding="utf-8")
     common = [
         "--from=markdown+pipe_tables+implicit_figures+fenced_divs-smart",
         f"--resource-path={PAPER}",
-        "--metadata=title:Quoted Correctly, Extracted Differently",
+        f"--metadata=title:{edition['title']}",
     ]
     css = out / "paper.css"
     css.write_text(CSS, encoding="utf-8")
     pypandoc.convert_file(
-        str(markdown), "html5", outputfile=str(out / "paper.html"),
+        str(markdown), "html5", outputfile=str(out / f"{name}.html"),
         extra_args=common + ["--standalone", "--embed-resources", f"--css={css}"],
     )
-    pypandoc.convert_file(str(markdown), "docx", outputfile=str(out / "paper.docx"),
+    pypandoc.convert_file(str(markdown), "docx", outputfile=str(out / f"{name}.docx"),
                           extra_args=common)
-    pypandoc.convert_file(str(markdown), "latex", outputfile=str(out / "paper.tex"),
+    pypandoc.convert_file(str(markdown), "latex", outputfile=str(out / f"{name}.tex"),
                           extra_args=common + ["--standalone"])
     if build.CHROME.exists():
         subprocess.run(
             [str(build.CHROME), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
-             f"--print-to-pdf={out / 'paper.pdf'}", (out / "paper.html").as_uri()],
+             f"--print-to-pdf={out / f'{name}.pdf'}", (out / f"{name}.html").as_uri()],
             check=True, capture_output=True, timeout=180,
         )
     words = len(re.findall(r"\w+", document))

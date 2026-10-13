@@ -3,7 +3,8 @@
 ## Purpose
 
 CSE 491 bitirme raporunun (tez) ve aynı çalışmanın makale biçimli kısa sürümünün kaynağını, derleme
-betiklerini ve okunacak çıktılarını tutmak. Metinler İngilizcedir; wiki sayfası değildir.
+betiklerini ve okunacak çıktılarını tutmak. Tez ve makale İngilizce yazılır ve Türkçe sürümleri
+İngilizceden çevrilir; TÜBİTAK formu yalnız Türkçedir. Bu metinler wiki sayfası değildir.
 
 ## Scope
 
@@ -26,9 +27,11 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (53 sayfa, 40 kaynak) |
+| Tezin Türkçe sürümü | `wiki/thesis/chapters-tr/` (aynı dosya adları) | `wiki/thesis/build/thesis-tr.pdf` (53 sayfa) |
 | CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | Yok; teslimden önce PDF ya da DOCX'e çevrilir. Sonundaki "Open points" teslimden önce kapatılır |
 | TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (9 sayfa, 15 kaynak); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
 | Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 18 kaynak), `paper.tex` |
+| Makalenin Türkçe sürümü: "Alıntı doğru, çıkarılan değer farklı …" | `wiki/thesis/paper/paper-tr.md` | `wiki/thesis/paper/build/paper-tr.pdf` |
 
 ## Bölüm başına dayanak
 
@@ -61,6 +64,8 @@ cd wiki/thesis
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build.py
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_paper.py
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py
+uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build.py --lang tr
+uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_paper.py --lang tr
 ```
 
 `build.py` bölümleri birleştirir, `[@anahtar]` atıflarını kaynakça dosyalarından numaralar, 7. bölümün
@@ -89,12 +94,17 @@ derlemeyle yeniden üretilir.
 - MUST: kaynakça yalnız iki `.bib` dosyasından gelir; bölüme elle künye yazılmaz. Gerekçe: TÜBİTAK
   formunda bellekten yazılmış üç referans gerçek çıkmadı.
 - SHOULD: bölüm metni değişince yalnız kaynak commit edilmez, PDF de yenilenir; okuyan kişi PDF'e bakar.
+- MUST: İngilizce bir bölüm ya da makale değiştiğinde Türkçe karşılığı aynı görevde güncellenir; çeviri
+  `wiki/thesis/turkish-edition.md` içindeki kurallara ve terim tablosuna uyar. Gerekçe: iki sürüm
+  ayrı sayılar taşırsa hangisinin doğru olduğu metinden anlaşılmaz.
 
 ## Source anchors
 
 - `wiki/thesis/build.py` — `BIB_FILES`, `RESULTS`, `figures`, `export`
 - `wiki/thesis/build_paper.py` — makale derlemesi
 - `wiki/thesis/build_form.py` — TÜBİTAK formu derlemesi (`assemble`)
+- `wiki/thesis/build.py` — `EDITIONS`, `edition_from_arguments`: Türkçe sürümün derlemesi
+- `wiki/thesis/turkish-edition.md` — çeviri kuralları, sayı biçimi, terim tablosu
 - `wiki/evaluation/engine-experiments.md` — 7. bölümdeki sayıların wiki karşılığı
 
 ## Verification checklist

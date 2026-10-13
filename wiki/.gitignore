@@ -4,8 +4,10 @@ __pycache__/
 # Tez ve makale: yalnız PDF ve LaTeX çıktısı izlenir; diğer biçimler derlemeyle üretilir.
 thesis/build/*
 !thesis/build/thesis.pdf
+!thesis/build/thesis-tr.pdf
 thesis/paper/build/*
 !thesis/paper/build/paper.pdf
+!thesis/paper/build/paper-tr.pdf
 !thesis/paper/build/paper.tex
 thesis/tubitak/build/*
 !thesis/tubitak/build/form.pdf

@@ -1,0 +1,72 @@
+# 3 İlgili çalışmalar
+
+Bu bölümde hadis verileri, ravilerin çıkarımı ve kimliklerinin belirlenmesi, hadis bilgi grafları ve büyük dil modelleriyle (BDM) kurulan bilgi graflarının değerlendirilmesi üzerine çalışmaları inceliyoruz. Her çalışmada referansı kimin ürettiğini, kalitenin hangi düzeyde ölçüldüğünü ve etiketleyici uyumunun raporlanıp raporlanmadığını soruyoruz.
+
+Çalışmaları Ekim 2026'da web araması yaparak ve birincil kaynakları okuyarak bulduk. Tarama sistematik değildi. Üç durum dışında tam metinleri okuduk: Oumer'in tezine açık erişim olmadığı için sayıları yazarın model deposundan aldık; Gao ve arkadaşlarının çalışmasında Bölüm 1 ile 7.1 arasını, Raja'nın çalışmasında Bölüm 6 ile 8 arasını okuduk. 2023 tarihli SemanticHadith makalesi ve Bölüm 3.5'te adı geçen graf kurma çerçeveleri için bibliyografik kayıtlara dayanıyor, sayı raporlamıyoruz.
+
+## 3.1 Hadis derlemleri ve etiketli kaynaklar
+
+**Sanadset 650K**, 650.986 kayıt içerir ve 926 kitabı kapsadığı belirtilir [@mghari2022sanadset]. İndirdiğimiz dosyada 956 farklı kitap değeri vardır [@internal-data-manifest]. Metin web kazımayla toplanmış, bileşenleri ayrılmış ve raviler "düzenli ifadeler ve metin eşleştirme yardımıyla" etiketlenmiştir. Veri makalesi, doğruluk ölçümü ya da insan kontrolü raporlamaz. Bu etiketlere karşı elde edilen skor, kurallarla uyumu ölçer. Lisans, Hugging Face kopyasının veri kümesi kartında cc0-1.0 [@sanadset_hf], ilk yüklemenin Mendeley Data kaydında ise "CC BY 4.0" olarak belirtilmiştir; her ikisini de 12 Ekim 2026'da okuduk.
+
+**Ifta Sunnah veri ailesi**, derleyicisinin Ifta' Sunnah dijital kütüphanesinden web taraması ve ayrıştırma yoluyla çıkardığı tek bir derlemin Kaggle'daki üç sürümünden oluşur [@internal-data-manifest]. Özgün derlemde 33 kitap, 276.347 hadis ve 20.957 ravi profili vardır. Varlık ve ilişki sürümü, ravi metin aralıklarını ve aktarım ilişkilerini ekler; 223.478 hadisten oluşan sabit bir bölünme kullanır (156.434 eğitim, 33.521 doğrulama, 33.523 test). Graf sürümünde, her zincir adımının bir ravi kimliğine bağlandığı 257.840 hadis vardır. Etiketler, platformun üçüncü bir tarafça yeniden yapılandırılmış işaretlemeleridir. Kaynak, platformun bunları nasıl ürettiğini söylemez ve etiketleyici uyumu raporlamaz. 12 Ekim 2026'da Kaggle lisans alanında özgün derlem için "CC BY-SA 4.0", varlık sürümü için "Unknown", graf sürümü için "CC BY-NC-SA 3.0 IGO" yazıyordu. Belgeler, kullanıcılardan platformun koşullarına uymalarını ister.
+
+**AR-Sanad 280K**, eğitim ve doğrulama için 279.625 yapay zincir ile altı temel hadis kitabından alınmış 27.056 gerçek zincirlik bir test kümesi sunar. Test kümesi 6.378 raviyi kapsar ve her ad bir ravi kimliği taşır [@mahmoud2022arsanad]. Makaleye göre kaynak web sitesindeki ravi kimliklerini 30 uzmandan oluşan bir grup belirlemiştir. Test kümesi ayrılmış adları içerir, hadis metnini içermez; dolayısıyla kimliği sınayabilir, çıkarımı sınayamaz. Depoda lisans dosyası yoktur. Makalenin kaydında CC BY 4.0 lisans bağlantısı vardır; depo, bu lisansın veriyi de kapsayıp kapsamadığını söylemez [@internal-data-manifest].
+
+## 3.2 İsnad ve ravi çıkarımı
+
+Altammami ve arkadaşları, n-gram modelleriyle zinciri rivayet metninden ayırır [@altammami2019text]. Yazarlar, altı kitabın her birinden 40'ar hadis olmak üzere 240 hadisi etiketlemiş ve ayrım noktasının doğruluğunu hadis başına ölçmüştür. İkili gram modeli 240 hadisin 222'sinde (%92,5), üçlü gram modeli ise %48'inde doğru sonuç vermiştir. Raporlanan hata türleri arasında paralel zincirler vardır.
+
+Muther ve Smith, uzun ve noktalama işareti kullanılmamış klasik metinlerde zincir metin aralıklarını saptar [@muther2020tracing]. Derlemlerinde, model önerilerini düzelten İslam tarihi uzmanlarının etiketlediği 50 metin, 907.110 belirteç ve 3.071 zincir vardır. Uyum, 2.000 satır üzerinde 5 etiketleyiciyle ölçülmüştür: Krippendorff alfa değeri 0,84, ikili Cohen kappa değerleri ise 0,71 ile 0,96 arasındadır. Etiketleyiciler zincirin başlangıcında vakaların %70'inde, bitişinde %53'ünde tam olarak uzlaşmıştır. Koşullu rastgele alan modeli, katı metin aralığı eşleştirmesinde F1 0,254'e, kısmi eşleştirmede 0,835'e ulaşmıştır. Bizim için iki nokta öne çıkar: eşleştirme ölçütü skoru büyük ölçüde değiştirir ve uzmanlar bile zincirin nerede bittiğinde uzlaşamaz.
+
+Oumer, CAMeLBERT-CA, AraT5 ve AraBART modellerine Ifta varlık ve ilişki verileri üzerinde ince ayar yapar [@oumer2025relation]. Yazarın model deposu, 33.523 test hadisinde CAMeLBERT-CA için ravi F1 değerini 0,98, ilişki çifti F1 değerini 0,95 olarak bildirir. AraT5 için ravi F1 değeri 0,97, çift F1 değeri 0,95, zincir numarasını içeren üçlülerin F1 değeri 0,93'tür. AraBART için üçlü F1 değeri 0,48'dir. Çiftler ve üçlüler, platform işaretlemesinden türetilen ilişkilerle tam eşleşmeye göre puanlanır. Veri bölünmesinde kitapların birbirinden ayrılıp ayrılmadığı belirtilmemiştir. Bu veri üzerinde model tabanlı çıkarımı ölçen bir çalışma bulamadık.
+
+## 3.3 Ravi kimlik çözümleme
+
+Mahmoud ve arkadaşları, kimlik belirlemeyi her ad geçişini 18.298 raviden birine sınıflandırma olarak ele alır [@mahmoud2022arsanad]. Yapay doğrulama zincirlerinde model, 0 ile 100 arasındaki ölçekte 92,9 mikro-F1'e ve %30,2 zincir hata oranına ulaşır. Zincir hata oranı, en az bir ravisinin kimliği yanlış belirlenen zincirlerin yüzdesidir. Gerçek test zincirlerinde mikro-F1 83,5, makro-F1 78,8, zincir hata oranı ise %60,6'dır. Bu oran kitaplara göre %48,7 (al-Tirmidhi) ile %70,5 (al-Nasai) arasında değişir. Doğru ravi, vakaların %95,3'ünde ilk üç aday, %97,1'inde ilk beş aday içindedir. Doğrulama kümesinde Muhammad ve Abdullah gibi yaygın adların 3.669 geçişinin %26'sının kimliği doğru belirlenmiştir. Böylece geçiş düzeyindeki skor, zincir düzeyindeki başarısızlığı gizler; sıralanmış kısa bir liste, ilk yanıta göre doğru raviyi daha sık içerir.
+
+Wirahman, etiketli bir referans kullanmadan Sanadset'teki 185.216 ravi adı varyantını biyografik veritabanlarına bağlar [@wirahman2026linking]. Varyantların 94.628'i (%51,1) bağlanmış, 88.343'ü (%47,7) için aday bulunamamıştır. Doğruluk ölçülmemiş, eşikler gözle incelemeyle seçilmiştir. Yazar, uzmanların onayladığı 1.000 ile 2.000 bağlantıyı gelecek çalışmaya bırakır. Oluşan grafın derecesi en yüksek iki düğümü "babası" (7.612) ve "babam" (5.550) olmuştur. Bu, adı verilmeyen ravileri metindeki dizgilerine göre birleştirmenin etkisini gösterir.
+
+## 3.4 Hadis bilgi grafları ve model tabanlı yapılandırma
+
+SemanticHadith, hadis derlemi için ontoloji güdümlü bir bilgi grafıdır [@kamran2023semantichadith]. 2026 tarihli genişletmesi, 2.0.1 sürümü, altı kitaptaki 34.458 hadisten 303.869 varlık, 6.822 kişi ve 47.496 benzerlik bağlantısı içeren bir graf kurar [@kamran2026semantic]. Metindeki varlıklar bir adlandırılmış varlık tanıyıcıyla çıkarılır (mikro-F1 %97, makro-F1 %85) ve ad sözlüğü aracılığıyla ontoloji örneklerine eşlenir. Eşleşmeyen varlıklar elenir. Ontolojide ravi zinciri ve segmentleri için sınıflar vardır. Graf için üç alan uzmanı her kitaptan rastgele 100 örneği kontrol etmiş, hiçbir uyuşmazlık raporlanmamıştır; uyum istatistiği verilmez. Çalışmada model kullanılmaz, olgu başına karar kaydedilmez ve kaynak alıntısına karşı kontrol yoktur. Aynı adı paylaşan kişiler elle inceleme için işaretlenir ya da dışarıda bırakılır. Belirsiz adları aday listesiyle bir uzmana sunan bir çerçeve, gelecek çalışma olarak belirtilir.
+
+Rezwan, modellerle işlenmiş bir rivayet derlemidir [@asgari2025rezwan]. Altı alan uzmanı, rastgele seçilen 1.213 rivayeti her boyut için 0 ile 10 arasında puanlamıştır; uyum istatistiği verilmez. Zincir ile rivayet metninin ayrılması 9,30 puan almıştır (özette 9,33). Hata oranı %60'ı aşan rivayetler, tüm rivayetlerin %5,85'i, ortalamadan çıkarılmıştır.
+
+Çinici, Gemini 2.5 Flash ile bilgi getirme kullanarak klasik bir biyografi eserinin tek cildinden 271 âlim için 21 değişkenli bir biyografik veri kümesi kurar [@cinici2026hadis]. Yazar, ilk 100 kaydı özgün metinle karşılaştırmış ve sayı vermeden doğruluğun yüksek olduğunu belirtmiştir. Görev zincirler değil biyografidir; graf ya da onay adımı yoktur.
+
+## 3.5 Model tabanlı bilgi grafı kurma ve değerlendirme
+
+Extract, Define, Canonicalize, KGGen ve iText2KG gibi genel çerçeveler, modellerle metinden graf kurar [@zhang2024edc; @mo2025kggen; @lavie2024itext2kg].
+
+Text2KGBench, ontoloji güdümlü çıkarım için üç ölçüt ailesi içeren bir değerlendirme ölçütüdür: referans üçlülere karşı precision, recall ve F1; ontolojiye uygunluk; özne ve nesnenin cümlede ya da ontolojide geçip geçmediğini sınayan bir halüsinasyon ölçüsü [@mihindukulasooriya2023text2kgbench]. Wikidata-TekGen bölümünde Vicuna-13B, precision 0,38, recall 0,34, F1 0,35, ontolojiye uygunluk 0,83 ve özne halüsinasyonu 0,17 elde etmiştir.
+
+Gao ve arkadaşları, tüm grafın doğruluğunu bir örneklemden tahmin eder [@gao2019efficient]. MOVIE graflarında, 174 varlıktan alınan 174 üçlülük rastgele örneklem 3,53 saat sürerken 24 varlıktan alınan 178 üçlülük iki aşamalı küme örneklemesi 1,4 saat sürmüştür. Her ikisinde de hata payı yaklaşık %5'tir. Tahmin yansızdır ve güven aralığıyla birlikte verilir.
+
+## 3.6 Alan derlemeleri
+
+Haque ve Islam, 32 kaydı altı boyutta değerlendirir: derlemin gerçekçiliği, değerlendirme tasarımı, aktarım, yeniden üretilebilirlik, uzman katılımı ve akademik kullanım [@haque2026hadith]. Değerlendirme tablolarındaki 8 satır arasında uzman katılımı yalnızca Rezwan için tam olarak puanlanmıştır. Altı kitapla sınırlı bir değerlendirme kültürü, sentetik ve gerçek veri arasında bir fark, karşılaştırılamayan ölçütler ve seyrek uzman doğrulaması saptarlar.
+
+Mhamedi ve arkadaşları 57 çalışmayı derler [@mhamedi2026computational]. Ravi çıkarımı tablolarında raporlanan F1 değerleri %33 ile %99,63 arasında değişir; test kümeleri 102 ile 200 hadis içerir ve doğruluk, precision ve F1 birbirine karıştırılır.
+
+## 3.7 Çalışmanın konumu
+
+| Çalışma | Ne sağlar? | Kalite nasıl ölçüldü? | Amacımız açısından ne eksik? |
+|---|---|---|---|
+| Sanadset 650K [@mghari2022sanadset] | Ravileri etiketlenmiş 650.986 kayıt | Ölçülmedi; etiketler düzenli ifadelerden gelir | Kontrol edilmiş referans; ravi kimliği |
+| Ifta veri ailesi [@internal-data-manifest] | Ravi metin aralıkları, ilişkiler ve kimlikler | Uyum sayısı yok; işaretlemenin kökeni açıklanmıyor | Lisansın teyidi; model tabanlı bir çalışma |
+| AR-Sanad 280K [@mahmoud2022arsanad] | Kimlik içeren 27.056 gerçek zincir; sınıflandırıcı | Mikro ve makro F1, zincir hata oranı, ilk k aday | Hadis metni yok, dolayısıyla çıkarım testi yapılamaz |
+| Altammami ve arkadaşları [@altammami2019text] | Zincir ile rivayet metninin bölütlenmesi | 240 hadiste hadis başına doğruluk | Ravi düzeyinde çıktı |
+| Muther ve Smith [@muther2020tracing] | Uzman etiketli derlem; metin aralığı saptama | Katı ve kısmi metin aralığı F1'i; 5 etiketleyicinin uyumu | Ravi adları ve ilişkiler |
+| Oumer [@oumer2025relation] | İnce ayarlı ravi ve ilişki çıkarımı | 33.523 test hadisinde tam eşleşme (yazarın model deposu) | Eğitim verisi olmayan bir düzen; karar kayıtları |
+| Wirahman [@wirahman2026linking] | 185.216 ad varyantının otomatik bağlanması | Ölçülmedi | Etiketli referans; insan onayı |
+| SemanticHadith 2.0.1 [@kamran2026semantic] | 34.458 hadisin ontolojisi ve grafı | Tanıyıcı F1'i; örneklerin uzman kontrolü | Olgu başına karar; kaynak alıntıları |
+| Rezwan [@asgari2025rezwan] | Modellerle işlenmiş derlem | 0 ile 10 arasında uzman puanları | Sayıma dayalı precision ve recall |
+| Çinici [@cinici2026hadis] | Modelle kurulmuş biyografik kayıtlar | Tek yazar, 100 kayıt, sayı yok | Ölçülmüş hata sınıfları; onay adımı |
+| Text2KGBench [@mihindukulasooriya2023text2kgbench] | Değerlendirme ölçütü ve üç ölçüt ailesi | Referans üçlüler, ontolojiye uygunluk, metinde bulunma | Değer-alıntıda testi; insan adımı |
+| Gao ve arkadaşları [@gao2019efficient] | Graf doğruluğu için örnekleme tasarımı | Güven aralıklı yansız tahmin | Burada uygulanmadı; etiketli örneklemin ötesindeki doğruluğu tahmin etmek için aday |
+
+Böyle bir projenin iddia edebileceği şeylerin çoğu zaten vardır. Altı kitabın grafı yayımlanmıştır ve ontolojisi zincir segmentlerini sınıf olarak modeller. Ravi bağlama için etiketli gerçek veri ve ölçülmüş bir taban çizgisi vardır. Yazarın model deposuna göre ince ayarlı modeller, platform etiketlerine karşı 0,95 ve üzeri F1 değerleriyle ravileri ve aktarım ilişkilerini çıkarır. Zincir metin aralıkları için uyum sayıları verilen uzman etiketli bir derlem vardır; metinde bulunma testi de yerleşik bir ölçüttür. Bu nedenle yeni bir şema, aktarım olayı için yeni bir gösterim ya da daha yüksek çıkarım doğruluğu iddia etmiyoruz.
+
+İncelediğimiz çalışmalarda üç şey bulamadık: model ile graf arasındaki her doğrulama adımının katkısını ayrı ayrı ölçen bir çalışma; çıkarılan değerin modelin kendi alıntısında geçip geçmediğine bakan ve ayrı bir hata sınıfı olarak raporlanan bir kontrol; her olguyu kimin ya da neyin kabul ettiğini gösteren bir kayıt. Bu tezin konusu bunlardır. Sistem, model ile graf arasına deterministik kontroller ve bir insan inceleme kuyruğu koyar, her adımın neyi yakaladığını sayar ve her olgu için bir kabul kaydı saklar. Tarama sistematik olmadığı için "bulunamadı", "yoktur" anlamına gelmez.
+
+<!-- keys: mghari2022sanadset, internal-data-manifest, sanadset_hf, mahmoud2022arsanad, altammami2019text, muther2020tracing, oumer2025relation, wirahman2026linking, kamran2023semantichadith, kamran2026semantic, asgari2025rezwan, cinici2026hadis, zhang2024edc, mo2025kggen, lavie2024itext2kg, mihindukulasooriya2023text2kgbench, gao2019efficient, haque2026hadith, mhamedi2026computational -->
