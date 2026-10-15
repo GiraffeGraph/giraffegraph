@@ -17,3 +17,5 @@ thesis/proposal/build/*
 thesis/meeting/*/build/*
 !thesis/meeting/*/build/*.pdf
 !thesis/meeting/*/build/supervisor-meeting-form.docx
+thesis/guide/build/*
+!thesis/guide/build/rehber.pdf
