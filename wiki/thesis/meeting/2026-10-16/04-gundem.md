@@ -1,8 +1,8 @@
 # 16 Ekim toplantısı: gündem ve kararlar
 
-## 9 Ekim'den beri yaptıklarımız
+## 2 Ekim'den beri yaptıklarımız
 
-Son toplantıda benzer projelerden nerede ayrıldığımızı konuşmuştuk. Hadis çalışmalarını ve genel bilgi grafı (kişileri ve bağlantıları tutan yapı) tarafındaki 29 çalışmayı inceledik. Fark iddiamızı daralttık.
+1. toplantıda verilen edebiyat taramalarından Alperen'in listesi (graf yapıları, 27 makale) ve Efe'nin listesi (LLM değerlendirme ölçütleri, 38 makale) ortak Zotero kütüphanesinde. 9 Ekim'de benzer projelerden nerede ayrıldığımızı konuşmuştuk. Hadis çalışmalarını ve genel bilgi grafı (kişileri ve bağlantıları tutan yapı) tarafındaki 29 çalışmayı inceledik. Fark iddiamızı daralttık.
 
 Proje önerisinin son metnini hazırladık. Tez ve makale taslaklarını İngilizce ve Türkçe yazdık. TÜBİTAK form taslağını ve hadis uzmanına vereceğimiz notları hazırladık. Kod, veri ve belgeleri tek özel depoda topladık. Ortak Zotero kaynak kütüphanesi kurduk. Bu belgeler henüz sizin tarafınızdan okunmadı.
 
@@ -25,4 +25,4 @@ Uzmanla görüşüp etiketleme kılavuzunun v1 sürümünü tamamlayacağız. 6.
 
 Ablation tablosunu, yani parçaları çıkarıp katkılarını karşılaştırdığımız tabloyu hazırlayacağız. "Peygamber ravi değildir" kuralını ekleyeceğiz. Etiketlemeye başlayacağız. Üçüncü toplantıyı 6. veya 7. haftada yapmayı planlıyoruz.
 
-Toplantı formunun imzalanmasını da istiyoruz.
+2. toplantının formunun bugün imzalanmasını istiyoruz; Teams'e son yükleme günü 16 Ekim.

@@ -16,7 +16,7 @@ doldurulur, danışmana imzalatılır ve bir hafta içinde dersin MS Teams kanal
 |---|---|---|---|
 | 1 | 2026-10-02 | Very good | 2026-10-09 |
 
-Toplantı 2 için 2026-10-09 planlandı; yapılıp yapılmadığı ve içeriği bu çalışma alanında kayıtlı değil.
+2026-10-09'da danışmanla benzer projelerden nerede ayrışılacağı konuşuldu (proje sahibinin beyanı); bunun formu yok. Formlu toplantı 2 2026-10-16'da yapılır; formun son yükleme günü aynı gündür. Hazırlık belgeleri ve doldurulmuş form: `wiki/thesis/meeting/2026-10-16/` (gündem ve danışmandan istenen altı karar: `04-gundem.md`).
 
 Ders toplam 5 toplantı formu öngörür; her imzalı form notun %4'üdür ve toplantıdan sonra bir hafta
 içinde Teams'e yüklenir. Teams son günleri: toplantı 2 için 2026-10-16, toplantı 3 için 2026-10-30,
@@ -45,10 +45,10 @@ değerlendirme yöntemlerinin araştırılması.
 **Kararlar:** üç bileşen incelenir: şema tasarımı, KG inşası, RAG entegrasyonu. Her üyeye konu
 başına en az 20 makalelik literatür taraması verildi. Teslim: sonraki toplantı.
 
-| Sahip | Konu | Durum (2026-10-08) |
+| Sahip | Konu | Durum (2026-10-16) |
 |---|---|---|
-| Alperen Ulukaya | Graf yapıları ve teknikler | Bu çalışma alanında kayıt yok |
-| Deniz Büyükşahin | Din bağlamında LLM uygulamaları | Bu çalışma alanında kayıt yok |
+| Alperen Ulukaya | Graf yapıları ve teknikler | 27 makalelik liste; PDF'leri ortak Zotero grubunda; projeye karşı okuma notları `wiki/literature/team-reading-list-notes.md` |
+| Deniz Büyükşahin | Din bağlamında LLM uygulamaları | Bu çalışma alanında kayıt yok; toplantı formunda boş bırakıldı |
 | Yahya Efe Kuruçay | LLM başarı ölçüm metrikleri | 38 makale toplandı, review'lar üretildi; makaleler okunmadı (`wiki/evaluation/literature-map.md`) |
 
 **Review formatı:** makale başına en çok 300 kelimelik akademik değerlendirme; beş başlık: Research
@@ -86,4 +86,4 @@ Ders belgeleri çalışma alanının dışında, ders reposunda durur (`/Users/e
 
 ## Last updated
 
-2026-10-12
+2026-10-16

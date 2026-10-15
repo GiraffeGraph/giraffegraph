@@ -1,7 +1,7 @@
 """Fill the CSE 491 Supervisor Meeting Form for the meeting of 16 October 2026.
 
 Usage: uv run --no-project --python 3.12 --with python-docx python fill_form.py
-Writes build/supervisor-meeting-form.docx. Decisions, duration, attendees and the next date are
+Writes build/supervisor-meeting-form.docx. The meeting number is 2. Decisions, duration, attendees and the next date are
 left for the meeting itself; the action items are proposals to confirm there.
 """
 
@@ -18,14 +18,17 @@ FIELDS = {
     "Project supervisor": "Res. Asst. Dr. Taha Yiğit Alkan",
     "Date / duration": "16.10.2026 /",
     "Work completed since the last meeting": (
-        "Reviewed similar work on the hadith side and the 27 papers of the team's reading list on knowledge graph "
-        "construction, validation and review, plus two systems one survey pointed to. Narrowed the project's "
-        "difference to what we did not find there: a check that the extracted value occurs in the model's own "
-        "quotation, the contribution of each deterministic check measured against an outside reference, and a "
-        "comparison of that check with the model's confidence at the same review share. Finished the project "
-        "proposal text, drafts of the thesis and of a paper, and a draft of the TÜBİTAK 2209-A form. Prepared the "
-        "labelling guideline and handouts for the domain expert. Code, data and documents are in one private "
-        "repository; references are in a shared Zotero group library."
+        "Literature review assigned in meeting 1: Alperen Ulukaya, graph structures and techniques (27 papers); "
+        "Yahya Efe Kuruçay, LLM evaluation metrics (38 papers with structured reviews); "
+        "Deniz Büyükşahin, LLM applications in religious contexts: ______. "
+        "The 27 papers on knowledge graph construction, validation and review, plus two systems one survey "
+        "pointed to, were read against the project. The project's difference was narrowed to what we did not "
+        "find there: a check that the extracted value occurs in the model's own quotation, the contribution of "
+        "each deterministic check measured against an outside reference, and a comparison of that check with "
+        "the model's confidence at the same review share. First measurement on 300 hadiths (against existing "
+        "platform labels). Finished the project proposal text, drafts of the thesis, of a paper and of the "
+        "TÜBİTAK 2209-A form, and the labelling guideline with handouts for the domain expert. Code, data and "
+        "documents are in one private repository; references are in a shared Zotero group library."
     ),
     "Issues, risks and blockers discussed": (
         "No human labels and no human reviewer yet: all figures so far are measured against labels of an existing "
@@ -54,6 +57,8 @@ def main():
     table = document.tables[0]
     for row in table.rows:
         label = row.cells[0].text.strip()
+        if label == "Project supervisor":
+            row.cells[3].text = "2"
         if label in FIELDS:
             target = row.cells[1]
             target.text = FIELDS[label]
