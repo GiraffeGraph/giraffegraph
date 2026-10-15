@@ -1,15 +1,12 @@
 # CSE 491 Project Proposal
 
-> **Draft, not yet reviewed by the group or the supervisor.** Points that need a decision before
-> submission are listed in "Open points" at the end. Delete this box and that section before upload.
-
 ## 1. Title and summary
 
 **Title:** A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and
 Schema Drift in LLMs: An Application on Hadith Isnad Chains
 
-**Group:** Yahya Efe Kuruçay, Deniz Büyükşahin, Alperen Ulukaya
-**Supervisor:** Dr. Taha Yiğit Alkan
+**Group:** Yahya Efe Kuruçay (20220808005), Deniz Büyükşahin (20240808701), Alperen Ulukaya (20220808006)\
+**Supervisor:** Res. Asst. Dr. Taha Yiğit Alkan\
 **Domain expert:** Prof. Dr. Rifat Atay (Faculty of Theology)
 
 **Summary.** Large language models can turn free text into knowledge graph facts, but they add facts
@@ -86,12 +83,13 @@ and derivable facts do not, on the engine's own task and in one other domain.
 
 **In scope for CSE 491 (prototype):**
 
-- Loading Arabic hadiths, one hadith per source unit, from Sanadset 650K (CC0).
+- Loading Arabic hadiths, one hadith per source unit, from Sanadset 650K [1].
 - Rule-based separation of isnad and text, and splitting of the isnad into narrator mentions.
 - LLM extraction of narrators and `NARRATED_FROM` links, one call per chain, constrained to a fixed
   schema.
 - Three deterministic checks: the type exists in the schema; the quotation occurs in the source; the
-  extracted value occurs in the quotation.
+  extracted value occurs in the quotation. One domain rule that needs no biographical data: the
+  Prophet is not a narrator.
 - A review screen where a person accepts, rejects or edits a candidate, with who decided, when, and
   how long it took.
 - A canonical graph in which the same two narrators can be linked in different hadiths without one
@@ -117,7 +115,7 @@ and derivable facts do not, on the engine's own task and in one other domain.
 |---|---|---|
 | S1 | A set of 100 hadiths passes from upload to canonical graph without manual intervention outside the review screen | End-to-end run, logged |
 | S2 | 100% of facts in the canonical graph have a source quotation and a decision record (human or policy) | Automated test over the graph |
-| S3 | Precision, recall and F1 are reported for four conditions (rule-based parser; LLM; LLM with checks; LLM with checks and human review) on the 50 hand-labelled hadiths, under strict and loose matching, with hadith-level bootstrap confidence intervals | Scoring script, results table |
+| S3 | Precision, recall and F1 are reported for four conditions (rule-based parser; LLM; LLM with checks; LLM with checks and human review) on the 50 hand-labelled hadiths, under strict and loose matching, with hadith-level bootstrap confidence intervals. For each check, the table also gives how many mismatched proposals it flags on its own, next to the number the model's confidence flags when the same share of proposals is sent to review | Scoring script, results table |
 | S4 | Inter-annotator agreement on the 50 hadiths and mean labelling time per hadith are reported | Two independent annotators, mutual F1 |
 | S5 | For the claim "decisions are stored, derivable facts are derived again", the report states what was measured for it and against it, and every number of the two supporting studies is reproduced by a script in the repository | Re-run of the scripts from a clean clone |
 
@@ -149,10 +147,10 @@ workflows, ablated agent by agent with an LLM judge, and routed to people by con
 disagreement [14]–[16]; we do not claim that idea. We did not find a check that the extracted value
 occurs in the model's own quotation, reported as its own error class, or a measurement of what each
 deterministic check catches on the same candidates against an external reference, compared with the
-model's own confidence at the same review share. We also did not find a measurement of how often a stored narrator-identity
-decision can be reused and at what error; the mechanism we simulate, tying a correction to the context
-in which an earlier answer failed, is known in knowledge acquisition as ripple-down rules and is not
-our invention. Our search was not systematic, so this is a statement about what we found.
+model's own confidence at the same review share. We also did not find a measurement of how often a
+stored narrator-identity decision can be reused and at what error. We do not claim that the mechanism
+we simulate, tying a correction to the context in which an earlier answer failed, is new. Our search
+was not systematic, so this is a statement about what we found.
 
 ## 5. Preliminary requirements
 
@@ -172,6 +170,7 @@ our invention. Our search was not systematic, so this is a statement about what 
 | F10 | write accepted facts to the canonical graph so that links between the same two narrators in different hadiths stay distinct |
 | F11 | display the chain of a hadith and the source quotation of each link |
 | F12 | score system output against a reference file and produce precision, recall and F1 |
+| F13 | mark a candidate for review when it names the Prophet as a narrator |
 
 **Non-functional**
 
@@ -202,7 +201,10 @@ substring, or token F1 of at least 0.60), with maximum-weight matching between s
 mentions. The hadith is the unit of analysis.
 
 **Labelled data.** Two group members label the same 50 hadiths independently, following a written
-guideline, without seeing system output. The person who writes the checks does not label.
+guideline, without seeing system output. The person who writes the checks does not label. The domain
+expert reviews the guideline before labelling starts and decides where the two annotators disagree.
+The expert does not review system output, so that the person who sets the reference does not also
+judge the system.
 
 **Existing code.** GiraffeGraph Core already implements schema versioning, ingestion, LLM extraction
 through an OpenAI-compatible provider, candidate validation, a review queue and commit to Neo4j. A
@@ -221,7 +223,7 @@ the loop and measuring it against hand-labelled data is the main work of this te
 | Internal dashboard | Next.js 15 | Existing review interface |
 | LLM access | OpenAI-compatible HTTP API | Lets us switch between hosted and open models |
 | Development | uv, pytest, ruff, Docker Compose, GitHub Actions | Reproducible setup and CI |
-| Data | Sanadset 650K (CC0) | Arabic text with full chains and a confirmed licence |
+| Data | Sanadset 650K | Arabic text with full chains under an open licence (CC BY 4.0 on the original record; the mirror we download states CC0) |
 
 A decision table with the alternatives considered for each choice will be part of the midterm report.
 
@@ -230,18 +232,18 @@ A decision table with the alternatives considered for each choice will be part o
 | Week | Dates | Work | Output |
 |---|---|---|---|
 | 5 | 12–18 Oct | Proposal | This document |
-| 6 | 19–25 Oct | Architecture, data model, three screen sketches | Diagrams; supervisor meeting 3 |
-| 7 | 26 Oct – 1 Nov | Technology decision table; labelling guideline; start labelling 50 hadiths | Decision table; guideline v1 |
-| 8 | 2–8 Nov | Midterm report and presentation | Report, slides, dated plan |
-| 9 | 9–15 Nov | Repository clean-up, CI, one hadith end to end | Running skeleton; supervisor meeting 4 |
-| 10 | 16–22 Nov | Segmenter, per-chain extraction, three checks, per-candidate rejection | Core components with tests |
-| 11 | 23–29 Nov | Review screen, decision record, chain view | Clickable workflows; supervisor meeting 5 |
+| 6 | 19–25 Oct | Architecture, data model, three screen sketches; guideline reviewed with the domain expert | Diagrams; guideline v1; supervisor meeting 3 |
+| 7 | 26 Oct – 1 Nov | Technology decision table; labelling of 50 hadiths by two annotators | Decision table; labels; time per hadith |
+| 8 | 2–8 Nov | Midterm report and presentation; agreement figures; disagreements decided by the expert | Report, slides, dated plan; reference set |
+| 9 | 9–15 Nov | Group review of the existing engine code; one hadith end to end; supervisor and course staff added to the repository | Review notes; running skeleton; supervisor meeting 4 |
+| 10 | 16–22 Nov | Segmenter, per-chain extraction and the three checks reviewed and tested by the group; the domain rule added | Core components with tests; repository link on Teams |
+| 11 | 23–29 Nov | Review screen used by a group member on the labelled set; decision record and chain view tested | Clickable workflows; supervisor meeting 5 |
 | 12 | 30 Nov – 6 Dec | Integration on 100 hadiths, scoring script, deployment | First tagged version |
 | 13 | 7–13 Dec | Test against S1–S4, fixes, list of known limitations | Results table |
 | 14 | 14–20 Dec | Final report, README, technical documentation | Report and repository |
 | 15 | Final period | Prototype demo and plan for Project II | Presentation |
 
-**Division of work (proposed)**
+**Division of work**
 
 | Member | Main responsibility |
 |---|---|
@@ -338,28 +340,3 @@ Knowledge Graph Enrichment," in *Proc. NeurIPS 2025*. arXiv:2502.06472
 
 [16] S. Khorshidi et al., "ODKE+: Ontology-Guided Open-Domain Knowledge Extraction with LLMs,"
 arXiv:2509.04696, 2025.
-
-## Open points (remove before submission)
-
-1. **Language and data.** The proposal assumes Arabic text from Sanadset. Confirm with the supervisor.
-2. **Additional labelled data.** Whether the Ifta and AR-Sanad labels may be used depends on their
-   licences, which are unconfirmed. The success criteria do not rely on them. The ledger simulation
-   in section 2 does use them, for measurement only and without redistributing any data; decide
-   whether it stays in the proposal.
-3. **Division of work.** Section 7 is a suggestion. Replace it with what the group agreed.
-4. **Sizes.** 100 hadiths (S1) and 50 labelled hadiths (S3, S4) are proposed values.
-5. **Week dates.** Computed from "week 5 ends on 18 October". Check against the course calendar.
-6. **Meeting 2.** Add anything the supervisor asked for on 9 October.
-7. **Format.** Check on Teams whether the upload must be PDF or DOCX.
-8. **Frame.** The claim "decisions are stored, derivable facts are derived again" and the two
-   supporting studies were added on 13 October by the project owner. The supervisor has not seen
-   this frame; confirm it in meeting 2 or remove the paragraphs that carry it (summary, section 2
-   "The claim behind the design", the objective, the last in-scope item, S5, the second output).
-9. **Work plan against existing code.** Weeks 10 and 11 list the checks, the decision record and the
-   chain view as development. A first version of them exists. Decide whether those weeks become
-   review, testing with a reviewer and labelling.
-10. **Repository access.** The repository is private. Add the supervisor and the course staff as
-    collaborators before the repository link is submitted in week 10.
-11. **Reference for ripple-down rules.** Section 4 names the mechanism without a numbered reference.
-    The record is verified (Compton and Jansen, *Knowledge Acquisition* 2(3), 1990,
-    doi:10.1016/S1042-8143(05)80017-2) but the source was not read; cite it only after reading.

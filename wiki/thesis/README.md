@@ -28,7 +28,8 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 |---|---|---|
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (55 sayfa, 51 kaynak) |
 | Tezin Türkçe sürümü | `wiki/thesis/chapters-tr/` (aynı dosya adları) | `wiki/thesis/build/thesis-tr.pdf` (55 sayfa) |
-| CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | Yok; teslimden önce PDF ya da DOCX'e çevrilir. Sonundaki "Open points" teslimden önce kapatılır |
+| CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | `wiki/thesis/proposal/build/proposal.pdf` (9 sayfa) ve `proposal.docx`; açık noktalar kapatıldı (2026-10-15), danışmanın vereceği kararlar toplantı gündemindedir |
+| Danışman toplantısı belgeleri (2026-10-16) | `wiki/thesis/meeting/2026-10-16/01-durum.md` … `04-gundem.md`; form: `fill_form.py` | `wiki/thesis/meeting/2026-10-16/build/toplanti-belgeleri.pdf`, `supervisor-meeting-form.docx` |
 | TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (9 sayfa, 18 kaynak); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
 | Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 23 kaynak), `paper.tex` |
 | Makalenin Türkçe sürümü: "Alıntı doğru, çıkarılan değer farklı …" | `wiki/thesis/paper/paper-tr.md` | `wiki/thesis/paper/build/paper-tr.pdf` |
@@ -66,6 +67,8 @@ uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary pytho
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build.py --lang tr
 uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_paper.py --lang tr
+uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_proposal.py
+cd meeting/2026-10-16 && uv run --no-project --python 3.12 --with markdown --with pypdf python build.py
 ```
 
 `build.py` bölümleri birleştirir, `[@anahtar]` atıflarını kaynakça dosyalarından numaralar, 7. bölümün
@@ -80,7 +83,7 @@ Derlemenin okuduğu, bu klasörün dışındaki dosyalar:
 | `wiki/literature/extraction_eval_precedents.bib` | Emsal çalışmaların künyeleri | Bu repo |
 | `giraffegraph-core/evaluation/results/2026-10-12-*/**/analysis.json` | Şekiller | `giraffegraph-core/` altında izlenmez; kopyası `data/core-backup/` altında, geri yükleme komutu `data/README.md` içinde |
 
-Repoda yalnız PDF'ler ve `paper.tex` izlenir; Word, HTML ve birleştirilmiş Markdown çıktıları
+Repoda yalnız PDF'ler, `paper.tex`, `proposal.docx` ve doldurulmuş toplantı formu izlenir; Word, HTML ve birleştirilmiş Markdown çıktıları
 derlemeyle yeniden üretilir.
 
 ## Rules
@@ -122,4 +125,4 @@ derlemeyle yeniden üretilir.
 
 ## Last updated
 
-2026-10-13
+2026-10-15

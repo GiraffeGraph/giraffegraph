@@ -11,3 +11,9 @@ thesis/paper/build/*
 !thesis/paper/build/paper.tex
 thesis/tubitak/build/*
 !thesis/tubitak/build/form.pdf
+thesis/proposal/build/*
+!thesis/proposal/build/proposal.pdf
+!thesis/proposal/build/proposal.docx
+thesis/meeting/*/build/*
+!thesis/meeting/*/build/*.pdf
+!thesis/meeting/*/build/supervisor-meeting-form.docx
