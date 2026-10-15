@@ -23,7 +23,8 @@ Tarama 2026-10-08'de web araması ve birincil kaynak okumasıyla yapıldı. Sist
    F1 0,95'e ulaşıyor (Oumer 2025). LLM tabanlı çıkarımı bu veride ölçen bir çalışma bulunmadı.
 2. Ravi kimliği için de etiketli gerçek veri vardır: altı kitaptan 27.056 sened, her ravi kimlik
    numaralı (AR-Sanad 280K test kümesi). En iyi model senedlerin %60,6'sında en az bir raviyi yanlış
-   tanıyor.
+   tanıyor. Sonraki iki çalışma %94,6 (yapay doğrulama senedleri) ve %97,8 (yalnız yapay
+   senedlerden oluşan v2 kümesi) accuracy bildiriyor; özetlerinde gerçek senedlerde ölçülmüş bir değer yok.
 3. Pilotun referansı olan Sanadset etiketleri düzenli ifadelerle üretilmiştir; veri makalesi doğruluk
    ölçümü raporlamaz. Gümüş standart statüsü kesindir ve daha güçlü bir referans adayı mevcuttur.
 4. "Katı mı gevşek mi eşleşme" bu işin bilinen sorunudur: aynı çıktı katı eşleşmede F1 0,254, kısmi
@@ -39,7 +40,8 @@ Tarama 2026-10-08'de web araması ve birincil kaynak okumasıyla yapıldı. Sist
 ## Çalışmalar
 
 Okuma derinliği: **T** = tam metin doğrudan okundu (2026-10-08); **R** = tam metin kapalı, sonuçlar
-yazarın açık deposundan okundu.
+yazarın açık deposundan okundu; **Ö** = tam metin kapalı, yalnız yayıncı sayfasındaki özet okundu
+(2026-10-15).
 
 ### İsnad ve ravi çıkarımı (L1)
 
@@ -58,6 +60,8 @@ yazarın açık deposundan okundu.
 |---|---|---|---|---|---|
 | Mahmoud vd. 2022, *AR-Sanad 280K* (Information) | Hâdimü'l-Harameyn sünnet sitesi; makaleye göre ravi tanımlama işini 30 kişilik uzman grubu yürütmüş. Eğitim: 279.625 yapay sened. Test: altı kitaptan 27.056 gerçek sened, 6.378 ravi | Mention başına sınıflandırma (18.298 sınıf): micro / macro F1; sened hata oranı (SER) = en az bir ravisi yanlış sened yüzdesi; top-k | Yapay doğrulama: micro F1 92,9, SER 30,2. Gerçek test: micro F1 83,5, macro 78,8, SER 60,6. Top-3 %95,3, top-5 %97,1. Kitap bazında SER %48,7 (Tirmizî) – %70,5 (Nesâî) | Doğrulama kümesinde yaygın adların (Muhammed, Abdullah vb.) 3.669 örneğinin %26'sı doğru; "babası / dedesi" biçimlerinin %71'i doğru. Yanlış tahminlerin %12,9'u 0,90 üstü güvenle verilmiş | T |
 | Wirahman 2026 (arXiv) | Yok | Ölçülmemiş; eşikler gözle seçilmiş | Sanadset'in 185.216 ad varyantından 94.628'i (%51,1) bağlandı; 88.343'ü (%47,7) aday bulamadı | Yazar etiketli referans küme bulunmadığını, 1.000–2.000 uzman onaylı bağlantının gelecek iş olduğunu yazıyor. Grafın en yüksek dereceli iki düğümü "babası" (7.612) ve "babam" (5.550). Metin içinde çelişen oranlar var | T |
+| Mahmoud, Nabil, Saif, Torki 2024 (Neural Computing and Applications) | AR-Sanad 280K'nın yapay senedleri | Doğrulama kümesinde accuracy | Özete göre AR-Sanad 280K doğrulama kümesinde %94,6. Yöntem: sened graf olarak (ravi düğüm, aktarım kenar) sorgu gömmesine çevriliyor, en yakın k ravi getiriliyor, AraBERT yeniden sıralıyor. k değeri özette yok | v2, yapay senedlerin güncellenmiş hâli. Depodaki `v2/` klasöründe yalnız eğitim ve doğrulama dosyaları var (223.564 + 55.764 sened); ravi etiket dosyaları v1 ile bayt bayt aynı, sened metin dosyaları farklı (eğitim dosyası v2'de 44,2 MB, v1'de 53,0 MB). Gerçek sened test kümesi v2'de yok (depo okundu ve dosyalar karşılaştırıldı, 2026-10-15) | Ö |
+| Mosa 2025, *Digital Scholarship in the Humanities* 40(4) | AR-Sanad 280K-v2 | Accuracy; başka metrik özette yok | Özete göre %97,8. Yöntem: ravi ağının bilgi grafı aday kimlikleri üretiyor; hibrit skor ağdaki genel önemi ve bağlamsal anlam uyumunu birleştirip sıralıyor | Özet hangi bölmede ölçüldüğünü söylemiyor. v2 yalnız yapay senedlerden oluştuğu için değer büyük olasılıkla yapay senedlerdedir (çıkarımımız, makale okunmadı). v1'de yapay doğrulamadan gerçek teste geçince micro F1 92,9'dan 83,5'e indi | Ö |
 
 ### Hadis bilgi grafı üretimi ve LLM ile ricâl verisi yapılandırma
 
@@ -86,9 +90,7 @@ yazarın açık deposundan okundu.
 Okunan makalelerin kaynakçalarından; künyeleri birincil kaynaktan çekilmedi.
 
 - Muther ve Smith 2020, *Digital Scholarship in the Humanities* — aynı işin dergi sürümü
-- Mahmoud ve Nabil 2024, AR-Sanad 280K-v2 — sened grafı ile ravi tanıma
 - Multi-IsnadSet 2024 (*Data in Brief*) — Sahîh-i Müslim için 2.092 ravili yönlü graf
-- Mosa 2025 (*Digital Scholarship in the Humanities* 40(4)) — ravi belirsizliği için KG + transformer
 - Kurt 2025, "İsnad Tenkidinde Yapay Zekanın Kullanılabilirliği" (İlahiyat Yayınları, ed. Ulupınar)
 - Mubarak vd. 2025, IslamicEval — İslami içerikte LLM hallucination ortak görevi (L4)
 - Alnefaie vd. 2023, HAQA / QUQA — hadis ve Kur'an soru-cevap korpusu (L4 soru kümesi adayı)
@@ -145,6 +147,7 @@ Bu tablo öneridir; ekip ve danışman kararı değildir.
 | Uzmanlar bitiş noktasında %53 tam anlaşıyor | Etiketleme kılavuzu sınır kurallarını yazar (fiil, niteleyici, mevlâ); uyum sayısı sonuçla birlikte verilir |
 | Mention F1 83,5 iken senedlerin %60,6'sı hatalı | Mention metriğiyle birlikte "tam doğru zincir oranı" raporlanır |
 | Doğru ravi ilk 3 adayın içinde %95,3 | HITL panelinde uzmana tek tahmin yerine sıralı aday listesi sunulur; ölçüt top-k doğruluğudur |
+| Ravi kimliğinde graf sorgusu ve bilgi grafı tabanlı yöntemler AR-Sanad'ın yapay senedli kümelerinde %94,6 ve %97,8 accuracy bildiriyor | Projenin kimlik katkısı otomatik tanıma doğruluğu olamaz. Fark, kimlik kararının bir kez saklanıp yeniden kullanılmasında ve kapsamının çelişkiden türetilmesinde aranır; ölçüm gerçek senedlerde (AR-Sanad test) yapılır |
 | Yaygın tek adlarda doğruluk %26 | L2 ölçümü ad sıklığına göre tabakalı raporlanır; yaygın adlar insana yönlendirilir |
 | Kitaplar arasında SER %48,7 – %70,5 | Sonuçlar koleksiyon bazında verilir; test kümesi eğitimde görülmeyen bir kitabı içerir |
 | "Metinde geçiyor" olanların çoğu yanlış olabilir (hallucination 0,17, precision 0,38) | Üç test ayrımı (kaynakta var mı / referansla eşleşiyor mu / doğru kişi mi) korunur |
@@ -182,12 +185,14 @@ Bu tablo öneridir; ekip ve danışman kararı değildir.
 ## Source anchors
 
 - `wiki/literature/extraction_eval_precedents.bib` — Muther 2020, Altammami 2019, Oumer 2025, Mahmoud 2022,
-  Text2KGBench 2023, Gao 2019, Mhamedi 2026, Kamran 2026, Çinici 2026 künyeleri
+  Mahmoud 2024, Mosa 2025, Text2KGBench 2023, Gao 2019, Mhamedi 2026, Kamran 2026, Çinici 2026 künyeleri
 - `wiki/sources/claude-science-results/04b_dogrulanmis_kaynakca.bib` — `mghari2022sanadset`, `wirahman2026linking`,
   `asgari2025rezwan`, `haque2026hadith`, `raja2026grading` künyeleri
 - https://github.com/JehadOumer/Automatic-Hadith-Isnad-Parsing-Models — Oumer sonuç tabloları, bölme sayıları
 - https://github.com/JehadOumer/Ifta-Sunnah-Hadith-and-Narrators-Dataset — veri ailesi, bölme dosyaları
-- https://github.com/somaia02/Narrator-Disambiguation — AR-Sanad verisi ve ravi tablosu
+- https://github.com/somaia02/Narrator-Disambiguation — AR-Sanad verisi ve ravi tablosu; `v2/` klasörü ve README
+- https://doi.org/10.1007/s00521-024-10194-2 — Mahmoud vd. 2024, yalnız özet
+- https://doi.org/10.1093/llc/fqaf088 — Mosa 2025, yalnız özet
 - https://aclanthology.org/2020.wanlp-1.12/ — Muther ve Smith, §4, Tablo 2, Tablo 3
 - https://aclanthology.org/W19-5605/ — Altammami vd., §3–§5, Tablo 1
 - https://doi.org/10.3390/info13020055 — AR-Sanad, Tablo 6–11, §5
@@ -223,4 +228,4 @@ Bu tablo öneridir; ekip ve danışman kararı değildir.
 
 ## Last updated
 
-2026-10-12
+2026-10-15
