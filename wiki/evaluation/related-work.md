@@ -9,12 +9,14 @@ metrikle ölçtüğünü ve nerede eksik kaldığını tek yerde tutmak. `correc
 ## Scope
 
 - In: L1 (çıkarım) ve L2 (kimlik) için ölçüm emsalleri, sayıları, zayıf yanları, hazır veri adayları,
-  projeye çıkarım
+  projeye çıkarım; genel bilgi grafı kurma, doğrulama, insan döngüsü ve kaynak izi çalışmaları ve projenin
+  beş boşluk iddiasının (G1–G5) bunlar karşısındaki durumu
 - Out: L4 cevap kalitesi literatürü (`literature-map.md`), metrik formülleri
   (`wiki/sources/claude-science-results/03_revize_deney_protokolu.md`)
 
 Tarama 2026-10-08'de web araması ve birincil kaynak okumasıyla yapıldı. Sistematik tarama değildir;
-"bulunmadı" ifadesi "yoktur" anlamına gelmez.
+"bulunmadı" ifadesi "yoktur" anlamına gelmez. Genel bilgi grafı çalışmaları 2026-10-15'te ekibin
+paylaştığı 27 makalelik listeden ve o listedeki bir derlemenin işaret ettiği iki sistemden okundu.
 
 ## BLUF
 
@@ -36,12 +38,18 @@ Tarama 2026-10-08'de web araması ve birincil kaynak okumasıyla yapıldı. Sist
 7. Hadis korpusundan bilgi grafı üretimi yapılmıştır (SemanticHadith 2.0.1: 34.458 hadis, 303.869
    varlık) ve zincir halkası ontolojide ayrı sınıftır. Bu çalışmada LLM, olgu başına insan kararı ve
    grounding kontrolü yoktur; belirsiz adların uzmana sunulması gelecek iş olarak bırakılmıştır.
+8. Genel bilgi grafı literatüründe okunan 29 çalışmanın hiçbiri, çıkarılan değerin modelin kendi
+   alıntısında geçtiğini sınamıyor (G2). Diğer dört iddia daraltılarak yazılır: doğrulama bileşenlerini
+   çıkaran ablation'lar (KARMA, ODKE+), güvene ya da doğrulayıcı anlaşmazlığına göre insana yönlendirme
+   (Tsaneva vd. 2025, HoloClean, Knowledge Vault), olgu başına kaynak izi temsilleri (Sikos ve Philp 2020)
+   ve çelişkide olguyu geçersiz kılma (Zep) yayımlanmıştır. Ayrıntı: "Boşluk iddialarının durumu".
 
 ## Çalışmalar
 
 Okuma derinliği: **T** = tam metin doğrudan okundu (2026-10-08); **R** = tam metin kapalı, sonuçlar
 yazarın açık deposundan okundu; **Ö** = tam metin kapalı, yalnız yayıncı sayfasındaki özet okundu
-(2026-10-15).
+(2026-10-15); **A** = tam metin alt ajanla sayfa sayfa okundu, kanıt sayfa numarasıyla not edildi
+(2026-10-15; `wiki/literature/team-reading-list-notes.md`).
 
 ### İsnad ve ravi çıkarımı (L1)
 
@@ -85,6 +93,56 @@ yazarın açık deposundan okundu; **Ö** = tam metin kapalı, yalnız yayıncı
 | Mhamedi vd. 2026 (TELKOMNIKA), derleme | 57 çalışma. Ravi çıkarımı tablosunda raporlanan değerler F1 %33 – %99,63 arasında; test kümeleri 102–200 hadis; metrikler karışık (accuracy, precision, F1). Yazarları Sanadset ekibi | T |
 | Raja 2026 (arXiv), isnad benzetmeli provenance çerçevesi | Hadis verisi içermez. Yöntem notları: referans küme yokken yalnız precision raporlanıyor, recall iddia edilmiyor; modelin ön bilgisi ile metinden çıkarım ayrıştırılamadığı açıkça yazılıyor; seçici sunumda hata oranı eşit kapsama düzeyinde karşılaştırılıyor | T (§6–§8) |
 
+### Genel bilgi grafı kurma, doğrulama, insan döngüsü ve kaynak izi
+
+Ekip listesindeki 27 makale ve Bian 2025'in işaret ettiği ODKE+ ile KARMA. "Kontrol" sütunu çıkarıcı ile
+graf arasındaki adımı, "İnsan" sütunu insanın nerede ve hangi ölçütle devreye girdiğini söyler. Sayfa
+numaraları PDF sayfasıdır.
+
+| Çalışma | Ne yapıyor | LLM | Kontrol / insan / kayıt | Farkımız için | Okuma |
+|---|---|---|---|---|---|
+| Hogan vd. 2021, *Knowledge Graphs* | Bilgi grafı öğretici derlemesi | Yok | SHACL / ShEx şekil doğrulaması; bağlam ve kaynak izi temsili (PROV-DM, named graph, RDF*) | Kalite ve iyileştirme bölümleri uzun sürümde (arXiv 2003.02320); bu PDF kısa sürüm, o bölümler okunmadı | A |
+| Ji vd. 2022, KG derlemesi | Temsil öğrenme, edinim, uygulamalar | Yok | Eşikli üçlü sınıflandırma, kalibrasyon; insan yalnız genel cümlede | LLM öncesi; sessizliği zayıf kanıt | A |
+| Bian 2025, LLM ile KG kurma derlemesi | Ontoloji, çıkarım, füzyon | Konu | Şema gözetimi; "yalnız kritik noktalarda uzman" (s.4) | Tek yazarlı, sayısız; ODKE+ ve KARMA'ya işaret ediyor | A |
+| Paulheim 2016, KG iyileştirme derlemesi | Tamamlama ve hata bulma yöntemleri | Yok | Düşük güvenli aksiyomları işaretleme önerisi (s.13); DBpedia'yı kalabalıkla denetlemek 3.000 yıldan fazla (s.12) | Güvenle işaretleme öncülü (G5); gümüş / kısmi altın standart ayrımı | A |
+| Zaveri vd. 2015, Linked Data kalitesi | 18 kalite boyutu | Yok | Trellis aracı kullanıcı kararlarını kaynak başına saklar (s.25) | G3 kısmen: karar kaynak başına, olgu başına değil | A |
+| Dong vd. 2014, Knowledge Vault | Dört çıkarıcının güveni ile önsel bilgiyi kalibre olasılıkta birleştirir | Yok (öğrenilmiş modeller) | Güvenle kabul; insan yok | AUC otomatik etikete karşı 0,959, insan etiketine karşı 0,869 (Tablo 5): insan referansı gerekçesi. Güvenle kabulün temel öncülü (G5) | A |
+| Mudgal vd. 2018, DeepMatcher | Derin öğrenmeyle varlık eşleştirme | Yok | Etiketli veri; insan yönlendirmesi kapsam dışı | Hata türleri (terim varyantı, eksik belirleyici kelime) ravi adı varyantlarına yakın | A |
+| Li vd. 2020, Ditto | Önceden eğitilmiş dil modeliyle varlık eşleştirme | İnce ayarlı BERT ailesi | Bileşen ablation'ı (§4.4); %95 F1 için 6.000 etiket (s.9) | Eşleştirici bileşenleri için ablation örneği; etiket maliyeti G4'ü destekler | A |
+| Rekatsinas vd. 2017, HoloClean | Denial constraint, sözlük ve istatistikle olasılıksal onarım | Yok | Düşük olasılıklı onarımları kullanıcıya sorma önerisi, denenmemiş (s.4); güven aralığına göre hata oranı 0,58 → 0,04 (Şekil 6) | Güvenle yönlendirme öncülü (G5); denial constraint = alan kuralı | A |
+| Francis vd. 2018, Cypher | Property graph modeli ve sorgu dili | Yok | Şema isteğe bağlı; ilişkiler anahtar-değer taşır | Kabul kaydı ilişki özelliği olarak tutulabilir | A |
+| Figuera vd. 2021, Trav-SHACL | SHACL doğrulamasını hızlandırır | Yok | Başka bir motor geçerli varlıkların %41,10'unu geçersiz sayıyor (s.18) | Doğrulayıcılar da hata yapar | A |
+| Huguet Cabot ve Navigli 2021, REBEL | Seq2seq ilişki çıkarımı | İnce ayarlı BART | NLI filtresi yalnız eğitim verisinde (eşik 0,75) | Kaynakta destek sınaması var ama grafa giden yolda değil | A |
+| Lu vd. 2022, UIE | Şema istemli birleşik çıkarım | İnce ayarlı T5 | Üretilen dizgi kaynağa ofsetle eşleniyor, yalnız puanlamada | Kaynakta bulma öncülü, kapı değil | A |
+| Sainz vd. 2024, GoLLIE | Kılavuzu izleyen çıkarım modeli | İnce ayarlı Code-LLaMA | Şema dışı etiket ve ayrıştırılamayan çıktı atılıyor ve ayrı sayılıyor (Tablo 8) | Şema hatasını ayrı sınıf saymak bizim katkımız olamaz | A |
+| Zhang ve Soh 2024, EDC | Aç çıkar, tanımla, kanonikleştir | İstemli GPT-4 / GPT-3.5 | LLM şema eşlemesini yargılar, reddedileni atar; referans eksiksiz değil, doğru üçlü cezalanıyor (s.7) | Şemanın istemde verilmesi şema dışı çıktıyı önlemiyor (s.17): şema kontrolünün gerekçesi | A |
+| Feng vd. 2024, ontolojiye dayalı KG | Wikidata şemasıyla LLM'den RDF | İstemli | Eşleme LLM'le onaylanıyor; dayanak yalnız istem metninde | LLM doğrulayıcı örneği; deterministik kontrol yok | A |
+| Arsenyan vd. 2024, biyomedikal KG | EMR notlarından soru şablonlarıyla KG | 12 model, istemli | Olasılık ve tekrar sayısı eşiğiyle kabul; insan yalnız değerlendirmede | "Doğru cevap ama bağlamdan gelmiyor" (s.7) sorununu belgeliyor, kontrol yok | A |
+| Mo vd. 2025, KGGen | Metinden KG paketi ve MINE benchmark'ı | Gemini 2.0 Flash | Kümeleme + LLM ile tekilleştirme; ilişki kaynak parçasına bağlı | Kaynak bağı var, kabul kaydı yok | A |
+| Niu vd. 2025, Tree-KG | Ders kitabı yapısından genişleyen KG | DeepSeek-V3 | Dayanak yalnız istemde; LLM ile tekilleştirme | Ablation üretim adımlarında, kontrolde değil | A |
+| Anuyah vd. 2025, CoDe-KG | Eşgönderim + cümle basitleştirme + çıkarım | Açık modeller | Ön işleme ablation'ı: F1 92,4 → 54,8 (Tablo 11); eşgönderim kosinüs ≥ 0,9 ile puanlanmış | Katı dizgi eşleşmesine karşı örnek | A |
+| Bai vd. 2026, AutoSchemaKG | Web ölçeğinde şema türeten KG (ATLAS) | LLaMA-3.1-8B, yargıç DeepSeek-V3 | Bozuk JSON onarılıyor ya da boş liste; "precision" LLM yargıcıyla | Ölçüm LLM yargısıyla | A |
+| Edge vd. 2024, GraphRAG | Topluluk özetli sorgu odaklı özetleme | GPT-4-turbo | Eksik varlık için öz-yansıtma; dayanak kontrolü yok | LLM çıkarımının metinde açıkça yazmayanı içerebileceğini bilerek kabul ediyor (s.5): G2 kontrolünün karşıt tercihi | A |
+| Rasmussen vd. 2025, Zep | Ajan belleği için çift zamanlı KG | gpt-4o-mini | Yeni olgu ilişkili olgularla LLM'e karşılaştırılıyor, çelişkide eski olgu geçersiz sayılıyor (s.3); olgu oluşturma zamanı ve bölüm bağı | G4'e en yakın: çelişkiyle geçersiz kılma var, ama kimliği LLM birleştiriyor, insan kararı saklanmıyor | A |
+| Carriero vd. 2024, prosedürel KG insan değerlendirmesi | WikiHow'dan RDF, kalabalık değerlendirmesi | GPT-4o | Otomatik kontrol yok; 180 kalabalık çalışanı Likert puanlıyor; ön çalışmada uyum yok | Birebir alıntı yerine üretilen cümle tercih edilmiş (s.8): G2'nin karşıt tercihi | A |
+| Tsaneva vd. 2025, LLM + insan ile KG doğrulama | SCICERO doğrulamasında dokuz LLM / insan akışı | Yargıç: GPT-4o, Claude 3.5 Sonnet, Llama-3.3 | İnsana yönlendirme: hepsi, düşük destekliler (destek = güven vekili) ya da doğrulayıcı anlaşmazlığı. Deney B'de anlaşmazlıkla yönlendirme 61–75 insan etiketiyle F1 77–79 (Tablo 5) | G1 ve G5'e en yakın çalışma. Modülleri tek tek ölçmediğini yazıyor (s.10); çıkarıcının kendi güvenini kullanmıyor. SCICERO doğrulayıcısının attığı üçlülerin %34'ü doğruymuş (s.8): işaretle, silme | A |
+| Zhang, Meroño-Peñuela, Simperl 2025, açıklanabilir KG mühendisliği | 84 çalışmalık sistematik derleme + 13 görüşme | Yok | Derlemede yalnız 3 insan döngülü sistem; görüşülenlerin %69,2'si kaynak izi tutuyor (kişi, zaman) | Güven göstergesinin insanı doğru yere yönlendireceğini ölçmeden öneriyor (s.24): bizim ölçümümüz bunu sınar | A |
+| Sikos ve Philp 2020, kaynak izi farkındalıklı temsil | RDF'de kaynak izi temsil yolları derlemesi | Yok | Olgu ve öğe düzeyinde ajan ve zaman; `dateAccepted`; named graph ölçeklenir, reification dört kat büyütür | G3 temsil olarak mevcut; katkı uygulama ve ölçümde kullanımıdır | A |
+| Khorshidi vd. 2025, ODKE+ | Apple'ın açık alan çıkarım hattı | Çıkarıcı + ikinci LLM dayanak yargıcı | Dayanak yargıcı uydurmayı %35 azaltıyor, doğrulama precision'ı %91'den %98,8'e çıkarıyor; yöntem ve örneklem verilmiyor (s.6). Yüzey biçimi ile normalize cevap ayrı alan, ama değerin alıntıda geçtiği sınanmıyor | G1 kısmen; G2'nin hedeflediği hata türünü alan olarak ayırıyor, kontrol etmiyor | A |
+| Lu vd. 2025, KARMA | Çok ajanlı LLM ile biyomedikal KG zenginleştirme | Tüm ajanlar LLM | Doğrulama ajanlarını çıkaran ablation (Tablo 2), ölçütler LLM yargısı; çelişki güvene göre uzman incelemesine gidebiliyor (s.5) | G1 kısmen: bileşen ablation'ı var, ama ajan düzeyinde ve LLM yargısıyla | A |
+
+### Boşluk iddialarının durumu
+
+Tez 3.7'deki ve TÜBİTAK formundaki "bulunmadı" cümleleri bu tabloya göre yazılır. Bu tablo öneridir.
+
+| Boşluk | Okunan 29 çalışmada | Yazılabilecek iddia |
+|---|---|---|
+| G1 her kontrolün ayrı katkısı | KARMA doğrulama ajanlarını çıkarıyor (LLM yargısıyla); ODKE+ iki bileşenin etkisini yöntemsiz veriyor; Tsaneva akışları karşılaştırıyor, modülleri tek tek değil | Deterministik kontrollerin, aynı aday kümesi üzerinde, tek tek ve dış bir referansa (platform ya da insan etiketi) karşı katkısını ölçen çalışma bulunmadı |
+| G2 değer alıntıda mı | Bulunmadı. Yakınları: ODKE+ yüzey biçimini ayrı alan tutuyor, REBEL'de NLI filtresi yalnız eğitimde, UIE'de ofset eşleme yalnız puanlamada. GraphRAG ve Carriero tersini bilerek seçiyor | Olduğu gibi kalır |
+| G3 olgu başına kabul kaydı | Temsil yolları var (Sikos, Hogan); Zep oluşturma zamanı, ODKE+ güven ve kaynak meta verisi, Zaveri / Trellis kaynak başına kullanıcı kararı tutuyor | Temsil yeni değildir; katkı her olguya kimin ya da hangi kuralın kabul ettiğini yazmak ve bunu ölçümde kullanmaktır |
+| G4 saklanan insan kimlik kararı | Zep çelişkide olguyu LLM ile geçersiz kılıyor; KARMA çelişkiyi uzmana gönderebiliyor; Zhang ikinci elden insanın varlık eşleştirme kuralı sağladığını aktarıyor | Olduğu gibi kalır; Zep ve ripple-down rules (`compton1990philosophical`) atfıyla |
+| G5 kontrol mü güven mi | Güvenle kabul ya da yönlendirme yaygın: Knowledge Vault, HoloClean (öneri), Paulheim, Arsenyan, KARMA; Tsaneva güven vekili ve anlaşmazlıkla yönlendiriyor | Çıkarıcı modelin kendi güven skoru ile deterministik bir kontrolün, aynı inceleme payında kaç hata yakaladığını karşılaştıran çalışma bulunmadı |
+
 ### Okunmamış adaylar
 
 Okunan makalelerin kaynakçalarından; künyeleri birincil kaynaktan çekilmedi.
@@ -95,6 +153,9 @@ Okunan makalelerin kaynakçalarından; künyeleri birincil kaynaktan çekilmedi.
 - Mubarak vd. 2025, IslamicEval — İslami içerikte LLM hallucination ortak görevi (L4)
 - Alnefaie vd. 2023, HAQA / QUQA — hadis ve Kur'an soru-cevap korpusu (L4 soru kümesi adayı)
 - Alan, Karaarslan, Aydın 2025, MufassirQAS — Türkçe İslami RAG sohbet sistemi (L4)
+- Hogan vd., *Knowledge Graphs* uzun sürümü (arXiv 2003.02320) — kalite değerlendirme ve iyileştirme bölümleri
+- Demartini 2013 ve Li 2017 — Tsaneva vd. 2025'in andığı güven eşiğiyle kalabalığa yönlendirme (G5 öncülü)
+- Kommineni vd. 2024 — Bian 2025'in andığı şema gözetimli ABox doldurma
 
 ## Hazır referans veri adayları
 
@@ -161,6 +222,10 @@ Bu tablo öneridir; ekip ve danışman kararı değildir.
 | "Yönergeyle halüsinasyon en aza indi" iddiası sayısız (Çinici) | Aynı iddia sayımla sınanır: kaynakta olmayan değer, alıntıda olmayan değer ve boş bırakılan alan ayrı sayılır |
 | Aynı varlığın üçlülerini birlikte denetlemek 2,5 kat ucuz (3,53 → 1,4 saat) | Korpus düzeyi doğruluk tahmini hadis bazlı küme örneklemesiyle yapılır; güven aralığı verilir |
 | Seçici sunumda hata, eşit kapsama düzeyinde karşılaştırılır | HITL yönlendirme sinyalleri risk–kapsama eğrisiyle karşılaştırılır |
+| Bir doğrulayıcının attığı üçlülerin %34'ü doğru çıktı (Tsaneva vd. 2025, SCICERO) | Kontrol işaretlediğini silmez, incelemeye düşürür; recall kaybı görünür kalır |
+| Otomatik etikete karşı AUC 0,959, insan etiketine karşı 0,869 (Knowledge Vault) | Platform etiketine karşı sayılar insan etiketiyle yeniden ölçülür (K-1) |
+| Doğrulama bileşeni ablation'ları LLM yargısıyla ölçülmüş (KARMA, AutoSchemaKG) | Ablation dış bir referansa karşı ve kontrol düzeyinde raporlanır; LLM yargıcı birincil ölçü olmaz |
+| Güven göstergesinin insanı doğru yere yönlendireceği ölçülmeden öneriliyor (Zhang vd. 2025) | Güven skoru ve kontrol aynı inceleme payında karşılaştırılır (H1) |
 
 ## Rules
 
@@ -185,7 +250,9 @@ Bu tablo öneridir; ekip ve danışman kararı değildir.
 ## Source anchors
 
 - `wiki/literature/extraction_eval_precedents.bib` — Muther 2020, Altammami 2019, Oumer 2025, Mahmoud 2022,
-  Mahmoud 2024, Mosa 2025, Text2KGBench 2023, Gao 2019, Mhamedi 2026, Kamran 2026, Çinici 2026 künyeleri
+  Mahmoud 2024, Mosa 2025, Text2KGBench 2023, Gao 2019, Mhamedi 2026, Kamran 2026, Çinici 2026 ve ekip
+  listesindeki çalışmaların künyeleri (Crossref ve arXiv'den, 2026-10-15)
+- `wiki/literature/team-reading-list-notes.md` — ekip listesinin 29 çalışması için sayfa numaralı okuma notları
 - `wiki/sources/claude-science-results/04b_dogrulanmis_kaynakca.bib` — `mghari2022sanadset`, `wirahman2026linking`,
   `asgari2025rezwan`, `haque2026hadith`, `raja2026grading` künyeleri
 - https://github.com/JehadOumer/Automatic-Hadith-Isnad-Parsing-Models — Oumer sonuç tabloları, bölme sayıları
