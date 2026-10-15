@@ -250,10 +250,25 @@ dataset: presence in the text does not imply correctness {[}12{]}.
 Attribution and factuality metrics for generated text work at the level
 of sentences or atomic claims {[}13, 14{]}. Self-reported confidence of
 language models has been studied as a calibration problem {[}15, 16{]}.
-We did not find a study that measures, for knowledge graph extraction,
-the separate effect of a check on the relation between a
-model\textquotesingle s quotation and the value it extracted. Our search
-was not systematic.
+
+\textbf{Validation and review in graph construction.} Confidence has
+long decided which facts enter a graph: Knowledge Vault fuses extractor
+confidence with prior knowledge into a calibrated probability, whose AUC
+was 0.959 against automatic labels and 0.869 against human labels
+{[}17{]}. Recent systems place LLM-based validation between the
+extractor and the graph. ODKE+ asks a second model whether each fact is
+supported by its context and reports fewer hallucinated extractions
+without describing the measurement {[}18{]}. KARMA removes its
+validation agents one at a time and scores the result with an LLM judge
+{[}19{]}. Tsaneva et al. compare nine workflows of LLM and human
+validators and send people only the triples on which validators
+disagree; they do not evaluate the modules in isolation {[}20{]}. Other
+systems accept output that is not stated in the text by design {[}21{]}.
+We did not find a study that checks whether the extracted value occurs
+in the model\textquotesingle s own quotation, or one that compares such
+a deterministic check with the extracting model\textquotesingle s
+confidence at the same review budget, against an external reference. Our
+search was not systematic.
 
 \section{3 System}\label{system}
 
@@ -309,7 +324,7 @@ call.
 \textbf{Data.} The test set contains 300 hadiths, 50 from each of the
 six canonical collections, drawn with a fixed seed from the Ifta data
 after removing every record whose text matches one of 50 hadiths used
-during development {[}17{]}. The reference labels are the narrator
+during development {[}22{]}. The reference labels are the narrator
 mentions marked on the platform, 1,778 in total, between 2 and 11 per
 hadith (median 6); 74 hadiths contain more than one chain. The labels
 are platform markup restructured by a third party, not annotations by
@@ -717,7 +732,7 @@ The reference is platform markup, not a gold standard produced by
 independent annotators, and absolute scores should not be read as
 accuracy. The share of unmatched proposals that the value-in-quotation
 check flags is specific to this task and prompt: on 300 abstracts of the
-human-annotated BC5CDR corpus {[}18{]}, with the same model and a
+human-annotated BC5CDR corpus {[}23{]}, with the same model and a
 schema-only prompt, the check flagged 3.9\% of 2,269 proposals and these
 held 53 of the 303 that did not match the annotations, while the
 model\textquotesingle s confidence found 58 at the same review share;
@@ -774,7 +789,7 @@ project is in development; we plan to publish the engine under an
 open-source licence at the end of the project. The hadith data comes
 from third-party sources and is used for evaluation only; the manifest
 lists each source with the licence statement as given by the source
-{[}17{]}.
+{[}22{]}.
 
 \section{References}\label{references}
 
@@ -853,11 +868,33 @@ Know," arXiv:2207.05221, 2022. https://arxiv.org/abs/2207.05221
 Empirical Evaluation of Confidence Elicitation in LLMs,"
 arXiv:2306.13063, 2023. https://arxiv.org/abs/2306.13063
 
-{[}17{]} GiraffeGraph project, data manifest: sources, licence
+{[}17{]} X. Dong et al., "Knowledge vault: a web-scale approach to
+probabilistic knowledge fusion," in \emph{Proceedings of the 20th ACM
+SIGKDD international conference on Knowledge discovery and data mining},
+pp. 601--610, 2014. doi:10.1145/2623330.2623623
+
+{[}18{]} S. Khorshidi et al., "ODKE+: Ontology-Guided Open-Domain
+Knowledge Extraction with LLMs," arXiv:2509.04696, 2025.
+https://arxiv.org/abs/2509.04696
+
+{[}19{]} Y. Lu, W. Wu, X. Zhao, R. Peng, and J. Wang, "KARMA: Leveraging
+Multi-Agent LLMs for Automated Knowledge Graph Enrichment,"
+arXiv:2502.06472, 2025. https://arxiv.org/abs/2502.06472
+
+{[}20{]} S. Tsaneva, D. Dessì, F. Osborne, and M. Sabou, "Knowledge
+graph validation by integrating LLMs and human-in-the-loop,"
+\emph{Information Processing \& Management}, vol. 62, no. 5, pp. 104145,
+2025. doi:10.1016/j.ipm.2025.104145
+
+{[}21{]} D. Edge et al., "From Local to Global: A Graph RAG Approach to
+Query-Focused Summarization," arXiv:2404.16130, 2024.
+https://arxiv.org/abs/2404.16130
+
+{[}22{]} GiraffeGraph project, data manifest: sources, licence
 statements and construction of the evaluation sets,
 \texttt{data/README.md}, 12 October 2026 (unpublished).
 
-{[}18{]} J. Li et al., "BioCreative V CDR task corpus: a resource for
+{[}23{]} J. Li et al., "BioCreative V CDR task corpus: a resource for
 chemical disease relation extraction," \emph{Database}, vol. 2016, pp.
 baw068, 2016. doi:10.1093/database/baw068
 

@@ -97,7 +97,7 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 
 - [ ] Tablodaki her kod ve eşik `wiki/thesis/tubitak/form.md` içinde aynı sayılarla geçiyor
 - [ ] "Eldeki" ve "Ön çalışma ölçümü" sütunlarındaki her sayı çapa verilen dosyada bulunuyor
-- [ ] `cd wiki/thesis && uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py` hatasız biter ve "15 references" der
+- [ ] `cd wiki/thesis && uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py` hatasız biter ve "18 references" der
 - [ ] Onaylanmış bir eşik varsa `wiki/decisions/` altında ADR'si var
 
 ## Related docs

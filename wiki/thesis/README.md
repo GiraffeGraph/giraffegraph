@@ -26,11 +26,11 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
-| Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (53 sayfa, 40 kaynak) |
-| Tezin Türkçe sürümü | `wiki/thesis/chapters-tr/` (aynı dosya adları) | `wiki/thesis/build/thesis-tr.pdf` (53 sayfa) |
+| Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (55 sayfa, 51 kaynak) |
+| Tezin Türkçe sürümü | `wiki/thesis/chapters-tr/` (aynı dosya adları) | `wiki/thesis/build/thesis-tr.pdf` (55 sayfa) |
 | CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | Yok; teslimden önce PDF ya da DOCX'e çevrilir. Sonundaki "Open points" teslimden önce kapatılır |
-| TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (9 sayfa, 15 kaynak); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
-| Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 18 kaynak), `paper.tex` |
+| TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (9 sayfa, 18 kaynak); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
+| Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 23 kaynak), `paper.tex` |
 | Makalenin Türkçe sürümü: "Alıntı doğru, çıkarılan değer farklı …" | `wiki/thesis/paper/paper-tr.md` | `wiki/thesis/paper/build/paper-tr.pdf` |
 
 ## Bölüm başına dayanak
@@ -109,8 +109,8 @@ derlemeyle yeniden üretilir.
 
 ## Verification checklist
 
-- [ ] İki derleme komutu hatasız biter; çıktı "40 references" ve "18 references" der
-- [ ] `wiki/thesis/build/thesis.pdf` 53 sayfa, `wiki/thesis/paper/build/paper.pdf` 11 sayfa
+- [ ] İki derleme komutu hatasız biter; çıktı "51 references" ve "23 references" der
+- [ ] `wiki/thesis/build/thesis.pdf` 55 sayfa, `wiki/thesis/paper/build/paper.pdf` 11 sayfa
 - [ ] 7. bölümdeki tablolar `giraffegraph-core/evaluation/results/2026-10-12-sixbooks300/compare-ifta.md` ile aynı
 
 ## Related docs

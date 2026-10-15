@@ -134,15 +134,22 @@ and derivable facts do not, on the engine's own task and in one other domain.
 | Rezwan [6] | LLM-assisted corpus of 1.2M narrations | Six experts, 0–10 scores; no agreement statistic | Scores are not comparable across studies |
 | Wirahman [7] | Links 185,216 narrator name variants to biographical databases | Not measured; the author states no labelled reference exists | Fully automatic, no human decision |
 | Text2KGBench [8] | Benchmark for ontology-driven KG extraction with LLMs | Precision 0.38 with subject hallucination 0.17 on one dataset | General domain; shows that "appears in the text" does not imply "correct" |
+| Tsaneva et al. [14] | Nine workflows that combine LLM validators and people in the validation of a scientific KG | F1 against three experts; number of triples people judged | People see all triples, low-support ones or validator disagreements; modules are not evaluated in isolation |
+| KARMA [15] | Multi-agent LLM enrichment of a biomedical KG with validation agents | Ablation of agents, scored by an LLM judge | No external reference; agents, not single checks |
+| ODKE+ [16] | Production extraction with a second LLM as grounding judge | Grounding and corroboration effects reported without a method | No deterministic check of the extracted value |
 
 A recent critical review of the field [9] lists weak benchmark comparability and sparse expert
 validation as open problems. General frameworks for LLM-based graph construction exist as well
 [10], [11].
 
 **Position of this project.** A hadith knowledge graph, its ontology and narrator linking already
-exist, and fine-tuned models already extract chains accurately. We build on that work for the schema. We did not find a study that measures the separate effect
-of each validation step between an LLM and a graph, or one that reports a value-in-quotation check as
-its own error class. We also did not find a measurement of how often a stored narrator-identity
+exist, and fine-tuned models already extract chains accurately. We build on that work for the schema.
+Outside the hadith domain, validation between an extractor and a graph has been compared as whole
+workflows, ablated agent by agent with an LLM judge, and routed to people by confidence or by
+disagreement [14]–[16]; we do not claim that idea. We did not find a check that the extracted value
+occurs in the model's own quotation, reported as its own error class, or a measurement of what each
+deterministic check catches on the same candidates against an external reference, compared with the
+model's own confidence at the same review share. We also did not find a measurement of how often a stored narrator-identity
 decision can be reused and at what error; the mechanism we simulate, tying a correction to the context
 in which an earlier answer failed, is known in knowledge acquisition as ripple-down rules and is not
 our invention. Our search was not systematic, so this is a statement about what we found.
@@ -321,6 +328,16 @@ doi:10.1177/22104968261431425
 [13] O. Çinici, "Hadis Araştırmalarında Büyük Dil Modelleri (LLM): Teorik Çerçeve, Sınırlar ve Yapay Zekâ
 Destekli Yapılandırılmış Veri İnşası," *Mevzu: Sosyal Bilimler Dergisi*, no. 16, pp. 299–326, 2026.
 doi:10.56720/msbd.2026.s16.326
+
+[14] S. Tsaneva, D. Dessì, F. Osborne, and M. Sabou, "Knowledge graph validation by integrating LLMs and
+human-in-the-loop," *Information Processing & Management*, vol. 62, no. 5, p. 104145, 2025.
+doi:10.1016/j.ipm.2025.104145
+
+[15] Y. Lu, W. Wu, X. Zhao, R. Peng, and J. Wang, "KARMA: Leveraging Multi-Agent LLMs for Automated
+Knowledge Graph Enrichment," in *Proc. NeurIPS 2025*. arXiv:2502.06472
+
+[16] S. Khorshidi et al., "ODKE+: Ontology-Guided Open-Domain Knowledge Extraction with LLMs,"
+arXiv:2509.04696, 2025.
 
 ## Open points (remove before submission)
 
