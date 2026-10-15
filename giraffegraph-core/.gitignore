@@ -86,3 +86,8 @@ evaluation/results/**
 !evaluation/results/**/extra-tables-*.json
 !evaluation/results/2026-10-12-identity-baseline/*.json
 !evaluation/results/2026-10-13-identity-ledger/*.json
+
+# Printed handouts for the domain expert: the PDFs are kept, the HTML is rebuilt
+!evaluation/annotation/expert/build/
+evaluation/annotation/expert/build/*
+!evaluation/annotation/expert/build/*.pdf
