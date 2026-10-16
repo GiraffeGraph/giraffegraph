@@ -70,11 +70,18 @@ p { max-width: 68ch; }
 .ar { font-family: var(--arabic); direction: rtl; unicode-bidi: isolate; }
 /* isnad */
 .isnad { direction: rtl; display: flex; flex-wrap: wrap; gap: 6px 4px; font: 25px/1.9 var(--arabic); padding: 18px; }
-.isnad span { padding: 0 6px; border-radius: 6px; transition: background .35s, color .35s, opacity .35s; }
-.isnad .t, .isnad .o, .isnad .p { color: var(--muted); }
-.isnad.found .n { background: color-mix(in srgb, var(--accent) 24%, transparent); color: var(--fg); box-shadow: inset 0 -2px 0 var(--accent); }
-.isnad.found .t, .isnad.found .o { opacity: .55; }
-.isnad.found .p { text-decoration: line-through; text-decoration-color: var(--bad); }
+.isnad { align-items: flex-start; gap: 10px 6px; }
+.isnad > span { display: inline-flex; flex-direction: column; align-items: center; padding: 2px 7px 4px; border-radius: 8px; transition: background .35s, color .35s, opacity .35s; }
+.isnad > span .g { direction: ltr; font: 12.5px/1.3 var(--body); color: var(--muted); text-align: center; max-width: 15em; }
+.isnad > .t, .isnad > .o, .isnad > .p { color: var(--muted); }
+.isnad.found > .n { background: color-mix(in srgb, var(--accent) 24%, transparent); color: var(--fg); box-shadow: inset 0 -2px 0 var(--accent); }
+.isnad.found > .n .g { color: var(--fg); }
+.isnad.found > .t, .isnad.found > .o { opacity: .55; }
+.isnad.found > .p .a { text-decoration: line-through; text-decoration-color: var(--bad); }
+.meal { border-top: 1px solid var(--line); margin: 6px 18px 0; padding: 12px 0 4px; font-size: 15px; }
+.meal b { color: var(--accent); font-weight: 600; }
+.prop .tr { font-size: 12.5px; color: var(--muted); text-align: right; margin-top: -4px; }
+.tr-inline { color: var(--muted); font-size: .9em; }
 .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 10px; }
 .legend i { display: inline-block; width: 14px; height: 10px; border-radius: 3px; margin-inline-end: 6px; vertical-align: middle; }
 /* proposal cards */
@@ -203,8 +210,9 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
           <div class="isnad" id="isnad"></div>
           <div class="row" style="padding: 0 18px 4px">
             <button class="btn primary" id="findBtn" type="button">Ravileri işaretle</button>
-            <span class="muted" style="font-size:14px">Ne olduğunu görmek için tıkla.</span>
+            <span class="muted" style="font-size:14px">Ne olduğunu görmek için tıkla. Her parçanın altında Türkçesi var.</span>
           </div>
+          <div class="meal"><b>Türkçesi:</b> el-Humeydî Abdullah b. ez-Zübeyr bize anlattı, dedi ki: Süfyân bize anlattı, dedi ki: Yahyâ b. Saîd el-Ensârî bize anlattı, dedi ki: Muhammed b. İbrâhîm et-Teymî bana haber verdi; o, Alkame b. Vakkâs el-Leysî'nin şöyle dediğini işitmiş: Ömer b. el-Hattâb'ı (Allah ondan razı olsun) minberde şöyle derken işittim: Resûlullah'ı işittim …</div>
           <div class="legend" style="padding: 0 18px">
             <span><i style="background:color-mix(in srgb, var(--accent) 40%, transparent)"></i>ravi adı</span>
             <span><i style="background:var(--raised)"></i>aktarım sözcüğü ("bize anlattı", "işittim"); adın parçası değil</span>
@@ -219,7 +227,7 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
         <h2>Model ravileri önerir, her biri için bir alıntı verir</h2>
         <p class="lead">Büyük dil modeline (yazı okuyup yazı üreten yapay zekâ) şunu söylüyoruz: "Ravileri bul; her biri için bu adı metnin hangi kısmından aldığını da yaz." Modelin cevabına <b>öneri</b> diyoruz; henüz kabul edilmiş bilgi değil. Aldığı parçaya da <b>alıntı</b> diyoruz.</p>
         <div class="cards" id="propCards"></div>
-        <p class="muted" style="margin-top:14px">Temsilî örnek: bu öneriler bu hadis için gerçek bir model çıktısı değil, sistemin nasıl çalıştığını göstermek için. İkinci karta dikkat: metinde yalnız <span class="ar">سفيان</span> (Süfyân) yazıyor.</p>
+        <p class="muted" style="margin-top:14px">Temsilî örnek: bu öneriler bu hadis için gerçek bir model çıktısı değil, sistemin nasıl çalıştığını göstermek için. İkinci karta dikkat: metinde yalnız <span class="ar">سفيان</span> (Süfyân) yazıyor, model ise <span class="ar">سفيان بن عيينة</span> (Süfyân b. Uyeyne) yazmış.</p>
       </section>
 
       <section class="step" data-title="Kontrol 1">
@@ -239,7 +247,7 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
         <div class="cards" id="check2Cards"></div>
         <div class="panel" style="margin-top:16px">
           <div class="kicker" style="color:var(--muted)">300 hadiste gerçekten olan</div>
-          <p style="margin:6px 0 0">Model, metinde <span class="ar">عن أبيه</span> ("babasından") yazan yere babanın adını (<span class="ar">عروة</span>) yazdı. Bir başka yerde metindeki <span class="ar">عثمان</span> adını <span class="ar">عثمان بن عفان</span> olarak tamamladı; eklenen kısım metnin hiçbir yerinde yoktu. İkisini de bu kontrol yakaladı.</p>
+          <p style="margin:6px 0 0">Metinde <span class="ar">هشام بن عروة عن أبيه</span> (Hişâm b. Urve, babasından) yazıyordu. Model "babası" yerine babanın adını yazdı: <span class="ar">عروة</span> (Urve). Bir başka hadiste metindeki <span class="ar">عثمان</span> (Osman) adını <span class="ar">عثمان بن عفان</span> (Osman b. Affân) olarak tamamladı; eklenen kısım metnin hiçbir yerinde yoktu. İkisini de bu kontrol yakaladı.</p>
         </div>
       </section>
 
@@ -252,8 +260,8 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
             <div class="kicker" style="color:var(--muted)">Kuyrukta bekleyen</div>
             <div id="queueCard" style="margin-top:10px"></div>
             <div class="row" style="margin-top:12px" id="decideRow">
-              <button class="btn" type="button" data-decision="accept">Olduğu gibi kabul et</button>
-              <button class="btn primary" type="button" data-decision="edit">Metindeki hâline düzelt</button>
+              <button class="btn" type="button" data-decision="accept">Olduğu gibi kabul et (Süfyân b. Uyeyne)</button>
+              <button class="btn primary" type="button" data-decision="edit">Metindeki hâline düzelt (Süfyân)</button>
               <button class="btn" type="button" data-decision="reject">Reddet</button>
             </div>
           </div>
@@ -374,10 +382,15 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
   var strip = function (s) { return s.replace(/[ً-ٰٟ]/g, "").replace(/[إأآ]/g, "ا"); };
 
   // ---- isnad data (Buhârî 1, opening, as written in the labelling guideline)
-  var parts = [["t","حدثنا"],["n","الحميدي عبد الله بن الزبير"],["t","قال حدثنا"],["n","سفيان"],["t","قال حدثنا"],["n","يحيى بن سعيد الأنصاري"],["t","قال أخبرني"],["n","محمد بن إبراهيم التيمي"],["t","أنه سمع"],["n","علقمة بن وقاص الليثي"],["t","يقول سمعت"],["n","عمر بن الخطاب"],["o","رضي الله عنه على المنبر قال سمعت"],["p","رسول الله"],["o","…"]];
+  var parts = [["t","حدثنا","bize anlattı"],["n","الحميدي عبد الله بن الزبير","el-Humeydî Abdullah b. ez-Zübeyr"],["t","قال حدثنا","dedi ki: bize anlattı"],["n","سفيان","Süfyân"],["t","قال حدثنا","dedi ki: bize anlattı"],["n","يحيى بن سعيد الأنصاري","Yahyâ b. Saîd el-Ensârî"],["t","قال أخبرني","dedi ki: bana haber verdi"],["n","محمد بن إبراهيم التيمي","Muhammed b. İbrâhîm et-Teymî"],["t","أنه سمع","onun işittiğine göre"],["n","علقمة بن وقاص الليثي","Alkame b. Vakkâs el-Leysî"],["t","يقول سمعت","şöyle diyordu: işittim"],["n","عمر بن الخطاب","Ömer b. el-Hattâb"],["o","رضي الله عنه على المنبر قال سمعت","(Allah ondan razı olsun) minberde dedi ki: işittim"],["p","رسول الله","Resûlullah'ı (Peygamber)"],["o","…","…"]];
   var SOURCE = parts.map(function (p) { return p[1]; }).join(" ");
   var isnad = $("#isnad");
-  parts.forEach(function (p) { var s = document.createElement("span"); s.className = p[0]; s.textContent = p[1]; isnad.appendChild(s); });
+  parts.forEach(function (p) {
+    var s = document.createElement("span"); s.className = p[0];
+    var a = document.createElement("span"); a.className = "a"; a.textContent = p[1];
+    var g = document.createElement("span"); g.className = "g"; g.textContent = p[2];
+    s.appendChild(a); s.appendChild(g); isnad.appendChild(s);
+  });
   $("#findBtn").addEventListener("click", function () {
     isnad.classList.toggle("found");
     this.textContent = isnad.classList.contains("found") ? "İşaretleri kaldır" : "Ravileri işaretle";
@@ -385,19 +398,19 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
 
   // ---- proposals (illustrative)
   var props = [
-    { latin: "el-Humeydî", value: "الحميدي عبد الله بن الزبير", quote: "حدثنا الحميدي عبد الله بن الزبير" },
-    { latin: "Süfyân", value: "سفيان بن عيينة", quote: "قال حدثنا سفيان" },
-    { latin: "Yahyâ b. Saîd", value: "يحيى بن سعيد الأنصاري", quote: "قال حدثنا يحيى بن سعيد الأنصاري" },
-    { latin: "M. b. İbrâhîm et-Teymî", value: "محمد بن إبراهيم التيمي", quote: "قال أخبرني محمد بن إبراهيم التيمي" },
-    { latin: "Alkame b. Vakkâs", value: "علقمة بن وقاص الليثي", quote: "أنه سمع علقمة بن وقاص الليثي" },
-    { latin: "Ömer b. el-Hattâb", value: "عمر بن الخطاب", quote: "يقول سمعت عمر بن الخطاب" }
+    { latin: "el-Humeydî", value: "الحميدي عبد الله بن الزبير", quote: "حدثنا الحميدي عبد الله بن الزبير", trv: "el-Humeydî Abdullah b. ez-Zübeyr", trq: "\"bize anlattı el-Humeydî Abdullah b. ez-Zübeyr\"" },
+    { latin: "Süfyân", value: "سفيان بن عيينة", quote: "قال حدثنا سفيان", trv: "Süfyân b. Uyeyne", trq: "\"dedi ki: bize anlattı Süfyân\"" },
+    { latin: "Yahyâ b. Saîd", value: "يحيى بن سعيد الأنصاري", quote: "قال حدثنا يحيى بن سعيد الأنصاري", trv: "Yahyâ b. Saîd el-Ensârî", trq: "\"dedi ki: bize anlattı Yahyâ b. Saîd el-Ensârî\"" },
+    { latin: "M. b. İbrâhîm et-Teymî", value: "محمد بن إبراهيم التيمي", quote: "قال أخبرني محمد بن إبراهيم التيمي", trv: "Muhammed b. İbrâhîm et-Teymî", trq: "\"dedi ki: bana haber verdi Muhammed b. İbrâhîm et-Teymî\"" },
+    { latin: "Alkame b. Vakkâs", value: "علقمة بن وقاص الليثي", quote: "أنه سمع علقمة بن وقاص الليثي", trv: "Alkame b. Vakkâs el-Leysî", trq: "\"onun işittiğine göre Alkame b. Vakkâs el-Leysî\"" },
+    { latin: "Ömer b. el-Hattâb", value: "عمر بن الخطاب", quote: "يقول سمعت عمر بن الخطاب", trv: "Ömer b. el-Hattâb", trq: "\"şöyle diyordu: işittim Ömer b. el-Hattâb'ı\"" }
   ];
   function card(p, i, extra) {
     var el = document.createElement("div");
     el.className = "prop enter"; el.style.animationDelay = (i * 90) + "ms";
     el.innerHTML = '<div class="lab">Öneri ' + (i + 1) + ' · ' + p.latin + '</div>' +
-      '<div class="lab" style="text-transform:none;letter-spacing:0">Önerilen ad</div><div class="val">' + p.value + '</div>' +
-      '<div class="lab" style="text-transform:none;letter-spacing:0">Alıntı</div><div class="quote">' + (extra && extra.quoteHtml ? extra.quoteHtml : p.quote) + '</div>' +
+      '<div class="lab" style="text-transform:none;letter-spacing:0">Önerilen ad</div><div class="val">' + p.value + '</div><div class="tr">' + p.trv + '</div>' +
+      '<div class="lab" style="text-transform:none;letter-spacing:0">Alıntı (metinden aldığı parça)</div><div class="quote">' + (extra && extra.quoteHtml ? extra.quoteHtml : p.quote) + '</div><div class="tr">' + p.trq + '</div>' +
       '<div class="res"></div>';
     return el;
   }
@@ -448,6 +461,7 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
   var q = props[1];
   $("#queueCard").appendChild((function () { var el = card(q, 0); el.classList.add("fail"); $(".lab", el).textContent = "Öneri 2 · Süfyân"; $(".res", el).innerHTML = '<span class="pill bad">gerekçe: value_not_in_quote</span>'; return el; })());
   var decisions = [];
+  var TR = { "سفيان بن عيينة": "Süfyân b. Uyeyne", "سفيان": "Süfyân" };
   $$("#decideRow .btn").forEach(function (b) {
     b.addEventListener("click", function () {
       var kind = b.getAttribute("data-decision");
@@ -460,8 +474,8 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
           '\n<span class="k">kim</span>       ekip üyesi (sen, örnek)' +
           '\n<span class="k">ne zaman</span>  ' + d.at.toLocaleString("tr-TR") +
           '\n<span class="k">süre</span>      ' + d.secs + ' sn' +
-          '\n<span class="k">önce</span>      <span class="ar">' + d.before + '</span>' +
-          '\n<span class="k">sonra</span>     ' + (d.after === "—" ? "grafa girmez" : '<span class="ar">' + d.after + '</span>') + '</div>';
+          '\n<span class="k">önce</span>      <span class="ar">' + d.before + '</span> <span class="tr-inline">(' + TR[d.before] + ')</span>' +
+          '\n<span class="k">sonra</span>     ' + (d.after === "—" ? "grafa girmez" : '<span class="ar">' + d.after + '</span> <span class="tr-inline">(' + TR[d.after] + ')</span>') + '</div>';
       }).join("");
       $("#recordBox").innerHTML = html + (decisions.length > 1 ? '<div class="muted" style="font-size:13px">Yeni karar eskisinin üzerine yazılmadı; altına eklendi.</div>' : "");
     });
@@ -498,10 +512,10 @@ table.t td { border-bottom: 1px solid var(--line); padding: 6px 8px; }
 
   // ---- sorting game
   var items = [
-    ["Metinde \"سفيان\" yazıyor.", "derived", "Yeniden üretilir: metin durdukça herkes bir daha okuyabilir."],
-    ["Modelin önerisi: \"سفيان بن عيينة\".", "derived", "Yeniden üretilir: modeli bir daha çalıştırabiliriz (sonuç her seferinde aynı olmayabilir). Saklamıyoruz, kontrol ediyoruz."],
+    ["Metinde \"سفيان\" (Süfyân) yazıyor.", "derived", "Yeniden üretilir: metin durdukça herkes bir daha okuyabilir."],
+    ["Modelin önerisi: \"سفيان بن عيينة\" (Süfyân b. Uyeyne).", "derived", "Yeniden üretilir: modeli bir daha çalıştırabiliriz (sonuç her seferinde aynı olmayabilir). Saklamıyoruz, kontrol ediyoruz."],
     ["İnceleyici: \"Buradaki Süfyân, İbn Uyeyne'dir.\"", "decision", "Karar: hiçbir metinde yazmıyor. Kim, ne zaman verdi bilgisiyle bir kez saklanır, sonra yeniden kullanılır."],
-    ["Düzeltme: önce \"سفيان بن عيينة\", sonra \"سفيان\".", "decision", "Karar: önceki ve sonraki değer, kim ve ne zaman kaydedilir; üzerine yazılmaz."],
+    ["Düzeltme: önce \"سفيان بن عيينة\" (Süfyân b. Uyeyne), sonra \"سفيان\" (Süfyân).", "decision", "Karar: önceki ve sonraki değer, kim ve ne zaman kaydedilir; üzerine yazılmaz."],
     ["\"Bu dosyada denetleyici var\" (kod hakkında bir not).", "derived", "Yeniden üretilir: koda bakan herkes bulur. Saklanırsa kod değişince eskir."],
     ["\"Başka bir tasarımı düşündük ve reddettik.\"", "decision", "Karar: koddan çıkarılamaz. Kod ajanı deneyinde bu tür soruları koddan %0 ile %4, karar defteriyle %88 ile %100 doğru cevapladı."]
   ];
