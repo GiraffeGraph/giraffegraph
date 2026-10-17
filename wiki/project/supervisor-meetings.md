@@ -15,8 +15,9 @@ doldurulur, danışmana imzalatılır ve bir hafta içinde dersin MS Teams kanal
 | No | Tarih | Değerlendirme | Sonraki toplantı |
 |---|---|---|---|
 | 1 | 2026-10-02 | Very good | 2026-10-09 |
+| 2 | 2026-10-16 | Formda işaretlenmedi (imzasız) | 2026-10-23 |
 
-2026-10-09'da danışmanla benzer projelerden nerede ayrışılacağı konuşuldu (proje sahibinin beyanı); bunun formu yok. Formlu toplantı 2 2026-10-16'da yapılır; formun son yükleme günü aynı gündür. Hazırlık belgeleri ve doldurulmuş form: `wiki/thesis/meeting/2026-10-16/` (gündem ve danışmandan istenen altı karar: `04-gundem.md`).
+2026-10-09'da danışmanla benzer projelerden nerede ayrışılacağı konuşuldu (proje sahibinin beyanı); bunun formu yok. Toplantı 2'nin hazırlık belgeleri ve ekibin doldurduğu form: `wiki/thesis/meeting/2026-10-16/` (gündem: `04-gundem.md`, form: `build/supervisor-meeting-form.docx`).
 
 Ders toplam 5 toplantı formu öngörür; her imzalı form notun %4'üdür ve toplantıdan sonra bir hafta
 içinde Teams'e yüklenir. Teams son günleri: toplantı 2 için 2026-10-16, toplantı 3 için 2026-10-30,
@@ -58,6 +59,29 @@ Gap, Data and Methodology, Main Contributions, Relevance to the Field, Future Wo
 bulgularla proje kapsamını daraltmak, uygun graf / şema yaklaşımını ve isnad zincirini RAG ile
 bütünleştirme yöntemlerini belirlemek.
 
+## Toplantı 2 — 2026-10-16
+
+Süre 15 dakika. Katılım: tüm grup üyeleri ve danışman. Form ekip tarafından dolduruldu; imza ve
+değerlendirme kutusu boş (`wiki/thesis/meeting/2026-10-16/build/supervisor-meeting-form.docx`).
+
+**Konuşulan:** benzer çalışmalarla örtüşmeler ve olası araştırma boşlukları; araştırma katkısının daha
+da netleşmesi gerektiği; etiketleme kılavuzu ve belirsiz durumlar için uzman desteği. Toplantıda
+etkileşimli anlatıcı (`wiki/thesis/guide/anlatici.html`) gösterildi (proje sahibinin beyanı).
+
+**Kararlar (form):** araştırma sorusu incelenen çalışmalara göre daraltılır; danışman en az iki hadis
+uzmanıyla çalışmayı önerdi; ekip olası uzmanları belirler ve TÜBİTAK 2209-A başvurusunun ilk
+taslağını hazırlar. Sahip: tüm grup. Son gün: sonraki toplantı.
+
+**Proje sahibinin aktardığı ek istekler:** TÜBİTAK taslağı kısa ve anlaşılır olacak, danışman okuyacak;
+bir yerine üç hadis uzmanı, çünkü uzmanlar kendi aralarında ayrışabilir. Üç uzmanın etiketlemedeki
+rolü proje önerisinde (§6) ve TÜBİTAK formunda (2.3) yazılıdır.
+
+| Sahip | Aksiyon | Durum (2026-10-17) |
+|---|---|---|
+| Tüm grup | Benzer çalışmaların karşılaştırma tablosu, benzerlik ve farklar | Öneri §4 ve `wiki/thesis/meeting/2026-10-16/02-benzer-calismalar.md` |
+| Tüm grup | Danışılacak hadis uzmanlarını belirlemek, uzman incelemesi soruları | Prof. Dr. Rifat Atay belli; iki uzman aranıyor; sorular `giraffegraph-core/evaluation/annotation/expert/brief.md` |
+| Tüm grup | TÜBİTAK 2209-A ilk taslağı (kısa) | `wiki/thesis/tubitak/form.md` kısaltıldı; danışmanın okumasını bekliyor |
+
 ## Rules
 
 - MUST: her toplantı kendi başlığı altında, imzalı formdaki bilgiyle yazılır.
@@ -86,4 +110,4 @@ Ders belgeleri çalışma alanının dışında, ders reposunda durur (`/Users/e
 
 ## Last updated
 
-2026-10-16
+2026-10-17
