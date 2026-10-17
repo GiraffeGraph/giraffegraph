@@ -17,8 +17,8 @@ Projenin kim tarafından, hangi çerçevede, hangi taahhütlerle yürütüldüğ
 |---|---|
 | Başlık | A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and Schema Drift in LLMs: An Application on Hadith Isnad Chains |
 | Kurum | Akdeniz Üniversitesi, Mühendislik Fakültesi, Bilgisayar Mühendisliği |
-| Danışman | Dr. Taha Yiğit Alkan |
-| Alan uzmanı | Prof. Dr. Rifat Atay (İlahiyat) |
+| Danışman | Arş. Gör. Dr. Taha Yiğit Alkan |
+| Alan uzmanları | Üç hadis uzmanı: Prof. Dr. Rifat Atay (İlahiyat) ve belirlenecek iki uzman (danışman kararı, 2026-10-16; `wiki/project/supervisor-meetings.md`) |
 | Site | giraffegraph.com (`landing/`) |
 
 ## İki çerçeve
@@ -131,4 +131,4 @@ konumlanma önerisi: `wiki/sources/claude-science-results/09_yayin_plani.md` §1
 
 ## Last updated
 
-2026-10-13
+2026-10-17

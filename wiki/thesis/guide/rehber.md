@@ -354,24 +354,24 @@ Kodlama ajanı çalışması tek kod tabanındaydı; aynı model değerlendirici
 
 ## 10. Sırada ne var?
 
-Önce cevap anahtarının nasıl hazırlanacağını netleştireceğiz. Alan uzmanı 6. haftada etiketleme yönergesini gözden geçirip açık soruları yanıtlayacak. Özellikle metindeki adı koruma ve zincir sınırları gibi kararların etiketleyenlerce aynı şekilde anlaşılması gerekiyor. Sistemin çıktısını görmeden yapılacak çalışma, insan referansının model önerisine göre şekillenmesini önlemeyi amaçlıyor.
+Önce cevap anahtarının nasıl hazırlanacağını netleştireceğiz. Üç hadis uzmanının tamamı 6. haftada, etiketleme başlamadan önce yönergeyi gözden geçirip açık soruları yanıtlayacak. Hadis uzmanları kendi aralarında da ayrışabilir; danışmanımız bu yüzden birden fazla uzmanla çalışmamızı önerdi. Özellikle metindeki adı koruma ve zincir sınırları gibi kararların etiketleyenlerce aynı şekilde anlaşılması gerekiyor. Sistemin çıktısını görmeden yapılacak çalışma, insan referansının model önerisine göre şekillenmesini önlemeyi amaçlıyor.
 
 | Zaman | Yapılacak iş | Tutulacak kayıt |
 | --- | --- | --- |
-| 6. hafta | Uzmanın yönerge incelemesi | Açık soruların yanıtları |
+| 6. hafta | Üç uzmanın yönerge incelemesi | Açık soruların yanıtları |
 | 7. hafta | Bağımsız 50 hadis etiketi | Hadis başına süre |
-| 8. hafta | Uyuşmazlıklara uzman kararı | Sonuçlandırılmış etiketler |
+| 8. hafta | Uyuşmazlıklara üç uzmanın bağımsız kararı | Sonuçlandırılmış etiketler |
 | TÜBİTAK planı | Çalışmayı 300 hadise taşıma | Yeni değerlendirme verisi |
 
-Deniz ve Alperen 50 hadisi bağımsız etiketleyecek. Birbirlerine karşı F1 hesaplayarak uyumu değerlendireceğiz; buna karşılıklı F1 diyoruz. Uzman 8. haftada anlaşamadıkları yerleri karara bağlayacak. Böylece ölçüm referansının hangi kurallarla ve hangi anlaşmazlıklardan geçerek oluştuğu görülebilecek.
+Deniz ve Alperen 50 hadisi bağımsız etiketleyecek. Birbirlerine karşı F1 hesaplayarak uyumu değerlendireceğiz; buna karşılıklı F1 diyoruz. Anlaşamadıkları her madde 8. haftada üç uzmana gidecek. Uzmanlar birbirlerinin yanıtlarını görmeden bağımsız karar verecek; çoğunluğun yanıtı referansa girecek. Üç yanıt da farklıysa madde "tartışmalı" olarak işaretlenecek, ana puanın dışında tutulacak ve ayrı raporlanacak. İki etiketleyicinin de yaptığı hataları yakalamak için anlaştıkları hadislerden rastgele seçilen 10 hadis de uzmanlara gidecek. Uzmanlar arasındaki uyumu, rastlantıyla oluşacak uyumu hesaba katan bir uyum ölçüsü olan Fleiss' kappa ile hesaplayıp etiketleyicilerin karşılıklı F1 değeriyle birlikte raporlayacağız. Böylece ölçüm referansının hangi kurallarla ve hangi anlaşmazlıklardan geçerek oluştuğu görülebilecek.
 
-Kuyruğu, ilgili hadisi etiketlememiş bir ekip üyesi değerlendirecek. Karar başına süreyi ve ret oranını kaydedeceğiz; işaretlenen önerilerin daha sık reddedilip reddedilmediğine bakacağız. Uzman kuyruk kararlarını vermeyecek. Böylece cevap anahtarını belirleyen kişiyle sistemin önerilerini değerlendiren kişiyi ayıracağız.
+Kuyruğu, ilgili hadisi etiketlememiş bir ekip üyesi değerlendirecek. Karar başına süreyi ve ret oranını kaydedeceğiz; işaretlenen önerilerin daha sık reddedilip reddedilmediğine bakacağız. Uzmanlar kuyruk kararlarını vermeyecek. Böylece cevap anahtarını belirleyen kişilerle sistemin önerilerini değerlendiren kişiyi ayıracağız.
 
 Teknik işlerde Peygamber kuralını eklemek, kimlik karar defterini motora taşımak ve daha çok modelle tekrar yapmak var. Bu işler tamamlanmış sonuçlar değil, plan. CSE 491 önerisinin teslimi 18 Ekim 2026, ara rapor 8. hafta, final 15. haftadır. TÜBİTAK 2209-A formu ise taslak hâlinde ve henüz gönderilmedi.
 
 ## 11. Ekip, belgeler ve nerede bulunur?
 
-Ekip Yahya Efe Kuruçay, Deniz Büyükşahin ve Alperen Ulukaya'dan oluşuyor. Danışmanımız Arş. Gör. Dr. Taha Yiğit Alkan. Alan uzmanımız, Akdeniz Üniversitesi İlahiyat Fakültesinden Prof. Dr. Rifat Atay. Aşağıdaki iş paylaşımı öneri belgesindeki önerilen rollerdir; bütün görevlerin tamamlandığı anlamına gelmez.
+Ekip Yahya Efe Kuruçay, Deniz Büyükşahin ve Alperen Ulukaya'dan oluşuyor. Danışmanımız Arş. Gör. Dr. Taha Yiğit Alkan. Üç hadis uzmanıyla çalışacağız: Akdeniz Üniversitesi İlahiyat Fakültesinden Prof. Dr. Rifat Atay ve 6. haftaya kadar belirlenecek iki hadis uzmanı. Aşağıdaki iş paylaşımı öneri belgesindeki önerilen rollerdir; bütün görevlerin tamamlandığı anlamına gelmez.
 
 Efe mimariyi, kontrolleri, karar kaydını ve puanlama betiğini üstleniyor. Puanlama betiği, çıktıyı referansla karşılaştırıp ölçüleri hesaplayan programdır. Deniz etiketleme yönergesini, ilk etiketleyici görevini ve inceleme ekranını üstleniyor. Alperen isnad bölütleyicisini, ikinci etiketleyici görevini ve zincir görünümünü üstleniyor.
 
@@ -428,7 +428,7 @@ Ortak Zotero grup kütüphanesinin adı "giraffegraph". Zotero burada kaynaklar�
 | Otomatik politika | Adıyla belirtilen kabul kuralı | İnsan dışındaki kabul dayanağı |
 | Güven skoru | Modelin verdiği güven ifadesi | Eşik altında kalan skor |
 | Referans etiketi | Karşılaştırılan cevap kaydı | İfta Sunnah etiketi |
-| Altın standart | İnsan uzlaşısıyla hazırlanmış anahtar | Planlanan uzman kararı |
+| Altın standart | İnsan uzlaşısıyla hazırlanmış anahtar | Üç uzmanın çoğunluk kararı |
 | Gümüş standart | Otomatik veya dolaylı etiketler | Kuralla üretilen pilot etiketleri |
 | Precision | Önerilerin doğru olan payı | Öğretim örneğinde 8/9 |
 | Recall | Gerekenlerin bulunan payı | Öğretim örneğinde 8/10 |

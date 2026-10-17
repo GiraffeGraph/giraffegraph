@@ -1,7 +1,6 @@
 # TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı: Araştırma Önerisi Formu
 
-> **Taslak, gönderilmedi (2026-10-13).** Ekip ve danışman okumadı. Göndermeden önce karara bağlanacak
-> noktalar en sondaki "Göndermeden önce" bölümündedir; o bölüm ve bu kutu başvuru metnine girmez.
+> **Taslak, gönderilmedi (2026-10-17).** Danışman 16 Ekim'de kısa ve anlaşılır bir taslak istedi; bu sürüm onun okuması içindir. Göndermeden önce karara bağlanacak noktalar en sondaki "Göndermeden önce" bölümündedir; o bölüm ve bu kutu başvuru metnine girmez.
 
 # A. GENEL BİLGİLER
 
@@ -9,18 +8,16 @@
 |---|---|
 | **Başvuru Sahibinin Adı Soyadı** | Yahya Efe Kuruçay, Deniz Büyükşahin, Alperen Ulukaya |
 | **Araştırma Önerisinin Başlığı** | Büyük Dil Modellerinde Halüsinasyon ve Şema Sapmasını Önleyen İnsan-Döngülü Bilgi Grafı Üretim Motoru: Hadis İsnad Zincirleri Üzerine Bir Uygulama |
-| **Danışmanın Adı Soyadı** | Dr. Öğr. Üyesi Taha Yiğit Alkan |
-| **Araştırmanın Yürütüleceği Kurum/Kuruluş** | Akdeniz Üniversitesi, Mühendislik Fakültesi, Bilgisayar Mühendisliği Bölümü (alan uzmanı desteği: Akdeniz Üniversitesi İlahiyat Fakültesi, Prof. Dr. Rifat Atay) |
+| **Danışmanın Adı Soyadı** | Arş. Gör. Dr. Taha Yiğit Alkan |
+| **Araştırmanın Yürütüleceği Kurum/Kuruluş** | Akdeniz Üniversitesi, Mühendislik Fakültesi, Bilgisayar Mühendisliği Bölümü (alan uzmanı desteği: Akdeniz Üniversitesi İlahiyat Fakültesi ve iki hadis uzmanı) |
 
 # ÖZET
 
-Büyük dil modelleri (BDM) metinden bilgi grafı olguları çıkarabilir; ancak kaynakta bulunmayan olgular da ekler ve kendilerine verilen şemadan sapar. Bu projede, modelin yalnızca öneri ürettiği bir motoru ve tasarımının dayandığı iddiayı sınayacağız. İddiamız, böyle bir sistemde saklanması gerekenin insan kararı olduğudur. Kaynaktan türetilebilen her şey yeniden türetilir ve güvenilmeden önce kontrol edilir. Çalışmayı, hadis metninin başındaki ravi zinciri (isnad) üzerinde yürüteceğiz.
+Büyük dil modelleri (BDM), metin işleyen yapay zekâ modelleridir. Metindeki kişiler ve ilişkilerden bilgi grafı, yani bağlantılı bir bilgi ağı oluşturabilirler. Ancak kaynağın desteklemediği olgular üretebilir ve izin verilen bilgi türlerini belirleyen şemadan sapabilirler. Sınayacağımız motorda model öneri üretir; kontroller ve insan kararları hangi önerilerin grafa gireceğini belirler. Metinden yeniden çıkarılabilen bilgi kontrol edilir; insan kararı saklanıp yeniden kullanılır.
 
-Motoru ve ilk ölçümleri TÜBİTAK desteği olmadan ön çalışma olarak tamamladık. Altı temel hadis kitabından 300 hadisi platform kaynaklı ravi etiketlerine karşı değerlendirdik. Yalnız şema verilen modelin etiketle eşleşmeyen 145 önerisinin 122'sini, çıkarılan adın modelin kendi alıntısında geçip geçmediğini denetleyen kontrol işaretledi. Alıntının kaynakta geçip geçmediğini denetleyen kontrol ise hiçbirini işaretlemedi. Modelin bildirdiği güven skoru, benzer bir inceleme payında bu önerilerin 50'sini buldu. Etiketli 27.056 zincir üzerindeki benzetimde, yalnız ada bağlanan ravi kimliği kararı on geçişin birinde yanlış yeniden kullanıldı. Deterministik bir kural çelişki bulduğunda kararın kapsamını daraltmak, sessiz hatayı geçiş başına 0,014'e indirdi. Bu ölçümlerin hiçbirinde insan altın standardı ya da gerçek bir inceleyici bulunmuyordu.
+Çalışmayı hadislerin başındaki aktarıcı (ravi) zinciri, yani isnad üzerinde yürüteceğiz. Motor ve ilk ölçümler hazırdır. Ön çalışmada, çıkarılan adın modelin kendi alıntısında geçip geçmediğini denetleyen kontrol, 300 hadiste etiketle eşleşmeyen 145 önerinin 122'sini işaretledi. Bu ölçümler insan etiketlerine veya gerçek inceleyici kararlarına dayanmamaktadır. İki ekip üyesi 300 hadisi bağımsız etiketleyecektir. Üç hadis uzmanı kılavuzu gözden geçirecek, anlaşmazlıklarda bağımsız karar verecek ve ortak hataları aramak için üzerinde uzlaşılan 10 rastgele hadisi de değerlendirecektir. Kontrolleri en az üç modelle ölçecek, inceleme süresini ve saklanan kararların yeniden kullanımını sınayacağız. İddiamızı kod hakkında soru cevaplama deneyinde de sınayacağız.
 
-Önerdiğimiz proje bu eksiği kapatacaktır. Yöntemi şu adımlarla uygulayacağız: (1) 300 hadisi iki bağımsız kodlayıcı etiketleyecek ve aralarındaki uyumu ölçeceğiz; (2) kontrolleri ve dört çıkarım koşulunu en az üç modelle bu etiketlere karşı yeniden değerlendireceğiz; (3) bir inceleyici motorun inceleme kuyruğunda karar verecek ve karar başına süreyi ölçeceğiz; (4) ravi kimliği kararlarını saklayan ve kapsamı çelişki görüldüğünde daralan karar defterini motora ekleyip gerçek kararlarla sınayacağız; (5) iddiayı ikinci bir alanda tekrar sınayacağız.
-
-Proje, altı aya yayılan dört iş paketinden oluşmaktadır. Lisans, kodlayıcı uyumu, model erişimi ve takvim riskleri için B planları hazırladık. Projenin çıktıları, insan etiketli bir isnad referans kümesi, ölçüm betikleriyle birlikte açık kaynak olarak yayımlanacak motor, en az bir hakemli bildiri ve bir ön baskı olacaktır.
+Üç kişilik ekibimiz altı ayda dört iş paketini tamamlayacaktır.
 
 **Anahtar Kelimeler:** büyük dil modelleri, bilgi grafı, insan-döngülü sistem, kaynağa dayandırma, karar kaydı, hadis isnad zinciri
 
@@ -28,109 +25,66 @@ Proje, altı aya yayılan dört iş paketinden oluşmaktadır. Lisans, kodlayıc
 
 ## 1.1. Konunun Önemi ve Araştırma Önerisinin Bilimsel Niteliği
 
-BDM'ler serbest metinden bilgi grafı kurabilir [@ye2022generative; @pan2024unifying] ve bu işlemin maliyetini düşürmüştür. Güçlük, olgu üretmekten çok, insanların güveneceği bir grafa hangi olguların girebileceğine karar vermektir. Sonradan fark edilmesi zor olan iki hata türünü ele alıyoruz: modelin kaynağın desteklemediği bir olgu yazması ve tanımlanmamış bir tip ya da özellik kullanarak şemadan sapması. Kaynağın desteklemediği üretim, doğal dil üretiminde "halüsinasyon" adıyla incelenmiştir [@ji2023survey]. Bu derleme bilgi grafı çıkarımını ayrı bir görev olarak ele almaz. Ontoloji güdümlü çıkarım için hazırlanan Text2KGBench ölçütünün Wikidata-TekGen bölümünde, Vicuna-13B ile özne halüsinasyonu 0,17, referans üçlülere karşı precision ise 0,38 olarak raporlanmıştır [@mihindukulasooriya2023text2kgbench]. Metinde bulunmak, doğru olmayı garanti etmez.
+Modeller metinden bilgi grafı kurabilir [@ye2022generative; @pan2024unifying]. Kaynağın desteklemediği üretim "halüsinasyon" olarak incelenir [@ji2023survey]. Hadis alanında etiketli veri [@mghari2022sanadset; @mahmoud2022arsanad] ve bilgi grafları bulunmaktadır [@kamran2023semantichadith; @kamran2026semantic]. Bir alan derlemesi, uzman doğrulamasının seyrekliğini açık sorunlar arasında sayar [@haque2026hadith]. İnsanlara belirsiz öneriler göndermek yeni değildir [@tsaneva2025validation]. Biz her kontrolün neyi yakaladığını insan etiketlerine karşı, aynı inceleme payında modelin güven skoruyla karşılaştıracağız. Literatür taramamız sistematik değildir.
 
-Yaygın bir önlem, modelden kaynak alıntısı ve güven skoru istemektir. Ön çalışmamızda, denediğimiz model için ikisinin de beklendiği gibi çalışmadığını gördük. Model kaynağı doğru alıntıladıktan sonra alıntıda bulunmayan bir değer yazdı. Güven skoru da etiketle eşleşen ve eşleşmeyen önerileri ayırmakta zayıf kaldı.
+Ön çalışmada altı kitaptan 300 hadisi platform kaynaklı ravi etiketlerine karşı puanladık. Değer-alıntıda kontrolü, çıkarılan adın modelin kendi alıntısında bulunup bulunmadığını denetler. Bu kontrol, yalnız şema verilen modelin önerilerinin %9,2'sini işaretledi ve etiketle eşleşmeyen 145 önerinin 122'sini yakaladı. Modelin güven skoru, 0,85 eşiğiyle önerilerin %16,3'ünü incelemeye gönderdiğinde bile bunların 50'sini buldu. Alıntı-kaynakta kontrolü, yani alıntının kaynak metinde bulunması denetimi hiçbirini işaretlemedi. Biyomedikal derlemde [@li2016bc5cdr] aynı model ve yalnız şema içeren istemle kontrol 303 eşleşmeyen önerinin 53'ünü, güven skoru 58'ini buldu. Kontrolün hadis dışında aynı sonucu verdiği gösterilmemiştir. İlk ölçümler platform etiketlerine dayanmaktadır; kullanılabilir sonuçlar tek modelden gelmiştir ve insan inceleyici yoktur.
 
-**Vaka.** Hadis, kendisini aktaran kişilerin zinciriyle başlar: "A bize anlattı, o B'den, o C'den". Bu zincir doğası gereği bir graftır. Hadisin değeri zincirdeki kişilere göre belirlendiğinden tek bir yanlış ad hükmü değiştirir. Ayrıca bu alanda etiketli veri bulunmaktadır [@mghari2022sanadset; @mahmoud2022arsanad]. Altı kitabın ontolojisi ve bilgi grafı yayımlanmıştır [@kamran2023semantichadith; @kamran2026semantic]. Büyük etiketli eğitim kümeleriyle ince ayar yapılmış modeller ravileri ve bağlarını yüksek başarıyla çıkarır [@oumer2025relation]; ravi adları da biyografik veritabanlarına bağlanmıştır [@wirahman2026linking]. Alanın eleştirel bir derlemesi, ölçütlerin karşılaştırılamazlığını ve uzman doğrulamasının seyrekliğini açık sorunlar arasında sayar [@haque2026hadith]. Hadis alanı dışında, çıkarıcı ile graf arasındaki doğrulama adımları incelenmiştir: model doğrulayıcılarla insanları birleştiren bütün iş akışları olarak karşılaştırılmış [@tsaneva2025validation], birer birer kaldırılıp sonuç bir model hakemle puanlanmış [@lu2025karma] ve ikinci bir model, kaynağa dayandırmayı değerlendiren hakem olarak kullanılmıştır [@khorshidi2025odke]. Bu nedenle belirsiz olguları güven skoruna ya da görüş ayrılığına göre insanlara göndermek yeni değildir. Bulamadığımız, çıkarılan değerin modelin kendi alıntısında geçip geçmediğini kontrol edip bunu ayrı bir hata sınıfı olarak sayan bir çalışma ile her deterministik kontrolün tek başına neyi yakaladığını aynı adaylar üzerinde ve dış bir referansa karşı ölçen, incelemeye gönderilen adayların payı aynı tutulduğunda modelin kendi güven skoruyla karşılaştıran bir çalışmadır. Olgunun kabulünün nasıl kaydedileceğini ve insan kararının ne kadar yeniden kullanılabileceğini de ölçmek istiyoruz. Taramamız sistematik olmadığı için bu tespit, bulabildiğimiz çalışmalarla sınırlıdır.
+- **K-1. İnsan etiketli isnad referans kümesi.** İki kodlayıcı, kılavuzla ve sistem çıktısını görmeden altı kitaptan 300 hadisin ravi geçişlerini ve sırasını etiketleyecektir. Üç hadis uzmanı anlaşmazlıkları bağımsız değerlendirecektir. Kodlayıcı ve uzman uyumunu, hadis başına süreyi raporlayacağız.
+- **K-2. Kontrollerin ve çıkarım koşullarının insan etiketine karşı ölçümü.** Dört koşulu (kural tabanlı ayrıştırıcı; yalnız şema verilen model; alan ipuçlu model; alan ipuçlu model ve yalnız zincir metni) en az üç modelle ikişer kez çalıştıracağız. Modellerin en az birinin iç parametreleri erişime açık (açık ağırlıklı) olacaktır.
+- **K-3. İnceleyicinin döngüde ölçümü.** Hadisin etiketini üretmemiş kişi inceleme kuyruğunda karar verecektir. İnceleme sonrası precision (önerilerde doğruluk payı), recall (referanstaki bilgiyi bulma payı), gerekçe koduna göre ret oranı ve karar süresini raporlayacağız.
+- **K-4. Motorda kimlik karar defteri.** Kararı aday kimliğine değil içeriğe bağlayıp saklayacağız. Ravi kuşağı (tabaka) ve vefat yılı kuralı çelişki bulduğunda kararın kullanım kapsamı daralacaktır. Benzetimi gerçek kararlarla tekrarlayacağız.
+- **K-5. İddianın ikinci alanda tekrar sınanması.** Kod hakkında soru cevaplayan kod ajanı deneyini başka model ailesinden en az bir modelle ve ikinci bir kod tabanıyla tekrarlayacağız.
 
-**İddia.** Bir ayrıştırıcının ya da modelin metinden çıkardığı aday yeniden çıkarılabilir. Bu nedenle adayı türetilmiş sayarız; doğrudan güvenmek yerine kontrol ederiz ve saklanmasını gerekli görmeyiz. İnsanın kabulü, düzeltmesi ya da "bu ad burada şu kişidir" kararı ise hiçbir metinden türetilemez. Bu karar, kimin ne zaman verdiği bilgisiyle birlikte bir kez saklanmalıdır. Motoru bu ayrım üzerine kurduk.
+Kontroller hataları ne kadar emekle yakalar? Kararların yeniden kullanımı emeği ve fark edilmeyen hatayı nasıl değiştirir? Hipotez eşiklerini, insan etiketine dayanmayan ön çalışma ölçümlerinin altında seçtik.
 
-**Ön çalışma.** Aşağıdaki çalışmaları TÜBİTAK desteği olmadan, kendi olanaklarımızla tamamladık. Kodun büyük kısmını, yönlendirmemiz altında yapay zekâ kodlama asistanları yazdı (Bölüm 5).
-
-- *Motor (GiraffeGraph Core).* Model yalnız aday üretir. Her aday bir kaynak alıntısı taşır; deterministik kontroller adayı gerekçe koduyla inceleme kuyruğuna gönderir. Olgu, ancak bir inceleyicinin kararı ya da adı kayıtlı bir otomatik politika tarafından kabul edildiği kaydedilirse grafa girer. Kararlar silinmez ve üzerlerine yazılmaz. Arka uçta 285 otomatik test bulunur; bunların on ikisi akışı gerçek PostgreSQL ve Neo4j üzerinde sınar.
-- *Kontrollerin ölçümü.* Altı kitaptan 300 hadisi, sabit bir eşleştirme protokolü ve hadis düzeyinde bootstrap aralıklarıyla platform kaynaklı ravi etiketlerine karşı puanladık. Gevşek eşleştirmede kural tabanlı ayrıştırıcının F1 değeri 0,923, yalnız şema verilen modelin 0,890, tip açıklamaları ve alan ipuçları eklenen aynı modelin ise 0,956 oldu. Değer-alıntıda kontrolü, yalnız şema verilen modelin önerilerinin %9,2'sini işaretledi. Bunlar, etiketle eşleşmeyen 145 önerinin 122'sini içeriyordu. İşaretlenenlerin çoğu uydurulmuş raviler değil, modelin çevriyazıya çevirdiği ya da hâlini değiştirdiği doğru adlardı. İncelemesiz kabul edilen adaylarda precision 0,914'ten 0,985'e çıktı. Güven skorunun ayırıcılığı düşüktü (AUC 0,634).
-- *Ad kimlik değildir.* Aynı 300 hadisteki 2.150 zincir konumunda 740 kişi yer alır. Konumların %10,0'ı birden çok kişiyi kapsayan bir yazımla temsil edilir; kişilerin %25,8'i ise birden çok yazıma bölünür.
-- *Kimlik kararının yeniden kullanımı (benzetim).* AR-Sanad'ın 27.056 test zincirinde (150.904 geçiş), inceleyicinin cevabı yerine veri kümesinin etiketini kullandık. Yalnız ada bağlanan karar, geçiş başına 0,100 sessiz hata üretti. Öğrenciye (zincirde addan önce gelen ravi) ve ada bağlanan karar bu değeri 0,006'ya indirdi, ancak üç katı soru sordu (0,340'a karşı 0,101). Kapsamı yalnız tabaka ve vefat yılına dayalı deterministik kuralın çelişki gördüğü adlarda daralttığımızda, hata 0,014, soru 0,178 oldu. Sonuç, bağımsız bir kaynaktan gelen ikinci etiket kümesinde (34.681 hadis, 205.514 geçiş) ve defterin görmediği kitaplarda da tekrarlandı.
-- *İkinci alan.* Motorun kendi kaynak kodu hakkında soru cevaplayan bir kod ajanı, kodun neden o şekilde yazıldığını soran soruların %0–4'ünü yalnız kodla, %88–100'ünü ise bir karar defteriyle doğru cevapladı (12 soru, ikişer koşu). Yeterli araç çağrısı hakkı verildiğinde yapısal soruları belgesiz %94–98 doğrulukla cevapladı.
-- *Tutmayan.* Değer-alıntıda kontrolü hadis dışında aynı işi görmedi. İnsan etiketli bir biyomedikal derlemde [@li2016bc5cdr], aynı model ve yalnız şema içeren istemle etiketle eşleşmeyen 303 önerinin 53'ünü işaretledi. Güven skoru aynı inceleme payında 58'ini buldu.
-
-Bu ölçümlerde referans etiketleri insan altın standardı değildir, hiçbir koşuda bir insan karar vermemiştir ve kullanılabilir sonuçlar tek bir modelden gelmiştir. Önerdiğimiz projede bu üç eksiği gidermeyi hedefliyoruz.
-
-**Bu projenin bilimsel katkıları.**
-
-- **K-1. İnsan etiketli isnad referans kümesi.** İki bağımsız kodlayıcı, yazılı bir kılavuz kullanarak ve sistem çıktısını görmeden altı kitaptan 300 hadisin ravi geçişlerini ve sırasını etiketleyecektir. Anlaşmazlıklarda alan uzmanı hakemlik edecektir. Kodlayıcılar arasındaki uyumu ve hadis başına etiketleme süresini raporlayacağız.
-- **K-2. Kontrollerin ve çıkarım koşullarının insan etiketine karşı ölçümü.** Dört koşulu (kural tabanlı ayrıştırıcı; yalnız şema verilen model; alan ipuçlu model; alan ipuçlu model ve yalnız zincir metni) en az üç modelle ikişer kez çalıştıracağız. Modellerin en az biri açık ağırlıklı olacaktır.
-- **K-3. İnceleyicinin döngüde ölçümü.** Bir hadisin referans etiketini üretmemiş bir kişi, motorun inceleme kuyruğunda o hadisin öğeleri hakkında karar verecektir. İnceleme sonrası precision ve recall değerlerini, gerekçe koduna göre ret oranını ve karar başına süreyi raporlayacağız.
-- **K-4. Motorda kimlik karar defteri.** Kararı aday kimliğine değil, içeriğe bağlayacağız ve ravi kimliği kararını defterde saklayacağız. Tabaka ve vefat yılı kuralı çelişki bulduğunda kararın kapsamı daralacaktır. Benzetimdeki ölçümü gerçek inceleyici kararlarıyla tekrarlayacağız.
-- **K-5. İddianın ikinci alanda tekrar sınanması.** Kod ajanı deneyini başka bir model ailesinden en az bir modelle ve ikinci bir kod tabanıyla tekrarlayacağız.
-
-**Araştırma sorusu.** BDM ile metinden bilgi grafı üretiminde şu soruları ele alacağız: (a) Modelin önerisi ile graf arasına konan deterministik kontroller, insan etiketine göre kaynaktan sapan önerilerin ne kadarını ve ne kadar inceleme emeğiyle yakalar? (b) İnsan kararları saklanıp yeniden kullanıldığında inceleme emeği ve fark edilmeyen hata nasıl değişir?
-
-**Hipotezler.** Ön çalışmadaki ölçümler insan etiketine karşı yapılmadığı için eşikleri bu ölçümlerin altında seçtik.
-
-- **H1.** Yalnız şema verilen model koşulunda değer-alıntıda kontrolü, insan etiketiyle eşleşmeyen önerilerin en az %60'ını işaretler ve aynı inceleme payında modelin güven skorundan daha fazla eşleşmeyen öneri bulur. (Ön çalışma, platform etiketi: %84; 122'ye karşı 50.)
-- **H2.** Kontrollerden geçip incelemesiz kabul edilen önerilerde hata oranı (1 − precision), modelin ham önerilerine göre en az %50 düşer. (Ön çalışma: 0,086'dan 0,015'e.)
-- **H3.** İnceleyicinin bir adayı reddetme ya da düzeltme olasılığı, kontrollerin işaretlediği adaylarda işaretlemediklerine göre anlamlı biçimde daha yüksektir (aday düzeyinde lojistik model, hadis düzeyinde kümelenmiş, p < 0,05).
-- **H4.** Gerçek inceleyici kararlarıyla çalışan ve kapsamı çelişki görüldüğünde daralan kimlik defteri, öğrenci ve ada sabitlenmiş deftere göre en az %20 daha az soru sorar. İki defterin geçiş başına sessiz hata farkı 0,02'yi aşmaz. (Benzetim: %32–48 daha az soru; fark 0,003–0,008.)
+- **H1.** Yalnız şema verilen modelde değer-alıntıda kontrolü, insan etiketiyle eşleşmeyen önerilerin en az %60'ını işaretler ve aynı inceleme payında güven skorundan fazlasını bulur. (Ön çalışma: %84; kontrol %9,2'lik payla 122, güven skoru %16,3'lük payla 50.)
+- **H2.** İncelemesiz kabul edilen önerilerde hata oranı (1 − precision), ham önerilere göre en az %50 düşer. (Ön çalışma: 0,086'dan 0,015'e.)
+- **H3.** Ret veya düzeltme olasılığı, işaretlenen adaylarda işaretlenmeyenlere göre anlamlı biçimde daha yüksektir (aday düzeyinde lojistik model, hadis düzeyinde kümelenmiş, p < 0,05).
+- **H4.** Gerçek kararlarla kapsamı daralan defter, öğrenciye (zincirde addan önceki raviye) ve ada sabitlenmiş defterden en az %20 az soru sorar. Geçiş başına sessiz hata farkı 0,02'yi aşmaz. (Benzetimde soru azalması %32 ile %48, hata farkı 0,003 ile 0,008 arasındadır.)
 
 ## 1.2. Amaç ve Hedefler
 
-**Genel amaç.** Modelin yalnız öneri ürettiği, kontrollerin ve insanın karar verdiği, her kabulün kaydedildiği bir bilgi grafı üretim motorunu insan etiketleri ve gerçek inceleyici kararlarıyla değerlendirmeyi amaçlıyoruz. İnsan kararını saklayıp yeniden kullanmanın inceleme emeğini ne kadar azalttığını göstermek istiyoruz.
+Amacımız, kontrollerin ve insan kararlarının belirlediği graf üretimini değerlendirmek ve kararları yeniden kullanmanın inceleme emeğine etkisini ölçmektir.
 
-**Özgül ve ölçülebilir hedefler.**
-
-- **Hedef 1 (referans kümesi).** İki bağımsız kodlayıcı 300 hadisi etiketleyecektir. İki kodlayıcının karşılıklı F1 değeri (gevşek eşleştirme) en az 0,85 olacaktır. Bu değerin altında kalırsa kılavuzu düzeltecek ve turu tekrarlayacağız. Hadis başına ortalama etiketleme süresini raporlayacağız.
-- **Hedef 2 (ölçüm).** Dört koşul, en az üç model ve ikişer tekrar için precision, recall ve F1 değerlerini katı ve gevşek eşleştirmede, hadis düzeyinde bootstrap güven aralıklarıyla raporlayacağız. H1 ve H2'yi sınayacağız.
-- **Hedef 3 (inceleyici).** Bir inceleyici, 300 hadisin inceleme öğelerinin tamamı hakkında karar verecektir. İnceleme sonrası precision ve recall değerlerini, ret oranını ve karar başına medyan süreyi raporlayacağız. H3'ü sınayacağız.
-- **Hedef 4 (karar defteri).** Defteri motora ekleyeceğiz ve testlerinin gerçek veritabanlarında geçmesini sağlayacağız. İnceleyicinin kimlik kararlarıyla soru sayısını ve sessiz hatayı ölçerek H4'ü sınayacağız.
-- **Hedef 5 (yaygın etki ve açık bilim).** Motoru, ölçüm betiklerini ve referans etiketlerini açık lisansla yayımlayacağız. Sonuçları en az bir hakemli bilimsel etkinlikte bildiri olarak sunacak ve ön baskı olarak paylaşacağız.
-
-Motor ve ölçüm betikleri ön çalışmada hazırlandığı için hedefleri, üç kişilik ekibimizin altı ayda tamamlayabileceği şekilde belirledik.
+- **Hedef 1 (referans kümesi).** İki kodlayıcı 300 hadisi bağımsız etiketleyecektir. Karşılıklı F1 (precision ve recall'u birleştiren ölçü), gevşek eşleştirmede en az 0,85 olacaktır. Altında kalırsa kılavuzu düzeltecek, turu tekrarlayacağız. Üç uzmanın kararlarıyla referansı oluşturup uyumlarını ve ortalama etiketleme süresini raporlayacağız.
+- **Hedef 2 (ölçüm).** Dört koşul, en az üç model ve ikişer tekrarda precision, recall ve F1'i katı ve gevşek eşleştirmede raporlayacağız. Hadisleri yeniden örnekleyerek belirsizliği hesaplayan bootstrap güven aralıklarını verecek, H1 ve H2'yi sınayacağız.
+- **Hedef 3 (inceleyici).** Bir inceleyici 300 hadisin tüm inceleme öğelerinde karar verecektir. İnceleme sonrası precision ve recall'u, ret oranını ve medyan karar süresini raporlayıp H3'ü sınayacağız.
+- **Hedef 4 (karar defteri).** Defteri motora ekleyip testlerini gerçek veritabanlarında geçireceğiz. Gerçek kimlik kararlarıyla soru sayısını ve sessiz hatayı ölçüp H4'ü sınayacağız.
+- **Hedef 5 (yaygın etki ve açık bilim).** Motoru, betikleri ve referans etiketlerini açık lisansla yayımlayacak; en az bir hakemli etkinlikte bildiri sunup ön baskı paylaşacağız.
 
 # 2. YÖNTEM
 
-Araştırmada tasarım bilimi yaklaşımını [@hevner2004design; @wieringa2014design] kontrollü deneysel değerlendirmeyle birleştireceğiz. Bir yapıt, yani motor geliştirecek ve onu ölçülebilir ölçütlere göre değerlendireceğiz.
+Tasarım bilimi yaklaşımıyla motoru geliştirecek [@hevner2004design; @wieringa2014design], kontrollü deneylerle değerlendireceğiz.
 
 ## 2.1. Mevcut Motor ve Bu Projede Eklenecekler
 
-Motorun akışı şudur: kaynak birimi → isnad bölütleyici → model önerisi → kontroller → inceleme → kanonik graf. Modelin grafa yazma yetkisi yoktur.
+Modelin grafa yazma yetkisi yoktur. Alıntılı öneriler kontrollerden ve incelemeden geçer. Kabul kararı kaydedilirse bilgi grafa girer; kararlar silinmez ve üzerlerine yazılmaz. İnceleme kuyruğu ve ölçüm betikleri hazırdır.
 
-Ön çalışmada şema sürümlemeyi, hadisin tek kaynak birimi olarak alınmasını, kural tabanlı isnad bölütleyiciyi ve şemaya bağlı model çıkarımını hazırladık. Doğrulama, alıntının kaynakta, değerin alıntıda ve tipin şemada bulunması gibi kontrollerden on iki gerekçe kodu üretir. İnceleme kuyruğu ile kimin, ne zaman ve ne kadar sürede karar verdiğini tutan karar kaydı da hazırdır. İlişki kimliği, aynı iki ravi arasındaki ayrı aktarımları birbirinden ayırır. Zincir görünümünü, puanlama ve analiz betiklerini de tamamladık.
-
-Bu projede aşağıdaki bileşenleri ekleyeceğiz:
-
-- **E-1. Kararın içeriğe bağlanması.** İnceleme kararını aday kimliği yerine (hadis, normalize ad) hedefine bağlayacağız. Böylece metinden yeniden çıkarım yapıldığında karar kaybolmayacaktır. Ön çalışmada aynı modelin iki istemi arasında adayların 0,857–0,977'sinin, kural tabanlı ayrıştırıcı ile model arasında ise 0,561–0,634'ünün hedefini bulduk.
-- **E-2. Kimlik karar defteri.** Her kimlik kararını tam bağlamıyla (önceki ravi, ad, sonraki ravi) saklayacağız. Kararın hangi bağlamda yeniden kullanılacağını saklamayacağız. Kapsam her ad için en geniş biçimde başlayacak ve çelişki görüldükçe daralacaktır.
-- **E-3. Alan kuralı kancası.** Defterin önerdiği kişi ile komşu ravi arasındaki tabaka ve vefat yılı farkı sınırların dışındaysa öğe inceleyiciye sorulacak ve o adın kapsamı daraltılacaktır. Kural, olguyu reddetmek yerine soru üretecektir.
-- **E-4. Dönüşüm kuralı.** Yalnız hâl eki değişmiş adlar otomatik kabul edilecek ve kabul eden kural kayda geçirilecektir.
+E-1 ile kararı aday kimliği yerine hadis ve standartlaştırılmış ada bağlayacağız. E-2 ile kimlik kararını komşu ravilerle birlikte saklayacağız. E-3, tabaka ve vefat yılı çelişkisinde inceleyiciye soru soracak ve kullanım kapsamını daraltacaktır. E-4, yalnız hâl eki değişen adları otomatik kabul edecek ve kuralı kaydedecektir.
 
 ## 2.2. Değişkenler ve Ölçütler
 
-Bağımsız değişkenler, çıkarım koşulu (dört düzey), model (en az üç düzey), kontrol (yok, alıntı-kaynakta, değer-alıntıda) ve defter politikasıdır (yalnız ad; öğrenci ve ad; kuralla daralan kapsam).
-
-Bağımlı değişkenleri ravi geçişi düzeyinde, insan etiketine karşı şu şekilde ölçeceğiz:
-
-- Precision, recall ve F1 değerlerini katı (normalize diziler eşit) ve gevşek (eşit, alt dizi ya da belirteç F1 ≥ 0,60) eşleştirmede hesaplayacağız. Sistem ve referans geçişlerini en büyük ağırlıklı eşleştirmeyle hizalayacağız. Eşleştirme ölçütü ölçümden önce sabit olacaktır.
-- Kontrolün işaretlediği önerilerin payını ve bunların içinde etiketle eşleşmeyenlerin payını hesaplayacağız.
-- İncelemede, gerekçe koduna göre ret ve düzeltme oranını ve karar başına süreyi ölçeceğiz.
-- Defterde, geçiş başına soru sayısını ve sessiz hatayı ölçeceğiz. Sessiz hata, yeniden kullanılan ve inceleyicinin kararıyla çelişen cevaptır.
-
-Analiz birimi hadistir.
+Çıkarım koşulunu, modeli, kontrolleri ve defter politikasını değiştireceğiz. Politikalar yalnız ada, öğrenci ve ada veya kuralla daralan kapsama dayanacaktır. Katı eşleştirmede standartlaştırılmış adlar eşittir; gevşek eşleştirmede eşitlik, alt dizi veya sözcük düzeyinde F1 ≥ 0,60 aranır. Ölçütü deneyden önce sabitleyeceğiz. İşaretlenen önerilerin payını, ret ve düzeltme oranlarını, süreyi ve geçiş başına soru sayısını ölçeceğiz. Sessiz hata, yeniden kullanılan cevabın inceleyici kararıyla çelişmesidir. Analiz birimi hadistir.
 
 ## 2.3. Veri ve Referans Kümesinin Oluşturulması
 
-300 hadis, altı kitaptan alınmış tabakalı örneklemi oluşturur ve ön çalışmadaki test kümesiyle aynıdır. Böylece platform etiketleriyle insan etiketlerini aynı hadislerde karşılaştırabileceğiz. Metinler Arapçadır. Telifsiz ve tam isnad içeren bir Türkçe kaynak bulamadığımız için Türkçe metni kapsam dışında tuttuk. Kılavuz ve arayüz Türkçedir.
+Altı kitaptan tabakalı örneklenen 300 Arapça hadis, ön çalışmadaki test kümesidir. Telifsiz ve tam isnadlı Türkçe kaynak bulamadığımız için Türkçe metin kapsam dışındadır; kılavuz ve arayüz Türkçedir.
 
-İki ekip üyesi aynı hadisleri yazılı bir kılavuzla, birbirinden bağımsız olarak ve sistem çıktısını görmeden etiketleyecektir. Kontrolleri yazan kişi etiketleme yapmayacaktır. Önce 50 hadislik bir kalibrasyon turunda uyumu ve süreyi ölçecek, kılavuzu düzelteceğiz. Ardından kalan hadisler etiketlenecektir. Anlaşmazlıkları alan uzmanının hakemliğiyle çözeceğiz. Uzman inceleme kuyruğunda karar vermeyecektir; inceleyici, o hadisin etiketini üretmemiş ekip üyesi olacaktır. Böylece sistemi düzelten kişi ölçütü de belirlemeyecektir.
+Prof. Dr. Rifat Atay (Akdeniz Üniversitesi İlahiyat Fakültesi) ve ilk ay belirlenecek iki hadis uzmanı, etiketleme başlamadan kılavuzu gözden geçirecektir. İki ekip üyesi sistem çıktısını görmeden bağımsız etiketleyecek; kontrolleri yazan kişi etiketlemeyecektir. İlk 50 hadiste uyumu ve süreyi ölçüp kılavuzu düzelteceğiz.
 
-Uyumu iki kodlayıcının karşılıklı F1 değeriyle ölçeceğiz. Açık uçlu çıkarımda birim sayısı baştan belli olmadığı için Cohen kappa yerine bu ölçüyü seçtik.
+Kodlayıcıların anlaşamadığı her öğeyi üç uzman birbirinden bağımsız değerlendirecektir. Çoğunluk kararı referansa girecektir. Üç cevap da farklıysa öğeyi "tartışmalı" işaretleyip ana puandan çıkaracak ve ayrı raporlayacağız. Kodlayıcıların uzlaştığı rastgele 10 hadisi de ortak hataları aramak için uzmanlara göndereceğiz. Kodlayıcıların karşılıklı F1 değerinin yanında uzmanların uyumunu Fleiss' kappa ile, yani rastlantısal uzlaşmayı hesaba katan ölçüyle raporlayacağız.
 
-Yayımlayacağımız küme yalnız etiketleri ve kaynak kimliklerini içerecek, hadis metnini içermeyecektir.
+Uzmanlar sistem çıktısını görmeyecek ve inceleme kuyruğunda karar vermeyecektir. İnceleyici, hadisin etiketini üretmemiş ekip üyesidir; referansı belirleyen kişi sistemi de yargılamayacaktır. Yayımlanan küme yalnız etiketleri ve kaynak kimliklerini içerecektir.
 
 ## 2.4. Deney Tasarımı ve İstatistiksel Yöntem
 
-- **Koşullar ve modeller.** Deney düzeni 4 koşul × en az 3 model × 2 tekrar × 300 hadis olacaktır. Model yanıtlarını önbelleğe alarak aynı koşunun yeniden üretilmesini sağlayacağız. Koşullar arasındaki farkı hadis düzeyinde eşli bootstrap aralığıyla vereceğiz.
-- **H1 ve H2.** Kontrolün işaretlediği ve işaretlemediği önerilerin insan etiketiyle eşleşme tablosundan hesaplama yapacağız. Güven skoruyla karşılaştırmayı, aynı sayıda önerinin incelemeye gönderildiği noktada yapacağız.
-- **H3.** Aday düzeyinde lojistik regresyon kullanacağız. Sonuç değişkeni inceleyicinin reddi ya da düzeltmesi, açıklayıcı değişkenler ise gerekçe kodları ve güven skoru olacaktır. Standart hataları hadis düzeyinde kümeleyeceğiz.
-- **H4.** İnceleyicinin kimlik kararlarını sırayla defterden geçirerek üç politikayı aynı kararlar üzerinde karşılaştıracağız. Belirsizliği hadis sırasını yeniden karıştırarak vereceğiz.
-- **K-5.** Kod ajanı deneyini, aynı sorular ve cevap anahtarıyla başka bir model ailesinden bir model üzerinde tekrarlayacağız. Ayrıca ikinci bir kod tabanı için yeni bir soru kümesi yazarak deneyi tekrarlayacağız. Analiz birimi soru olacaktır.
+Dört koşul × en az üç model × iki tekrar × 300 hadis düzenini kullanacağız. Yanıtları saklayacak, koşul farklarını hadis düzeyinde eşli bootstrap aralıklarıyla vereceğiz. H1 ve H2'de insan etiketleriyle eşleşmeyi, güven skoruyla aynı inceleme payında karşılaştıracağız. H3'te gerekçe kodları ve güven skoruyla ret veya düzeltme olasılığını lojistik regresyon adlı istatistiksel yöntemle hesaplayıp standart hataları hadis düzeyinde kümeleyeceğiz. H4'te aynı kimlik kararlarını üç politikadan geçirecek, hadis sırasını karıştırarak belirsizliği ölçeceğiz.
 
-Bir koşu başarısız olursa, örneğin model istenen çıktı biçimini üretemezse, bunu sonuç olarak raporlayacak ve veri dışında bırakmayacağız.
+K-5'te aynı soruları ve cevap anahtarını başka model ailesiyle kullanacağız; ikinci kod tabanı için yeni sorular hazırlayacağız. Analiz birimi sorudur. Biçim hatasıyla biten koşuları dışlamadan raporlayacağız.
 
 ## 2.5. Ön Çalışma ve Bu Projenin Sınırı
 
-Ön çalışmada motoru, ölçüm betiklerini ve platform etiketine karşı ilk ölçümleri tamamladık (Bölüm 1.1). TÜBİTAK desteğini bunları yeniden yapmak için kullanmayacağız. Destek, eksik olan üç çalışmaya ayrılacaktır: insan etiketlerinin üretilmesi, gerçek inceleyiciyle değerlendirme yapılması ve karar defterinin motora eklenip gerçek kararlarla sınanması. Yöntem adımlarını Bölüm 3'teki çalışma takvimiyle birebir eşleştirdik.
+Motor ve ilk ölçümler tamamlanmıştır. Destek, insan etiketleri, gerçek inceleyiciyle değerlendirme ve karar defterinin eklenip sınanması içindir.
 
 # 3. PROJE YÖNETİMİ
 
@@ -138,55 +92,50 @@ Bir koşu başarısız olursa, örneğin model istenen çıktı biçimini ürete
 
 | Tarih Aralığı | Faaliyetler | Kim(ler) Tarafından Gerçekleştirileceği | Başarı Ölçütü ve Araştırmanın Başarısına Katkısı |
 |---|---|---|---|
-| 1.–2. Ay | İP1: Etiketleme kılavuzunu hazırlayacağız. 50 hadislik kalibrasyon turunda uyumu ve süreyi ölçerek kılavuzu düzelteceğiz. Kararı içeriğe bağlayacağız (E-1). | Tüm ekip (alan uzmanı danışmanlığında) | Çıktılar, kılavuz v2 ve iki kodlayıcının 50 hadisteki etiketleri olacaktır. Karşılıklı F1 ve hadis başına süre raporlandığında ve E-1 testleri geçtiğinde paket başarılı sayılacaktır. Başarıya katkısı %20'dir. |
-| 2.–4. Ay | İP2: Kalan 250 hadisi etiketleyerek anlaşmazlıkları uzman hakemliğiyle çözeceğiz. Dört koşulu en az üç modelle ikişer kez çalıştıracak ve kontrolleri insan etiketine karşı ölçeceğiz. | Tüm ekip (alan uzmanı hakemliğinde) | Çıktılar, 300 hadislik referans kümesi ve sonuç tablosu olacaktır. Karşılıklı F1 ≥ 0,85 olduğunda ve H1 ve H2 sınandığında paket başarılı sayılacaktır. Başarıya katkısı %30'dur. |
-| 3.–5. Ay | İP3: Kimlik karar defterini, alan kuralı kancasını ve dönüşüm kuralını ekleyeceğiz (E-2, E-3, E-4). İnceleyici, 300 hadisin inceleme öğeleri hakkında karar verecektir. Defteri bu gerçek kararlarla ölçeceğiz. | Tüm ekip | Çıktılar, defterli motor sürümü ve inceleme kayıtları olacaktır. Testler gerçek veritabanlarında geçtiğinde, H3 ve H4 sınandığında ve karar başına süre raporlandığında paket başarılı sayılacaktır. Başarıya katkısı %30'dur. |
-| 5.–6. Ay | İP4: Deneyi ikinci alanda tekrarlayacağız (K-5). Motoru, betikleri ve etiketleri açık olarak yayımlayacağız. Sonuç raporunu, bildiriyi ve ön baskıyı hazırlayacağız. | Tüm ekip | Çıktılar, açık kod ve veri, sonuç raporu ve bildiri taslağı olacaktır. Sonuçlar temiz bir klondan betiklerle yeniden üretildiğinde paket başarılı sayılacaktır. Başarıya katkısı %20'dir. |
-
-İş paketlerini birbirleriyle örtüşecek şekilde planladık; etiketleme sürerken motor geliştirmesi de ilerleyecektir.
+| 1.-2. Ay | İP1: Kılavuzu hazırlayıp 50 hadiste uyumu ve süreyi ölçeceğiz; E-1'i ekleyeceğiz. | Tüm ekip; üç uzman kılavuzu gözden geçirecektir. | Kılavuz v2 ve etiketler hazırlanacak; karşılıklı F1 ve süre raporlanacak, E-1 testleri geçecektir. Katkısı %20'dir. |
+| 2.-4. Ay | İP2: Kalan 250 hadisi etiketleyecek, dört koşulu en az üç modelle ikişer kez çalıştıracağız. | Tüm ekip; üç uzman bağımsız değerlendirecektir. | 300 hadislik referans ve sonuç tablosu hazırlanacak; F1 ≥ 0,85 olacak, H1 ve H2 sınanacaktır. Katkısı %30'dur. |
+| 3.-5. Ay | İP3: E-2, E-3, E-4'ü ekleyip 300 hadisi inceleyeceğiz. | Tüm ekip çalışacaktır. | Defterli motor ve kayıtlar hazırlanacak; gerçek veritabanı testleri geçecek, H3 ve H4 sınanacak, süre raporlanacaktır. Katkısı %30'dur. |
+| 5.-6. Ay | İP4: K-5'i tekrarlayıp kodu ve veriyi yayımlayacak; rapor, bildiri ve ön baskı hazırlayacağız. | Tüm ekip çalışacaktır. | Açık kod, veri, rapor ve bildiri taslağı hazırlanacak; sonuçlar temiz klondan yeniden üretilecektir. Katkısı %20'dir. |
 
 ## 3.2. Risk Yönetimi
 
 | En Önemli Riskler | Alınacak Tedbirler (B Planı) |
 |---|---|
-| R1: Kullanılan etiketli derlemlerin ya da ravi kataloğunun lisansı teyit edilemez. | Yalnız lisansı açık metinleri ve kendi etiketlerimizi kullanacağız. Diğer derlemleri yeniden dağıtmadan, yalnız ölçüm için kullanacağız. Yayımlayacağımız küme metin içermeyecektir. |
-| R2: İki kodlayıcının uyumu hedefin altında kalır. | Kılavuza sınır kuralları ekleyerek kalibrasyon turunu tekrarlayacağız. Gerekirse kaliteyi önceleyerek kümeyi 300'den 200 hadise indireceğiz. |
-| R3: Etiketleme ve inceleme planlanandan uzun sürer. | İlk 50 hadiste süreyi ölçecek ve kalan işi buna göre planlayacağız. İncelemeyi yalnız kontrollerin işaretlediği öğelerle sınırlandırabiliriz. |
-| R4: Model erişimi kesilir, maliyet aşılır ya da bir model istenen çıktı biçimini üretemez. | Aynı arayüzden açık ağırlıklı bir model kullanacak ve hadis sayısını azaltacağız. Biçim hatasıyla biten koşuyu da sonuç olarak raporlayacağız. |
-| R5: Akademik dönem yoğunluğu takvimi kaydırır. | Motor ve betikler hazır olduğu için takvimi belirleyen iş etiketlemedir. Her iş paketine %15 zaman payı bıraktık. Tekrar sayısını ikiden bire indirebiliriz. |
-| R6: Ön çalışmanın kapsamı, projenin büyük kısmının yapılmış olduğu izlenimini verir. | Bu formda tamamladığımız ve henüz yapmadığımız işleri ayrı ayrı belirttik. Desteği yalnız eksik olan insan etiketi, inceleyici ölçümü ve karar defteri için kullanacağız. |
-| R7: Yapay zekâ asistanlarıyla yazılmış kod, ekibin tam anlamadığı davranışlar içerir. | Kodu yalnız testleriyle kabul edeceğiz. Her iş paketinin başında ilgili modülü ekip olarak gözden geçirecek ve ölçülen her sayıyı bir betikle yeniden üreteceğiz. |
+| R1: Derlem veya ravi kataloğu lisansı doğrulanamaz. | Açık lisanslı metinleri ve kendi etiketlerimizi kullanacağız; diğer derlemleri dağıtmadan ölçeceğiz. |
+| R2: Kodlayıcı uyumu düşük kalır. | Kılavuzu düzeltip kalibrasyonu tekrarlayacağız; gerekirse 300 hadisi 200'e indireceğiz. |
+| R3: Etiketleme ve inceleme uzar. | İlk 50 hadisin süresine göre planlayacak; incelemeyi işaretlenen öğelerle sınırlayabileceğiz. |
+| R4: Model erişimi, maliyeti veya çıktı biçimi sorun olur. | Açık ağırlıklı model kullanıp hadis sayısını azaltacağız; başarısız koşuyu raporlayacağız. |
+| R5: Akademik yoğunluk takvimi kaydırır. | Her pakette %15 zaman payı vardır; tekrarları ikiden bire indirebiliriz. |
+| R6: Projenin çoğu tamamlanmış görünebilir. | Desteği insan etiketi, inceleyici ölçümü ve karar defteri için kullanacağız. |
+| R7: Yapay zekâ kodunun davranışı anlaşılmayabilir. | Kodu testlerle kabul edecek, paket başında modülü inceleyecek, sayıları betikle üreteceğiz. |
+| R8: Bir uzman katılamaz veya gecikir. | İki uzmanla çalışacağız; anlaşamadıkları öğeyi "tartışmalı" işaretleyeceğiz. |
 
 ## 3.3. Araştırma Olanakları
 
 | Kuruluşta Bulunan Altyapı/Ekipman Türü, Modeli | Projede Kullanım Amacı |
 |---|---|
-| Akdeniz Üniversitesi Bilgisayar Mühendisliği Bölümü yazılım geliştirme laboratuvarı | Yazılım geliştirme, kod gözden geçirme ve etiketleme oturumları için kullanacağız. |
-| Bölüm sunucu altyapısı ve kampüs ağı | PostgreSQL ve Neo4j örneklerini barındırmak için kullanacağız. |
-| Akdeniz Üniversitesi İlahiyat Fakültesi, Prof. Dr. Rifat Atay'ın alan uzmanı desteği | Etiketleme kılavuzunun gözden geçirilmesi, anlaşmazlıklarda hakemlik ve ravi kaynaklarına akademik erişim için destek alacağız. |
-| GiraffeGraph Core motoru, ölçüm betikleri ve ön çalışma sonuçları (ekibin önceki çalışması) | Projeyi bu yapıt üzerine kuracağız ve geliştirme süresince özel bir depoda tutacağız. |
+| Akdeniz Üniversitesi Bilgisayar Mühendisliği yazılım geliştirme laboratuvarı | Geliştirme, kod inceleme ve etiketleme oturumlarında kullanacağız. |
+| Bölüm sunucuları ve kampüs ağı | PostgreSQL ve Neo4j veritabanlarını barındıracağız. |
+| Prof. Dr. Rifat Atay (Akdeniz Üniversitesi İlahiyat Fakültesi) ve ilk ay belirlenecek iki hadis uzmanı | Kılavuz incelemesi, bağımsız kararlar ve ravi kaynaklarına erişim desteği alacağız. |
+| GiraffeGraph Core, betikler ve ön çalışma sonuçları | Motoru geliştirecek, depoyu geliştirme süresince özel tutacağız. |
 
 # 4. ARAŞTIRMA ÖNERİSİNİN YAYGIN ETKİSİ
 
 | Çıktı, Etki ve Kazanımlar | Öngörülen Çıktı(lar), Etki(ler) ve Kazanım(lar) |
 |---|---|
-| **Bilimsel/Akademik Çıktılar** | (i) En az bir ulusal ya da uluslararası hakemli etkinlikte bildiri sunacağız. (ii) Sonuçları ön baskı olarak yayımlayacağız. (iii) Bitirme tezini hazırlayacağız. |
-| **Ekonomik/Ticari/Sosyal Çıktılar** | (i) Motoru ve ölçüm betiklerini açık kaynak lisansıyla yayımlayacağız. (ii) İki kodlayıcının etiketlediği ve uyumu raporlanmış 300 hadislik isnad referans kümesini, metin içermeden, açık veri olarak yayımlayacağız. (iii) Bölüm öğrencilerine yönelik bir seminer düzenleyeceğiz. |
-| **Yeni Proje(ler) Oluşturmasına Yönelik Çıktılar** | (i) Ravi adlarını bir otorite listesine bağlamak ve graf üzerinden soru cevaplamak için takip çalışması yapacağız. (ii) Kontrolleri ve karar defterini hadis dışı bir alanda ikinci vaka çalışmasında ele alacağız. (iii) Bilgisayar Mühendisliği ile İlahiyat arasındaki iş birliğini sürdüreceğiz. |
-
-Çıktıların sınırını açıkça belirteceğiz. Motorun başka bir alanda aynı sonucu vereceği gösterilmemiştir; ön çalışmada bir kontrol hadis dışında aynı işi görmemiştir (Bölüm 1.1).
+| **Bilimsel/Akademik Çıktılar** | En az bir hakemli etkinlikte bildiri sunacak, ön baskı yayımlayacak ve bitirme tezi hazırlayacağız. |
+| **Ekonomik/Ticari/Sosyal Çıktılar** | Motoru ve betikleri açık kaynak, uyumu raporlanmış 300 hadislik etiket kümesini metinsiz açık veri olarak yayımlayacak; bölümde seminer düzenleyeceğiz. |
+| **Yeni Proje(ler) Oluşturmasına Yönelik Çıktılar** | Ravi adlarını otorite listesine bağlama ve grafla soru cevaplama çalışmaları yapacağız. Hadis dışında vaka çalışması yapacak, İlahiyat ile iş birliğini sürdüreceğiz. |
 
 # 5. BELİRTMEK İSTEDİĞİNİZ DİĞER KONULAR
 
-**Ön çalışma beyanı.** Motoru, ölçüm betiklerini ve Bölüm 1.1'deki ölçümleri TÜBİTAK desteği ya da başka bir finansman almadan tamamladık. Desteği yalnız bu öneride tanımlanan işler için kullanacağız.
+Ön çalışma beyanı: Motoru ve ilk ölçümleri finansman almadan tamamladık.
 
-**Yapay zekâ kullanımı beyanı.** Bu projede üretken yapay zekâ araçlarını yaygın biçimde kullandık. Literatür aramasında, motor kodunun büyük kısmının ve analiz betiklerinin yazımında, ön çalışma deneylerinin yürütülmesinde ve bu formun taslağının hazırlanmasında bu araçlardan yararlandık. Kullanımı, TÜBİTAK'ın üretken yapay zekâ rehberini [@tubitak2024uyz] gözeterek beyan ediyoruz. Riskleri sınırlamak için kaynakça kayıtlarını bellekten yazmak yerine dizinlerden alıyoruz. Ölçülen her sayıyı bir betikle üretiyor ve sonuç dosyasında saklıyoruz. Kodu yalnız testleriyle kabul ediyor, başka çalışmalar hakkındaki ifadeleri okuduğumuz kaynaklarla sınırlıyoruz. İçeriğin sorumluluğu ekibimize aittir. Çıkarım deneylerinde dil modeli, sınadığımız sistemin kendisidir.
+Yapay zekâ kullanımı beyanı: Literatür aramasında, kodun büyük kısmında, betiklerde, deneylerde ve form taslağında üretken yapay zekâ kullandık [@tubitak2024uyz]. Kaynakça kayıtlarını dizinlerden alıyor, sayıları betikle üretip saklıyor, kodu testlerle kabul ediyoruz. İçeriğin sorumluluğu ekibimizdedir.
 
-**Veri ve lisans.** Hadis metinleri üçüncü taraf kaynaklardan gelmektedir. Bu metinleri yalnız değerlendirme için kullanıyoruz ve yeniden dağıtmıyoruz. Yayımlayacağımız referans kümesi metin içermeyecektir.
+Veri ve açık bilim: Üçüncü taraf hadis metinlerini değerlendirmede kullanıp dağıtmayacağız. Bu metinlerle aynı depodaki kodu geliştirme süresince özel tutup proje sonunda açacağız.
 
-**Açık bilim.** Kod, üçüncü taraf metinlerle aynı depoda bulunduğu için depoyu geliştirme süresince özel tutuyoruz. Proje sonunda motoru ve betikleri açık kaynak lisansıyla yayımlayacağız.
-
-**Alan uzmanı desteği.** Prof. Dr. Rifat Atay, etiketleme kılavuzunun gözden geçirilmesi ve anlaşmazlıklarda hakemlik yapılması için danışmanlık verecektir.
+Alan uzmanı desteği: Prof. Dr. Rifat Atay ve ilk ay belirlenecek iki hadis uzmanı kılavuzu gözden geçirecek ve anlaşmazlıklarda bağımsız karar verecektir. Sistem çıktısını görmeyecek, inceleme kuyruğunda karar vermeyeceklerdir.
 
 # 6. EKLER
 
@@ -199,7 +148,7 @@ Bir koşu başarısız olursa, örneğin model istenen çıktı biçimini ürete
 1. **Başvuru dönemi ve form şablonu.** Bu metin 2026 yılı I. dönem formunun başlıklarını izler. Güncel dönemin şablonu ve sayfa sınırı başvuru sisteminden kontrol edilir.
 2. **Başvuru sahipleri.** Liste bitirme projesi ekibidir. Sıra ve yürütücü, başvuru sistemindeki role göre yazılır.
 3. **Çerçeve.** İddia ve iki destek çalışması proje sahibinin 13 Ekim kararıdır; danışman onaylamamıştır.
-4. **Alan uzmanının desteği.** Destek beyanının güncel olduğu ve bu formdaki rolü (hakemlik; inceleme kuyruğunda karar yok) kapsadığı teyit edilir.
+4. **Alan uzmanlarının desteği.** Üç hadis uzmanının destek beyanları alınmalıdır. Beyanlar, kılavuzu gözden geçirme ve anlaşmazlıklarda bağımsız karar verme rollerini kapsamalı; uzmanların inceleme kuyruğunda karar vermeyeceğini belirtmelidir.
 5. **Eşikler.** H1 (%60), H2 (%50), H4 (%20 ve 0,02) ve Hedef 1 (karşılıklı F1 ≥ 0,85) öneridir. Verilen söz bağlar; ekip ve danışman onaylar.
 6. **Metin kaynağı ve lisans.** 300 hadislik test kümesinin metin ve etiket kaynaklarının lisansı teyit edilmemiştir (`data/README.md`). R1'deki B planı buna göre yazılmıştır.
 7. **Kalkınma planı ve program öncelikleri.** Önceki taslaktaki "12. Kalkınma Planı ile doğrudan ilişkilidir" cümlesi buraya alınmamıştır, çünkü plan metni okunmamıştır. Eklenecekse planı okuyan biri yazar.

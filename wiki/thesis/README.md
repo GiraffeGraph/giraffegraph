@@ -28,10 +28,10 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 |---|---|---|
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (55 sayfa, 51 kaynak) |
 | Tezin Türkçe sürümü | `wiki/thesis/chapters-tr/` (aynı dosya adları) | `wiki/thesis/build/thesis-tr.pdf` (55 sayfa) |
-| CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md` | `wiki/thesis/proposal/build/proposal.pdf` (9 sayfa) ve `proposal.docx`; açık noktalar kapatıldı (2026-10-15), danışmanın vereceği kararlar toplantı gündemindedir |
+| CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md`; ders şablonu `wiki/thesis/proposal/template.docx` (Teams ödevinden) | `wiki/thesis/proposal/build/proposal.docx` (şablonun kendisi, doldurulmuş) ve `proposal.pdf` (6 sayfa, Pages ile dışa aktarılır); başlıklar, alt başlıklar ve tablo sütunları şablonu izler |
 | Rehber: projeyi hiç bilmeyen bir okur için baştan sona anlatım (Türkçe) | `wiki/thesis/guide/rehber.md` | `wiki/thesis/guide/build/rehber.pdf` (18 sayfa) |
-| Danışman toplantısı belgeleri (2026-10-16) | `wiki/thesis/meeting/2026-10-16/01-durum.md` … `04-gundem.md`; form: `fill_form.py` | `wiki/thesis/meeting/2026-10-16/build/toplanti-belgeleri.pdf`, `supervisor-meeting-form.docx` |
-| TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (9 sayfa, 18 kaynak); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
+| Danışman toplantısı belgeleri (2026-10-16) | `wiki/thesis/meeting/2026-10-16/01-durum.md` … `04-gundem.md` | `wiki/thesis/meeting/2026-10-16/build/toplanti-belgeleri.pdf`; ekibin toplantıda doldurduğu form (imzasız): `build/supervisor-meeting-form.docx` |
+| TÜBİTAK 2209-A araştırma önerisi formu (Türkçe) | `wiki/thesis/tubitak/form.md` | `wiki/thesis/tubitak/build/form.pdf` (6 sayfa, 13 kaynak; danışman 2026-10-16'da kısa ve anlaşılır taslak istedi); derleme `form.docx` de üretir. Sondaki "Göndermeden önce" bölümü ve baştaki taslak kutusu çıktıya girmez |
 | Makale: "Quoted Correctly, Extracted Differently …" | `wiki/thesis/paper/paper.md` | `wiki/thesis/paper/build/paper.pdf` (11 sayfa, 23 kaynak), `paper.tex` |
 | Makalenin Türkçe sürümü: "Alıntı doğru, çıkarılan değer farklı …" | `wiki/thesis/paper/paper-tr.md` | `wiki/thesis/paper/build/paper-tr.pdf` |
 
@@ -127,4 +127,4 @@ derlemeyle yeniden üretilir.
 
 ## Last updated
 
-2026-10-15
+2026-10-17

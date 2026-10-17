@@ -22,8 +22,8 @@ dayandığı varsayımı gösterir. Bu varsayımların çoğu tek kişinin çal�
 görüşülmedi. Proje sahibinin beyanına göre (Yahya Efe Kuruçay, 2026-10-13) ekip, çerçeve kararını ona
 bırakır; danışman onayı ayrıdır.
 
-Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan), **U** alan uzmanı
-(Prof. Dr. Rifat Atay).
+Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Arş. Gör. Dr. Taha Yiğit Alkan), **U** üç hadis
+uzmanı (Prof. Dr. Rifat Atay ve belirlenecek iki uzman).
 
 ## Kapsam ve konumlandırma
 
@@ -54,7 +54,7 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 
 | # | Soru | Öneri | Fiilî durum | Sahip |
 |---|---|---|---|---|
-| 11 | HITL kararını ve altın standardı kim üretir? Kör protokol nasıl işler? | Katman (a) iki öğrenci kodlayıcı, sistem çıktısını görmeden; katman (b) uzman ve ikinci ilahiyat kodlayıcısı; HITL kararını veren o hadisin altın standardını üretmemiş kişi | Kimse atanmadı. Etiketleme kiti hazır, gönderilmedi. Hiçbir koşuda inceleme kararı verilmedi | E, D, U |
+| 11 | HITL kararını ve altın standardı kim üretir? Kör protokol nasıl işler? | Katman (a) iki öğrenci kodlayıcı, sistem çıktısını görmeden; katman (b) uzman ve ikinci ilahiyat kodlayıcısı; HITL kararını veren o hadisin altın standardını üretmemiş kişi | Kodlayıcılar öneride yazılı (Deniz Büyükşahin, Alperen Ulukaya). Uzman katmanı danışman kararıyla (2026-10-16) üç hadis uzmanıdır: kodlayıcıların ayrıştığı her öğeye bağımsız karar verirler, çoğunluk referansa girer, üç cevap da farklıysa öğe "tartışmalı" olur ve ana puandan çıkar; uzlaşılan 10 rastgele hadis de uzmanlara gider; uzman uyumu Fleiss' kappa ile raporlanır (`wiki/thesis/proposal/proposal.md` §6, `wiki/thesis/tubitak/form.md` 2.3). Etiketleme kiti gönderilmedi. Hiçbir koşuda inceleme kararı verilmedi | E, D, U |
 | 12 | Tekrarlar için sıcaklık ne olur? | Açık modellerde T = 0,7 ile 3 tohum; API modellerinde 3 prompt yeniden yazımı; ayrı raporlanır | `anthropic` sağlayıcısı sıcaklık göndermez. Her koşul bir kez koşuldu | E |
 | 13 | Özet metrik F1 mi, F0.5 mi? | Birincil özet F0.5; F1 ve ham P / R yanında | Raporlanan P, R ve F1'dir | E, D |
 | 17 | Platform etiketi (İfta) cevap anahtarı olarak yeterli mi, insan altın standardı şart mı? | Öneri yok; soru 2026-10 çalışmasında doğdu | Ölçümlerin hepsi platform ve kural etiketine karşıdır; sayfalar bunu "etiket kümesiyle uyum" diye sunar. K-5 insan altın standardı taahhüt eder | D, U |
@@ -119,4 +119,4 @@ Karar sahibi kısaltmaları: **E** ekip, **D** danışman (Dr. Taha Yiğit Alkan
 
 ## Last updated
 
-2026-10-13
+2026-10-17

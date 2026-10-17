@@ -30,7 +30,7 @@ etiketidir; hiçbiri insan altın standardı değildir ve hiçbir koşuda bir in
 
 | Kod | Taahhüt (form) | Eldeki | Eksik |
 |---|---|---|---|
-| K-1 | 300 hadisin iki bağımsız kodlayıcıyla etiketlenmesi, uzman hakemliği, uyum ve süre raporu | Etiketleme kiti: kılavuz, etiketlenecek hadis tablosu, tabloyu referansa çeviren betik (`giraffegraph-core/evaluation/annotation/`). Kodlayıcılara gönderilmedi | Etiketlerin tamamı; 50 hadislik kalibrasyon turu; uyum ölçümü |
+| K-1 | 300 hadisin iki bağımsız kodlayıcıyla etiketlenmesi, anlaşmazlıklarda üç hadis uzmanının bağımsız kararı, kodlayıcı ve uzman uyumu, süre raporu | Etiketleme kiti: kılavuz, etiketlenecek hadis tablosu, tabloyu referansa çeviren betik (`giraffegraph-core/evaluation/annotation/`). Kodlayıcılara gönderilmedi | Etiketlerin tamamı; 50 hadislik kalibrasyon turu; uyum ölçümü |
 | K-2 | Dört koşul × en az üç model (biri açık ağırlıklı) × iki tekrar, insan etiketine karşı | 1 model (Claude Haiku 5.5, effort `low`) × dört koşul × 1 koşu × 300 hadis, İfta etiketine karşı. İkinci model denemesi yapılandırma hatasıyla sonuçlandı | İnsan etiketi; iki model; tekrarlar |
 | K-3 | Referansı üretmemiş bir inceleyicinin kuyruğun tamamına karar vermesi; inceleme sonrası P / R, red oranı, karar başına süre | Kayıt altyapısı: `review_decisions` (kim, ne zaman, süre). Hiçbir koşuda karar verilmedi | Ölçümün tamamı |
 | K-4 | Motorda kimlik karar defteri: karar içeriğe bağlanır, kapsam çelişkide daralır, tabaka ve vefat yılı kuralı | Motor dışı benzetim ve testleri (`giraffegraph-core/evaluation/identity_ledger.py`); hedef örtüşmesi ölçümü (`decision_reapplication.py`). Motorda karar aday kimliğine bağlıdır; alan kuralı kancası yoktur | E-1…E-4'ün tamamı; gerçek kararlarla ölçüm |
@@ -112,4 +112,4 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 
 ## Last updated
 
-2026-10-13
+2026-10-17

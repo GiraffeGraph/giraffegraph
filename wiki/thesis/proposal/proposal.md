@@ -1,290 +1,258 @@
 # CSE 491 Project Proposal
 
-## 1. Title and summary
+<!-- The headings, sub-labels and table columns follow the course template
+(CSE491_Project_Proposal_Template.docx); build_proposal.py writes this text into that template. -->
 
-**Title:** A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and
-Schema Drift in LLMs: An Application on Hadith Isnad Chains
+| Field | Value |
+|---|---|
+| Project title | A Human-in-the-Loop Knowledge Graph Generation Engine for Preventing Hallucination and Schema Drift in LLMs: An Application on Hadith Isnad Chains |
+| Group no. | |
+| Project supervisor | Res. Asst. Dr. Taha Yiğit Alkan |
+| Submission date | 18 October 2026 |
 
-**Group:** Yahya Efe Kuruçay (20220808005), Deniz Büyükşahin (20240808701), Alperen Ulukaya (20220808006)\
-**Supervisor:** Res. Asst. Dr. Taha Yiğit Alkan\
-**Domain expert:** Prof. Dr. Rifat Atay (Faculty of Theology)
+| # | Name and surname | Student no. | Role / responsibility in the project |
+|---|---|---|---|
+| 1 | Yahya Efe Kuruçay | 20220808005 | Architecture, validation checks, decision record, scoring script |
+| 2 | Deniz Büyükşahin | 20240808701 | Labelling guideline, annotation (annotator 1), review screen |
+| 3 | Alperen Ulukaya | 20220808006 | Isnad segmenter, annotation (annotator 2), chain view |
 
-**Summary.** Large language models can turn free text into knowledge graph facts, but they add facts
-the source does not contain and they drift away from the schema they were given. GiraffeGraph is an
-engine in which the model only proposes. Each proposed fact carries a quotation from the source, is
-checked by deterministic rules, and reaches the graph only through a recorded human decision or a
-recorded acceptance policy. The design rests on one claim: what such a system has to store is the
-decision of a person, and what can be derived from the source is derived again. Our case study is the
-hadith isnad: the chain of narrators that precedes a hadith text. By the end of CSE 491 we will deliver a working prototype that processes a small set
-of Arabic hadiths end to end and reports, against hand-labelled data, how many errors each check
-catches. Two supporting studies test the claim itself: a simulation of reusing narrator-identity
-decisions on labelled chains, and an experiment in a second domain. Entity resolution of narrators
-inside the engine, the full experiment and the question-answering layer are planned for Senior Design
-Project II.
+## 1. Summary
 
-## 2. Problem and motivation
+Large language models (LLMs) can turn text into knowledge graph facts, but they add facts the source
+does not contain and drift away from the schema they were given. GiraffeGraph is an engine in which
+the model only proposes. Each proposed fact carries a quotation from the source, is checked by
+deterministic rules, and reaches the graph only through a recorded human decision or a recorded
+acceptance policy. The design rests on one claim: what such a system has to store is the decision of
+a person, and what can be derived from the source is derived again.
 
-When an LLM extracts a narrator chain from a hadith, four things go wrong:
+Our case study is the hadith isnad, the chain of narrators that precedes a hadith text. In a first
+measurement on 300 hadiths, a check of whether the extracted name occurs in the model's own quotation
+flagged 122 of the 145 proposals that disagreed with existing platform labels. Those labels were not
+checked by people. By the end of CSE 491 we will deliver a working prototype that processes Arabic
+hadiths end to end and reports how many errors each check catches on 50 hadiths labelled by two group
+members, with disagreements decided by three hadith scholars. Entity resolution of narrators, the
+larger experiment and the question-answering layer are planned for Senior Design Project II.
 
-1. **Unsupported facts.** The model outputs a narrator or a link that the text does not contain, or
-   it silently rewrites a name it did find.
-2. **Schema drift.** The same relation appears as `NARRATED_FROM` in one run and under another name
-   in the next, and property names vary between runs.
-3. **Identity confusion.** One narrator is written in several ways, and several narrators share one
-   short name. Merging two different people changes how the chain is judged.
-4. **No trace.** After the graph is built, nobody can tell which sentence a fact came from or who
-   accepted it.
+## 2. Problem Definition and Motivation
 
-These matter in this domain because the reliability of a hadith is judged from its chain. A single
-wrong narrator changes the verdict, so a graph that is mostly right is not usable by a scholar.
+When an LLM extracts a narrator chain from a hadith, four things go wrong. It outputs a narrator the
+text does not contain, or silently rewrites a name it did find. The same relation appears under
+different names in different runs (schema drift). One narrator is written in several ways and several
+narrators share one short name. After the graph is built, nobody can tell which sentence a fact came
+from or who accepted it.
 
-**Target users.** Researchers and students in hadith studies who need to browse and query narrator
-chains, and engineers who build knowledge graphs from text in other domains where each fact has to be
-traceable to its source.
+This matters because the reliability of a hadith is judged from its chain. One wrong narrator changes
+the verdict, so a graph that is mostly right is not usable by a scholar.
 
-**What we already observed.** A pilot run on 30 September 2026 on 50 hadiths (327 reference narrator
-mentions, one model, scored against the rule-generated labels of the Sanadset corpus, loose matching)
-gave three results that shape this proposal:
+**Target users.** Researchers and students in hadith studies, and engineers who build knowledge graphs
+whose facts must be traceable to their source.
 
-- A rule-based parser reached F1 0.879 and an LLM with a schema-only prompt reached 0.865. An LLM
-  with an isnad-aware prompt reached 0.935. Raw extraction accuracy is therefore not where the
-  project can contribute most.
-- Checking that the model's quotation occurs in the source caught nothing (605 of 605 quotations
-  were verbatim). Checking that the extracted name occurs inside the model's own quotation flagged
-  32 of 318 candidates.
-- The model's self-reported confidence separated right from wrong candidates poorly (AUC 0.626).
+**What we already observed.** On 12 October 2026 we ran one model (Claude Haiku 5.5) on 300 hadiths,
+50 from each of the six canonical collections, and scored the output against the narrator labels of
+the Ifta Sunnah platform (1,778 reference mentions, loose matching):
 
-These numbers are comparisons between methods on rule-generated labels. They are not accuracy
-figures, and one of the aims of the project is to replace them with measurements on hand-labelled
-data.
+- F1 was 0.923 for a rule-based parser, 0.890 for the LLM given only the schema and 0.956 for the LLM
+  given an isnad-aware prompt, so raw extraction accuracy is not where we can contribute most.
+- Checking that the model's quotation occurs in the source flagged nothing. Checking that the
+  extracted name occurs inside the model's own quotation flagged 155 of 1,688 proposals (9.2%),
+  including 122 of the 145 that disagreed with the labels, with 33 false alarms. Most flagged
+  proposals were correct names that the model had transliterated or changed in grammatical case, not
+  invented narrators. Precision of the proposals accepted without review rose from 0.914 to 0.985.
+- The model's self-reported confidence separated right from wrong proposals poorly (AUC 0.634). Sending
+  every proposal below 0.85 to review would send 16.3% of them and catch 50 of the 145.
+- In the same hadiths, 10.0% of the 2,150 chain positions use a name shared by several of the 740
+  persons, and 25.8% of the persons appear under more than one name.
 
-**The claim behind the design.** A candidate that a parser or a model extracts from a text can be
-extracted again, so it is treated as derived: it is checked, not trusted, and it does not have to be
-kept. An acceptance, a correction or the identification of a narrator by a person cannot be derived
-from any text and has to be stored once, with who decided and when. Two exploratory studies of
-13 October 2026 looked at the second half. Both are simulations: no person took part.
+The labels are not a human gold standard, so these are comparisons between methods. One aim of the
+project is to repeat them on hand-labelled data.
 
-- On the 27,056 test chains of AR-Sanad [4] (150,904 narrator mentions), a stored identity decision
-  that is reused whenever the same written name appears is wrong for one mention in ten. When the
-  decision is tied to its context only after a deterministic rule on generations and death years
-  has seen a contradiction, the silent error falls to 0.014 per mention with about half the reviewer
-  questions that a fixed context key needs. The reviewer is simulated from the labels of the data set.
-- In a second domain, a coding agent that answers questions about the engine's own source code
-  answered questions about why the code is the way it is 0% to 4% correctly from the code alone and
-  88% to 100% correctly with a ledger of decisions (12 questions, two runs each). It answered
-  structural questions 94% to 98% correctly with no documentation when it had enough tool calls.
+**The claim behind the design.** A candidate that a parser or a model extracts can be extracted again,
+so it is checked, not trusted, and it does not have to be kept. An acceptance, a correction or the
+identification of a narrator by a person cannot be derived from any text and has to be stored once,
+with who decided and when. Two exploratory simulations of 13 October 2026, with no person taking part,
+looked at this. On 27,056 labelled chains of AR-Sanad [5], an identity decision reused whenever the same
+written name appears was wrong for one mention in ten; narrowing the decision only after a rule on
+generations and death years found a contradiction lowered the silent error to 0.014 per mention. In a
+second domain, a coding agent answered why-questions about the engine's code 0% to 4% correctly from
+the code alone and 88% to 100% correctly with a ledger of decisions (12 questions, two runs each).
 
-## 3. Objectives, scope and success criteria
+## 3. Objectives, Scope and Success Criteria
 
-**Objective.** Build an engine that turns hadith text into a narrator-chain graph in which every
-fact is tied to a source quotation and to a recorded decision, and measure how much each validation
-step reduces extraction errors. Test the claim behind the design, that decisions have to be stored
-and derivable facts do not, on the engine's own task and in one other domain.
+### Objectives
 
-**In scope for CSE 491 (prototype):**
+- Build an engine that turns Arabic hadith text into a narrator-chain graph in which every fact is
+  tied to a source quotation and to a recorded decision. It covers loading hadiths from Sanadset 650K
+  [1], rule-based separation of isnad and text, one LLM call per chain constrained to a fixed schema,
+  three deterministic checks (the type is in the schema; the quotation occurs in the source; the
+  value occurs in the quotation), one domain rule (the Prophet is not a narrator), a review screen and
+  a canonical graph.
+- Measure how many extraction errors each check catches on its own against hand-labelled data, and
+  compare it with the model's own confidence when the same share of proposals is sent to review.
+- Build a reference set of 50 hadiths labelled by two annotators, with disagreements decided by three
+  hadith scholars, and report how often the annotators and the scholars agree.
+- Report the two supporting studies of the claim with their scripts and limits.
 
-- Loading Arabic hadiths, one hadith per source unit, from Sanadset 650K [1].
-- Rule-based separation of isnad and text, and splitting of the isnad into narrator mentions.
-- LLM extraction of narrators and `NARRATED_FROM` links, one call per chain, constrained to a fixed
-  schema.
-- Three deterministic checks: the type exists in the schema; the quotation occurs in the source; the
-  extracted value occurs in the quotation. One domain rule that needs no biographical data: the
-  Prophet is not a narrator.
-- A review screen where a person accepts, rejects or edits a candidate, with who decided, when, and
-  how long it took.
-- A canonical graph in which the same two narrators can be linked in different hadiths without one
-  link overwriting the other.
-- A scoring script and a hand-labelled set of 50 hadiths.
-- Two supporting studies, reported with their scripts and limits: the simulation of a ledger of
-  narrator-identity decisions on labelled chains, and the coding-agent experiment. Neither changes
-  the engine.
+### Out of scope
 
-**Out of scope for CSE 491** (planned for Project II unless stated otherwise):
-
-- Linking narrator mentions to an authority list of known narrators (entity resolution), and a
-  ledger of identity decisions inside the engine. CSE 491 has the simulation only.
-- Domain rules that need biographical dates (contemporaneity, meeting, generation).
-- The comparison of graph-based and text-only retrieval for question answering.
-- Multi-model experiments and a labelled set larger than the 50-hadith calibration set.
-- Turkish hadith text. We found no copyright-free Turkish source with full chains.
+- Linking narrator mentions to an authority list (entity resolution) and an identity ledger inside
+  the engine; domain rules that need biographical dates; question answering over the graph;
+  multi-model experiments and a labelled set larger than 50 hadiths. These are planned for Project II.
+- Turkish hadith text: we found no copyright-free Turkish source with full chains.
 - Judging the authenticity of hadiths. The system records chains; it does not grade them.
 
-**Success criteria.** The prototype is tested against these in week 13.
+### Success criteria
 
-| # | Criterion | How it is measured |
+- **S1.** 100 hadiths pass from upload to canonical graph with no manual step outside the review
+  screen (logged end-to-end run).
+- **S2.** 100% of facts in the canonical graph have a source quotation and a decision record (automated
+  test over the graph).
+- **S3.** Precision, recall and F1 are reported for four conditions (rule-based parser; LLM; LLM with
+  checks; LLM with checks and human review) on the 50 labelled hadiths, under strict and loose
+  matching, with hadith-level bootstrap confidence intervals. For each check the table gives how many
+  wrong proposals it flags on its own, next to what the model's confidence flags at the same review
+  share.
+- **S4.** Agreement between the two annotators (mutual F1), agreement among the three scholars
+  (Fleiss' kappa), the number of contested items and the labelling time per hadith are reported.
+- **S5.** Every number of the two supporting studies is reproduced by a script from a clean clone of
+  the repository, and the report states what was measured for and against the claim.
+
+## 4. Similar Systems and Background
+
+| System / work | What it does | Limitation or gap your project addresses |
 |---|---|---|
-| S1 | A set of 100 hadiths passes from upload to canonical graph without manual intervention outside the review screen | End-to-end run, logged |
-| S2 | 100% of facts in the canonical graph have a source quotation and a decision record (human or policy) | Automated test over the graph |
-| S3 | Precision, recall and F1 are reported for four conditions (rule-based parser; LLM; LLM with checks; LLM with checks and human review) on the 50 hand-labelled hadiths, under strict and loose matching, with hadith-level bootstrap confidence intervals. For each check, the table also gives how many mismatched proposals it flags on its own, next to the number the model's confidence flags when the same share of proposals is sent to review | Scoring script, results table |
-| S4 | Inter-annotator agreement on the 50 hadiths and mean labelling time per hadith are reported | Two independent annotators, mutual F1 |
-| S5 | For the claim "decisions are stored, derivable facts are derived again", the report states what was measured for it and against it, and every number of the two supporting studies is reproduced by a script in the repository | Re-run of the scripts from a clean clone |
+| Sanadset 650K [1] | 650,986 hadith records from 926 books with narrator tags produced by regular expressions | No human check of the tags |
+| SemanticHadith [2], [3] | Ontology and knowledge graph of the six canonical collections; narrators extracted with a custom NER model (micro F1 97%); three experts checked samples | No LLM extraction and no decision per fact; ambiguous names are left for manual review; expert validation framework listed as future work |
+| Muther and Smith [4] | Expert-annotated isnad boundaries in 50 classical texts | Finds isnad spans, not narrators; experts agree exactly on the end point in only 53% of cases |
+| AR-Sanad 280K [5] | 27,056 real chains linked to 18,298 narrator identities | Starts from separated names, not text; 60.6% of chains contain at least one wrong narrator |
+| Oumer [6] | Fine-tuned narrator and relation extraction on 223,478 hadiths (narrator F1 0.98) | Needs large labelled training data; no provenance or human review |
+| Rezwan [7] | LLM-assisted corpus of 1.2M narrations scored by six experts | Scores without an agreement statistic; not comparable across studies |
+| Text2KGBench [8] | Benchmark for ontology-driven graph extraction with LLMs | Shows that "appears in the text" does not imply "correct" (precision 0.38 on one dataset) |
+| Tsaneva et al. [10] | Nine workflows combining LLM validators and people to validate a scientific graph, scored against three experts | Whole workflows compared; single modules are not evaluated in isolation |
+| KARMA [11] | Multi-agent LLM enrichment of a biomedical graph with validation agents | Ablation scored by an LLM judge, not an external reference |
+| ODKE+ [12] | Production extraction with a second LLM as grounding judge | No deterministic check of the extracted value; method of the reported effects not given |
 
-## 4. Similar systems and background
+**Position of this project.** A recent review of the field [9] names weak benchmark comparability and
+sparse expert validation as open problems. A hadith knowledge graph, its ontology and accurate fine-tuned extractors
+already exist; we build on them for the schema. Routing uncertain facts to people by confidence or by
+disagreement is not new [10]–[12], and we do not claim it. We did not find a check that the extracted
+value occurs in the model's own quotation reported as its own error class, nor a measurement of what
+each deterministic check catches on the same candidates against an external reference, compared with
+the model's confidence at the same review share. Our search was not systematic, so this is a
+statement about what we found.
 
-| Work | What it provides | How quality was measured | What is missing for our purpose |
-|---|---|---|---|
-| Sanadset 650K [1] | 650,986 hadith records from 926 books with narrator tags | Not reported; tags were produced with regular expressions | No human check of the labels |
-| SemanticHadith [2], [12] | Ontology and knowledge graph for the six canonical collections (34,458 hadiths); entities extracted with a custom NER model; narrator chain segments are modelled as classes | NER micro F1 97%; three experts checked a random sample of 100 instances per collection | No LLM extraction and no decision per fact; ambiguous names are excluded or left for manual review, and an expert validation framework is listed as future work |
-| Çinici [13] | LLM with retrieval turns one volume of a classical biographical work into a structured dataset of 271 scholars | The author compared the first 100 records with the source; no figure reported | Biographies, not chains; one evaluator; no graph or review workflow |
-| Muther and Smith [3] | Expert-annotated isnad boundaries in 50 classical texts | Strict F1 0.254, partial F1 0.835; experts agree exactly on the end point in 53% of cases | Finds isnad spans, not individual narrators |
-| AR-Sanad 280K [4] | 27,056 real chains with narrator identities, 18,298 narrators | Micro F1 83.5, but 60.6% of chains contain at least one wrong narrator | Starts from already separated names, not from text |
-| Oumer [5] | Fine-tuned models for narrator and relation extraction on 223,478 hadiths | Narrator F1 0.98, relation F1 0.95 (figures from the author's model repository) | Needs large labelled training data; no provenance or human review |
-| Rezwan [6] | LLM-assisted corpus of 1.2M narrations | Six experts, 0–10 scores; no agreement statistic | Scores are not comparable across studies |
-| Wirahman [7] | Links 185,216 narrator name variants to biographical databases | Not measured; the author states no labelled reference exists | Fully automatic, no human decision |
-| Text2KGBench [8] | Benchmark for ontology-driven KG extraction with LLMs | Precision 0.38 with subject hallucination 0.17 on one dataset | General domain; shows that "appears in the text" does not imply "correct" |
-| Tsaneva et al. [14] | Nine workflows that combine LLM validators and people in the validation of a scientific KG | F1 against three experts; number of triples people judged | People see all triples, low-support ones or validator disagreements; modules are not evaluated in isolation |
-| KARMA [15] | Multi-agent LLM enrichment of a biomedical KG with validation agents | Ablation of agents, scored by an LLM judge | No external reference; agents, not single checks |
-| ODKE+ [16] | Production extraction with a second LLM as grounding judge | Grounding and corroboration effects reported without a method | No deterministic check of the extracted value |
+## 5. Preliminary Requirements
 
-A recent critical review of the field [9] lists weak benchmark comparability and sparse expert
-validation as open problems. General frameworks for LLM-based graph construction exist as well
-[10], [11].
+### Functional requirements
 
-**Position of this project.** A hadith knowledge graph, its ontology and narrator linking already
-exist, and fine-tuned models already extract chains accurately. We build on that work for the schema.
-Outside the hadith domain, validation between an extractor and a graph has been compared as whole
-workflows, ablated agent by agent with an LLM judge, and routed to people by confidence or by
-disagreement [14]–[16]; we do not claim that idea. We did not find a check that the extracted value
-occurs in the model's own quotation, reported as its own error class, or a measurement of what each
-deterministic check catches on the same candidates against an external reference, compared with the
-model's own confidence at the same review share. We also did not find a measurement of how often a
-stored narrator-identity decision can be reused and at what error. We do not claim that the mechanism
-we simulate, tying a correction to the context in which an earlier answer failed, is new. Our search
-was not systematic, so this is a statement about what we found.
-
-## 5. Preliminary requirements
-
-**Functional**
-
-| ID | The system shall |
-|---|---|
-| F1 | let a user define node types, relation types and their properties, and reject identifiers that the graph database cannot store |
-| F2 | ingest a hadith as one source unit with a stable identifier and content hash |
-| F3 | split a hadith into isnad and text and return narrator mentions with character offsets |
-| F4 | request candidates from an LLM for one chain at a time, constrained to the schema |
-| F5 | reject a candidate whose type is not in the schema without discarding the other candidates of the same call, and record the unknown type |
-| F6 | mark a candidate for review when its quotation does not occur in the source |
-| F7 | mark a candidate for review when its extracted value does not occur in its quotation |
-| F8 | present candidates with their quotation and check results, and let a reviewer accept, reject or edit them |
-| F9 | record for every decision the reviewer, the time and the duration |
-| F10 | write accepted facts to the canonical graph so that links between the same two narrators in different hadiths stay distinct |
-| F11 | display the chain of a hadith and the source quotation of each link |
-| F12 | score system output against a reference file and produce precision, recall and F1 |
-| F13 | mark a candidate for review when it names the Prophet as a narrator |
-
-**Non-functional**
-
-| ID | Requirement | Verification |
+| ID | Requirement | Priority (must / should / could) |
 |---|---|---|
-| N1 | No fact reaches the canonical graph without a decision record | Automated test (S2) |
-| N2 | Re-running a commit does not create duplicate nodes or links | Integration test |
-| N3 | The backend test suite runs without a database or network access in under one minute | CI |
-| N4 | A new user can start the system from the README alone | Tested on a clean machine in week 14 |
-| N5 | No API keys or passwords are stored in the repository | Repository scan in CI |
+| FR-1 | The system shall ingest a hadith as one source unit with a stable identifier and content hash. | must |
+| FR-2 | The system shall split a hadith into isnad and text and return narrator mentions with character offsets. | must |
+| FR-3 | The system shall request candidates from an LLM for one chain at a time, constrained to the schema. | must |
+| FR-4 | The system shall reject a candidate whose type is not in the schema without discarding the other candidates of the same call, and record the unknown type. | must |
+| FR-5 | The system shall mark a candidate for review when its quotation does not occur in the source. | must |
+| FR-6 | The system shall mark a candidate for review when its extracted value does not occur in its quotation. | must |
+| FR-7 | The system shall mark a candidate for review when it names the Prophet as a narrator. | should |
+| FR-8 | The system shall show candidates with their quotation and check results and let a reviewer accept, reject or edit them. | must |
+| FR-9 | The system shall record for every decision the reviewer, the time and the duration. | must |
+| FR-10 | The system shall write accepted facts to the canonical graph so that links between the same two narrators in different hadiths stay distinct. | must |
+| FR-11 | The system shall display the chain of a hadith with the source quotation of each link. | should |
+| FR-12 | The system shall score output against a reference file and report precision, recall and F1. | must |
+| FR-13 | The system shall let a user define node types, relation types and properties, and reject identifiers the graph database cannot store. | could |
 
-## 6. Method and technology plan
+### Non-functional requirements
 
-**Approach.** The engine is a pipeline with a gate at each stage:
+| ID | Requirement | How it will be checked |
+|---|---|---|
+| NFR-1 | No fact reaches the canonical graph without a decision record. | Automated test (S2) |
+| NFR-2 | Re-running a commit does not create duplicate nodes or links. | Integration test |
+| NFR-3 | The backend test suite runs without a database or network access in under one minute. | CI |
+| NFR-4 | A new user can start the system from the README alone. | Test on a clean machine in week 14 |
+| NFR-5 | No API keys or passwords are stored in the repository. | Repository scan in CI |
+
+## 6. Method and Technology Plan
+
+**Approach.** The engine is a pipeline with a gate at each stage. The model has no write access to
+the graph; a candidate becomes a fact only after it passes the checks and receives a decision.
 
 ```
 hadith text → isnad segmenter → LLM proposal (per chain) → checks → review → canonical graph
-                                                     schema / quotation / value      decision record
 ```
 
-The model has no write access to the graph. A candidate becomes a fact only after it passes the
-checks and receives a decision.
-
 **Measurement.** We add the stages one at a time and score each configuration against the
-hand-labelled set, so the contribution of each stage can be read from the table. The matching
-criterion is fixed before measurement: strict (normalised strings equal) and loose (equal,
-substring, or token F1 of at least 0.60), with maximum-weight matching between system and reference
-mentions. The hadith is the unit of analysis.
+hand-labelled set, so the contribution of each stage can be read from the table. The matching rule is
+fixed before measurement: strict (normalised strings equal) and loose (equal, substring, or token F1
+of at least 0.60), with maximum-weight matching between system and reference mentions. The hadith is
+the unit of analysis.
 
-**Labelled data.** Two group members label the same 50 hadiths independently, following a written
-guideline, without seeing system output. The person who writes the checks does not label. The domain
-expert reviews the guideline before labelling starts and decides where the two annotators disagree.
-The expert does not review system output, so that the person who sets the reference does not also
-judge the system.
+**Labelled data and the hadith scholars.** Two group members label the same 50 hadiths
+independently, following a written guideline and without seeing system output; the member who writes
+the checks does not label. Our supervisor advised working with more than one scholar, because hadith
+scholars can disagree among themselves. Three scholars take part: Prof. Dr. Rifat Atay (Faculty of
+Theology) and two scholars we will identify by week 6. All three review the guideline before
+labelling starts. Every item on which the two annotators disagree goes to the three scholars, who
+decide it independently of each other, and the majority answer enters the reference. When all three
+answers differ, the item is marked contested, left out of the main score and reported separately. Ten
+randomly chosen hadiths on which the annotators agreed also go to the scholars, to catch errors both
+annotators share. The scholars do not judge system output, so the people who set the reference do not
+also judge the system.
 
-**Existing code.** GiraffeGraph Core already implements schema versioning, ingestion, LLM extraction
-through an OpenAI-compatible provider, candidate validation, a review queue and commit to Neo4j. A
-first version of the checks in F5–F7, the decision record in F9 and the link identity in F10 was
-written in October with AI coding assistants and is covered by automated tests. It has not been
-reviewed by the group and has not been used by a reviewer. Reviewing it, testing it with a person in
-the loop and measuring it against hand-labelled data is the main work of this term.
+**Existing code.** GiraffeGraph Core already implements ingestion, LLM extraction, candidate
+validation, a review queue and commit to Neo4j. The checks and the decision record were written in
+October with AI coding assistants and have automated tests, but the group has not reviewed them and
+no reviewer has used them. Reviewing, testing and measuring them is the main work of this term.
 
-**Technology**
-
-| Layer | Choice | Reason |
+| Layer / component | Technology or tool | Reason for the choice |
 |---|---|---|
 | Backend | Python 3.12, FastAPI | Existing code base; team experience |
 | Operational store | PostgreSQL 16 | Runs, candidates, review items and decisions are relational |
 | Canonical graph | Neo4j 5 | Path queries over chains |
-| Internal dashboard | Next.js 15 | Existing review interface |
-| LLM access | OpenAI-compatible HTTP API | Lets us switch between hosted and open models |
+| Review dashboard | Next.js 15 | Existing review interface |
+| LLM access | OpenAI-compatible HTTP API | Switch between hosted and open models without code changes |
 | Development | uv, pytest, ruff, Docker Compose, GitHub Actions | Reproducible setup and CI |
-| Data | Sanadset 650K | Arabic text with full chains under an open licence (CC BY 4.0 on the original record; the mirror we download states CC0) |
+| Data | Sanadset 650K (text); Ifta Sunnah labels for measurement only | Arabic text with full chains under an open licence; platform labels are not redistributed |
 
-A decision table with the alternatives considered for each choice will be part of the midterm report.
+**Use of AI assistants.** AI assistants were used for the literature search, the measurements, the
+code and the drafting of this document. References were retrieved from Crossref, arXiv and the ACL
+Anthology. The group is responsible for every statement here.
 
-## 7. Work plan
+## 7. Work Plan
 
-| Week | Dates | Work | Output |
+| WP | Work package and its output | Responsible member(s) | Weeks |
 |---|---|---|---|
-| 5 | 12–18 Oct | Proposal | This document |
-| 6 | 19–25 Oct | Architecture, data model, three screen sketches; guideline reviewed with the domain expert | Diagrams; guideline v1; supervisor meeting 3 |
-| 7 | 26 Oct – 1 Nov | Technology decision table; labelling of 50 hadiths by two annotators | Decision table; labels; time per hadith |
-| 8 | 2–8 Nov | Midterm report and presentation; agreement figures; disagreements decided by the expert | Report, slides, dated plan; reference set |
-| 9 | 9–15 Nov | Group review of the existing engine code; one hadith end to end; supervisor and course staff added to the repository | Review notes; running skeleton; supervisor meeting 4 |
-| 10 | 16–22 Nov | Segmenter, per-chain extraction and the three checks reviewed and tested by the group; the domain rule added | Core components with tests; repository link on Teams |
-| 11 | 23–29 Nov | Review screen used by a group member on the labelled set; decision record and chain view tested | Clickable workflows; supervisor meeting 5 |
-| 12 | 30 Nov – 6 Dec | Integration on 100 hadiths, scoring script, deployment | First tagged version |
-| 13 | 7–13 Dec | Test against S1–S4, fixes, list of known limitations | Results table |
-| 14 | 14–20 Dec | Final report, README, technical documentation | Report and repository |
-| 15 | Final period | Prototype demo and plan for Project II | Presentation |
+| WP1 | Architecture, data model, three screen sketches and technology decision table | Yahya Efe Kuruçay; all for review | 5–7 |
+| WP2 | Labelling guideline reviewed by the three scholars; 50 hadiths labelled by two annotators; scholar decisions; agreement figures and reference set | Deniz Büyükşahin, Alperen Ulukaya | 6–8 |
+| WP3 | Midterm report and presentation | All | 8 |
+| WP4 | Group review of the existing engine; segmenter, per-chain extraction, three checks and the Prophet rule tested | Alperen Ulukaya (segmenter), Yahya Efe Kuruçay (checks) | 9–10 |
+| WP5 | Review screen used by a group member on the labelled set; decision record and chain view tested | Deniz Büyükşahin (review screen), Alperen Ulukaya (chain view), Yahya Efe Kuruçay (decision record) | 10–11 |
+| WP6 | Integration on 100 hadiths, scoring script, test against S1–S5, final report, README and demo | All; Yahya Efe Kuruçay (scoring) | 12–15 |
 
-**Division of work**
+Supervisor meetings follow the course plan (weeks 6–7, 9–10 and 12–13). Every member commits their
+own work under their own account.
 
-| Member | Main responsibility |
-|---|---|
-| Yahya Efe Kuruçay | Architecture, validation checks, decision record, scoring script |
-| Deniz Büyükşahin | Labelling guideline, annotation (annotator 1), review screen |
-| Alperen Ulukaya | Isnad segmenter, annotation (annotator 2), chain view |
+## 8. Expected Outputs and Risks
 
-All members commit their own work under their own accounts.
+### Expected outputs
 
-## 8. Expected outputs and risks
-
-**Outputs at the end of the term**
-
-- A working prototype and its repository with README, tests and CI. Engine, documentation and data
-  are in one private repository; the engine is published under an open-source licence at the end of
-  the project.
-- A labelling guideline and 50 hadiths labelled by two annotators, with agreement figures.
+- A working prototype in one private repository with README, tests and CI; the engine is published
+  under an open-source licence at the end of the project.
+- A labelling guideline and 50 labelled hadiths with annotator and scholar agreement figures.
 - A results table for the four conditions in S3.
 - The two supporting studies with their scripts, result files and stated limits.
 - Final report, presentation and a plan for Project II.
 
-**Risks**
+### Risks
 
-| Risk | Early sign | Response |
-|---|---|---|
-| Labelling takes longer than planned | Time per hadith in week 7 | Reduce the set; label in a spreadsheet instead of building a tool |
-| Annotators disagree | Low mutual F1 in the first round | Add boundary rules to the guideline and repeat the round |
-| Development starts late | No running skeleton by mid-November | Simplify the interface; keep checks and scoring |
-| Scope grows again | A new planning round with no working component | Return to the out-of-scope list in section 3 |
-| LLM cost or access | Calls fail or the budget is used up | Use an open model through the same API; reduce the set |
-| Licence of additional labelled data cannot be confirmed | No written confirmation | Use Sanadset and our own labels only |
+| Risk | Likelihood | Impact | Mitigation plan |
+|---|---|---|---|
+| Labelling takes longer than planned | Medium | Medium | Measure time per hadith on the first ten; label in a spreadsheet instead of building a tool |
+| Annotators disagree often | Medium | High | Add boundary rules to the guideline and repeat the round |
+| A scholar cannot take part or is late | Medium | Medium | Work with two scholars; when they disagree the item is contested |
+| Scholars disagree on many items | Medium | Medium | Report the contested share as a result; clarify the guideline with the scholars |
+| Development starts late | Medium | High | Simplify the interface; keep the checks and the scoring |
+| Licence of the platform labels cannot be confirmed | Medium | Low | Use them for measurement only; rely on Sanadset and our own labels |
 
-## Use of AI assistants
-
-AI assistants were used for the literature search, for the pilot analysis of 30 September 2026, for
-code review of the existing engine, for the first version of the checks, for the two exploratory
-studies of 13 October 2026 and for drafting this document. Bibliographic records were
-retrieved from Crossref, arXiv and the ACL Anthology, not written from memory. The group is
-responsible for every statement here.
-
-## References
+## 9. References
 
 [1] M. Mghari, O. Bouras, and A. El Hibaoui, "Sanadset 650K: Data on Hadith narrators," *Data in
 Brief*, vol. 44, 108540, 2022. doi:10.1016/j.dib.2022.108540
@@ -293,23 +261,24 @@ Brief*, vol. 44, 108540, 2022. doi:10.1016/j.dib.2022.108540
 the hadith corpus," *Journal of Web Semantics*, vol. 78, 100797, 2023.
 doi:10.1016/j.websem.2023.100797
 
-[3] R. Muther and D. Smith, "Tracing Traditions: Automatic Extraction of Isnads from Classical Arabic
+[3] A. B. Kamran, N. A. Butt, and A. Basharat, "Semantic Enrichment of Hadith Corpus—Knowledge Graph
+Generation From Islamic Text," *Semantic Web*, vol. 17, no. 2, pp. 1–27, 2026.
+doi:10.1177/22104968261431425
+
+[4] R. Muther and D. Smith, "Tracing Traditions: Automatic Extraction of Isnads from Classical Arabic
 Texts," in *Proc. Fifth Arabic Natural Language Processing Workshop*, 2020, pp. 130–138.
 https://aclanthology.org/2020.wanlp-1.12/
 
-[4] S. Mahmoud, O. Saif, E. Nabil, M. Abdeen, M. ElNainay, and M. Torki, "AR-Sanad 280K: A Novel 280K
+[5] S. Mahmoud, O. Saif, E. Nabil, M. Abdeen, M. ElNainay, and M. Torki, "AR-Sanad 280K: A Novel 280K
 Artificial Sanads Dataset for Hadith Narrator Disambiguation," *Information*, vol. 13, no. 2, 55,
 2022. doi:10.3390/info13020055
 
-[5] J. M. Oumer, "Relation extraction for graph-based representation of Hadith Isnad," M.S. thesis,
+[6] J. M. Oumer, "Relation extraction for graph-based representation of Hadith Isnad," M.S. thesis,
 University of Malta, 2025. https://www.um.edu.mt/library/oar/handle/123456789/137629
 
-[6] M. Asgari-Bidhendi, M. A. Ghaseminia, A. Shahbazi, S. A. Hossayni, N. Torabian, and
+[7] M. Asgari-Bidhendi, M. A. Ghaseminia, A. Shahbazi, S. A. Hossayni, N. Torabian, and
 B. Minaei-Bidgoli, "Rezwan: Leveraging Large Language Models for Comprehensive Hadith Text
 Processing: A 1.2M Corpus Development," arXiv:2510.03781, 2025.
-
-[7] T. Wirahman, "Linking Hadith Narrator Identities Across Heterogeneous Arabic Biographical
-Databases: A Multi-Signal Entity Resolution Pipeline," arXiv:2607.05424, 2026.
 
 [8] N. Mihindukulasooriya, S. Tiwari, C. F. Enguix, and K. Lata, "Text2KGBench: A Benchmark for
 Ontology-Driven Knowledge Graph Generation from Text," arXiv:2308.02357, 2023.
@@ -317,26 +286,12 @@ Ontology-Driven Knowledge Graph Generation from Text," arXiv:2308.02357, 2023.
 [9] M. A. Haque and R. Islam, "Hadith computational science in the age of large language models: a
 critical narrative review," arXiv:2608.20364, 2026.
 
-[10] B. Zhang and H. Soh, "Extract, Define, Canonicalize: An LLM-based Framework for Knowledge Graph
-Construction," in *Proc. EMNLP 2024*, pp. 9820–9836. doi:10.18653/v1/2024.emnlp-main.548
-
-[11] D. Edge et al., "From Local to Global: A Graph RAG Approach to Query-Focused Summarization,"
-arXiv:2404.16130, 2024.
-
-[12] A. B. Kamran, N. A. Butt, and A. Basharat, "Semantic Enrichment of Hadith Corpus—Knowledge Graph
-Generation From Islamic Text," *Semantic Web*, vol. 17, no. 2, pp. 1–27, 2026.
-doi:10.1177/22104968261431425
-
-[13] O. Çinici, "Hadis Araştırmalarında Büyük Dil Modelleri (LLM): Teorik Çerçeve, Sınırlar ve Yapay Zekâ
-Destekli Yapılandırılmış Veri İnşası," *Mevzu: Sosyal Bilimler Dergisi*, no. 16, pp. 299–326, 2026.
-doi:10.56720/msbd.2026.s16.326
-
-[14] S. Tsaneva, D. Dessì, F. Osborne, and M. Sabou, "Knowledge graph validation by integrating LLMs and
+[10] S. Tsaneva, D. Dessì, F. Osborne, and M. Sabou, "Knowledge graph validation by integrating LLMs and
 human-in-the-loop," *Information Processing & Management*, vol. 62, no. 5, p. 104145, 2025.
 doi:10.1016/j.ipm.2025.104145
 
-[15] Y. Lu, W. Wu, X. Zhao, R. Peng, and J. Wang, "KARMA: Leveraging Multi-Agent LLMs for Automated
+[11] Y. Lu, W. Wu, X. Zhao, R. Peng, and J. Wang, "KARMA: Leveraging Multi-Agent LLMs for Automated
 Knowledge Graph Enrichment," in *Proc. NeurIPS 2025*. arXiv:2502.06472
 
-[16] S. Khorshidi et al., "ODKE+: Ontology-Guided Open-Domain Knowledge Extraction with LLMs,"
+[12] S. Khorshidi et al., "ODKE+: Ontology-Guided Open-Domain Knowledge Extraction with LLMs,"
 arXiv:2509.04696, 2025.
