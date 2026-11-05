@@ -29,6 +29,13 @@ belirlenecek iki uzman geçer; destek beyanları alınmadı. Eşikler öneridir;
 gönderildiği gün bağlar. Başvuru ekibi bitirme projesi ekibidir: Yahya Efe Kuruçay, Deniz Büyükşahin,
 Alperen Ulukaya.
 
+Danışman 2026-11-05'te taslağın yapay zekâ koktuğunu söyledi ve resmî, edilgen üslupla yazılmış bir
+yeniden yazım (`giraffe.docx`, WhatsApp) gönderdi. Form o belgenin üslubuyla, bu sayfadaki sayılar ve
+atıflar korunarak yeniden yazıldı. 2209-A 2026 kuralları yüzünden üç taahhüt biçimi değişti: takvimde
+yayın ve rapor ayrı iş paketi olamaz (İP4 analiz ve tekrarlanabilirliktir), B planları hedef küçültemez
+(300 hadis, üç model ve iki tekrar korunur), yapay zekâ beyanı form metnine değil TYBS'deki ayrı bölüme
+yazılır. Kurallar ve kaynakları formun "Göndermeden önce" bölümündedir. Danışman yeni metni okumadı.
+
 2026 I. dönem için hazırlanmış taslak donmuş pakette durur
 (`wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf`); bu sayfa onu izlemez.
 
@@ -42,13 +49,13 @@ etiketidir; hiçbiri insan altın standardı değildir ve hiçbir koşuda bir in
 | K-1 | 300 hadisin iki bağımsız kodlayıcıyla etiketlenmesi, anlaşmazlıklarda üç hadis uzmanının bağımsız kararı, kodlayıcı ve uzman uyumu, süre raporu | Etiketleme kiti: kılavuz, etiketlenecek hadis tablosu, tabloyu referansa çeviren betik (`giraffegraph-core/evaluation/annotation/`). Kodlayıcılara gönderilmedi | Etiketlerin tamamı; 50 hadislik kalibrasyon turu; uyum ölçümü |
 | K-2 | Katman ölçümü: kural tabanlı taban çizgisi; yalnız model; + şema kontrolü; + kanıt kontrolleri; + insan incelemesi. İncelemesiz koşullar en az üç model (biri açık ağırlıklı) × iki tekrar; insan incelemesi tek modelin bir koşusunda (Hedef 3). Hata türüne göre, insan etiketine karşı | 1 model (Claude Haiku 5.5, effort `low`) × dört istem koşulu × 1 koşu × 300 hadis, İfta etiketine karşı; kontrollerin yakaladığı öneriler koşu raporunda. Katmanlar ayrı koşul olarak koşulmadı; hata türü sınıflaması yok. İkinci model denemesi yapılandırma hatasıyla sonuçlandı | İnsan etiketi; katman koşulları; hata türü tablosu; iki model; tekrarlar |
 | K-3 | Referansı üretmemiş bir inceleyicinin kuyruğun tamamına karar vermesi; inceleme sonrası P / R, red oranı, karar başına süre | Kayıt altyapısı: `review_decisions` (kim, ne zaman, süre). Hiçbir koşuda karar verilmedi | Ölçümün tamamı |
-| K-4 | Motorda kimlik karar defteri: karar içeriğe bağlanır, kapsam çelişkide daralır, tabaka ve vefat yılı kuralı | Motor dışı benzetim ve testleri (`giraffegraph-core/evaluation/identity_ledger.py`); hedef örtüşmesi ölçümü (`decision_reapplication.py`). Motorda karar aday kimliğine bağlıdır; alan kuralı kancası yoktur | E-1…E-4'ün tamamı; gerçek kararlarla ölçüm |
+| K-4 | Motorda kimlik karar defteri: karar içeriğe bağlanır, kapsam çelişkide daralır, tabaka ve vefat yılı kuralı | Motor dışı benzetim ve testleri (`giraffegraph-core/evaluation/identity_ledger.py`); hedef örtüşmesi ölçümü (`decision_reapplication.py`). Motorda karar aday kimliğine bağlıdır; alan kuralı kancası yoktur | Motordaki dört eklentinin tamamı (içeriğe bağlı karar kaydı, komşu ravi bağlamı, çelişkide kapsam daraltma, hâl eki kuralı); gerçek kararlarla ölçüm |
 
 ## Hipotezler
 
 | Kod | Form metni | Ön çalışma ölçümü | Eşiğin dayanağı |
 |---|---|---|---|
-| H1 | Şema-only koşulda değer-alıntıda kontrolü, insan etiketiyle eşleşmeyen önerilerin en az %60'ını işaretler ve aynı inceleme payında güven skorundan fazlasını bulur | 145 eşleşmeyen önerinin 122'si (%84); güven skoru benzer payda 50 (300 hadis, İfta etiketi) | Ölçümün altında; etiket değişince pay değişebilir. Hadis dışında aynı kontrol 303'te 53 buldu (BC5CDR) |
+| H1 | Şema-only koşulda adın alıntıda bulunması denetimi (tezdeki adıyla değer-alıntıda kontrolü), insan etiketiyle eşleşmeyen önerilerin en az %60'ını işaretler ve aynı inceleme payında güven skorundan fazlasını bulur | 145 eşleşmeyen önerinin 122'si (%84); güven skoru benzer payda 50 (300 hadis, İfta etiketi) | Ölçümün altında; etiket değişince pay değişebilir. Hadis dışında aynı kontrol 303'te 53 buldu (BC5CDR) |
 | H2 | İncelemesiz kabul edilen önerilerde hata oranı ham öneriye göre en az %50 düşer | Precision 0,914 → 0,985; hata 0,086 → 0,015 (300 hadis, şema-only, İfta etiketi) | Göreli yazılmıştır: baz çizgi 0,914 iken mutlak artışın tavanı +0,086'dır |
 | H3 | İnceleyicinin reddetme ya da düzeltme olasılığı, kontrolün işaretlediği adaylarda anlamlı biçimde yüksektir (aday düzeyinde lojistik model, hadis düzeyinde kümelenmiş, p < 0,05) | Veri yok | Aday düzeyinde yazılmıştır: model düzeyinde birkaç gözlemle korelasyon zayıf kalır |
 | H4 | Kapsamı çelişkide daralan defter, öğrenci ve ada sabit deftere göre en az %20 daha az soru sorar; sessiz hata farkı geçiş başına 0,02'yi aşmaz | Benzetim: %48 daha az soru, fark 0,008 (AR-Sanad, 150.904 geçiş); %32 ve 0,003 (İfta, 205.514 geçiş) | Ölçümün altında; 300 hadiste defter soğuk başlar, yeniden kullanım daha azdır |
@@ -61,7 +68,7 @@ etiketidir; hiçbiri insan altın standardı değildir ve hiçbir koşuda bir in
 | 2 Ölçüm | P / R / F1, katı ve gevşek, hadis düzeyinde bootstrap; H1 ve H2 | Betikler hazır ve platform etiketiyle koşuldu (`giraffegraph-core/evaluation/results/2026-10-12-sixbooks300/`) |
 | 3 İnceleyici | İnceleme sonrası P / R, red oranı, karar başına medyan süre; H3 | Yok |
 | 4 Karar defteri | Testler gerçek veritabanlarında geçer; soru ve sessiz hata; H4 | Benzetim (`giraffegraph-core/evaluation/results/2026-10-13-identity-ledger/`) |
-| 5 Açık bilim | Motor, betikler ve etiketler açık lisansla; en az bir bildiri ve ön baskı | Kod özel proje reposundadır; LICENSE dosyası yok. Makale taslağı `wiki/thesis/paper/` altında, gönderilmedi |
+| 5 Açık bilim | Motor, betikler ve etiketler açık lisansla; en az bir hakemli etkinliğe bildiri gönderimi ve ön baskı | Kod özel proje reposundadır; LICENSE dosyası yok. Makale taslağı `wiki/thesis/paper/` altında, gönderilmedi |
 
 ## Formun kapsamadığı işler
 
@@ -107,7 +114,7 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 
 - [ ] Tablodaki her kod ve eşik `wiki/thesis/tubitak/form.md` içinde aynı sayılarla geçiyor
 - [ ] "Eldeki" ve "Ön çalışma ölçümü" sütunlarındaki her sayı çapa verilen dosyada bulunuyor
-- [ ] `cd wiki/thesis && uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py` hatasız biter ve "18 references" der
+- [ ] `cd wiki/thesis && uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py` hatasız biter ve "12 references" der
 - [ ] Onaylanmış bir eşik varsa `wiki/decisions/` altında ADR'si var
 
 ## Related docs
@@ -122,4 +129,4 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 
 ## Last updated
 
-2026-10-25
+2026-11-05

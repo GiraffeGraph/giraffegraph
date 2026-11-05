@@ -105,6 +105,11 @@ Metin, alanını bilen bir araştırmacının yazdığı düz akademik Türkçed
 İngilizcenin sırasını değil, Türkçenin doğal sırasını izler.
 
 - Özne biziz: "ölçtük", "bulduk", "sınamadık". Edilgen yapı yalnız yapanın önemsiz olduğu yerde kullanılır.
+- TÜBİTAK formu bu kuralın istisnasıdır. Danışman 2026-11-05'te birinci çoğul kişili taslağı yapay zekâ
+  kokulu buldu ve resmî üslupla bir örnek gönderdi. Formda planlanan iş edilgen gelecek zamanla
+  ("ölçülecektir"), ön bulgu geçmiş zamanla ("işaretledi"), mevcut durum "hazırdır" ile yazılır; cümle
+  sonları ve uzunlukları çeşitlenir. İki kanıt kontrolü formda "alıntının kaynakta bulunması denetimi" ve
+  "adın alıntıda bulunması denetimi" adını taşır.
 - Her iddia kaynaktaki kadar güçlüdür. Çeviri bir çekinceyi silmez, bir çekince eklemez.
 - Uzun tire (—) ve kısa tire (–) noktalama olarak kullanılmaz; virgül, nokta, iki nokta ya da parantez
   kullanılır. Kaynakta tabloda ya da tarihte duran aralık tiresi aynen kalır.
