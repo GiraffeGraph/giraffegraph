@@ -1,4 +1,8 @@
-"""Build the TÜBİTAK 2209-A form: number citations, add the reference list, export DOCX and PDF.
+"""Build the TÜBİTAK 2209-A form: cite author-year, add the reference list, export DOCX and PDF.
+
+Citations and the reference list follow TÜBİTAK's "Bibliyografik Verilerin Düzenlenmesi"
+(https://tubitak.gov.tr/tr/duyuru/bibliyografik-verilerin-duzenlenmesi): "(Öztürk vd., 2000; Demir,
+2012)" in the text, the list sorted by surname, DOI at the end of every entry that has one.
 
 Usage (from this directory):
     uv run --no-project --python 3.12 --with matplotlib --with pypandoc-binary python build_form.py
@@ -30,31 +34,96 @@ p { margin: 0.45em 0; }
 """
 
 
+# The frozen bib package keeps Crossref's title as delivered, footnote marker included.
+TITLE_FIXES = {"Design Science in Information Systems Research1": "Design Science in Information Systems Research"}
+
+
+def people(raw):
+    """(surname, initials) for each author of a bib `author` field."""
+    result = []
+    for person in re.split(r"\s+and\s+", raw):
+        if "," in person:
+            last, first = [part.strip() for part in person.split(",", 1)]
+        else:
+            parts = person.split()
+            last, first = parts[-1], " ".join(parts[:-1])
+        initials = " ".join(f"{name[0]}." for name in first.replace("-", " ").split() if name)
+        result.append((last, initials))
+    return result
+
+
+def cite_label(fields):
+    surnames = [last for last, _ in people(fields["author"])]
+    if len(surnames) == 1:
+        return surnames[0]
+    if len(surnames) == 2:
+        return f"{surnames[0]} ve {surnames[1]}"
+    return f"{surnames[0]} vd."
+
+
+def format_tubitak(fields):
+    names = ", ".join(f"{last}, {initials}".rstrip(", ") for last, initials in people(fields["author"]))
+    title = TITLE_FIXES.get(fields.get("title", ""), fields.get("title", "")).rstrip(".")
+    kind = fields["ENTRYTYPE"]
+    parts = [f"{names.rstrip('.')}. {fields.get('year', 't.y.')}."]
+    if kind == "book":
+        parts.append(f"{title}.")
+        if fields.get("publisher"):
+            parts.append(f"{fields['publisher']}.")
+    else:
+        venue = ""
+        if kind == "article" and fields.get("journal"):
+            venue = fields["journal"]
+            if fields.get("volume"):
+                venue += f", {fields['volume']}"
+                if fields.get("number"):
+                    venue += f" ({fields['number']})"
+        elif fields.get("booktitle"):
+            venue = fields["booktitle"]
+        elif fields.get("eprint"):
+            venue = f"arXiv:{fields['eprint']}"
+        if fields.get("pages"):
+            venue += f", {fields['pages']}"
+        parts.append(f'"{title}", {venue}.' if venue else f'"{title}".')
+    if fields.get("doi"):
+        parts.append(f"DOI: {fields['doi']}")
+    elif fields.get("url"):
+        parts.append(fields["url"])
+    return " ".join(parts).replace("\\&", "&")
+
+
 def assemble(entries):
     text = (FORM / "form.md").read_text(encoding="utf-8")
     text = re.sub(r"\A(# [^\n]*\n)\n(?:>[^\n]*\n)+", r"\1", text)
     text = text.split(NOTES_HEADING)[0].rstrip() + "\n"
-    order = []
-
-    def replace(match):
-        numbers = []
+    keys = []
+    for match in re.finditer(r"\[(@[^\]]+)\]", text):
         for key in re.split(r"\s*;\s*", match.group(1)):
             key = key.strip().lstrip("@")
-            if key not in entries and key not in build.INTERNAL:
+            if key not in entries:
                 raise SystemExit(f"unknown citation key: {key}")
-            if key not in order:
-                order.append(key)
-            numbers.append(order.index(key) + 1)
-        return "[" + ", ".join(str(number) for number in sorted(numbers)) + "]"
+            if key not in keys:
+                keys.append(key)
+    keys.sort(key=lambda key: (people(entries[key]["author"])[0][0], entries[key].get("year", "")))
+
+    # Same label and year twice gets a letter after the year (Öztürk 2000a, 2000b).
+    years = {}
+    for key in keys:
+        years.setdefault((cite_label(entries[key]), entries[key].get("year", "")), []).append(key)
+    year_of = {}
+    for (_, year), group in years.items():
+        for index, key in enumerate(group):
+            year_of[key] = year + ("abcdefghij"[index] if len(group) > 1 else "")
+
+    def replace(match):
+        cited = [key.strip().lstrip("@") for key in re.split(r"\s*;\s*", match.group(1))]
+        return "(" + "; ".join(f"{cite_label(entries[key])}, {year_of[key]}" for key in cited) + ")"
 
     text = re.sub(r"\[(@[^\]]+)\]", replace, text)
-    references = "\n\n".join(
-        f"[{number}] {build.INTERNAL.get(key) or build.format_entry(entries[key])}"
-        for number, key in enumerate(order, start=1)
-    )
+    references = "\n\n".join(format_tubitak({**entries[key], "year": year_of[key]}) for key in keys)
     if REFERENCES_MARKER not in text:
         raise SystemExit("references marker is missing from tubitak/form.md")
-    return text.replace(REFERENCES_MARKER, references), order
+    return text.replace(REFERENCES_MARKER, references), keys
 
 
 def main():
