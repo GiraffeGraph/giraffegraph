@@ -36,7 +36,7 @@ organizasyonunda durur ama bitirme projesinin parçası değildir ve çalışma 
 - **Sanadset `<NAR>` etiketleri gümüş standarttır.** Onlara karşı ölçülen değer sistemler arası
   karşılaştırmada kullanılır; "gerçek doğruluk" diye sunulmaz.
 - **TÜBİTAK 2209-A formu gönderilmemiş bir taslaktır** (`wiki/thesis/tubitak/form.md`; proje sahibinin
-  beyanı, 2026-10-13). K-1…K-5, H1…H4 ve Hedef 1–5 gönderilene kadar ölçüme göre değiştirilebilir; form
+  beyanı, 2026-10-13). K-1…K-4, H1…H4 ve Hedef 1–5 gönderilene kadar ölçüme göre değiştirilebilir; form
   gönderildiği gün bağlayıcı olur ve o günden sonra çelişen plan önerilmez. Taahhüt başına eldeki
   kanıt: `wiki/project/tubitak-commitments.md`.
 - **CSE 491 proje önerisi bağlayıcıdır.** Vize ve final ona göre değerlendirilir; son teslim günü

@@ -7,7 +7,7 @@ tutmak. Bir plan ya da rapor yazılırken taahhüdün karşılanıp karşılanma
 
 ## Scope
 
-- In: K-1…K-5 katkıları, H1…H4 hipotezleri, Hedef 1–5; her birinin eldeki kanıtı ve eksiği; eşiklerin
+- In: K-1…K-4 katkıları, H1…H4 hipotezleri, Hedef 1–5; her birinin eldeki kanıtı ve eksiği; eşiklerin
   hangi ölçüme dayandığı; formun bilerek kapsamadığı işler
 - Out: formun tam metni (`wiki/thesis/tubitak/form.md`), ölçümlerin ayrıntısı
   (`wiki/evaluation/engine-experiments.md`, `wiki/evaluation/decision-ledger-experiments.md`), sıradaki
@@ -15,8 +15,17 @@ tutmak. Bir plan ya da rapor yazılırken taahhüdün karşılanıp karşılanma
 
 ## Statü
 
-Form taslaktır ve gönderilmedi (proje sahibinin beyanı, 2026-10-13). Metin tek proje çerçevesiyle
-yazılmıştır (`wiki/project/overview.md`, "Çerçeve"); ekip ve danışman okumadı. Eşikler öneridir;
+Form taslaktır ve gönderilmedi (proje sahibinin beyanı, 2026-10-13). Kapsam, ekibin 2026-10-25
+tarihli proje özetini izler (Alperen Ulukaya; ekip WhatsApp grubunda paylaşıldı): hadis motoru, 300
+insan etiketli hadis, katman katman ölçüm, en az üç model, ravi kimliği ve karar defteri. Kod ajanı
+deneyi ve grafla soru cevaplama formda yoktur. Danışman onaylamadı.
+
+Taslağın PDF'i 2026-10-25'te CSE 491 Teams ödevine ("TÜBİTAK 2209-A Application Evidence", puansız)
+yüklendi; yanında başvurunun TYBS'de hazırlandığını söyleyen bir not var. TYBS başvurusu açılmadı.
+2026 çağrısının son günü 11 Kasım 2026, 17:30; kurum e-imzaları 16–23 Kasım (TÜBİTAK duyurusu,
+<https://tubitak.gov.tr/en/announcement/2209-research-project-support-programme-undergraduate-students-and-2209-b-industry-oriented-research-project-support-programme-undergraduate-students-2026-calls-are-open-application>).
+Formda alan uzmanı olarak Dr. Öğr. Üyesi Tunahan Erdoğan (İlahiyat, Arap Dili ve Belagatı) ve
+belirlenecek iki uzman geçer; destek beyanları alınmadı. Eşikler öneridir;
 gönderildiği gün bağlar. Başvuru ekibi bitirme projesi ekibidir: Yahya Efe Kuruçay, Deniz Büyükşahin,
 Alperen Ulukaya.
 
@@ -31,10 +40,9 @@ etiketidir; hiçbiri insan altın standardı değildir ve hiçbir koşuda bir in
 | Kod | Taahhüt (form) | Eldeki | Eksik |
 |---|---|---|---|
 | K-1 | 300 hadisin iki bağımsız kodlayıcıyla etiketlenmesi, anlaşmazlıklarda üç hadis uzmanının bağımsız kararı, kodlayıcı ve uzman uyumu, süre raporu | Etiketleme kiti: kılavuz, etiketlenecek hadis tablosu, tabloyu referansa çeviren betik (`giraffegraph-core/evaluation/annotation/`). Kodlayıcılara gönderilmedi | Etiketlerin tamamı; 50 hadislik kalibrasyon turu; uyum ölçümü |
-| K-2 | Dört koşul × en az üç model (biri açık ağırlıklı) × iki tekrar, insan etiketine karşı | 1 model (Claude Haiku 5.5, effort `low`) × dört koşul × 1 koşu × 300 hadis, İfta etiketine karşı. İkinci model denemesi yapılandırma hatasıyla sonuçlandı | İnsan etiketi; iki model; tekrarlar |
+| K-2 | Katman ölçümü: kural tabanlı taban çizgisi; yalnız model; + şema kontrolü; + kanıt kontrolleri; + insan incelemesi. En az üç model (biri açık ağırlıklı) × iki tekrar, hata türüne göre, insan etiketine karşı | 1 model (Claude Haiku 5.5, effort `low`) × dört istem koşulu × 1 koşu × 300 hadis, İfta etiketine karşı; kontrollerin yakaladığı öneriler koşu raporunda. Katmanlar ayrı koşul olarak koşulmadı; hata türü sınıflaması yok. İkinci model denemesi yapılandırma hatasıyla sonuçlandı | İnsan etiketi; katman koşulları; hata türü tablosu; iki model; tekrarlar |
 | K-3 | Referansı üretmemiş bir inceleyicinin kuyruğun tamamına karar vermesi; inceleme sonrası P / R, red oranı, karar başına süre | Kayıt altyapısı: `review_decisions` (kim, ne zaman, süre). Hiçbir koşuda karar verilmedi | Ölçümün tamamı |
 | K-4 | Motorda kimlik karar defteri: karar içeriğe bağlanır, kapsam çelişkide daralır, tabaka ve vefat yılı kuralı | Motor dışı benzetim ve testleri (`giraffegraph-core/evaluation/identity_ledger.py`); hedef örtüşmesi ölçümü (`decision_reapplication.py`). Motorda karar aday kimliğine bağlıdır; alan kuralı kancası yoktur | E-1…E-4'ün tamamı; gerçek kararlarla ölçüm |
-| K-5 | Kod ajanı deneyinin başka aileden bir modelle ve ikinci bir kod tabanıyla tekrarı | Tek kod tabanı, iki model (aynı aile), 5.520 koşu (`data/cache-and-ledger/data/agent-qa/`) | Başka aileden model; ikinci kod tabanı ve soru kümesi |
 
 ## Hipotezler
 
@@ -65,12 +73,14 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 | Dizi benzerliğiyle (Levenshtein, fonetik) ravi birleştirme | Pilotta dizi tabanlı birleştirmenin tavanı %17,5'tir; 300 hadiste normalizasyon bölünmeyi azaltır, yanlış birleşmeyi artırır (`wiki/evaluation/engine-experiments.md`). Kimlik, saklanan kararla çözülür (K-4) |
 | Türkçe hadis metni | Telifsiz, tam isnad içeren bir Türkçe kaynak bulunamadı |
 | 500 hadis, 5 model, 3 tekrar | Etiketleme süresi ölçülmedi; boyut ilk 50 hadisin süresinden sonra büyütülebilir |
+| Kod ajanı deneyinin ikinci alanda tekrarı | Ekibin 2026-10-25 özeti kapsamı hadis motoruna daraltır; deney bitirme projesinde ön kanıt olarak kalır (`data/cache-and-ledger/data/agent-qa/`) |
+| Grafla soru cevaplama | Graf tamamlandıktan sonraki aşamadır (Proje II); formda yaygın etki bölümünde sonraki çalışma olarak geçer |
 | Cohen kappa eşiği | Açık uçlu çıkarımda birim sayısı sabit değildir; uyum karşılıklı F1 ile ölçülür |
 
 ## Rules
 
 - MUST: taahhüt metni aktarılırken `wiki/thesis/tubitak/form.md` esas alınır; bu sayfadaki tablo özettir.
-- MUST: form gönderildikten sonra bir plan K-1…K-5, H1…H4 ya da Hedef 1–5 ile çelişmez; taahhüdü kapsar
+- MUST: form gönderildikten sonra bir plan K-1…K-4, H1…H4 ya da Hedef 1–5 ile çelişmez; taahhüdü kapsar
   ya da genişletir. Gönderilene kadar eşikler ölçüme göre değiştirilebilir ve değişiklik formda ve bu
   sayfada aynı görevde yapılır.
 - MUST: "Eldeki" sütununa yalnız dosyayla desteklenen şey yazılır; referans insan altın standardı
@@ -90,7 +100,7 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 - `giraffegraph-core/evaluation/results/2026-10-13-identity-ledger/identity-ledger.json` — defter politikaları, iki etiket kümesi, dışarıda bırakılan kitap
 - `giraffegraph-core/evaluation/results/2026-10-13-identity-ledger/decision-reapplication.json` — hedef örtüşmesi
 - `giraffegraph-core/evaluation/annotation/` — etiketleme kiti
-- `data/cache-and-ledger/data/agent-qa/README.md` — kod ajanı deneyi
+- `data/cache-and-ledger/data/agent-qa/README.md` — kod ajanı deneyi (formun kapsamı dışında)
 - `wiki/sources/claude-science-context/02b_tubitak_commitments_and_critique.md` — 2026 I. dönem taslağının yöntem eleştirisi
 
 ## Verification checklist
@@ -112,4 +122,4 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 
 ## Last updated
 
-2026-10-17
+2026-10-25

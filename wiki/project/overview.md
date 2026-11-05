@@ -26,8 +26,8 @@ Projenin kim tarafından, hangi çerçevede, hangi taahhütlerle yürütüldüğ
 | | CSE 491 bitirme projesi | TÜBİTAK 2209-A başvurusu |
 |---|---|---|
 | Ekip | Yahya Efe Kuruçay, Deniz Büyükşahin, Alperen Ulukaya | Aynı ekip (proje sahibinin beyanı, 2026-10-13) |
-| Kapsam ifadesi | Dini soru ve bilgilerin formal şeması → Knowledge Graph → RAG tabanlı soru-cevap; hadis isnad zinciri graf vakası | Model ile graf arasındaki kontrollerin insan etiketine göre neyi yakaladığı; saklanan insan kararının inceleme emeğini ve fark edilmeyen hatayı nasıl değiştirdiği (`wiki/thesis/tubitak/form.md`, "Araştırma sorusu") |
-| Bağlayıcılık | Proje önerisi (vize ve final buna göre değerlendirilir) ve danışman toplantı formları (5 toplantı) | Form gönderilmedi, taslaktır (`wiki/thesis/tubitak/form.md`); gönderildiğinde K-1…K-5, H1…H4 ve Hedef 1–5 bağlar. Taahhüt başına eldeki kanıt: `wiki/project/tubitak-commitments.md` |
+| Kapsam ifadesi | Dini soru ve bilgilerin formal şeması → Knowledge Graph → RAG tabanlı soru-cevap; hadis isnad zinciri graf vakası | Model ile graf arasındaki kontrol katmanları tek tek eklendiğinde graf daha doğru oluyor mu, hangi katman hangi hatayı azaltıyor; saklanan insan kararının inceleme emeğini ve fark edilmeyen hatayı nasıl değiştirdiği (`wiki/thesis/tubitak/form.md`, "Araştırma sorusu") |
+| Bağlayıcılık | Proje önerisi (vize ve final buna göre değerlendirilir) ve danışman toplantı formları (5 toplantı) | Form gönderilmedi, taslaktır (`wiki/thesis/tubitak/form.md`); gönderildiğinde K-1…K-4, H1…H4 ve Hedef 1–5 bağlar. Taahhüt başına eldeki kanıt: `wiki/project/tubitak-commitments.md` |
 | Dönem çıktısı | Proje I çalışan bir ön prototiple biter; Proje II tamamlar | 6 ay, 4 iş paketi |
 | Notlandırma / takvim | Öneri %20 (son gün 2026-10-18); 5 imzalı toplantı formu %20; vize raporu ve sunumu %20 (8. hafta); final raporu, sunum ve prototip demosu %40 (15. hafta / final dönemi). 9. haftadan itibaren tek grup reposu; commit geçmişi bireysel katkının kanıtıdır. Yapay zekâ kullanımı raporda beyan edilir | Form takvimi: `wiki/thesis/tubitak/form.md`, Bölüm 3.1 |
 | Kaynak | İzlence: `/Users/efe/cse/CSE-491-Senior-Design-Project-I/resources/2026-2027-fall/CSE491_Senior_Design_Project_I_Syllabus_Fall_2026-2027.pdf` (§3–§6); toplantılar: `wiki/project/supervisor-meetings.md` | `wiki/thesis/tubitak/form.md`, özet: `wiki/project/tubitak-commitments.md` |
@@ -40,8 +40,9 @@ TÜBİTAK başvurusu gönderilmedi (proje sahibinin beyanı, 2026-10-13); form t
 
 ## Araştırma sorusu
 
-Dar hâli (TÜBİTAK): deterministik şema doğrulama + insan onayı içeren hadis-farkındalıklı mimari,
-doğrudan LLM→graf üretimine kıyasla halüsinasyon ve şema sapma oranını ne ölçüde düşürür?
+Dar hâli (TÜBİTAK ve CSE 491; ekibin 2026-10-25 özeti): model ile graf arasındaki kontrol
+katmanları (şema kontrolü, kaynak / kanıt kontrolü, insan incelemesi) tek tek eklendiğinde daha doğru
+ve güvenilir bir graf elde ediliyor mu, hangi katman hangi tür hatayı azaltıyor?
 
 Geniş hâli (yazarın asıl sorusu): ham veriden LLM destekli, halüsinasyona ve sapmaya dayanıklı,
 insan tarafından doğrulanabilir bir bilgi katmanı kurmanın ve güncel tutmanın optimum yolu nedir?

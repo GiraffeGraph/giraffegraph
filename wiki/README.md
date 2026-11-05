@@ -26,7 +26,7 @@ soru-cevap katmanı. Projenin tek iddiası ve onu taşıyan üç parça: `projec
 Proje:
 
 - `project/overview.md` — ekip, danışman, iki çerçeve (CSE 491 + TÜBİTAK 2209-A), araştırma sorusu
-- `project/tubitak-commitments.md` — TÜBİTAK formundaki K-1…K-5, H1…H4 ve Hedef 1–5: taahhüt başına eldeki kanıt, eksik, eşiğin dayanağı; form metni `thesis/tubitak/form.md`
+- `project/tubitak-commitments.md` — TÜBİTAK formundaki K-1…K-4, H1…H4 ve Hedef 1–5: taahhüt başına eldeki kanıt, eksik, eşiğin dayanağı; form metni `thesis/tubitak/form.md`
 - `project/open-decisions.md` — ekibin ve danışmanın vermesi gereken kararlar: öneri, fiilî durum, sahip
 - `project/supervisor-meetings.md` — danışman toplantıları ve aksiyonlar
 
