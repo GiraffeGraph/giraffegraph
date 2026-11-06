@@ -49,9 +49,10 @@ Bir terim her yerde aynı karşılıkla yazılır.
 | candidate | aday |
 | proposal (modelin çıktısı) | öneri |
 | quotation | alıntı |
-| check | kontrol |
-| quotation-in-source check | alıntı-kaynakta kontrolü |
-| value-in-quotation check | değer-alıntıda kontrolü |
+| check | denetim |
+| quotation-in-source check | alıntının kaynakta bulunması denetimi |
+| value-in-quotation check | değerin alıntıda bulunması denetimi |
+| precision, recall | kesinlik (precision), duyarlılık (recall); ilk geçişten sonra "kesinlik", "duyarlılık" |
 | review, reviewer, review queue | inceleme, inceleyici, inceleme kuyruğu |
 | reason code | gerekçe kodu |
 | decision record | karar kaydı |
@@ -97,7 +98,7 @@ Bir terim her yerde aynı karşılıkla yazılır.
 | review workload | inceleme yükü |
 | paired bootstrap interval | eşli bootstrap aralığı |
 
-`precision`, `recall`, `F1`, `AUC`, `bootstrap`, `B-cubed` ve `commit` İngilizce kalır.
+`F1`, `AUC`, `bootstrap`, `B-cubed` ve `commit` İngilizce kalır.
 
 ## Üslup
 

@@ -1,6 +1,6 @@
 # 6 Gerçekleştirim
 
-Bu bölümde `main` dalını esas alarak `giraffegraph-core` deposunun kodunu açıklıyoruz. Bu daldaki kodun büyük kısmı, yazarların yönlendirmesiyle yapay zekâ kodlama asistanları kullanılarak yazılmıştır ve Bölüm 6.7'de açıklanan otomatik test paketiyle doğrulanmaktadır.
+Bu bölümde `main` dalı esas alınarak `giraffegraph-core` deposunun kodu açıklanmaktadır. Bu daldaki kodun büyük kısmı, yazarların yönlendirmesiyle yapay zekâ kodlama asistanları kullanılarak yazılmıştır ve Bölüm 6.7'de açıklanan otomatik test paketiyle doğrulanmaktadır.
 
 ## 6.1 Teknoloji yığını
 
@@ -13,7 +13,7 @@ Bu bölümde `main` dalını esas alarak `giraffegraph-core` deposunun kodunu a�
 | Panel | Next.js, React, TypeScript | `next ^15`, `react ^19`, `typescript ^5`; CI'da Node 22 |
 | Araçlar | uv, pytest, ruff, katı kipte mypy | `pytest>=8.3`, `ruff>=0.11`, `mypy>=1.15` |
 
-Sürümler, `backend/pyproject.toml`, `frontend/package.json` ve `docker-compose.yml` dosyalarında bildirilen kısıtlardır. Docker Compose beş servisi başlatır: `postgres`, `neo4j`, `backend`, `worker` ve `dashboard`.
+Sürümler, `backend/pyproject.toml`, `frontend/package.json` ve `docker-compose.yml` dosyalarında bildirilen kısıtlardır. Docker Compose ile beş servis başlatılmaktadır: `postgres`, `neo4j`, `backend`, `worker` ve `dashboard`.
 
 ## 6.2 Depo düzeni
 
@@ -33,7 +33,7 @@ evaluation/                scorer, analysis, annotation kit, their tests
 
 ## 6.3 API arayüzü
 
-`interfaces/api/routers/` içindeki 13 yönlendirici, 33 `GET` ve 20 `POST` olmak üzere 53 uç nokta tanımlar.
+`interfaces/api/routers/` içindeki 13 yönlendirici, 33 `GET` ve 20 `POST` olmak üzere 53 uç nokta tanımlamaktadır.
 
 | Grup | Sayı | Örnek uç noktalar |
 |---|---|---|
@@ -50,62 +50,62 @@ evaluation/                scorer, analysis, annotation kit, their tests
 | Zincirler | 3 | `GET /api/projects/{project_id}/chains/hadith`, `GET /api/projects/{project_id}/chains/narrator` |
 | Sağlık | 1 | `GET /health` |
 
-Uygulama hataları, `error_handlers.py` içinde 404, 409, 422 ve 502 durum kodlarına eşlenir.
+Uygulama hataları, `error_handlers.py` içinde 404, 409, 422 ve 502 durum kodlarına eşlenmektedir.
 
 ## 6.4 Model sağlayıcısı soyutlaması
 
-`LLMProvider` portunun iki metodu vardır. `generate_structured` yanıtı sözlük olarak döndürür; `generate_structured_with_usage` ise yanıtla birlikte bir `LLMUsage` kaydı döndürür. `StaticLLMProviderRegistry`, sağlayıcıları adlarına göre tutar. `noop` (aday döndürmez) ve `rule_based_isnad` (Bölüm 5.8) her zaman kaydedilir; `openai` ve `anthropic` ise yalnız API anahtarları ayarlandığında kaydedilir.
+`LLMProvider` portunda iki metot bulunmaktadır. `generate_structured` yanıtı sözlük olarak döndürmekte; `generate_structured_with_usage` ise yanıtla birlikte bir `LLMUsage` kaydı döndürmektedir. `StaticLLMProviderRegistry`, sağlayıcıları adlarına göre tutmaktadır. `noop` (aday döndürmemektedir) ve `rule_based_isnad` (Bölüm 5.8) her zaman kaydedilmektedir; `openai` ve `anthropic` ise yalnız API anahtarları ayarlandığında kaydedilmektedir.
 
-- **OpenAI uyumlu** (`openai_provider.py`). `{base_url}/chat/completions` adresine, `temperature` değeri 0 ve `response_format` değeri `json_object` olacak biçimde istek gönderir; belirteç sınırında kesilen yanıtı hata sayar. Belirteç sayılarını raporlamaz.
-- **Anthropic** (`anthropic_provider.py`). Messages API'yi bir `output_config` ile çağırır. Bu yapılandırma çaba ayarını ve bir JSON şemasını (`EXTRACTION_WIRE_SCHEMA`) taşır. Şema yalnız kapalı nesnelere izin verdiği için özellikler, ad ve değer girdilerinden oluşan bir liste olarak aktarılır ve sonra yeniden bir eşlemeye dönüştürülür. Çaba ayarı `ANTHROPIC_EFFORT` değişkeninden gelir (varsayılan `low`). Ret, kesilmiş yanıt ve her API hata sınıfı bir `StructuredGenerationError` olur; bu hata bir `kind` içerir. Kullanım kaydı; girdi ve çıktı belirteçlerini, önbellekten okunan ve önbellek oluşturmak için kullanılan belirteçleri, durma gerekçesini ve modeli tutar.
+- **OpenAI uyumlu** (`openai_provider.py`). `{base_url}/chat/completions` adresine, `temperature` değeri 0 ve `response_format` değeri `json_object` olacak biçimde istek göndermekte; belirteç sınırında kesilen yanıtı hata saymaktadır. Belirteç sayılarını raporlamamaktadır.
+- **Anthropic** (`anthropic_provider.py`). Messages API'yi bir `output_config` ile çağırmaktadır. Bu yapılandırmada çaba ayarı ve bir JSON şeması (`EXTRACTION_WIRE_SCHEMA`) taşınmaktadır. Şema yalnız kapalı nesnelere izin verdiği için özellikler, ad ve değer girdilerinden oluşan bir liste olarak aktarılmakta ve ardından yeniden bir eşlemeye dönüştürülmektedir. Çaba ayarı `ANTHROPIC_EFFORT` değişkeninden gelmektedir (varsayılan `low`). Ret, kesilmiş yanıt ve her API hata sınıfı, bir `StructuredGenerationError` hatasına dönüştürülmekte; bu hata bir `kind` içermektedir. Kullanım kaydı; girdi ve çıktı belirteçlerini, önbellekten okunan ve önbellek oluşturmak için kullanılan belirteçleri, durma gerekçesini ve modeli tutmaktadır.
 
-İstem kataloğu, tip adlarını eşleştirme kuralı bakımından farklılaşan `candidate_graph_extraction_v1` ve `candidate_graph_extraction_v2` sürümlerini tutar; varsayılan sürüm `v2`'dir.
+İstem kataloğu, tip adlarını eşleştirme kuralı bakımından farklılaşan `candidate_graph_extraction_v1` ve `candidate_graph_extraction_v2` sürümlerini tutmaktadır; varsayılan sürüm `v2`'dir.
 
-`CachedLLMProvider`, bir sağlayıcıyı sarmalar ve her çağrı için bir JSON dosyası saklar. Anahtar; sağlayıcı adı, model, çaba, istem sürümü, istem metni ve veri yükünün SHA-256 özetidir. Özet alınmadan önce veri yükündeki koşu, şema sürümü, kaynak birimi ve segment kimlikleri, konumsal yer tutucularla değiştirilir. Bu nedenle aynı içerikle yapılan sonraki koşu önbellekte bulunur ve saklanan yanıt yeni koşunun segment kimliklerine yeniden eşlenir. Başarısız çağrılar saklanmaz.
+`CachedLLMProvider`, bir sağlayıcıyı sarmalamakta ve her çağrı için bir JSON dosyası saklamaktadır. Anahtar; sağlayıcı adı, model, çaba, istem sürümü, istem metni ve veri yükünün SHA-256 özetidir. Özet alınmadan önce veri yükündeki koşu, şema sürümü, kaynak birimi ve segment kimlikleri, konumsal yer tutucularla değiştirilmektedir. Bu nedenle aynı içerikle yapılan sonraki koşu önbellekte bulunmakta ve saklanan yanıt yeni koşunun segment kimliklerine yeniden eşlenmektedir. Başarısız çağrılar saklanmamaktadır.
 
-Çıkarım kullanım durumu, `generate_structured` metodunu çağırır ve belirteç sayılarını saklamaz. Önbelleği ve kullanım kayıtlarını kullanan `scripts/run_isnad_experiment.py`, her çağrının belirteçlerini, gecikmesini ve maliyetini yazar; harcama sınırına ulaşıldığında çağrı yapmayı durdurur.
+Çıkarım kullanım senaryosu, `generate_structured` metodunu çağırmakta ve belirteç sayılarını saklamamaktadır. Önbelleği ve kullanım kayıtlarını kullanan `scripts/run_isnad_experiment.py`, her çağrının belirteçlerini, gecikmesini ve maliyetini yazmakta; harcama sınırına ulaşıldığında çağrı yapmayı durdurmaktadır.
 
 ## 6.5 Kalıcı saklama
 
-**Postgres.** ORM, 18 tablo tanımlar. `0001` göçü başlangıçtaki 15 tabloyu oluşturur; `0002` düğüm tipinin güven skoru eşiğini, `0003` `processing_jobs` tablosunu, `0004` `pipeline_definitions` tablosunu ekler. `0005`, `merge_keys` sütununu `relation_types` tablosuna ekler; `0006` ise iki indeksli `review_decisions` tablosunu ekler. `AUTO_APPLY_POSTGRES_MIGRATIONS` doğru olduğunda arka uç, başlangıçta göçleri uygular. Bir iş, `FOR UPDATE SKIP LOCKED` ve koşu başına bir danışma kilidi ile alınır; çalışan işi olan koşuya ikinci bir iş verilmez.
+**Postgres.** ORM ile 18 tablo tanımlanmaktadır. `0001` göçü başlangıçtaki 15 tabloyu oluşturmakta; `0002` düğüm tipinin güven skoru eşiğini, `0003` `processing_jobs` tablosunu, `0004` `pipeline_definitions` tablosunu eklemektedir. `0005`, `merge_keys` sütununu `relation_types` tablosuna eklemekte; `0006` ise iki indeksli `review_decisions` tablosunu eklemektedir. `AUTO_APPLY_POSTGRES_MIGRATIONS` doğru olduğunda arka uç, başlangıçta göçleri uygulamaktadır. Bir iş, `FOR UPDATE SKIP LOCKED` ve koşu başına bir danışma kilidi ile alınmaktadır; çalışan işi olan koşuya ikinci bir iş verilmemektedir.
 
-**Neo4j.** `commit_bundle`, `_write_bundle` fonksiyonunu `session.execute_write` metoduna geçirir; böylece bir koşunun bütün ifadeleri aynı veritabanı işlemini paylaşır. Önce kaynak birimini ve segmentlerini, sonra her düğümü (`project_id`, `node_type`, `merge_key`) üzerinden `CanonicalNode` ve tip adı etiketleriyle, ardından her ilişkiyi kimlik anahtarıyla birleştirir. Köken bilgisi; kaynak birimine `DERIVED_FROM`, segmentlere `SUPPORTED_BY`, commit edilen her ilişki adayı için bir `RelationEvidence` düğümü ve bir `GraphDelta` düğümü olarak yazılır. Tip adları bir ifadeye girmeden önce tanımlayıcı örüntüsüne göre kontrol edilir. Bir sürecin ilk commit işleminde `CREATE INDEX ... IF NOT EXISTS` ile beş indeks oluşturulur: düğüm anahtarı için bir indeks, `SourceUnit`, `Segment`, `RelationEvidence` ve `GraphDelta` tiplerinin id özelliği için de birer indeks. Benzersizlik kısıtı tanımlanmamıştır. Alıntılar ve konum ofsetleri Postgres'teki aday satırlarında kalır; graf, segmentlerin bütününe bağlanır.
+**Neo4j.** `commit_bundle`, `_write_bundle` fonksiyonunu `session.execute_write` metoduna geçirmekte; böylece bir koşunun bütün ifadeleri aynı veritabanı işlemini paylaşmaktadır. Önce kaynak birimini ve segmentlerini, sonra her düğümü (`project_id`, `node_type`, `merge_key`) üzerinden `CanonicalNode` ve tip adı etiketleriyle, ardından her ilişkiyi kimlik anahtarıyla birleştirmektedir. Köken bilgisi; kaynak birimine `DERIVED_FROM`, segmentlere `SUPPORTED_BY`, commit edilen her ilişki adayı için bir `RelationEvidence` düğümü ve bir `GraphDelta` düğümü olarak yazılmaktadır. Tip adları bir ifadeye girmeden önce tanımlayıcı örüntüsüne göre kontrol edilmektedir. Bir sürecin ilk commit işleminde `CREATE INDEX ... IF NOT EXISTS` ile beş indeks oluşturulmaktadır: düğüm anahtarı için bir indeks, `SourceUnit`, `Segment`, `RelationEvidence` ve `GraphDelta` tiplerinin id özelliği için de birer indeks. Benzersizlik kısıtı tanımlanmamıştır. Alıntılar ve konum ofsetleri Postgres'teki aday satırlarında kalmaktadır; graf, segmentlerin bütününe bağlanmaktadır.
 
 ## 6.6 Panel
 
-Panel, geliştirici olmayan bir okuyucu için yazılmış Türkçe bir Next.js uygulamasıdır. Renkleri ve yazı biçimi, projenin kamuya açık sayfasını izler. Ana sayfa ürünü iki cümleyle açıklar ve projeleri, durum cümlesi içeren kartlar olarak listeler; örneğin "30 hadis · hepsi grafta · bekleyen yok" (30 hadis, hepsi grafta, bekleyen yok). Proje oluştururken yalnız ad sorulur; isnad şablonu ve şeması otomatik uygulanır.
+Panel, geliştirici olmayan bir okuyucu için yazılmış Türkçe bir Next.js uygulamasıdır. Renkleri ve yazı biçimi, projenin kamuya açık sayfasını izlemektedir. Ana sayfada ürün iki cümleyle açıklanmakta ve projeler durum cümlesi içeren kartlar olarak listelenmektedir; örneğin "30 hadis · hepsi grafta · bekleyen yok" (30 hadis, hepsi grafta, bekleyen yok). Proje oluştururken yalnız ad sorulmaktadır; isnad şablonu ve şeması otomatik uygulanmaktadır.
 
-Bir proje, sayılarla birlikte adım göstergesinde sunulan dört adımdan oluşur. Her adımın bir ekranı ve bir ana eylemi vardır.
+Proje akışı, sayılarla birlikte adım göstergesinde sunulan dört adımdan oluşmaktadır. Her adım için bir ekran ve bir ana eylem bulunmaktadır.
 
-1. **Metin yükle (metin yükleme).** Kullanıcı metin yapıştırır, bir JSON dosyası seçer ya da paketle gelen on örnek hadisi tek tıklamayla yükler. Sonuç, yinelenen kayıtlar da dahil olmak üzere bir cümleyle bildirilir.
-2. **Zincirleri çıkar (zincir çıkarımı).** Kullanıcı bir yöntem seçer: kurallar ya da sunucuda yapılandırılmışsa bir dil modeli. Tek bir düğme, bekleyen bütün hadisleri işler ve kaç hadisin grafa yazıldığını, kaçının karar beklediğini özetler.
-3. **İncele (inceleme).** Yalnız bir kişinin kararını gerektiren öneriler, teker teker görünür: alıntısı vurgulanmış hadis metni, önerilen değer, neden beklediğini açıklayan bir cümle ve üç eylem (kabul, ret, düzeltme). Her inceleme gerekçe kodunun kendi cümlesi vardır; değer kontrolü için "önerilen ad, sistemin gösterdiği alıntıda geçmiyor" yazar. İnceleyicinin adı bir kez sorulur ve tarayıcıda saklanır; bir öğenin açılması ile karar verilmesi arasında geçen süre kararla birlikte gönderilir.
-4. **Zincirleri oku (zincir okuma).** Commit edilen hadisler bir arama alanıyla listelenir. Seçilen hadisin Arapça metni sağdan sola gösterilir ve her ravi geçişi, kaynaktaki konum ofsetlerinde vurgulanır. Her zincir yukarıdan aşağıya okunur: önce ravi, ardından aktarım ifadesi, alıntısı ve nasıl kabul edildiğiyle birlikte bağlantı gelir. Kabul biçimi açıkça "otomatik kabul edildi (kontrolleri geçti)" ya da ad ve tarihle birlikte "bir kişi tarafından kabul edildi" olarak yazılır. Bir ravi seçildiğinde, adın geçtiği hadisler ile kendisine aktaran ve kendisinin aktardığı kişilerin adları gösterilir; ravinin yazılı adla tanımlandığını belirten bir not bulunur.
+1. **Metin yükle (metin yükleme).** Kullanıcı metin yapıştırarak, bir JSON dosyası seçerek ya da paketle gelen on örnek hadisi tek tıklamayla yükleyerek veri girişi yapmaktadır. Sonuç, yinelenen kayıtlar da dahil olmak üzere bir cümleyle bildirilmektedir.
+2. **Zincirleri çıkar (zincir çıkarımı).** Kullanıcı, kurallar ya da sunucuda yapılandırılmışsa bir dil modeli arasından yöntem seçmektedir. Tek bir düğmeyle bekleyen bütün hadisler işlenmekte ve kaç hadisin grafa yazıldığı, kaçının karar beklediği özetlenmektedir.
+3. **İncele (inceleme).** Yalnız bir kişinin kararını gerektiren öneriler, teker teker görünmektedir: alıntısı vurgulanmış hadis metni, önerilen değer, neden beklediğini açıklayan bir cümle ve üç eylem (kabul, ret, düzeltme). Her inceleme gerekçe kodu için ayrı bir cümle kullanılmakta; değer denetimi için "önerilen ad, sistemin gösterdiği alıntıda geçmiyor" yazmaktadır. İnceleyicinin adı bir kez sorularak tarayıcıda saklanmakta; bir öğenin açılması ile karar verilmesi arasında geçen süre kararla birlikte gönderilmektedir.
+4. **Zincirleri oku (zincir okuma).** Commit edilen hadisler bir arama alanıyla listelenmektedir. Seçilen hadisin Arapça metni sağdan sola gösterilmekte ve her ravi geçişi, kaynaktaki konum ofsetlerinde vurgulanmaktadır. Her zincir yukarıdan aşağıya okunmaktadır: önce ravi, ardından aktarım ifadesi, alıntısı ve nasıl kabul edildiğiyle birlikte bağlantı gelmektedir. Kabul biçimi açıkça "otomatik kabul edildi (denetimleri geçti)" ya da ad ve tarihle birlikte "bir kişi tarafından kabul edildi" olarak yazılmaktadır. Bir ravi seçildiğinde, adın geçtiği hadisler ile kendisine aktaran ve kendisinin aktardığı kişilerin adları gösterilmektedir; ravinin yazılı adla tanımlandığını belirten bir not bulunmaktadır.
 
-Şema düzenleyicisi, adım adım boru hattı çalıştırıcısı, iş listesi ve ham graf gezgini, ikincil bir giriş olan "Gelişmiş" (gelişmiş seçenekler) altında yer alır. Beş terimlik sözlüğe her sayfadan ulaşılır. Her ekranın görüntüleri `frontend/docs/screens/` içindedir.
+Şema düzenleyicisi, adım adım boru hattı çalıştırıcısı, iş listesi ve ham graf gezgini, ikincil bir giriş olan "Gelişmiş" (gelişmiş seçenekler) altında yer almaktadır. Beş terimlik sözlüğe her sayfadan ulaşılmaktadır. Her ekrana ait görüntüler `frontend/docs/screens/` dizininde bulunmaktadır.
 
 ## 6.7 Testler ve sürekli entegrasyon
 
-`uv run pytest --collect-only -q`, 285 test toplar: 14 dosyada 127 birim testi ve 21 dosyada 158 entegrasyon testi. `uv run pytest -q` koşumuzda 273 test geçti, 12 test atlandı. Entegrasyon testleri, önceden tanımlanmış yanıtlar veren sağlayıcılarla bellek içi arka uçta, FastAPI'nin `TestClient` aracı üzerinden API'yi çalıştırır; dolayısıyla hiçbir test bir ağ servisini çağırmaz.
+`uv run pytest --collect-only -q` ile 285 test toplanmıştır: 14 dosyada 127 birim testi ve 21 dosyada 158 entegrasyon testi. `uv run pytest -q` ile gerçekleştirilen koşuda 273 test başarıyla tamamlanmış, 12 test atlanmıştır. Entegrasyon testleri, önceden tanımlanmış yanıtlar veren sağlayıcılarla bellek içi arka uçta, FastAPI'nin `TestClient` aracı üzerinden API'yi çalıştırmaktadır; dolayısıyla hiçbir test bir ağ servisini çağırmamaktadır.
 
-Atlanan 12 test, `real_db` işaretini taşır. `test_realdb_migrations.py` (4 test), göç zincirini boş bir veritabanında çalıştırır, sonucu ORM modelleriyle karşılaştırır ve sürüm düşürmeyi kontrol eder. `test_realdb_isnad_flow.py` (7 test), isnad akışını Postgres ve Neo4j üzerinde çalıştırır: iki hadiste aynı ravi çifti iki kenar üretir, grafın tekrar yazılması hiçbir şey eklemez, kesintiye uğrayan yazma işlemi kısmi graf bırakmaz ve arama indeksleri bulunur. `test_realdb_review_decisions.py` (1 test), kararların saklandığını ve eklenerek ilerlediğini kontrol eder. Bu testler yalnız `GG_TEST_POSTGRES_DSN`, `GG_TEST_NEO4J_URI` ve `GG_TEST_NEO4J_PASSWORD` ayarlandığında çalışır; geçici Postgres veritabanları oluşturup silerler. 12 Ekim 2026'da yerel konteynerlerde PostgreSQL 16 ve Neo4j 5,26 üzerinde çalıştırıldılar ve 12'si de geçti; aynı gün, o sırada mevcut olan 214 test de bu veritabanlarında bir kez çalıştırıldı ve geçti. Bu doğrulamada, bellek içi arka ucun gizlediği dört kusur bulundu. Bunlar arasında düğüm başına bir veritabanı işlemi kullanan ve kısmi graf bırakabilen bir graf yazma işlemi ile Neo4j indekslerinin hiç bulunmaması vardı. Dördü de düzeltildi.
+Atlanan 12 test, `real_db` işaretini taşımaktadır. `test_realdb_migrations.py` (4 test), göç zincirini boş bir veritabanında çalıştırmakta, sonucu ORM modelleriyle karşılaştırmakta ve sürüm düşürmeyi kontrol etmektedir. `test_realdb_isnad_flow.py` (7 test), isnad akışını Postgres ve Neo4j üzerinde çalıştırmaktadır: iki hadiste aynı ravi çifti iki kenar üretmekte, grafın tekrar yazılması hiçbir şey eklememekte, kesintiye uğrayan yazma işlemi kısmi graf bırakmamakta ve arama indeksleri bulunmaktadır. `test_realdb_review_decisions.py` (1 test), kararların saklandığını ve eklenerek ilerlediğini kontrol etmektedir. Bu testler yalnız `GG_TEST_POSTGRES_DSN`, `GG_TEST_NEO4J_URI` ve `GG_TEST_NEO4J_PASSWORD` ayarlandığında çalışmaktadır; geçici Postgres veritabanları oluşturup silmektedir. 12 Ekim 2026'da yerel konteynerlerde PostgreSQL 16 ve Neo4j 5,26 üzerinde çalıştırılan testlerin 12'si de başarılı olmuştur; aynı gün, o sırada mevcut olan 214 test de bu veritabanlarında bir kez çalıştırılmış ve başarılı olmuştur. Bu doğrulamada, bellek içi arka ucun gizlediği dört kusur saptanmıştır. Bunlar arasında düğüm başına bir veritabanı işlemi kullanan ve kısmi graf bırakabilen bir graf yazma işlemi ile Neo4j indekslerinin bulunmaması yer almıştır. Dört kusur da giderilmiştir.
 
-Değerlendirme kitinin `evaluation/tests/` içinde kendi testleri vardır: sekiz dosyada 81 test. 80'i geçer; biri, puanlayıcıyı pilot betiğiyle karşılaştırdığı için `numpy` ve `scipy` kurulu olmadıkça atlanır. Panelin otomatik testi yoktur.
+Değerlendirme kitinin `evaluation/tests/` dizinindeki kendi testleri, sekiz dosyada 81 testten oluşmaktadır. 80'i başarılı olmuştur; biri, puanlayıcıyı pilot betiğiyle karşılaştırdığı için `numpy` ve `scipy` kurulu olmadıkça atlanmaktadır. Panel için otomatik test bulunmamaktadır.
 
-CI iş akışı, motorun klasörünü değiştiren her push ve pull request için iki iş çalıştırır. Arka uç işi `ruff check src tests`, `mypy src` ve `pytest -q` komutlarını; ön uç işi `npm ci` ve `npm run build` komutlarını çalıştırır. CI'da veritabanı değişkenleri ayarlanmadığından `real_db` testleri atlanır; değerlendirme kitinin testleri de çalıştırılmaz.
+CI iş akışı, motorun klasörünü değiştiren her push ve pull request için iki iş çalıştırmaktadır. Arka uç işi `ruff check src tests`, `mypy src` ve `pytest -q` komutlarını; ön uç işi `npm ci` ve `npm run build` komutlarını çalıştırmaktadır. CI'da veritabanı değişkenleri ayarlanmadığından `real_db` testleri atlanmaktadır; değerlendirme kitinin testleri de çalıştırılmamaktadır.
 
 ## 6.8 Çalıştırma
 
-Deponun kökünden bütün yığını çalıştırmak için:
+Bütün yığın, deponun kökünden aşağıdaki komutlarla çalıştırılmaktadır:
 
 ```bash
 cp .env.example .env
 docker compose up --build
 ```
 
-Ardından panel `http://localhost:3000`, API ise `http://localhost:8000` adresindedir.
+Bu komutların ardından panel `http://localhost:3000`, API ise `http://localhost:8000` adresinden erişilebilir durumdadır.
 
-Arka uç testleri ve kontrolleri:
+Arka uç testleri ve denetimleri aşağıdaki komutlarla yürütülmektedir:
 
 ```bash
 cd backend
@@ -115,7 +115,7 @@ uv run ruff check src tests
 uv run mypy src
 ```
 
-`docs/guides/isnad-demo.md` kılavuzuna göre, veritabanı ya da API anahtarı olmadan isnad demosu:
+`docs/guides/isnad-demo.md` kılavuzunda, veritabanı ya da API anahtarı olmadan isnad demosunun çalıştırılması için aşağıdaki komutlar verilmektedir:
 
 ```bash
 cd backend
@@ -128,19 +128,19 @@ cd frontend
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8000 npm run dev
 ```
 
-Kılavuz daha sonra `isnad` şablonundan bir proje oluşturur, toplu yükleme uç noktasından hadisleri yükler, `rule_based_isnad` sağlayıcısıyla işler ve zincirleri okur.
+Kılavuzun devamında `isnad` şablonundan bir proje oluşturulması, toplu yükleme uç noktasından hadislerin yüklenmesi, `rule_based_isnad` sağlayıcısıyla işlenmesi ve zincirlerin okunması açıklanmaktadır.
 
 ## 6.9 Bilinen sınırlamalar
 
-Üç yetenek, alınan karar gereği yoktur: commit edilen koşu geri alınamaz, kimlik doğrulama yoktur ve ravi kimliği çözümlemesi yoktur.
+Alınan karar gereği üç yetenek bulunmamaktadır: commit edilen koşu geri alınamamaktadır; kimlik doğrulama ve ravi kimliği çözümlemesi bulunmamaktadır.
 
-Kodun ayrıca şu sınırları vardır.
+Kodun diğer sınırlamaları aşağıda belirtilmektedir.
 
-- Graf değişimi satırı, Neo4j veritabanı işleminden sonra Postgres'e yazılır. İkisi arasında bir hata olursa graf, üst verinin önüne geçer.
-- Düğüm özellikleri `SET n += $properties` ile yazılır; bu nedenle sonraki bir koşu, farklı bir değerin üzerine inceleme öğesi oluşturmadan yazar.
-- Şema önerisini kabul etmek inceleme öğesini kapatır, şemayı değiştirmez.
-- İşleme uç noktası istek içinde çalışır; zincir uç noktaları projenin bütün kaynak birimlerini ve koşularını tarar.
-- İlişki ayrıntısı uç noktasında kimlik anahtarı parametresi bulunmaz; bu yüzden paralel kenarlardan birini döndürür.
-- Segmentlerin yeniden üretilmesi, saklanan segmentleri yeni kimliklerle değiştirir; dolayısıyla önceki koşuların kanıt başvuruları artık var olmayan segmentleri gösterir.
-- Bir önerinin birden fazla gerekçesi varsa panel yalnız ilkini gösterir, proje sayılarını proje başına iki istekle tarayıcıda hesaplar ve otomatik testi yoktur.
+- Graf farkı satırı, Neo4j veritabanı işleminden sonra Postgres'e yazılmaktadır. İkisi arasında bir hata olursa graf, üst verinin önüne geçmektedir.
+- Düğüm özellikleri `SET n += $properties` ile yazılmaktadır; bu nedenle sonraki bir koşu, farklı bir değerin üzerine inceleme öğesi oluşturmadan yazmaktadır.
+- Şema önerisinin kabul edilmesiyle inceleme öğesi kapatılmakta, şema değiştirilmemektedir.
+- İşleme uç noktası istek içinde çalışmaktadır; zincir uç noktaları projenin bütün kaynak birimlerini ve koşularını taramaktadır.
+- İlişki ayrıntısı uç noktasında kimlik anahtarı parametresi bulunmamaktadır; bu yüzden paralel kenarlardan birini döndürmektedir.
+- Segmentlerin yeniden üretilmesi, saklanan segmentleri yeni kimliklerle değiştirmektedir; dolayısıyla önceki koşuların kanıt referansları artık var olmayan segmentleri göstermektedir.
+- Bir önerinin birden fazla gerekçesi varsa panel yalnız ilkini göstermekte ve proje sayılarını proje başına iki istekle tarayıcıda hesaplamaktadır. Panelin otomatik testi bulunmamaktadır.
 - Henüz bir lisans seçilmemiştir.

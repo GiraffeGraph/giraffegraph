@@ -1,8 +1,8 @@
 # Ek A Sonuçları yeniden üretme
 
-Bir yol aksi yönde belirtmedikçe bütün komutlar proje deposundaki `giraffegraph-core/` dizininden çalıştırılır. Depo geliştirme sırasında özeldir; motor proje sonunda yayımlanacaktır. Değerlendirme verileri `data/README.md` içinde açıklanmıştır ve yeniden dağıtılmamaktadır.
+Yol bilgisiyle aksi belirtilmedikçe bütün komutlar proje deposundaki `giraffegraph-core/` dizininden çalıştırılmaktadır. Depo geliştirme sırasında özeldir; motor proje sonunda yayımlanacaktır. Değerlendirme verileri `data/README.md` içinde açıklanmıştır ve yeniden dağıtılmamaktadır.
 
-Veritabanı ya da ağ gerektirmeyen arka uç testleri:
+Veritabanı ya da ağ gerektirmeyen arka uç testleri aşağıdaki komutlarla çalıştırılmaktadır:
 
 ```
 cd backend
@@ -10,13 +10,13 @@ uv sync --extra dev
 uv run pytest -q
 ```
 
-Gerçek veritabanları üzerindeki testler, bir PostgreSQL 16 ve bir Neo4j 5 örneği ile üç ortam değişkeni gerektirir:
+Gerçek veritabanları üzerindeki testler için bir PostgreSQL 16 ve bir Neo4j 5 örneği ile üç ortam değişkeni gerekmektedir:
 
 ```
 GG_TEST_POSTGRES_DSN=... GG_TEST_NEO4J_URI=... GG_TEST_NEO4J_PASSWORD=... uv run pytest -q -m real_db
 ```
 
-Bir değerlendirme koşusu ve analizi:
+Bir değerlendirme koşusu ve analizi aşağıdaki komutlarla yürütülmektedir:
 
 ```
 cd backend
@@ -32,9 +32,9 @@ python evaluation/classify_value_flags.py --run <run-dir> --hadiths <hadiths.jso
 python evaluation/identity_baseline.py --reference-chains <reference_chains.jsonl> --out identity.json
 ```
 
-Model yanıtları `backend/var/llm-cache/` altında önbelleğe alınır. Önbellek bulunduğunda koşu hiçbir API çağrısı yapmaz ve aynı çıktıyı yeniden üretir.
+Model yanıtları `backend/var/llm-cache/` altında önbelleğe alınmaktadır. Önbellek bulunduğunda koşu hiçbir API çağrısı yapmamakta ve aynı çıktıyı yeniden üretmektedir.
 
-Bölüm 8'in destek çalışmaları. Defter benzetimi ve yeniden çıkarımdaki örtüşme, `evaluation/README.md` içinde açıklandığı biçimde çalıştırılır (`identity_ledger.py`, `decision_reapplication.py`). Ajan deneyi, proje deposundaki `data/cache-and-ledger/data/agent-qa/` dizininden çalıştırılır; README'si komutları, soruları, cevap anahtarını ve her deney kolunun maliyetini verir.
+Bölüm 8'in destek çalışmalarından defter benzetimi ve yeniden çıkarımdaki örtüşme, `evaluation/README.md` içinde açıklandığı biçimde çalıştırılmaktadır (`identity_ledger.py`, `decision_reapplication.py`). Ajan deneyi, proje deposundaki `data/cache-and-ledger/data/agent-qa/` dizininden çalıştırılmakta; bu dizinin README'sinde komutlar, sorular, cevap anahtarı ve her deney kolunun maliyeti verilmektedir.
 
 # Ek B Sonuç dosyaları
 
@@ -47,14 +47,14 @@ Bölüm 8'in destek çalışmaları. Defter benzetimi ve yeniden çıkarımdaki 
 | İlk uçtan uca koşunun kural tabanlı taban çizgisi | `2026-10-12-rule-based-baseline/` |
 | Kimlik defteri benzetimi ve yeniden çıkarım örtüşmesi (Bölüm 8.1) | `2026-10-13-identity-ledger/` (`identity-ledger.json`, `decision-reapplication.json`) |
 
-Ajan deneyinin koşuları ve analizi (Bölüm 8.2), bu klasörün dışında, `data/cache-and-ledger/data/agent-qa/` içindedir (`analysis.json`, `runs.tar.gz`).
+Ajan deneyinin koşuları ve analizi (Bölüm 8.2), bu klasörün dışında, `data/cache-and-ledger/data/agent-qa/` içinde bulunmaktadır (`analysis.json`, `runs.tar.gz`).
 
-Her koşu klasörü, puanlayıcının biçimindeki sistem çıktısını, durum ve gerekçe kodlarıyla aday başına bir satırı, belirteç ve gecikmeyle sağlayıcı çağrısı başına bir satırı, koşu raporunu ve analizi tutar.
+Her koşu klasöründe, puanlayıcının biçimindeki sistem çıktısı, durum ve gerekçe kodlarıyla aday başına bir satır, belirteç ve gecikmeyle sağlayıcı çağrısı başına bir satır, koşu raporu ve analiz tutulmaktadır.
 
 # Ek C Yapay zekâ araçlarının kullanımı
 
-Bu proje boyunca yapay zekâ asistanları kullanıldı: literatür taramasında, 30 Eylül 2026'daki tasarım analizinde ve pilotta, değerlendirilen dalda yazılan kodun çoğunda, analiz betiklerinde ve bu raporun taslağını hazırlarken. Çıkarım deneylerinin kendisi de sınanan sistem olarak bir dil modeli kullanır.
+Bu proje boyunca literatür taramasında, 30 Eylül 2026'daki tasarım analizinde ve pilotta, değerlendirilen dalda yazılan kodun çoğunda, analiz betiklerinde ve bu raporun taslağının hazırlanmasında yapay zekâ asistanları kullanılmıştır. Çıkarım deneylerinde de sınanan sistem olarak bir dil modeli kullanılmaktadır.
 
-Bu çalışma biçiminin risklerini sınırlamak için aşağıdaki kuralları uyguladık. Bibliyografik kayıtlar Crossref, arXiv, ACL Anthology ya da yayıncının ilk sayfasından alındı; hiçbir zaman bellekten yazılmadı. Önceki bir proje belgesindeki üç kaynak hiçbir dizinde bulunamadı ve burada kullanılmadı. Bu rapordaki her ölçülmüş sayı bir betik tarafından üretildi ve bir sonuç dosyasında saklanıyor; veri kümelerinin istatistikleri veri manifestosundan alındı. Kod yalnız testlerle kabul edildi; gerçek veritabanları için işaretlenen testler PostgreSQL ve Neo4j üzerinde çalıştırıldı. Bu raporun bir taslağı, bağımsız bir yapay zekâ inceleyicisi tarafından sonuç dosyalarına karşı kontrol edildi; rapor, dosyaların gösterdiğinden fazlasını iddia ettiği yerlerde düzeltildi. Diğer çalışmalar hakkındaki ifadeler, atıf verilen kaynakta okunanlarla sınırlıdır.
+Bu çalışma biçiminin risklerini sınırlamak için aşağıdaki kurallar uygulanmıştır. Bibliyografik kayıtlar Crossref, arXiv, ACL Anthology ya da yayıncının ilk sayfasından alınmış; hiçbir zaman bellekten yazılmamıştır. Önceki bir proje belgesindeki üç kaynak hiçbir dizinde bulunamamış ve burada kullanılmamıştır. Bu rapordaki her ölçülmüş sayı bir betik tarafından üretilmiş ve bir sonuç dosyasında saklanmaktadır; veri kümelerinin istatistikleri veri manifestosundan alınmıştır. Kod yalnız testlerle kabul edilmiş; gerçek veritabanları için işaretlenen testler PostgreSQL ve Neo4j üzerinde çalıştırılmıştır. Bu raporun bir taslağı, bağımsız bir yapay zekâ inceleyicisi tarafından sonuç dosyalarına karşı kontrol edilmiş; rapor, dosyaların gösterdiğinden fazlasını iddia ettiği yerlerde düzeltilmiştir. Diğer çalışmalar hakkındaki ifadeler, atıf verilen kaynakta okunanlarla sınırlıdır.
 
-Yazarlar bu raporun içeriğinden sorumludur.
+Bu raporun içeriğinden yazarlar sorumludur.

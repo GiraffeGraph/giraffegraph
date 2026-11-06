@@ -1,22 +1,22 @@
 # 5 Sistem tasarımı
 
-Bu bölümde `main` dalında gerçekleştirilen tasarımı anlatıyoruz. Yollar `backend/src/app/` dizinine göredir. Bazı kararlar, önceki kodun incelemesinde bulunan kusurları giderir (tasarım analizi, 30 Eylül 2026). Tasarımı açıklamaya yardımcı olduğunda ilgili kusuru belirtiyoruz.
+Bu bölümde `main` dalında gerçekleştirilen tasarım ele alınmaktadır. Yollar `backend/src/app/` dizinine göredir. Bazı kararlarla, önceki kodun incelenmesi sırasında bulunan kusurlar giderilmiştir (tasarım analizi, 30 Eylül 2026). Tasarımın açıklanmasına yardımcı olduğu durumlarda ilgili kusur da belirtilmektedir.
 
 ## 5.1 Tasarım ilkeleri
 
-**Model önerir ve grafa yazamaz.** Sağlayıcı, önerilen düğüm ve ilişkileri döndürür; bunlar `CandidateNode` ve `CandidateRelation` satırları olarak `pending` durumunda saklanır. Tek graf yazma işlemi olan `CanonicalGraphRepository.commit_bundle`, yalnızca `CommitManagementService.commit_run` tarafından çağrılır ve yalnızca `validated` adayları alır.
+**Model öneri üretmektedir ve grafa yazamamaktadır.** Sağlayıcı, önerilen düğüm ve ilişkileri döndürmekte; bunlar `CandidateNode` ve `CandidateRelation` satırları olarak `pending` durumunda saklanmaktadır. Tek graf yazma işlemi olan `CanonicalGraphRepository.commit_bundle`, yalnızca `CommitManagementService.commit_run` tarafından çağrılmakta ve yalnızca `validated` adayları almaktadır.
 
-**Her olgu bir alıntı taşır.** Aday, `EvidenceRef` değerleri tutar: segment kimliği, alıntı ve isteğe bağlı konumlar. Kanıtı olmayan çıkarılmış aday `missing_evidence` olarak işaretlenir. Bu bir kontroldür, saklama kısıtı değildir: inceleyici böyle bir adayı yine de kabul edebilir; elle girilen adaylar ise kontrol edilmez.
+**Her olgu bir alıntı taşımaktadır.** Aday, segment kimliği, alıntı ve isteğe bağlı konumları içeren `EvidenceRef` değerlerini tutmaktadır. Kanıtı olmayan çıkarılmış aday `missing_evidence` olarak işaretlenmektedir. Bu bir denetimdir; saklama kısıtı değildir. İnceleyici böyle bir adayı yine de kabul edebilmekte, elle girilen adaylar ise denetlenmemektedir.
 
-**Kontroller sessizce reddetmek yerine inceleme için işaretler.** Başarısız kaynağa dayandırma, değer, eşik ya da yinelenen aday kontrolü, durumu `review` yapar ve gerekçe kodu içeren bir inceleme öğesi oluşturur. Adayı kullanılamaz bırakan yapısal hatalar durumu `rejected` yapar; ancak her biri doğrulama sonucu olarak saklanır.
+**Denetimler sessizce reddetmek yerine inceleme için işaretlemektedir.** Kaynağa dayandırma, değer, eşik ya da yinelenen aday denetimi başarısız olduğunda durum `review` olarak belirlenmekte ve gerekçe kodu içeren bir inceleme öğesi oluşturulmaktadır. Adayı kullanılamaz bırakan yapısal hatalarda durum `rejected` olarak belirlenmekte; ancak bu hataların her biri doğrulama sonucu olarak saklanmaktadır.
 
-**Her kabul, insan kararı ya da adı kayıtlı bir politika olarak kaydedilir.** Doğrulanmış adayın izi, `review_decisions` içindeki bir satıra ya da adayı geçiren kuralla birlikte `auto_validated` politikasına kadar sürülebilir.
+**Her kabul, insan kararı ya da adı kayıtlı bir politika olarak kaydedilmektedir.** Doğrulanmış adayın izi, `review_decisions` içindeki bir satıra ya da adayı geçiren kuralla birlikte `auto_validated` politikasına kadar sürülebilmektedir.
 
-**Alana özgü davranış eklentilerle eklenir; motor kodu genel kalır.** Bölütleme bir `SegmentationStrategy` ile yapılır, şema bir şablondan gelir ve çıkarım bir `LLMProvider` üzerinden yürür. Çıkarım, doğrulama, inceleme ve commit kullanım senaryoları ravi ya da hadis adları içermez. Üç istisna vardır. Doğrulama, metin karşılaştırmasını `domain/hadith/grounding.py` içinden alır; bu yüzden Arapça katlama her projeye uygulanır. Zincir okuma modeli (`domain/exploration/chains.py`, `ChainExplorationService`, `/chains` uç noktaları), `Narrator` ve `NARRATED_FROM` tiplerini adlarıyla kullanır. Eklentiler, `bootstrap/container.py` içinde kodla kaydedilir.
+**Alana özgü davranış eklentilerle eklenmekte; motor kodu genel kalmaktadır.** Bölütleme bir `SegmentationStrategy` ile yapılmakta, şema bir şablondan alınmakta ve çıkarım bir `LLMProvider` üzerinden yürütülmektedir. Çıkarım, doğrulama, inceleme ve commit kullanım senaryoları ravi ya da hadis adları içermemektedir. Bunun üç istisnası bulunmaktadır. Doğrulama, metin karşılaştırmasını `domain/hadith/grounding.py` içinden almakta; bu nedenle Arapça katlama her projeye uygulanmaktadır. Zincir okuma modeli (`domain/exploration/chains.py`, `ChainExplorationService`, `/chains` uç noktaları), `Narrator` ve `NARRATED_FROM` tiplerini adlarıyla kullanmaktadır. Eklentiler, `bootstrap/container.py` içinde kodla kaydedilmektedir.
 
 ## 5.2 Mimari
 
-Arka uç, dört katmanlı tek bir FastAPI uygulamasıdır. Uygulama ve alan katmanları, altyapı ya da arayüz katmanlarından hiçbir şey içe aktarmaz: kullanım senaryoları `application/ports/` içindeki protokollere bağımlıdır, altyapı katmanı ise bunları gerçekleştirir.
+Arka uç, dört katmanlı tek bir FastAPI uygulamasıdır. Uygulama ve alan katmanları, altyapı ya da arayüz katmanlarından hiçbir şey içe aktarmamaktadır. Kullanım senaryoları `application/ports/` içindeki protokollere bağımlıdır; altyapı katmanı ise bu protokolleri gerçekleştirmektedir.
 
 ```text
   Dashboard (Next.js)             Worker CLI
@@ -44,9 +44,9 @@ Arka uç, dört katmanlı tek bir FastAPI uygulamasıdır. Uygulama ve alan katm
   review items, decisions, deltas          and segments, graph deltas
 ```
 
-Postgres, yapılandırmayı, kaynak metni, henüz kabul edilmemiş her şeyi ve denetim izini tutar. Neo4j, yalnızca commit edilmiş öğeleri, kaynak birimlerine ve segmentlere geri bağlantılarıyla birlikte tutar. Depodaki ADR-002 bunun gerekçesini verir: üst veri yapılandırılmış kayıtlardan oluşur; commit edilmiş graf ise yoğun bağlantılıdır ve dolaşılarak okunur. Bu ayrımda aday hiçbir zaman graf deposunda bulunmaz. Bedeli, iki deponun tek bir işlemde güncellenmemesidir (Bölüm 6.9).
+Postgres, yapılandırmayı, kaynak metni, henüz kabul edilmemiş her şeyi ve denetim izini tutmaktadır. Neo4j ise yalnızca commit edilmiş öğeleri, kaynak birimlerine ve segmentlere geri bağlantılarıyla birlikte tutmaktadır. Depodaki ADR-002 bu ayrımın gerekçesini açıklamaktadır: üst veri yapılandırılmış kayıtlardan oluşmakta, commit edilmiş graf ise yoğun bağlantılar içermekte ve dolaşılarak okunmaktadır. Bu ayrımda aday hiçbir zaman graf deposunda bulunmamaktadır. Bunun bedeli, iki deponun tek bir işlemde güncellenmemesidir (Bölüm 6.9).
 
-Bellekte çalışan arka uç, aynı depo protokollerini sözlüklerle gerçekleştirir. `REPOSITORY_BACKEND`, `postgres` olmadığında varsayılan olarak bu arka uç kullanılır; test paketi de onu kullanır.
+Bellekte çalışan arka uç, aynı depo protokollerini sözlüklerle gerçekleştirmektedir. `REPOSITORY_BACKEND`, `postgres` olmadığında varsayılan olarak bu arka uç kullanılmakta; test paketi de aynı arka ucu kullanmaktadır.
 
 ## 5.3 Veri modeli
 
@@ -68,24 +68,24 @@ Bellekte çalışan arka uç, aynı depo protokollerini sözlüklerle gerçekle�
 | Kanonik düğüm | etiketleri `CanonicalNode` ve tip adıdır; anahtarı `project_id`, `node_type`, `merge_key` alanlarıdır | Neo4j |
 | Kanonik kenar | bağlantı ilişki tipinin adını taşır; anahtarı `project_id`, `relation_type`, `relation_identity_key` alanlarıdır | Neo4j |
 
-Kanıt referansları, aday satırlarında JSON olarak saklanır. Yalnızca taslak şema sürümü düzenlenebildiği için bir koşunun tipleri değişmez.
+Kanıt referansları, aday satırlarında JSON olarak saklanmaktadır. Yalnızca taslak şema sürümü düzenlenebildiği için bir koşunun tipleri değişmemektedir.
 
 ## 5.4 Adım adım boru hattı
 
-Metninde ح zincir geçiş işareti bulunan `Muslim:978` referanslı bir hadisi izliyoruz. Bölütleyici bu hadis için iki zincir döndürür. Referans etiketleri üç zincir verir: üçüncüsü rivayet metni başladıktan sonra başlar ve bölütleyici onu döndürmez.
+Boru hattı, metninde ح zincir geçiş işareti bulunan `Muslim:978` referanslı bir hadis üzerinden açıklanmaktadır. Bölütleyici bu hadis için iki zincir döndürmektedir. Referans etiketlerinde ise üç zincir bulunmaktadır; üçüncü zincir rivayet metni başladıktan sonra başlamakta ve bölütleyici tarafından döndürülmemektedir.
 
-1. **Yükleme.** Metin, `external_ref = "Muslim:978"` değerini taşıyan ve projenin etkin şema sürümüne bağlı bir kaynak birimi olur.
-2. **Koşuyu başlatma.** `ProcessingRun`, şema sürümünü, sağlayıcıyı ve modeli kaydeder. Kaynak birimi `processing` olarak işaretlenir; bu durumda ikinci bir koşu başlatılamaz.
-3. **Bölütleme.** `isnad` stratejisi, bulduğu her zincir için bir segment döndürür. Yeni zinciri yalnızca ح işaretinde başlatır; bu yüzden çoğu hadis tek segment verir. Her segmentin metni, `raw_content[start:end]` alt dizgisinin aynısıdır; konumlar segment üst verisinde saklanır. Zincir bulunamazsa metnin tamamı, `fallback: whole_text` işaretli tek segment olur.
-4. **Çıkarım.** `isnad` stratejisinde motor segment başına bir sağlayıcı çağrısı yapar; `paragraphs` stratejisinde ise kaynak biriminin segmentlerini tek çağrıda gönderir. Veri yükü, kaynak birimi referansını, ipuçlarıyla birlikte şemayı ve segmenti içerir. Yanıt, `StructuredExtractionContract` ile ayrıştırılır. Tanımsız tip taşıyan düğüm ya da ilişki elenir ve şema önerisi olarak kaydedilir; bildirilmemiş özellik de aynı biçimde kaldırılır. Çağrının dışındaki bir segmente atıf yapan, tanımsız düğüm referansı kullanan ya da yanlış tipteki düğümleri bağlayan yanıt, o çağrıyı başarısız kılar. Farklı çağrılardan gelen, tipi ve birleştirme anahtarı değeri aynı olan düğümler, tüm alıntıları koruyan tek bir aday olur. Koşu ancak bütün çağrılar başarısız olursa başarısız olur.
-5. **Doğrulama.** `validate_run`, Bölüm 5.5'teki kontrolleri uygular, her adayı `validated`, `review` ya da `rejected` durumuna getirir ve inceleme öğelerini oluşturur.
-6. **İnceleme.** İnceleyici, açık öğeler hakkında karar verir (Bölüm 5.7). Her karardan sonra bir düğümü bekleyen ilişkiler yenilenir.
-7. **Commit.** `commit_run`, hâlihazırda graf farkı, bekleyen adayı, açık inceleme öğesi, uç düğümü doğrulanmamış doğrulanmış ilişkisi, birleştirme anahtarı değeri olmayan doğrulanmış ilişkisi ya da farklı özelliklerle tek kenara dönüşecek iki doğrulanmış ilişkisi bulunan koşuyu reddeder. Aksi durumda doğrulanmış adaylar tek bir graf işleminde yazılır, fark saklanır ve koşu `completed` durumuna geçer.
-8. **Okuma.** Zincir uç noktaları, hadisi sıralı zincirleriyle ve her bağlantının alıntısı ve kabul kaydıyla birlikte döndürür.
+1. **Yükleme.** Metin, `external_ref = "Muslim:978"` değerini taşıyan ve projenin etkin şema sürümüne bağlı bir kaynak birimine dönüştürülmektedir.
+2. **Koşuyu başlatma.** `ProcessingRun`, şema sürümünü, sağlayıcıyı ve modeli kaydetmektedir. Kaynak birimi `processing` olarak işaretlenmekte ve bu durumda ikinci bir koşu başlatılamamaktadır.
+3. **Bölütleme.** `isnad` stratejisi, bulduğu her zincir için bir segment döndürmektedir. Yeni zincir yalnızca ح işaretinde başlatıldığı için çoğu hadisten tek segment elde edilmektedir. Her segmentin metni, `raw_content[start:end]` alt dizgisinin aynısıdır; konumlar segment üst verisinde saklanmaktadır. Zincir bulunamadığında metnin tamamı, `fallback: whole_text` işaretli tek bir segment olarak kullanılmaktadır.
+4. **Çıkarım.** `isnad` stratejisinde motor segment başına bir sağlayıcı çağrısı yapmakta; `paragraphs` stratejisinde ise kaynak biriminin segmentlerini tek çağrıda göndermektedir. Veri yükü, kaynak birimi referansını, ipuçlarıyla birlikte şemayı ve segmenti içermektedir. Yanıt, `StructuredExtractionContract` ile ayrıştırılmaktadır. Tanımsız tip taşıyan düğüm ya da ilişki elenerek şema önerisi olarak kaydedilmekte; bildirilmemiş özellik de aynı biçimde kaldırılmaktadır. Çağrının dışındaki bir segmente atıf yapan, tanımsız düğüm referansı kullanan ya da yanlış tipteki düğümleri bağlayan yanıt, ilgili çağrının başarısız olmasına neden olmaktadır. Farklı çağrılardan gelen, tipi ve birleştirme anahtarı değeri aynı olan düğümler, tüm alıntıları koruyan tek bir adaya dönüştürülmektedir. Koşu ancak bütün çağrılar başarısız olduğunda başarısız sayılmaktadır.
+5. **Doğrulama.** `validate_run`, Bölüm 5.5'teki denetimleri uygulamakta, her adayı `validated`, `review` ya da `rejected` durumuna getirmekte ve inceleme öğelerini oluşturmaktadır.
+6. **İnceleme.** İnceleyici, açık öğeler hakkında karar vermektedir (Bölüm 5.7). Her karardan sonra bir düğümü bekleyen ilişkiler yenilenmektedir.
+7. **Commit.** `commit_run`, hâlihazırda graf farkı, bekleyen adayı veya açık inceleme öğesi bulunan koşuyu reddetmektedir. Ayrıca, doğrulanmış ilişkilerinden birinin uç düğümü doğrulanmamışsa, birleştirme anahtarı değeri eksikse ya da doğrulanmış iki ilişki farklı özelliklerle tek kenara dönüşecekse koşu reddedilmektedir. Diğer durumlarda doğrulanmış adaylar tek bir graf işleminde yazılmakta, fark saklanmakta ve koşu `completed` durumuna geçmektedir.
+8. **Okuma.** Zincir uç noktaları, hadisi sıralı zincirleriyle ve her bağlantının alıntısı ve kabul kaydıyla birlikte döndürmektedir.
 
-2 ile 5 arasındaki adımlar ve açık öğesi olmayan koşular için 7. adım, tek istekte çalışabilir (`POST /api/projects/{project_id}/source-units/process`). 4, 5 ve 7. adımlar kuyruklanmış işler olarak da çalışabilir.
+2 ile 5 arasındaki adımlar ve açık öğesi olmayan koşular için 7. adım, tek istekte çalışabilmektedir (`POST /api/projects/{project_id}/source-units/process`). Ayrıca 4, 5 ve 7. adımlar kuyruklanmış işler olarak da çalışabilmektedir.
 
-## 5.5 Doğrulama kontrolleri
+## 5.5 Doğrulama denetimleri
 
 | Gerekçe kodu | Tetikleyen durum | Etki | Gerekçe |
 |---|---|---|---|
@@ -102,21 +102,21 @@ Metninde ح zincir geçiş işareti bulunan `Muslim:978` referanslı bir hadisi 
 | `relation_dependency_review` | Uç düğüm incelemededir | İncelemeye gider | Kenar düğümünü bekler |
 | `potential_duplicate_node`, `potential_duplicate_relation` | Koşunun başka bir adayı aynı kimliği taşır | Biri dışında hepsi incelemeye gider | Tek bir graf öğesine dönüşürler |
 | `schema_type_proposal`, `schema_property_proposal` | Çıkarım tanımsız tip ya da bildirilmemiş özellik üretmiştir | Aday elenir ya da özellik kaldırılır; `schema_proposal` tipinde inceleme öğesi oluşturulur | Sapma kaydedilir, çağrı devam eder |
-| `candidate_node_valid`, `candidate_relation_valid` | Bütün kontroller geçilmiştir | Doğrulanır | `auto_validated` politikasının dayanağıdır |
+| `candidate_node_valid`, `candidate_relation_valid` | Bütün denetimler geçilmiştir | Doğrulanır | `auto_validated` politikasının dayanağıdır |
 | `canonical_node_match`, `canonical_relation_match` | Aynı kimlik zaten grafta vardır | Durum değişmez | İnceleyiciye bağlam sağlar |
 | `human_review_decision` | Adayın kayıtlı kararı vardır | Durum karara göre belirlenir | Bölüm 5.7 |
 
-Alıntılar ve değerler, `normalize_for_grounding` uygulandıktan sonra karşılaştırılır. Bu işlev önce motorun `normalize_text` işlevini (Unicode NFKC, ardışık boşlukların tek boşluğa indirgenmesi, büyük-küçük harf katlama), ardından `normalize_arabic` işlevini uygular. İkincisi, kısa ünlü ve Kur'an işaretlerini ve uzatma karakterini kaldırır, noktalama işaretlerini boşluklarla değiştirir ve elif biçimlerini ا, ى harfini ي, ة harfini ه, ؤ harfini و ve ئ harfini ي biçimine katlar. Karşılaştırma, alt dizgi içerme testidir; boş alıntı hiçbir zaman eşleşmez. İlişki özelliklerinin değerleri alıntıyla karşılaştırılmaz.
+Alıntılar ve değerler, `normalize_for_grounding` uygulandıktan sonra karşılaştırılmaktadır. Bu işlev önce motorun `normalize_text` işlevini (Unicode NFKC, ardışık boşlukların tek boşluğa indirgenmesi, büyük-küçük harf katlama), ardından `normalize_arabic` işlevini uygulamaktadır. İkinci işlev, kısa ünlü ve Kur'an işaretlerini ve uzatma karakterini kaldırmakta, noktalama işaretlerini boşluklarla değiştirmekte ve elif biçimlerini ا, ى harfini ي, ة harfini ه, ؤ harfini و ve ئ harfini ي biçimine katlamaktadır. Karşılaştırma, alt dizgi içerme testidir; boş alıntı hiçbir zaman eşleşmemektedir. İlişki özelliklerinin değerleri ise alıntıyla karşılaştırılmamaktadır.
 
-Başarısız kontrol, güven skoru ne olursa olsun her zaman incelemeye yönlendirir. Güven skoru, modelin kendisi hakkında bildirdiği bir sayıdır; bu yüzden şemaya uyan uydurma bir olgu yüksek değer taşıyabilir. Kontrolün sonucu buna bağlı değildir. Aday reddedilmez de; çünkü başarısızlığın geçerli bir nedeni olabilir: ada belirli tanımlık ekleyen model, `value_not_in_quote` kontrolünden geçemez ve bu durum hakkında bir insan karar vermelidir. Bağımlılık yenileme yalnızca bağımlılık gerekçeli öğeleri kapattığı için bu öğeleri açık bırakır.
+Başarısız denetim, güven skoru ne olursa olsun her zaman incelemeye yönlendirmektedir. Güven skoru, modelin kendisi hakkında bildirdiği bir sayıdır; bu nedenle şemaya uyan uydurma bir olgu yüksek değer taşıyabilmektedir. Denetimin sonucu bu skora bağlı değildir. Bununla birlikte, başarısızlığın geçerli bir nedeni olabileceğinden aday reddedilmemektedir. Örneğin ada belirli tanımlık ekleyen model, `value_not_in_quote` denetiminden geçememekte ve bu durum hakkında bir insanın karar vermesi gerekmektedir. Bağımlılık yenileme yalnızca bağımlılık gerekçeli öğeleri kapattığı için bu öğeleri açık bırakmaktadır.
 
-Kanıt ve değer kontrolleri, yalnızca koşuda başarılı bir çıkarım yürütümü bulunduğunda çalışır; API üzerinden girilen adaylar operatörün yazdığı adaylar olarak ele alınır.
+Kanıt ve değer denetimleri, yalnızca koşuda başarılı bir çıkarım yürütümü bulunduğunda çalışmaktadır. API üzerinden girilen adaylar ise operatörün yazdığı adaylar olarak ele alınmaktadır.
 
 ## 5.6 İlişki kimliği
 
-Önceki kodda kenar, iki uç düğümü ve tipi üzerinden birleştiriliyor, ardından özelliklerinin üzerine yazılıyordu. İki hadiste aynı iki ravi arasındaki iki aktarım tek kenar oluyor; ikinci aktarım, ilkinin hadis referansını ve aktarım ifadesini değiştiriyordu. Adaylar arasındaki yinelenme kontrolü, anahtar olarak tüm özellikleri kullanıyordu; bu yüzden iki farklı aday görüyor ve inceleme öğesi oluşturmuyordu. Kayıp sessizdi.
+Önceki kodda kenar, iki uç düğümü ve tipi üzerinden birleştirilmiş, ardından özelliklerinin üzerine yazılmıştır. İki hadiste aynı iki ravi arasındaki iki aktarım tek kenara dönüştürülmüş; ikinci aktarımın hadis referansı ve aktarım ifadesi, ilkinin değerlerinin üzerine yazılmıştır. Adaylar arasındaki yinelenme denetiminde anahtar olarak tüm özellikler kullanıldığından bu aktarımlar iki farklı aday olarak değerlendirilmiş ve inceleme öğesi oluşturulmamıştır. Bu kayıp sessiz biçimde gerçekleşmiştir.
 
-Artık ilişki tipi `merge_keys` bildirir; bunlar, tipte bildirilmiş özelliklerin adları olmalıdır. `build_relation_identity_key`, normalize edilmiş birleştirme anahtarı değerlerini SHA-256 ile özetler; Neo4j ifadesi bu anahtar üzerinden birleştirir:
+Mevcut tasarımda ilişki tipi `merge_keys` bildirmektedir; bunların, tipte bildirilmiş özelliklerin adları olması gerekmektedir. `build_relation_identity_key`, normalize edilmiş birleştirme anahtarı değerlerini SHA-256 ile özetlemekte; Neo4j ifadesi bu anahtar üzerinden birleştirme yapmaktadır:
 
 ```text
 MERGE (from_node)-[r:`NARRATED_FROM` {project_id: $project_id,
@@ -124,41 +124,41 @@ MERGE (from_node)-[r:`NARRATED_FROM` {project_id: $project_id,
        relation_identity_key: $relation_identity_key}]->(to_node)
 ```
 
-Aday düzeyindeki saptama aynı kimliği kullanır. `build_candidate_relation_resolution_key`, ilişki tipini, her iki uç düğümün kimlik anahtarlarını ve ilişki kimlik anahtarını bir araya getirir; birleştirme anahtarları dışındaki özellikleri dikkate almaz. Dolayısıyla iki aday, tam olarak aynı kenara dönüşecekleri durumda yinelenmiş sayılır.
+Aday düzeyindeki saptama aynı kimliği kullanmaktadır. `build_candidate_relation_resolution_key`, ilişki tipini, her iki uç düğümün kimlik anahtarlarını ve ilişki kimlik anahtarını bir araya getirmekte; birleştirme anahtarları dışındaki özellikleri dikkate almamaktadır. Dolayısıyla iki aday, tam olarak aynı kenara dönüşecekleri durumda yinelenmiş sayılmaktadır.
 
-Birleştirme anahtarları olmayan tip, düğüm çifti başına tek kenar tutar. Ancak o çift için ikinci bir aday artık incelemeye gider; commit işlemi de farklı özelliklerle tek kenara dönüşen iki doğrulanmış ilişkiyi reddeder.
+Birleştirme anahtarları olmayan tip, düğüm çifti başına tek kenar tutmaktadır. Bununla birlikte, mevcut tasarımda o çift için ikinci bir aday incelemeye yönlendirilmekte; commit işlemi de farklı özelliklerle tek kenara dönüşen iki doğrulanmış ilişkiyi reddetmektedir.
 
 ## 5.7 Karar kaydı
 
-Kararlar `review_decisions` içinde saklanır. Depo protokolü yalnızca `add_decision` ve `list_decisions_by_run` sunar. Yeniden doğrulama, koşunun inceleme öğelerini değiştirir, kararlarını değiştirmez.
+Kararlar `review_decisions` içinde saklanmaktadır. Depo protokolü yalnızca `add_decision` ve `list_decisions_by_run` sunmaktadır. Yeniden doğrulama, koşunun inceleme öğelerini değiştirmekte; kararlarını ise değiştirmemektedir.
 
-Karar; inceleme öğesini, koşuyu, öğe tipini ve öğe referansını, eylemi (`accept`, `reject`, `edit`), `reviewer_id` alanını, isteğe bağlı notu, isteğe bağlı `duration_ms` alanını, zamanı ve düzenleme yapıldıysa adayın önceki ve sonraki hâlini saklar. Düzenleme, adayın bir kopyasına uygulanır ve şemaya ve koşudaki yinelenen adaylara karşı kontrol edilir; reddedilen karar hiçbir şey saklamaz. Aynı öğe hakkındaki ikinci karar yeni kayıt olarak eklenir ve son karar geçerlidir. Tamamlanmış koşu karar kabul etmez.
+Karar; inceleme öğesini, koşuyu, öğe tipini ve öğe referansını, eylemi (`accept`, `reject`, `edit`), `reviewer_id` alanını, isteğe bağlı notu, isteğe bağlı `duration_ms` alanını, zamanı ve düzenleme yapıldıysa adayın önceki ve sonraki hâlini saklamaktadır. Düzenleme, adayın bir kopyasına uygulanmakta ve şemaya ve koşudaki yinelenen adaylara karşı kontrol edilmektedir. Reddedilen kararda hiçbir şey saklanmamaktadır. Aynı öğe hakkındaki ikinci karar yeni kayıt olarak eklenmekte ve son karar geçerli sayılmaktadır. Tamamlanmış koşu ise karar kabul etmemektedir.
 
-Otomatik adımlar için insan kararları kesindir. `validate_run` önce kararları okur: hakkında karar verilmiş aday, durumunu son karardan alır, `human_review_decision` sonucunu alır, kontrolleri atlar ve inceleme öğesini korur. Yinelenen adayların ele alınması, hakkında karar verilmiş adayı hiçbir zaman yeniden incelemeye taşımaz; bağımlılık yenileme de hakkında karar verilmiş ilişkileri atlar.
+Otomatik adımlar için insan kararları kesindir. `validate_run` önce kararları okumaktadır. Hakkında karar verilmiş adayın durumu son karara göre belirlenmekte, adaya `human_review_decision` sonucu verilmekte, denetimler atlanmakta ve inceleme öğesi korunmaktadır. Yinelenen adayların ele alınması, hakkında karar verilmiş adayı hiçbir zaman yeniden incelemeye taşımamaktadır. Bağımlılık yenileme de hakkında karar verilmiş ilişkileri atlamaktadır.
 
-Kabul kayıtları, istek geldiğinde `list_acceptance_records` tarafından hesaplanır; saklanmaz. Her doğrulanmış aday için kayıt, kabul eden son kararı ya da adayı geçiren kural koduyla birlikte `auto_validated` politikasını içerir.
+Kabul kayıtları, istek geldiğinde `list_acceptance_records` tarafından hesaplanmakta; saklanmamaktadır. Her doğrulanmış aday için kayıt, kabul eden son kararı ya da adayı geçiren kural koduyla birlikte `auto_validated` politikasını içermektedir.
 
-İki sınır vardır: inceleyici adının kimliği doğrulanmaz ve karar tek bir koşunun aday kimliğine bağlıdır; bu yüzden aynı metin üzerinde yeni bir koşu bu kararı yeniden kullanmaz.
+İki sınırlama bulunmaktadır: inceleyici adının kimliği doğrulanmamakta ve karar tek bir koşunun aday kimliğine bağlı tutulmaktadır. Bu nedenle aynı metin üzerinde yeni bir koşu bu kararı yeniden kullanmamaktadır.
 
 ## 5.8 İsnad vaka çalışmasının eklentileri
 
-**Bölütleme stratejisi.** `IsnadSegmentation`, kural tabanlı `segment_isnad` işlevini sarmalar. Kaynak konumlarına eşleme tutarak metni normalize eder, ح işaretinde böler, 26 maddelik bir sözlükten aktarım kalıplarını bulur ve rivayet metninin ilk ipucunda zinciri bitirir. Strateji, `one_call_per_segment` değerini ayarlar.
+**Bölütleme stratejisi.** `IsnadSegmentation`, kural tabanlı `segment_isnad` işlevini sarmalamaktadır. Kaynak konumlarına eşleme tutarak metni normalize etmekte, ح işaretinde bölmekte, 26 maddelik bir sözlükten aktarım kalıplarını bulmakta ve rivayet metninin ilk ipucunda zinciri bitirmektedir. Strateji, `one_call_per_segment` değerini ayarlamaktadır.
 
-**Şema şablonu.** `isnad` şablonu; `Narrator` (birleştirme anahtarı `name`), `Hadith` (birleştirme anahtarı `hadith_ref`), raviden raviye `NARRATED_FROM` (birleştirme anahtarları `hadith_ref`, `chain_no`, `position`; aktarım ifadesi için `sigha` özelliği) ve raviden hadise `TRANSMITS` tiplerini bildirir. Bölütleme stratejisinin adını da belirtir. Proje oluşturma, `apply_template_schema` ayarlandığında bu şablonu uygular.
+**Şema şablonu.** `isnad` şablonu; `Narrator` (birleştirme anahtarı `name`), `Hadith` (birleştirme anahtarı `hadith_ref`), raviden raviye `NARRATED_FROM` (birleştirme anahtarları `hadith_ref`, `chain_no`, `position`; aktarım ifadesi için `sigha` özelliği) ve raviden hadise `TRANSMITS` tiplerini bildirmektedir. Ayrıca bölütleme stratejisinin adını belirtmektedir. Proje oluşturulurken `apply_template_schema` ayarlandığında bu şablon uygulanmaktadır.
 
-**Kural tabanlı sağlayıcı.** `rule_based_isnad`, dil modeli olmayan koşuldur. İstemi dikkate almaz, her segment üzerinde aynı bölütleyiciyi çalıştırır ve yazıldığı biçimde ad taşıyan ravi düğümleri ile ardışık her çift için bir `NARRATED_FROM` ilişkisi döndürür. `Hadith` düğümleri oluşturmaz. Alıntıları segmentin dilimleridir; dolayısıyla çıktısı, tasarımı gereği kaynağa dayandırma kontrollerinden geçer.
+**Kural tabanlı sağlayıcı.** `rule_based_isnad`, dil modeli olmayan koşuldur. İstemi dikkate almamakta, her segment üzerinde aynı bölütleyiciyi çalıştırmakta ve yazıldığı biçimde ad taşıyan ravi düğümleri ile ardışık her çift için bir `NARRATED_FROM` ilişkisi döndürmektedir. `Hadith` düğümleri oluşturmamaktadır. Alıntıları segmentin dilimleridir; dolayısıyla çıktısı, tasarımı gereği kaynağa dayandırma denetimlerinden geçmektedir.
 
-**Çıkarım ipuçları.** Her tip, veri yükünün şema kısmında modele iletilen ipucu dizgilerinden oluşan bir liste taşır. Örneğin "Ravi adını segment metninden birebir kopyala."
+**Çıkarım ipuçları.** Her tip, veri yükünün şema kısmında modele iletilen ipucu dizgilerinden oluşan bir liste taşımaktadır. Bu ipuçlarına "Ravi adını segment metninden birebir kopyala." ifadesi örnek verilebilmektedir.
 
 ## 5.9 Tasarım kararları ve alternatifler
 
 | Karar | Değerlendirilen alternatif | Gerekçe |
 |---|---|---|
 | Kenar kimliğinin ilişki birleştirme anahtarlarından elde edilmesi | Her aktarım olayı için bir düğüm | Genel modelde daha küçük bir değişiklik gerektirir |
-| Başarısız kontrolün incelemeye yönlendirmesi | Reddetmek ya da güven skoru eşiğinin üzerinde kabul etmek | Ret, geçerli varyantları gizler; eşik ise modelin kendi bildirdiği bir sayıya güvenir |
+| Başarısız denetimin incelemeye yönlendirmesi | Reddetmek ya da güven skoru eşiğinin üzerinde kabul etmek | Ret, geçerli varyantları gizler; eşik ise modelin kendi bildirdiği bir sayıya güvenir |
 | Tanımsız tipte tek adayın elenmesi ve bunun kaydedilmesi | Önceden olduğu gibi tüm yanıtı başarısız saymak | Geçerli adaylar korunur ve sapma sayılabilir |
 | Yalnızca yeni kayıt eklenen kararlar ve hesaplanan kabul kayıtları | Grafın yeniden kurulduğu bir olay günlüğü | Denetim izi için yeterlidir; yeniden kurma ve geri alma gerçekleştirilmemiştir |
 | Zincir segmenti başına tek çağrıyla, modelden önce kullanılabilen kural tabanlı bölütleyici | Zincirleri modelin bulduğu, hadis başına tek çağrı | Birebir alt dizgiler ve konumlar, birbirinden yalıtılmış başarısızlıklar ve modelsiz bir taban çizgisi sağlar. Değerlendirmede çıkarım kalitesine katkı bulunmamıştır (Bölüm 7.5); bu yüzden iki strateji de seçilebilir durumdadır |
 | Koşu başına tek graf işlemi | Önceden olduğu gibi düğüm başına tek işlem | Başarısız commit, kısmi graf bırakmaz |
 
-Üç sınırı bilerek kabul ediyoruz. Ravi düğümü, harekeler dâhil tam yazılı adıyla tanımlanır; bu yüzden graf, aynı adı paylaşan kişileri birleştirir ve iki biçimde yazılan tek kişiyi ayırır. Rivayet metninin sınırından sonra başlayan zincirler bölütlenmez; çünkü oradaki aktarım edatları çoğunlukla anlatıya aittir. Kaynağa dayandırma kontrolleri yalnızca çıkarım çağrısından gelen adaylara uygulanır.
+Üç sınırlama bilinçli olarak kabul edilmiştir. Ravi düğümü, harekeler dâhil tam yazılı adıyla tanımlanmaktadır. Bu nedenle graf, aynı adı paylaşan kişileri birleştirmekte ve iki biçimde yazılan tek kişiyi ayırmaktadır. Rivayet metninin sınırından sonra başlayan zincirler, oradaki aktarım edatları çoğunlukla anlatıya ait olduğundan bölütlenmemektedir. Kaynağa dayandırma denetimleri ise yalnızca çıkarım çağrısından gelen adaylara uygulanmaktadır.
