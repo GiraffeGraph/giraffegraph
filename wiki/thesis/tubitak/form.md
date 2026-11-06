@@ -92,7 +92,7 @@ Güvenilir bir değerlendirme yapılabilmesi amacıyla ravi adları, kimlikleri 
 
 Değerlendirmenin temel birimi, ravi adı ve zincirdeki konumuyla tanımlanan ravi geçişidir. Kodlayıcıların anlaşamadığı geçişler üç alan uzmanı tarafından bağımsız olarak incelenecektir. Uzmanların çoğunluk kararı referans kabul edilecektir. Üç farklı kararın ortaya çıktığı öğeler tartışmalı olarak işaretlenecek, ana değerlendirme dışında tutularak ayrıca raporlanacaktır. Kodlayıcıların uzlaştığı rastgele seçilen 10 hadis de ortak hataların belirlenmesi amacıyla uzmanlar tarafından kontrol edilecektir.
 
-Kodlayıcılar arasındaki uyum karşılıklı F1, uzmanlar arasındaki uyum ise Fleiss' kappa ölçütüyle değerlendirilecektir. Etiketleme süreleri ve anlaşmazlık sayıları kaydedilerek uzman iş yükü de incelenecektir. Referans etiketleri oluşturan uzmanlar sistem çıktılarını görmeyecek ve sonraki insan incelemesi aşamasına katılmayacaktır.
+Kodlayıcılar arasındaki uyum karşılıklı F1 [@hripcsak2005agreement], uzmanlar arasındaki uyum ise Fleiss' kappa [@fleiss1971measuring] ölçütüyle değerlendirilecektir. Etiketleme süreleri ve anlaşmazlık sayıları kaydedilerek uzman iş yükü de incelenecektir. Referans etiketleri oluşturan uzmanlar sistem çıktılarını görmeyecek ve sonraki insan incelemesi aşamasına katılmayacaktır.
 
 ## 2.3. Bilgi Grafı Üretimi ve Doğrulama
 
@@ -104,7 +104,7 @@ GiraffeGraph motorunda büyük dil modeli, kaynak metinden ravi ve aktarım ili�
 
 Denetimler sonucunda oluşturulan öneriler insan incelemesine sunulabilecektir. İnceleyici öneriyi kabul edebilecek, reddedebilecek veya düzeltebilecektir. Kabul edilen bilgiler, kaynak bağlantıları ve karar kayıtlarıyla birlikte kanonik bilgi grafına aktarılacaktır. Önceki kararlar silinmeden korunacak ve değişikliklerin izlenebilirliği sağlanacaktır.
 
-Metinsel eşleştirmede Arapça yazım farklılıklarını azaltmak amacıyla Unicode NFKC normalizasyonu uygulanacaktır. Hareke, tatvil, belirlenen noktalama işaretleri ve bazı unvan kalıpları temizlenecektir. Elif ve diğer harflerin önceden belirlenen yazım dönüşümleri kullanılacaktır. Kaynak alıntılarının doğrulanmasında ise metin konumlarını koruyan ayrı bir normalizasyon uygulanacaktır.
+Metinsel eşleştirmede Arapça yazım farklılıklarını azaltmak amacıyla Unicode NFKC normalizasyonu [@unicode2026uax15] uygulanacaktır. Hareke, tatvil, belirlenen noktalama işaretleri ve bazı unvan kalıpları temizlenecektir. Elif ve diğer harflerin önceden belirlenen yazım dönüşümleri kullanılacaktır. Kaynak alıntılarının doğrulanmasında ise metin konumlarını koruyan ayrı bir normalizasyon uygulanacaktır.
 
 Bu denetimler, önerilerin kaynak metinle ve tanımlanan şemayla tutarlılığını değerlendirmeyi amaçlamaktadır. Ancak bir adın kaynakta bulunması, doğru ravi kimliğiyle eşleştirildiğini tek başına göstermemektedir. Bu nedenle kimlik eşleştirmeleri ve isnad sırası, insan etiketli referans kümesiyle ayrıca karşılaştırılacaktır.
 
@@ -154,11 +154,11 @@ Kaynakta bulunmayan ravi önerileri, değiştirilmiş adlar, şemaya aykırı ç
 
 **H2 kapsamında**, ham model önerilerinin hata oranı ile doğrulama sonrasında incelemesiz kabul edilen önerilerin hata oranı karşılaştırılacaktır. Hata oranındaki değişim değerlendirilirken doğru önerilerin de elenmesinden kaynaklanabilecek duyarlılık kaybı dikkate alınacaktır.
 
-**H3 kapsamında**, denetimler tarafından işaretlenen önerilerin insan tarafından reddedilme veya düzeltilme olasılığı incelenecektir. Bu amaçla işaretlenme durumu, gerekçe kodları ve modelin güven skorları kullanılarak lojistik regresyon analizi yapılacaktır. Standart hatalar hadis düzeyinde kümelenecektir. İnceleme kararları ve karar süreleri de raporlanacaktır.
+**H3 kapsamında**, denetimler tarafından işaretlenen önerilerin insan tarafından reddedilme veya düzeltilme olasılığı incelenecektir. Bu amaçla işaretlenme durumu, gerekçe kodları ve modelin güven skorları kullanılarak lojistik regresyon analizi yapılacaktır. Standart hatalar hadis düzeyinde kümelenecektir [@cameron2015practitioner]. İnceleme kararları ve karar süreleri de raporlanacaktır.
 
 **H4 kapsamında**, aynı gerçek ravi kimliği kararları P1, P2 ve P3 politikaları altında yeniden yürütülecektir. Politikalar arasındaki inceleme sayısı ve sessiz hata oranı farkları karşılaştırılacaktır. Hadislerin işlenme sırasının sonuçlara etkisi de değerlendirilecektir.
 
-Deney koşulları arasındaki performans farklarının belirsizliği, hadis düzeyinde eşli bootstrap yöntemiyle hesaplanan güven aralıkları üzerinden incelenecektir. Hipotezleri desteklemeyen sonuçlar da araştırma bulguları arasında raporlanacaktır.
+Deney koşulları arasındaki performans farklarının belirsizliği, hadis düzeyinde eşli bootstrap yöntemiyle [@efron1993bootstrap] hesaplanan güven aralıkları üzerinden incelenecektir. Hipotezleri desteklemeyen sonuçlar da araştırma bulguları arasında raporlanacaktır.
 
 ## 2.7. Ön Çalışma ve Araştırmanın Kapsamı
 
@@ -225,9 +225,9 @@ Araştırmada kullanılacak üçüncü taraf hadis metinlerinin erişim ve payla
 # Göndermeden önce (başvuru metnine girmez)
 
 1. **TYBS'deki girişler.** Bilimsel alan: Teknik Bilimler > Bilgisayar Bilimleri > Yapay Zeka, Bilgisayarda Öğrenme ve Örüntü Tanıma. Öncelikli alan: Evet, Yapay Zeka. Bütçe: Hizmet Alımı 12.000 TL (programın üst sınırı), Makine Teçhizat, Sarf Malzemesi ve Ulaşım 0. Üretken yapay zekâ beyanı ve taahhüdü TYBS'deki ayrı bölümde verildi. Kalan adım danışman onayıdır; ardından kurum yetkilisinin e-imzası gelir (16–23 Kasım).
-2. **Kaynakça ile atıfların eşleşmesi.** TYBS kaynakçası 12 kaynaktır ve her birine metinde atıf vardır; ÜYZ taahhüdünün 1. maddesi bunu beyan eder. Li vd. 2016 (BioCreative V CDR), biyomedikal karşılaştırma cümlesiyle birlikte metinden ve kaynakçadan çıkarılmıştır. `tybs/arastirma-onerisi.pdf` bu çıkarmadan önce alındığı için 13 kaynak gösterir.
-3. **Kaynakça biçimi.** TYBS, "Kaynakçayı Numaralandır" düğmesine basılmadan kaynakçayı kaydetmez ve listeyi [1]–[n] biçiminde numaralar. Metin içi atıflar TÜBİTAK'ın yazar-yıl biçimindedir (<https://tubitak.gov.tr/tr/duyuru/bibliyografik-verilerin-duzenlenmesi>); bu dosyanın derlemesi alfabetik, numarasız liste üretir. Crossref'e göre Kamran vd. 2026 makale numarasıyla kayıtlıdır ve sayfa aralığı yoktur; kaynakçadaki "1–27" kaynak paketinden gelir. Haque ve Islam 2026 bir arXiv ön baskısıdır.
-4. **Takvim kuralı.** 2209-A bilgi notu rapor yazımının ayrı iş adımı olarak gösterilmesini istemez (<https://tubitak.gov.tr/sites/default/files/2026-10/2209-A_Basvuru_Icerigi_Bilgi_Notu.pdf>); İP4 "araştırmanın raporlanması" ifadesini taşır. Proje Süresi alanı yalnız sayı kabul ettiği için ay aralıkları faaliyet metninin başına yazılmıştır.
+2. **Kaynakça ile atıfların eşleşmesi.** TYBS kaynakçası 17 kaynaktır ve her birine metinde atıf vardır; ÜYZ taahhüdünün 1. maddesi bunu beyan eder. Li vd. 2016 (BioCreative V CDR), biyomedikal karşılaştırma cümlesiyle birlikte metinden ve kaynakçadan çıkarılmıştır. Danışmanın 2026-11-06 notuyla yöntem bölümüne karşılıklı F1, Fleiss' kappa, bootstrap, kümelenmiş standart hata ve Unicode NFKC kaynakları eklendi; künyeler Crossref, DataCite, PubMed ve unicode.org kayıtlarından doğrulandı. Metin iki yana yaslandı. `tybs/arastirma-onerisi.pdf` bu değişikliklerden önce alındı.
+3. **Kaynakça biçimi.** TYBS, "Kaynakçayı Numaralandır" düğmesine basılmadan kaynakçayı kaydetmez ve listeyi [1]–[n] biçiminde numaralar. Metin içi atıflar TÜBİTAK'ın yazar-yıl biçimindedir (<https://tubitak.gov.tr/tr/duyuru/bibliyografik-verilerin-duzenlenmesi>); bu dosyanın derlemesi alfabetik, numarasız liste üretir. Kamran vd. 2026 Crossref'te makale numarasıyla kayıtlıdır, bu yüzden sayfa aralığı verilmez; Haque ve Islam 2026 bir arXiv ön baskısıdır ve DataCite DOI'si kaynakçadadır. İnternet kaynakları son erişim tarihini taşır.
+4. **Takvim kuralı.** 2209-A bilgi notu rapor yazımının ayrı iş adımı olarak gösterilmesini istemez (<https://tubitak.gov.tr/sites/default/files/2026-10/2209-A_Basvuru_Icerigi_Bilgi_Notu.pdf>); İP4 "araştırmanın raporlanması" ifadesini taşır. Danışman Proje Süresi sütununun "1-3. aylar" biçiminde ay aralığı göstermesini ve faaliyet metnindeki ay ifadelerinin kaldırılmasını istedi; TYBS'nin Proje Süresi alanı yalnız sayı kabul eder ("1-2. aylar" girişi "12" olarak okunur), bu yüzden ay aralıkları şimdilik faaliyet metninde durur.
 5. **Alan uzmanlarının desteği.** Üç hadis uzmanının destek beyanları alınmalıdır. Beyanlar, kılavuzu gözden geçirme ve anlaşmazlıklarda bağımsız karar verme rollerini kapsamalı; uzmanların inceleme kuyruğunda karar vermeyeceğini belirtmelidir.
 6. **Eşikler.** H1 (%60), H2 (%50), H4 (%20 ve 0,02) ve Hedef 1 (karşılıklı F1 ≥ 0,85) danışman onayıyla bağlayıcı olur.
 7. **Metin kaynağı ve lisans.** 300 hadislik test kümesinin metin ve etiket kaynaklarının lisansı teyit edilmemiştir (`data/README.md`). R1'deki B planı buna göre yazılmıştır.

@@ -37,7 +37,13 @@ p { margin: 0.45em 0; }
 # The frozen bib package keeps Crossref's title as delivered, footnote marker included.
 TITLE_FIXES = {"Design Science in Information Systems Research1": "Design Science in Information Systems Research"}
 # Institutional authors are cited by their full name, not split into surname and initials.
-CORPORATE_AUTHORS = {"T.C. Cumhurbaşkanlığı Strateji ve Bütçe Başkanlığı"}
+CORPORATE_AUTHORS = {"T.C. Cumhurbaşkanlığı Strateji ve Bütçe Başkanlığı", "Unicode Consortium"}
+# Corrections to entries of the frozen bib package: the arXiv DOI is registered at DataCite, and
+# Crossref lists the Semantic Web article by article number with no page range.
+FIELD_FIXES = {
+    "haque2026hadith": {"doi": "10.48550/arXiv.2608.20364"},
+    "kamran2026semantic": {"pages": ""},
+}
 
 
 def people(raw):
@@ -95,6 +101,8 @@ def format_tubitak(fields):
         parts.append(f"DOI: {fields['doi']}")
     elif fields.get("url"):
         parts.append(fields["url"])
+        if fields.get("urldate"):
+            parts.append(f"Son erişim tarihi: {fields['urldate']}.")
     return " ".join(parts).replace("\\&", "&")
 
 
@@ -126,7 +134,7 @@ def assemble(entries):
         return "(" + "; ".join(f"{cite_label(entries[key])}, {year_of[key]}" for key in cited) + ")"
 
     text = re.sub(r"\[(@[^\]]+)\]", replace, text)
-    references = "\n\n".join(format_tubitak({**entries[key], "year": year_of[key]}) for key in keys)
+    references = "\n\n".join(format_tubitak({**entries[key], **FIELD_FIXES.get(key, {}), "year": year_of[key]}) for key in keys)
     if REFERENCES_MARKER not in text:
         raise SystemExit("references marker is missing from tubitak/form.md")
     return text.replace(REFERENCES_MARKER, references), keys
