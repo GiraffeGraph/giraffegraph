@@ -36,12 +36,14 @@ p { margin: 0.45em 0; }
 
 # The frozen bib package keeps Crossref's title as delivered, footnote marker included.
 TITLE_FIXES = {"Design Science in Information Systems Research1": "Design Science in Information Systems Research"}
-# Crossref registers this article by article number with no page range; the bib's "1--27" has no source.
-DROP_PAGES = {"10.1177/22104968261431425"}
+# Institutional authors are cited by their full name, not split into surname and initials.
+CORPORATE_AUTHORS = {"T.C. Cumhurbaşkanlığı Strateji ve Bütçe Başkanlığı"}
 
 
 def people(raw):
     """(surname, initials) for each author of a bib `author` field."""
+    if raw in CORPORATE_AUTHORS:
+        return [(raw, "")]
     result = []
     for person in re.split(r"\s+and\s+", raw):
         if "," in person:
@@ -83,8 +85,10 @@ def format_tubitak(fields):
         elif fields.get("booktitle"):
             venue = fields["booktitle"]
         elif fields.get("eprint"):
-            venue = f"arXiv:{fields['eprint']} (ön baskı)"
-        if fields.get("pages") and fields.get("doi") not in DROP_PAGES:
+            venue = f"arXiv:{fields['eprint']}"
+        elif fields.get("howpublished"):
+            venue = fields["howpublished"]
+        if fields.get("pages"):
             venue += f", {fields['pages']}"
         parts.append(f'"{title}", {venue}.' if venue else f'"{title}".')
     if fields.get("doi"):

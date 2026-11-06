@@ -101,22 +101,26 @@ Bir terim her yerde aynı karşılıkla yazılır.
 
 ## Üslup
 
-Metin, alanını bilen bir araştırmacının yazdığı düz akademik Türkçedir. Çeviri kokmaz: cümle
-İngilizcenin sırasını değil, Türkçenin doğal sırasını izler.
+Bütün Türkçe akademik metinler (tez ve makalenin Türkçe sürümleri, TÜBİTAK ve ders belgeleri) TYBS'ye
+girilen TÜBİTAK 2209-A formunun dilini izler; örnek metin `wiki/thesis/tubitak/form.md`. Ekip ve danışman
+bu dili 2026-11-06'da ortak üslup olarak seçti. Çeviri kokmaz: cümle İngilizcenin sırasını değil,
+Türkçenin doğal sırasını izler.
 
-- Özne biziz: "ölçtük", "bulduk", "sınamadık". Edilgen yapı yalnız yapanın önemsiz olduğu yerde kullanılır.
-- TÜBİTAK formu bu kuralın istisnasıdır. Danışman 2026-11-05'te birinci çoğul kişili taslağı yapay zekâ
-  kokulu buldu ve resmî üslupla bir örnek gönderdi. Formda planlanan iş edilgen gelecek zamanla
-  ("ölçülecektir"), ön bulgu geçmiş zamanla ("işaretledi"), mevcut durum "hazırdır" ile yazılır; cümle
-  sonları ve uzunlukları çeşitlenir. İki kanıt kontrolü formda "alıntının kaynakta bulunması denetimi" ve
-  "adın alıntıda bulunması denetimi" adını taşır.
-- Her iddia kaynaktaki kadar güçlüdür. Çeviri bir çekinceyi silmez, bir çekince eklemez.
+- Birinci çoğul kişi kullanılmaz. Genel durum ve literatür geniş zaman "-mektedir / -maktadır" ya da
+  "-dır / -dir" ile yazılır ("gerektirmektedir", "önem taşımaktadır"). Ön çalışma bulguları "-mıştır /
+  -miştir" ile yazılır ("değerlendirilmiştir", "gözlemlenmiştir"). Planlanan iş edilgen gelecek zamanla ya
+  da "planlanmaktadır / hedeflenmektedir / beklenmektedir" ile yazılır.
+- Cümleler bağlaçlarla bağlanır: "Bununla birlikte", "Öte yandan", "Ayrıca", "Bu kapsamda", "Bu nedenle".
+  Literatür cümleleri art arda telgraf gibi dizilmez.
+- Terimler formdaki gibidir: kesinlik (precision), duyarlılık (recall), F1; şema denetimi; kanıt
+  denetimleri (alıntının kaynakta bulunması denetimi, adın alıntıda bulunması denetimi); karar defteri;
+  sessiz hata; ravi geçişi.
+- Atıflar TÜBİTAK'ın yazar-yıl biçimindedir: "(Ye vd., 2022; Pan vd., 2024)", "(Haque ve Islam, 2026)".
+- Her iddia kaynaktaki kadar güçlüdür. Çeviri bir çekinceyi silmez, bir çekince eklemez; ölçülmemiş bir
+  sonuç "göstermektedir" diye yazılmaz.
 - Uzun tire (—) ve kısa tire (–) noktalama olarak kullanılmaz; virgül, nokta, iki nokta ya da parantez
   kullanılır. Kaynakta tabloda ya da tarihte duran aralık tiresi aynen kalır.
-- Şişirme sözcükler yazılmaz: "önemli bir rol oynar", "kritik", "çığır açan", "kapsamlı", "güçlü bir
-  biçimde", "dikkat çekicidir", "altını çizmek gerekir".
-- Dolgu yazılmaz: "şunu belirtmek gerekir ki", "bu bağlamda", "söz konusu", "-ması nedeniyle" zinciri.
-  "Çünkü", "için", "-dığı için" yeter.
+- Abartılı nitelemeler yazılmaz: "çığır açan", "devrim niteliğinde", "eşsiz".
 - "Yalnızca X değil, aynı zamanda Y" kalıbı ve üçlü sıralama alışkanlığı kaynakta yoksa eklenmez.
 - Bir şey için tek ad kullanılır; aynı kavram paragraf içinde eşanlamlılarla dolaştırılmaz.
 - Başlıklarda yalnız ilk sözcük ve özel adlar büyük harfle başlar.

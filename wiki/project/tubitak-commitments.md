@@ -7,7 +7,7 @@ tutmak. Bir plan ya da rapor yazılırken taahhüdün karşılanıp karşılanma
 
 ## Scope
 
-- In: K-1…K-4 katkıları, H1…H4 hipotezleri, Hedef 1–5; her birinin eldeki kanıtı ve eksiği; eşiklerin
+- In: H1…H4 hipotezleri, Hedef 1–5 ve bunları taşıyan dört katkı (K-1…K-4, bu sayfanın iç etiketleri); her birinin eldeki kanıtı ve eksiği; eşiklerin
   hangi ölçüme dayandığı; formun bilerek kapsamadığı işler
 - Out: formun tam metni (`wiki/thesis/tubitak/form.md`), ölçümlerin ayrıntısı
   (`wiki/evaluation/engine-experiments.md`, `wiki/evaluation/decision-ledger-experiments.md`), sıradaki
@@ -15,26 +15,21 @@ tutmak. Bir plan ya da rapor yazılırken taahhüdün karşılanıp karşılanma
 
 ## Statü
 
-Form taslaktır ve gönderilmedi (proje sahibinin beyanı, 2026-10-13). Kapsam, ekibin 2026-10-25
-tarihli proje özetini izler (Alperen Ulukaya; ekip WhatsApp grubunda paylaşıldı): hadis motoru, 300
+Form TYBS'ye girildi ve danışman onayı bekliyor (başvuru 1919B012619516, 2026-11-06). TYBS'deki
+metin `wiki/thesis/tubitak/form.md` dosyasında, TYBS önizlemesi `wiki/thesis/tubitak/tybs/arastirma-onerisi.pdf`
+dosyasındadır. Metin, danışmanın 2026-11-05 geri bildirimi ve gönderdiği örnekle ekibin yeniden
+yazdığı son hâldir; kapsam ekibin 2026-10-25 proje özetini izler (Alperen Ulukaya): hadis motoru, 300
 insan etiketli hadis, katman katman ölçüm, en az üç model, ravi kimliği ve karar defteri. Kod ajanı
-deneyi ve grafla soru cevaplama formda yoktur. Danışman onaylamadı.
-
-Taslağın PDF'i 2026-10-25'te CSE 491 Teams ödevine ("TÜBİTAK 2209-A Application Evidence", puansız)
-yüklendi; yanında başvurunun TYBS'de hazırlandığını söyleyen bir not var. TYBS başvurusu açılmadı.
-2026 çağrısının son günü 11 Kasım 2026, 17:30; kurum e-imzaları 16–23 Kasım (TÜBİTAK duyurusu,
+deneyi ve grafla soru cevaplama formda yoktur. Eşikler danışman onayıyla bağlar; ardından kurum
+yetkilisinin e-imzası gelir (16–23 Kasım; TÜBİTAK duyurusu,
 <https://tubitak.gov.tr/en/announcement/2209-research-project-support-programme-undergraduate-students-and-2209-b-industry-oriented-research-project-support-programme-undergraduate-students-2026-calls-are-open-application>).
-Formda alan uzmanı olarak Dr. Öğr. Üyesi Tunahan Erdoğan (İlahiyat, Arap Dili ve Belagatı) ve
-belirlenecek iki uzman geçer; destek beyanları alınmadı. Eşikler öneridir;
-gönderildiği gün bağlar. Başvuru ekibi bitirme projesi ekibidir: Yahya Efe Kuruçay, Deniz Büyükşahin,
-Alperen Ulukaya.
+Başvuru sahibi Yahya Efe Kuruçay, proje ortakları Deniz Büyükşahin ve Alperen Ulukaya'dır.
 
-Danışman 2026-11-05'te taslağın yapay zekâ koktuğunu söyledi ve resmî, edilgen üslupla yazılmış bir
-yeniden yazım (`giraffe.docx`, WhatsApp) gönderdi. Form o belgenin üslubuyla, bu sayfadaki sayılar ve
-atıflar korunarak yeniden yazıldı. 2209-A 2026 kuralları yüzünden üç taahhüt biçimi değişti: takvimde
-yayın ve rapor ayrı iş paketi olamaz (İP4 analiz ve tekrarlanabilirliktir), B planları hedef küçültemez
-(300 hadis, üç model ve iki tekrar korunur), yapay zekâ beyanı form metnine değil TYBS'deki ayrı bölüme
-yazılır. Kurallar ve kaynakları formun "Göndermeden önce" bölümündedir. Danışman yeni metni okumadı.
+Form metni katkıları K-1…K-4 diye etiketlemez; bu sayfadaki K-1…K-4 satırları Hedef 1–4'ün iç
+etiketleridir. Formdaki K0–K4 ise deney koşullarının adıdır. Form ön çalışmanın kesin sayılarını
+vermez; hipotez eşiklerinin dayanağı aşağıdaki tablodadır. TYBS'deki diğer girişler (bilimsel alan,
+öncelikli alan, 12.000 TL hizmet alımı bütçesi) ve onaydan önce çözülecek noktalar formun "Göndermeden
+önce" bölümündedir.
 
 2026 I. dönem için hazırlanmış taslak donmuş pakette durur
 (`wiki/sources/claude-science-context/02a_TUBITAK_2209A_form_original.pdf`); bu sayfa onu izlemez.
@@ -87,7 +82,7 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 ## Rules
 
 - MUST: taahhüt metni aktarılırken `wiki/thesis/tubitak/form.md` esas alınır; bu sayfadaki tablo özettir.
-- MUST: form gönderildikten sonra bir plan K-1…K-4, H1…H4 ya da Hedef 1–5 ile çelişmez; taahhüdü kapsar
+- MUST: form gönderildikten sonra bir plan H1…H4 ya da Hedef 1–5 ile çelişmez; taahhüdü kapsar
   ya da genişletir. Gönderilene kadar eşikler ölçüme göre değiştirilebilir ve değişiklik formda ve bu
   sayfada aynı görevde yapılır.
 - MUST: "Eldeki" sütununa yalnız dosyayla desteklenen şey yazılır; referans insan altın standardı
@@ -129,4 +124,4 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 
 ## Last updated
 
-2026-11-05
+2026-11-06
