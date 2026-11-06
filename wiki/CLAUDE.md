@@ -35,9 +35,9 @@ organizasyonunda durur ama bitirme projesinin parçası değildir ve çalışma 
   formunda üç uydurma referans tespit edildi (`wiki/sources/claude-science-results/04a_kaynak_dogrulama_tablosu.md`).
 - **Sanadset `<NAR>` etiketleri gümüş standarttır.** Onlara karşı ölçülen değer sistemler arası
   karşılaştırmada kullanılır; "gerçek doğruluk" diye sunulmaz.
-- **TÜBİTAK 2209-A formu TYBS'ye girildi, danışman onayı bekliyor** (başvuru 1919B012619516,
-  2026-11-06; metin `wiki/thesis/tubitak/form.md`). H1…H4 ve Hedef 1–5 danışman onayıyla bağlayıcı olur
-  ve o günden sonra çelişen plan önerilmez. Taahhüt başına eldeki
+- **TÜBİTAK 2209-A başvurusu danışman onayından geçti ve bağlayıcıdır** (başvuru 1919B012619516, TYBS
+  durumu "ONAYLANDI", 2026-11-06; metin `wiki/thesis/tubitak/form.md`). H1…H4 ve Hedef 1–5 ile çelişen
+  plan önerilmez; plan bunları kapsar ya da genişletir. Taahhüt başına eldeki
   kanıt: `wiki/project/tubitak-commitments.md`.
 - **CSE 491 proje önerisi bağlayıcıdır.** Vize ve final ona göre değerlendirilir; son teslim günü
   2026-10-18 (`wiki/project/overview.md`, "İki çerçeve").

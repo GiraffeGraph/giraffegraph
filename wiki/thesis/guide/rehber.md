@@ -381,7 +381,7 @@ Belgeler özel `GiraffeGraph/giraffegraph` deposunda bulunuyor. Aşağıdaki yol
 | --- | --- | --- |
 | Tez taslağı | 55 sayfa, İngilizce ve Türkçe | `wiki/thesis/build/thesis.pdf`, `wiki/thesis/build/thesis-tr.pdf` |
 | Makale taslağı | 11 sayfa, "Alıntı doğru, çıkarılan değer farklı" | `wiki/thesis/paper/build/` |
-| TÜBİTAK formu | Taslak, gönderilmedi | `wiki/thesis/tubitak/build/form.pdf` |
+| TÜBİTAK formu | TYBS'de danışman onayından geçti (2026-11-06) | `wiki/thesis/tubitak/build/form.pdf` |
 | CSE 491 önerisi | Proje önerisi | `wiki/thesis/proposal/build/proposal.pdf` |
 | Danışman toplantısı notları | 16 Ekim 2026 materyalleri | `wiki/thesis/meeting/2026-10-16/build/` |
 | Uzman belgeleri ve yönerge | Etiketleme hazırlığı | `giraffegraph-core/evaluation/annotation/expert/build/` |

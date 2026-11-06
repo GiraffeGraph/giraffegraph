@@ -29,7 +29,7 @@ uzmanı (Prof. Dr. Rifat Atay ve belirlenecek iki uzman).
 
 | # | Soru | Öneri (Claude Science, 2026-09-30) | Fiilî durum | Sahip |
 |---|---|---|---|---|
-| 1 | TÜBİTAK başvurusunun durumu nedir? | Kabulse revizyonlar yazılı onaya sunulur; değerlendirmedeyse kaynakça hemen düzeltilir; retse kısıt kalkar | Gönderilmedi (proje sahibinin beyanı, 2026-10-13). Form tek proje çerçevesiyle yazılmış bir taslaktır (`wiki/thesis/tubitak/form.md`); sonundaki "Göndermeden önce" bölümü karar bekleyen sekiz noktayı sayar | E |
+| 1 | TÜBİTAK başvurusunun durumu nedir? | Kabulse revizyonlar yazılı onaya sunulur; değerlendirmedeyse kaynakça hemen düzeltilir; retse kısıt kalkar | Danışman TYBS'de onayladı (2026-11-06); kurum yetkilisinin e-imzası 16–23 Kasım, ardından TÜBİTAK değerlendirmesi. Metin `wiki/thesis/tubitak/form.md`; sonundaki notlar açık kalan noktaları (fatura, ÜYZ 1.5.3, takvim biçimi) sayar | E |
 | 2 | Tezin ana iddiası dar mı (hadis için güvenilir KG motoru), geniş mi (bilgi katmanları için genel mimari, hadis kanıtıyla)? | Geniş iddia, hadiste derin kanıtla | **Karar (proje sahibi, 2026-10-13; danışman onayı bekler):** tek proje. İddia ve üç parçası `wiki/project/overview.md`, "Çerçeve" içindedir. Tez, makale ve proje önerisi taslakları bu çerçevededir (2026-10-13). Danışmana 2026-10-16 toplantısında soruluyor (`wiki/thesis/meeting/2026-10-16/04-gundem.md`, karar 1). Taslaklar `wiki/thesis/` altındadır, gönderilmedi | E, D |
 | 3 | Genelleme vakaları (kod tabanı, Kur'an) teze girer mi? | Kod vakası 20 soruluk kümeyle, Kur'an vakası anlatı olarak girer | İkisi için de ölçüm yok. Kur'an olayının kaydı: `wiki/sources/claude-science-context/07_case_codebase_wiki_and_quran.md` | E, D |
 

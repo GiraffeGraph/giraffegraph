@@ -15,13 +15,13 @@ tutmak. Bir plan ya da rapor yazılırken taahhüdün karşılanıp karşılanma
 
 ## Statü
 
-Form TYBS'ye girildi ve danışman onayı bekliyor (başvuru 1919B012619516, 2026-11-06). TYBS'deki
+Başvuru TYBS'de danışman onayından geçti (başvuru 1919B012619516, durum "ONAYLANDI", 2026-11-06) ve taahhütler bağlayıcıdır. TYBS'deki
 metin `wiki/thesis/tubitak/form.md` dosyasında, TYBS önizlemesi `wiki/thesis/tubitak/tybs/arastirma-onerisi.pdf`
 dosyasındadır. Metin, danışmanın 2026-11-05 geri bildirimi ve gönderdiği örnekle ekibin yeniden
 yazdığı son hâldir; kapsam ekibin 2026-10-25 proje özetini izler (Alperen Ulukaya): hadis motoru, 300
 insan etiketli hadis, katman katman ölçüm, en az üç model, ravi kimliği ve karar defteri. Kod ajanı
-deneyi ve grafla soru cevaplama formda yoktur. Eşikler danışman onayıyla bağlar; ardından kurum
-yetkilisinin e-imzası gelir (16–23 Kasım; TÜBİTAK duyurusu,
+deneyi ve grafla soru cevaplama formda yoktur. Sırada kurum
+yetkilisinin e-imzası var (16–23 Kasım; TÜBİTAK duyurusu,
 <https://tubitak.gov.tr/en/announcement/2209-research-project-support-programme-undergraduate-students-and-2209-b-industry-oriented-research-project-support-programme-undergraduate-students-2026-calls-are-open-application>).
 Başvuru sahibi Yahya Efe Kuruçay, proje ortakları Deniz Büyükşahin ve Alperen Ulukaya'dır.
 
@@ -82,9 +82,8 @@ Form şunlara söz vermez; her biri için gerekçe ölçümdedir.
 ## Rules
 
 - MUST: taahhüt metni aktarılırken `wiki/thesis/tubitak/form.md` esas alınır; bu sayfadaki tablo özettir.
-- MUST: form gönderildikten sonra bir plan H1…H4 ya da Hedef 1–5 ile çelişmez; taahhüdü kapsar
-  ya da genişletir. Gönderilene kadar eşikler ölçüme göre değiştirilebilir ve değişiklik formda ve bu
-  sayfada aynı görevde yapılır.
+- MUST: bir plan H1…H4 ya da Hedef 1–5 ile çelişmez; taahhüdü kapsar ya da genişletir. Başvuru
+  danışman onayından geçtiği için (2026-11-06) eşikler artık ölçüme göre değiştirilmez.
 - MUST: "Eldeki" sütununa yalnız dosyayla desteklenen şey yazılır; referans insan altın standardı
   değilse bu belirtilir.
 - MUST: formun kaynakçası elle yazılmaz; `wiki/thesis/build_form.py` iki `.bib` dosyasından üretir.
