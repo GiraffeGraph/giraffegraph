@@ -3,7 +3,7 @@
 Bitirme projesinin yaşayan bilgi katmanı: ne yapıyoruz, neden, ne ölçüldü, ne açık.
 Kod ve ölçüm dosyaları nihai otoritedir; wiki *neden* ve *nasıl ilerlenir* sorularını taşır.
 
-Bu klasör proje reposunun (`GiraffeGraph/giraffegraph`, özel) `wiki/` klasörüdür; motor
+Bu klasör proje reposunun (`GiraffeGraph/giraffegraph`, 2026-11-09 itibarıyla public) `wiki/` klasörüdür; motor
 (`giraffegraph-core/`) ve veri (`data/`) aynı repodadır. Projenin kod dışındaki bütün bağlamı buradadır: yaşayan sayfalar, literatür taraması,
 tarihli kaynak paketleri, tez ve makale taslakları.
 
@@ -29,6 +29,7 @@ Proje:
 - `project/tubitak-commitments.md` — TÜBİTAK formundaki H1…H4 ve Hedef 1–5: taahhüt başına eldeki kanıt, eksik, eşiğin dayanağı; form metni `thesis/tubitak/form.md`
 - `project/open-decisions.md` — ekibin ve danışmanın vermesi gereken kararlar: öneri, fiilî durum, sahip
 - `project/supervisor-meetings.md` — danışman toplantıları ve aksiyonlar
+- `thesis/midterm/README.md` — Grup 10 CSE 491 ara raporu, 8 Kasım 2026 teslim tarihi; teslim dosyası ve doğrulanmış güncel durum
 
 Ölçüm:
 
@@ -105,4 +106,4 @@ Tam ölçüt: `architecture/context-quality.md`.
 
 ## Last updated
 
-2026-10-13
+2026-11-09

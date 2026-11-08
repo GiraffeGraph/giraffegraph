@@ -16,6 +16,7 @@ doldurulur, danışmana imzalatılır ve bir hafta içinde dersin MS Teams kanal
 |---|---|---|---|
 | 1 | 2026-10-02 | Very good | 2026-10-09 |
 | 2 | 2026-10-16 | Formda işaretlenmedi (imzasız) | 2026-10-23 |
+| 3 | 2026-10-30 | Formda işaretlenmedi (imzasız) | 2026-11-06 (planlanan haftalık görüşme) |
 
 2026-10-09'da danışmanla benzer projelerden nerede ayrışılacağı konuşuldu (proje sahibinin beyanı); bunun formu yok. Toplantı 2'nin hazırlık belgeleri ve ekibin doldurduğu form: `wiki/thesis/meeting/2026-10-16/` (gündem: `04-gundem.md`, form: `build/supervisor-meeting-form.docx`).
 
@@ -34,6 +35,13 @@ yansır (izlence §2).
 ## Toplantı 1 — 2026-10-02
 
 Katılım: tüm grup üyeleri. Danışman: Dr. Taha Yiğit Alkan.
+
+**Web kopyası (9 Kasım 2026):** kullanıcının sağladığı iki taranmış PDF birebir aynıdır
+(SHA-256 `349b3b0d52975d6bfd182c5ba191dd13059f3f5ab71828053a3efd31aadb8ded`).
+İmzalı asıllar İndirilenler ve ders klasöründe korunur; public repoya kopyalanmaz.
+`wiki/thesis/meeting/2026-10-02/supervisor-meeting-1-public.pdf` yalnız imzası kaldırılmış
+kopyadır. İmza değerlendirme satırının üzerine taştığı için web kopyasında bu hücreler temizlenmiş,
+kaynakta işaretli “Very good” değerlendirmesi açık metinle korunmuştur. Öğrenci numaraları yer alır.
 
 **Tanımlanan problem:** dini soru ve ilgili bilgilerin formal temsili, bu temsilden Knowledge Graph
 kurulması ve RAG tabanlı soru-cevap sistemiyle bütünleştirilmesi. Hadis isnad zincirleri graf
@@ -64,6 +72,14 @@ bütünleştirme yöntemlerini belirlemek.
 Süre 15 dakika. Katılım: tüm grup üyeleri ve danışman. Form ekip tarafından dolduruldu; imza ve
 değerlendirme kutusu boş (`wiki/thesis/meeting/2026-10-16/build/supervisor-meeting-form.docx`).
 
+**Güncel kaynak ve web kopyası (9 Kasım 2026):** kullanıcının verdiği
+`CSE491_Supervisor_Meeting_Form.docx` ile `(1)` adlı dosya birebir aynıdır
+(SHA-256 `0319fbb3a349765b8f0f325c0b95188aa2c18b40e0fcd7553e23f32e4a5664f6`).
+Asıl Word değiştirilmeden `wiki/thesis/meeting/2026-10-16/supervisor-meeting-2-original.docx`
+yoluna arşivlendi. Aynı dosya doğrudan tek sayfalık A4 PDF'e çevrildi; bozuk web çıktısının yerini
+`wiki/thesis/meeting/2026-10-16/supervisor-meeting-2.pdf` ve sitedeki Meeting #2 bağlantısı aldı.
+Öğrenci numaraları korunur; değerlendirme ve imza alanları kaynakta olduğu gibi boştur.
+
 **Konuşulan:** benzer çalışmalarla örtüşmeler ve olası araştırma boşlukları; araştırma katkısının daha
 da netleşmesi gerektiği; etiketleme kılavuzu ve belirsiz durumlar için uzman desteği. Toplantıda
 etkileşimli anlatıcı (`wiki/thesis/guide/anlatici.html`) gösterildi (proje sahibinin beyanı).
@@ -82,9 +98,28 @@ rolü proje önerisinde (§6) ve TÜBİTAK formunda (2.3) yazılıdır.
 | Tüm grup | Danışılacak hadis uzmanlarını belirlemek, uzman incelemesi soruları | Prof. Dr. Rifat Atay belli; iki uzman aranıyor; sorular `giraffegraph-core/evaluation/annotation/expert/brief.md` |
 | Tüm grup | TÜBİTAK 2209-A ilk taslağı (kısa) | `wiki/thesis/tubitak/form.md` kısaltıldı; danışmanın okumasını bekliyor |
 
+## Toplantı 3 — 2026-10-30
+
+Süre 10 dakika. Formda tüm grup üyelerinin ve danışmanın katıldığı yazılıdır. Kullanıcının
+9 Kasım 2026 tarihinde sağladığı PDF, `wiki/thesis/meeting/2026-10-30/supervisor-meeting-3.pdf`
+yolunda değiştirilmeden saklanır. Danışman değerlendirmesi ve imza alanı boştur.
+
+**Tamamlanan işler (form):** CSE 491 önerisi tamamlandı; TÜBİTAK başvurusunun ilk taslağı ve
+araştırma katkısını benzer çalışmalardan ayıran açıklama hazırlandı. 23 ve 30 Ekim haftalık
+görüşmelerinde kapsam, yöntem ve ilerleme değerlendirildi.
+
+**Açık işler (form):** hadis uzmanlarıyla iş birliği henüz kesinleşmedi; uzman incelemesi,
+etiketleme kılavuzu, benzer çalışmalar karşılaştırması ve TÜBİTAK taslağı gözden geçirilecek.
+Tüm grup, uzmanlarla iletişim kuracak ve sonraki teknik geliştirme adımlarını belirleyecek.
+Aksiyon hedefi Toplantı 4 öncesi, 13 Kasım 2026; formun sonraki haftalık görüşme tarihi alanı
+6 Kasım 2026'dır. Bu iki tarih formda ayrı amaçlarla verilmiştir.
+
+**Web yayını:** aynı PDF, sitedeki Meeting #3 kartından ve `/meeting-3/` sayfasından açılır.
+Öğrenci numaraları korunur; yayımlanan dosyada imza bulunmaz.
+
 ## Rules
 
-- MUST: her toplantı kendi başlığı altında, imzalı formdaki bilgiyle yazılır.
+- MUST: her toplantı kendi başlığı altında, mevcut formdaki bilgiyle yazılır; imza durumu açıkça belirtilir.
 - MUST: aksiyon durumu tarihle birlikte güncellenir.
 - SHOULD: imzalı form PDF'i çalışma alanında saklanır; indirme klasörü kalıcı bir yer değildir.
 
@@ -96,10 +131,11 @@ Ders belgeleri çalışma alanının dışında, ders reposunda durur (`/Users/e
 - Boş form şablonu: `resources/2026-2027-fall/CSE491_Supervisor_Meeting_Form.docx`
 - İzlence (toplantı kuralları §2, haftalık plan §5): `resources/2026-2027-fall/CSE491_Senior_Design_Project_I_Syllabus_Fall_2026-2027.pdf`
 - Teams son günleri: ders reposu `README.md`, "Grading"
+- Toplantı 3 formu (imzasız): `wiki/thesis/meeting/2026-10-30/supervisor-meeting-3.pdf`
 
 ## Verification checklist
 
-- [ ] Özet tablosundaki satır sayısı imzalı form sayısına eşit
+- [ ] Özet tablosundaki her satır bir mevcut forma dayanır ve imza durumu belirtilir
 - [ ] Her aksiyonun sahibi ve durumu var
 - [ ] Sonraki toplantı tarihi son formla aynı
 
@@ -110,4 +146,4 @@ Ders belgeleri çalışma alanının dışında, ders reposunda durur (`/Users/e
 
 ## Last updated
 
-2026-10-17
+2026-11-09

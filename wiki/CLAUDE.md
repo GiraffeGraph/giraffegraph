@@ -47,6 +47,10 @@ organizasyonunda durur ama bitirme projesinin parçası değildir ve çalışma 
 
 ## Wiki disiplini
 
+- Herkese açık PDF yenilendiğinde dosya adına içerik hash'i eklenir; rapor kartı ve ayrıntı
+  sayfasındaki bağlantılar birlikte güncellenir. Yayın kontrolü, kartın gerçekten kullandığı tam URL
+  üzerinden yapılır; yalnız farklı bir sorgu parametresiyle indirilen kopyayı kontrol etmek yeterli değildir.
+
 Davranış, ölçüm, plan ya da karar değiştiğinde wiki aynı görevde güncellenir. Wiki, motor ve veri tek repodadır
 (`GiraffeGraph/giraffegraph`, 2026-11-09 itibarıyla public); kod ve wiki değişikliği aynı commit'te gidebilir.
 Yönlendirme kuralları: `WIKI-CREATOR.md`. Kalite çıtası: `architecture/context-quality.md`.

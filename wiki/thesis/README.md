@@ -26,6 +26,7 @@ olduğunu ve proje sonunda yayımlanacağını söyler.
 
 | Ne | Kaynak | Okunacak çıktı |
 |---|---|---|
+| CSE 491 ara rapor, Grup 10, 8 Kasım 2026 teslim tarihi | `wiki/thesis/midterm/build_midterm.py`; ders şablonu `midterm/template.docx`; okunabilir metin `midterm/report.md` | `wiki/thesis/midterm/10_MidtermReport.docx` (10 sayfa, yönergeler kaldırılmış). Etiketleme ve uzman değerlendirmesi henüz başlamadı; ayrıntı `midterm/README.md` |
 | Tez: "A Human-in-the-Loop Knowledge Graph Generation Engine …" | `wiki/thesis/chapters/00-front.md` … `11-appendix.md` | `wiki/thesis/build/thesis.pdf` (55 sayfa, 51 kaynak) |
 | Tezin Türkçe sürümü | `wiki/thesis/chapters-tr/` (aynı dosya adları) | `wiki/thesis/build/thesis-tr.pdf` (55 sayfa) |
 | CSE 491 proje önerisi (son gün 2026-10-18) | `wiki/thesis/proposal/proposal.md`; ders şablonu `wiki/thesis/proposal/template.docx` (Teams ödevinden) | `wiki/thesis/proposal/build/proposal.docx` (şablonun kendisi, doldurulmuş) ve `proposal.pdf` (6 sayfa, Pages ile dışa aktarılır); başlıklar, alt başlıklar ve tablo sütunları şablonu izler |
@@ -127,4 +128,4 @@ derlemeyle yeniden üretilir.
 
 ## Last updated
 
-2026-10-17
+2026-11-09
