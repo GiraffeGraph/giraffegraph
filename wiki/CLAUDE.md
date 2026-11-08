@@ -48,7 +48,7 @@ organizasyonunda durur ama bitirme projesinin parçası değildir ve çalışma 
 ## Wiki disiplini
 
 Davranış, ölçüm, plan ya da karar değiştiğinde wiki aynı görevde güncellenir. Wiki, motor ve veri tek repodadır
-(`GiraffeGraph/giraffegraph`, özel); kod ve wiki değişikliği aynı commit'te gidebilir.
+(`GiraffeGraph/giraffegraph`, 2026-11-09 itibarıyla public); kod ve wiki değişikliği aynı commit'te gidebilir.
 Yönlendirme kuralları: `WIKI-CREATOR.md`. Kalite çıtası: `architecture/context-quality.md`.
 
 Wiki yapısı değişirken dokunma sırası:
@@ -84,4 +84,4 @@ için tek söz dağarcığı korunur. Tez ve makale (`wiki/thesis/`) İngilizce 
 
 ## Last updated
 
-2026-10-13
+2026-11-09

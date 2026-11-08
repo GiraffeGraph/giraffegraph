@@ -45,12 +45,14 @@ Boyut bilgisi 2026-10-08'de `du -sh` ile okundu; `data/` satırı 2026-10-12'de;
   `backend/tests/unit/test_hadith_normalization.py`), `data/README.md` ve tez derleme betiği
   (`wiki/thesis/build.py`, `BIB_FILES`). Gerekçe: pilot regresyon testleri dosyayı bulamazsa
   hata vermez, atlanır; kırılma fark edilmez.
-- MUST: `data/` ve `wiki/thesis/` içeriği herkese açık bir repoya kopyalanmaz. Gerekçe: `data/`
-  üçüncü taraf hadis metni, `wiki/thesis/` gönderilmemiş taslak taşır; proje reposu bu yüzden özeldir.
+- MUST: T.C. kimlik numarası, imza ve gerçek erişim anahtarları repoya eklenmez. Proje sahibinin
+  2026-11-09 kararıyla repo public yapıldı; öğrenci numaraları gizlilik engeli sayılmadı. Bu karar,
+  `data/` ve `wiki/thesis/` için önceki genel private tutma kuralının yerini alır. `data/raw/` ve
+  `data/work/` izlenmez; üçüncü taraf verinin kaynak bazlı lisans notları `data/README.md` içindedir.
 
 ## Çalışma alanını kurmak
 
-Kök dizin tek bir repodur: `github.com/GiraffeGraph/giraffegraph` (özel). Motor, wiki ve veri onun
+Kök dizin tek bir repodur: `github.com/GiraffeGraph/giraffegraph` (2026-11-09 itibarıyla public). Motor, wiki ve veri onun
 klasörleridir; yol çapaları ve Core testleri bu yerleşimi varsayar. Üç klasörün commit geçmişi repoya
 taşınmıştır (2026-10-13).
 
@@ -83,8 +85,9 @@ sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
 - Proje reposunda ve `landing` reposunda yalnız `main` dalı vardır; çalışma `main` üzerinde yürür
   (proje sahibi kararı, 2026-10-13). CI (`.github/workflows/ci.yml`) `giraffegraph-core/` altındaki
   değişikliklerde koşar.
-- Motor kodu herkese açık yayımlanmamıştır; yayın proje sonuna bırakılmıştır (proje sahibi kararı,
-  2026-10-13).
+- Motor kodu 2026-11-09 tarihinde proje sahibinin kararıyla public yapıldı. Bu karar, 2026-10-13
+  tarihli yayını proje sonuna bırakma kararının yerini alır. Bu tarihten önceki harita ve kaynak
+  metinlerindeki private ifadeleri tarihsel durumdur.
 - Core'un `main` dalı isnad prototipini taşır (2026-10-13); GitHub Actions'ta `backend` ve `frontend`
   işleri geçer. `evaluation/results/` altından yalnız özet tablolar izlenir; hadis metni ve alıntı
   içeren koşu dosyaları ile `backend/var/llm-cache/` `giraffegraph-core/` altında izlenmez; motor
@@ -141,4 +144,4 @@ sha256 değerleri `data/raw_manifest.json` ve `data/README.md` içinde).
 
 ## Last updated
 
-2026-10-13
+2026-11-09

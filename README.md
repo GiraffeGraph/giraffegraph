@@ -26,6 +26,8 @@ git clone git@github.com:GiraffeGraph/giraffegraph.git
 ## Working rules
 
 - Work on `main`; there are no long-lived branches.
-- The repository is private. `data/` contains third-party hadith text and `wiki/thesis/` contains
-  unpublished drafts; neither is copied into a public repository.
+- The repository is public as of 9 November 2026. `data/` contains third-party evaluation material
+  with source-specific licence notes; `data/raw/` and `data/work/` remain untracked.
+- `wiki/thesis/` contains research drafts. Public availability does not mean peer review or submission.
+- Do not commit national identity numbers, signatures, real credentials or local environment files.
 - Rules for coding agents are in `CLAUDE.md`, which imports `wiki/CLAUDE.md`.
