@@ -117,6 +117,16 @@ Aksiyon hedefi Toplantı 4 öncesi, 13 Kasım 2026; formun sonraki haftalık gö
 **Web yayını:** aynı PDF, sitedeki Meeting #3 kartından ve `/meeting-3/` sayfasından açılır.
 Öğrenci numaraları korunur; yayımlanan dosyada imza bulunmaz.
 
+## Meeting 4 ve 5 için hazırlanan formlar
+
+Proje sahibinin isteğiyle, daha sonra düzenlemesi için 13 Kasım 2026 tarihli Meeting 4 ve
+27 Kasım 2026 tarihli Meeting 5 formları hazırlandı. Tarihler, kullanıcının paylaştığı Teams
+ödev ekranlarındaki tarihlerdir. Normal tutanak dili kullanıldı; imza ve değerlendirme alanları
+boştur. Bu hazırlanan belgeler yukarıdaki gerçekleşmiş toplantı kayıtlarına eklenmez.
+
+Word, PDF ve üretim betiği: `wiki/thesis/meeting/drafts/`. Hazırlanan PDF'ler kullanıcının
+isteğiyle `/meeting-4/`, `/meeting-5/` sayfalarına ve rapor arşivindeki ilgili kartlara bağlandı.
+
 ## Rules
 
 - MUST: her toplantı kendi başlığı altında, mevcut formdaki bilgiyle yazılır; imza durumu açıkça belirtilir.
