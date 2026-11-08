@@ -127,6 +127,12 @@ boştur. Bu hazırlanan belgeler yukarıdaki gerçekleşmiş toplantı kayıtlar
 Word, PDF ve üretim betiği: `wiki/thesis/meeting/drafts/`. Hazırlanan PDF'ler kullanıcının
 isteğiyle `/meeting-4/`, `/meeting-5/` sayfalarına ve rapor arşivindeki ilgili kartlara bağlandı.
 
+**Görünürlük (9 Kasım 2026):** kullanıcı tarihleri geldiğinde yeniden açmak üzere Meeting 4 ve 5'i
+şimdilik gizledi. Kartlar, doğrudan sayfalar ve PDF'ler sitenin yayımlanan çıktısından kaldırıldı.
+Web dosyaları değiştirilmeden `landing/archive/reports/` altında saklanır; geri açma bilgileri
+aynı klasördeki `manifest.json` içindedir. Word/PDF kaynakları `drafts/` klasöründe ve İndirilenler'de
+korunur. Tarihe bağlı otomatik yayın ayarlanmadı; yeniden yayın kullanıcı isteğiyle yapılır.
+
 ## Rules
 
 - MUST: her toplantı kendi başlığı altında, mevcut formdaki bilgiyle yazılır; imza durumu açıkça belirtilir.
