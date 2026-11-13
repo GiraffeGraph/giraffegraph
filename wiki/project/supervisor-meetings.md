@@ -130,7 +130,8 @@ Word, PDF ve üretim betiği: `wiki/thesis/meeting/drafts/`. Hazırlanan PDF'ler
 isteğiyle `/meeting-4/`, `/meeting-5/` sayfalarına ve rapor arşivindeki ilgili kartlara bağlandı.
 
 **Görünürlük:** Meeting 4, toplantının yapıldığı 13 Kasım 2026'da yayımlandı; proje sahibi
-toplantıda formdaki içeriğin konuşulduğunu teyit etti. Kart, `/meeting-4/` sayfası ve
+toplantıda formdaki içeriğin konuşulduğunu teyit etti. İmzasız form aynı gün Teams'e yüklendi
+(proje sahibinin beyanı). Kart, `/meeting-4/` sayfası ve
 `/downloads/meeting-4-2026-11-13-a19be20f5a.pdf` sitede açıktır. Meeting 5 gizlidir: web dosyaları
 `landing/archive/reports/` altında saklanır, geri açma bilgisi aynı klasördeki `manifest.json`
 içindedir. Tarihe bağlı otomatik yayın ayarlanmadı; yeniden yayın kullanıcı isteğiyle yapılır.
