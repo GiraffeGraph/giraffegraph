@@ -17,6 +17,7 @@ doldurulur, danışmana imzalatılır ve bir hafta içinde dersin MS Teams kanal
 | 1 | 2026-10-02 | Very good | 2026-10-09 |
 | 2 | 2026-10-16 | Formda işaretlenmedi (imzasız) | 2026-10-23 |
 | 3 | 2026-10-30 | Formda işaretlenmedi (imzasız) | 2026-11-06 (planlanan haftalık görüşme) |
+| 4 | 2026-11-13 | Formda işaretlenmedi (imzasız) | 2026-11-27 |
 
 2026-10-09'da danışmanla benzer projelerden nerede ayrışılacağı konuşuldu (proje sahibinin beyanı); bunun formu yok. Toplantı 2'nin hazırlık belgeleri ve ekibin doldurduğu form: `wiki/thesis/meeting/2026-10-16/` (gündem: `04-gundem.md`, form: `build/supervisor-meeting-form.docx`).
 
@@ -122,16 +123,17 @@ Aksiyon hedefi Toplantı 4 öncesi, 13 Kasım 2026; formun sonraki haftalık gö
 Proje sahibinin isteğiyle, daha sonra düzenlemesi için 13 Kasım 2026 tarihli Meeting 4 ve
 27 Kasım 2026 tarihli Meeting 5 formları hazırlandı. Tarihler, kullanıcının paylaştığı Teams
 ödev ekranlarındaki tarihlerdir. Normal tutanak dili kullanıldı; imza ve değerlendirme alanları
-boştur. Bu hazırlanan belgeler yukarıdaki gerçekleşmiş toplantı kayıtlarına eklenmez.
+boştur. Meeting 4 yapıldıktan sonra proje sahibi formun toplantıda konuşulanı yansıttığını teyit etti;
+Meeting 5 formu toplantı yapılana kadar taslaktır.
 
 Word, PDF ve üretim betiği: `wiki/thesis/meeting/drafts/`. Hazırlanan PDF'ler kullanıcının
 isteğiyle `/meeting-4/`, `/meeting-5/` sayfalarına ve rapor arşivindeki ilgili kartlara bağlandı.
 
-**Görünürlük (9 Kasım 2026):** kullanıcı tarihleri geldiğinde yeniden açmak üzere Meeting 4 ve 5'i
-şimdilik gizledi. Kartlar, doğrudan sayfalar ve PDF'ler sitenin yayımlanan çıktısından kaldırıldı.
-Web dosyaları değiştirilmeden `landing/archive/reports/` altında saklanır; geri açma bilgileri
-aynı klasördeki `manifest.json` içindedir. Word/PDF kaynakları `drafts/` klasöründe ve İndirilenler'de
-korunur. Tarihe bağlı otomatik yayın ayarlanmadı; yeniden yayın kullanıcı isteğiyle yapılır.
+**Görünürlük:** Meeting 4, toplantının yapıldığı 13 Kasım 2026'da yayımlandı; proje sahibi
+toplantıda formdaki içeriğin konuşulduğunu teyit etti. Kart, `/meeting-4/` sayfası ve
+`/downloads/meeting-4-2026-11-13-a19be20f5a.pdf` sitede açıktır. Meeting 5 gizlidir: web dosyaları
+`landing/archive/reports/` altında saklanır, geri açma bilgisi aynı klasördeki `manifest.json`
+içindedir. Tarihe bağlı otomatik yayın ayarlanmadı; yeniden yayın kullanıcı isteğiyle yapılır.
 
 ## Rules
 
@@ -162,4 +164,4 @@ Ders belgeleri çalışma alanının dışında, ders reposunda durur (`/Users/e
 
 ## Last updated
 
-2026-11-09
+2026-11-13
